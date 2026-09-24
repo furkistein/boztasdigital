@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marla Kahve | Denizli</title>
+<meta name="description" content="Marla Kahve — Denizli merkezde üçüncü nesil kahve, ev yapımı tatlılar ve serpme kahvaltı. Menü, çalışma saatleri ve rezervasyon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zemin:#FBF7F2;
+  --beyaz:#FFFFFF;
+  --acik:#F3EAE0;
+  --yumusak:#EDE8DF;
+  --ikinci:#E6EDE6;
+  --metin:#2B2521;
+  --gri:#7C7168;
+  --vurgu:#A9714B;
+  --vurgu-koyu:#8F5C3A;
+  --cizgi:#EBE2D7;
+  --r:22px;
+  --golge:0 2px 4px rgba(43,37,33,.03), 0 12px 28px -18px rgba(43,37,33,.24);
+}
+
+/* ===== RENK SEÇENEKLERİ ===== */
+:root[data-tema="yesil"]{
+  --zemin:#F8FAF7;--acik:#E9F0E7;--yumusak:#EDF1EA;--ikinci:#E7EFEA;
+  --metin:#242B23;--gri:#6E7A6B;--vurgu:#5F7F55;--vurgu-koyu:#4C6945;--cizgi:#E2EADF;
+}
+:root[data-tema="terrakota"]{
+  --zemin:#FCF6F3;--acik:#F7E6DD;--yumusak:#F2E7E0;--ikinci:#F0E7DC;
+  --metin:#2E211C;--gri:#7F6A61;--vurgu:#B75C3E;--vurgu-koyu:#9A4930;--cizgi:#EEDDD3;
+}
+:root[data-tema="mavi"]{
+  --zemin:#F7F9FB;--acik:#E7EEF4;--yumusak:#EBEFF3;--ikinci:#E6EEF0;
+  --metin:#222B33;--gri:#6E7A84;--vurgu:#3D6E8F;--vurgu-koyu:#2F5876;--cizgi:#E2E9EF;
+}
+:root[data-tema="gece"]{
+  --zemin:#14110E;--beyaz:#1D1915;--acik:#221D18;--yumusak:#201B16;--ikinci:#1C211B;
+  --metin:#F3EDE5;--gri:#A79C90;--vurgu:#C98F62;--vurgu-koyu:#DBA477;--cizgi:#2E2721;
+  --golge:0 2px 4px rgba(0,0,0,.2), 0 14px 30px -18px rgba(0,0,0,.7);
+}
+:root[data-tema="gece"] header{background:rgba(20,17,14,.9)}
+:root[data-tema="gece"] .mobil{background:rgba(20,17,14,.96)}
+:root[data-tema="gece"] .btn{color:#17130F}
+:root[data-tema="gece"] .harita{background:repeating-linear-gradient(45deg,#201B16 0 12px,#1C1813 12px 24px)}
+:root[data-tema="gece"] .galeri figcaption{background:rgba(29,25,21,.92);color:var(--metin)}
+:root[data-tema="gece"] .kutucuk{background:rgba(29,25,21,.95)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--metin);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:500;line-height:1.15;letter-spacing:-.02em}
+.sarmal{width:min(1160px,100% - 40px);margin-inline:auto}
+section{padding:clamp(58px,8vw,100px) 0}
+
+header{position:sticky;top:0;z-index:40;background:rgba(251,247,242,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0}
+.marka{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:600}
+.marka i{width:34px;height:34px;border-radius:12px;background:var(--acik);color:var(--vurgu);display:grid;place-items:center;font-style:normal;font-size:16px;font-weight:600}
+.marka small{display:block;font-size:11.5px;color:var(--gri);font-weight:400}
+nav{display:none;gap:28px;font-size:15px;color:var(--gri)}
+nav a:hover{color:var(--metin)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:500;padding:13px 24px;border-radius:999px;background:var(--vurgu);color:#fff;transition:background .2s}
+.btn:hover{background:var(--vurgu-koyu)}
+.btn-yumusak{background:var(--beyaz);color:var(--metin);border:1px solid var(--cizgi)}
+.btn-yumusak:hover{background:var(--acik)}
+.ust .btn{display:none}
+
+/* hero */
+.hero{padding:clamp(34px,5vw,60px) 0 clamp(46px,7vw,80px)}
+.hero-ic{display:grid;gap:38px;align-items:center}
+.rozet{display:inline-flex;align-items:center;gap:9px;background:var(--beyaz);border:1px solid var(--cizgi);padding:7px 15px 7px 9px;border-radius:999px;font-size:13.5px;color:var(--gri);margin-bottom:20px}
+.rozet b{background:var(--ikinci);color:#4A6148;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:500}
+h1{font-size:clamp(34px,6vw,54px)}
+h1 span{color:var(--vurgu)}
+.giris{margin-top:18px;font-size:clamp(16px,2.1vw,18px);color:var(--gri);max-width:46ch}
+.hero-btn{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.mini{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.mini div{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:14px 18px;min-width:128px}
+.mini b{display:block;font-size:20px;font-weight:600}
+.mini small{color:var(--gri);font-size:13px}
+.gorsel{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:5/6;background:var(--acik);box-shadow:var(--golge)}
+.gorsel svg{width:100%;height:100%;display:block}
+.kutucuk{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:16px;padding:15px 18px;display:flex;gap:13px;align-items:center}
+.kutucuk .p{width:40px;height:40px;border-radius:50%;background:var(--ikinci);display:grid;place-items:center;color:#4A6148;font-weight:600;font-size:13.5px;flex:0 0 auto}
+.kutucuk b{display:block;font-size:14.5px;font-weight:500}
+.kutucuk small{color:var(--gri);font-size:13px}
+.yildiz{color:#E0A030;letter-spacing:1px;font-size:13px}
+
+/* özellik şeridi */
+.ozellik{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:22px;box-shadow:var(--golge)}
+.ozellik>div{display:flex;gap:11px;align-items:center;font-size:14.5px}
+.ok{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--ikinci);color:#4A6148;display:grid;place-items:center;font-size:13px}
+
+/* başlık */
+.bas{max-width:54ch;margin-bottom:40px}
+.etiket{font-size:13.5px;color:var(--vurgu);font-weight:500;margin-bottom:12px;display:block}
+.bas h2{font-size:clamp(27px,4.2vw,40px)}
+.bas p{color:var(--gri);margin-top:14px}
+.orta{margin-inline:auto;text-align:center}
+
+/* menü */
+.sekmeler{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:26px;justify-content:center}
+.sekmeler button{
+  font-family:inherit;font-size:14.5px;padding:10px 20px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--cizgi);background:var(--beyaz);color:var(--gri);transition:.2s;
+}
+.sekmeler button[aria-selected="true"]{background:var(--vurgu);color:#fff;border-color:var(--vurgu)}
+.menu-liste{display:grid;gap:12px}
+.menu-liste[hidden]{display:none}
+.satir{
+  display:flex;justify-content:space-between;gap:20px;align-items:baseline;
+  background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:18px 22px;
+}
+.satir h3{font-size:16.5px;font-weight:500}
+.satir p{color:var(--gri);font-size:14px;margin-top:3px;max-width:52ch}
+.satir .tl{font-size:16px;font-weight:600;color:var(--vurgu);white-space:nowrap}
+.menu-not{margin-top:22px;text-align:center;font-size:13.5px;color:var(--gri)}
+
+/* galeri */
+.galeri{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+.galeri figure{border-radius:18px;overflow:hidden;aspect-ratio:1;position:relative;background:var(--acik)}
+.galeri svg{width:100%;height:100%;display:block}
+.galeri figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 13px;font-size:12.5px}
+
+/* saatler */
+.saat-kutu{display:grid;gap:16px;grid-template-columns:1fr}
+.saatler{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px}
+.saatler ul{list-style:none;display:grid;gap:10px;margin-top:14px}
+.saatler li{display:flex;justify-content:space-between;gap:16px;font-size:15px;padding-bottom:10px;border-bottom:1px solid var(--cizgi)}
+.saatler li:last-child{border:0;padding-bottom:0}
+.saatler li span{color:var(--gri)}
+.bugun{background:var(--ikinci);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;justify-content:center}
+.bugun b{font-size:19px;font-weight:600;display:block;margin-bottom:6px}
+.bugun p{color:#4C5C4A;font-size:14.5px}
+
+/* yorumlar */
+.yorumlar{display:grid;gap:16px}
+.yorum{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px}
+.yorum p{font-size:15px;margin:12px 0 18px}
+.yorum footer{display:flex;gap:12px;align-items:center}
+.yorum .p{width:38px;height:38px;border-radius:50%;background:var(--acik);color:var(--vurgu);display:grid;place-items:center;font-weight:600;font-size:13.5px}
+.yorum b{display:block;font-size:14.5px;font-weight:500}
+.yorum small{color:var(--gri);font-size:13px}
+
+/* sss */
+details{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center;font-weight:500;font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary i{font-style:normal;color:var(--vurgu);font-size:19px;line-height:1}
+details[open] summary i{transform:rotate(45deg)}
+details p{color:var(--gri);font-size:14.5px;margin-top:12px}
+
+/* rezervasyon */
+.rez-ic{display:grid;gap:34px;align-items:start}
+.form{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:clamp(24px,4vw,34px);display:grid;gap:16px;box-shadow:var(--golge)}
+label{font-size:14px;font-weight:500}
+input,select,textarea{width:100%;margin-top:7px;padding:13px 15px;border:1px solid var(--cizgi);border-radius:13px;font-family:inherit;font-size:15px;background:var(--zemin);color:var(--metin)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--vurgu);background:var(--beyaz)}
+.form .btn{width:100%;padding:15px}
+.mesaj{font-size:13.5px;color:var(--vurgu);text-align:center;min-height:18px}
+.iletisim{display:grid;gap:14px}
+.iletisim a,.iletisim div.kutu{display:flex;gap:14px;align-items:flex-start;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:16px 18px}
+.iletisim a:hover{border-color:#DFD2C4}
+.iletisim b{display:block;font-size:15px;font-weight:500}
+.iletisim small{color:var(--gri);font-size:13.5px}
+.ik{width:36px;height:36px;border-radius:11px;background:var(--acik);display:grid;place-items:center;flex:0 0 auto}
+.harita{border-radius:18px;border:1px solid var(--cizgi);aspect-ratio:16/10;display:grid;place-items:center;color:var(--gri);font-size:13.5px;background:repeating-linear-gradient(45deg,#F2EAE1 0 12px,#EFE7DD 12px 24px)}
+
+footer.alt{border-top:1px solid var(--cizgi);padding:44px 0 110px;font-size:14.5px;color:var(--gri)}
+.alt-ic{display:grid;gap:26px}
+footer.alt b{display:block;color:var(--metin);font-size:14px;font-weight:500;margin-bottom:10px}
+footer.alt a:hover{color:var(--metin)}
+.demo-not{grid-column:1/-1;border-top:1px solid var(--cizgi);padding-top:20px;font-size:13px;color:#9B9188}
+
+.mobil{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:11px 16px calc(11px + env(safe-area-inset-bottom));background:rgba(251,247,242,.96);backdrop-filter:blur(10px);border-top:1px solid var(--cizgi)}
+.mobil .btn{flex:1}
+.yuzen{position:fixed;right:22px;bottom:22px;z-index:45;display:none;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 20px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 10px 30px -10px rgba(37,211,102,.6)}
+
+.tema{position:fixed;left:16px;bottom:78px;z-index:60;display:flex;align-items:center;gap:9px;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:999px;padding:8px 14px 8px 12px;box-shadow:var(--golge);font-size:12.5px;color:var(--gri)}
+.tema span{display:none}
+.tema button{width:21px;height:21px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;outline-offset:2px}
+.tema button[aria-pressed="true"]{border-color:var(--metin)}
+.t1{background:#A9714B}.t2{background:#5F7F55}.t3{background:#B75C3E}.t4{background:#3D6E8F}.t5{background:#241E19}
+
+@media(min-width:880px){
+  nav{display:flex}
+  .ust .btn{display:inline-flex}
+  .hero-ic{grid-template-columns:1.05fr .95fr;gap:52px}
+  .ozellik{grid-template-columns:repeat(4,1fr);gap:22px;padding:24px 30px}
+  .galeri{grid-template-columns:repeat(4,1fr)}
+  .saat-kutu{grid-template-columns:1.4fr 1fr}
+  .yorumlar{grid-template-columns:repeat(3,1fr)}
+  .rez-ic{grid-template-columns:1fr 1fr;gap:48px}
+  .alt-ic{grid-template-columns:1.7fr 1fr 1fr 1fr}
+  .mobil{display:none}
+  .yuzen{display:inline-flex}
+  .tema{bottom:22px}
+  .tema span{display:inline}
+  footer.alt{padding-bottom:48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal ust">
+    <a class="marka" href="#"><i>M</i><span>Marla<small>Kahve & Kahvaltı</small></span></a>
+    <nav>
+      <a href="#menu">Menü</a>
+      <a href="#ortam">Ortam</a>
+      <a href="#saatler">Saatler</a>
+      <a href="#konum">Konum</a>
+    </nav>
+    <a class="btn" href="#rezervasyon">Masa ayırt</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="sarmal hero-ic">
+    <div>
+      <span class="rozet"><b>Her gün</b> 08:00'de taze demleme</span>
+      <h1>Şehrin ortasında <span>sakin bir mola</span></h1>
+      <p class="giris">Kendi kavurduğumuz çekirdeklerle üçüncü nesil kahve, ev yapımı tatlılar ve hafta sonu serpme kahvaltı. Çalışmak için de oturmak için de uygun.</p>
+      <div class="hero-btn">
+        <a class="btn" href="#menu">Menüyü gör</a>
+        <a class="btn btn-yumusak" href="#konum">Yol tarifi al</a>
+      </div>
+      <div class="mini">
+        <div><b>4,7 / 5</b><small>Google puanı</small></div>
+        <div><b>08:00</b><small>hafta içi açılış</small></div>
+        <div><b>Ücretsiz</b><small>hızlı internet</small></div>
+      </div>
+    </div>
+
+    <div class="gorsel">
+      <svg viewBox="0 0 500 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><linearGradient id="z" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3E6D8"/><stop offset=".6" stop-color="#E9DCCB"/><stop offset="1" stop-color="#E6EDE6"/></linearGradient></defs>
+        <rect width="500" height="600" fill="url(#z)"/>
+        <circle cx="150" cy="150" r="100" fill="#fff" opacity=".55"/>
+        <circle cx="340" cy="330" r="135" fill="#DCC9B2" opacity=".55"/>
+        <g fill="none" stroke="#A9714B" stroke-opacity=".4" stroke-width="3">
+          <path d="M190 250h110a12 12 0 0 1 12 12v58a70 70 0 0 1-70 70h-4a70 70 0 0 1-70-70v-58a12 12 0 0 1 12-12Z"/>
+          <path d="M312 272h26a26 26 0 0 1 0 52h-26"/>
+          <path d="M175 420h160"/>
+        </g>
+        <path d="M0 470c120-42 240-42 360 12s140 32 140 32v86H0Z" fill="#fff" opacity=".5"/>
+      </svg>
+      <div class="kutucuk">
+        <div class="p">SB</div>
+        <div>
+          <span class="yildiz">★★★★★</span>
+          <b>“Saatlerce oturup çalıştım, kimse rahatsız etmedi.”</b>
+          <small>Selin B. · Google değerlendirmesi</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sarmal">
+  <div class="ozellik">
+    <div><span class="ok">✓</span> Ücretsiz hızlı internet</div>
+    <div><span class="ok">✓</span> Her masada priz</div>
+    <div><span class="ok">✓</span> Dost canlısı evcil hayvan politikası</div>
+    <div><span class="ok">✓</span> Sokakta ücretsiz park</div>
+  </div>
+</div>
+
+<!-- MENÜ -->
+<section id="menu">
+  <div class="sarmal">
+    <div class="bas orta">
+      <span class="etiket">Menü</span>
+      <h2>Ne içelim, ne yiyelim?</h2>
+      <p>Çekirdeklerimizi haftalık kavuruyoruz. Tatlılarımız ve hamur işlerimiz her sabah burada yapılıyor.</p>
+    </div>
+
+    <div class="sekmeler" role="tablist">
+      <button role="tab" aria-selected="true" data-hedef="kahve">Kahve</button>
+      <button role="tab" aria-selected="false" data-hedef="tatli">Tatlı & Fırın</button>
+      <button role="tab" aria-selected="false" data-hedef="kahvalti">Kahvaltı</button>
+      <button role="tab" aria-selected="false" data-hedef="soguk">Soğuk</button>
+    </div>
+
+    <div class="menu-liste" id="kahve">
+      <div class="satir"><div><h3>Filtre Kahve</h3><p>Haftanın çekirdeği, V60 ya da chemex ile</p></div><span class="tl">95 ₺</span></div>
+      <div class="satir"><div><h3>Espresso</h3><p>Tek ya da duble</p></div><span class="tl">75 ₺</span></div>
+      <div class="satir"><div><h3>Flat White</h3><p>Çift shot espresso, kadifemsi süt</p></div><span class="tl">125 ₺</span></div>
+      <div class="satir"><div><h3>Latte</h3><p>Yulaf ve badem sütü seçeneğiyle</p></div><span class="tl">120 ₺</span></div>
+      <div class="satir"><div><h3>Türk Kahvesi</h3><p>Odun ateşinde, lokumla servis</p></div><span class="tl">85 ₺</span></div>
+    </div>
+
+    <div class="menu-liste" id="tatli" hidden>
+      <div class="satir"><div><h3>Cheesecake</h3><p>Günün meyvesiyle</p></div><span class="tl">165 ₺</span></div>
+      <div class="satir"><div><h3>Tereyağlı Kruvasan</h3><p>Her sabah taze</p></div><span class="tl">95 ₺</span></div>
+      <div class="satir"><div><h3>Ev Yapımı Kurabiye</h3><p>Çikolatalı ya da fındıklı</p></div><span class="tl">55 ₺</span></div>
+      <div class="satir"><div><h3>Günün Keki</h3><p>Panoda yazıyor, her gün değişiyor</p></div><span class="tl">110 ₺</span></div>
+    </div>
+
+    <div class="menu-liste" id="kahvalti" hidden>
+      <div class="satir"><div><h3>Serpme Kahvaltı (2 kişilik)</h3><p>Sadece hafta sonu, 09:00 – 13:00</p></div><span class="tl">950 ₺</span></div>
+      <div class="satir"><div><h3>Avokadolu Ekşi Maya</h3><p>Yumurta ve mevsim yeşillikleriyle</p></div><span class="tl">285 ₺</span></div>
+      <div class="satir"><div><h3>Menemen</h3><p>Köy yumurtası, ekşi maya ekmek eşliğinde</p></div><span class="tl">245 ₺</span></div>
+      <div class="satir"><div><h3>Granola Kâse</h3><p>Yoğurt, mevsim meyveleri, bal</p></div><span class="tl">195 ₺</span></div>
+    </div>
+
+    <div class="menu-liste" id="soguk" hidden>
+      <div class="satir"><div><h3>Soğuk Demleme</h3><p>18 saat demlenmiş</p></div><span class="tl">115 ₺</span></div>
+      <div class="satir"><div><h3>Ice Latte</h3><p>Bitki sütü seçeneğiyle</p></div><span class="tl">130 ₺</span></div>
+      <div class="satir"><div><h3>Ev Yapımı Limonata</h3><p>Nane ve taze sıkılmış limon</p></div><span class="tl">105 ₺</span></div>
+      <div class="satir"><div><h3>Mevsim Meyve Suyu</h3><p>Günlük sıkılmış</p></div><span class="tl">120 ₺</span></div>
+    </div>
+
+    <p class="menu-not">Fiyatlar örnek amaçlıdır. Gerçek sitede menü, işletmenin kendi güncel fiyatlarıyla yer alır ve tek ekrandan güncellenebilir.</p>
+  </div>
+</section>
+
+<!-- ORTAM -->
+<section id="ortam" style="background:var(--yumusak)">
+  <div class="sarmal">
+    <div class="bas">
+      <span class="etiket">Ortam</span>
+      <h2>Nasıl bir yer olduğumuzu görün</h2>
+      <p>Sabah sakin, öğleden sonra hareketli. Çalışmak isteyenler için arka salon, sohbet edenler için bahçe.</p>
+    </div>
+    <div class="galeri">
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#F3E6D8"/><circle cx="95" cy="105" r="65" fill="#fff" opacity=".7"/><path d="M0 215c70-28 150-28 300 18v67H0Z" fill="#DCC9B2" opacity=".85"/></svg><figcaption>Ana salon</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#E6EDE6"/><rect x="55" y="70" width="190" height="165" rx="18" fill="#fff" opacity=".65"/><circle cx="150" cy="152" r="42" fill="#CFDCCB"/></svg><figcaption>Bahçe</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#EDE3D5"/><circle cx="215" cy="90" r="58" fill="#fff" opacity=".7"/><path d="M-10 205c80 28 150-38 320 8v100H-10Z" fill="#DFCDB6" opacity=".85"/></svg><figcaption>Çalışma köşesi</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#F6EDE2"/><g fill="none" stroke="#fff" stroke-width="9" opacity=".85"><circle cx="150" cy="150" r="50"/><circle cx="150" cy="150" r="88"/></g></svg><figcaption>Kahve barı</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SAATLER -->
+<section id="saatler">
+  <div class="sarmal">
+    <div class="bas orta"><span class="etiket">Saatler</span><h2>Ne zaman açığız?</h2></div>
+    <div class="saat-kutu">
+      <div class="saatler">
+        <b style="font-size:16px">Haftalık program</b>
+        <ul>
+          <li>Pazartesi – Cuma <span>08:00 – 23:00</span></li>
+          <li>Cumartesi <span>09:00 – 24:00</span></li>
+          <li>Pazar <span>09:00 – 22:00</span></li>
+          <li>Serpme kahvaltı <span>Hafta sonu 09:00 – 13:00</span></li>
+          <li>Mutfak son sipariş <span>Kapanıştan 1 saat önce</span></li>
+        </ul>
+      </div>
+      <div class="bugun">
+        <b>Bugün açığız</b>
+        <p>Kalabalık saatlerimiz 13:00 – 16:00 arası. Daha sakin bir ortam isterseniz sabah erken saatleri öneriyoruz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YORUMLAR -->
+<section style="background:var(--acik)">
+  <div class="sarmal">
+    <div class="bas orta"><span class="etiket">Misafirlerimiz</span><h2>Gelenler ne diyor?</h2></div>
+    <div class="yorumlar">
+      <div class="yorum"><span class="yildiz">★★★★★</span><p>Saatlerce oturup çalıştım, kimse rahatsız etmedi. İnternet hızlı, priz bulmak sorun değil.</p><footer><div class="p">SB</div><div><b>Selin B.</b><small>Çalışma köşesi</small></div></footer></div>
+      <div class="yorum"><span class="yildiz">★★★★★</span><p>Filtre kahveleri gerçekten iyi. Haftanın çekirdeğini soruyorsunuz, tadım notlarını anlatıyorlar.</p><footer><div class="p">EK</div><div><b>Emre K.</b><small>Filtre kahve</small></div></footer></div>
+      <div class="yorum"><span class="yildiz">★★★★★</span><p>Hafta sonu kahvaltısı için rezervasyon yaptırmak şart, ama beklemeye değiyor.</p><footer><div class="p">NA</div><div><b>Nazlı A.</b><small>Serpme kahvaltı</small></div></footer></div>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section>
+  <div class="sarmal" style="max-width:840px">
+    <div class="bas orta"><span class="etiket">S.S.S.</span><h2>Sık sorulan sorular</h2></div>
+    <details open><summary>Rezervasyon şart mı? <i>+</i></summary><p>Hafta içi rezervasyonsuz gelebilirsiniz. Hafta sonu serpme kahvaltı için ve 4 kişiden kalabalık gruplar için rezervasyon öneriyoruz.</p></details>
+    <details><summary>Laptopla çalışılabiliyor mu? <i>+</i></summary><p>Evet. Arka salonumuz çalışmak isteyenler için ayrılmış, her masada priz var. Yalnızca hafta sonu 12:00 – 16:00 arasında laptop kullanımını ana salonda sınırlıyoruz.</p></details>
+    <details><summary>Evcil hayvan kabul ediyor musunuz? <i>+</i></summary><p>Bahçe bölümümüzde evcil hayvanlar misafirimizdir. Su kabı ve ikramımız hazır.</p></details>
+    <details><summary>Bitkisel süt seçeneği var mı? <i>+</i></summary><p>Yulaf, badem ve soya sütü mevcut. Ek ücret alınmıyor.</p></details>
+    <details><summary>Park sorunu var mı? <i>+</i></summary><p>Sokağımızda ücretsiz park yeri bulabilirsiniz. Yoğun saatlerde 100 metre ilerideki otoparkı öneriyoruz.</p></details>
+  </div>
+</section>
+
+<!-- REZERVASYON & KONUM -->
+<section id="rezervasyon" style="background:var(--ikinci)">
+  <div class="sarmal rez-ic">
+    <div id="konum">
+      <span class="etiket">Rezervasyon</span>
+      <h2 style="font-size:clamp(27px,4.2vw,38px)">Masanızı ayıralım</h2>
+      <p style="color:#4C5C4A;margin-top:14px;max-width:44ch">Formu bırakın, kısa sürede teyit edelim. Aynı gün için telefon daha hızlı olur.</p>
+      <div class="iletisim" style="margin-top:26px">
+        <a href="tel:+902580000000"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A9714B" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span><span><b>0258 000 00 00</b><small>Açık olduğumuz saatlerde</small></span></a>
+        <div class="kutu"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A9714B" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Merkezefendi / Denizli</b><small>Örnek Mah. Örnek Cad. No: 00</small></span></div>
+      </div>
+      <div class="harita" style="margin-top:14px">Harita alanı</div>
+    </div>
+
+    <form class="form" id="form">
+      <div><label for="ad">Ad Soyad</label><input id="ad" required placeholder="Adınız ve soyadınız"></div>
+      <div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05__ ___ __ __"></div>
+      <div><label for="kisi">Kişi sayısı</label>
+        <select id="kisi"><option>1 – 2 kişi</option><option>3 – 4 kişi</option><option>5 – 8 kişi</option><option>8 kişiden fazla</option></select>
+      </div>
+      <div><label for="gun">Gün ve saat</label><input id="gun" placeholder="Örn. Cumartesi 10:30"></div>
+      <div><label for="notu">Eklemek istedikleriniz</label><textarea id="notu" rows="3" placeholder="Bahçe, çalışma köşesi, doğum günü..."></textarea></div>
+      <button class="btn" type="submit">Rezervasyon talebi gönder</button>
+      <p class="mesaj" id="mesaj">Talebiniz teyit edilene kadar rezervasyon kesinleşmez.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="alt">
+  <div class="sarmal alt-ic">
+    <div>
+      <a class="marka" href="#" style="margin-bottom:12px"><i>M</i><span>Marla<small>Kahve & Kahvaltı</small></span></a>
+      <p>Örnek Mah. Örnek Cad. No: 00<br>Merkezefendi / Denizli</p>
+    </div>
+    <div><b>Menü</b><p><a href="#menu">Kahve</a><br><a href="#menu">Tatlı & Fırın</a><br><a href="#menu">Kahvaltı</a><br><a href="#menu">Soğuk içecekler</a></p></div>
+    <div><b>Saatler</b><p>Hafta içi 08:00 – 23:00<br>Cumartesi 09:00 – 24:00<br>Pazar 09:00 – 22:00</p></div>
+    <div><b>İletişim</b><p><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a><br><a href="#rezervasyon">Rezervasyon</a></p></div>
+    <p class="demo-not">Bu site bir örnek çalışmadır. Marla Kahve hayali bir işletmedir, gerçek bir kurumu temsil etmez. Menü ve fiyatlar temsilidir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</footer>
+
+<div class="mobil">
+  <a class="btn btn-yumusak" href="#konum">Yol tarifi</a>
+  <a class="btn" href="#rezervasyon">Masa ayırt</a>
+</div>
+
+<a class="yuzen" href="https://wa.me/905000000000">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  WhatsApp'tan yaz
+</a>
+
+<div class="tema" role="group" aria-label="Renk seçenekleri">
+  <span>Renk:</span>
+  <button class="t1" data-tema="" aria-pressed="true" aria-label="Kahve" title="Kahve"></button>
+  <button class="t2" data-tema="yesil" aria-pressed="false" aria-label="Yeşil" title="Yeşil"></button>
+  <button class="t3" data-tema="terrakota" aria-pressed="false" aria-label="Terrakota" title="Terrakota"></button>
+  <button class="t4" data-tema="mavi" aria-pressed="false" aria-label="Mavi" title="Mavi"></button>
+  <button class="t5" data-tema="gece" aria-pressed="false" aria-label="Gece" title="Gece"></button>
+</div>
+
+<script>
+/* menü sekmeleri */
+document.querySelectorAll('.sekmeler button').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.sekmeler button').forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false')});
+    document.querySelectorAll('.menu-liste').forEach(function(l){l.hidden=(l.id!==b.dataset.hedef)});
+  });
+});
+
+/* renk seçenekleri */
+document.querySelectorAll('.tema button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.dataset.tema;
+    if(t){document.documentElement.setAttribute('data-tema',t)}
+    else{document.documentElement.removeAttribute('data-tema')}
+    document.querySelectorAll('.tema button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    try{localStorage.setItem('marla-tema',t)}catch(e){}
+  });
+});
+try{
+  var kayitli=localStorage.getItem('marla-tema');
+  if(kayitli!==null){
+    var hedef=document.querySelector('.tema button[data-tema="'+kayitli+'"]');
+    if(hedef) hedef.click();
+  }
+}catch(e){}
+
+document.getElementById('form').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('mesaj').textContent='Bu bir örnek sitedir, form gönderilmedi. Gerçek sitede talep WhatsApp ve e-postanıza iletilir.';
+});
+</script>
+</body>
+</html>

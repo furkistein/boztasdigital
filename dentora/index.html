@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dentora Ağız ve Diş Sağlığı Polikliniği | Denizli</title>
+<meta name="description" content="Dentora Ağız ve Diş Sağlığı Polikliniği — implant, zirkonyum kaplama, çocuk diş hekimliği ve estetik gülüş tasarımı. Denizli merkezde randevulu hizmet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zemin:#F8FAFB;
+  --beyaz:#FFFFFF;
+  --buz:#E9F2F4;
+  --nane:#E4F0EC;
+  --kum:#F1EFEA;
+  --metin:#23302F;
+  --gri:#6D7C7B;
+  --vurgu:#2F7D74;
+  --vurgu-koyu:#25655E;
+  --cizgi:#E4EBEC;
+  --r:22px;
+  --golge:0 2px 4px rgba(35,48,47,.03), 0 12px 28px -18px rgba(35,48,47,.22);
+}
+
+/* ===== RENK SEÇENEKLERİ ===== */
+/* 2 · Mavi: klasik klinik mavisi, en yaygın tercih */
+:root[data-tema="mavi"]{
+  --zemin:#F7FAFC;--buz:#E7F0F8;--nane:#E6EDF7;--kum:#F0F2F5;
+  --metin:#22303C;--gri:#6C7A88;--vurgu:#2E6FA3;--vurgu-koyu:#245A85;--cizgi:#E2EAF1;
+}
+/* 3 · Lavanta: çocuk hastalar için daha sıcak ve yumuşak */
+:root[data-tema="lavanta"]{
+  --zemin:#F9F8FC;--buz:#ECEAF6;--nane:#EDEAF7;--kum:#F2F0F7;
+  --metin:#282633;--gri:#746F85;--vurgu:#6A63A6;--vurgu-koyu:#564F8C;--cizgi:#E7E3F0;
+}
+/* 4 · Gri: nötr ve kurumsal */
+:root[data-tema="gri"]{
+  --zemin:#F8F9FA;--buz:#EDEFF0;--nane:#EAEDEE;--kum:#F1F1F0;
+  --metin:#242A2C;--gri:#717A7D;--vurgu:#3F5A63;--vurgu-koyu:#324950;--cizgi:#E5E9EA;
+}
+/* 5 · Gece: koyu tema */
+:root[data-tema="gece"]{
+  --zemin:#101514;--beyaz:#18201F;--buz:#1A2322;--nane:#18211F;--kum:#1C2220;
+  --metin:#EDF2F1;--gri:#98A5A3;--vurgu:#5FAEA3;--vurgu-koyu:#74C2B6;--cizgi:#26302E;
+  --golge:0 2px 4px rgba(0,0,0,.2), 0 14px 30px -18px rgba(0,0,0,.7);
+}
+:root[data-tema="gece"] header{background:rgba(16,21,20,.9)}
+:root[data-tema="gece"] .mobil{background:rgba(16,21,20,.96)}
+:root[data-tema="gece"] .btn{color:#101514}
+:root[data-tema="gece"] .harita{background:repeating-linear-gradient(45deg,#1B2321 0 12px,#182120 12px 24px)}
+:root[data-tema="gece"] .kutucuk{background:rgba(24,32,31,.95)}
+:root[data-tema="gece"] .hekim p,:root[data-tema="gece"] .hekim li{color:var(--gri)}
+:root[data-tema="gece"] #randevu p{color:var(--gri)}
+
+/* seçici kutusu */
+.tema{
+  position:fixed;left:16px;bottom:78px;z-index:60;display:flex;align-items:center;gap:9px;
+  background:var(--beyaz);border:1px solid var(--cizgi);border-radius:999px;padding:8px 14px 8px 12px;
+  box-shadow:var(--golge);font-size:12.5px;color:var(--gri);
+}
+.tema span{display:none}
+.tema button{width:21px;height:21px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;outline-offset:2px}
+.tema button[aria-pressed="true"]{border-color:var(--metin)}
+.t1{background:#2F7D74}.t2{background:#2E6FA3}.t3{background:#6A63A6}.t4{background:#3F5A63}.t5{background:#1C2624}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--metin);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:500;line-height:1.15;letter-spacing:-.02em}
+.sarmal{width:min(1160px,100% - 40px);margin-inline:auto}
+section{padding:clamp(60px,8.5vw,104px) 0}
+
+header{position:sticky;top:0;z-index:40;background:rgba(248,250,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0}
+.marka{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:600}
+.marka i{width:34px;height:34px;border-radius:12px;background:var(--buz);color:var(--vurgu);display:grid;place-items:center;font-style:normal;font-size:16px;font-weight:600}
+.marka small{display:block;font-size:11.5px;color:var(--gri);font-weight:400;letter-spacing:0}
+nav{display:none;gap:28px;font-size:15px;color:var(--gri)}
+nav a:hover{color:var(--metin)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;font-family:inherit;font-size:15px;font-weight:500;padding:13px 24px;border-radius:999px;background:var(--vurgu);color:#fff;transition:background .2s}
+.btn:hover{background:var(--vurgu-koyu)}
+.btn-yumusak{background:var(--beyaz);color:var(--metin);border:1px solid var(--cizgi)}
+.btn-yumusak:hover{background:var(--buz)}
+.ust .btn{display:none}
+
+/* hero */
+.hero{padding:clamp(36px,5vw,64px) 0 clamp(48px,7vw,84px)}
+.hero-ic{display:grid;gap:40px;align-items:center}
+.rozet{display:inline-flex;align-items:center;gap:9px;background:var(--beyaz);border:1px solid var(--cizgi);padding:7px 15px 7px 9px;border-radius:999px;font-size:13.5px;color:var(--gri);margin-bottom:20px}
+.rozet b{background:var(--nane);color:#2F6B5F;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:500}
+h1{font-size:clamp(34px,6vw,54px)}
+h1 span{color:var(--vurgu)}
+.giris{margin-top:18px;font-size:clamp(16px,2.1vw,18px);color:var(--gri);max-width:47ch}
+.hero-btn{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.mini{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.mini div{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:14px 18px;min-width:130px}
+.mini b{display:block;font-size:22px;font-weight:600}
+.mini small{color:var(--gri);font-size:13px}
+.gorsel{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:5/6;background:var(--buz);box-shadow:var(--golge)}
+.gorsel svg{width:100%;height:100%;display:block}
+.kutucuk{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:center}
+.kutucuk .p{width:42px;height:42px;border-radius:50%;background:var(--nane);display:grid;place-items:center;color:#2F6B5F;font-weight:600;font-size:14px;flex:0 0 auto}
+.kutucuk b{display:block;font-size:14.5px;font-weight:500}
+.kutucuk small{color:var(--gri);font-size:13px}
+.yildiz{color:#E0A030;letter-spacing:1px;font-size:13px}
+
+/* güven */
+.guven{display:grid;gap:14px;grid-template-columns:1fr;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:22px;box-shadow:var(--golge)}
+.guven>div{display:flex;gap:12px;align-items:flex-start}
+.gk{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--nane);color:#2F6B5F;display:grid;place-items:center;font-size:13px;margin-top:2px}
+.guven b{display:block;font-size:14.5px;font-weight:500}
+.guven small{color:var(--gri);font-size:13px;line-height:1.5}
+
+/* başlık */
+.bas{max-width:54ch;margin-bottom:42px}
+.etiket{font-size:13.5px;color:var(--vurgu);font-weight:500;margin-bottom:12px;display:block}
+.bas h2{font-size:clamp(27px,4.2vw,40px)}
+.bas p{color:var(--gri);margin-top:14px}
+.orta{margin-inline:auto;text-align:center}
+
+/* tedaviler */
+.kartlar{display:grid;gap:16px;grid-template-columns:1fr}
+.kart{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px;transition:border-color .2s,box-shadow .2s}
+.kart:hover{border-color:#CFDEDE;box-shadow:var(--golge)}
+.kart .ikon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;background:var(--buz)}
+.kart h3{font-size:19px;margin-bottom:7px}
+.kart p{color:var(--gri);font-size:14.5px}
+.kart .sure{margin-top:16px;font-size:13.5px;color:var(--vurgu);font-weight:500}
+
+/* hekim */
+.hekim{background:var(--nane);border-radius:clamp(22px,4vw,34px);padding:clamp(28px,5vw,52px)}
+.hekim-ic{display:grid;gap:30px;align-items:center}
+.hekim-foto{border-radius:20px;overflow:hidden;aspect-ratio:1;background:var(--buz);max-width:300px}
+.hekim-foto svg{width:100%;height:100%;display:block}
+.hekim h2{font-size:clamp(25px,3.6vw,34px);margin-bottom:14px}
+.hekim p{color:#4A5F5C;font-size:15px}
+.hekim ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+.hekim li{display:flex;gap:10px;font-size:14.5px;color:#41544F}
+.hekim li::before{content:"✓";color:var(--vurgu);font-weight:600}
+
+/* adımlar */
+.adim-izgara{display:grid;gap:24px}
+.adim{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:18px;padding:24px}
+.adim .n{width:32px;height:32px;border-radius:50%;background:var(--buz);color:var(--vurgu);display:grid;place-items:center;font-size:14px;font-weight:600;margin-bottom:14px}
+.adim h3{font-size:17px;margin-bottom:6px}
+.adim p{color:var(--gri);font-size:14.5px}
+
+/* ödeme */
+.odeme{display:grid;gap:16px;grid-template-columns:1fr}
+.odeme div{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:18px;padding:24px}
+.odeme h3{font-size:17px;margin-bottom:7px}
+.odeme p{color:var(--gri);font-size:14.5px}
+
+/* öncesi sonrası */
+.karsilastir{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;box-shadow:var(--golge);--p:50%}
+.karsilastir .kat{position:absolute;inset:0}
+.karsilastir .kat svg{width:100%;height:100%;display:block}
+.karsilastir .ust-kat{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.karsilastir .etkt{position:absolute;top:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:500;color:#23302F}
+.karsilastir .sol{left:14px}.karsilastir .sag{right:14px}
+.karsilastir .cubuk{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.karsilastir .tutamac{position:absolute;top:50%;left:var(--p);width:42px;height:42px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);display:grid;place-items:center;color:var(--vurgu);font-size:15px;box-shadow:0 4px 14px rgba(0,0,0,.18);pointer-events:none}
+.karsilastir input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;background:transparent;border:0}
+.oncesi-not{margin-top:14px;font-size:13.5px;color:var(--gri);text-align:center}
+
+/* yorumlar */
+.yorumlar{display:grid;gap:16px}
+.yorum{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px}
+.yorum p{font-size:15px;margin:12px 0 18px}
+.yorum footer{display:flex;gap:12px;align-items:center}
+.yorum .p{width:38px;height:38px;border-radius:50%;background:var(--buz);color:var(--vurgu);display:grid;place-items:center;font-weight:600;font-size:13.5px}
+.yorum b{display:block;font-size:14.5px;font-weight:500}
+.yorum small{color:var(--gri);font-size:13px}
+
+/* sss */
+details{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center;font-weight:500;font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary i{font-style:normal;color:var(--vurgu);font-size:19px;line-height:1}
+details[open] summary i{transform:rotate(45deg)}
+details p{color:var(--gri);font-size:14.5px;margin-top:12px}
+
+/* randevu */
+.randevu-ic{display:grid;gap:34px;align-items:start}
+.form{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:clamp(24px,4vw,34px);display:grid;gap:16px;box-shadow:var(--golge)}
+label{font-size:14px;font-weight:500}
+input,select,textarea{width:100%;margin-top:7px;padding:13px 15px;border:1px solid var(--cizgi);border-radius:13px;font-family:inherit;font-size:15px;background:var(--zemin);color:var(--metin)}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--vurgu);background:var(--beyaz)}
+.form .btn{width:100%;padding:15px}
+.mesaj{font-size:13.5px;color:var(--vurgu);text-align:center;min-height:18px}
+.iletisim{display:grid;gap:14px}
+.iletisim a,.iletisim div.satir{display:flex;gap:14px;align-items:flex-start;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:16px 18px}
+.iletisim a:hover{border-color:#CFDEDE}
+.iletisim b{display:block;font-size:15px;font-weight:500}
+.iletisim small{color:var(--gri);font-size:13.5px}
+.ik{width:36px;height:36px;border-radius:11px;background:var(--buz);display:grid;place-items:center;flex:0 0 auto}
+.harita{border-radius:18px;border:1px solid var(--cizgi);aspect-ratio:16/10;display:grid;place-items:center;color:var(--gri);font-size:13.5px;background:repeating-linear-gradient(45deg,#EEF4F4 0 12px,#E9F1F1 12px 24px)}
+
+footer.alt{border-top:1px solid var(--cizgi);padding:44px 0 110px;font-size:14.5px;color:var(--gri)}
+.alt-ic{display:grid;gap:26px}
+footer.alt b{display:block;color:var(--metin);font-size:14px;font-weight:500;margin-bottom:10px}
+footer.alt a:hover{color:var(--metin)}
+.demo-not{grid-column:1/-1;border-top:1px solid var(--cizgi);padding-top:20px;font-size:13px;color:#93A0A0}
+
+.mobil{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;padding:11px 16px calc(11px + env(safe-area-inset-bottom));background:rgba(248,250,251,.96);backdrop-filter:blur(10px);border-top:1px solid var(--cizgi)}
+.mobil .btn{flex:1}
+.yuzen{position:fixed;right:22px;bottom:22px;z-index:45;display:none;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 20px;border-radius:999px;font-size:15px;font-weight:500;box-shadow:0 10px 30px -10px rgba(37,211,102,.6)}
+
+@media(min-width:880px){
+  nav{display:flex}
+  .ust .btn{display:inline-flex}
+  .hero-ic{grid-template-columns:1.05fr .95fr;gap:52px}
+  .guven{grid-template-columns:repeat(4,1fr);gap:24px;padding:26px 30px}
+  .kartlar{grid-template-columns:repeat(3,1fr)}
+  .hekim-ic{grid-template-columns:300px 1fr;gap:44px}
+  .adim-izgara{grid-template-columns:repeat(4,1fr)}
+  .odeme{grid-template-columns:repeat(3,1fr)}
+  .yorumlar{grid-template-columns:repeat(3,1fr)}
+  .randevu-ic{grid-template-columns:1fr 1fr;gap:48px}
+  .alt-ic{grid-template-columns:1.7fr 1fr 1fr 1fr}
+  .mobil{display:none}
+  .yuzen{display:inline-flex}
+  .tema{bottom:22px}
+  .tema span{display:inline}
+  footer.alt{padding-bottom:48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal ust">
+    <a class="marka" href="#"><i>D</i><span>Dentora<small>Ağız ve Diş Sağlığı</small></span></a>
+    <nav>
+      <a href="#tedaviler">Tedaviler</a>
+      <a href="#hekim">Hekimimiz</a>
+      <a href="#surec">Süreç</a>
+      <a href="#sss">S.S.S.</a>
+    </nav>
+    <a class="btn" href="#randevu">Randevu al</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="sarmal hero-ic">
+    <div>
+      <span class="rozet"><b>Denizli</b> Ağız ve diş sağlığı polikliniği</span>
+      <h1>Diş hekimine gitmeyi <span>ertelemeyin</span></h1>
+      <p class="giris">İmplant, zirkonyum kaplama, kanal tedavisi ve çocuk diş hekimliği. Tedaviye başlamadan önce ne yapılacağını ve ne kadar süreceğini yazılı bir planla paylaşıyoruz.</p>
+      <div class="hero-btn">
+        <a class="btn" href="#randevu">Randevu oluştur</a>
+        <a class="btn btn-yumusak" href="#tedaviler">Tedavileri gör</a>
+      </div>
+      <div class="mini">
+        <div><b>12 yıl</b><small>hekim tecrübesi</small></div>
+        <div><b>6 gün</b><small>randevulu çalışma</small></div>
+        <div><b>Dijital</b><small>röntgen ve planlama</small></div>
+      </div>
+    </div>
+
+    <div class="gorsel">
+      <svg viewBox="0 0 500 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><linearGradient id="z" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4F0EC"/><stop offset=".6" stop-color="#E9F2F4"/><stop offset="1" stop-color="#F1EFEA"/></linearGradient></defs>
+        <rect width="500" height="600" fill="url(#z)"/>
+        <circle cx="140" cy="160" r="105" fill="#fff" opacity=".6"/>
+        <circle cx="350" cy="320" r="140" fill="#D4E6E2" opacity=".5"/>
+        <path d="M0 440c120-46 240-46 360 10s140 36 140 36v114H0Z" fill="#fff" opacity=".55"/>
+        <g fill="none" stroke="#2F7D74" stroke-opacity=".3" stroke-width="2">
+          <path d="M250 214c-30-22-70-10-70 30 0 44 26 68 40 108 6 17 24 17 30 0 14-40 40-64 40-108 0-40-40-52-70-30Z"/>
+        </g>
+      </svg>
+      <div class="kutucuk">
+        <div class="p">✓</div>
+        <div>
+          <b>Her tedavi öncesi yazılı plan</b>
+          <small>Seans sayısı ve süre baştan belli</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sarmal">
+  <div class="guven">
+    <div><span class="gk">✓</span><div><b>Sterilizasyon protokolü</b><small>Her hasta için tek kullanımlık set</small></div></div>
+    <div><span class="gk">✓</span><div><b>Yazılı tedavi planı</b><small>Seans ve süre baştan belli</small></div></div>
+    <div><span class="gk">✓</span><div><b>Lokal anestezi</b><small>Uygulamalar anestezi altında yapılır</small></div></div>
+    <div><span class="gk">✓</span><div><b>Çocuklara ayrı oda</b><small>Alışma seansıyla başlayan süreç</small></div></div>
+  </div>
+</div>
+
+<!-- TEDAVİLER -->
+<section id="tedaviler">
+  <div class="sarmal">
+    <div class="bas">
+      <span class="etiket">Tedaviler</span>
+      <h2>Hangi tedaviye ihtiyacınız var?</h2>
+      <p>Emin değilseniz sorun değil. İlk muayenede ağız içi muayene ve gerekli görüntüleme sonrası size uygun planı birlikte belirliyoruz.</p>
+    </div>
+    <div class="kartlar">
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c-4 0-6 2.5-6 6 0 5 3 7 4 11 .5 2 3 2 3.4 0 1-4 4.6-6 4.6-11 0-3.5-2-6-6-6Z"/><path d="M9 8.5c1.5-1 4.5-1 6 0"/></svg></div>
+        <h3>İmplant</h3>
+        <p>Eksik dişin yerine, çene kemiğine yerleştirilen kalıcı diş kökü. Kendi dişiniz gibi kullanılır.</p>
+        <div class="sure">Tedavi süresi · 3-6 ay</div>
+      </article>
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5" width="16" height="14" rx="4"/><path d="M8 5v14M16 5v14"/></svg></div>
+        <h3>Zirkonyum kaplama</h3>
+        <p>Doğal diş görünümünde, ışığı gerçek diş gibi geçiren metal içermeyen kaplama.</p>
+        <div class="sure">Tedavi süresi · 5-7 gün</div>
+      </article>
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v20M5 8c3 1.5 11 1.5 14 0"/></svg></div>
+        <h3>Kanal tedavisi</h3>
+        <p>İltihaplı dişin çekilmeden korunmasını amaçlayan tedavi. Lokal anestezi altında uygulanır.</p>
+        <div class="sure">Tedavi süresi · 1-2 seans</div>
+      </article>
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14c2 2 5 2 7 0M9.5 9.5h.01M14.5 9.5h.01"/></svg></div>
+        <h3>Çocuk diş hekimliği</h3>
+        <p>Çocuğunuzun korkmadan tedavi olabilmesi için ayrı bir oda ve alışma seansı.</p>
+        <div class="sure">İlk seans · tanışma</div>
+      </article>
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><path d="M4 15c4-6 12-6 16 0"/><path d="M7 12.5 6 9M12 11V7.5M17 12.5 18 9"/></svg></div>
+        <h3>Gülüş tasarımı</h3>
+        <p>Yüz hatlarınıza uygun diş formunun planlanması. Tedaviden önce planı dijital ortamda birlikte inceliyoruz.</p>
+        <div class="sure">Planlama · 2 randevu</div>
+      </article>
+      <article class="kart">
+        <div class="ikon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/></svg></div>
+        <h3>Diş taşı temizliği</h3>
+        <p>Diş eti sağlığı için düzenli yapılması önerilen temizlik. Sıklığını hekiminiz belirler.</p>
+        <div class="sure">Tek seans · 30-45 dk</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HEKİM -->
+<section id="hekim">
+  <div class="sarmal">
+    <div class="hekim">
+      <div class="hekim-ic">
+        <div class="hekim-foto">
+          <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="300" height="300" fill="#E9F2F4"/>
+            <circle cx="150" cy="120" r="54" fill="#fff" opacity=".85"/>
+            <path d="M52 300c0-56 44-92 98-92s98 36 98 92Z" fill="#fff" opacity=".8"/>
+            <path d="M150 208c-24 0-44 6-60 16l18 42h84l18-42c-16-10-36-16-60-16Z" fill="#D4E6E2"/>
+          </svg>
+        </div>
+        <div>
+          <span class="etiket">Hekimimiz</span>
+          <h2>Dt. Ayşe Demir</h2>
+          <p>Ege Üniversitesi Diş Hekimliği Fakültesi mezunu. On iki yıldır implant ve estetik diş hekimliği alanında çalışıyor. Tedaviye başlamadan önce her hastasına süreci adım adım anlatmayı ilke edinmiş durumda.</p>
+          <ul>
+            <li>Ege Üniversitesi Diş Hekimliği Fakültesi</li>
+            <li>İmplantoloji üzerine ileri eğitim sertifikası</li>
+            <li>Türk Dişhekimleri Birliği üyesi</li>
+            <li>Çocuk hastalarda davranış yönetimi eğitimi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SÜREÇ -->
+<section id="surec">
+  <div class="sarmal">
+    <div class="bas">
+      <span class="etiket">Süreç</span>
+      <h2>İlk temastan tedavi sonuna</h2>
+      <p>Diş hekimine gitmeyi erteleyen çoğu kişi, ne olacağını bilmemekten çekiniyor. Sürecimiz baştan sona belli.</p>
+    </div>
+    <div class="adim-izgara">
+      <div class="adim"><div class="n">1</div><h3>Randevu</h3><p>Formu doldurun ya da WhatsApp'tan yazın. Aynı gün içinde dönüş yapıyoruz.</p></div>
+      <div class="adim"><div class="n">2</div><h3>Muayene</h3><p>Ağız içi muayene ve gerekiyorsa dijital röntgen.</p></div>
+      <div class="adim"><div class="n">3</div><h3>Yazılı plan</h3><p>Hangi tedavinin kaç seansta yapılacağı yazılı olarak verilir, sorularınız yanıtlanır.</p></div>
+      <div class="adim"><div class="n">4</div><h3>Tedavi ve kontrol</h3><p>Tedavi tamamlanır, ardından kontrol randevunuz planlanır.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- İLK RANDEVU -->
+<section style="background:var(--buz)">
+  <div class="sarmal">
+    <div class="bas orta">
+      <span class="etiket">İlk randevu</span>
+      <h2>Gelmeden önce bilmeniz gerekenler</h2>
+    </div>
+    <div class="odeme">
+      <div><h3>Yanınızda getirin</h3><p>Kullandığınız ilaçların listesi, varsa daha önce çekilmiş röntgenleriniz ve kimlik belgeniz.</p></div>
+      <div><h3>Özel sigorta</h3><p>Anlaşmalı olduğumuz özel sağlık sigortalarını kabul ediyoruz. Poliçenizi randevudan önce iletmeniz yeterli.</p></div>
+      <div><h3>Süre</h3><p>İlk muayene ve görüntüleme genellikle 30-40 dakika sürer. Randevu saatinden birkaç dakika önce gelmeniz yeterli.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ÖNCESİ SONRASI -->
+<section>
+  <div class="sarmal" style="max-width:900px">
+    <div class="bas orta">
+      <span class="etiket">Sonuçlar</span>
+      <h2>Tedavi öncesi ve sonrası</h2>
+      <p>Çubuğu sağa sola kaydırarak karşılaştırabilirsiniz.</p>
+    </div>
+    <div class="karsilastir" id="karsilastir">
+      <div class="kat">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#D8D2C6"/>
+          <g fill="#C3BBA9">
+            <rect x="250" y="200" width="60" height="110" rx="16"/><rect x="320" y="190" width="70" height="125" rx="18"/>
+            <rect x="400" y="190" width="70" height="125" rx="18"/><rect x="480" y="200" width="60" height="110" rx="16"/>
+          </g>
+        </svg>
+      </div>
+      <div class="kat ust-kat">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#E9F2F4"/>
+          <g fill="#FFFFFF">
+            <rect x="250" y="195" width="62" height="118" rx="16"/><rect x="322" y="185" width="72" height="130" rx="18"/>
+            <rect x="402" y="185" width="72" height="130" rx="18"/><rect x="482" y="195" width="62" height="118" rx="16"/>
+          </g>
+        </svg>
+      </div>
+      <span class="etkt sol">Sonrası</span>
+      <span class="etkt sag">Öncesi</span>
+      <div class="cubuk"></div>
+      <div class="tutamac">↔</div>
+      <input type="range" min="0" max="100" value="50" aria-label="Öncesi ve sonrası karşılaştırma çubuğu" id="kaydirici">
+    </div>
+    <p class="oncesi-not">Her cerrahi veya girişimsel işlemde sonuçlar kişiden kişiye değişiklik gösterebilir. İşlem öncesinde hekiminizden detaylı görüş almanız önerilir.</p>
+    <p class="oncesi-not">Örnek çalışmadır, görseller temsilidir. Gerçek sitede yalnızca kliniğin kendi vakaları; hastanın yazılı açık rızasıyla, aynı çekim koşullarında, işlem ve çekim tarihleri belirtilerek ve düzeltme yapılmadan yer alır.</p>
+  </div>
+</section>
+
+<!-- AĞIZ BAKIMI -->
+<section style="background:var(--buz)">
+  <div class="sarmal">
+    <div class="bas orta"><span class="etiket">Bilgilendirme</span><h2>Evde ağız bakımı</h2></div>
+    <div class="yorumlar">
+      <div class="yorum"><b>Günde iki kez fırçalama</b><p>Sabah kahvaltıdan sonra ve gece yatmadan önce, en az iki dakika boyunca florürlü diş macunuyla.</p></div>
+      <div class="yorum"><b>Diş arası temizliği</b><p>Fırçanın ulaşamadığı diş aralarını diş ipi ya da ara yüz fırçasıyla günde bir kez temizleyin.</p></div>
+      <div class="yorum"><b>Düzenli kontrol</b><p>Şikâyetiniz olmasa da hekiminizin önerdiği aralıklarla kontrole gelin. Erken fark edilen sorunların tedavisi daha kısa sürer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section id="sss">
+  <div class="sarmal" style="max-width:840px">
+    <div class="bas orta"><span class="etiket">S.S.S.</span><h2>Sık sorulan sorular</h2></div>
+    <details open><summary>İlk muayenede neler yapılıyor? <i>+</i></summary><p>Ağız içi muayene yapılır, gerekirse dijital röntgen çekilir. Ardından hekiminiz size uygun tedavi seçeneklerini ve seans planını anlatır.</p></details>
+    <details><summary>İşlem sırasında ağrı hisseder miyim? <i>+</i></summary><p>Tedaviler lokal anestezi altında yapılır. Kaygınız varsa muayenede hekiminize söyleyin, size uygun seçenekleri birlikte değerlendirirsiniz.</p></details>
+    <details><summary>İmplant tedavisi ne kadar sürer? <i>+</i></summary><p>Kemik yapınıza göre değişmekle birlikte, implantın yerleştirilmesinden üst yapının tamamlanmasına kadar genellikle 3-6 ay sürüyor. Bu sürede geçici diş kullanırsınız.</p></details>
+    <details><summary>Randevu almadan gelebilir miyim? <i>+</i></summary><p>Acil durumlarda (şiddetli ağrı, kırık diş, darbe) lütfen önce telefonla arayın, size en hızlı şekilde yer açalım. Diğer durumlarda randevulu çalışıyoruz.</p></details>
+  </div>
+</section>
+
+<!-- RANDEVU -->
+<section id="randevu" style="background:var(--nane)">
+  <div class="sarmal randevu-ic">
+    <div>
+      <span class="etiket">Randevu</span>
+      <h2 style="font-size:clamp(27px,4.2vw,38px)">Muayene için randevu oluşturun</h2>
+      <p style="color:#4A5F5C;margin-top:14px;max-width:44ch">Formu bırakın, aynı gün içinde sizi arayalım. Acil durumda telefonla ulaşmanız daha hızlı olur.</p>
+      <div class="iletisim" style="margin-top:26px">
+        <a href="tel:+902580000000"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span><span><b>0258 000 00 00</b><small>Hafta içi 09:00 – 19:00 · Cumartesi 09:00 – 14:00</small></span></a>
+        <a href="https://wa.me/905000000000"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg></span><span><b>WhatsApp</b><small>Fotoğraf göndererek ön bilgi alabilirsiniz</small></span></a>
+        <div class="satir"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F7D74" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Merkezefendi / Denizli</b><small>Örnek Mah. Örnek Cad. No: 00 · Otoparklı</small></span></div>
+      </div>
+      <div class="harita" style="margin-top:14px">Harita alanı</div>
+    </div>
+
+    <form class="form" id="form">
+      <div><label for="ad">Ad Soyad</label><input id="ad" required placeholder="Adınız ve soyadınız"></div>
+      <div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05__ ___ __ __"></div>
+      <div><label for="konu">Konu</label>
+        <select id="konu"><option>Emin değilim, muayene olmak istiyorum</option><option>İmplant</option><option>Zirkonyum kaplama</option><option>Kanal tedavisi</option><option>Çocuk diş hekimliği</option><option>Gülüş tasarımı</option><option>Diş taşı temizliği</option><option>Acil · ağrım var</option></select>
+      </div>
+      <div><label for="zaman">Tercih ettiğiniz zaman</label>
+        <select id="zaman"><option>Sabah (09:00 – 12:00)</option><option>Öğleden sonra (12:00 – 16:00)</option><option>Akşam (16:00 – 19:00)</option><option>Cumartesi</option></select>
+      </div>
+      <div><label for="notu">Eklemek istedikleriniz</label><textarea id="notu" rows="3" placeholder="Şikâyetiniz ya da sorularınız"></textarea></div>
+      <button class="btn" type="submit">Randevu talebi gönder</button>
+      <p class="mesaj" id="mesaj">Bilgileriniz yalnızca randevu için kullanılır.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="alt">
+  <div class="sarmal alt-ic">
+    <div>
+      <a class="marka" href="#" style="margin-bottom:12px"><i>D</i><span>Dentora<small>Ağız ve Diş Sağlığı</small></span></a>
+      <p>Örnek Mah. Örnek Cad. No: 00<br>Merkezefendi / Denizli</p>
+    </div>
+    <div><b>Tedaviler</b><p><a href="#tedaviler">İmplant</a><br><a href="#tedaviler">Zirkonyum kaplama</a><br><a href="#tedaviler">Kanal tedavisi</a><br><a href="#tedaviler">Çocuk diş hekimliği</a></p></div>
+    <div><b>Çalışma saatleri</b><p>Pazartesi – Cuma<br>09:00 – 19:00<br>Cumartesi 09:00 – 14:00</p></div>
+    <div><b>İletişim</b><p><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a><br><a href="#randevu">Randevu formu</a></p></div>
+    <p class="demo-not">Bu site bir örnek çalışmadır. Dentora Ağız ve Diş Sağlığı Polikliniği ve Dt. Ayşe Demir hayalidir; gerçek bir kurumu veya kişiyi temsil etmez. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</footer>
+
+<div class="mobil">
+  <a class="btn btn-yumusak" href="tel:+902580000000">Ara</a>
+  <a class="btn" href="#randevu">Randevu al</a>
+</div>
+
+<a class="yuzen" href="https://wa.me/905000000000">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  WhatsApp'tan yaz
+</a>
+
+<div class="tema" role="group" aria-label="Renk seçenekleri">
+  <span>Renk:</span>
+  <button class="t1" data-tema="" aria-pressed="true" aria-label="Nane" title="Nane"></button>
+  <button class="t2" data-tema="mavi" aria-pressed="false" aria-label="Mavi" title="Mavi"></button>
+  <button class="t3" data-tema="lavanta" aria-pressed="false" aria-label="Lavanta" title="Lavanta"></button>
+  <button class="t4" data-tema="gri" aria-pressed="false" aria-label="Gri" title="Gri"></button>
+  <button class="t5" data-tema="gece" aria-pressed="false" aria-label="Gece" title="Gece"></button>
+</div>
+
+<script>
+document.querySelectorAll('.tema button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.dataset.tema;
+    if(t){document.documentElement.setAttribute('data-tema',t)}
+    else{document.documentElement.removeAttribute('data-tema')}
+    document.querySelectorAll('.tema button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    try{localStorage.setItem('dentora-tema',t)}catch(e){}
+  });
+});
+try{
+  var kayitli=localStorage.getItem('dentora-tema');
+  if(kayitli!==null){
+    var hedef=document.querySelector('.tema button[data-tema="'+kayitli+'"]');
+    if(hedef) hedef.click();
+  }
+}catch(e){}
+
+(function(){
+  var k=document.getElementById('kaydirici'),kutu=document.getElementById('karsilastir');
+  if(!k) return;
+  function ayarla(){kutu.style.setProperty('--p',k.value+'%')}
+  k.addEventListener('input',ayarla); ayarla();
+})();
+
+document.getElementById('form').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('mesaj').textContent='Bu bir örnek sitedir, form gönderilmedi. Gerçek sitede talep WhatsApp ve e-postanıza iletilir.';
+});
+</script>
+</body>
+</html>

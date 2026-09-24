@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumea Güzellik Merkezi | Denizli</title>
+<meta name="description" content="Lumea Güzellik Merkezi — lazer epilasyon, cilt bakımı, kalıcı makyaj ve ipek kirpik. Denizli merkezde uzman kadro, randevulu hizmet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zemin:#FBF8F6;
+  --beyaz:#FFFFFF;
+  --pudra:#F4EAE6;
+  --adaçayı:#E7EDE7;
+  --kum:#EFE9E1;
+  --metin:#2F2A27;
+  --gri:#7D736D;
+  --vurgu:#B9807C;
+  --vurgu-koyu:#A16A67;
+  --cizgi:#ECE4DE;
+  --r:22px;
+  --golge:0 2px 4px rgba(47,42,39,.03), 0 12px 28px -18px rgba(47,42,39,.22);
+}
+
+/* ===== RENK SEÇENEKLERİ ===== */
+/* 2 · Kum: sıcak bej, doğal ve nötr */
+:root[data-tema="kum"]{
+  --zemin:#FAF8F4;--pudra:#F2EBE0;--adaçayı:#EBEDE5;--kum:#F0EADF;
+  --metin:#2E2A24;--gri:#7B7368;--vurgu:#A0825A;--vurgu-koyu:#8A6E49;--cizgi:#EBE4D8;
+}
+/* 3 · Lila: yumuşak mor, modern ve feminen */
+:root[data-tema="lila"]{
+  --zemin:#FAF8FC;--pudra:#EFEAF7;--adaçayı:#E9EEF7;--kum:#F2EEF8;
+  --metin:#2B2733;--gri:#78717F;--vurgu:#8B7BB8;--vurgu-koyu:#74659F;--cizgi:#E8E2F1;
+}
+/* 4 · Yeşil: adaçayı, sakin ve doğal */
+:root[data-tema="yesil"]{
+  --zemin:#F8FAF8;--pudra:#E9F0E8;--adaçayı:#E3EDE5;--kum:#F0F2EB;
+  --metin:#262E26;--gri:#6F7A6C;--vurgu:#6E8F6B;--vurgu-koyu:#5A7758;--cizgi:#E3EAE2;
+}
+/* 5 · Gece: koyu tema */
+:root[data-tema="gece"]{
+  --zemin:#15120F;--beyaz:#1E1A17;--pudra:#241E1A;--adaçayı:#1E2420;--kum:#231F1A;
+  --metin:#F2EDE8;--gri:#A79D95;--vurgu:#C9908B;--vurgu-koyu:#D8A29D;--cizgi:#2F2823;
+  --golge:0 2px 4px rgba(0,0,0,.2), 0 14px 30px -18px rgba(0,0,0,.7);
+}
+:root[data-tema="gece"] header{background:rgba(21,18,15,.9)}
+:root[data-tema="gece"] .mobil{background:rgba(21,18,15,.96)}
+:root[data-tema="gece"] .btn{color:#1A1512}
+:root[data-tema="gece"] .harita{background:repeating-linear-gradient(45deg,#201C18 0 12px,#1C1815 12px 24px)}
+:root[data-tema="gece"] .galeri figcaption{background:rgba(30,26,23,.92);color:var(--metin)}
+:root[data-tema="gece"] .kutucuk{background:rgba(30,26,23,.95)}
+
+/* seçici kutusu */
+.tema{
+  position:fixed;left:16px;bottom:78px;z-index:60;display:flex;align-items:center;gap:9px;
+  background:var(--beyaz);border:1px solid var(--cizgi);border-radius:999px;padding:8px 14px 8px 12px;
+  box-shadow:var(--golge);font-size:12.5px;color:var(--gri);
+}
+.tema span{display:none}
+.tema button{width:21px;height:21px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;outline-offset:2px}
+.tema button[aria-pressed="true"]{border-color:var(--metin)}
+.t1{background:#B9807C}.t2{background:#A0825A}.t3{background:#8B7BB8}.t4{background:#6E8F6B}.t5{background:#2A2320}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--zemin);color:var(--metin);
+  font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-weight:500;line-height:1.15;letter-spacing:-.02em}
+.sarmal{width:min(1160px,100% - 40px);margin-inline:auto}
+section{padding:clamp(64px,9vw,110px) 0}
+
+/* --------- üst bar --------- */
+header{position:sticky;top:0;z-index:40;background:rgba(251,248,246,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.marka{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:600;letter-spacing:-.01em}
+.marka i{width:34px;height:34px;border-radius:12px;background:var(--pudra);color:var(--vurgu);display:grid;place-items:center;font-style:normal;font-size:16px;font-weight:600}
+nav{display:none;gap:30px;font-size:15px;color:var(--gri)}
+nav a:hover{color:var(--metin)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;
+  font-family:inherit;font-size:15px;font-weight:500;padding:13px 24px;border-radius:999px;
+  background:var(--vurgu);color:#fff;transition:background .2s ease,transform .2s ease;
+}
+.btn:hover{background:var(--vurgu-koyu)}
+.btn-yumusak{background:var(--beyaz);color:var(--metin);border:1px solid var(--cizgi)}
+.btn-yumusak:hover{background:var(--pudra)}
+.ust .btn{display:none}
+
+/* --------- hero --------- */
+.hero{padding:clamp(40px,6vw,72px) 0 clamp(56px,8vw,96px)}
+.hero-ic{display:grid;gap:40px;align-items:center}
+.rozet{
+  display:inline-flex;align-items:center;gap:9px;background:var(--beyaz);border:1px solid var(--cizgi);
+  padding:7px 15px 7px 9px;border-radius:999px;font-size:13.5px;color:var(--gri);margin-bottom:22px;
+}
+.rozet b{background:var(--adaçayı);color:#4C6150;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:500}
+h1{font-size:clamp(36px,6.4vw,58px)}
+h1 span{color:var(--vurgu)}
+.hero p.giris{margin-top:20px;font-size:clamp(16px,2.1vw,18px);color:var(--gri);max-width:46ch}
+.hero-btn{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.mini{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.mini div{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:14px 18px;min-width:132px}
+.mini b{display:block;font-size:22px;font-weight:600}
+.mini small{color:var(--gri);font-size:13px}
+
+.gorsel{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:5/6;background:var(--pudra);box-shadow:var(--golge)}
+.gorsel svg{width:100%;height:100%;display:block}
+.kutucuk{
+  position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);
+  border-radius:16px;padding:16px 18px;display:flex;gap:14px;align-items:center;
+}
+.kutucuk .p{width:42px;height:42px;border-radius:50%;background:var(--adaçayı);display:grid;place-items:center;color:#4C6150;font-weight:600;font-size:14px;flex:0 0 auto}
+.kutucuk b{display:block;font-size:14.5px;font-weight:500}
+.kutucuk small{color:var(--gri);font-size:13px}
+.yildiz{color:#E0A030;letter-spacing:1px;font-size:13px}
+
+/* --------- güven şeridi --------- */
+.guven{
+  display:grid;gap:14px;grid-template-columns:1fr;background:var(--beyaz);border:1px solid var(--cizgi);
+  border-radius:var(--r);padding:22px;box-shadow:var(--golge);
+}
+.guven>div{display:flex;gap:12px;align-items:flex-start}
+.gk{
+  flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--adaçayı);color:#4C6150;
+  display:grid;place-items:center;font-size:13px;margin-top:2px;
+}
+.guven b{display:block;font-size:14.5px;font-weight:500}
+.guven small{color:var(--gri);font-size:13px;line-height:1.5}
+
+/* --------- yüzen whatsapp --------- */
+.yuzen{
+  position:fixed;right:22px;bottom:22px;z-index:45;display:none;align-items:center;gap:10px;
+  background:#25D366;color:#fff;padding:14px 20px;border-radius:999px;font-size:15px;font-weight:500;
+  box-shadow:0 10px 30px -10px rgba(37,211,102,.6);transition:transform .2s ease;
+}
+.yuzen:hover{transform:translateY(-2px)}
+
+/* --------- başlık --------- */
+.bas{max-width:52ch;margin-bottom:44px}
+.etiket{font-size:13.5px;color:var(--vurgu);font-weight:500;margin-bottom:12px;display:block}
+.bas h2{font-size:clamp(28px,4.4vw,42px)}
+.bas p{color:var(--gri);margin-top:14px}
+.orta{margin-inline:auto;text-align:center}
+
+/* --------- hizmet kartları --------- */
+.kartlar{display:grid;gap:16px;grid-template-columns:1fr}
+.kart{
+  background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.kart:hover{border-color:#DCCFC8;box-shadow:var(--golge)}
+.kart .ikon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px}
+.i1{background:var(--pudra)}.i2{background:var(--adaçayı)}.i3{background:var(--kum)}
+.kart h3{font-size:19px;margin-bottom:7px}
+.kart p{color:var(--gri);font-size:14.5px}
+.kart .fiyat{margin-top:18px;font-size:14px;color:var(--metin);font-weight:500}
+.kart .fiyat small{color:var(--gri);font-weight:400}
+
+/* --------- adımlar --------- */
+.adimlar{background:var(--kum);border-radius:clamp(22px,4vw,34px);padding:clamp(30px,5vw,56px)}
+.adim-izgara{display:grid;gap:26px}
+.adim{display:flex;gap:16px;align-items:flex-start}
+.adim .n{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:var(--beyaz);display:grid;place-items:center;font-size:14px;font-weight:600;color:var(--vurgu)}
+.adim h3{font-size:17px;margin-bottom:5px}
+.adim p{color:var(--gri);font-size:14.5px}
+
+/* --------- galeri --------- */
+.galeri{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+.galeri figure{border-radius:18px;overflow:hidden;aspect-ratio:1;position:relative;background:var(--pudra)}
+.galeri svg{width:100%;height:100%;display:block}
+.galeri figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:5px 13px;font-size:12.5px}
+
+/* --------- öncesi sonrası --------- */
+.karsilastir{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;box-shadow:var(--golge);--p:50%}
+.karsilastir .kat{position:absolute;inset:0}
+.karsilastir .kat svg{width:100%;height:100%;display:block}
+.karsilastir .ust-kat{clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.karsilastir .etkt{
+  position:absolute;top:14px;background:rgba(255,255,255,.92);border-radius:999px;
+  padding:5px 13px;font-size:12.5px;font-weight:500;color:var(--metin);
+}
+.karsilastir .sol{left:14px}.karsilastir .sag{right:14px}
+.karsilastir .cubuk{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.karsilastir .tutamac{
+  position:absolute;top:50%;left:var(--p);width:42px;height:42px;border-radius:50%;background:#fff;
+  transform:translate(-50%,-50%);display:grid;place-items:center;color:var(--vurgu);font-size:15px;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);pointer-events:none;
+}
+.karsilastir input{
+  position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:ew-resize;
+  background:transparent;border:0;
+}
+.oncesi-not{margin-top:14px;font-size:13.5px;color:var(--gri);text-align:center}
+
+/* --------- yorumlar --------- */
+.yorumlar{display:grid;gap:16px}
+.yorum{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px}
+.yorum p{font-size:15px;margin:12px 0 18px}
+.yorum footer{display:flex;gap:12px;align-items:center}
+.yorum .p{width:38px;height:38px;border-radius:50%;background:var(--pudra);color:var(--vurgu);display:grid;place-items:center;font-weight:600;font-size:13.5px}
+.yorum b{display:block;font-size:14.5px;font-weight:500}
+.yorum small{color:var(--gri);font-size:13px}
+
+/* --------- sss --------- */
+details{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:20px 22px;margin-bottom:12px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center;font-weight:500;font-size:16px}
+summary::-webkit-details-marker{display:none}
+summary i{font-style:normal;color:var(--vurgu);font-size:19px;line-height:1}
+details[open] summary i{transform:rotate(45deg)}
+details p{color:var(--gri);font-size:14.5px;margin-top:12px}
+
+/* --------- randevu --------- */
+.randevu-ic{display:grid;gap:34px;align-items:start}
+.form{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:clamp(24px,4vw,34px);display:grid;gap:16px;box-shadow:var(--golge)}
+label{font-size:14px;font-weight:500}
+input,select,textarea{
+  width:100%;margin-top:7px;padding:13px 15px;border:1px solid var(--cizgi);border-radius:13px;
+  font-family:inherit;font-size:15px;background:var(--zemin);color:var(--metin);
+}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--vurgu);background:var(--beyaz)}
+.form .btn{width:100%;padding:15px}
+.mesaj{font-size:13.5px;color:var(--vurgu);text-align:center;min-height:18px}
+.iletisim{display:grid;gap:14px}
+.iletisim a,.iletisim div.satir{display:flex;gap:14px;align-items:flex-start;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:16px;padding:16px 18px}
+.iletisim a:hover{border-color:#DCCFC8}
+.iletisim b{display:block;font-size:15px;font-weight:500}
+.iletisim small{color:var(--gri);font-size:13.5px}
+.iletisim .ik{width:36px;height:36px;border-radius:11px;background:var(--pudra);display:grid;place-items:center;flex:0 0 auto}
+.harita{border-radius:18px;border:1px solid var(--cizgi);aspect-ratio:16/10;display:grid;place-items:center;color:var(--gri);font-size:13.5px;background:
+  repeating-linear-gradient(45deg,#F2ECE7 0 12px,#EFE8E2 12px 24px)}
+
+/* --------- alt --------- */
+footer.alt{border-top:1px solid var(--cizgi);padding:48px 0 110px;font-size:14.5px;color:var(--gri)}
+.alt-ic{display:grid;gap:28px}
+footer.alt b{display:block;color:var(--metin);font-size:14px;font-weight:500;margin-bottom:10px}
+footer.alt a:hover{color:var(--metin)}
+.demo-not{grid-column:1/-1;border-top:1px solid var(--cizgi);padding-top:20px;font-size:13px;color:#9C938D}
+
+/* --------- mobil --------- */
+.mobil{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:10px;
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  background:rgba(251,248,246,.96);backdrop-filter:blur(10px);border-top:1px solid var(--cizgi);
+}
+.mobil .btn{flex:1}
+
+@media(min-width:880px){
+  nav{display:flex}
+  .ust .btn{display:inline-flex}
+  .guven{grid-template-columns:repeat(4,1fr);gap:24px;padding:26px 30px}
+  .yuzen{display:inline-flex}
+  .tema{bottom:22px}
+  .tema span{display:inline}
+  .hero-ic{grid-template-columns:1.05fr .95fr;gap:56px}
+  .kartlar{grid-template-columns:repeat(3,1fr)}
+  .adim-izgara{grid-template-columns:repeat(4,1fr)}
+  .galeri{grid-template-columns:repeat(4,1fr)}
+  .yorumlar{grid-template-columns:repeat(3,1fr)}
+  .randevu-ic{grid-template-columns:1fr 1fr;gap:48px}
+  .alt-ic{grid-template-columns:1.7fr 1fr 1fr 1fr}
+  .mobil{display:none}
+  footer.alt{padding-bottom:48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal ust">
+    <a class="marka" href="#"><i>L</i> Lumea</a>
+    <nav>
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#nasil">Nasıl işliyor</a>
+      <a href="#merkez">Merkezimiz</a>
+      <a href="#sss">S.S.S.</a>
+    </nav>
+    <a class="btn" href="#randevu">Randevu al</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sarmal hero-ic">
+    <div>
+      <span class="rozet"><b>Yeni</b> Ücretsiz cilt analizi</span>
+      <h1>Kendinize ayırdığınız zamanın <span>karşılığını alın</span></h1>
+      <p class="giris">Lazer epilasyon, cilt bakımı, kalıcı makyaj ve ipek kirpik. Uzman kadromuzla size özel seans planı, dakikası dakikasına randevu düzeni.</p>
+      <div class="hero-btn">
+        <a class="btn" href="#randevu">Ücretsiz ön görüşme</a>
+        <a class="btn btn-yumusak" href="#hizmetler">Hizmetleri gör</a>
+      </div>
+      <div class="mini">
+        <div><b>9 yıl</b><small>tecrübe</small></div>
+        <div><b>4,9 / 5</b><small>Google puanı</small></div>
+        <div><b>6.000+</b><small>tamamlanan seans</small></div>
+      </div>
+    </div>
+
+    <div class="gorsel">
+      <svg viewBox="0 0 500 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="z" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F6E7E2"/><stop offset=".55" stop-color="#EFE3DC"/><stop offset="1" stop-color="#E7EDE7"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="600" fill="url(#z)"/>
+        <circle cx="150" cy="170" r="110" fill="#fff" opacity=".55"/>
+        <circle cx="350" cy="300" r="150" fill="#E3D3CC" opacity=".45"/>
+        <path d="M0 430c120-50 240-50 360 8s140 40 140 40v122H0Z" fill="#fff" opacity=".5"/>
+        <g fill="none" stroke="#B9807C" stroke-opacity=".35">
+          <circle cx="250" cy="290" r="64"/><circle cx="250" cy="290" r="96"/>
+        </g>
+      </svg>
+      <div class="kutucuk">
+        <div class="p">EK</div>
+        <div>
+          <span class="yildiz">★★★★★</span>
+          <b>“Randevuma tam saatinde alındım.”</b>
+          <small>Elif K. · Google değerlendirmesi</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GÜVEN ŞERİDİ -->
+<div class="sarmal">
+  <div class="guven">
+    <div><span class="gk">✓</span><div><b>Sertifikalı uygulayıcı</b><small>Belgeli ekip, bakımlı cihazlar</small></div></div>
+    <div><span class="gk">✓</span><div><b>Tek kullanımlık malzeme</b><small>Yazılı hijyen protokolü</small></div></div>
+    <div><span class="gk">✓</span><div><b>Şeffaf fiyat</b><small>Toplam tutar işlemden önce yazılı</small></div></div>
+    <div><span class="gk">✓</span><div><b>Randevu saatine sadakat</b><small>Aynı saate tek kişi</small></div></div>
+  </div>
+</div>
+
+<!-- HİZMETLER -->
+<section id="hizmetler">
+  <div class="sarmal">
+    <div class="bas">
+      <span class="etiket">Hizmetler</span>
+      <h2>Size özel seans planı</h2>
+      <p>Her uygulamadan önce ücretsiz analiz yapıyor, kaç seans gerektiğini ve toplam tutarı yazılı olarak paylaşıyoruz.</p>
+    </div>
+
+    <div class="kartlar">
+      <article class="kart">
+        <div class="ikon i1"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B9807C" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v5M12 17v5M4.9 4.9l3.5 3.5M15.6 15.6l3.5 3.5M2 12h5M17 12h5M4.9 19.1l3.5-3.5M15.6 8.4l3.5-3.5"/></svg></div>
+        <h3>Lazer epilasyon</h3>
+        <p>Buz başlıklı cihazla, acıyı en aza indiren uygulama. Her cilt tonuna uygun protokol.</p>
+        <div class="fiyat">850 ₺ <small>/ seans başlangıç</small></div>
+      </article>
+      <article class="kart">
+        <div class="ikon i2"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#5C7460" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c3.4 3 5.4 5.6 5.4 8.5A5.4 5.4 0 0 1 12 17a5.4 5.4 0 0 1-5.4-5.5C6.6 8.6 8.6 6 12 3Z"/><path d="M9.5 20.5h5"/></svg></div>
+        <h3>Cilt bakımı</h3>
+        <p>Leke, akne ve yaşlanma karşıtı bakımlar. Cilt analizine göre ürün ve seans planı.</p>
+        <div class="fiyat">1.200 ₺ <small>/ seans başlangıç</small></div>
+      </article>
+      <article class="kart">
+        <div class="ikon i3"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#9C8468" stroke-width="1.6" stroke-linecap="round"><path d="M3 16.5 16.4 3.1a2.1 2.1 0 0 1 3 3L6 19.5 2.5 21Z"/><path d="M14 5.5 18.5 10"/></svg></div>
+        <h3>Kalıcı makyaj</h3>
+        <p>Doğal görünümlü kaş, eyeliner ve dudak renklendirme. Yüz hatlarınıza özel tasarım.</p>
+        <div class="fiyat">3.500 ₺ <small>/ uygulama başlangıç</small></div>
+      </article>
+      <article class="kart">
+        <div class="ikon i2"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#5C7460" stroke-width="1.6" stroke-linecap="round"><path d="M2 12s3.4-6 10-6 10 6 10 6-3.4 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.6"/></svg></div>
+        <h3>İpek kirpik</h3>
+        <p>Tek tek uygulanan, göz yapınıza uygun kirpik tasarımı. 3-4 haftada bir dolgu.</p>
+        <div class="fiyat">900 ₺ <small>/ uygulama başlangıç</small></div>
+      </article>
+      <article class="kart">
+        <div class="ikon i1"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#B9807C" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="16.5" rx="3"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg></div>
+        <h3>Gelin paketi</h3>
+        <p>Düğüne 6 ay kala başlayan, cilt ve epilasyon seanslarını birleştiren özel program.</p>
+        <div class="fiyat">Görüşmeye özel</div>
+      </article>
+      <article class="kart">
+        <div class="ikon i3"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#9C8468" stroke-width="1.6" stroke-linecap="round"><path d="M12 21s-7-4.4-7-9.6A4.4 4.4 0 0 1 12 8a4.4 4.4 0 0 1 7 3.4C19 16.6 12 21 12 21Z"/></svg></div>
+        <h3>Bölgesel incelme</h3>
+        <p>Masaj ve cihaz destekli uygulamalar. Ölçüm takibiyle seans planlaması.</p>
+        <div class="fiyat">1.000 ₺ <small>/ seans başlangıç</small></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL İŞLİYOR -->
+<section id="nasil">
+  <div class="sarmal">
+    <div class="adimlar">
+      <div class="bas" style="margin-bottom:34px">
+        <span class="etiket">Nasıl işliyor</span>
+        <h2>Dört adımda randevunuz hazır</h2>
+      </div>
+      <div class="adim-izgara">
+        <div class="adim"><div class="n">1</div><div><h3>Ön görüşme</h3><p>Formu doldurun ya da WhatsApp'tan yazın. Aynı gün dönüş yapıyoruz.</p></div></div>
+        <div class="adim"><div class="n">2</div><div><h3>Ücretsiz analiz</h3><p>Merkezde cilt ve tüy yapınıza bakıyor, seans sayısını birlikte belirliyoruz.</p></div></div>
+        <div class="adim"><div class="n">3</div><div><h3>Yazılı plan</h3><p>Seans sayısı ve toplam tutar yazılı olarak size veriliyor. Sürpriz ücret yok.</p></div></div>
+        <div class="adim"><div class="n">4</div><div><h3>Uygulama</h3><p>Randevu saatinizde beklemeden başlıyoruz. Her seans sonrası takip ediyoruz.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERKEZ -->
+<section id="merkez">
+  <div class="sarmal">
+    <div class="bas">
+      <span class="etiket">Merkezimiz</span>
+      <h2>Kendinizi evinizde hissedin</h2>
+      <p>Şehir merkezinde, otoparklı. Uygulama odalarımız ve dinlenme alanımız size ayrılmış durumda.</p>
+    </div>
+    <div class="galeri">
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#F4EAE6"/><circle cx="90" cy="100" r="70" fill="#fff" opacity=".7"/><path d="M0 210c70-30 150-30 300 20v70H0Z" fill="#E3D3CC" opacity=".8"/></svg><figcaption>Karşılama</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#E7EDE7"/><rect x="60" y="70" width="180" height="170" rx="16" fill="#fff" opacity=".6"/><circle cx="150" cy="155" r="44" fill="#CFDCD0"/></svg><figcaption>Lazer odası</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#EFE9E1"/><circle cx="210" cy="90" r="60" fill="#fff" opacity=".7"/><path d="M-10 200c80 30 150-40 320 10v100H-10Z" fill="#E0D5C6" opacity=".8"/></svg><figcaption>Cilt bakımı</figcaption></figure>
+      <figure><svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice"><rect width="300" height="300" fill="#F6E7E2"/><g fill="none" stroke="#fff" stroke-width="10" opacity=".8"><circle cx="150" cy="150" r="52"/><circle cx="150" cy="150" r="90"/></g></svg><figcaption>Dinlenme</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ÖNCESİ SONRASI -->
+<section style="background:var(--kum)">
+  <div class="sarmal" style="max-width:900px">
+    <div class="bas orta">
+      <span class="etiket">Sonuçlar</span>
+      <h2>Öncesi ve sonrası</h2>
+      <p>Çubuğu sağa sola kaydırarak farkı görebilirsiniz.</p>
+    </div>
+    <div class="karsilastir" id="karsilastir">
+      <div class="kat">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#D9CFC8"/>
+          <circle cx="400" cy="250" r="150" fill="#C9BBB2"/>
+          <circle cx="400" cy="250" r="90" fill="#BCACA2"/>
+        </svg>
+      </div>
+      <div class="kat ust-kat">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#F6E7E2"/>
+          <circle cx="400" cy="250" r="150" fill="#FBF3EF"/>
+          <circle cx="400" cy="250" r="90" fill="#fff"/>
+        </svg>
+      </div>
+      <span class="etkt sol">Sonrası</span>
+      <span class="etkt sag">Öncesi</span>
+      <div class="cubuk"></div>
+      <div class="tutamac">↔</div>
+      <input type="range" min="0" max="100" value="50" aria-label="Öncesi ve sonrası karşılaştırma çubuğu" id="kaydirici">
+    </div>
+    <p class="oncesi-not">Görseller örnek amaçlıdır. Gerçek sitede müşterinin kendi öncesi–sonrası fotoğrafları, kişilerin izniyle yer alır.</p>
+  </div>
+</section>
+
+<!-- YORUMLAR -->
+<section>
+  <div class="sarmal">
+    <div class="bas orta">
+      <span class="etiket">Müşterilerimiz</span>
+      <h2>Gelenler ne diyor?</h2>
+    </div>
+    <div class="yorumlar">
+      <div class="yorum">
+        <span class="yildiz">★★★★★</span>
+        <p>Her seansta ne yapılacağını tek tek anlattılar. Randevu saatimde hiç beklemedim.</p>
+        <footer><div class="p">EK</div><div><b>Elif K.</b><small>Lazer epilasyon</small></div></footer>
+      </div>
+      <div class="yorum">
+        <span class="yildiz">★★★★★</span>
+        <p>Bana uygun olmayan bir bakımı satmaya çalışmadılar, tam tersine daha uygun bir plan önerdiler.</p>
+        <footer><div class="p">MB</div><div><b>Merve B.</b><small>Cilt bakımı</small></div></footer>
+      </div>
+      <div class="yorum">
+        <span class="yildiz">★★★★★</span>
+        <p>Kaş uygulamamdan altı ay geçti, hâlâ ilk günkü gibi duruyor. Tam istediğim gibi doğal oldu.</p>
+        <footer><div class="p">SD</div><div><b>Seda D.</b><small>Kalıcı makyaj</small></div></footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section id="sss">
+  <div class="sarmal" style="max-width:840px">
+    <div class="bas orta"><span class="etiket">S.S.S.</span><h2>Sık sorulan sorular</h2></div>
+    <details open><summary>Lazer epilasyonda kaç seans gerekir? <i>+</i></summary><p>Ortalama 6-8 seans yeterli oluyor. Kesin sayı; cilt tonu, tüy yapısı ve hormonal duruma göre değişir. Ücretsiz ön analizde size özel tahmini seans sayısını veriyoruz.</p></details>
+    <details><summary>Randevu almadan gelebilir miyim? <i>+</i></summary><p>Aynı saate tek kişi aldığımız için randevusuz gelenlere hizmet veremiyoruz. WhatsApp'tan yazarak en yakın uygun saati öğrenebilirsiniz.</p></details>
+    <details><summary>Fiyatlar neye göre değişiyor? <i>+</i></summary><p>Uygulanacak bölgeye ve seans paketine göre değişiyor. Paket alımlarında seans başı ücret düşüyor. Toplam tutar işlemden önce yazılı paylaşılıyor.</p></details>
+    <details><summary>Hamilelikte uygulama yapılıyor mu? <i>+</i></summary><p>Hamilelik ve emzirme döneminde lazer ve bazı cilt bakımı uygulamaları yapılmıyor. Bu dönemde uygun olan bakımlar için bizimle görüşebilirsiniz.</p></details>
+    <details><summary>Ödeme seçenekleri neler? <i>+</i></summary><p>Nakit, kredi kartı ve paketlerde taksit imkânı sunuyoruz.</p></details>
+  </div>
+</section>
+
+<!-- RANDEVU -->
+<section id="randevu" style="background:var(--pudra)">
+  <div class="sarmal randevu-ic">
+    <div>
+      <span class="etiket">Randevu</span>
+      <h2 style="font-size:clamp(28px,4.4vw,40px)">Size uygun saati birlikte belirleyelim</h2>
+      <p style="color:var(--gri);margin-top:14px;max-width:44ch">Formu bırakın, aynı gün içinde dönüş yapalım. Acele bir durumda WhatsApp daha hızlı olur.</p>
+      <div class="iletisim" style="margin-top:28px">
+        <a href="tel:+902580000000"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B9807C" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span><span><b>0258 000 00 00</b><small>Hafta içi 09:00 – 19:00</small></span></a>
+        <a href="https://wa.me/905000000000"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B9807C" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg></span><span><b>WhatsApp</b><small>En hızlı dönüş buradan</small></span></a>
+        <div class="satir"><span class="ik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B9807C" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Merkezefendi / Denizli</b><small>Örnek Mah. Örnek Cad. No: 00</small></span></div>
+      </div>
+      <div class="harita" style="margin-top:14px">Harita alanı</div>
+    </div>
+
+    <form class="form" id="form">
+      <div><label for="ad">Ad Soyad</label><input id="ad" required placeholder="Adınız ve soyadınız"></div>
+      <div><label for="tel">Telefon</label><input id="tel" type="tel" required placeholder="05__ ___ __ __"></div>
+      <div><label for="hizmet">Hizmet</label>
+        <select id="hizmet"><option>Lazer epilasyon</option><option>Cilt bakımı</option><option>Kalıcı makyaj</option><option>İpek kirpik</option><option>Gelin paketi</option><option>Bölgesel incelme</option></select>
+      </div>
+      <div><label for="zaman">Tercih ettiğiniz zaman</label>
+        <select id="zaman"><option>Sabah (09:00 – 12:00)</option><option>Öğleden sonra (12:00 – 16:00)</option><option>Akşam (16:00 – 19:00)</option></select>
+      </div>
+      <div><label for="notu">Eklemek istedikleriniz</label><textarea id="notu" rows="3" placeholder="Varsa sorularınız"></textarea></div>
+      <button class="btn" type="submit">Randevu talebi gönder</button>
+      <p class="mesaj" id="mesaj">Bilgileriniz yalnızca randevu için kullanılır.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="alt">
+  <div class="sarmal alt-ic">
+    <div>
+      <a class="marka" href="#" style="margin-bottom:12px"><i>L</i> Lumea</a>
+      <p>Lumea Güzellik Merkezi<br>Örnek Mah. Örnek Cad. No: 00<br>Merkezefendi / Denizli</p>
+    </div>
+    <div><b>Hizmetler</b><p><a href="#hizmetler">Lazer epilasyon</a><br><a href="#hizmetler">Cilt bakımı</a><br><a href="#hizmetler">Kalıcı makyaj</a><br><a href="#hizmetler">İpek kirpik</a></p></div>
+    <div><b>Çalışma saatleri</b><p>Pazartesi – Cumartesi<br>09:00 – 19:00<br>Pazar kapalı</p></div>
+    <div><b>İletişim</b><p><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a><br><a href="#randevu">Randevu formu</a></p></div>
+    <p class="demo-not">Bu site bir örnek çalışmadır. Lumea Güzellik Merkezi hayali bir işletmedir, gerçek bir kurumu temsil etmez. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</footer>
+
+<div class="mobil">
+  <a class="btn btn-yumusak" href="https://wa.me/905000000000">WhatsApp</a>
+  <a class="btn" href="#randevu">Randevu al</a>
+</div>
+
+<a class="yuzen" href="https://wa.me/905000000000">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.2-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
+  WhatsApp'tan yaz
+</a>
+
+<div class="tema" role="group" aria-label="Renk seçenekleri">
+  <span>Renk:</span>
+  <button class="t1" data-tema="" aria-pressed="true" aria-label="Pudra" title="Pudra"></button>
+  <button class="t2" data-tema="kum" aria-pressed="false" aria-label="Kum" title="Kum"></button>
+  <button class="t3" data-tema="lila" aria-pressed="false" aria-label="Lila" title="Lila"></button>
+  <button class="t4" data-tema="yesil" aria-pressed="false" aria-label="Yeşil" title="Yeşil"></button>
+  <button class="t5" data-tema="gece" aria-pressed="false" aria-label="Gece" title="Gece"></button>
+</div>
+
+<script>
+document.querySelectorAll('.tema button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.dataset.tema;
+    if(t){document.documentElement.setAttribute('data-tema',t)}
+    else{document.documentElement.removeAttribute('data-tema')}
+    document.querySelectorAll('.tema button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    try{localStorage.setItem('lumea-tema',t)}catch(e){}
+  });
+});
+try{
+  var kayitli=localStorage.getItem('lumea-tema');
+  if(kayitli!==null){
+    var hedef=document.querySelector('.tema button[data-tema="'+kayitli+'"]');
+    if(hedef) hedef.click();
+  }
+}catch(e){}
+
+(function(){
+  var k=document.getElementById('kaydirici'),kutu=document.getElementById('karsilastir');
+  if(!k) return;
+  function ayarla(){kutu.style.setProperty('--p',k.value+'%')}
+  k.addEventListener('input',ayarla); ayarla();
+})();
+
+document.getElementById('form').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('mesaj').textContent='Bu bir örnek sitedir, form gönderilmedi. Gerçek sitede talep WhatsApp ve e-postanıza iletilir.';
+});
+</script>
+</body>
+</html>

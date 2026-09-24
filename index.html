@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boztaş Digital | Web sitesi, mobil uygulama ve otomasyon</title>
+<meta name="description" content="Denizli'den işletmelere web sitesi, mobil uygulama ve otomasyon kurulumu. Örnek çalışmaları inceleyin.">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lacivert:#080F28;--altin:#E8B220;--zemin:#F7F8FA;--metin:#111827;--gri:#64748B;
+  --beyaz:#fff;--cizgi:#E5E7EB;--r:22px;--golge:0 10px 30px rgba(8,15,40,.08)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--zemin);color:var(--metin);line-height:1.6}
+a{color:inherit}
+.sarmal{width:min(1080px,100% - 32px);margin-inline:auto}
+header{background:var(--lacivert);color:#fff}
+.ust{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.marka{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:600;font-size:18px}
+.marka img{width:40px;height:40px;border-radius:10px}
+.ust a.btn{font-size:14px;padding:10px 16px}
+.hero{padding:56px 0 72px}
+.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.08;letter-spacing:-.02em;max-width:16ch}
+.hero h1 span{color:var(--altin)}
+.hero p{color:#C7CCDA;font-size:18px;max-width:52ch;margin-top:18px}
+.btn{display:inline-block;background:var(--altin);color:var(--lacivert);font-weight:600;text-decoration:none;padding:14px 22px;border-radius:999px}
+.btn.cizgili{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.butonlar{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+section{padding:64px 0}
+.bas{margin-bottom:28px}
+.etiket{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B8860B}
+h2{font-size:clamp(26px,4vw,36px);line-height:1.15;letter-spacing:-.01em;margin-top:6px}
+.bas p{color:var(--gri);margin-top:10px;max-width:60ch}
+.hizmetler{display:grid;gap:16px;grid-template-columns:1fr}
+.hizmet{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:26px}
+.hizmet .ik{width:44px;height:44px;border-radius:12px;background:#FDF3D6;display:grid;place-items:center;margin-bottom:14px}
+.hizmet h3{font-size:19px}
+.hizmet p{color:var(--gri);margin-top:6px;font-size:15.5px}
+.demolar{display:grid;gap:18px;grid-template-columns:1fr}
+.demo{display:block;text-decoration:none;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);overflow:hidden;box-shadow:var(--golge);transition:transform .2s}
+.demo:hover{transform:translateY(-3px)}
+.demo .ust-renk{height:120px;display:flex;align-items:flex-end;padding:18px 22px;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.demo .ic{padding:18px 22px 22px}
+.demo .ic small{color:var(--gri);font-size:14px}
+.demo .ic b{display:block;font-size:16px;margin-top:4px}
+.demo .git{display:inline-block;margin-top:14px;font-weight:600;color:#B8860B}
+.not{color:var(--gri);font-size:14px;margin-top:18px}
+.surec{display:grid;gap:14px;grid-template-columns:1fr;counter-reset:a}
+.adim{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:22px;position:relative;padding-left:70px}
+.adim:before{counter-increment:a;content:counter(a);position:absolute;left:22px;top:22px;width:32px;height:32px;border-radius:50%;background:var(--lacivert);color:var(--altin);display:grid;place-items:center;font-weight:600;font-size:14px}
+.adim h3{font-size:17px}
+.adim p{color:var(--gri);font-size:15px;margin-top:2px}
+.iletisim{background:var(--lacivert);color:#fff;border-radius:28px;padding:40px 28px;text-align:center}
+.iletisim p{color:#C7CCDA;margin:12px auto 24px;max-width:48ch}
+.iletisim .butonlar{justify-content:center}
+footer{padding:28px 0 40px;color:var(--gri);font-size:14px;text-align:center}
+@media (min-width:760px){
+  .hizmetler{grid-template-columns:repeat(3,1fr)}
+  .demolar{grid-template-columns:repeat(3,1fr)}
+  .surec{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:80px 0 96px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal">
+    <div class="ust">
+      <a class="marka" href="./"><img src="logo.png" alt="Boztaş Digital logosu" width="40" height="40">Boztaş Digital</a>
+      <a class="btn" href="https://instagram.com/boztasdigital">Bize yazın</a>
+    </div>
+    <div class="hero">
+      <h1>İşletmeniz için <span>web sitesi</span>, uygulama ve otomasyon</h1>
+      <p>Denizli'den çalışıyorum. Müşterilerinizin sizi internette bulmasını, randevu ya da sipariş vermesini ve sizin de tekrar eden işlerden kurtulmanızı sağlıyorum.</p>
+      <div class="butonlar">
+        <a class="btn" href="#ornekler">Örnek çalışmalar</a>
+        <a class="btn cizgili" href="mailto:boztasdigital@gmail.com">E-posta gönderin</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="sarmal">
+    <div class="bas"><span class="etiket">Hizmetler</span><h2>Neler yapıyorum?</h2></div>
+    <div class="hizmetler">
+      <div class="hizmet">
+        <div class="ik"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
+        <h3>Web sitesi</h3>
+        <p>Telefonda hızlı açılan, Google'da bulunabilen, randevu ya da iletişim formu olan tek veya çok sayfalı siteler.</p>
+      </div>
+      <div class="hizmet">
+        <div class="ik"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.7" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
+        <h3>Mobil uygulama</h3>
+        <p>Müşterilerinize bildirim gönderebileceğiniz, randevu ve sadakat takibi yapabileceğiniz Android uygulamaları.</p>
+      </div>
+      <div class="hizmet">
+        <div class="ik"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B8860B" stroke-width="1.7" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
+        <h3>Otomasyon</h3>
+        <p>Randevu hatırlatma, form cevaplarını tabloya aktarma, tekrar eden mesajlar gibi elle yapılan işlerin otomatik hale getirilmesi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ornekler" style="padding-top:0">
+  <div class="sarmal">
+    <div class="bas"><span class="etiket">Örnek çalışmalar</span><h2>Sektöre göre hazırladığım örnek siteler</h2><p>Açıp telefonunuzdan gezebilirsiniz. Her sitede sağ alttaki renklerle farklı renk seçeneklerini deneyebilirsiniz.</p></div>
+    <div class="demolar">
+      <a class="demo" href="dentora/">
+        <div class="ust-renk" style="background:#E4F0EC;color:#2F6B5F">Dentora</div>
+        <div class="ic"><small>Diş kliniği</small><b>Tedaviler, hekim tanıtımı, randevu formu</b><span class="git">Siteyi aç →</span></div>
+      </a>
+      <a class="demo" href="lumea/">
+        <div class="ust-renk" style="background:#F3E7E1;color:#8A5A4A">Lumea</div>
+        <div class="ic"><small>Güzellik merkezi</small><b>Hizmetler, seans süreleri, randevu</b><span class="git">Siteyi aç →</span></div>
+      </a>
+      <a class="demo" href="marla/">
+        <div class="ust-renk" style="background:#EFE6D8;color:#6B4E2E">Marla</div>
+        <div class="ic"><small>Kafe</small><b>Menü, çalışma saatleri, konum, QR menü</b><span class="git">Siteyi aç →</span></div>
+      </a>
+    </div>
+    <p class="not">Bunlar örnek çalışmalardır; isimler ve içerikler temsilidir, gerçek işletmelere ait değildir.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="sarmal">
+    <div class="bas"><span class="etiket">Süreç</span><h2>Nasıl çalışıyoruz?</h2></div>
+    <div class="surec">
+      <div class="adim"><h3>Tanışma</h3><p>İşletmenizi ve ihtiyacınızı konuşuyoruz. Instagram'dan ya da e-postayla yazmanız yeterli.</p></div>
+      <div class="adim"><h3>Ücretsiz taslak</h3><p>İşletmenize özel bir taslak hazırlıyorum. Beğenmezseniz hiçbir yükümlülüğünüz olmuyor.</p></div>
+      <div class="adim"><h3>Geliştirme</h3><p>Onayınızdan sonra yarısı peşin ödenir, site içeriklerinizle birlikte tamamlanır.</p></div>
+      <div class="adim"><h3>Yayın ve destek</h3><p>Site sizin adınıza alınan alan adında yayına girer. Sonrasında güncellemeler için yanınızdayım.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="sarmal">
+    <div class="iletisim">
+      <h2>İşletmeniz için bir taslak ister misiniz?</h2>
+      <p>Instagram'dan mesaj atın ya da e-posta gönderin, genellikle aynı gün dönüş yapıyorum.</p>
+      <div class="butonlar">
+        <a class="btn" href="https://instagram.com/boztasdigital">Instagram: @boztasdigital</a>
+        <a class="btn cizgili" href="mailto:boztasdigital@gmail.com">boztasdigital@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Boztaş Digital · Denizli</footer>
+</body>
+</html>
