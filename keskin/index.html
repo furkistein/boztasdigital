@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keskin Berber Atölyesi | Denizli</title>
+<meta name="description" content="Keskin Berber Atölyesi: saç kesimi, sakal tasarımı, ustura tıraş. Online randevu. Örnek çalışma — Boztaş Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --siyah:#0D0D0C;--kart:#161614;--cizgi:#2A2925;--krem:#EDE6D8;--gri:#9A958A;--pirinc:#C08A3E;--pirinc2:#E0B676;
+  --r:4px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--siyah);color:var(--krem);line-height:1.6;font-size:16px}
+a{color:inherit;text-decoration:none}
+.sarmal{width:min(1120px,100% - 32px);margin-inline:auto}
+.bb{font-family:"Bebas Neue",Impact,sans-serif;letter-spacing:.02em;font-weight:400;line-height:.92}
+
+/* üst */
+header{position:sticky;top:0;z-index:20;background:rgba(13,13,12,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo span{font-size:28px}
+.logo i{width:30px;height:30px;border:1.5px solid var(--pirinc);display:grid;place-items:center;font-style:normal;color:var(--pirinc);font-size:18px;font-family:"Bebas Neue"}
+nav{display:none;gap:28px;font-size:14px;color:var(--gri)}
+nav a:hover{color:var(--krem)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--pirinc);color:#111;font-weight:600;font-size:14px;padding:12px 18px;border-radius:var(--r);letter-spacing:.02em;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--pirinc2)}
+.btn.bos{background:transparent;color:var(--krem);border:1px solid var(--cizgi)}
+.btn.bos:hover{border-color:var(--krem)}
+
+/* hero */
+.hero{padding:40px 0 0;border-bottom:1px solid var(--cizgi);overflow:hidden}
+.durum{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--gri);border:1px solid var(--cizgi);padding:7px 12px;border-radius:40px}
+.nokta{width:8px;height:8px;border-radius:50%;background:#5B5B55}
+.nokta.acik{background:#57C27A;box-shadow:0 0 0 4px rgba(87,194,122,.18)}
+.hero h1{font-size:clamp(88px,24vw,260px);margin-top:18px;color:var(--krem)}
+.hero h1 em{font-style:normal;color:var(--pirinc)}
+.hero-alt{display:grid;gap:22px;padding:18px 0 40px}
+.hero-alt p{color:var(--gri);max-width:44ch;font-size:17px}
+.hero-alt .dugmeler{display:flex;gap:10px;flex-wrap:wrap}
+.serit{border-top:1px solid var(--cizgi);white-space:nowrap;overflow:hidden;padding:14px 0}
+.serit div{display:inline-block;animation:kay 28s linear infinite;font-size:28px;color:var(--gri)}
+.serit b{color:var(--pirinc);font-weight:400;margin:0 18px}
+@keyframes kay{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.serit div{animation:none}}
+
+section{padding:72px 0;border-bottom:1px solid var(--cizgi)}
+.baslik{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+.baslik h2{font-size:clamp(52px,9vw,96px)}
+.baslik small{color:var(--gri);font-size:14px;max-width:34ch}
+.no{font-family:"Bebas Neue";color:var(--pirinc);font-size:20px;display:block;margin-bottom:6px;letter-spacing:.08em}
+
+/* fiyat listesi */
+.liste{display:grid;gap:0 56px}
+.kalem{display:flex;align-items:baseline;gap:12px;padding:18px 0;border-bottom:1px dashed var(--cizgi)}
+.kalem h3{font-size:18px;font-weight:500}
+.kalem small{display:block;color:var(--gri);font-size:13.5px;margin-top:2px}
+.kalem .dolgu{flex:1;border-bottom:1px dotted #3A3934;transform:translateY(-6px);min-width:20px}
+.kalem .f{font-family:"Bebas Neue";font-size:30px;color:var(--pirinc2)}
+.kalem .s{font-size:12px;color:var(--gri);margin-left:4px}
+
+/* ustalar */
+.ustalar{display:grid;gap:16px}
+.usta{background:var(--kart);border:1px solid var(--cizgi);padding:22px;display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:center}
+.harf{width:86px;height:86px;display:grid;place-items:center;font-size:64px;color:var(--pirinc);position:relative;
+  background:repeating-linear-gradient(135deg,#1C1B18 0 10px,#191815 10px 20px);border:1px solid var(--cizgi)}
+.harf span{position:absolute;top:6px;right:8px;font-size:14px;color:var(--gri);letter-spacing:.1em}
+.usta h3{font-size:30px}
+.usta p{color:var(--gri);font-size:14.5px}
+.usta .uz{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.usta .uz span{font-size:12px;border:1px solid var(--cizgi);padding:3px 8px;color:var(--krem)}
+
+/* randevu */
+.randevu{display:grid;gap:28px}
+.adim-bas{font-size:13px;color:var(--gri);letter-spacing:.08em;text-transform:uppercase;margin:22px 0 10px}
+.cipler{display:flex;gap:8px;flex-wrap:wrap}
+.cip{background:var(--kart);border:1px solid var(--cizgi);color:var(--krem);padding:10px 14px;font-size:14px;cursor:pointer;font-family:inherit;border-radius:var(--r);min-width:64px;text-align:center}
+.cip small{display:block;color:var(--gri);font-size:11.5px}
+.cip[aria-pressed=true]{border-color:var(--pirinc);background:#221B10;color:var(--pirinc2)}
+.cip[aria-pressed=true] small{color:var(--pirinc)}
+.cip:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.ozet{background:var(--kart);border:1px solid var(--cizgi);padding:24px;align-self:start;position:sticky;top:84px}
+.ozet h3{font-size:34px}
+.ozet dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:18px 0 22px;font-size:14.5px}
+.ozet dt{color:var(--gri)}
+.ozet dd{text-align:right}
+.ozet .btn{width:100%;justify-content:center;padding:15px}
+.ozet .uyari{font-size:12.5px;color:var(--gri);margin-top:12px}
+
+/* saatler */
+.bilgi{display:grid;gap:16px}
+.kutu{background:var(--kart);border:1px solid var(--cizgi);padding:24px}
+.kutu h3{font-size:30px;margin-bottom:12px}
+.saat{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--cizgi);font-size:15px}
+.saat:last-child{border:0}
+.saat.bugun{color:var(--pirinc2)}
+.harita{aspect-ratio:16/10;background:
+  linear-gradient(90deg,transparent 49.6%,#26251F 49.6% 50.4%,transparent 50.4%) 0 0/80px 80px,
+  linear-gradient(0deg,transparent 49.6%,#26251F 49.6% 50.4%,transparent 50.4%) 0 0/80px 80px,#121210;
+  position:relative;margin-bottom:14px}
+.harita:after{content:"";position:absolute;left:50%;top:46%;width:18px;height:18px;background:var(--pirinc);border-radius:50% 50% 50% 0;transform:translate(-50%,-50%) rotate(-45deg);box-shadow:0 0 0 8px rgba(192,138,62,.18)}
+.kutu p{color:var(--gri);font-size:15px}
+
+footer{padding:40px 0 56px;color:var(--gri);font-size:13.5px}
+.demo-not{border:1px dashed var(--cizgi);padding:14px 16px;margin-top:18px;font-size:13px}
+.alt-cubuk{position:fixed;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px 12px;background:rgba(13,13,12,.94);border-top:1px solid var(--cizgi);z-index:30}
+.alt-cubuk .btn{flex:1;justify-content:center}
+body{padding-bottom:70px}
+
+@media (min-width:860px){
+  nav{display:flex}
+  .hero-alt{grid-template-columns:1.2fr 1fr;align-items:end}
+  .hero-alt .dugmeler{justify-content:flex-end}
+  .liste{grid-template-columns:1fr 1fr}
+  .ustalar{grid-template-columns:repeat(3,1fr)}
+  .usta{grid-template-columns:1fr}
+  .harf{width:100%;height:auto;aspect-ratio:4/3;font-size:150px}
+  .randevu{grid-template-columns:1.4fr 1fr}
+  .bilgi{grid-template-columns:1fr 1fr}
+  .alt-cubuk{display:none}
+  body{padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal ust">
+    <a class="logo" href="#"><i>K</i><span class="bb">Keskin</span></a>
+    <nav><a href="#hizmetler">Hizmetler</a><a href="#ustalar">Ustalar</a><a href="#randevu">Randevu</a><a href="#iletisim">İletişim</a></nav>
+    <a class="btn" href="#randevu">Randevu al</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="sarmal">
+    <span class="durum"><span class="nokta" id="nokta"></span><span id="durumYazi">Çalışma saatleri kontrol ediliyor</span></span>
+    <h1 class="bb">Keskin<br><em>atölye.</em></h1>
+    <div class="hero-alt">
+      <p>Saç kesimi, sakal tasarımı ve sıcak havlulu ustura tıraş. Sıra beklemeden, seçtiğiniz ustaya, seçtiğiniz saatte.</p>
+      <div class="dugmeler">
+        <a class="btn" href="#randevu">Saat seç</a>
+        <a class="btn bos" href="#hizmetler">Fiyat listesi</a>
+      </div>
+    </div>
+  </div>
+  <div class="serit" aria-hidden="true"><div class="bb">
+    Saç kesimi<b>✦</b>Sakal tasarımı<b>✦</b>Ustura tıraş<b>✦</b>Çocuk kesimi<b>✦</b>Damat tıraşı<b>✦</b>Cilt bakımı<b>✦</b>
+    Saç kesimi<b>✦</b>Sakal tasarımı<b>✦</b>Ustura tıraş<b>✦</b>Çocuk kesimi<b>✦</b>Damat tıraşı<b>✦</b>Cilt bakımı<b>✦</b>
+  </div></div>
+</div>
+
+<section id="hizmetler">
+  <div class="sarmal">
+    <div class="baslik">
+      <div><span class="no">01 — Hizmetler</span><h2 class="bb">Fiyat listesi</h2></div>
+      <small>Süreler ortalamadır. Kombin hizmetlerde toplam süre randevu ekranında hesaplanır.</small>
+    </div>
+    <div class="liste" id="liste"></div>
+  </div>
+</section>
+
+<section id="ustalar">
+  <div class="sarmal">
+    <div class="baslik"><div><span class="no">02 — Ekip</span><h2 class="bb">Ustalar</h2></div><small>Her ustanın kendi takvimi var. Randevuda ustanızı seçebilirsiniz.</small></div>
+    <div class="ustalar" id="ustaListe"></div>
+  </div>
+</section>
+
+<section id="randevu">
+  <div class="sarmal">
+    <div class="baslik"><div><span class="no">03 — Randevu</span><h2 class="bb">Saatini seç</h2></div><small>Dolu saatler kapalı görünür. Onay mesajı WhatsApp'a gelir.</small></div>
+    <div class="randevu">
+      <div>
+        <div class="adim-bas">1 · Hizmet</div><div class="cipler" id="cHizmet"></div>
+        <div class="adim-bas">2 · Usta</div><div class="cipler" id="cUsta"></div>
+        <div class="adim-bas">3 · Gün</div><div class="cipler" id="cGun"></div>
+        <div class="adim-bas">4 · Saat</div><div class="cipler" id="cSaat"></div>
+      </div>
+      <aside class="ozet" aria-live="polite">
+        <h3 class="bb">Randevu özeti</h3>
+        <dl>
+          <dt>Hizmet</dt><dd id="oHizmet">—</dd>
+          <dt>Usta</dt><dd id="oUsta">—</dd>
+          <dt>Tarih</dt><dd id="oTarih">—</dd>
+          <dt>Süre</dt><dd id="oSure">—</dd>
+          <dt>Tutar</dt><dd id="oTutar">—</dd>
+        </dl>
+        <button class="btn" id="onayla" type="button">Randevuyu onayla</button>
+        <p class="uyari" id="uyari">Bu bir örnek sitedir; randevu oluşturulmaz. Gerçek sitede talep işletmenin WhatsApp'ına ve takvimine düşer.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="iletisim">
+  <div class="sarmal">
+    <div class="baslik"><div><span class="no">04 — Bilgi</span><h2 class="bb">Saatler &amp; konum</h2></div></div>
+    <div class="bilgi">
+      <div class="kutu"><h3 class="bb">Çalışma saatleri</h3><div id="saatler"></div></div>
+      <div class="kutu">
+        <h3 class="bb">Konum</h3>
+        <div class="harita" role="img" aria-label="Harita önizlemesi"></div>
+        <p>Saltak Cd. No: 00, Merkezefendi / Denizli<br>Dükkânın önünde kısa süreli park yeri var.</p>
+        <p style="margin-top:14px"><a class="btn bos" href="https://www.google.com/maps/search/?api=1&query=Merkezefendi+Denizli">Yol tarifi al</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="sarmal">
+    <span class="bb" style="font-size:26px;color:var(--krem)">Keskin berber atölyesi</span><br>
+    Tasarım ve kodlama: Boztaş Digital
+    <p class="demo-not">Bu site bir örnek çalışmadır. Keskin Berber Atölyesi hayali bir işletmedir; isim, adres, ustalar ve fiyatlar temsilidir.</p>
+  </div>
+</footer>
+
+<div class="alt-cubuk"><a class="btn bos" href="tel:+902580000000">Ara</a><a class="btn" href="#randevu">Randevu al</a></div>
+
+<script>
+var HIZMET=[
+  {ad:"Saç kesimi",not:"Yıkama ve şekillendirme dahil",fiyat:350,sure:40},
+  {ad:"Sakal tasarımı",not:"Makine, makas ve ustura ile hat",fiyat:200,sure:25},
+  {ad:"Saç + sakal",not:"En çok tercih edilen",fiyat:500,sure:60},
+  {ad:"Ustura tıraş",not:"Sıcak havlu, köpük, losyon",fiyat:250,sure:30},
+  {ad:"Çocuk kesimi",not:"12 yaş altı",fiyat:250,sure:30},
+  {ad:"Cilt bakımı",not:"Siyah nokta maskesi ve buhar",fiyat:300,sure:30},
+  {ad:"Damat tıraşı",not:"Saç, sakal, cilt bakımı, fön",fiyat:1500,sure:120},
+  {ad:"Saç boyama",not:"Tek renk, kapatma",fiyat:600,sure:50}
+];
+var USTA=[
+  {ad:"Mert",rol:"Kurucu usta",yil:14,uz:["Klasik kesim","Ustura"],kapali:[0]},
+  {ad:"Emre",rol:"Usta",yil:8,uz:["Fade","Sakal hattı"],kapali:[1]},
+  {ad:"Baran",rol:"Kalfa",yil:3,uz:["Çocuk kesimi","Modern kesim"],kapali:[3]}
+];
+var SAAT={1:[9,21],2:[9,21],3:[9,21],4:[9,21],5:[9,21],6:[9,22],0:[11,18]};
+var GUNAD=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+var tl=function(n){return n.toLocaleString("tr-TR")+" ₺"};
+
+document.getElementById("liste").innerHTML=HIZMET.map(function(h){
+  return '<div class="kalem"><div><h3>'+h.ad+'</h3><small>'+h.not+' · '+h.sure+' dk</small></div><span class="dolgu"></span><span class="f">'+h.fiyat.toLocaleString("tr-TR")+'<span class="s">₺</span></span></div>';
+}).join("");
+
+function portre(i,ad){
+  return '<div class="harf bb" aria-hidden="true">'+ad.charAt(0)+'<span>0'+(i+1)+'</span></div>';
+}
+document.getElementById("ustaListe").innerHTML=USTA.map(function(u,i){
+  return '<article class="usta">'+portre(i,u.ad)+'<div><h3 class="bb">'+u.ad+'</h3><p>'+u.rol+' · '+u.yil+' yıl</p><div class="uz">'+u.uz.map(function(x){return "<span>"+x+"</span>"}).join("")+'</div></div></article>';
+}).join("");
+
+// açık / kapalı
+(function(){
+  var s=new Date(),g=s.getDay(),h=s.getHours()+s.getMinutes()/60,a=SAAT[g];
+  var acik=h>=a[0]&&h<a[1];
+  document.getElementById("nokta").classList.toggle("acik",acik);
+  document.getElementById("durumYazi").textContent=acik?"Şu an açık · "+a[1]+":00'e kadar":"Şu an kapalı · Randevu alabilirsiniz";
+  var sira=[1,2,3,4,5,6,0];
+  document.getElementById("saatler").innerHTML=sira.map(function(d){
+    return '<div class="saat'+(d===g?" bugun":"")+'"><span>'+GUNAD[d]+(d===g?" (bugün)":"")+'</span><span>'+String(SAAT[d][0]).padStart(2,"0")+":00 – "+SAAT[d][1]+':00</span></div>';
+  }).join("");
+})();
+
+// randevu
+var sec={hizmet:null,usta:null,gun:null,saat:null};
+function cip(icerik,alt,deger,grup,kapali){
+  return '<button class="cip" type="button" aria-pressed="false" data-g="'+grup+'" data-d="'+deger+'"'+(kapali?" disabled":"")+'>'+icerik+(alt?"<small>"+alt+"</small>":"")+'</button>';
+}
+document.getElementById("cHizmet").innerHTML=HIZMET.map(function(h,i){return cip(h.ad,h.sure+" dk",i,"hizmet")}).join("");
+document.getElementById("cUsta").innerHTML=USTA.map(function(u,i){return cip(u.ad,u.rol,i,"usta")}).join("");
+function gunleriCiz(){
+  var bugun=new Date(),html="";
+  for(var i=0;i<7;i++){
+    var d=new Date(bugun);d.setDate(bugun.getDate()+i);
+    var kapali=sec.usta!==null&&USTA[sec.usta].kapali.indexOf(d.getDay())>-1;
+    html+=cip(i===0?"Bugün":i===1?"Yarın":GUNAD[d.getDay()].slice(0,3),d.getDate()+" "+d.toLocaleString("tr-TR",{month:"short"}),i,"gun",kapali);
+  }
+  document.getElementById("cGun").innerHTML=html;
+}
+function saatleriCiz(){
+  var kutu=document.getElementById("cSaat");
+  if(sec.gun===null){kutu.innerHTML='<span style="color:var(--gri);font-size:14px">Önce gün seçin.</span>';return}
+  var d=new Date();d.setDate(d.getDate()+sec.gun);
+  var a=SAAT[d.getDay()],html="",tohum=sec.gun*7+(sec.usta||0)*3;
+  for(var h=a[0];h<a[1];h++){for(var m=0;m<60;m+=30){
+    var dolu=((h*2+m/30+tohum)%5===0)||(sec.gun===0&&h+m/60<=new Date().getHours()+new Date().getMinutes()/60);
+    var t=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0");
+    html+=cip(t,"",t,"saat",dolu);
+  }}
+  kutu.innerHTML=html;
+}
+function ozet(){
+  var h=sec.hizmet!==null?HIZMET[sec.hizmet]:null;
+  document.getElementById("oHizmet").textContent=h?h.ad:"—";
+  document.getElementById("oUsta").textContent=sec.usta!==null?USTA[sec.usta].ad:"—";
+  var tarih="—";
+  if(sec.gun!==null){var d=new Date();d.setDate(d.getDate()+sec.gun);tarih=d.toLocaleDateString("tr-TR",{day:"numeric",month:"long",weekday:"long"})+(sec.saat?" · "+sec.saat:"")}
+  document.getElementById("oTarih").textContent=tarih;
+  document.getElementById("oSure").textContent=h?h.sure+" dk":"—";
+  document.getElementById("oTutar").textContent=h?tl(h.fiyat):"—";
+}
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".cip");if(!b||b.disabled)return;
+  var g=b.dataset.g;
+  document.querySelectorAll('.cip[data-g="'+g+'"]').forEach(function(x){x.setAttribute("aria-pressed","false")});
+  b.setAttribute("aria-pressed","true");
+  sec[g]=g==="saat"?b.dataset.d:Number(b.dataset.d);
+  if(g==="usta"){sec.gun=null;sec.saat=null;gunleriCiz();saatleriCiz()}
+  if(g==="gun"){sec.saat=null;saatleriCiz()}
+  ozet();
+});
+document.getElementById("onayla").addEventListener("click",function(){
+  var eksik=["hizmet","usta","gun","saat"].filter(function(k){return sec[k]===null});
+  var u=document.getElementById("uyari");
+  if(eksik.length){u.textContent="Lütfen şunları seçin: "+eksik.join(", ")+".";u.style.color="var(--pirinc2)";return}
+  u.style.color="";u.textContent="Bu bir örnek sitedir, randevu oluşturulmadı. Gerçek sitede bu adımda işletmeye WhatsApp bildirimi gider ve saat takvimde kapanır.";
+});
+gunleriCiz();saatleriCiz();ozet();
+</script>
+</body>
+</html>

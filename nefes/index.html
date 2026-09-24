@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nefes Pilates Stüdyosu | Denizli</title>
+<meta name="description" content="Nefes Pilates Stüdyosu: reformer, mat ve birebir dersler. Haftalık ders programı ve deneme dersi. Örnek çalışma — Boztaş Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kum:#F5F0E8;--kum2:#EDE5D8;--beyaz:#FFFDF9;--adacayi:#7D8B6A;--adacayi2:#E4E8DA;--kil:#C77B5E;--kil2:#F4E0D6;
+  --metin:#2E2A25;--gri:#7A736A;--cizgi:#E3DBCD;--r:28px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--kum);color:var(--metin);line-height:1.65;font-size:16px}
+a{color:inherit;text-decoration:none}
+.sarmal{width:min(1120px,100% - 36px);margin-inline:auto}
+.serif{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.01em}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:300;letter-spacing:-.015em;line-height:1.1}
+h1 i,h2 i{font-style:italic;color:var(--kil)}
+
+header{padding:20px 0}
+.ust{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Fraunces,serif;font-size:24px;display:flex;align-items:center;gap:10px}
+.logo svg{flex:0 0 auto}
+nav{display:none;gap:30px;font-size:14.5px;color:var(--gri)}
+nav a:hover{color:var(--metin)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--metin);color:var(--kum);padding:13px 22px;border-radius:999px;font-weight:500;font-size:15px;border:0;cursor:pointer;font-family:inherit;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.acik{background:transparent;color:var(--metin);border:1px solid var(--metin)}
+.btn.kil{background:var(--kil);color:#fff}
+
+/* hero */
+.hero{padding:28px 0 64px}
+.hero-ic{display:grid;gap:36px;align-items:center}
+.hero h1{font-size:clamp(46px,9vw,92px)}
+.hero p{color:var(--gri);font-size:18px;max-width:40ch;margin-top:22px}
+.hero .dugme{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.sahne{position:relative;aspect-ratio:4/5;border-radius:220px 220px var(--r) var(--r);overflow:hidden;background:linear-gradient(180deg,#E9DFD0,#DCCDB8)}
+.sahne>svg{position:absolute;inset:0;width:100%;height:100%}
+.etiket-yuzen{position:absolute;left:18px;bottom:18px;background:var(--beyaz);border-radius:20px;padding:14px 18px;box-shadow:0 12px 30px rgba(46,42,37,.12);display:flex;gap:12px;align-items:center;font-size:14px}
+.etiket-yuzen b{display:block;font-weight:600}
+.etiket-yuzen small{color:var(--gri)}
+.etiket-yuzen .yuv{width:38px;height:38px;border-radius:50%;background:var(--adacayi2);display:grid;place-items:center}
+
+.kucuk-bas{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--adacayi);font-weight:600}
+section{padding:80px 0}
+.bas{max-width:620px;margin-bottom:40px}
+.bas h2{font-size:clamp(36px,6vw,58px);margin-top:10px}
+.bas p{color:var(--gri);margin-top:14px;font-size:17px}
+.orta{text-align:center;margin-inline:auto}
+
+/* dersler */
+.dersler{display:grid;gap:18px}
+.ders{background:var(--beyaz);border-radius:var(--r);padding:30px;border:1px solid var(--cizgi)}
+.ders .sekil{width:64px;height:64px;border-radius:50%;margin-bottom:22px;display:grid;place-items:center}
+.ders h3{font-size:28px}
+.ders p{color:var(--gri);margin-top:8px;font-size:15.5px}
+.ders ul{list-style:none;margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.ders li{font-size:13px;background:var(--kum);border-radius:999px;padding:6px 12px}
+
+/* program */
+.program{background:var(--beyaz);border-radius:36px;padding:26px;border:1px solid var(--cizgi)}
+.gunler{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.gunler::-webkit-scrollbar{display:none}
+.gun{flex:0 0 auto;border:1px solid var(--cizgi);background:transparent;border-radius:18px;padding:10px 14px;text-align:center;cursor:pointer;font-family:inherit;color:var(--metin);min-width:62px}
+.gun b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:22px;line-height:1.1}
+.gun small{font-size:12px;color:var(--gri)}
+.gun[aria-selected=true]{background:var(--metin);color:var(--kum);border-color:var(--metin)}
+.gun[aria-selected=true] small{color:#CFC6B8}
+.seanslar{margin-top:18px;display:grid;gap:10px}
+.seans{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:16px 18px;border-radius:20px;background:var(--kum)}
+.seans time{font-family:Fraunces,serif;font-size:22px}
+.seans b{font-weight:600;display:block}
+.seans small{color:var(--gri);font-size:13.5px}
+.yer{font-size:12.5px;padding:6px 11px;border-radius:999px;white-space:nowrap;font-weight:500}
+.yer.var{background:var(--adacayi2);color:#4F5D3F}
+.yer.az{background:var(--kil2);color:#9A4F33}
+.yer.dolu{background:#E7E2DA;color:var(--gri);text-decoration:line-through}
+
+/* paketler */
+.paketler{display:grid;gap:18px}
+.paket{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:32px;display:flex;flex-direction:column}
+.paket.one{background:var(--metin);color:var(--kum);border-color:var(--metin)}
+.paket.one small,.paket.one li{color:#CFC6B8}
+.paket h3{font-size:26px}
+.paket .fiyat{font-family:Fraunces,serif;font-size:52px;font-weight:300;margin:14px 0 2px;line-height:1}
+.paket .fiyat span{font-size:18px}
+.paket small{color:var(--gri)}
+.paket ul{list-style:none;margin:22px 0 28px;display:grid;gap:10px;font-size:15px;color:var(--gri)}
+.paket li:before{content:"— ";color:var(--kil)}
+.paket .btn{margin-top:auto}
+.rozet{align-self:flex-start;background:var(--kil);color:#fff;font-size:12px;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+
+/* eğitmen */
+.egitmenler{display:grid;gap:18px}
+.egitmen{display:flex;gap:18px;align-items:center;background:var(--beyaz);border-radius:var(--r);padding:20px;border:1px solid var(--cizgi)}
+.egitmen .yuz{width:84px;height:84px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-family:Fraunces,serif;font-size:34px;color:#fff}
+.egitmen h3{font-size:24px}
+.egitmen p{color:var(--gri);font-size:14.5px}
+
+/* deneme */
+.deneme{background:var(--adacayi);color:#fff;border-radius:40px;padding:40px 26px;display:grid;gap:28px}
+.deneme h2{font-size:clamp(34px,5vw,52px)}
+.deneme h2 i{color:#F3E3D3}
+.deneme p{color:#E8ECE0;margin-top:12px}
+form{display:grid;gap:12px}
+label{font-size:13.5px;color:#EEF1E8}
+input,select{width:100%;margin-top:6px;padding:14px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-family:inherit;font-size:15px}
+input::placeholder{color:#DCE2D2}
+select option{color:var(--metin)}
+.deneme .btn{background:var(--kum);color:var(--metin);width:100%;margin-top:6px;padding:15px}
+#formMesaj{font-size:13.5px;color:#F6F8F2;min-height:1.2em}
+
+details{border-bottom:1px solid var(--cizgi);padding:20px 0}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:Fraunces,serif;font-size:21px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--kil);font-size:24px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{color:var(--gri);margin-top:10px}
+
+footer{padding:50px 0 60px;color:var(--gri);font-size:14px}
+.alt{display:grid;gap:18px}
+.demo-not{margin-top:26px;font-size:13px;border-top:1px solid var(--cizgi);padding-top:18px}
+
+@media (min-width:880px){
+  nav{display:flex}
+  .hero-ic{grid-template-columns:1.1fr .9fr}
+  .dersler{grid-template-columns:repeat(4,1fr)}
+  .paketler{grid-template-columns:repeat(3,1fr)}
+  .egitmenler{grid-template-columns:repeat(3,1fr)}
+  .deneme{grid-template-columns:1fr 1fr;padding:56px;align-items:center}
+  .program{padding:34px}
+  .alt{grid-template-columns:2fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sarmal ust">
+    <a class="logo" href="#"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="none" stroke="#7D8B6A" stroke-width="1.4"/><path d="M6 18c4-6 14-6 18 0" fill="none" stroke="#C77B5E" stroke-width="1.6" stroke-linecap="round"/></svg>nefes</a>
+    <nav><a href="#dersler">Dersler</a><a href="#program">Program</a><a href="#paketler">Paketler</a><a href="#sss">S.S.S.</a></nav>
+    <a class="btn" href="#deneme">Deneme dersi</a>
+  </div>
+</header>
+
+<section class="hero" style="padding-top:28px">
+  <div class="sarmal hero-ic">
+    <div>
+      <span class="kucuk-bas">Pilates stüdyosu · Denizli</span>
+      <h1 style="margin-top:14px">Bedenine <i>yavaşça</i> geri dön.</h1>
+      <p>Reformer ve mat derslerinde en fazla 6 kişilik gruplar. Her derste eğitmen yanında, her hareket sana göre ayarlanır.</p>
+      <div class="dugme">
+        <a class="btn kil" href="#deneme">Deneme dersine gel</a>
+        <a class="btn acik" href="#program">Ders programı</a>
+      </div>
+    </div>
+    <div class="sahne">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><radialGradient id="gun" cx="70%" cy="22%" r="60%"><stop offset="0" stop-color="#FFF6E8"/><stop offset="1" stop-color="#FFF6E8" stop-opacity="0"/></radialGradient></defs>
+        <rect width="400" height="500" fill="url(#gun)"/>
+        <path d="M0 330C80 300 150 318 220 300s120-40 180-30V500H0Z" fill="#D6C5AD"/>
+        <path d="M0 380c90-26 180-10 260-26s110-20 140-16V500H0Z" fill="#CBB79C"/>
+        <rect x="70" y="352" width="260" height="14" rx="7" fill="#8E9B7A"/>
+        <rect x="80" y="366" width="8" height="40" fill="#7D8B6A"/><rect x="312" y="366" width="8" height="40" fill="#7D8B6A"/>
+        <circle cx="140" cy="256" r="20" fill="#C77B5E"/>
+        <path d="M150 276c30 20 60 40 110 56" stroke="#C77B5E" stroke-width="22" stroke-linecap="round" fill="none"/>
+        <path d="M262 332c16-40 30-80 40-128" stroke="#C77B5E" stroke-width="18" stroke-linecap="round" fill="none"/>
+        <path d="M168 290c-10 22-18 44-24 62" stroke="#C77B5E" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <circle cx="300" cy="120" r="46" fill="#F2DCC4" opacity=".7"/>
+        <path d="M40 90c30-10 50 10 80 0M60 130c26-8 44 8 70 0" stroke="#B9A88F" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      <div class="etiket-yuzen"><span class="yuv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F5D3F" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b id="sonrakiDers">Sıradaki ders</b><small id="sonrakiDetay">Program yükleniyor</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="dersler" style="padding-top:20px">
+  <div class="sarmal">
+    <div class="bas"><span class="kucuk-bas">Dersler</span><h2>Sana uygun <i>ritmi</i> seç</h2><p>İlk derste seviyeni birlikte belirliyoruz. Daha önce hiç pilates yapmadıysan başlangıç derslerinden başlarsın.</p></div>
+    <div class="dersler">
+      <article class="ders"><div class="sekil" style="background:var(--adacayi2)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F5D3F" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="13" width="20" height="4" rx="2"/><path d="M5 17v3M19 17v3M7 13l4-6 4 3 3-3"/></svg></div><h3>Reformer</h3><p>Yaylı aletle direnç ve destek. Duruşu ve kas dengesini çalışır.</p><ul><li>50 dk</li><li>En fazla 6 kişi</li></ul></article>
+      <article class="ders"><div class="sekil" style="background:var(--kil2)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9A4F33" stroke-width="1.6" stroke-linecap="round"><path d="M3 18h18"/><circle cx="8" cy="9" r="2"/><path d="M8 11c2 3 5 5 10 7"/></svg></div><h3>Mat</h3><p>Kendi vücut ağırlığınla, minder üzerinde temel pilates.</p><ul><li>50 dk</li><li>En fazla 8 kişi</li></ul></article>
+      <article class="ders"><div class="sekil" style="background:#EFE7DA"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7A6A55" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="7" r="2.5"/><circle cx="16" cy="9" r="2"/><path d="M4 20c0-4 2-7 5-7s5 3 5 7M13 20c0-3 1.5-5 3-5s3 2 3 5"/></svg></div><h3>Birebir</h3><p>Sadece sen ve eğitmenin. Hedefe özel program.</p><ul><li>50 dk</li><li>Randevulu</li></ul></article>
+      <article class="ders"><div class="sekil" style="background:var(--adacayi2)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F5D3F" stroke-width="1.6" stroke-linecap="round"><path d="M12 21c5-3 8-7 8-11a4 4 0 0 0-8-1 4 4 0 0 0-8 1c0 4 3 8 8 11Z"/></svg></div><h3>Esneme &amp; nefes</h3><p>Hafta sonu sakin tempolu, esneme ağırlıklı ders.</p><ul><li>45 dk</li><li>Her seviye</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section id="program" style="background:var(--kum2)">
+  <div class="sarmal">
+    <div class="bas"><span class="kucuk-bas">Haftalık program</span><h2>Bu hafta <i>derslerimiz</i></h2><p>Gün seç, boş kontenjanları gör. Dolan derslerde bekleme listesine yazılabilirsin.</p></div>
+    <div class="program">
+      <div class="gunler" role="tablist" id="gunler"></div>
+      <div class="seanslar" id="seanslar" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="paketler">
+  <div class="sarmal">
+    <div class="bas orta"><span class="kucuk-bas">Paketler</span><h2>Sana uyan <i>paketi</i> seç</h2><p>Paketler satın alma tarihinden itibaren geçerlidir. Kullanmadığın dersleri eğitmenle konuşup erteleyebilirsin.</p></div>
+    <div class="paketler">
+      <div class="paket"><h3>Tanışma</h3><div class="fiyat">1.600<span> ₺</span></div><small>4 ders · 1 ay geçerli</small><ul><li>Reformer ya da mat</li><li>Seviye belirleme görüşmesi</li><li>Haftada 1 ders</li></ul><a class="btn acik" href="#deneme">Bilgi al</a></div>
+      <div class="paket one"><span class="rozet">En çok seçilen</span><h3>Düzenli</h3><div class="fiyat">2.900<span> ₺</span></div><small>8 ders · 5 hafta geçerli</small><ul><li>Reformer ve mat karışık</li><li>Haftada 2 ders</li><li>1 ders erteleme hakkı</li></ul><a class="btn kil" href="#deneme">Bilgi al</a></div>
+      <div class="paket"><h3>Kararlı</h3><div class="fiyat">4.000<span> ₺</span></div><small>12 ders · 7 hafta geçerli</small><ul><li>Tüm grup dersleri</li><li>Haftada 2-3 ders</li><li>2 ders erteleme hakkı</li></ul><a class="btn acik" href="#deneme">Bilgi al</a></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="sarmal">
+    <div class="bas"><span class="kucuk-bas">Eğitmenler</span><h2>Seni <i>tanıyan</i> eğitmenler</h2></div>
+    <div class="egitmenler">
+      <div class="egitmen"><div class="yuz" style="background:#C77B5E">E</div><div><h3>Elif</h3><p>Kurucu eğitmen · Reformer ve birebir</p></div></div>
+      <div class="egitmen"><div class="yuz" style="background:#7D8B6A">D</div><div><h3>Deniz</h3><p>Mat pilates · Başlangıç grupları</p></div></div>
+      <div class="egitmen"><div class="yuz" style="background:#A89478">S</div><div><h3>Selin</h3><p>Esneme &amp; nefes · Hafta sonu dersleri</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="deneme" style="padding-top:0">
+  <div class="sarmal">
+    <div class="deneme">
+      <div>
+        <h2>Önce bir <i>deneme dersi</i>.</h2>
+        <p>Stüdyoyu gör, eğitmenle tanış, sonra karar ver. Formu bırak, uygun saati birlikte ayarlayalım.</p>
+      </div>
+      <form id="form" novalidate>
+        <label>Adın<input name="ad" placeholder="Ad Soyad" required></label>
+        <label>Telefonun<input name="tel" type="tel" placeholder="05xx xxx xx xx" required></label>
+        <label>Hangi ders?<select name="ders"><option>Reformer</option><option>Mat</option><option>Birebir</option><option>Emin değilim</option></select></label>
+        <button class="btn" type="submit">Deneme dersi iste</button>
+        <p id="formMesaj" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="sss" style="padding-top:0">
+  <div class="sarmal" style="max-width:780px">
+    <div class="bas orta"><span class="kucuk-bas">Merak edilenler</span><h2>Sık sorulan <i>sorular</i></h2></div>
+    <details open><summary>Hiç pilates yapmadım, katılabilir miyim?</summary><p>Evet. Başlangıç derslerimiz tam olarak bunun için var. İlk derste seviyeni birlikte belirliyoruz.</p></details>
+    <details><summary>Yanımda ne getirmeliyim?</summary><p>Rahat bir kıyafet ve kaymaz çorap yeterli. Havlu ve su stüdyoda var.</p></details>
+    <details><summary>Dersi iptal edersem ne olur?</summary><p>Dersten 12 saat öncesine kadar yaptığın iptallerde dersin paketinden düşmez.</p></details>
+    <details><summary>Sağlık sorunum var, ne yapmalıyım?</summary><p>Bir rahatsızlığın ya da ameliyat geçmişin varsa başlamadan önce doktoruna danış ve ilk derste eğitmenine mutlaka söyle.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="sarmal">
+    <div class="alt">
+      <div><span class="logo">nefes</span><p style="margin-top:8px;max-width:36ch">Pilates stüdyosu. Küçük gruplar, sakin bir alan.</p></div>
+      <div><b style="color:var(--metin)">Adres</b><p>Çamlık Mh. 0000 Sk. No: 0<br>Pamukkale / Denizli</p></div>
+      <div><b style="color:var(--metin)">Saatler</b><p>Hafta içi 07:30 – 21:00<br>Cumartesi 09:00 – 16:00</p></div>
+    </div>
+    <p class="demo-not">Bu site bir örnek çalışmadır. Nefes Pilates Stüdyosu hayali bir işletmedir; eğitmenler, ders programı ve fiyatlar temsilidir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</footer>
+
+<script>
+var PROGRAM={
+  1:[["07:30","Reformer","Başlangıç","Elif",1],["10:00","Mat","Her seviye","Deniz",4],["18:00","Reformer","Orta","Elif",0],["19:15","Reformer","Başlangıç","Deniz",2]],
+  2:[["09:00","Mat","Başlangıç","Deniz",5],["12:15","Reformer","Öğle arası","Elif",1],["18:30","Reformer","Orta","Elif",3],["19:45","Mat","Her seviye","Deniz",6]],
+  3:[["07:30","Reformer","Başlangıç","Elif",2],["10:00","Reformer","Orta","Deniz",0],["18:00","Mat","Başlangıç","Deniz",3],["19:15","Reformer","İleri","Elif",1]],
+  4:[["09:00","Mat","Başlangıç","Deniz",4],["12:15","Reformer","Öğle arası","Elif",2],["18:30","Reformer","Başlangıç","Elif",0],["19:45","Reformer","Orta","Deniz",2]],
+  5:[["07:30","Reformer","Başlangıç","Elif",3],["10:00","Mat","Her seviye","Deniz",5],["18:00","Reformer","Orta","Elif",1]],
+  6:[["10:00","Esneme & nefes","Her seviye","Selin",6],["11:15","Reformer","Başlangıç","Elif",2],["13:00","Mat","Her seviye","Selin",4]],
+  0:[]
+};
+var AD=["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+var UZUN=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+function yerEtiketi(n){
+  if(n===0)return '<span class="yer dolu">Dolu</span>';
+  if(n<=2)return '<span class="yer az">'+n+' yer kaldı</span>';
+  return '<span class="yer var">'+n+' yer var</span>';
+}
+function gunGoster(i){
+  var d=new Date();d.setDate(d.getDate()+i);var g=d.getDay();
+  document.querySelectorAll(".gun").forEach(function(b,j){b.setAttribute("aria-selected",j===i?"true":"false")});
+  var liste=PROGRAM[g];
+  document.getElementById("seanslar").innerHTML=liste.length?liste.map(function(s){
+    return '<div class="seans"><time>'+s[0]+'</time><div><b>'+s[1]+' · '+s[2]+'</b><small>'+s[3]+' ile · 50 dk</small></div>'+yerEtiketi(s[4])+'</div>';
+  }).join(""):'<div class="seans" style="grid-template-columns:1fr"><div><b>'+UZUN[g]+' stüdyo kapalı</b><small>Dinlenme günü. Programın geri kalanına göz at.</small></div></div>';
+}
+(function(){
+  var h="",bugun=new Date();
+  for(var i=0;i<7;i++){var d=new Date(bugun);d.setDate(bugun.getDate()+i);
+    h+='<button class="gun" role="tab" type="button" aria-selected="false" data-i="'+i+'"><small>'+(i===0?"Bugün":AD[d.getDay()])+'</small><b>'+d.getDate()+'</b></button>';}
+  document.getElementById("gunler").innerHTML=h;
+  document.getElementById("gunler").addEventListener("click",function(e){var b=e.target.closest(".gun");if(b)gunGoster(Number(b.dataset.i))});
+  gunGoster(0);
+  // sıradaki ders
+  var simdi=bugun.getHours()*60+bugun.getMinutes();
+  for(var k=0;k<7;k++){var d2=new Date(bugun);d2.setDate(bugun.getDate()+k);var l=PROGRAM[d2.getDay()];
+    for(var s=0;s<l.length;s++){var p=l[s][0].split(":"),dk=+p[0]*60+ +p[1];
+      if(k>0||dk>simdi){document.getElementById("sonrakiDers").textContent=(k===0?"Bugün ":k===1?"Yarın ":UZUN[d2.getDay()]+" ")+l[s][0];
+        document.getElementById("sonrakiDetay").textContent=l[s][1]+" · "+(l[s][4]?l[s][4]+" yer var":"bekleme listesi");return}}}
+})();
+document.getElementById("form").addEventListener("submit",function(e){
+  e.preventDefault();var f=e.target,m=document.getElementById("formMesaj");
+  if(!f.ad.value.trim()||f.tel.value.replace(/\D/g,"").length<10){m.textContent="Lütfen adını ve geçerli bir telefon numarası yaz.";return}
+  m.textContent="Bu bir örnek sitedir, form gönderilmedi. Gerçek sitede talebin stüdyonun WhatsApp'ına iletilir.";
+});
+</script>
+</body>
+</html>
