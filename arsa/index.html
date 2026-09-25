@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toprak Arsa & Yatırım · Denizli</title>
+<meta name="description" content="Toprak Arsa & Yatırım: Denizli ve çevresinde imarlı arsa, tarla, bağ ve zeytinlik. Parsel bilgileri, imar durumu, tapu masrafı hesaplayıcı ve arsa alım kontrol listesi. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#1D2416">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--kum:#F3F0E6;--kum2:#E7E1CF;--zeytin:#4B5B2C;--zeytin2:#7E8F55;--pas:#B65B2B;--koyu:#1D2416;--soluk:#6E6B5C;--cizgi:rgba(29,36,22,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kum);color:var(--koyu);font-family:Onest,system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.li{font-family:Literata,serif;font-weight:400;letter-spacing:-.025em;line-height:1}
+.li i{color:var(--pas)}
+.etk{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--zeytin)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:10px;background:var(--koyu);color:var(--kum);font:600 15px Onest,sans-serif;border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--pas)}
+.btn.bos{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.perde{position:fixed;inset:0;z-index:100;background:var(--koyu);color:var(--kum);display:grid;place-items:center}
+.perde .li{font-size:clamp(50px,9vw,120px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;color:var(--kum);transition:background .4s,color .4s}
+header.dolu{background:rgba(243,240,230,.92);backdrop-filter:blur(12px);color:var(--koyu);box-shadow:0 1px 0 var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:Literata;font-size:24px;display:flex;align-items:center;gap:10px}
+.logo i{width:26px;height:26px;border:2px solid currentColor;display:grid;grid-template-columns:1fr 1fr;gap:2px;padding:2px}
+.logo i b{background:currentColor;opacity:.5}.logo i b:nth-child(2){opacity:1;background:var(--pas)}
+nav{display:none;gap:26px;font-size:15px;font-weight:500}
+/* parsel sahnesi */
+.giris{position:relative;height:330vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--koyu)}
+.hava{position:absolute;inset:0}
+.hava img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.hava:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,36,22,.55),rgba(29,36,22,.1) 40%,rgba(29,36,22,.6))}
+.parseller{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.parseller polygon{fill:rgba(243,240,230,0);stroke:#F3F0E6;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.parseller polygon.secili{stroke:#FFB37A;stroke-width:3}
+.sahne-bas{position:absolute;left:0;right:0;top:14vh;z-index:3;color:var(--kum)}
+.sahne-bas h1{font-size:clamp(46px,7vw,112px);max-width:12ch}
+.sahne-bas h1 i{color:#FFB37A}
+.bilgi-kart{position:absolute;z-index:4;background:var(--kum);color:var(--koyu);border-radius:14px;padding:18px 20px;width:min(300px,80vw);box-shadow:0 30px 50px -20px rgba(0,0,0,.5);opacity:0}
+.bilgi-kart .kod{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--soluk)}
+.bilgi-kart b{display:block;font-family:Literata;font-weight:600;font-size:28px;margin:4px 0}
+.bilgi-kart .sat{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;border-top:1px solid var(--cizgi)}
+.olcek{position:absolute;left:max(20px,calc((100vw - 1240px)/2));bottom:5vh;z-index:3;color:var(--kum);display:flex;align-items:center;gap:10px;font-size:12.5px;font-family:ui-monospace,monospace}
+.olcek i{width:100px;height:6px;border:1.5px solid var(--kum);border-top:0}
+.pusula{position:absolute;right:max(20px,calc((100vw - 1240px)/2));bottom:5vh;z-index:3;color:var(--kum);font-family:Literata;font-size:20px;text-align:center;line-height:1}
+.pusula span{display:block;width:2px;height:40px;background:linear-gradient(#FFB37A 50%,var(--kum) 50%);margin:6px auto 0}
+/* ilanlar */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.bas h2{font-size:clamp(42px,5.4vw,84px)}
+.bas p{color:var(--soluk);max-width:40ch}
+.filtre{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.filtre button{font:600 14.5px Onest;padding:10px 16px;border-radius:10px;border:1.5px solid var(--cizgi);background:transparent;color:var(--koyu);cursor:pointer}
+.filtre button[aria-pressed=true]{background:var(--koyu);color:var(--kum);border-color:var(--koyu)}
+.tablo{display:grid;gap:14px}
+.ilan{display:grid;background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--cizgi)}
+.ilan figure{aspect-ratio:16/10;overflow:hidden;position:relative}
+.ilan img{width:100%;height:100%;object-fit:cover}
+.ilan .tip{position:absolute;left:12px;top:12px;background:var(--kum);border-radius:6px;padding:4px 8px;font-size:12.5px;font-weight:600}
+.ilan .ic{padding:20px;display:grid;gap:10px;align-content:start}
+.ilan h3{font-family:Literata;font-weight:600;font-size:24px;line-height:1.1}
+.veriler{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);border-radius:10px;overflow:hidden}
+.veriler div{background:var(--kum);padding:10px}
+.veriler small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soluk)}
+.veriler b{font-weight:600;font-size:15px}
+.ilan .fy{display:flex;justify-content:space-between;align-items:baseline}
+.ilan .fy b{font-family:Literata;font-size:26px;font-weight:600}
+.ilan .fy span{font-size:13.5px;color:var(--soluk)}
+.imar{display:inline-flex;gap:6px;align-items:center;font-size:13px;font-weight:600;color:var(--zeytin)}
+.imar:before{content:"";width:8px;height:8px;border-radius:2px;background:currentColor}
+.imar.yok{color:var(--pas)}
+.ilan[hidden]{display:none}
+/* kontrol listesi */
+.kontrol{display:grid;gap:30px;align-items:start}
+.kontrol-foto{border-radius:20px;overflow:hidden;aspect-ratio:4/3.4;position:relative;position:sticky;top:100px}
+.kontrol-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.madde{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--cizgi);cursor:pointer}
+.madde input{width:22px;height:22px;accent-color:var(--zeytin);margin-top:3px}
+.madde b{font-size:18px}
+.madde p{color:var(--soluk);font-size:15px;margin-top:4px}
+.ilerleme{height:8px;border-radius:4px;background:var(--kum2);overflow:hidden;margin:18px 0 6px}
+.ilerleme i{display:block;height:100%;width:0;background:var(--zeytin);transition:width .4s}
+/* tapu hesaplayıcı */
+.tapu{background:var(--koyu);color:var(--kum);border-radius:26px;padding:clamp(24px,4vw,56px);display:grid;gap:34px}
+.tapu h2{font-size:clamp(38px,4.6vw,70px)}
+.tapu label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#bdb9a6}
+.tapu input,.tapu select{font:500 17px Onest;color:var(--koyu);background:var(--kum);border:0;border-radius:10px;padding:13px 14px;width:100%}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dokum{background:rgba(243,240,230,.06);border:1px solid rgba(243,240,230,.14);border-radius:18px;padding:24px;display:grid;gap:4px;align-content:start}
+.dokum .sat{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(243,240,230,.18);font-size:15.5px}
+.dokum .sat span:first-child{color:#bdb9a6}
+.dokum .top{font-family:Literata;font-size:clamp(34px,3.6vw,50px);color:#FFB37A;margin-top:10px}
+/* iletişim */
+.iletisim{display:grid;gap:24px;align-items:center}
+.iletisim figure{border-radius:20px;overflow:hidden;aspect-ratio:16/11;position:relative}
+.iletisim img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.form{background:#fff;border-radius:20px;padding:28px;display:grid;gap:12px;border:1px solid var(--cizgi)}
+.form label{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--soluk)}
+.form input,.form select{font:500 16px Onest;color:var(--koyu);background:var(--kum);border:1.5px solid transparent;border-radius:10px;padding:13px 14px;width:100%}
+.form input:focus,.form select:focus{outline:none;border-color:var(--zeytin)}
+.form-mesaj{font-size:15px;color:var(--zeytin);font-weight:600}
+footer{padding:80px 0 40px;background:var(--koyu);color:#bdb9a6;margin-top:130px}
+.alt-izgara{display:grid;gap:24px;font-size:15px}
+.alt-izgara b{display:block;color:var(--kum);margin-bottom:6px}
+.yasal{margin-top:36px;padding-top:20px;border-top:1px solid rgba(243,240,230,.14);display:grid;gap:8px;font-size:12.5px}
+[data-acik]{display:inline-flex;align-items:center;gap:8px}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#8c8a7c}
+[data-acik].evet:before{background:#8fd18a}
+@media (min-width:920px){
+  nav{display:flex}
+  .tablo{grid-template-columns:1fr 1fr}
+  .ilan{grid-template-columns:.9fr 1.1fr}
+  .ilan figure{aspect-ratio:auto;height:100%}
+  .kontrol{grid-template-columns:.9fr 1.1fr;gap:70px}
+  .tapu{grid-template-columns:1fr 1fr;gap:50px}
+  .iletisim{grid-template-columns:1fr 1fr;gap:50px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .kontrol-foto{position:relative;top:0}
+  .bilgi-kart{left:20px!important;right:auto;top:auto!important;bottom:12vh}
+  .pusula{display:none}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="li">Toprak</span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i>Toprak</a>
+  <nav><a href="#portfoy">Portföy</a><a href="#kontrol">Kontrol listesi</a><a href="#tapu">Tapu masrafı</a><a href="#iletisim">İletişim</a></nav>
+  <a class="btn" href="#iletisim" style="padding:10px 16px;background:#FFB37A;color:var(--koyu)">Arsamı değerle</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="hava"><img id="hava-img" src="img/tarla.jpg" alt="Altın saatte yollarla bölünmüş yeşil tarım parsellerinin drone görüntüsü, arkada dağlar"></div>
+    <svg class="parseller" id="parseller" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <polygon points="8,58 26,54 28,72 10,76"/><polygon points="26,54 44,50 46,68 28,72"/><polygon points="44,50 62,47 63,65 46,68"/>
+      <polygon points="62,47 80,44 82,62 63,65"/><polygon points="10,76 28,72 30,92 12,96"/><polygon class="secili" id="secili" points="28,72 46,68 48,88 30,92"/>
+      <polygon points="46,68 63,65 65,85 48,88"/><polygon points="63,65 82,62 84,82 65,85"/>
+    </svg>
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="etk" style="color:#FFB37A">Arsa · tarla · bağ · zeytinlik</span><h1 class="li" style="margin-top:14px" data-bol data-hemen>Her parselin bir <i>hikâyesi</i> var.</h1></div></div>
+    <div class="bilgi-kart" id="bilgi-kart" style="left:52%;top:40%">
+      <span class="kod">DENİZLİ · PAMUKKALE · ADA 124 / PARSEL 7</span>
+      <b>1.850 m²</b>
+      <div class="sat"><span>Nitelik</span><span>Tarla</span></div>
+      <div class="sat"><span>İmar</span><span>Konut dışı, yola cepheli</span></div>
+      <div class="sat"><span>Hisse</span><span>Müstakil tapu</span></div>
+      <div class="sat"><span>Fiyat</span><span><b style="display:inline;font-size:16px">1.480.000 ₺</b></span></div>
+    </div>
+    <div class="olcek" aria-hidden="true"><i></i>100 m</div>
+    <div class="pusula" aria-hidden="true">K<span></span></div>
+  </div>
+</section>
+
+<section class="bolum" id="portfoy"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Portföy</span><h2 class="li" style="margin-top:12px" data-bol>Yerinde <i>gezilmiş</i> parseller.</h2></div><p data-r>Her ilanın tapu kaydı, imar durumu ve yol cephesi tarafımızdan kontrol edilir. Koordinatları görüşmede paylaşırız.</p></div>
+  <div class="filtre" id="filtre"><button type="button" data-f="*" aria-pressed="true">Tümü</button><button type="button" data-f="imarli" aria-pressed="false">İmarlı arsa</button><button type="button" data-f="tarla" aria-pressed="false">Tarla</button><button type="button" data-f="bag" aria-pressed="false">Bağ</button><button type="button" data-f="zeytin" aria-pressed="false">Zeytinlik</button></div>
+  <div class="tablo" data-rg>
+    <article class="ilan" data-f="imarli"><figure><img src="img/imar.jpg" alt="Şehir kenarında yeni açılan yollar ve yapı parselleri" loading="lazy"><span class="tip">İmarlı arsa</span></figure><div class="ic"><h3>Kınıklı, konut imarlı arsa</h3><span class="imar">Konut · E:1.20 · Hmax 4 kat</span><div class="veriler"><div><small>Alan</small><b>620 m²</b></div><div><small>Cephe</small><b>22 m</b></div><div><small>Tapu</small><b>Müstakil</b></div></div><div class="fy"><b>4.650.000 ₺</b><span>7.500 ₺/m²</span></div></div></article>
+    <article class="ilan" data-f="tarla"><figure><img src="img/tarla.jpg" alt="Yeşil tarım parselleri hava görüntüsü" loading="lazy"><span class="tip">Tarla</span></figure><div class="ic"><h3>Pamukkale, sulak tarla</h3><span class="imar yok">İmarsız · tarım arazisi</span><div class="veriler"><div><small>Alan</small><b>1.850 m²</b></div><div><small>Yol</small><b>Asfalt</b></div><div><small>Su</small><b>Kuyu</b></div></div><div class="fy"><b>1.480.000 ₺</b><span>800 ₺/m²</span></div></div></article>
+    <article class="ilan" data-f="bag"><figure><img src="img/bag.jpg" alt="Gün batımında tepelerde üzüm bağı, hava görüntüsü" loading="lazy"><span class="tip">Bağ</span></figure><div class="ic"><h3>Çal, verimli üzüm bağı</h3><span class="imar yok">İmarsız · bağ vasfı</span><div class="veriler"><div><small>Alan</small><b>4.200 m²</b></div><div><small>Asma</small><b>~900 kök</b></div><div><small>Tapu</small><b>Müstakil</b></div></div><div class="fy"><b>2.100.000 ₺</b><span>500 ₺/m²</span></div></div></article>
+    <article class="ilan" data-f="zeytin"><figure><img src="img/zeytin.jpg" alt="Yaşlı zeytin ağaçlı güneşli zeytinlik" loading="lazy"><span class="tip">Zeytinlik</span></figure><div class="ic"><h3>Sarayköy, yaşlı zeytinlik</h3><span class="imar yok">İmarsız · zeytinlik</span><div class="veriler"><div><small>Alan</small><b>6.500 m²</b></div><div><small>Ağaç</small><b>~110</b></div><div><small>Tapu</small><b>Hisseli (2)</b></div></div><div class="fy"><b>2.900.000 ₺</b><span>446 ₺/m²</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="kontrol" style="padding-top:0"><div class="sarmal kontrol">
+  <div class="kontrol-foto" data-r><img src="img/olcum.jpg" alt="Boş arsada turuncu bayraklı ölçüm kazıkları" loading="lazy"></div>
+  <div>
+    <span class="etk">Arsa alırken</span>
+    <h2 class="li" style="font-size:clamp(38px,4.4vw,66px);margin-top:12px" data-bol>Kapora vermeden önce <i>kontrol</i> edin.</h2>
+    <div class="ilerleme"><i id="k-bar"></i></div><span id="k-say" style="font-size:14px;color:var(--soluk)">0 / 6 kontrol</span>
+    <div id="kontrol-liste" data-r>
+      <label class="madde"><input type="checkbox"><span><b>Tapu kaydı</b><p>Parselin sahibi, hisse durumu ve üzerindeki şerh/ipotekler e-Devlet ya da tapu müdürlüğünden sorgulanır.</p></span></label>
+      <label class="madde"><input type="checkbox"><span><b>İmar durumu</b><p>Belediyeden resmî imar durum belgesi alınır; emsal, kat ve çekme mesafeleri öğrenilir.</p></span></label>
+      <label class="madde"><input type="checkbox"><span><b>Parsel sınırları</b><p>TKGM parsel sorgu ile koordinatlar kontrol edilir; gerekirse lisanslı harita mühendisine aplikasyon yaptırılır.</p></span></label>
+      <label class="madde"><input type="checkbox"><span><b>Yol ve altyapı</b><p>Kadastral yola cephe, elektrik ve su bağlanabilirliği yerinde görülür.</p></span></label>
+      <label class="madde"><input type="checkbox"><span><b>Hisseli tapuda muvafakat</b><p>Hisseli parsellerde diğer hissedarların durumu ve ön alım hakkı öğrenilir.</p></span></label>
+      <label class="madde"><input type="checkbox"><span><b>Masraflar</b><p>Tapu harcı, döner sermaye ve emlak vergisi önceden hesaplanır (aşağıdaki hesaplayıcı).</p></span></label>
+    </div>
+  </div>
+</div></section>
+
+<section class="bolum" id="tapu" style="padding-top:0"><div class="sarmal"><div class="tapu" data-r>
+  <div>
+    <span class="etk" style="color:#FFB37A">Tapu masrafı hesaplayıcı</span>
+    <h2 class="li" style="margin:12px 0 24px">Satış bedeline <i style="color:#FFB37A">neler</i> eklenir?</h2>
+    <div style="display:grid;gap:14px">
+      <label>Satış bedeli (₺)<input type="number" id="t-bedel" value="1480000" min="0" step="10000" inputmode="numeric"></label>
+      <div class="iki"><label>Harcı kim ödüyor?<select id="t-kim"><option value="ayri">Alıcı %2 + satıcı %2</option><option value="alici">Tamamı alıcı (%4)</option></select></label><label>Emlakçı hizmet bedeli<select id="t-hiz"><option value="2">%2 + KDV</option><option value="0">Yok</option></select></label></div>
+    </div>
+    <p style="font-size:13.5px;color:#bdb9a6;margin-top:16px">Tapu harcı oranı %4'tür (genellikle alıcı ve satıcı %2'şer öder). Döner sermaye ücreti yıllık olarak güncellenir; tutar örnektir.</p>
+  </div>
+  <div class="dokum" aria-live="polite">
+    <div class="sat"><span>Satış bedeli</span><span id="t-1">—</span></div>
+    <div class="sat"><span>Alıcı tapu harcı</span><span id="t-2">—</span></div>
+    <div class="sat"><span>Döner sermaye (örnek)</span><span id="t-3">—</span></div>
+    <div class="sat"><span>Hizmet bedeli</span><span id="t-4">—</span></div>
+    <span style="font-size:14px;color:#bdb9a6;margin-top:10px">Alıcının toplam maliyeti</span>
+    <span class="top" id="t-top">—</span>
+  </div>
+</div></div></section>
+
+<section class="bolum" id="iletisim" style="padding-top:0"><div class="sarmal iletisim">
+  <figure data-r><img src="img/harita.jpg" alt="Ahşap masada vaziyet planı ve pusula" loading="lazy" data-p="0.1"></figure>
+  <form class="form demo-form" novalidate data-r>
+    <span class="etk">Arsanızı değerleyelim</span>
+    <h2 class="li" style="font-size:clamp(32px,3.4vw,50px)">Ada ve parseli yazın, <i>gerisini</i> biz araştıralım.</h2>
+    <div class="iki"><label>Ada<input inputmode="numeric" placeholder="124"></label><label>Parsel<input inputmode="numeric" placeholder="7"></label></div>
+    <div class="iki"><label>İlçe<select><option>Pamukkale</option><option>Merkezefendi</option><option>Sarayköy</option><option>Çal</option><option>Honaz</option><option>Diğer</option></select></label><label>Talep<select><option>Satmak istiyorum</option><option>Almak istiyorum</option><option>Değer öğrenmek</option></select></label></div>
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <button class="btn" type="submit" style="justify-self:start">Gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><b>Toprak Arsa &amp; Yatırım</b>Denizli ve çevresinde arsa, tarla, bağ, zeytinlik. <br><span data-acik>Çalışma saatleri</span></div>
+    <div><b>Ofis</b>Örnek Mh. 0000 Sk. No: 0<br>Pamukkale / Denizli</div>
+    <div><b>Saatler</b>Pzt – Cmt 09:00 – 18:30<br>Saha ziyaretleri randevuyla</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <div class="yasal">
+    <p>Yetki belge no: 0000000 (temsilidir). Gerçek sitede Taşınmaz Ticareti Hakkında Yönetmelik gereği yetki belgesi numarası ve ilan bilgileri eksiksiz yer alır. Sitedeki bilgiler yatırım tavsiyesi değildir.</p>
+    <p>Bu site bir örnek çalışmadır. Toprak Arsa &amp; Yatırım hayali bir işletmedir; parseller, fiyatlar ve imar bilgileri temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</div></footer>
+
+<script>
+window.SAAT={1:[9,18.5],2:[9,18.5],3:[9,18.5],4:[9,18.5],5:[9,18.5],6:[9,18.5]};
+(function(){var u=document.getElementById("ust"),g=document.querySelector(".giris");function k(){u.classList.toggle("dolu",g.getBoundingClientRect().bottom<70)}addEventListener("scroll",k,{passive:true});addEventListener("load",k);setInterval(k,400);k()})();
+// portföy filtresi
+(function(){var f=document.getElementById("filtre");f.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;f.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+  document.querySelectorAll(".ilan").forEach(function(x){x.hidden=!(b.dataset.f==="*"||x.dataset.f===b.dataset.f)})})})();
+// kontrol listesi
+(function(){var c=[].slice.call(document.querySelectorAll("#kontrol-liste input"));function yaz(){var n=c.filter(function(x){return x.checked}).length;document.getElementById("k-bar").style.width=n/c.length*100+"%";document.getElementById("k-say").textContent=n+" / "+c.length+" kontrol"+(n===c.length?" · hazırsınız ✓":"")}c.forEach(function(x){x.addEventListener("change",yaz)})})();
+// tapu masrafı
+(function(){var $=function(i){return document.getElementById(i)},tl=function(x){return Math.round(x).toLocaleString("tr-TR")+" ₺"};
+  function yaz(){var b=Math.max(0,+$("t-bedel").value||0),h=b*($("t-kim").value==="alici"?.04:.02),d=b?2150:0,hz=b*(+$("t-hiz").value/100)*1.2;
+    $("t-1").textContent=tl(b);$("t-2").textContent=tl(h);$("t-3").textContent=tl(d);$("t-4").textContent=tl(hz);$("t-top").textContent=tl(b+h+d+hz)}
+  ["t-bedel","t-kim","t-hiz"].forEach(function(i){$(i).addEventListener("input",yaz)});yaz()})();
+window.SAHNE=function(gsap){
+  var P=[].slice.call(document.querySelectorAll("#parseller polygon"));
+  P.forEach(function(p){var L=p.getTotalLength?p.getTotalLength():400;gsap.set(p,{strokeDasharray:L,strokeDashoffset:L})});
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.fromTo("#hava-img",{scale:1},{scale:1.35,transformOrigin:"38% 82%",duration:3,ease:"power1.inOut"},0)
+    .to("#sahne-bas",{y:-40,opacity:0,duration:.8},.4)
+    .to(P,{strokeDashoffset:0,duration:.8,stagger:.08,ease:"power1.inOut"},.6)
+    .to("#parseller",{scale:1.35,transformOrigin:"38% 82%",duration:3,ease:"power1.inOut"},0)
+    .to("#secili",{fill:"rgba(255,179,122,.35)",duration:.5},2)
+    .to(P.filter(function(p){return p.id!=="secili"}),{opacity:.35,duration:.5},2)
+    .fromTo("#bilgi-kart",{opacity:0,y:20},{opacity:1,y:0,duration:.6},2.4)
+    .to({},{duration:.8});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("bilgi-kart").style.opacity=1;document.getElementById("secili").style.fill="rgba(255,179,122,.35)"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

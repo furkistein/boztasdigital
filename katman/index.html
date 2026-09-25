@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KATMAN · Smash Burger · Denizli</title>
+<meta name="description" content="KATMAN Smash Burger: döküm sacda 230°C'de basılmış çift köfte, her sabah fırından brioche. Menü, kendi burgerini yap, paket servis ve rezervasyon. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0E0C0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-burger.webp">
+<style>
+:root{
+  --kara:#0E0C0B;--kara2:#171412;--kara3:#221D1A;--krem:#F3EDE4;--soluk:#A89E93;--cizgi:rgba(243,237,228,.12);
+  --ates:#FF4D1F;--hardal:#F2B33D;--r:18px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--kara);color:var(--krem);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.anton{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.005em;line-height:.92;text-transform:uppercase}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ates{color:var(--ates)}
+/* film greni */
+.gren{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:gren 1s steps(6) infinite}
+@keyframes gren{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-2%,4%)}80%{transform:translate(5%,-2%)}100%{transform:translate(0,0)}}
+/* yükleniyor */
+.yukleme{position:fixed;inset:0;z-index:100;background:var(--kara);display:grid;place-items:center}
+.yukleme .anton{font-size:clamp(64px,14vw,180px);color:var(--krem)}
+.yukleme .yuzde{position:absolute;right:28px;bottom:24px;font-size:clamp(40px,8vw,96px)}
+.yukleme .cubuk{position:absolute;left:0;bottom:0;height:3px;background:var(--ates);width:0}
+/* üst menü */
+header{position:fixed;left:0;right:0;top:0;z-index:80;mix-blend-mode:difference}
+.ust{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-size:30px;color:#fff}
+nav{display:none;gap:30px;color:#fff}
+nav a{position:relative;padding:4px 0}
+nav a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:#fff;transition:right .35s}
+nav a:hover:after{right:0}
+.siparis{mix-blend-mode:normal}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ates);color:#fff;border:0;border-radius:999px;padding:13px 22px;font:600 15px Inter,sans-serif;cursor:pointer;transition:transform .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:#ff6a42}
+.btn.cizgi{background:transparent;border:1px solid var(--cizgi);color:var(--krem)}
+.btn.cizgi:hover{border-color:var(--krem)}
+.ust-sag{position:fixed;right:20px;top:15px;z-index:81}
+/* ============ 01: HİKÂYE (sabitlenen sahne) ============ */
+.hikaye{position:relative;height:420vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
+  background:radial-gradient(ellipse 60% 55% at 50% 58%,#2a1a12 0%,var(--kara) 70%)}
+.dev-yazi{position:absolute;left:0;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:34vw;color:transparent;
+  -webkit-text-stroke:1px rgba(243,237,228,.1);pointer-events:none;will-change:transform}
+.kose{position:absolute;z-index:5;color:var(--soluk)}
+.kose.sol-ust{left:24px;top:92px}.kose.sag-ust{right:24px;top:92px;text-align:right}
+.kose.sol-alt{left:24px;bottom:26px}.kose.sag-alt{right:24px;bottom:26px;text-align:right}
+.derece{font-family:Anton,sans-serif;font-size:44px;color:var(--krem);line-height:1}
+.ilerle{position:absolute;left:24px;right:24px;bottom:0;height:2px;background:var(--cizgi);z-index:5}
+.ilerle i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ates)}
+.baslik-blok{position:absolute;left:0;right:0;top:12vh;text-align:center;z-index:4}
+.baslik-blok h1{font-size:clamp(56px,11vw,168px)}
+.baslik-blok p{color:var(--soluk);margin-top:14px;font-size:18px}
+.son-blok{position:absolute;left:0;right:0;top:13vh;text-align:center;z-index:4;opacity:0}
+.son-blok h2{font-size:clamp(40px,6.4vw,96px)}
+.yigin{position:absolute;inset:0;z-index:3;pointer-events:none}
+.yigin .kat{position:absolute;left:50%;top:0;margin:0;right:auto}
+.butun{position:absolute;left:50%;bottom:6vh;height:min(60vh,46vw);width:auto;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 40px 50px rgba(0,0,0,.6));will-change:transform,opacity}
+.kat{position:absolute;left:0;right:0;margin:0 auto;bottom:0;will-change:transform;filter:drop-shadow(0 24px 30px rgba(0,0,0,.55))}
+.etiket{position:absolute;z-index:6;width:min(300px,34vw);opacity:0;pointer-events:none}
+.etiket .no{color:var(--ates)}
+.etiket h3{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(22px,2.4vw,34px);text-transform:uppercase;line-height:1;margin:6px 0}
+.etiket p{color:var(--soluk);font-size:14.5px;line-height:1.5}
+.etiket:before{content:"";position:absolute;top:22px;width:60px;height:1px;background:var(--ates)}
+.etiket.sol{text-align:right}.etiket.sol:before{right:-74px}
+.etiket.sag:before{left:-74px}
+/* ============ 02: SAC ============ */
+.sac{position:relative;height:260vh}
+.sac-sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;align-items:end}
+.sac-sahne img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+.sac-sahne:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,12,11,.92) 8%,rgba(14,12,11,.2) 55%,rgba(14,12,11,.55))}
+.sac-ic{position:relative;z-index:2;padding-bottom:9vh;display:grid;gap:30px}
+.satir{font-size:clamp(46px,8.5vw,128px);display:block;overflow:hidden}
+.satir span{display:block}
+.gosterge{display:flex;align-items:flex-end;gap:18px}
+.gosterge b{font-family:Anton,sans-serif;font-weight:400;font-size:clamp(90px,16vw,230px);line-height:.8;color:var(--ates)}
+.gosterge .olcek{width:min(360px,60vw);height:10px;border-radius:10px;background:rgba(255,255,255,.12);overflow:hidden;margin-bottom:14px}
+.gosterge .olcek i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--hardal),var(--ates))}
+/* ============ 03: MENÜ ============ */
+section{position:relative}
+.bolum-bas{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.bolum-bas h2{font-size:clamp(54px,9vw,136px)}
+.bolum-bas p{color:var(--soluk);max-width:40ch}
+.menu{padding:120px 0 60px}
+.raf{display:grid;gap:18px}
+.urun{position:relative;background:var(--kara2);border:1px solid var(--cizgi);border-radius:26px;padding:24px 24px 26px;overflow:hidden;min-height:470px;display:flex;flex-direction:column;justify-content:flex-end}
+.urun:before{content:"";position:absolute;left:50%;top:34%;width:70%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(255,77,31,.28),transparent 65%);transition:opacity .4s;opacity:.6}
+.urun:hover:before{opacity:1}
+.urun img{position:absolute;left:50%;top:22px;width:60%;transform:translateX(-50%);transition:transform .6s cubic-bezier(.2,.7,.2,1);filter:drop-shadow(0 30px 30px rgba(0,0,0,.6))}
+.urun:hover img{transform:translateX(-50%) translateY(-10px) rotate(-3deg) scale(1.04)}
+.urun .no{color:var(--soluk)}
+.urun h3{font-family:Anton,sans-serif;font-weight:400;font-size:38px;text-transform:uppercase;line-height:1;margin-top:8px}
+.urun p{color:var(--soluk);font-size:14.5px;margin-top:6px}
+.urun .alt{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.urun .fiyat{font-family:Anton,sans-serif;font-size:30px;color:var(--hardal)}
+.rozet{position:absolute;right:18px;top:18px;background:var(--ates);color:#fff;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;z-index:2}
+/* ============ 04: YAP ============ */
+.yap{padding:120px 0}
+.yap-izgara{display:grid;gap:30px;align-items:center}
+.secim h4{margin:26px 0 10px}
+.cipler{display:flex;flex-wrap:wrap;gap:8px}
+.cip{background:var(--kara2);border:1px solid var(--cizgi);color:var(--krem);border-radius:999px;padding:10px 16px;font:500 14.5px Inter,sans-serif;cursor:pointer;transition:all .2s}
+.cip small{color:var(--soluk);margin-left:6px}
+.cip[aria-pressed=true]{background:var(--krem);color:var(--kara);border-color:var(--krem)}
+.cip[aria-pressed=true] small{color:#6b6259}
+.sayac{display:inline-flex;align-items:center;gap:6px;background:var(--kara2);border:1px solid var(--cizgi);border-radius:999px;padding:4px}
+.sayac button{width:40px;height:40px;border-radius:50%;border:0;background:var(--kara3);color:var(--krem);font-size:20px;cursor:pointer}
+.sayac output{min-width:90px;text-align:center;font-weight:600}
+.onizleme{position:relative;height:min(78vh,640px);border-radius:30px;background:radial-gradient(ellipse at 50% 70%,#2b1b12,var(--kara2) 70%);border:1px solid var(--cizgi);overflow:hidden}
+.onizleme .yigin2{position:absolute;left:50%;bottom:15%;width:min(50%,330px);transform:translateX(-50%)}
+.onizleme .kat{filter:drop-shadow(0 18px 22px rgba(0,0,0,.5))}
+.toplam{position:absolute;left:22px;right:22px;top:20px;display:flex;justify-content:space-between;align-items:flex-start}
+.toplam b{font-family:Anton,sans-serif;font-weight:400;font-size:52px;line-height:1;color:var(--hardal)}
+.masa{position:absolute;left:0;right:0;bottom:0;height:12%;background:linear-gradient(0deg,#0b0908,transparent)}
+/* ============ 05: KUTU ============ */
+.kutu{padding:60px 0 120px}
+.kutu-izgara{display:grid;gap:24px;align-items:stretch}
+.kutu-foto{border-radius:28px;overflow:hidden;min-height:340px;position:relative}
+.kutu-foto img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);will-change:transform}
+.kutu-bilgi{background:var(--kara2);border:1px solid var(--cizgi);border-radius:28px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.kutu-bilgi h2{font-size:clamp(52px,7vw,96px)}
+.bolge{display:flex;flex-wrap:wrap;gap:8px}
+.bolge span{border:1px solid var(--cizgi);border-radius:999px;padding:6px 12px;font-size:13.5px;color:var(--soluk)}
+.tel{font-family:Anton,sans-serif;font-size:clamp(36px,4.6vw,56px)}
+/* ============ 06: MEKÂN / REZERVASYON ============ */
+.mekan{position:relative;min-height:100vh;display:grid;align-items:center;padding:120px 0;overflow:hidden}
+.mekan>img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover;will-change:transform}
+.mekan:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,12,11,.95) 20%,rgba(14,12,11,.45))}
+.mekan .sarmal{position:relative;z-index:2;display:grid;gap:36px;align-items:center}
+.mekan h2{font-size:clamp(56px,9vw,140px)}
+.acik{display:inline-flex;align-items:center;gap:10px;color:var(--soluk)}
+.acik:before{content:"";width:9px;height:9px;border-radius:50%;background:#6b6259}
+.acik.evet:before{background:#39d98a;box-shadow:0 0 0 5px rgba(57,217,138,.18)}
+.rez{background:rgba(23,20,18,.82);backdrop-filter:blur(16px);border:1px solid var(--cizgi);border-radius:28px;padding:28px;display:grid;gap:14px}
+.rez label{display:grid;gap:6px;font-size:13px;color:var(--soluk)}
+.rez input,.rez select{font:inherit;font-size:15px;padding:13px 14px;border-radius:14px;border:1px solid var(--cizgi);background:rgba(0,0,0,.35);color:var(--krem);width:100%}
+.rez select option{color:#111}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rez .btn{justify-content:center;width:100%;padding:15px}
+#rezMesaj{font-size:14px;color:var(--hardal);min-height:1.2em}
+.saatler{display:grid;gap:4px;margin-top:22px;color:var(--soluk);font-size:15px}
+/* ============ ALT ============ */
+footer{padding:80px 0 40px;border-top:1px solid var(--cizgi);overflow:hidden}
+.dev-alt{font-size:26vw;line-height:.8;color:var(--kara3);white-space:nowrap;margin:0 -2vw 30px}
+.alt-izgara{display:grid;gap:24px;color:var(--soluk);font-size:15px}
+.alt-izgara b{display:block;color:var(--krem);margin-bottom:6px}
+.demo-not{margin-top:36px;border:1px dashed var(--cizgi);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--soluk)}
+@media (min-width:900px){
+  nav{display:flex}
+  .raf{grid-template-columns:repeat(3,1fr)}
+  .raf .urun:nth-child(1){grid-column:span 2}
+  .raf .urun:nth-child(1) img{width:46%;left:64%;top:18px}
+  .raf .urun:nth-child(1) p,.raf .urun:nth-child(1) h3{max-width:40%}
+  .yap-izgara{grid-template-columns:1fr 1.1fr}
+  .kutu-izgara{grid-template-columns:1.3fr 1fr}
+  .mekan .sarmal{grid-template-columns:1.1fr .9fr}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:899px){
+  .butun{height:min(46vh,86vw)}
+  .etiket{width:25vw}
+  .etiket p{display:none}
+  .etiket:before{display:none}
+  .etiket h3{font-size:15px;line-height:1.05}
+  .kose.sol-ust,.kose.sag-ust{display:none}
+  .baslik-blok{top:14vh}.son-blok{top:14vh}
+  .kose.sag-ust .derece{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){.gren{animation:none}}
+</style>
+</head>
+<body>
+<div class="gren" aria-hidden="true"></div>
+<div class="yukleme" aria-hidden="true"><span class="anton">KATMAN</span><span class="anton yuzde">0</span><i class="cubuk"></i></div>
+
+<header><div class="sarmal ust">
+  <a class="logo anton" href="#">KATMAN</a>
+  <nav class="mono"><a href="#hikaye">Hikâye</a><a href="#menu">Menü</a><a href="#yap">Kendin yap</a><a href="#kutu">Paket</a><a href="#rezervasyon">Rezervasyon</a></nav>
+  <span style="width:140px"></span>
+</div></header>
+<a class="btn ust-sag siparis" href="#kutu">Sipariş ver</a>
+
+<!-- 01 HİKÂYE -->
+<section class="hikaye" id="hikaye">
+  <div class="sahne">
+    <div class="dev-yazi anton" aria-hidden="true">KATMAN KATMAN KATMAN</div>
+    <div class="kose sol-ust mono">// 01 — Katman katman<br><span style="color:var(--krem)">Smash burger · Denizli</span></div>
+    <div class="kose sag-ust mono">Sac sıcaklığı<div class="derece"><span id="derece">230</span>°C</div></div>
+    <div class="kose sol-alt mono">Aşağı kaydır ↓</div>
+    <div class="kose sag-alt mono" id="katSayac">06 katman</div>
+    <div class="ilerle"><i id="ilerle"></i></div>
+    <div class="baslik-blok"><h1 class="anton">Çift <span class="ates">smash</span></h1><p>Sacda basılmış iki köfte. Altı katman. Tek ısırık.</p></div>
+    <img class="butun" id="butun" src="img/hero-burger.webp" alt="KATMAN çift smash burger">
+    <div class="yigin" id="yigin"></div>
+    <div class="son-blok"><h2 class="anton">Katman katman <span class="ates">lezzet.</span></h2></div>
+  </div>
+</section>
+
+<!-- 02 SAC -->
+<section class="sac" id="sac">
+  <div class="sac-sahne">
+    <img src="img/sac.jpg" alt="Döküm sacda basılan iki smash köfte ve yükselen duman" id="sacFoto">
+    <div class="sarmal sac-ic">
+      <div class="mono ates">// 02 — Sac</div>
+      <div class="gosterge"><b><span id="sicaklik">0</span>°</b><div><div class="mono" style="color:var(--soluk);margin-bottom:10px">Döküm sac sıcaklığı</div><div class="olcek"><i id="olcek"></i></div></div></div>
+      <div class="anton"><span class="satir"><span>90 saniye bas.</span></span><span class="satir"><span class="ates">Çevir.</span></span><span class="satir"><span>Kenarlar çıtır.</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 MENÜ -->
+<section class="menu" id="menu"><div class="sarmal">
+  <div class="bolum-bas"><div><div class="mono ates">// 03 — Menü</div><h2 class="anton">Burgerler</h2></div><p>Köfteler her sabah dana döş ve kaburgadan çekilir. Ekmekler 06:00'da fırından çıkar.</p></div>
+  <div class="raf">
+    <article class="urun"><span class="rozet">En çok satan</span><img src="img/hero-burger.webp" alt="Çift smash burger" loading="lazy"><span class="mono no">01</span><h3>Çift smash</h3><p>2 × 90 g köfte, çift cheddar, karamelize soğan, turşu, KATMAN sos.</p><div class="alt"><span class="fiyat">390 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+    <article class="urun"><img src="img/m-klasik.webp" alt="Klasik cheeseburger" loading="lazy"><span class="mono no">02</span><h3>Klasik</h3><p>Tek köfte, cheddar, turşu, ketçap.</p><div class="alt"><span class="fiyat">290 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+    <article class="urun"><img src="img/m-truf.webp" alt="Trüflü mantarlı burger" loading="lazy"><span class="mono no">03</span><h3>Trüf mantar</h3><p>Sote mantar, İsviçre peyniri, trüf mayonez.</p><div class="alt"><span class="fiyat">420 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+    <article class="urun"><img src="img/m-tavuk.webp" alt="Çıtır tavuk burger" loading="lazy"><span class="mono no">04</span><h3>Çıtır tavuk</h3><p>Çıtır tavuk göğsü, lahana salatası, acı mayo.</p><div class="alt"><span class="fiyat">310 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+    <article class="urun"><img src="img/m-patates.webp" alt="Patates kızartması" loading="lazy"><span class="mono no">05</span><h3>Patates</h3><p>Çift kızartma, deniz tuzu. Yanında KATMAN sos.</p><div class="alt"><span class="fiyat">110 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+    <article class="urun"><img src="img/m-shake.webp" alt="Çikolatalı milkshake" loading="lazy"><span class="mono no">06</span><h3>Milkshake</h3><p>Belçika çikolatası, krem şanti.</p><div class="alt"><span class="fiyat">150 ₺</span><a class="btn cizgi" href="#kutu">Sipariş</a></div></article>
+  </div>
+  <p class="mono" style="color:var(--soluk);margin-top:20px">Fiyatlar örnektir</p>
+</div></section>
+
+<!-- 04 KENDİN YAP -->
+<section class="yap" id="yap"><div class="sarmal">
+  <div class="bolum-bas"><div><div class="mono ates">// 04 — Kendin yap</div><h2 class="anton">Burgerini<br>kur.</h2></div><p>Katmanları seç, burgerin gözünün önünde yükselsin. Siparişte bu kombinasyonu söylemen yeterli.</p></div>
+  <div class="yap-izgara">
+    <div class="secim">
+      <h4 class="mono">Köfte</h4>
+      <div class="sayac"><button type="button" data-k="-1" aria-label="Köfte azalt">−</button><output id="kofteSay">2 köfte</output><button type="button" data-k="1" aria-label="Köfte artır">+</button></div>
+      <h4 class="mono">Ekstralar</h4>
+      <div class="cipler" id="ekstra">
+        <button class="cip" type="button" data-e="sogan" aria-pressed="true">Karamelize soğan<small>+25 ₺</small></button>
+        <button class="cip" type="button" data-e="tursu" aria-pressed="true">Turşu<small>+15 ₺</small></button>
+        <button class="cip" type="button" data-e="marul" aria-pressed="false">Marul<small>+10 ₺</small></button>
+        <button class="cip" type="button" data-e="domates" aria-pressed="false">Domates<small>+15 ₺</small></button>
+      </div>
+      <h4 class="mono">Yanına</h4>
+      <div class="cipler" id="yan">
+        <button class="cip" type="button" data-y="110" aria-pressed="false">Patates<small>+110 ₺</small></button>
+        <button class="cip" type="button" data-y="150" aria-pressed="false">Milkshake<small>+150 ₺</small></button>
+      </div>
+      <p style="margin-top:28px"><a class="btn" href="#kutu">Bu burgeri sipariş et →</a></p>
+    </div>
+    <div class="onizleme" aria-live="polite">
+      <div class="toplam"><div><div class="mono" style="color:var(--soluk)">Toplam</div><b id="toplam">390 ₺</b></div><div class="mono" id="yukseklik" style="color:var(--soluk);text-align:right">6 katman</div></div>
+      <div class="yigin2" id="yigin2"></div>
+      <div class="masa"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 05 KUTU -->
+<section class="kutu" id="kutu"><div class="sarmal">
+  <div class="kutu-izgara">
+    <div class="kutu-foto"><img src="img/kutu.jpg" alt="Kraft kutuda burger ve patates" loading="lazy" id="kutuFoto"></div>
+    <div class="kutu-bilgi">
+      <div><div class="mono ates">// 05 — Paket servis</div><h2 class="anton" style="margin-top:12px">Kutuda<br>da sıcak.</h2>
+        <p style="color:var(--soluk);margin-top:16px">Kendi kuryemizle, 30 dakika içinde. Köfteler kutuya girmeden 60 saniye önce sacdan iner.</p></div>
+      <div class="bolge"><span>Merkezefendi</span><span>Pamukkale</span><span>Kınıklı</span><span>Çamlık</span><span>Servergazi</span></div>
+      <div><a class="tel" href="tel:+902580000000">0258 000 00 00</a><div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><a class="btn" href="https://wa.me/905000000000">WhatsApp'tan sipariş</a><a class="btn cizgi" href="tel:+902580000000">Ara</a></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 06 MEKÂN -->
+<section class="mekan" id="rezervasyon">
+  <img src="img/mekan.jpg" alt="KATMAN restoranın iç mekânı, açık mutfak ve sıcak ışıklar" loading="lazy" id="mekanFoto">
+  <div class="sarmal">
+    <div>
+      <div class="mono ates">// 06 — Rezervasyon</div>
+      <h2 class="anton" style="margin-top:12px">Sacın<br>başına gel.</h2>
+      <p style="color:var(--soluk);margin-top:16px;max-width:42ch">Açık mutfağa bakan 12 bar taburesi, 8 masa. Hafta sonu akşamları için rezervasyon öneriyoruz.</p>
+      <div style="margin-top:22px"><span class="acik" id="acik">Çalışma saatleri</span></div>
+      <div class="saatler mono"><span>Salı – Pazar · 12:00 – 23:30</span><span>Pazartesi · Kapalı</span><span>Merkezefendi / Denizli</span></div>
+    </div>
+    <form class="rez" id="rez" novalidate>
+      <div class="iki"><label>Tarih<input type="date" id="tarih"></label><label>Saat<select id="saat"></select></label></div>
+      <label>Kişi sayısı<select id="kisi"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select></label>
+      <label>Ad Soyad<input id="ad" autocomplete="name"></label>
+      <label>Telefon<input id="tel" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+      <button class="btn" type="submit">Masa ayırt</button>
+      <p id="rezMesaj" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer><div class="sarmal">
+  <div class="dev-alt anton" aria-hidden="true">KATMAN</div>
+  <div class="alt-izgara">
+    <div><b class="anton" style="font-size:28px">KATMAN</b>Smash burger. Döküm sac, 230°C, her gün taze köfte.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Salı – Pazar<br>12:00 – 23:30</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://www.google.com/maps/search/?api=1&query=Merkezefendi+Denizli">Yol tarifi →</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. KATMAN hayali bir işletmedir; menü, fiyatlar ve adres temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+/* Katman ayarları: g = genişlik (yığın genişliğine oranla), k = kendinden sonra gelen katmanın ne kadar yukarı oturacağı (yığın genişliğine oranla) */
+var KAT = {
+  "alt-ekmek":{g:.96,k:.2},"marul":{g:1.1,k:.1},"domates":{g:.9,k:.12},
+  "kofte-cheddar":{g:1.06,k:.19},"kofte-cheddar-2":{g:1.06,k:.19},
+  "sogan":{g:.98,k:.09},"tursu":{g:.92,k:.06},"ust-ekmek":{g:1,k:0}
+};
+var BILGI = {
+  "ust-ekmek":["Brioche","Her sabah 06:00'da fırından çıkar, tereyağında kızarır."],
+  "tursu":["Turşu","Ev yapımı dereotlu salatalık turşusu."],
+  "sogan":["Karamelize soğan","40 dakika kısık ateşte, tereyağında."],
+  "kofte-cheddar-2":["Köfte · 2","90 g dana. Sacda 230°C, 90 saniye."],
+  "kofte-cheddar":["Köfte · 1","Erimiş cheddar, çıtır dantel kenarlar."],
+  "alt-ekmek":["Taban","KATMAN sos ile kaplanır, suyunu tutar."]
+};
+var IMG = function(ad){return "img/"+(ad==="kofte-cheddar-2"?"kofte-cheddar":ad)+".webp"};
+var az = matchMedia("(prefers-reduced-motion: reduce)").matches || /statik/.test(location.search);
+
+function yiginKur(kutu, liste, kirp){
+  // katmanları alttan üste diz, her birinin 'oturma' yüksekliğini döndür
+  kutu.innerHTML="";var W=kutu.getBoundingClientRect().width,y=0,out=[];
+  liste.forEach(function(ad,i){
+    var im=new Image();im.src=IMG(ad);im.alt="";im.className="kat";im.dataset.ad=ad;
+    im.style.width=(KAT[ad].g*100)+"%";im.style.bottom=y+"px";im.style.zIndex=i+1;
+    // üst ekmeğin soluk kesik yüzünü gizle, yığına otursun
+    if(kirp&&ad==="ust-ekmek"){im.style.clipPath="inset(0 0 34% 0)";im.style.bottom=(y-.34*.74*KAT[ad].g*W)+"px"}
+    if(ad==="kofte-cheddar-2"){if(window.gsap)gsap.set(im,{scaleX:-1});else im.style.transform="scaleX(-1)"}
+    kutu.appendChild(im);out.push({el:im,ad:ad,y:y});y+=KAT[ad].k*W;
+  });
+  return out;
+}
+
+/* ---------- yükleme ekranı ---------- */
+(function(){
+  var gorseller=["hero-burger","ust-ekmek","kofte-cheddar","kofte-cheddar-2","sogan","tursu","alt-ekmek"].map(IMG).concat(["img/sac.jpg"]);
+  var biten=0,yz=document.querySelector(".yukleme .yuzde"),cb=document.querySelector(".yukleme .cubuk");
+  function ilerle(){biten++;var p=Math.round(biten/gorseller.length*100);yz.textContent=p;cb.style.width=p+"%";if(biten===gorseller.length)bitir()}
+  gorseller.forEach(function(s){var i=new Image();i.onload=i.onerror=ilerle;i.src=s});
+  function bitir(){setTimeout(function(){var y=document.querySelector(".yukleme");if(y)y.remove()},1700);if(window.gsap&&!az){gsap.to(".yukleme",{yPercent:-100,duration:1,ease:"expo.inOut",delay:.2,onComplete:function(){document.querySelector(".yukleme").remove()}})}else document.querySelector(".yukleme").remove()}
+  setTimeout(function(){if(document.querySelector(".yukleme"))bitir()},6000);
+})();
+
+/* ---------- 01: katman katman ---------- */
+var SIRA=["alt-ekmek","kofte-cheddar","kofte-cheddar-2","sogan","tursu","ust-ekmek"];
+var yigin=document.getElementById("yigin"),katlar=yiginKur(yigin,SIRA);
+
+function hikaye(){
+  var S=document.querySelector(".sahne"),H=S.clientHeight,Wv=S.clientWidth,mobil=Wv<900;
+  var n=katlar.length,taban=Math.min(Wv*(mobil?.46:.2),290);
+  var ust=H*(mobil?.2:.21),alt=H*(mobil?.88:.9),bosluk=(alt-ust)/(n-1),merkez=H*(mobil?.7:.62);
+  var tl=gsap.timeline({scrollTrigger:{trigger:".hikaye",start:"top top",end:"bottom bottom",scrub:1,
+    onUpdate:function(st){document.getElementById("ilerle").style.width=(st.progress*100)+"%";
+      document.getElementById("derece").textContent=Math.round(180+st.progress*50)}}});
+  tl.to(".dev-yazi",{xPercent:-45,ease:"none",duration:10},0);
+  tl.to(".baslik-blok",{opacity:0,y:-60,duration:1},.5);
+  tl.to("#butun",{opacity:0,scale:.92,duration:1,ease:"power2.in"},1);
+  document.querySelectorAll(".etiket").forEach(function(e){e.remove()});
+  // katmanlar: üstten alta sırala (dizi alttan üste)
+  katlar.forEach(function(k,i){
+    var ustten=n-1-i, yDag=ust+ustten*bosluk, yBir=merkez-(i-(n-1)/2)*taban*.075, gen=taban*KAT[k.ad].g;
+    gsap.set(k.el,{width:gen,xPercent:-50,yPercent:-50,y:yBir,opacity:0,scaleX:k.ad==="kofte-cheddar-2"?-1:1});
+    tl.to(k.el,{opacity:1,duration:.4},1.2);
+    tl.to(k.el,{y:yDag,duration:2.6,ease:"power3.inOut"},1.3+ustten*.07);
+    var b=BILGI[k.ad];if(!b)return;
+    var e=document.createElement("div");e.className="etiket "+(ustten%2?"sol":"sag");
+    e.innerHTML='<span class="mono no">0'+(ustten+1)+'</span><h3>'+b[0]+'</h3><p>'+b[1]+'</p>';
+    S.appendChild(e);
+    e.style.top=(yDag-24)+"px";
+    var kenar=Wv/2+gen/2+(mobil?4:56);
+    if(ustten%2){e.style.right=kenar+"px"}else{e.style.left=kenar+"px"}
+    tl.fromTo(e,{opacity:0,x:ustten%2?-30:30},{opacity:1,x:0,duration:.9},3.3+ustten*.28);
+    tl.to(e,{opacity:0,duration:.7},7.6);
+  });
+  tl.to({},{duration:.8},6.8);
+  katlar.forEach(function(k,i){var ustten=n-1-i;
+    tl.to(k.el,{y:merkez-(i-(n-1)/2)*taban*.075,duration:1.8,ease:"power3.inOut"},7.9+(n-1-ustten)*.05);
+    tl.to(k.el,{opacity:0,duration:.5},9.4)});
+  tl.to("#butun",{opacity:1,scale:1,duration:.8,ease:"power2.out"},9.3);
+  tl.to(".son-blok",{opacity:1,duration:1},9.5);
+  return tl;
+}
+
+/* ---------- 02: sac ---------- */
+function sac(){
+  var t=gsap.timeline({scrollTrigger:{trigger:".sac",start:"top top",end:"bottom bottom",scrub:1}});
+  t.fromTo("#sacFoto",{scale:1.25},{scale:1,ease:"none",duration:10},0);
+  var o={v:0};t.to(o,{v:230,duration:5,ease:"power1.in",onUpdate:function(){document.getElementById("sicaklik").textContent=Math.round(o.v);document.getElementById("olcek").style.width=(o.v/230*100)+"%"}},0);
+  gsap.utils.toArray(".satir span").forEach(function(s,i){t.from(s,{yPercent:110,duration:1.2,ease:"power3.out"},2+i*1.2)});
+}
+
+/* ---------- 03: menü + paralaks ---------- */
+function menu(){
+  gsap.utils.toArray(".urun").forEach(function(u,i){
+    gsap.from(u,{y:80,opacity:0,duration:1,ease:"power3.out",scrollTrigger:{trigger:u,start:"top 88%"},delay:(i%3)*.08});
+  });
+  gsap.utils.toArray(".bolum-bas h2").forEach(function(h){gsap.from(h,{yPercent:40,opacity:0,duration:1.1,ease:"power3.out",scrollTrigger:{trigger:h,start:"top 85%"}})});
+  gsap.fromTo("#kutuFoto",{scale:1.25},{scale:1,ease:"none",scrollTrigger:{trigger:".kutu",start:"top bottom",end:"bottom top",scrub:true}});
+  gsap.fromTo("#mekanFoto",{yPercent:-8},{yPercent:8,ease:"none",scrollTrigger:{trigger:".mekan",start:"top bottom",end:"bottom top",scrub:true}});
+  gsap.to(".dev-alt",{xPercent:-12,ease:"none",scrollTrigger:{trigger:"footer",start:"top bottom",end:"bottom bottom",scrub:true}});
+}
+
+/* ---------- 04: kendin yap ---------- */
+var kofte=2,ekstra={sogan:true,tursu:true,marul:false,domates:false},yan=0,yigin2=document.getElementById("yigin2"),oncekiSira=[];
+function yapGuncelle(animasyon){
+  var sira=["alt-ekmek"];if(ekstra.marul)sira.push("marul");if(ekstra.domates)sira.push("domates");
+  for(var i=0;i<kofte;i++)sira.push(i%2?"kofte-cheddar-2":"kofte-cheddar");
+  if(ekstra.sogan)sira.push("sogan");if(ekstra.tursu)sira.push("tursu");sira.push("ust-ekmek");
+  var k=yiginKur(yigin2,sira,true);
+  if(animasyon&&window.gsap&&!az){k.forEach(function(x,i){gsap.from(x.el,{y:-40-i*6,opacity:0,duration:.55,ease:"back.out(1.6)",delay:i*.04})})}
+  var fiyat=120+kofte*120+(ekstra.sogan?25:0)+(ekstra.tursu?15:0)+(ekstra.marul?10:0)+(ekstra.domates?15:0)+yan;
+  document.getElementById("toplam").textContent=fiyat.toLocaleString("tr-TR")+" ₺";
+  document.getElementById("yukseklik").textContent=sira.length+" katman";
+  document.getElementById("kofteSay").textContent=kofte+" köfte";
+}
+document.querySelector(".sayac").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;kofte=Math.min(3,Math.max(1,kofte+ +b.dataset.k));yapGuncelle(true)});
+document.getElementById("ekstra").addEventListener("click",function(e){var b=e.target.closest(".cip");if(!b)return;var d=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",d);ekstra[b.dataset.e]=d;yapGuncelle(true)});
+document.getElementById("yan").addEventListener("click",function(e){var b=e.target.closest(".cip");if(!b)return;var d=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",d);yan+=(d?1:-1)*(+b.dataset.y);yapGuncelle(false)});
+yapGuncelle(false);
+
+/* ---------- 06: açık mı + rezervasyon ---------- */
+(function(){
+  var d=new Date(),g=d.getDay(),h=d.getHours()+d.getMinutes()/60,acik=g!==1&&h>=12&&h<23.5,el=document.getElementById("acik");
+  el.classList.toggle("evet",acik);el.textContent=acik?"Şu an açık · 23:30'a kadar":(g===1?"Bugün kapalı · Yarın 12:00'de":"Şu an kapalı · 12:00'de açılıyor");
+  var t=document.getElementById("tarih"),iso=function(x){return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0")};
+  t.min=iso(d);t.value=iso(d);var s="";for(var i=12;i<=22;i++){s+="<option>"+i+":00</option><option>"+i+":30</option>"}
+  document.getElementById("saat").innerHTML=s;document.getElementById("saat").value="19:30";
+  document.getElementById("rez").addEventListener("submit",function(e){e.preventDefault();var m=document.getElementById("rezMesaj");
+    if(new Date(t.value).getDay()===1){m.textContent="Pazartesi kapalıyız, lütfen başka bir gün seçin.";return}
+    if(!document.getElementById("ad").value.trim()||document.getElementById("tel").value.replace(/\D/g,"").length<10){m.textContent="Lütfen adınızı ve telefon numaranızı yazın.";return}
+    m.textContent="Bu bir örnek sitedir, rezervasyon oluşturulmadı. Gerçek sitede talep restoranın WhatsApp'ına düşer.";});
+})();
+
+/* ---------- başlat ---------- */
+if(window.gsap&&window.ScrollTrigger&&!az){
+  gsap.registerPlugin(ScrollTrigger);
+  if(window.Lenis){var lenis=new Lenis({lerp:.09});lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var h=a.getAttribute("href");if(h.length>1){e.preventDefault();lenis.scrollTo(h,{offset:0,duration:1.4})}})})}
+  var tlH;
+  function kur(){if(tlH){tlH.scrollTrigger.kill();tlH.kill()}katlar.forEach(function(k){gsap.set(k.el,{y:0})});tlH=hikaye()}
+  window.addEventListener("load",function(){kur();sac();menu();ScrollTrigger.refresh();
+    // test kancası: ?test=0.45 -> hikâye animasyonunu o ana götür (ekran görüntüsü kontrolü için)
+    var m=location.search.match(/test=([\d.]+)/);if(m){var p=+m[1];document.querySelector(".yukleme")&&document.querySelector(".yukleme").remove();
+      tlH.scrollTrigger.kill();tlH.progress(p);}});
+  var zam;addEventListener("resize",function(){clearTimeout(zam);zam=setTimeout(function(){katlar=yiginKur(yigin,SIRA);kur();ScrollTrigger.refresh()},250)});
+}else{
+  document.querySelector(".hikaye").style.height="auto";document.querySelector(".sac").style.height="auto";
+  document.getElementById("yigin").style.display="none";
+  document.getElementById("sicaklik").textContent="230";document.getElementById("olcek").style.width="100%";
+  document.querySelector(".sahne").style.position="relative";document.querySelector(".sac-sahne").style.position="relative";
+}
+</script>
+</body>
+</html>

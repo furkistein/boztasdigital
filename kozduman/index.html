@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Köz & Duman Ocakbaşı · Denizli</title>
+<meta name="description" content="Köz & Duman Ocakbaşı: meşe kömüründe Adana, Urfa, kuzu şiş ve közde mezeler. Menü, rezervasyon ve paket servis. Merkezefendi, Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0E0907">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--kara:#0E0907;--kara2:#1A120E;--kara3:#241913;--koz:#FF6A1A;--koz2:#FFB15C;--kan:#B8261A;--kul:#E9DED3;--soluk:#A0928A;--cizgi:rgba(233,222,211,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kara);color:var(--kul);font-family:Rubik,system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1260px,100% - 40px);margin-inline:auto}
+.bri{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.035em;line-height:.9}
+.koz{color:var(--koz)}
+.etk{font-size:12.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--koz2)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.05em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:12px;background:var(--koz);color:#1a0d05;font:500 15.5px Rubik,sans-serif;border:0;cursor:pointer;transition:transform .3s,box-shadow .3s;box-shadow:0 10px 30px -8px rgba(255,106,26,.55)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px -8px rgba(255,106,26,.75)}
+.btn.bos{background:transparent;color:var(--kul);box-shadow:none;border:1px solid var(--cizgi)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--kara);display:grid;place-items:center}
+.perde .bri{font-size:clamp(48px,9vw,120px);color:var(--koz)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;transition:background .4s}
+header.dolu{background:rgba(14,9,7,.86);backdrop-filter:blur(12px)}
+.ust{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px;letter-spacing:-.03em}
+.logo span{color:var(--koz)}
+nav{display:none;gap:28px;font-size:15px;color:var(--soluk)}
+nav a:hover{color:var(--kul)}
+/* giriş */
+.giris{position:relative;height:230vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(ellipse 70% 45% at 50% 100%,rgba(255,106,26,.45),rgba(184,38,26,.15) 45%,transparent 75%),var(--kara)}
+.sahne canvas{position:absolute;inset:0;width:100%;height:100%}
+.baslik{position:relative;z-index:5;text-align:center;margin-top:-10vh;text-shadow:0 6px 30px rgba(0,0,0,.65)}
+.baslik h1{font-size:clamp(70px,15vw,240px)}
+.baslik p{max-width:44ch;margin:14px auto 0;color:#cbbdb3;font-size:18px}
+.sis{position:absolute;z-index:4;left:50%;top:62%;width:min(120vw,1500px);transform:translate(-50%,-50%);filter:drop-shadow(0 30px 40px rgba(0,0,0,.6)) drop-shadow(0 0 40px rgba(255,106,26,.25));will-change:transform}
+.sahne-alt{position:absolute;z-index:5;left:0;right:0;bottom:5vh}
+.sahne-alt .sarmal{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-size:14.5px}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#6d5d53}
+[data-acik].evet:before{background:#7be07b;box-shadow:0 0 0 4px rgba(123,224,123,.2)}
+/* ocak */
+.ocak{position:relative;min-height:100vh;display:grid;align-items:end;overflow:hidden}
+.ocak>img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.ocak:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--kara) 5%,rgba(14,9,7,.2) 50%,rgba(14,9,7,.5))}
+.ocak .sarmal{position:relative;z-index:2;padding-bottom:10vh;display:grid;gap:24px}
+.ocak h2{font-size:clamp(56px,9vw,150px)}
+.olcumler{display:flex;gap:40px;flex-wrap:wrap}
+.olcumler b{display:block;font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(42px,5vw,72px);color:var(--koz);line-height:1}
+.olcumler span{color:var(--soluk);font-size:14px}
+/* menü */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.bas h2{font-size:clamp(56px,8vw,128px)}
+.bas p{color:var(--soluk);max-width:38ch}
+.sekmeler{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}
+.sekmeler button{font:500 15px Rubik;padding:11px 18px;border-radius:10px;border:1px solid var(--cizgi);background:transparent;color:var(--kul);cursor:pointer}
+.sekmeler button[aria-selected=true]{background:var(--koz);color:#1a0d05;border-color:var(--koz)}
+.menu-izgara{display:grid;gap:26px;align-items:start}
+.liste{display:grid}
+.mn{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:18px 0;border-bottom:1px solid var(--cizgi)}
+.mn h3{font-family:"Bricolage Grotesque";font-weight:700;font-size:24px;letter-spacing:-.02em}
+.mn .f{font-family:"Bricolage Grotesque";font-weight:800;font-size:24px;color:var(--koz2)}
+.mn p{color:var(--soluk);font-size:14.5px}
+.acili{font-size:11px;background:var(--kan);color:#fff;padding:2px 8px;border-radius:6px;margin-left:8px;vertical-align:middle}
+.menu-foto{position:relative;border-radius:22px;overflow:hidden;min-height:480px;position:sticky;top:100px}
+.menu-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* meze */
+.meze{position:relative;height:80vh;min-height:480px;overflow:hidden;border-radius:0}
+.meze img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover}
+.meze .yazi{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(14,9,7,.35)}
+.meze h2{font-size:clamp(56px,9vw,150px)}
+/* usta + rezervasyon */
+.usta{display:grid;gap:30px;align-items:center}
+.usta-foto{position:relative;border-radius:22px;overflow:hidden;min-height:460px}
+.usta-foto img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.usta blockquote{font-family:"Bricolage Grotesque";font-weight:700;font-size:clamp(28px,3.4vw,46px);line-height:1.12;letter-spacing:-.02em}
+.rez{background:var(--kara2);border:1px solid var(--cizgi);border-radius:22px;padding:28px;display:grid;gap:12px}
+.rez label{display:grid;gap:6px;font-size:13.5px;color:var(--soluk)}
+.rez input,.rez select{font:inherit;padding:13px 14px;border-radius:10px;border:1px solid var(--cizgi);background:var(--kara3);color:var(--kul);width:100%}
+.rez .btn{justify-content:center}
+.form-mesaj{font-size:14px;color:var(--koz2);min-height:1.2em}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.paket{background:linear-gradient(135deg,var(--kan),var(--koz));color:#fff;border-radius:22px;padding:clamp(26px,4vw,50px);display:grid;gap:18px;align-items:center}
+.paket h2{font-size:clamp(46px,6vw,90px)}
+.paket .tel{font-family:"Bricolage Grotesque";font-weight:800;font-size:clamp(34px,4vw,56px)}
+footer{padding:70px 0 40px;color:var(--soluk);font-size:15px;border-top:1px solid var(--cizgi);margin-top:40px}
+.alt-izgara{display:grid;gap:24px}
+.alt-izgara b{display:block;color:var(--kul);margin-bottom:6px}
+.demo-not{margin-top:30px;padding-top:18px;border-top:1px solid var(--cizgi);font-size:12.5px}
+@media (min-width:920px){
+  nav{display:flex}
+  .menu-izgara{grid-template-columns:1.2fr .8fr}
+  .usta{grid-template-columns:1fr 1fr 1fr}
+  .paket{grid-template-columns:1.2fr .8fr}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){.menu-foto{position:relative;top:0;min-height:320px}.sis{top:66%}}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="bri">KÖZ &amp; DUMAN</span></div>
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#">KÖZ <span>&amp;</span> DUMAN</a>
+  <nav><a href="#ocak">Ocak</a><a href="#menu">Menü</a><a href="#rezervasyon">Rezervasyon</a><a href="#paket">Paket</a></nav>
+  <a class="btn" href="#rezervasyon" style="padding:11px 18px">Masa ayırt</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <canvas id="kivilcim" aria-hidden="true"></canvas>
+    <div class="baslik"><span class="etk">Ocakbaşı · Merkezefendi, Denizli</span><h1 class="bri" style="margin-top:12px" data-bol data-hemen>Közün <span class="koz">dili</span></h1><p>Meşe kömürü, zırhta çekilmiş kuzu ve 40 yıllık ustalık. Ocağın başına oturun, gerisini ateş anlatsın.</p></div>
+    <img class="sis" id="sis" src="img/sis.webp" alt="Közde pişmiş Adana kebap şişi">
+    <div class="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span><a class="btn bos" href="#menu">Menüye bak ↓</a></div></div>
+  </div>
+</section>
+
+<section class="ocak" id="ocak">
+  <img src="img/ocak.jpg" alt="Kor halindeki meşe kömürü üzerinde şişler" loading="lazy" data-p="0.2">
+  <div class="sarmal">
+    <span class="etk">Ocak</span>
+    <h2 class="bri" data-bol>Gazsız. <span class="koz">Hilesiz.</span></h2>
+    <div class="olcumler" data-rg><div><b data-say="400" data-son-ek="°">400°</b><span>Kor sıcaklığı</span></div><div><b data-say="40" data-son-ek=" yıl">40 yıl</b><span>Aynı usta eli</span></div><div><b data-say="100" data-son-ek="%">100%</b><span>Meşe kömürü</span></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="menu"><div class="sarmal">
+  <div class="bas"><h2 class="bri" data-bol>Menü</h2><p>Kebaplar sipariş üzerine hazırlanır, zırh kıyma her sabah çekilir. Fiyatlar örnektir.</p></div>
+  <div class="menu-izgara" data-sekmeler>
+    <div>
+      <div class="sekmeler"><button data-sekme="k" aria-selected="true">Kebaplar</button><button data-sekme="i" aria-selected="false">Izgaralar</button><button data-sekme="m" aria-selected="false">Mezeler</button><button data-sekme="t" aria-selected="false">Tatlılar</button></div>
+      <div class="liste" data-panel="k">
+        <div class="mn"><h3>Adana kebap<span class="acili">ACILI</span></h3><span class="f">440 ₺</span><p>Zırhta kuzu kıyma, kuyruk yağı, isot.</p></div>
+        <div class="mn"><h3>Urfa kebap</h3><span class="f">440 ₺</span><p>Acısız, zırh kıyma.</p></div>
+        <div class="mn"><h3>Beyti</h3><span class="f">490 ₺</span><p>Lavaşa sarılı, yoğurt ve tereyağı ile.</p></div>
+        <div class="mn"><h3>Patlıcan kebabı</h3><span class="f">480 ₺</span><p>Köfte ve közlenmiş patlıcan sırayla.</p></div>
+      </div>
+      <div class="liste" data-panel="i" hidden>
+        <div class="mn"><h3>Kuzu şiş</h3><span class="f">540 ₺</span><p>Marine kuzu but.</p></div>
+        <div class="mn"><h3>Kuzu pirzola</h3><span class="f">680 ₺</span><p>4 adet, kekikli.</p></div>
+        <div class="mn"><h3>Tavuk kanat</h3><span class="f">330 ₺</span><p>Pul biber ve nar ekşisi.</p></div>
+        <div class="mn"><h3>Karışık ocak · 2 kişilik</h3><span class="f">1.450 ₺</span><p>Adana, şiş, pirzola, kanat.</p></div>
+      </div>
+      <div class="liste" data-panel="m" hidden>
+        <div class="mn"><h3>Közlenmiş patlıcan</h3><span class="f">150 ₺</span><p>Sarımsaklı yoğurtla.</p></div>
+        <div class="mn"><h3>Acılı ezme</h3><span class="f">120 ₺</span><p>Közlenmiş biberle.</p></div>
+        <div class="mn"><h3>Muhammara</h3><span class="f">140 ₺</span><p>Ceviz, kırmızı biber, nar.</p></div>
+      </div>
+      <div class="liste" data-panel="t" hidden>
+        <div class="mn"><h3>Künefe</h3><span class="f">230 ₺</span><p>Közde, fıstıklı.</p></div>
+        <div class="mn"><h3>Katmer</h3><span class="f">290 ₺</span><p>2 kişilik, kaymaklı.</p></div>
+      </div>
+    </div>
+    <div class="menu-foto" data-r><img src="img/tabak.jpg" alt="Lavaş üzerinde Adana kebap ve közlenmiş sebzeler" loading="lazy"></div>
+  </div>
+</div></section>
+
+<section class="meze">
+  <img src="img/meze.jpg" alt="Üstten meze tabakları" loading="lazy" data-p="0.2">
+  <div class="yazi"><h2 class="bri" data-bol>Önce <span class="koz">meze.</span></h2></div>
+</section>
+
+<section class="bolum" id="rezervasyon"><div class="sarmal usta">
+  <div class="usta-foto" data-r><img src="img/usta.jpg" alt="Közde şişleri çeviren usta eller" loading="lazy" data-p="0.15"></div>
+  <div data-r><span class="etk">Usta</span><blockquote style="margin-top:14px">“Kebabı ateş değil, sabır pişirir. Közü bekle, şişi acele ettirme.”</blockquote><p style="color:var(--soluk);margin-top:16px">— İbrahim Usta, 1985'ten beri ocak başında</p></div>
+  <form class="rez demo-form" novalidate data-r>
+    <span class="etk">Rezervasyon</span>
+    <div class="iki"><label>Tarih<input type="date"></label><label>Saat<select><option>18:00</option><option>19:00</option><option selected>20:00</option><option>21:00</option></select></label></div>
+    <div class="iki"><label>Kişi<select><option>2</option><option selected>4</option><option>6</option><option>8+</option></select></label><label>Yer<select><option>Ocak başı</option><option>Salon</option></select></label></div>
+    <label>Ad Soyad<input name="ad" autocomplete="name"></label>
+    <label>Telefon<input name="tel" type="tel" placeholder="05xx"></label>
+    <button class="btn" type="submit">Masa ayırt</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<section class="bolum" id="paket" style="padding-top:0"><div class="sarmal"><div class="paket" data-r>
+  <div><span class="etk" style="color:#fff">Paket servis</span><h2 class="bri" style="margin-top:10px">Ateş kapınızda.</h2><p style="opacity:.9;margin-top:10px">Merkezefendi ve Pamukkale içinde, közden çıktıktan 25 dakika sonra.</p></div>
+  <div><a class="tel" href="tel:+902580000000">0258 000 00 00</a><p style="margin-top:14px"><a class="btn" href="https://wa.me/905000000000" style="background:#fff;color:#1a0d05">WhatsApp'tan sipariş</a></p></div>
+</div></div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><span class="logo">KÖZ <span>&amp;</span> DUMAN</span><p style="margin-top:8px">Ocakbaşı, 1985'ten beri.</p></div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Her gün 12:00 – 00:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Köz & Duman hayali bir işletmedir; menü, fiyatlar ve usta temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[12,24],1:[12,24],2:[12,24],3:[12,24],4:[12,24],5:[12,24],6:[12,24]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// kıvılcımlar
+(function(){var c=document.getElementById("kivilcim"),g=c.getContext("2d"),W,H,P=[],guc=1,az=matchMedia("(prefers-reduced-motion: reduce)").matches||/statik/.test(location.search);
+  function boyut(){var d=Math.min(2,devicePixelRatio||1);W=c.clientWidth;H=c.clientHeight;c.width=W*d;c.height=H*d;g.setTransform(d,0,0,d,0,0)}boyut();addEventListener("resize",boyut);
+  function yeni(){return{x:Math.random()*W,y:H+10,vx:(Math.random()-.5)*.6,vy:-(Math.random()*1.6+.6),r:Math.random()*2+.6,o:1,t:Math.random()*6}}
+  for(var i=0;i<90;i++){var p=yeni();p.y=Math.random()*H;P.push(p)}
+  window.kivilcimGuc=function(v){guc=v};
+  if(az){return}
+  (function ciz(){requestAnimationFrame(ciz);g.clearRect(0,0,W,H);
+    P.forEach(function(p,i){p.t+=.05;p.x+=p.vx+Math.sin(p.t)*.4;p.y+=p.vy*guc;p.o-=.0035*guc;if(p.y<-10||p.o<=0)P[i]=yeni();
+      g.globalAlpha=Math.max(0,p.o);g.fillStyle=p.r>1.8?"#FFB15C":"#FF6A1A";g.beginPath();g.arc(p.x,p.y,p.r,0,6.3);g.fill()})})();})();
+window.SAHNE=function(gsap){
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1,onUpdate:function(s){window.kivilcimGuc(1+s.progress*2.5)}}});
+  tl.fromTo("#sis",{xPercent:-38,rotation:-4},{xPercent:-62,rotation:2,duration:3,ease:"none"},0)
+    .to(".baslik",{y:-80,opacity:.15,duration:3},0)
+    .to(".sahne-alt",{opacity:0,duration:.8},.2);
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

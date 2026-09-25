@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anahtar Emlak · Aileler için evler · Denizli</title>
+<meta name="description" content="Anahtar Emlak: okula ve parka yakın aile evleri. Aile ev bulucu, konut kredisi hesaplayıcı, mahalle rehberi ve danışman randevusu. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#FFF7EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--krem:#FFF7EE;--krem2:#F6EADB;--kiremit:#D26A45;--kiremit2:#F0A585;--petrol:#2C6E6A;--murekkep:#2A2522;--soluk:#776C63;--beyaz:#fff;--cizgi:rgba(42,37,34,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--murekkep);font-family:"Source Sans 3",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1220px,100% - 40px);margin-inline:auto}
+.br{font-family:"Bree Serif",serif;font-weight:400;letter-spacing:-.015em;line-height:1.02}
+.br span{color:var(--kiremit)}
+.etk{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--petrol)}
+.etk:before{content:"";width:10px;height:10px;background:var(--kiremit);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:14px;background:var(--kiremit);color:#fff;font:700 16px "Source Sans 3",sans-serif;border:0;cursor:pointer;transition:transform .2s,background .3s}
+.btn:hover{transform:translateY(-2px);background:#b9573a}
+.btn.petrol{background:var(--petrol)}
+.btn.bos{background:var(--beyaz);color:var(--murekkep);box-shadow:inset 0 0 0 1.5px var(--cizgi)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--krem);display:grid;place-items:center}
+.perde span{width:60px;height:60px;background:var(--kiremit);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:14px 0;transition:background .4s,box-shadow .4s}
+header.dolu{background:rgba(255,247,238,.94);box-shadow:0 1px 0 var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Bree Serif";font-size:24px}
+.logo i{width:30px;height:30px;background:var(--kiremit);clip-path:polygon(50% 0,100% 45%,100% 100%,0 100%,0 45%);position:relative}
+nav{display:none;gap:26px;font-weight:600;font-size:16px}
+nav a:hover{color:var(--kiremit)}
+/* ev penceresi sahnesi */
+.giris{position:relative;height:300vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.ev{position:absolute;inset:0;clip-path:polygon(50% 26%,64% 38%,64% 76%,36% 76%,36% 38%);will-change:clip-path}
+.ev img{width:100%;height:100%;object-fit:cover}
+.sahne-bas{position:absolute;left:0;right:0;top:12vh;text-align:center;z-index:2}
+.sahne-bas h1{font-size:clamp(40px,5.6vw,86px)}
+.sahne-alt{position:absolute;left:0;right:0;bottom:6vh;text-align:center;z-index:2;color:var(--soluk)}
+.sahne-son{position:absolute;left:0;right:0;bottom:10vh;z-index:3;opacity:0;color:#fff}
+.sahne-son h2{font-size:clamp(46px,6.4vw,104px);text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.sahne-son .kutular{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.sahne-son .kutular span{background:rgba(255,255,255,.92);color:var(--murekkep);border-radius:12px;padding:10px 14px;font-weight:600;font-size:15px}
+.sahne:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),transparent 45%);opacity:var(--k,0);pointer-events:none;z-index:1}
+/* ev bulucu */
+.bolum{padding:120px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.bas h2{font-size:clamp(40px,5vw,76px)}
+.bas p{color:var(--soluk);max-width:40ch}
+.bulucu{background:var(--beyaz);border-radius:26px;padding:22px;display:grid;gap:16px;box-shadow:0 20px 50px -30px rgba(42,37,34,.3)}
+.filtreler{display:flex;flex-wrap:wrap;gap:8px}
+.filtreler button{font:600 15px "Source Sans 3";padding:10px 16px;border-radius:999px;border:1.5px solid var(--cizgi);background:var(--krem);color:var(--murekkep);cursor:pointer}
+.filtreler button[aria-pressed=true]{background:var(--petrol);color:#fff;border-color:var(--petrol)}
+.ilanlar{display:grid;gap:18px;margin-top:22px}
+.ilan{background:var(--beyaz);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px -24px rgba(42,37,34,.4);transition:transform .3s}
+.ilan:hover{transform:translateY(-4px)}
+.ilan figure{aspect-ratio:16/10.5;overflow:hidden;position:relative}
+.ilan img{width:100%;height:100%;object-fit:cover}
+.ilan .rozet{position:absolute;left:12px;top:12px;background:var(--krem);border-radius:8px;padding:4px 10px;font-size:13px;font-weight:700}
+.ilan .ic{padding:18px 20px 22px;display:grid;gap:8px}
+.ilan .fy{font-family:"Bree Serif";font-size:26px}
+.ilan .yer{color:var(--soluk);font-size:15px}
+.etiketler{display:flex;flex-wrap:wrap;gap:6px}
+.etiketler span{font-size:13px;font-weight:600;background:var(--krem2);border-radius:8px;padding:4px 8px}
+.etiketler span.y{background:#E3F0EC;color:var(--petrol)}
+.ilan[hidden]{display:none}
+.bos-sonuc{grid-column:1/-1;text-align:center;color:var(--soluk);padding:30px;display:none}
+/* mahalle */
+.mahalle{display:grid;gap:24px;align-items:center}
+.mahalle figure{border-radius:26px;overflow:hidden;aspect-ratio:16/11;position:relative}
+.mahalle img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.mesafe{display:grid;gap:0;margin-top:20px}
+.mesafe div{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--cizgi)}
+.mesafe i{font-style:normal;font-size:22px}
+.mesafe b{font-family:"Bree Serif";font-weight:400;color:var(--petrol)}
+/* kredi */
+.kredi{background:var(--petrol);color:#fff;border-radius:30px;padding:clamp(24px,4vw,56px);display:grid;gap:34px}
+.kredi h2{font-size:clamp(38px,4.6vw,70px)}
+.kredi label{display:grid;gap:8px;font-weight:600;font-size:15px}
+.kredi label span{display:flex;justify-content:space-between}
+.kredi label span b{font-family:"Bree Serif";font-weight:400;font-size:18px}
+.kredi input[type=range]{width:100%;accent-color:var(--kiremit2)}
+.kredi-sonuc{background:var(--krem);color:var(--murekkep);border-radius:22px;padding:28px;display:grid;gap:10px;align-content:start}
+.kredi-sonuc .buyuk{font-family:"Bree Serif";font-size:clamp(46px,5vw,68px);line-height:1;color:var(--kiremit)}
+.satir{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cizgi);font-size:15.5px}
+.satir span:first-child{color:var(--soluk)}
+/* danışman */
+.danisman{display:grid;gap:24px;align-items:center}
+.danisman figure{border-radius:26px;overflow:hidden;aspect-ratio:4/3;position:relative}
+.danisman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.form{background:var(--beyaz);border-radius:26px;padding:28px;display:grid;gap:14px}
+.form label{display:grid;gap:6px;font-size:14px;font-weight:700;color:var(--soluk)}
+.form input,.form select{font:500 16px "Source Sans 3";color:var(--murekkep);background:var(--krem);border:1.5px solid transparent;border-radius:12px;padding:13px 14px;width:100%}
+.form input:focus,.form select:focus{outline:none;border-color:var(--kiremit)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-mesaj{font-size:15px;color:var(--petrol);font-weight:600}
+footer{padding:80px 0 40px;background:var(--krem2);margin-top:120px}
+.alt-izgara{display:grid;gap:24px;font-size:15.5px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--murekkep);margin-bottom:6px}
+.yasal{margin-top:36px;padding-top:20px;border-top:1px solid var(--cizgi);display:grid;gap:8px;font-size:12.5px;color:var(--soluk)}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+[data-acik]:before{content:"";width:9px;height:9px;border-radius:50%;background:#c2b6aa}
+[data-acik].evet:before{background:#3fa66b;box-shadow:0 0 0 4px rgba(63,166,107,.2)}
+@media (min-width:920px){
+  nav{display:flex}
+  .ilanlar{grid-template-columns:repeat(3,1fr)}
+  .mahalle{grid-template-columns:1.1fr .9fr;gap:60px}
+  .kredi{grid-template-columns:1.1fr .9fr;gap:50px}
+  .danisman{grid-template-columns:1fr 1fr;gap:50px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .ev{clip-path:polygon(50% 30%,80% 44%,80% 74%,20% 74%,20% 44%)}
+  .ilanlar{grid-template-columns:1fr}
+  .logo{font-size:19px;white-space:nowrap}.logo i{width:24px;height:24px}
+  header .btn{white-space:nowrap;padding:9px 12px!important;font-size:13.5px!important}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span></span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"></i>Anahtar Emlak</a>
+  <nav><a href="#bulucu">Ev bulucu</a><a href="#mahalle">Mahalle</a><a href="#kredi">Kredi</a><a href="#danisman">Danışman</a></nav>
+  <a class="btn" href="#danisman" style="padding:11px 18px;font-size:15px">Danışmana sor</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne" id="sahne">
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="etk">Aile evleri · Denizli</span><h1 class="br" style="margin-top:12px" data-bol data-hemen>Çocuklarınızın <span>büyüyeceği</span> ev.</h1></div></div>
+    <div class="ev" id="ev"><img src="img/ev.jpg" alt="Salıncaklı ve bisikletli bahçesi olan sıcak bir aile evi, ikindi ışığı"></div>
+    <div class="sahne-alt" id="sahne-alt"><span data-acik>Çalışma saatleri</span></div>
+    <div class="sahne-son" id="sahne-son"><div class="sarmal"><h2 class="br">Kapıyı açın, <span style="color:var(--kiremit2)">içeri buyurun.</span></h2><div class="kutular"><span>🏫 Okula 400 m</span><span>🌳 Park karşıda</span><span>🚗 Kapalı otopark</span></div></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="bulucu"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Aile ev bulucu</span><h2 class="br" style="margin-top:12px" data-bol>Neye <span>ihtiyacınız</span> var?</h2></div><p data-r>Seçimlerinizi işaretleyin; portföyümüzde ailenize uyan evleri gösterelim.</p></div>
+  <div class="bulucu" data-r>
+    <div class="filtreler" id="filtre-oda"><button type="button" data-oda="*" aria-pressed="true">Tüm odalar</button><button type="button" data-oda="2" aria-pressed="false">2+1</button><button type="button" data-oda="3" aria-pressed="false">3+1</button><button type="button" data-oda="4" aria-pressed="false">4+1 ve üzeri</button></div>
+    <div class="filtreler" id="filtre-oz"><button type="button" data-o="okul" aria-pressed="false">🏫 Okula yakın</button><button type="button" data-o="bahce" aria-pressed="false">🌷 Bahçeli</button><button type="button" data-o="park" aria-pressed="false">🌳 Parka yakın</button><button type="button" data-o="site" aria-pressed="false">🛡️ Site içi</button><button type="button" data-o="asans" aria-pressed="false">🛗 Asansörlü</button></div>
+  </div>
+  <div class="ilanlar" id="ilanlar">
+    <article class="ilan" data-oda="3" data-o="okul park asans"><figure><img src="img/salon.jpg" alt="Kanepe, halı ve kitaplıklı sıcak aile salonu" loading="lazy"><span class="rozet">AN-1204 · Satılık</span></figure><div class="ic"><span class="fy">3.950.000 ₺</span><span class="yer">Çamlık, Merkezefendi</span><div class="etiketler"><span>3+1</span><span>135 m²</span><span class="y">Okula 400 m</span><span class="y">Parka yakın</span></div></div></article>
+    <article class="ilan" data-oda="4" data-o="bahce okul site"><figure><img src="img/ev.jpg" alt="Bahçeli müstakil aile evi" loading="lazy"><span class="rozet">AN-1188 · Satılık</span></figure><div class="ic"><span class="fy">7.400.000 ₺</span><span class="yer">Kınıklı, Pamukkale</span><div class="etiketler"><span>4+1</span><span>210 m²</span><span class="y">Bahçeli</span><span class="y">Site içi</span></div></div></article>
+    <article class="ilan" data-oda="3" data-o="asans site park"><figure><img src="img/mutfak.jpg" alt="Büyük ahşap yemek masalı aydınlık aile mutfağı" loading="lazy"><span class="rozet">AN-1215 · Satılık</span></figure><div class="ic"><span class="fy">4.600.000 ₺</span><span class="yer">Servergazi, Merkezefendi</span><div class="etiketler"><span>3+1</span><span>150 m²</span><span class="y">Site içi</span><span class="y">Asansörlü</span></div></div></article>
+    <article class="ilan" data-oda="2" data-o="okul asans"><figure><img src="img/cocuk.jpg" alt="Ranzalı, oyuncaklı renkli çocuk odası" loading="lazy"><span class="rozet">AN-1221 · Kiralık</span></figure><div class="ic"><span class="fy">18.000 ₺ / ay</span><span class="yer">Sırakapılar, Merkezefendi</span><div class="etiketler"><span>2+1</span><span>95 m²</span><span class="y">Okula 250 m</span></div></div></article>
+    <article class="ilan" data-oda="4" data-o="park bahce"><figure><img src="img/park.jpg" alt="Apartmanların yanında oyun parkı" loading="lazy"><span class="rozet">AN-1172 · Satılık</span></figure><div class="ic"><span class="fy">5.900.000 ₺</span><span class="yer">Bağbaşı, Pamukkale</span><div class="etiketler"><span>4+1</span><span>180 m²</span><span class="y">Parka yakın</span><span class="y">Bahçe katı</span></div></div></article>
+    <article class="ilan" data-oda="3" data-o="bahce site okul"><figure><img src="img/salon.jpg" alt="Aile salonu" loading="lazy"><span class="rozet">AN-1230 · Kiralık</span></figure><div class="ic"><span class="fy">24.000 ₺ / ay</span><span class="yer">Kınıklı, Pamukkale</span><div class="etiketler"><span>3+1</span><span>140 m²</span><span class="y">Site içi</span><span class="y">Okula yakın</span></div></div></article>
+    <p class="bos-sonuc" id="bos-sonuc">Bu kriterlere uyan ilanımız şu an yok. Danışmanımıza yazın, portföye girer girmez haber verelim.</p>
+  </div>
+</div></section>
+
+<section class="bolum" id="mahalle" style="padding-top:0"><div class="sarmal mahalle">
+  <figure data-r><img src="img/park.jpg" alt="Güneşli günde apartmanların yanında ağaçlı oyun parkı" loading="lazy" data-p="0.1"></figure>
+  <div>
+    <span class="etk">Mahalle rehberi</span>
+    <h2 class="br" style="font-size:clamp(38px,4.4vw,66px);margin-top:12px" data-bol>Evden önce <span>sokağa</span> bakın.</h2>
+    <p style="color:var(--soluk);margin-top:14px" data-r>Her ilan için okul, sağlık ocağı, park ve market mesafelerini yerinde ölçüp not ediyoruz. Örnek: Çamlık.</p>
+    <div class="mesafe" data-rg>
+      <div><i>🏫</i><span>İlkokul</span><b>400 m · 5 dk yürüme</b></div>
+      <div><i>🏥</i><span>Aile sağlığı merkezi</span><b>700 m</b></div>
+      <div><i>🌳</i><span>Oyun parkı</span><b>Karşı sokak</b></div>
+      <div><i>🛒</i><span>Semt pazarı (Salı)</span><b>1,1 km</b></div>
+      <div><i>🚌</i><span>Otobüs durağı</span><b>150 m</b></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="bolum" id="kredi" style="padding-top:0"><div class="sarmal"><div class="kredi" data-r>
+  <div>
+    <span class="etk" style="color:#CFE7E3">Konut kredisi hesaplayıcı</span>
+    <h2 class="br" style="margin:12px 0 26px">Aylık taksit ne olur?</h2>
+    <div style="display:grid;gap:18px">
+      <label><span>Ev fiyatı <b id="k-fy-y">4.000.000 ₺</b></span><input type="range" id="k-fy" min="1000000" max="12000000" step="50000" value="4000000"></label>
+      <label><span>Peşinat <b id="k-p-y">%30</b></span><input type="range" id="k-p" min="10" max="70" value="30"></label>
+      <label><span>Vade <b id="k-v-y">120 ay</b></span><input type="range" id="k-v" min="12" max="180" step="12" value="120"></label>
+      <label><span>Aylık faiz <b id="k-f-y">%2,79</b></span><input type="range" id="k-f" min="1" max="4" step=".01" value="2.79"></label>
+    </div>
+  </div>
+  <div class="kredi-sonuc" aria-live="polite">
+    <span class="etk">Tahmini aylık taksit</span>
+    <span class="buyuk" id="k-taksit">—</span>
+    <div class="satir"><span>Kredi tutarı</span><span id="k-tutar">—</span></div>
+    <div class="satir"><span>Peşinat</span><span id="k-pes">—</span></div>
+    <div class="satir"><span>Toplam geri ödeme</span><span id="k-top">—</span></div>
+    <p style="font-size:13.5px;color:var(--soluk);margin-top:6px">Hesaplama bilgi amaçlıdır; masraf, sigorta ve vergiler dahil değildir. Güncel oranlar için bankanıza danışın.</p>
+  </div>
+</div></div></section>
+
+<section class="bolum" id="danisman" style="padding-top:0"><div class="sarmal danisman">
+  <figure data-r><img src="img/anahtar.jpg" alt="Ev şeklinde anahtarlıklı anahtarı teslim alan aile elleri" loading="lazy"></figure>
+  <form class="form demo-form" novalidate data-r>
+    <span class="etk">Danışman randevusu</span>
+    <h2 class="br" style="font-size:clamp(34px,3.6vw,52px)">Anahtarı birlikte <span>bulalım.</span></h2>
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>Aradığınız<select><option>Satılık</option><option>Kiralık</option><option>Evimi satmak istiyorum</option></select></label><label>Aile<select><option>2 kişi</option><option selected>3–4 kişi</option><option>5+ kişi</option></select></label></div>
+    <button class="btn" type="submit" style="justify-self:start">Beni arayın</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><span class="logo"><i aria-hidden="true"></i>Anahtar Emlak</span><p style="margin-top:10px">Aile evleri, 2009'dan beri.</p></div>
+    <div><b>Ofis</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Pzt – Cmt 09:00 – 19:00<br>Pazar randevuyla</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <div class="yasal">
+    <p>Yetki belge no: 0000000 (temsilidir). Gerçek sitede Taşınmaz Ticareti Hakkında Yönetmelik gereği yetki belgesi numarası ve ilan bilgileri eksiksiz yer alır.</p>
+    <p>Bu site bir örnek çalışmadır. Anahtar Emlak hayali bir işletmedir; ilanlar, fiyatlar ve mesafeler temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</div></footer>
+
+<script>
+window.SAAT={0:null,1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[9,19]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// ev bulucu
+(function(){var oda="*",oz={},il=[].slice.call(document.querySelectorAll(".ilan"));
+  function yaz(){var n=0;il.forEach(function(x){var ok=(oda==="*"||x.dataset.oda===oda||(oda==="4"&&+x.dataset.oda>=4));Object.keys(oz).forEach(function(k){if(oz[k]&&x.dataset.o.split(" ").indexOf(k)<0)ok=false});x.hidden=!ok;if(ok)n++});document.getElementById("bos-sonuc").style.display=n?"none":"block"}
+  document.getElementById("filtre-oda").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});oda=b.dataset.oda;yaz()});
+  document.getElementById("filtre-oz").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var v=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",v?"true":"false");oz[b.dataset.o]=v;yaz()})})();
+// kredi hesaplayıcı (annüite)
+(function(){var $=function(i){return document.getElementById(i)},tl=function(x){return Math.round(x).toLocaleString("tr-TR")+" ₺"};
+  function yaz(){var fy=+$("k-fy").value,p=+$("k-p").value,v=+$("k-v").value,f=+$("k-f").value/100,K=fy*(1-p/100),t=K*f/(1-Math.pow(1+f,-v));
+    $("k-fy-y").textContent=tl(fy);$("k-p-y").textContent="%"+p;$("k-v-y").textContent=v+" ay";$("k-f-y").textContent="%"+(+$("k-f").value).toFixed(2).replace(".",",");
+    $("k-taksit").textContent=tl(t);$("k-tutar").textContent=tl(K);$("k-pes").textContent=tl(fy-K);$("k-top").textContent=tl(t*v)}
+  ["k-fy","k-p","k-v","k-f"].forEach(function(i){$(i).addEventListener("input",yaz)});yaz()})();
+window.SAHNE=function(gsap){
+  var s=document.getElementById("sahne"),o={k:0};
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to("#sahne-alt",{opacity:0,duration:.3},.1)
+    .to("#sahne-bas",{y:-60,opacity:0,duration:.8},.4)
+    .to("#ev",{clipPath:"polygon(50% -40%,140% 38%,140% 140%,-40% 140%,-40% 38%)",duration:2,ease:"power2.inOut"},.3)
+    .fromTo("#ev img",{scale:1.3},{scale:1,duration:2.2,ease:"power2.inOut"},.3)
+    .to(o,{k:1,duration:.6,onUpdate:function(){s.style.setProperty("--k",o.k)}},2)
+    .to("#sahne-son",{opacity:1,y:-12,duration:.7},2.2)
+    .to({},{duration:.6});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("ev").style.clipPath="polygon(50% 30%,90% 46%,90% 97%,10% 97%,10% 46%)"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

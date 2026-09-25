@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mina Kuaför · Saç Tasarım · Denizli</title>
+<meta name="description" content="Mina Kuaför: kesim, balyaj ve renk, keratin bakım, gelin saçı. Fiyat listesi, renk rehberi ve stilist seçerek online randevu. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#F4EFE8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Epilogue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--fildisi:#F4EFE8;--fildisi2:#E9E1D6;--murekkep:#151311;--karamel:#B7773F;--soluk:#7A7168;--cizgi:rgba(21,19,17,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--fildisi);color:var(--murekkep);font-family:Epilogue,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.gi{font-family:"Gilda Display",serif;font-weight:400;letter-spacing:-.02em;line-height:.95}
+.gi em{font-style:italic;color:var(--karamel)}
+.etk{font-size:11.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;background:var(--murekkep);color:var(--fildisi);font:600 13.5px Epilogue,sans-serif;letter-spacing:.12em;text-transform:uppercase;border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--karamel)}
+.btn.bos{background:transparent;color:inherit;border:1px solid currentColor}
+.perde{position:fixed;inset:0;z-index:100;background:var(--murekkep);color:var(--fildisi);display:grid;place-items:center}
+.perde .gi{font-size:clamp(70px,14vw,200px);letter-spacing:.06em}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:18px 0;mix-blend-mode:difference;color:#fff}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:"Gilda Display";font-size:26px;letter-spacing:.2em}
+nav{display:none;gap:28px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+/* kapak sahnesi */
+.giris{position:relative;height:330vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center;background:var(--fildisi)}
+.kapak{position:relative;width:100vw;height:100vh;overflow:hidden;will-change:transform;background:var(--murekkep)}
+.kapak img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.kapak:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,19,17,.35),transparent 30%,transparent 60%,rgba(21,19,17,.55))}
+.maske-yazi{position:absolute;left:0;right:0;top:9%;text-align:center;z-index:2;color:var(--fildisi);font-family:"Gilda Display";font-size:clamp(90px,24vw,360px);line-height:.8;letter-spacing:.04em}
+.sayi{position:absolute;left:4%;right:4%;top:calc(9% + clamp(90px,24vw,360px)*.84);z-index:2;display:flex;justify-content:space-between;color:var(--fildisi);font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+.satirlar{position:absolute;left:5%;bottom:7%;z-index:2;color:var(--fildisi);display:grid;gap:14px;max-width:340px}
+.satirlar p{opacity:0}
+.satirlar b{display:block;font-family:"Gilda Display";font-weight:400;font-size:clamp(24px,2.4vw,34px);line-height:1.05}
+.satirlar span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.satirlar-sag{left:auto;right:5%;text-align:right}
+.sahne-alt{position:absolute;left:0;right:0;bottom:3vh;z-index:3;color:var(--fildisi)}
+.sahne-alt .sarmal{display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+[data-acik]{display:inline-flex;align-items:center;gap:8px}
+[data-acik]:before{content:"";width:7px;height:7px;border-radius:50%;background:#9c9186}
+[data-acik].evet:before{background:#7fd08f}
+/* içindekiler */
+.bolum{padding:130px 0}
+.icindekiler{display:grid;gap:40px}
+.icindekiler h2{font-size:clamp(50px,7vw,120px)}
+.madde{display:grid;grid-template-columns:60px 1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--cizgi);align-items:baseline;transition:padding .3s}
+.madde:hover{padding-left:12px}
+.madde .no{font-family:"Gilda Display";font-size:22px;color:var(--karamel)}
+.madde b{font-family:"Gilda Display";font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.1}
+.madde small{display:block;color:var(--soluk);font-size:14.5px;margin-top:4px}
+.madde span.s{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soluk)}
+/* fiyatlar */
+.fiyat-izgara{display:grid;gap:30px;align-items:start}
+.fiyat-foto{position:relative;aspect-ratio:3/4;overflow:hidden}
+.fiyat-foto img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;transition:opacity .5s}
+.sekmeler{display:flex;gap:0;border-bottom:1px solid var(--cizgi);margin-bottom:10px;overflow-x:auto}
+.sekmeler button{font:600 12px Epilogue;letter-spacing:.18em;text-transform:uppercase;padding:14px 16px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--soluk);cursor:pointer;white-space:nowrap}
+.sekmeler button[aria-selected=true]{color:var(--murekkep);border-color:var(--murekkep)}
+.fy{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:18px 0;border-bottom:1px dotted var(--cizgi)}
+.fy b{font-family:"Gilda Display";font-weight:400;font-size:23px}
+.fy span{font-weight:600;white-space:nowrap}
+.fy small{grid-column:1/-1;color:var(--soluk);font-size:14px}
+/* renk rehberi */
+.rehber{background:var(--murekkep);color:var(--fildisi)}
+.teknikler{display:grid;gap:1px;background:rgba(244,239,232,.14);margin-top:40px}
+.teknik{background:var(--murekkep);padding:30px 0;display:grid;gap:14px}
+.renk-serit{height:120px;border-radius:2px}
+.teknik h3{font-family:"Gilda Display";font-weight:400;font-size:30px}
+.teknik p{color:#b5aca2;font-size:15px;max-width:34ch}
+.teknik .bilgi{display:flex;gap:18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#d9cfc3}
+/* stüdyo */
+.studyo{display:grid;gap:16px}
+.studyo figure{position:relative;overflow:hidden;aspect-ratio:4/3}
+.studyo img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.studyo figcaption{position:absolute;left:0;bottom:0;background:var(--fildisi);padding:8px 14px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+/* randevu */
+.randevu{display:grid;gap:40px}
+.randevu h2{font-size:clamp(46px,6vw,100px)}
+.stilist{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0 6px}
+.stilist button{border:1px solid var(--cizgi);background:transparent;padding:14px 10px;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:background .2s}
+.stilist button b{display:block;font-family:"Gilda Display";font-weight:400;font-size:20px}
+.stilist button small{font-size:12.5px;color:var(--soluk)}
+.stilist button[aria-pressed=true]{background:var(--murekkep);color:var(--fildisi)}
+.stilist button[aria-pressed=true] small{color:#c4bab0}
+label{display:grid;gap:6px;font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--soluk)}
+input,select{font:400 16px Epilogue;color:var(--murekkep);background:transparent;border:0;border-bottom:1px solid var(--cizgi);padding:12px 0;width:100%;border-radius:0}
+input:focus,select:focus{outline:none;border-color:var(--karamel)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.sure{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--murekkep);margin-top:6px}
+.sure b{font-family:"Gilda Display";font-weight:400;font-size:32px}
+.form-mesaj{font-size:14.5px;color:#4d7a4f;font-weight:500}
+footer{background:var(--murekkep);color:#b5aca2;padding:90px 0 40px}
+.alt-bas{font-family:"Gilda Display";font-size:clamp(90px,22vw,340px);line-height:.8;letter-spacing:.04em;color:var(--fildisi);margin-bottom:50px}
+.alt-izgara{display:grid;gap:24px;font-size:15px}
+.alt-izgara b{display:block;color:var(--fildisi);margin-bottom:6px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase}
+.demo-not{margin-top:36px;padding-top:20px;border-top:1px solid rgba(244,239,232,.14);font-size:12.5px}
+@media (min-width:920px){
+  nav{display:flex}
+  .icindekiler{grid-template-columns:.8fr 1.2fr;gap:80px}
+  .fiyat-izgara{grid-template-columns:.8fr 1.2fr;gap:70px}
+  .teknikler{grid-template-columns:repeat(3,1fr);background:none;gap:40px}
+  .teknik{border-top:1px solid rgba(244,239,232,.2)}
+  .studyo{grid-template-columns:1.3fr 1fr 1fr}
+  .randevu{grid-template-columns:1fr 1.1fr;gap:80px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .satirlar-sag{display:none}
+  .satirlar{bottom:10%}
+  .fiyat-foto{aspect-ratio:4/3}
+  .stilist{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="gi">MİNA</span></div>
+
+<header><div class="sarmal ust">
+  <a class="logo" href="#">MİNA</a>
+  <nav><a href="#hizmetler">Hizmetler</a><a href="#fiyatlar">Fiyatlar</a><a href="#renk">Renk rehberi</a><a href="#randevu">Randevu</a></nav>
+  <a href="#randevu" style="font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Randevu →</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="kapak" id="kapak">
+      <img id="kapak-img" src="img/sac.jpg" alt="Uzun, parlak, dalgalı karamel balyajlı saçın arkadan görünümü">
+      <div class="maske-yazi" id="maske-yazi" aria-hidden="true">MİNA</div>
+      <div class="sayi" aria-hidden="true"><span id="sayi-no">Sayı 09</span><span>Kuaför · Denizli</span><span id="sayi-ay">Eylül 2026</span></div>
+      <div class="satirlar" id="satirlar1"><p><b>Karamel balyaj</b><span>Sonbaharın rengi</span></p><p><b>Fön mü, dalga mı?</b><span>Stilistlerimiz anlatıyor</span></p></div>
+      <div class="satirlar satirlar-sag" id="satirlar2"><p><b>Keratin sonrası</b><span>İlk 72 saat rehberi</span></p><p><b>Gelin provası</b><span>Neden bir ay önce?</span></p></div>
+    </div>
+    <div class="sahne-alt" id="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span><span>Kaydırın</span></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="hizmetler"><div class="sarmal icindekiler">
+  <div><span class="etk" style="color:var(--karamel)">Bu sayıda</span><h2 class="gi" style="margin-top:18px" data-bol>İçindekiler.</h2><p style="color:var(--soluk);margin-top:20px;max-width:34ch" data-r>Her hizmet bir ön görüşmeyle başlar: saçınızın geçmişini, rutininizi ve beklentinizi dinliyoruz.</p></div>
+  <div data-rg>
+    <a class="madde" href="#fiyatlar"><span class="no">01</span><span><b>Kesim &amp; fön</b><small>Yüz şekline göre kesim, yıkama ve şekillendirme</small></span><span class="s">45–60 dk</span></a>
+    <a class="madde" href="#renk"><span class="no">02</span><span><b>Balyaj &amp; renk</b><small>El boyama balyaj, ombre, dip boya, tonlama</small></span><span class="s">2–4 saat</span></a>
+    <a class="madde" href="#fiyatlar"><span class="no">03</span><span><b>Bakım</b><small>Keratin, botoks bakım, olaplex, maske</small></span><span class="s">60–150 dk</span></a>
+    <a class="madde" href="#fiyatlar"><span class="no">04</span><span><b>Gelin &amp; özel gün</b><small>Prova dahil gelin saçı, topuz, dalga</small></span><span class="s">Prova + gün</span></a>
+  </div>
+</div></section>
+
+<section class="bolum" id="fiyatlar" style="padding-top:0"><div class="sarmal fiyat-izgara">
+  <div class="fiyat-foto" data-r><img id="fiyat-img" src="img/fon.jpg" alt="Stilist uzun kahverengi saça fön çekerken" loading="lazy" data-p="0.1"></div>
+  <div data-sekmeler>
+    <span class="etk" style="color:var(--karamel)">Fiyat listesi</span>
+    <h2 class="gi" style="font-size:clamp(44px,5vw,80px);margin:16px 0 28px" data-bol>Net ve <em>açık.</em></h2>
+    <div class="sekmeler" role="tablist"><button data-sekme="k" data-g="img/fon.jpg" aria-selected="true">Kesim</button><button data-sekme="r" data-g="img/boya.jpg" aria-selected="false">Renk</button><button data-sekme="b" data-g="img/yikama.jpg" aria-selected="false">Bakım</button><button data-sekme="g" data-g="img/salon.jpg" aria-selected="false">Gelin</button></div>
+    <div data-panel="k"><div class="fy"><b>Kesim + fön</b><span>650 ₺</span><small>Kısa ve orta boy saç</small></div><div class="fy"><b>Uzun saç kesim + fön</b><span>800 ₺</span><small>Omuz altı</small></div><div class="fy"><b>Kâkül</b><span>200 ₺</span><small>Aralarda ücretsiz düzeltme</small></div><div class="fy"><b>Fön</b><span>350 ₺</span><small>Düz ya da dalga</small></div></div>
+    <div data-panel="r" hidden><div class="fy"><b>Balyaj</b><span>3.500 ₺'den</span><small>Uzunluk ve yoğunluğa göre; tonlama dahil</small></div><div class="fy"><b>Dip boya</b><span>1.200 ₺</span><small>4 cm'ye kadar</small></div><div class="fy"><b>Tüm boya</b><span>1.800 ₺'den</span><small>Tek renk</small></div><div class="fy"><b>Tonlama</b><span>900 ₺</span><small>Sarı ve bakır tonlarını dengeler</small></div></div>
+    <div data-panel="b" hidden><div class="fy"><b>Keratin bakım</b><span>2.500 ₺'den</span><small>3–4 ay etki, formaldehitsiz</small></div><div class="fy"><b>Olaplex bakım</b><span>1.100 ₺</span><small>Renk sonrası bağ onarımı</small></div><div class="fy"><b>Nem maskesi</b><span>500 ₺</span><small>Yıkama ve fön dahil</small></div></div>
+    <div data-panel="g" hidden><div class="fy"><b>Gelin saçı</b><span>4.500 ₺</span><small>Bir prova dahil</small></div><div class="fy"><b>Nişan / kına</b><span>2.500 ₺</span><small>Topuz ya da dalga</small></div><div class="fy"><b>Özel gün topuzu</b><span>1.200 ₺</span><small>Davet, mezuniyet</small></div></div>
+  </div>
+</div></section>
+
+<section class="bolum rehber" id="renk"><div class="sarmal">
+  <span class="etk" style="color:var(--karamel)">Renk rehberi</span>
+  <h2 class="gi" style="font-size:clamp(46px,6vw,100px);margin-top:18px;max-width:14ch" data-bol>Hangi teknik <em>sizin</em> saçınız için?</h2>
+  <div class="teknikler" data-rg>
+    <div class="teknik"><div class="renk-serit" style="background:linear-gradient(90deg,#3b2618 0 20%,#8a5a34 30%,#c9955c 45%,#3b2618 55%,#b9844f 70%,#3b2618 80%)"></div><h3>Balyaj</h3><p>Renk elle, dikey fırça darbeleriyle verilir. Güneşte açılmış gibi doğal geçişler.</p><div class="bilgi"><span>Bakım: 3–4 ay</span><span>3–4 saat</span></div></div>
+    <div class="teknik"><div class="renk-serit" style="background:linear-gradient(180deg,#2f1f15 0%,#2f1f15 40%,#b98553 100%)"></div><h3>Ombre</h3><p>Dipten uca yatay ve belirgin geçiş. Uçlar kökten net şekilde açıktır.</p><div class="bilgi"><span>Bakım: 4–6 ay</span><span>2–3 saat</span></div></div>
+    <div class="teknik"><div class="renk-serit" style="background:linear-gradient(180deg,#5a3a24 0%,#5a3a24 18%,#7a5234 22%,#7a5234 100%)"></div><h3>Dip boya</h3><p>Yalnızca uzayan kökler boyanır; beyaz kapatma için ideal.</p><div class="bilgi"><span>Bakım: 4–6 hafta</span><span>1 saat</span></div></div>
+  </div>
+</div></section>
+
+<section class="bolum" style="padding-bottom:0"><div class="sarmal studyo" data-rg>
+  <figure><img src="img/salon.jpg" alt="Siyah koltuklu, yuvarlak aynalı modern kuaför salonu" loading="lazy" data-p="0.08"><figcaption>Salon</figcaption></figure>
+  <figure><img src="img/yikama.jpg" alt="Siyah lavabolu ve deri koltuklu yıkama bölümü" loading="lazy"><figcaption>Yıkama</figcaption></figure>
+  <figure><img src="img/urun.jpg" alt="Salon rafında saç bakım ürünleri" loading="lazy"><figcaption>Profesyonel ürünler</figcaption></figure>
+</div></section>
+
+<section class="bolum" id="randevu"><div class="sarmal randevu">
+  <div><span class="etk" style="color:var(--karamel)">Randevu</span><h2 class="gi" style="margin-top:18px" data-bol>Aynaya <em>hazır</em> mısınız?</h2><p style="color:var(--soluk);margin-top:18px;max-width:38ch" data-r>Renk işlemlerinden 48 saat önce ücretsiz alerji testi için uğramanızı rica ediyoruz.</p></div>
+  <form class="demo-form" novalidate data-r style="display:grid;gap:18px">
+    <div><span class="etk" style="color:var(--soluk)">Stilist</span><div class="stilist" id="stilist"><button type="button" aria-pressed="true" data-k="1"><b>Mina</b><small>Renk · kurucu</small></button><button type="button" aria-pressed="false" data-k="0.9"><b>Deniz</b><small>Kesim · fön</small></button><button type="button" aria-pressed="false" data-k="1"><b>Ece</b><small>Gelin · topuz</small></button></div></div>
+    <div class="iki"><label>Hizmet<select id="hizmet"><option data-d="60">Kesim + fön</option><option data-d="210">Balyaj</option><option data-d="75">Dip boya</option><option data-d="150">Keratin bakım</option><option data-d="45">Fön</option><option data-d="120">Gelin provası</option></select></label><label>Tarih<input type="date"></label></div>
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="sure"><span class="etk" style="color:var(--soluk)">Tahmini süre</span><b id="sure">1 saat</b></div>
+    <button class="btn" type="submit" style="justify-self:start">Randevu talebi gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-bas" aria-hidden="true">MİNA</div>
+  <div class="alt-izgara">
+    <div><b>Mina Kuaför</b>Saç tasarım ve renk stüdyosu.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Salı – Cumartesi 09:30 – 19:30<br>Pazar 11:00 – 17:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Mina Kuaför hayali bir işletmedir; fiyatlar, stilistler ve adres temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[11,17],2:[9.5,19.5],3:[9.5,19.5],4:[9.5,19.5],5:[9.5,19.5],6:[9.5,19.5]};
+// kapaktaki sayı ve ay
+(function(){var d=new Date(),ay=["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];document.getElementById("sayi-no").textContent="Sayı "+String(d.getMonth()+1).padStart(2,"0");document.getElementById("sayi-ay").textContent=ay[d.getMonth()]+" "+d.getFullYear()})();
+// fiyat sekmesinde fotoğraf değişimi
+document.querySelectorAll("[data-g]").forEach(function(b){b.addEventListener("click",function(){var i=document.getElementById("fiyat-img");i.style.opacity=0;setTimeout(function(){i.src=b.dataset.g;i.style.opacity=1},250)})});
+// tahmini süre
+(function(){var h=document.getElementById("hizmet"),s=document.getElementById("stilist"),k=1;function yaz(){var d=+h.options[h.selectedIndex].dataset.d*k,sa=Math.floor(d/60),dk=Math.round(d%60/5)*5;document.getElementById("sure").textContent=(sa?sa+" saat ":"")+(dk?dk+" dk":"")}
+  h.addEventListener("change",yaz);s.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});k=+b.dataset.k;yaz()});yaz()})();
+window.SAHNE=function(gsap){
+  var m=innerWidth<920;
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to("#sahne-alt",{opacity:0,duration:.4},.1)
+    .to("#kapak",{scale:m?.84:.62,borderRadius:4,boxShadow:"0 60px 80px -30px rgba(21,19,17,.5)",duration:2,ease:"power2.inOut"},.2)
+    .fromTo("#kapak-img",{scale:1.2},{scale:1,duration:2.2,ease:"power2.inOut"},.2)
+    .to("#satirlar1 p",{opacity:1,duration:.4,stagger:.25},1.6)
+    .to("#satirlar2 p",{opacity:1,duration:.4,stagger:.25},1.9)
+    .to("#kapak",{rotation:m?0:-2,duration:1},2.4)
+    .to({},{duration:.8});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.querySelectorAll(".satirlar p").forEach(function(p){p.style.opacity=1})};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

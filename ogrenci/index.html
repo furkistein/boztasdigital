@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kınıklı Öğrenci Evleri · PAÜ'ye yürüme mesafesi · Denizli</title>
+<meta name="description" content="Kınıklı Öğrenci Evleri: Pamukkale Üniversitesi'ne yürüme mesafesinde eşyalı 1+0 ve 2+1 daireler. Masraf bölüşme hesaplayıcı, kampüs mesafeleri ve WhatsApp ile hızlı başvuru. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#FFE14D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sari:#FFE14D;--sari2:#FFF3A8;--mavi:#2E4BFF;--pembe:#FF6FB1;--yesil:#22C38E;--kara:#141414;--beyaz:#FFFDF6;--soluk:#5E5B52;--cizgi:rgba(20,20,20,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beyaz);color:var(--kara);font-family:Rubik,system-ui,sans-serif;font-size:16.5px;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1220px,100% - 40px);margin-inline:auto}
+.rm{font-family:"Rubik Mono One",sans-serif;font-weight:400;letter-spacing:-.03em;line-height:.95;text-transform:uppercase}
+.etk{display:inline-block;font-size:13px;font-weight:700;background:var(--kara);color:var(--sari);padding:5px 10px;border-radius:6px;transform:rotate(-2deg)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;background:var(--kara);color:var(--sari);font:700 16px Rubik,sans-serif;border:2px solid var(--kara);cursor:pointer;box-shadow:4px 4px 0 var(--mavi);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--mavi)}
+.btn.sari{background:var(--sari);color:var(--kara)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--sari);display:grid;place-items:center}
+.perde .rm{font-size:clamp(40px,8vw,110px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:12px 0}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--beyaz);border:2px solid var(--kara);border-radius:16px;padding:8px 8px 8px 16px;box-shadow:4px 4px 0 var(--kara)}
+.logo{font-family:"Rubik Mono One";font-size:17px;display:flex;align-items:center;gap:8px}
+.logo i{width:26px;height:26px;border-radius:8px;background:var(--pembe);border:2px solid var(--kara);font-style:normal;display:grid;place-items:center;font-size:13px}
+nav{display:none;gap:20px;font-weight:600;font-size:15px}
+nav a:hover{color:var(--mavi)}
+/* sahne */
+.giris{position:relative;height:300vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--sari)}
+.sahne-bas{position:absolute;left:0;right:0;top:15vh;z-index:3}
+.sahne-bas h1{font-size:clamp(40px,7vw,112px)}
+.sahne-bas h1 span{color:var(--mavi)}
+.harita{position:absolute;left:0;right:0;bottom:0;height:52vh;z-index:1}
+.harita svg{width:100%;height:100%}
+.yol{fill:none;stroke:var(--kara);stroke-width:6;stroke-linecap:round;stroke-dasharray:2 16}
+.pin{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;transform:translate(-50%,-100%)}
+.pin b{background:var(--kara);color:var(--sari);border-radius:10px;padding:6px 10px;font-size:14px;white-space:nowrap}
+.pin i{width:24px;height:24px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid var(--kara)}
+.pin.ev i{background:var(--pembe)}.pin.kampus i{background:var(--mavi)}
+.yurucu{position:absolute;z-index:5;font-size:44px;transform:translate(-50%,-85%) scaleX(-1);filter:drop-shadow(3px 3px 0 rgba(0,0,0,.2))}
+.sayac{position:absolute;right:max(20px,calc((100vw - 1220px)/2));top:16vh;z-index:3;background:var(--beyaz);border:2px solid var(--kara);border-radius:18px;padding:14px 18px;box-shadow:5px 5px 0 var(--kara);text-align:center;transform:rotate(3deg)}
+.sayac b{font-family:"Rubik Mono One";font-size:clamp(40px,4.4vw,64px);display:block;line-height:1}
+.sayac span{font-weight:700;font-size:14px}
+/* evler */
+.bolum{padding:120px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.bas h2{font-size:clamp(34px,4.8vw,72px)}
+.bas p{color:var(--soluk);max-width:40ch}
+.evler{display:grid;gap:20px}
+.ev{background:#fff;border:2px solid var(--kara);border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 var(--kara);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.ev:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--kara)}
+.ev figure{aspect-ratio:16/10.5;overflow:hidden;border-bottom:2px solid var(--kara);position:relative}
+.ev img{width:100%;height:100%;object-fit:cover}
+.ev .kalan{position:absolute;right:10px;top:10px;background:var(--pembe);border:2px solid var(--kara);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700}
+.ev .ic{padding:18px;display:grid;gap:8px}
+.ev h3{font-size:21px;font-weight:700}
+.ev .fy{font-family:"Rubik Mono One";font-size:22px}
+.ev .fy small{font-family:Rubik;font-size:14px;color:var(--soluk)}
+.dahil{display:flex;flex-wrap:wrap;gap:6px}
+.dahil span{font-size:13px;font-weight:600;border:1.5px solid var(--kara);border-radius:999px;padding:3px 9px}
+/* bölüşme */
+.bolus{background:var(--mavi);color:#fff;border:2px solid var(--kara);border-radius:28px;padding:clamp(22px,4vw,50px);display:grid;gap:30px;box-shadow:8px 8px 0 var(--kara)}
+.bolus h2{font-size:clamp(32px,4vw,58px)}
+.bolus label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.bolus label span{display:flex;justify-content:space-between}
+.bolus input[type=range]{width:100%;accent-color:var(--sari)}
+.kisi{display:flex;gap:8px}
+.kisi button{flex:1;font:700 18px Rubik;padding:12px 0;border-radius:12px;border:2px solid var(--kara);background:#fff;color:var(--kara);cursor:pointer}
+.kisi button[aria-pressed=true]{background:var(--sari)}
+.fis{background:var(--beyaz);color:var(--kara);border:2px solid var(--kara);border-radius:18px;padding:24px;font-family:"Rubik";display:grid;gap:6px;align-content:start;position:relative}
+.fis:before{content:"";position:absolute;left:0;right:0;top:-8px;height:10px;background:radial-gradient(circle at 6px 0,transparent 6px,var(--beyaz) 7px) 0 0/14px 10px repeat-x}
+.fis .satir{display:flex;justify-content:space-between;border-bottom:1px dashed var(--cizgi);padding:7px 0;font-size:15px}
+.fis .kisi-basi{font-family:"Rubik Mono One";font-size:clamp(36px,4vw,52px);color:var(--mavi);line-height:1;margin-top:8px}
+/* kampüs */
+.kampus{display:grid;gap:20px;align-items:center}
+.kampus figure{border:2px solid var(--kara);border-radius:22px;overflow:hidden;aspect-ratio:16/11;position:relative;box-shadow:6px 6px 0 var(--pembe)}
+.kampus img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.mesafeler{display:grid;gap:10px;margin-top:20px}
+.mesafeler div{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:2px solid var(--kara);border-radius:14px;padding:12px 16px;font-weight:600}
+.mesafeler b{font-family:"Rubik Mono One";font-size:15px;font-weight:400;background:var(--sari);border-radius:8px;padding:3px 8px}
+/* sss + başvuru */
+.sss details{border:2px solid var(--kara);border-radius:16px;padding:16px 18px;margin-bottom:10px;background:#fff}
+.sss summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.sss summary:after{content:"+";font-family:"Rubik Mono One"}
+.sss details[open] summary:after{content:"−"}
+.sss p{color:var(--soluk);margin-top:8px}
+.basvuru{display:grid;gap:24px}
+.form{background:var(--sari);border:2px solid var(--kara);border-radius:24px;padding:26px;display:grid;gap:12px;box-shadow:6px 6px 0 var(--kara)}
+.form label{display:grid;gap:4px;font-weight:700;font-size:14px}
+.form input,.form select{font:500 16px Rubik;color:var(--kara);background:#fff;border:2px solid var(--kara);border-radius:12px;padding:12px;width:100%}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-mesaj{font-weight:700;font-size:15px}
+footer{padding:70px 0 40px;margin-top:120px;border-top:2px solid var(--kara);background:var(--sari2)}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--kara);margin-bottom:6px}
+.yasal{margin-top:34px;padding-top:18px;border-top:1px solid var(--cizgi);display:grid;gap:6px;font-size:12.5px;color:var(--soluk)}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+[data-acik]:before{content:"";width:10px;height:10px;border-radius:50%;background:#aaa;border:2px solid var(--kara)}
+[data-acik].evet:before{background:var(--yesil)}
+@media (min-width:920px){
+  nav{display:flex}
+  .evler{grid-template-columns:repeat(3,1fr)}
+  .bolus{grid-template-columns:1.1fr .9fr;gap:40px}
+  .kampus{grid-template-columns:1.1fr .9fr;gap:50px}
+  .basvuru{grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .sayac{top:38vh;bottom:auto;right:20px;padding:10px 14px}
+  .sayac b{font-size:34px}
+  .yurucu{font-size:34px}
+  .ust .btn{padding:9px 12px;font-size:14px;white-space:nowrap}
+  .logo{font-size:14px;white-space:nowrap}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="rm">Kınıklı</span></div>
+
+<header><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true">K</i>KINIKLI EVLERİ</a>
+  <nav><a href="#evler">Evler</a><a href="#bolus">Masraf</a><a href="#kampus">Kampüs</a><a href="#basvuru">Başvur</a></nav>
+  <a class="btn sari" href="#basvuru" style="padding:9px 14px;font-size:15px;box-shadow:3px 3px 0 var(--kara)">Oda bul</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="etk">PAÜ öğrencileri için · 2026–27</span><h1 class="rm" style="margin-top:16px" data-bol data-hemen>Derse <span>7 dakika.</span> Eve 7 adım.</h1></div></div>
+    <div class="sayac" aria-hidden="true"><b id="dakika">0</b><span>dk yürüme</span></div>
+    <div class="harita" id="harita" aria-hidden="true">
+      <svg viewBox="0 0 1440 470" preserveAspectRatio="none"><path class="yol" id="yol" d="M170 380 C 380 380, 420 200, 640 230 S 900 380, 1060 250 S 1240 120, 1290 150"/></svg>
+    </div>
+    <div class="pin ev" id="pin-ev" aria-hidden="true"><b>Evin</b><i></i></div>
+    <div class="pin kampus" id="pin-kampus" aria-hidden="true"><b>PAÜ Kampüs</b><i></i></div>
+    <span class="yurucu" id="yurucu" aria-hidden="true">🚶</span>
+  </div>
+</section>
+
+<section class="bolum" id="evler"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Boş odalar</span><h2 class="rm" style="margin-top:14px" data-bol>Eşyalı, hazır, faturası belli.</h2></div><p data-r>Tüm daireler eşyalı; internet ve aidat kiraya dahil. Depozito bir kira, sözleşme 10 ya da 12 ay.</p></div>
+  <div class="evler" data-rg>
+    <article class="ev"><figure><img src="img/oda.jpg" alt="Masalı, yataklı ve kitaplıklı kompakt öğrenci stüdyo dairesi" loading="lazy"><span class="kalan">3 oda kaldı</span></figure><div class="ic"><h3>Stüdyo 1+0</h3><span class="fy">9.500₺<small> / ay</small></span><div class="dahil"><span>Eşyalı</span><span>İnternet dahil</span><span>Aidat dahil</span></div></div></article>
+    <article class="ev"><figure><img src="img/mutfak.jpg" alt="Temiz ve modern ortak öğrenci mutfağı" loading="lazy"><span class="kalan">1 daire</span></figure><div class="ic"><h3>2+1 · ev arkadaşlı</h3><span class="fy">14.000₺<small> / ay</small></span><div class="dahil"><span>2 kişilik</span><span>Çamaşır makinesi</span><span>Balkon</span></div></div></article>
+    <article class="ev"><figure><img src="img/balkon.jpg" alt="Gün batımında şehre bakan bitkili küçük balkon" loading="lazy"><span class="kalan">Yeni</span></figure><div class="ic"><h3>3+1 · manzaralı</h3><span class="fy">19.500₺<small> / ay</small></span><div class="dahil"><span>3 kişilik</span><span>Doğalgaz</span><span>Bisiklet park</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="bolus" style="padding-top:0"><div class="sarmal"><div class="bolus" data-r>
+  <div>
+    <span class="etk" style="background:var(--sari);color:var(--kara)">Masraf bölüşme</span>
+    <h2 class="rm" style="margin:14px 0 24px">Kişi başı ne düşer?</h2>
+    <div style="display:grid;gap:16px">
+      <div><span style="font-weight:600;font-size:15px">Kaç kişi kalacaksınız?</span><div class="kisi" id="kisi" style="margin-top:6px"><button type="button" data-k="1" aria-pressed="false">1</button><button type="button" data-k="2" aria-pressed="true">2</button><button type="button" data-k="3" aria-pressed="false">3</button><button type="button" data-k="4" aria-pressed="false">4</button></div></div>
+      <label><span>Kira <b id="b-kira-y">14.000 ₺</b></span><input type="range" id="b-kira" min="8000" max="25000" step="500" value="14000"></label>
+      <label><span>Elektrik + su (tahmini) <b id="b-fat-y">1.800 ₺</b></span><input type="range" id="b-fat" min="600" max="4000" step="100" value="1800"></label>
+      <label><span>Doğalgaz (kış ortalaması) <b id="b-gaz-y">1.500 ₺</b></span><input type="range" id="b-gaz" min="0" max="4000" step="100" value="1500"></label>
+    </div>
+  </div>
+  <div class="fis" aria-live="polite">
+    <b style="font-size:18px">Aylık fiş 🧾</b>
+    <div class="satir"><span>Kira</span><span id="f-kira">—</span></div>
+    <div class="satir"><span>Faturalar</span><span id="f-fat">—</span></div>
+    <div class="satir"><span>İnternet + aidat</span><span>Dahil</span></div>
+    <div class="satir"><span>Toplam</span><b id="f-top">—</b></div>
+    <span style="font-size:14px;color:var(--soluk);margin-top:6px">Kişi başı</span>
+    <span class="kisi-basi" id="f-kisi">—</span>
+    <span style="font-size:13px;color:var(--soluk)">Yurt ortalamasıyla karşılaştırmak için kişi başı tutara bakın. Tutarlar örnektir.</span>
+  </div>
+</div></div></section>
+
+<section class="bolum" id="kampus" style="padding-top:0"><div class="sarmal kampus">
+  <figure data-r><img src="img/kampus.jpg" alt="Yeşil çimenli, modern binalı üniversite kampüsü" loading="lazy" data-p="0.1"></figure>
+  <div>
+    <span class="etk">Kampüse mesafe</span>
+    <h2 class="rm" style="font-size:clamp(30px,3.6vw,52px);margin-top:14px" data-bol>Sabah dersine koşmadan.</h2>
+    <div class="mesafeler" data-rg>
+      <div><span>🎓 Mühendislik Fakültesi</span><b>7 dk</b></div>
+      <div><span>📚 Merkez kütüphane</span><b>9 dk</b></div>
+      <div><span>🏥 Tıp Fakültesi Hastanesi</span><b>12 dk</b></div>
+      <div><span>🚌 Otobüs durağı</span><b>2 dk</b></div>
+      <div><span>🛒 Market · fırın</span><b>1 dk</b></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="bolum" id="basvuru" style="padding-top:0"><div class="sarmal basvuru">
+  <div class="sss" data-r>
+    <span class="etk">Sık sorulanlar</span>
+    <h2 class="rm" style="font-size:clamp(30px,3.6vw,52px);margin:14px 0 20px">Merak ettiklerin.</h2>
+    <details open><summary>Kefil gerekiyor mu?</summary><p>Evet, velinizden biri kefil olur. Sözleşmeyi WhatsApp üzerinden de hazırlayabiliyoruz.</p></details>
+    <details><summary>Ev arkadaşı bulabilir misiniz?</summary><p>Oda arayanlar listemizden aynı bölüm veya sınıftan arkadaş eşleştirmesi yapıyoruz.</p></details>
+    <details><summary>Yazın ne oluyor?</summary><p>10 aylık sözleşmede Temmuz–Ağustos kira alınmaz; eşyalarınızı depoda tutabiliriz.</p></details>
+    <details><summary>Evcil hayvan?</summary><p>Stüdyo dairelerde kedi kabul ediyoruz; depozito bir kira daha fazla.</p></details>
+  </div>
+  <form class="form demo-form" novalidate data-r>
+    <b style="font-size:22px">Hızlı başvuru ⚡</b>
+    <div class="iki"><label>Ad<input name="ad" autocomplete="given-name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>Bölüm<input placeholder="örn. Bilgisayar Müh."></label><label>Sınıf<select><option>Hazırlık</option><option>1</option><option>2</option><option>3</option><option>4</option><option>Yüksek lisans</option></select></label></div>
+    <label>Ne arıyorsun?<select><option>Stüdyo (tek)</option><option>2+1 (arkadaşımla)</option><option>Ev arkadaşı eşleştirin</option></select></label>
+    <button class="btn" type="submit" style="justify-self:start">Gönder</button>
+    <p class="form-mesaj" role="status"></p>
+    <a class="btn sari" href="https://wa.me/905000000000" style="justify-content:center">WhatsApp'tan yaz</a>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><b>Kınıklı Öğrenci Evleri</b>PAÜ'ye yürüme mesafesinde eşyalı daireler.</div>
+    <div><b>Ofis</b>Örnek Mh. 0000 Sk. No: 0<br>Kınıklı, Pamukkale / Denizli</div>
+    <div><b>Saatler</b><span data-acik>Çalışma saatleri</span><br>Hafta içi 10:00 – 19:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <div class="yasal">
+    <p>Yetki belge no: 0000000 (temsilidir). Gerçek sitede Taşınmaz Ticareti Hakkında Yönetmelik gereği yetki belgesi numarası yer alır.</p>
+    <p>Bu site bir örnek çalışmadır. Kınıklı Öğrenci Evleri hayali bir işletmedir; daireler, fiyatlar ve mesafeler temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</div></footer>
+
+<script>
+window.SAAT={1:[10,19],2:[10,19],3:[10,19],4:[10,19],5:[10,19],6:[11,16]};
+// masraf bölüşme
+(function(){var k=2,$=function(i){return document.getElementById(i)},tl=function(x){return Math.round(x).toLocaleString("tr-TR")+" ₺"};
+  function yaz(){var kira=+$("b-kira").value,fat=+$("b-fat").value+ +$("b-gaz").value;$("b-kira-y").textContent=tl(kira);$("b-fat-y").textContent=tl(+$("b-fat").value);$("b-gaz-y").textContent=tl(+$("b-gaz").value);
+    $("f-kira").textContent=tl(kira);$("f-fat").textContent=tl(fat);$("f-top").textContent=tl(kira+fat);$("f-kisi").textContent=tl((kira+fat)/k)}
+  ["b-kira","b-fat","b-gaz"].forEach(function(i){$(i).addEventListener("input",yaz)});
+  $("kisi").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});k=+b.dataset.k;yaz()});yaz()})();
+// pinleri yola yerleştir
+function pinYerlestir(){var y=document.getElementById("yol"),hs=document.getElementById("harita"),h={left:hs.offsetLeft,top:hs.offsetTop,width:hs.offsetWidth,height:hs.offsetHeight},L=y.getTotalLength(),s=h.width/1440,sy=h.height/470;
+  function nokta(t){var p=y.getPointAtLength(L*t);return[h.left+p.x*s,h.top+p.y*sy]}
+  var a=nokta(0),b=nokta(1),e=document.getElementById("pin-ev"),k=document.getElementById("pin-kampus");e.style.left=a[0]+"px";e.style.top=a[1]+"px";k.style.left=b[0]+"px";k.style.top=b[1]+"px";return nokta}
+var NOKTA=pinYerlestir();addEventListener("resize",function(){NOKTA=pinYerlestir()});
+(function(){var p=NOKTA(0),w=document.getElementById("yurucu");w.style.left=p[0]+"px";w.style.top=p[1]+"px"})();
+window.SAHNE=function(gsap){
+  NOKTA=pinYerlestir();
+  gsap.set(["#pin-ev","#pin-kampus"],{xPercent:-50,yPercent:-100});var y=document.getElementById("yol"),L=y.getTotalLength(),w=document.getElementById("yurucu"),o={t:0},dk=document.getElementById("dakika");
+  gsap.set(y,{strokeDasharray:"2 16"});
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to(o,{t:1,duration:3,ease:"none",onUpdate:function(){var p=NOKTA(o.t);w.style.left=p[0]+"px";w.style.top=p[1]+"px";dk.textContent=Math.round(o.t*7)}},0)
+    .to("#sahne-bas",{y:-20,duration:3},0)
+    .fromTo("#pin-kampus",{scale:.6},{scale:1.15,duration:.4,ease:"back.out(3)"},2.8)
+    .to({},{duration:.6});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("dakika").textContent="7"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

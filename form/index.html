@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Form Studio · Reformer & Jumpboard · Denizli</title>
+<meta name="description" content="Form Studio: yüksek tempolu reformer, jumpboard ve power pilates dersleri. Haftalık program, kalori hesaplayıcı, paketler ve deneme dersi. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0D0D0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&family=Chivo+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--kara:#0D0D0D;--kara2:#161616;--kara3:#222;--turuncu:#FF5A1F;--turuncu2:#FF9466;--kemik:#F2F0EB;--soluk:#9A968E;--cizgi:rgba(242,240,235,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kara);color:var(--kemik);font-family:Chivo,system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1260px,100% - 40px);margin-inline:auto}
+.ch{font-family:Chivo;font-weight:900;letter-spacing:-.045em;line-height:.88;text-transform:uppercase}
+.ch span{color:var(--turuncu)}
+.mono{font-family:"Chivo Mono",monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;background:var(--turuncu);color:var(--kara);font:900 14px Chivo,sans-serif;letter-spacing:.04em;text-transform:uppercase;border:0;cursor:pointer;transition:transform .2s,box-shadow .3s}
+.btn:hover{transform:scale(1.04);box-shadow:0 0 30px rgba(255,90,31,.5)}
+.btn.bos{background:transparent;color:var(--kemik);box-shadow:inset 0 0 0 1.5px var(--kemik)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--turuncu);color:var(--kara);display:grid;place-items:center}
+.perde .ch{font-size:clamp(70px,14vw,200px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;transition:background .3s}
+header.dolu{background:rgba(13,13,13,.86);backdrop-filter:blur(12px)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;font-size:24px;letter-spacing:-.05em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.logo i{width:22px;height:22px;border-radius:50%;border:5px solid var(--turuncu)}
+nav{display:none;gap:26px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+nav a:hover{color:var(--turuncu)}
+/* nabız sahnesi */
+.giris{position:relative;height:320vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.sahne-foto{position:absolute;inset:0}
+.sahne-foto img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.1)}
+.sahne-foto:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.92) 0%,rgba(13,13,13,.6) 50%,rgba(13,13,13,.35));}
+.ekg{position:absolute;left:0;right:0;top:56%;width:100%;height:220px;transform:translateY(-50%);z-index:2;overflow:visible}
+.ekg path{fill:none;stroke:var(--turuncu);stroke-width:3;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(255,90,31,.8))}
+.sahne-bas{position:absolute;left:0;right:0;top:14vh;z-index:3}
+.sahne-bas h1{font-size:clamp(58px,10vw,170px)}
+.gostergeler{position:absolute;left:0;right:0;bottom:6vh;z-index:3}
+.gostergeler .sarmal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gos{border-top:2px solid var(--cizgi);padding-top:14px;position:relative}
+.gos:before{content:"";position:absolute;left:0;top:-2px;height:2px;width:var(--d,0%);background:var(--turuncu)}
+.gos b{display:block;font-weight:900;font-size:clamp(40px,5.4vw,84px);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.gos b small{font-size:.32em;color:var(--soluk);letter-spacing:0;margin-left:4px}
+.bolge{position:absolute;right:max(20px,calc((100vw - 1260px)/2));top:15vh;z-index:3;text-align:right}
+.bolge span{display:block}
+.bolge b{font-weight:900;font-size:clamp(22px,2vw,30px);text-transform:uppercase;color:var(--turuncu)}
+/* dersler */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.bas h2{font-size:clamp(56px,8vw,130px)}
+.bas p{color:var(--soluk);max-width:36ch}
+.dersler{display:grid;gap:14px}
+.ders{position:relative;overflow:hidden;border-radius:26px;min-height:420px;display:flex;align-items:flex-end;background:var(--kara2)}
+.ders img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.ders:hover img{transform:scale(1.06)}
+.ders:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,13,13,.92),transparent 60%)}
+.ders .ic{position:relative;z-index:2;padding:26px;width:100%}
+.ders h3{font-weight:900;font-size:clamp(30px,3vw,44px);text-transform:uppercase;letter-spacing:-.04em;line-height:.95}
+.ders p{color:#cfcac2;font-size:15px;margin-top:8px}
+.yogunluk{display:flex;gap:4px;margin-top:14px;align-items:center}
+.yogunluk i{width:26px;height:8px;border-radius:4px;background:rgba(242,240,235,.2)}
+.yogunluk i.d{background:var(--turuncu)}
+.yogunluk span{margin-left:8px}
+/* program */
+.program{background:var(--kara2);border-radius:30px;padding:clamp(20px,3vw,40px)}
+.gunler{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px}
+.gunler button{flex:none;font:900 14px Chivo;text-transform:uppercase;padding:12px 18px;border-radius:999px;border:0;background:var(--kara3);color:var(--kemik);cursor:pointer}
+.gunler button[aria-pressed=true]{background:var(--turuncu);color:var(--kara)}
+.seans{display:grid;grid-template-columns:90px 1fr auto;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--cizgi)}
+.seans .saat{font-weight:900;font-size:26px;letter-spacing:-.04em}
+.seans b{font-weight:700;font-size:18px;text-transform:uppercase}
+.seans small{display:block;color:var(--soluk);font-size:14px}
+.doluluk{display:flex;align-items:center;gap:10px;font-family:"Chivo Mono";font-size:12px}
+.doluluk i{width:70px;height:6px;border-radius:3px;background:var(--kara3);position:relative;overflow:hidden}
+.doluluk i b{position:absolute;left:0;top:0;bottom:0;background:var(--turuncu)}
+/* hesaplayıcı */
+.hesap{display:grid;gap:30px;align-items:center}
+.hesap h2{font-size:clamp(46px,6vw,96px)}
+.alanlar{display:grid;gap:18px;margin-top:26px}
+.alanlar label{display:grid;gap:8px;font-family:"Chivo Mono";font-size:12px;text-transform:uppercase;color:var(--soluk)}
+.alanlar label span{display:flex;justify-content:space-between}
+.alanlar label span b{color:var(--kemik);font-family:Chivo;font-size:16px}
+input[type=range]{width:100%;accent-color:var(--turuncu)}
+.hesap-sonuc{background:var(--turuncu);color:var(--kara);border-radius:30px;padding:clamp(26px,4vw,50px);display:grid;gap:8px}
+.hesap-sonuc b{font-weight:900;font-size:clamp(80px,11vw,160px);letter-spacing:-.06em;line-height:.85}
+.hesap-sonuc span{font-weight:700;text-transform:uppercase}
+.hesap-sonuc p{font-size:14.5px;opacity:.8}
+.sec{display:flex;gap:6px;flex-wrap:wrap}
+.sec button{font:700 14px Chivo;padding:10px 14px;border-radius:999px;border:1.5px solid var(--cizgi);background:transparent;color:var(--kemik);cursor:pointer;text-transform:uppercase}
+.sec button[aria-pressed=true]{background:var(--kemik);color:var(--kara);border-color:var(--kemik)}
+/* paketler */
+.paketler{display:grid;gap:14px}
+.pk{border:1.5px solid var(--cizgi);border-radius:26px;padding:30px;display:grid;gap:14px;align-content:start}
+.pk.one{border-color:var(--turuncu);background:linear-gradient(160deg,rgba(255,90,31,.14),transparent 60%)}
+.pk h3{font-weight:900;font-size:26px;text-transform:uppercase}
+.pk .fy{font-weight:900;font-size:58px;letter-spacing:-.05em;line-height:1}
+.pk .fy small{font-size:15px;color:var(--soluk);letter-spacing:0}
+.pk ul{list-style:none;display:grid;gap:8px;color:#cfcac2;font-size:15px}
+.pk li:before{content:"→";color:var(--turuncu);margin-right:10px}
+/* deneme */
+.deneme{position:relative;border-radius:34px;overflow:hidden;display:grid;gap:24px;padding:clamp(24px,4vw,56px);background:var(--kara2)}
+.deneme h2{font-size:clamp(50px,7vw,110px)}
+.deneme input,.deneme select{font:500 16px Chivo;color:var(--kemik);background:var(--kara3);border:1.5px solid transparent;border-radius:14px;padding:14px;width:100%}
+.deneme input:focus,.deneme select:focus{outline:none;border-color:var(--turuncu)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-mesaj{font-family:"Chivo Mono";font-size:13px;color:var(--turuncu2)}
+footer{padding:90px 0 40px}
+.alt-bas{font-weight:900;font-size:clamp(90px,22vw,340px);letter-spacing:-.07em;line-height:.8;text-transform:uppercase;color:var(--kara3);margin-bottom:40px}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--kemik);margin-bottom:6px;text-transform:uppercase;font-size:13px}
+.demo-not{margin-top:36px;padding-top:20px;border-top:1px solid var(--cizgi);font-size:12.5px;color:var(--soluk)}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-family:"Chivo Mono";font-size:12px;text-transform:uppercase}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#555}
+[data-acik].evet:before{background:#3ddc84;box-shadow:0 0 10px #3ddc84}
+@media (min-width:920px){
+  nav{display:flex}
+  .dersler{grid-template-columns:1.3fr 1fr 1fr}
+  .dersler .ders:first-child{grid-row:span 2;min-height:100%}
+  .hesap{grid-template-columns:1.1fr .9fr;gap:60px}
+  .paketler{grid-template-columns:repeat(3,1fr)}
+  .deneme{grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .bolge{display:none}
+  .gos b{font-size:34px}
+  .seans{grid-template-columns:64px 1fr}
+  .seans .doluluk{grid-column:2}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="ch">Form</span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"></i>Form</a>
+  <nav><a href="#dersler">Dersler</a><a href="#program">Program</a><a href="#paketler">Paketler</a><a href="#deneme">Deneme</a></nav>
+  <a class="btn" href="#deneme" style="padding:11px 18px;font-size:12.5px">Deneme dersi</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="sahne-foto"><img src="img/reformer.jpg" alt="Turuncu ışıklı modern stüdyoda yoğun reformer antrenmanı yapan kadın"></div>
+    <svg class="ekg" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true"><path id="ekg" d="M0 110 L180 110 L205 110 L220 70 L235 150 L250 20 L268 200 L285 110 L420 110 L445 95 L460 125 L475 110 L600 110 L620 110 L635 60 L650 160 L665 10 L684 210 L700 110 L820 110 L840 90 L855 130 L870 110 L980 110 L995 50 L1010 170 L1025 0 L1045 220 L1060 110 L1170 110 L1185 80 L1200 140 L1215 110 L1300 110 L1312 30 L1325 190 L1340 5 L1358 215 L1372 110 L1440 110"/></svg>
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="mono" style="color:var(--turuncu)">Power pilates · Denizli</span><h1 class="ch" style="margin-top:14px" data-bol data-hemen>Terlemeden <span>çıkma.</span></h1></div></div>
+    <div class="bolge" aria-hidden="true"><span class="mono" style="color:var(--soluk)">Nabız bölgesi</span><b id="bolge">Isınma</b></div>
+    <div class="gostergeler" aria-hidden="true"><div class="sarmal">
+      <div class="gos" id="g1"><span class="mono" style="color:var(--soluk)">Nabız</span><b><span id="bpm">72</span><small>bpm</small></b></div>
+      <div class="gos" id="g2"><span class="mono" style="color:var(--soluk)">Kalori</span><b><span id="kcal">0</span><small>kcal</small></b></div>
+      <div class="gos" id="g3"><span class="mono" style="color:var(--soluk)">Süre</span><b><span id="dk">0</span><small>dk</small></b></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="bolum" id="dersler"><div class="sarmal">
+  <div class="bas"><h2 class="ch" data-bol>Ders<span>ler</span></h2><p data-r>Tüm dersler 50 dakika, en fazla 8 kişi. Her derste yoğunluğu eğitmen seninle birlikte ayarlar.</p></div>
+  <div class="dersler" data-rg>
+    <article class="ders"><img src="img/grup.jpg" alt="Eğitmenin motive ettiği enerjik grup reformer dersi" loading="lazy"><div class="ic"><span class="mono" style="color:var(--turuncu)">En popüler</span><h3>Power reformer</h3><p>Tüm vücut, yüksek tempo, müzikle senkron.</p><div class="yogunluk"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i></i><span class="mono">4/5</span></div></div></article>
+    <article class="ders"><img src="img/jump.jpg" alt="Reformer üzerinde jumpboard kardiyo yapan kadın" loading="lazy"><div class="ic"><h3>Jumpboard</h3><p>Eklem dostu kardiyo; zıpla, yak, dinlen.</p><div class="yogunluk"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><span class="mono">5/5</span></div></div></article>
+    <article class="ders"><img src="img/detay.jpg" alt="Reformer kayışlarını kavrayan eller" loading="lazy"><div class="ic"><h3>Core &amp; form</h3><p>Karın, sırt ve duruş; yavaş ama yakıcı.</p><div class="yogunluk"><i class="d"></i><i class="d"></i><i class="d"></i><i></i><i></i><span class="mono">3/5</span></div></div></article>
+    <article class="ders"><img src="img/studyo.jpg" alt="Siyah reformerlar ve turuncu neon ışıklı beton zeminli stüdyo" loading="lazy"><div class="ic"><h3>Başlangıç</h3><p>Aleti ve nefesi tanı; ilk 4 dersin burada.</p><div class="yogunluk"><i class="d"></i><i class="d"></i><i></i><i></i><i></i><span class="mono">2/5</span></div></div></article>
+    <article class="ders"><img src="img/su.jpg" alt="Siyah reformer üzerinde su şişesi ve havlu" loading="lazy"><div class="ic"><h3>Stretch &amp; recover</h3><p>Hafta sonu esneme ve toparlanma.</p><div class="yogunluk"><i class="d"></i><i></i><i></i><i></i><i></i><span class="mono">1/5</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="program" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><h2 class="ch" data-bol>Prog<span>ram</span></h2><p data-r>Doluluk anlıktır (örnek). Dolu derslerde bekleme listesine yazılabilirsin.</p></div>
+  <div class="program" data-r><div class="gunler" id="gunler"></div><div id="seanslar"></div></div>
+</div></section>
+
+<section class="bolum" style="padding-top:0"><div class="sarmal hesap">
+  <div>
+    <span class="mono" style="color:var(--turuncu)">Kalori hesaplayıcı</span>
+    <h2 class="ch" style="margin-top:14px" data-bol>Bir derste ne <span>yakarsın?</span></h2>
+    <div class="alanlar" data-r>
+      <label><span>Kilo <b id="kilo-y">65 kg</b></span><input type="range" id="kilo" min="45" max="120" value="65"></label>
+      <label><span>Süre <b id="sure-y">50 dk</b></span><input type="range" id="sure" min="20" max="90" step="5" value="50"></label>
+      <div class="sec" id="tur"><button type="button" aria-pressed="false" data-met="4">Başlangıç</button><button type="button" aria-pressed="true" data-met="6.5">Power</button><button type="button" aria-pressed="false" data-met="8">Jumpboard</button><button type="button" aria-pressed="false" data-met="3">Stretch</button></div>
+    </div>
+  </div>
+  <div class="hesap-sonuc" data-r aria-live="polite"><span>Tahmini</span><b id="kcal-sonuc">355</b><span>kcal</span><p>MET değerleriyle yapılan yaklaşık hesaptır; nabız, yaş ve kondisyona göre değişir.</p></div>
+</div></section>
+
+<section class="bolum" id="paketler" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><h2 class="ch" data-bol>Pake<span>tler</span></h2></div>
+  <div class="paketler" data-rg>
+    <div class="pk"><h3>Başla</h3><span class="fy">2.400₺<small> / 4 ders</small></span><ul><li>1 ay geçerli</li><li>Başlangıç veya core</li><li>Ücretsiz duruş analizi</li></ul><a class="btn bos" href="#deneme" style="justify-self:start">Seç</a></div>
+    <div class="pk one"><h3>Form</h3><span class="fy">4.200₺<small> / 8 ders</small></span><ul><li>6 hafta geçerli</li><li>Tüm dersler</li><li>2 ders dondurma hakkı</li><li>Havlu ve su bizden</li></ul><a class="btn" href="#deneme" style="justify-self:start">Seç</a></div>
+    <div class="pk"><h3>Sınırsız</h3><span class="fy">6.900₺<small> / ay</small></span><ul><li>Günde 1 ders</li><li>Öncelikli rezervasyon</li><li>Aylık ölçüm</li></ul><a class="btn bos" href="#deneme" style="justify-self:start">Seç</a></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="deneme" style="padding-top:0"><div class="sarmal"><div class="deneme" data-r>
+  <div><span class="mono" style="color:var(--turuncu)">Deneme dersi</span><h2 class="ch" style="margin-top:12px">İlk ders <span>bizden.</span></h2><p style="color:var(--soluk);margin-top:14px;max-width:36ch">Rahat kıyafet ve kaymaz çorap yeterli. Dersten 10 dakika önce gel, aleti birlikte ayarlayalım.</p></div>
+  <form class="demo-form" novalidate style="display:grid;gap:10px">
+    <div class="iki"><input name="ad" placeholder="Ad Soyad" autocomplete="name" aria-label="Ad Soyad"><input name="tel" type="tel" placeholder="Telefon" aria-label="Telefon"></div>
+    <div class="iki"><select aria-label="Ders"><option>Başlangıç</option><option>Power reformer</option><option>Jumpboard</option><option>Core &amp; form</option></select><input type="date" aria-label="Tarih"></div>
+    <select aria-label="Seviye"><option>Hiç pilates yapmadım</option><option>Biraz deneyimim var</option><option>Düzenli yapıyorum</option></select>
+    <button class="btn" type="submit" style="justify-self:start">Yerimi ayır</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-bas" aria-hidden="true">Form</div>
+  <div class="alt-izgara">
+    <div><b>Form Studio</b>Power pilates · reformer · jumpboard</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Hafta içi 07:00 – 22:00<br>Hafta sonu 09:00 – 17:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Form Studio hayali bir işletmedir; program, doluluk, fiyatlar ve adres temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[9,17],1:[7,22],2:[7,22],3:[7,22],4:[7,22],5:[7,22],6:[9,17]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// haftalık program
+(function(){var G=["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"],D=[["07:00","Power reformer","Ece"],["09:30","Başlangıç","Deniz"],["12:15","Core & form","Ece"],["18:00","Jumpboard","Mert"],["19:15","Power reformer","Mert"],["20:30","Core & form","Deniz"]],
+  g=document.getElementById("gunler"),s=document.getElementById("seanslar"),bugun=(new Date().getDay()+6)%7;
+  G.forEach(function(ad,i){var b=document.createElement("button");b.type="button";b.textContent=ad;b.setAttribute("aria-pressed",i===bugun?"true":"false");b.dataset.i=i;g.appendChild(b)});
+  function yaz(i){s.innerHTML="";var liste=i>4?[["09:30","Power reformer","Ece"],["11:00","Jumpboard","Mert"],["12:30","Stretch & recover","Deniz"],["15:00","Başlangıç","Ece"]]:D;
+    liste.forEach(function(d,j){var dol=Math.min(8,((i*5+j*3)%9)),t=dol>=8?"Dolu · bekleme listesi":(8-dol)+" yer";var r=document.createElement("div");r.className="seans";
+      r.innerHTML='<span class="saat">'+d[0]+'</span><span><b>'+d[1]+'</b><small>Eğitmen: '+d[2]+' · 50 dk</small></span><span class="doluluk"><i><b style="width:'+dol/8*100+'%"></b></i>'+t+'</span>';s.appendChild(r)})}
+  g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;g.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});yaz(+b.dataset.i)});yaz(bugun)})();
+// kalori hesaplayıcı
+(function(){var k=document.getElementById("kilo"),su=document.getElementById("sure"),t=document.getElementById("tur"),met=6.5;
+  function yaz(){document.getElementById("kilo-y").textContent=k.value+" kg";document.getElementById("sure-y").textContent=su.value+" dk";document.getElementById("kcal-sonuc").textContent=Math.round(met*3.5*k.value/200*su.value)}
+  [k,su].forEach(function(x){x.addEventListener("input",yaz)});t.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;t.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});met=+b.dataset.met;yaz()});yaz()})();
+window.SAHNE=function(gsap){
+  var p=document.getElementById("ekg"),L=p.getTotalLength(),o={v:0},B=["Isınma","Yağ yakımı","Kardiyo","Zirve"];gsap.set(p,{strokeDasharray:L,strokeDashoffset:L});
+  function yaz(){var v=o.v;document.getElementById("bpm").textContent=Math.round(72+v*93);document.getElementById("kcal").textContent=Math.round(v*420);document.getElementById("dk").textContent=Math.round(v*50);
+    document.getElementById("bolge").textContent=B[Math.min(3,Math.floor(v*4))];["g1","g2","g3"].forEach(function(g){document.getElementById(g).style.setProperty("--d",(v*100)+"%")})}
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to(p,{strokeDashoffset:0,duration:3,ease:"none"},0)
+    .to(o,{v:1,duration:3,ease:"power1.in",onUpdate:yaz},0)
+    .to("#sahne-bas",{y:-40,opacity:.15,duration:1},.4)
+    .fromTo(".sahne-foto img",{scale:1.15},{scale:1,duration:3,ease:"none"},0)
+    .to({},{duration:.6});
+  yaz();
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("bpm").textContent="165";document.getElementById("kcal").textContent="420";document.getElementById("dk").textContent="50";document.getElementById("bolge").textContent="Zirve"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

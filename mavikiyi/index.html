@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mavikıyı Ağız ve Diş Sağlığı Polikliniği · Denizli</title>
+<meta name="description" content="Mavikıyı Poliklinik: altı uzmanlık bölümü, dokuz hekim, hafta sonu açık. Bölüm rehberi, hekim listesi ve randevu talebi. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0B2545">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;0,8..60,600;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+:root{--lacivert:#0B2545;--deniz:#1B6CA8;--acik:#F5F8FB;--acik2:#E6EEF6;--nane:#2FA38E;--beyaz:#fff;--metin:#13253D;--soluk:#5B6B80;--cizgi:rgba(11,37,69,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--acik);color:var(--metin);font-family:"Public Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.se{font-family:"Source Serif 4",serif;font-weight:600;letter-spacing:-.02em;line-height:1.02}
+.se i{font-style:italic;font-weight:500;color:var(--deniz)}
+.etk{font-size:13px;font-weight:600;color:var(--deniz);letter-spacing:.04em}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:10px;background:var(--deniz);color:#fff;font:600 15px "Public Sans",sans-serif;border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--lacivert)}
+.btn.bos{background:transparent;color:inherit;border:1.5px solid currentColor}
+.perde{position:fixed;inset:0;z-index:100;background:var(--lacivert);color:#fff;display:grid;place-items:center}
+.perde .se{font-size:clamp(40px,7vw,90px)}
+.ust-bant{background:var(--lacivert);color:#c7d5e6;font-size:13.5px}
+.ust-bant .sarmal{display:flex;justify-content:space-between;gap:16px;padding:8px 0;flex-wrap:wrap}
+.ust-bant b{color:#fff;font-weight:600}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.02em;color:var(--lacivert)}
+.logo i{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--deniz),var(--nane));position:relative}
+.logo i:after{content:"";position:absolute;inset:9px 7px;border:2.5px solid #fff;border-top:0;border-radius:0 0 10px 10px}
+.logo small{display:block;font-size:11px;font-weight:500;color:var(--soluk);letter-spacing:.06em;margin-top:-3px}
+nav{display:none;gap:26px;font-size:15px;font-weight:500}
+nav a:hover{color:var(--deniz)}
+/* giriş */
+.giris{padding:60px 0 40px}
+.giris-izgara{display:grid;gap:30px;align-items:center}
+.giris h1{font-size:clamp(42px,5.6vw,86px);color:var(--lacivert)}
+.giris p.gir{color:var(--soluk);margin-top:18px;max-width:44ch;font-size:18px}
+.giris-foto{border-radius:24px;overflow:hidden;position:relative;aspect-ratio:16/11}
+.giris-foto img{width:100%;height:100%;object-fit:cover}
+.rozetler{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.rozetler span{display:inline-flex;align-items:center;gap:8px;background:var(--beyaz);border:1px solid var(--cizgi);border-radius:10px;padding:9px 14px;font-size:14.5px;font-weight:500}
+.rozetler span:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--nane)}
+[data-acik]:before{background:#a9b3bf!important}
+[data-acik].evet:before{background:var(--nane)!important;box-shadow:0 0 0 4px rgba(47,163,142,.2)}
+.sayilar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);border-radius:18px;overflow:hidden;margin-top:40px}
+.sayilar div{background:var(--beyaz);padding:22px}
+.sayilar b{display:block;font-family:"Source Serif 4";font-size:42px;line-height:1;color:var(--lacivert)}
+.sayilar span{font-size:14px;color:var(--soluk)}
+/* tur (sahne) */
+.tur-dis{position:relative;height:420vh;background:var(--lacivert);color:#fff}
+.tur{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.kare{position:absolute;inset:0;opacity:0}
+.kare img{width:100%;height:100%;object-fit:cover;transform:scale(1.12)}
+.kare:first-child{opacity:1}
+.tur:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,37,69,.88) 0%,rgba(11,37,69,.45) 45%,rgba(11,37,69,.05) 75%);pointer-events:none}
+.tur-yazi{position:absolute;z-index:3;left:max(20px,calc((100vw - 1240px)/2));top:50%;transform:translateY(-50%);width:min(520px,100% - 40px)}
+.durak{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);opacity:0}
+.durak .no{font-size:13px;font-weight:600;letter-spacing:.14em;color:#8fc3ec}
+.durak h2{font-size:clamp(40px,4.8vw,74px);margin:12px 0 14px}
+.durak p{color:#c7d5e6;font-size:17px}
+.tur-cizgi{position:absolute;z-index:3;right:max(20px,calc((100vw - 1240px)/2));top:50%;transform:translateY(-50%);display:grid;gap:14px;font-size:13.5px;font-weight:500}
+.tur-cizgi span{display:flex;align-items:center;gap:10px;justify-content:flex-end;color:rgba(255,255,255,.5);transition:color .3s}
+.tur-cizgi span:after{content:"";width:28px;height:2px;background:currentColor;transition:width .3s}
+.tur-cizgi span.aktif{color:#fff}.tur-cizgi span.aktif:after{width:48px;background:var(--nane)}
+/* bölüm rehberi */
+.bolum{padding:120px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.bas h2{font-size:clamp(38px,4.6vw,70px);color:var(--lacivert);max-width:16ch}
+.bas p{color:var(--soluk);max-width:42ch}
+.rehber{display:grid;gap:20px}
+.sikayetler{display:flex;flex-wrap:wrap;gap:8px;align-content:start}
+.sikayetler button{font:500 15px "Public Sans";padding:12px 16px;border-radius:10px;border:1.5px solid var(--cizgi);background:var(--beyaz);color:var(--metin);cursor:pointer;transition:border-color .2s,background .2s}
+.sikayetler button[aria-pressed=true]{border-color:var(--deniz);background:#EAF3FB;color:var(--deniz)}
+.oneri{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:20px;padding:28px;display:grid;gap:12px}
+.oneri h3{font-family:"Source Serif 4";font-size:32px;font-weight:600;color:var(--lacivert);line-height:1.1}
+.oneri p{color:var(--soluk)}
+.oneri .hek{display:flex;flex-wrap:wrap;gap:8px}
+.oneri .hek span{background:var(--acik);border-radius:8px;padding:6px 10px;font-size:14px}
+.bolumler{display:grid;gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);border-radius:20px;overflow:hidden;margin-top:30px}
+.bl{background:var(--beyaz);padding:24px;display:grid;gap:6px}
+.bl b{font-size:17.5px;color:var(--lacivert)}
+.bl span{color:var(--soluk);font-size:14.5px}
+/* hekimler */
+.filtre{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.filtre button{font:600 14px "Public Sans";padding:9px 14px;border-radius:999px;border:0;background:var(--acik2);color:var(--metin);cursor:pointer}
+.filtre button[aria-pressed=true]{background:var(--lacivert);color:#fff}
+.hekimler{display:grid;gap:14px}
+.hk{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:18px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center}
+.hk .av{grid-row:span 3;width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--deniz),var(--lacivert))}
+.hk b{font-size:17px}
+.hk span{color:var(--deniz);font-size:14px;font-weight:600}
+.hk small{color:var(--soluk);font-size:13.5px}
+.hk[hidden]{display:none}
+/* güven */
+.guven{display:grid;gap:20px}
+.gk{border-radius:22px;overflow:hidden;background:var(--beyaz);border:1px solid var(--cizgi)}
+.gk figure{aspect-ratio:16/10;overflow:hidden}
+.gk img{width:100%;height:100%;object-fit:cover}
+.gk .ic{padding:22px 24px 26px}
+.gk h3{font-family:"Source Serif 4";font-size:26px;font-weight:600;color:var(--lacivert)}
+.gk p{color:var(--soluk);font-size:15px;margin-top:6px}
+/* randevu */
+.randevu{background:var(--lacivert);color:#fff;border-radius:30px;padding:clamp(24px,4vw,56px);display:grid;gap:34px}
+.randevu h2{font-size:clamp(36px,4.4vw,64px)}
+.randevu p{color:#c7d5e6}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.randevu label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#c7d5e6}
+.randevu input,.randevu select{font:500 16px "Public Sans";color:var(--metin);background:#fff;border:0;border-radius:10px;padding:13px 14px;width:100%}
+.form-mesaj{font-size:14.5px;color:#9ee0d1;font-weight:500}
+.acil{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px;margin-top:22px}
+.acil b{font-size:20px;display:block;color:#fff}
+footer{padding:80px 0 40px}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--metin);margin-bottom:6px}
+.yasal{margin-top:40px;padding-top:20px;border-top:1px solid var(--cizgi);display:grid;gap:8px;font-size:12.5px;color:var(--soluk)}
+@media (min-width:920px){
+  nav{display:flex}
+  .giris-izgara{grid-template-columns:1fr 1.05fr;gap:60px}
+  .sayilar{grid-template-columns:repeat(4,1fr)}
+  .rehber{grid-template-columns:1fr 1fr;gap:40px}
+  .bolumler{grid-template-columns:repeat(3,1fr)}
+  .hekimler{grid-template-columns:repeat(3,1fr)}
+  .guven{grid-template-columns:repeat(3,1fr)}
+  .randevu{grid-template-columns:1fr 1.1fr;gap:60px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .tur-cizgi{display:none}
+  .tur:after{background:linear-gradient(0deg,rgba(11,37,69,.92) 0%,rgba(11,37,69,.5) 55%,rgba(11,37,69,.1))}
+  .tur-yazi{top:auto;bottom:8vh;transform:none;height:46vh}
+  .durak{top:auto;bottom:0;transform:none}
+  .ust-bant .sarmal span:last-child{display:none}
+  .logo small{display:none}
+  header .btn{white-space:nowrap;padding:10px 14px!important;font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="se">Mavikıyı</span></div>
+
+<div class="ust-bant"><div class="sarmal"><span>Hafta sonu dahil her gün açık · <b>Pazar acil hattı</b></span><span>Anlaşmalı kurumlar için lütfen arayın</span></div></div>
+<header><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"></i><span>Mavikıyı<small>AĞIZ VE DİŞ SAĞLIĞI POLİKLİNİĞİ</small></span></a>
+  <nav><a href="#tur">Klinik</a><a href="#rehber">Bölümler</a><a href="#hekimler">Hekimler</a><a href="#randevu">Randevu</a></nav>
+  <a class="btn" href="#randevu" style="padding:11px 18px">Randevu al</a>
+</div></header>
+
+<section class="giris"><div class="sarmal">
+  <div class="giris-izgara">
+    <div>
+      <span class="etk">Merkezefendi · Denizli</span>
+      <h1 class="se" style="margin-top:14px" data-bol data-hemen>Ailenizin tüm diş ihtiyaçları, <i>tek çatı altında.</i></h1>
+      <p class="gir" data-r>Altı uzmanlık bölümü ve dokuz hekimle, çocuk muayenesinden implant üstü protezlere kadar tüm süreç aynı binada, aynı dosyada.</p>
+      <div class="rozetler" data-rg><span data-acik>Çalışma saatleri</span><span>Dijital röntgen</span><span>Engelli erişimi</span><span>Otopark</span></div>
+    </div>
+    <div class="giris-foto" data-r><img src="img/bina.jpg" alt="Mavi camlı ve beyaz cepheli iki katlı modern poliklinik binası" data-p="0.08"></div>
+  </div>
+  <div class="sayilar" data-rg>
+    <div><b data-say="6">6</b><span>uzmanlık bölümü</span></div>
+    <div><b data-say="9">9</b><span>diş hekimi</span></div>
+    <div><b data-say="7">7</b><span>tedavi ünitesi</span></div>
+    <div><b>7/7</b><span>gün açık</span></div>
+  </div>
+</div></section>
+
+<section class="tur-dis" id="tur">
+  <div class="tur">
+    <div class="kare"><img src="img/resepsiyon.jpg" alt="Beyaz bankolu, mavi detaylı poliklinik resepsiyonu"></div>
+    <div class="kare"><img src="img/koridor.jpg" alt="Tedavi odası kapılarının sıralandığı aydınlık koridor"></div>
+    <div class="kare"><img src="img/rontgen.jpg" alt="Panoramik dental röntgen cihazı"></div>
+    <div class="kare"><img src="img/steril.jpg" alt="Otoklav ve mühürlü alet paketlerinin bulunduğu sterilizasyon odası"></div>
+    <div class="kare"><img src="img/ekip.jpg" alt="Lacivert forma giymiş hekim ekibi koridorda yürürken"></div>
+    <div class="tur-yazi">
+      <div class="durak"><span class="no">01 / 05 · KLİNİK TURU</span><h2 class="se">Karşılama</h2><p>Hasta koordinatörü dosyanızı açar, randevunuzu ve anlaşmalı kurum bilgilerinizi kontrol eder.</p></div>
+      <div class="durak"><span class="no">02 / 05</span><h2 class="se">Yedi tedavi odası</h2><p>Her bölümün kendi odası; bekleme süresini kısaltan planlı randevu sistemi.</p></div>
+      <div class="durak"><span class="no">03 / 05</span><h2 class="se">Dijital röntgen</h2><p>Panoramik ve sefalometrik çekim aynı katta; sonuç birkaç dakikada hekiminizin ekranında.</p></div>
+      <div class="durak"><span class="no">04 / 05</span><h2 class="se">Sterilizasyon</h2><p>Tüm aletler B sınıfı otoklavda sterilize edilir, mühürlü paketlerde saklanır ve sizin önünüzde açılır.</p></div>
+      <div class="durak"><span class="no">05 / 05</span><h2 class="se">Ortak dosya</h2><p>Bölümler arası geçişte dosyanız sizinle gelir; hekimler haftalık vaka toplantısında birlikte planlar.</p></div>
+    </div>
+    <div class="tur-cizgi" aria-hidden="true"><span>Karşılama</span><span>Tedavi odaları</span><span>Röntgen</span><span>Sterilizasyon</span><span>Ekip</span></div>
+  </div>
+</section>
+
+<section class="bolum" id="rehber"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Bölüm rehberi</span><h2 class="se" style="margin-top:12px" data-bol>Hangi bölüme <i>başvurmalıyım?</i></h2></div><p data-r>Şikâyetinizi seçin; hangi bölümün ilgilendiğini görün. Emin değilseniz genel muayene ile başlayabilirsiniz.</p></div>
+  <div class="rehber">
+    <div class="sikayetler" id="sikayetler" data-r>
+      <button type="button" aria-pressed="true" data-b="Endodonti" data-a="Ağrının kaynağı çoğu zaman diş içindeki sinirdir. Kanal tedavisi gerekip gerekmediği röntgenle değerlendirilir." data-h="Dt. Emre Kaya|Dt. Aslı Tan">Diş ağrısı</button>
+      <button type="button" aria-pressed="false" data-b="Periodontoloji" data-a="Diş eti kanaması, diş taşı ve diş eti hastalıklarının ilk belirtisi olabilir. Temizlik ve diş eti değerlendirmesi yapılır." data-h="Dt. Burak Er">Diş eti kanaması</button>
+      <button type="button" aria-pressed="false" data-b="Pedodonti" data-a="0–14 yaş çocukların muayenesi, koruyucu uygulamalar ve süt dişi tedavileri çocuk diş hekimliği bölümünde yapılır." data-h="Dt. Deniz Ay|Dt. Ece Sarı">Çocuğumun kontrolü</button>
+      <button type="button" aria-pressed="false" data-b="Ortodonti" data-a="Çapraşıklık, dişler arası boşluk ve çene uyumsuzlukları ortodonti bölümünde değerlendirilir." data-h="Dt. Selin Öz">Çapraşık dişler</button>
+      <button type="button" aria-pressed="false" data-b="Protetik diş tedavisi" data-a="Eksik dişler için köprü, protez veya implant üstü seçenekler muayene sonrası birlikte planlanır." data-h="Dt. Can Yurt|Dt. Aslı Tan">Eksik diş</button>
+      <button type="button" aria-pressed="false" data-b="Ağız, diş ve çene cerrahisi" data-a="Gömülü yirmilik dişler, çekimler ve cerrahi işlemler bu bölümde planlanır." data-h="Dt. Murat Şen">Yirmilik diş</button>
+    </div>
+    <div class="oneri" id="oneri" data-r aria-live="polite"><span class="etk">Önerilen bölüm</span><h3>Endodonti</h3><p>Ağrının kaynağı çoğu zaman diş içindeki sinirdir. Kanal tedavisi gerekip gerekmediği röntgenle değerlendirilir.</p><div class="hek"><span>Dt. Emre Kaya</span><span>Dt. Aslı Tan</span></div><a class="btn" href="#randevu" style="justify-self:start;margin-top:6px">Bu bölüm için randevu</a></div>
+  </div>
+  <div class="bolumler" data-rg>
+    <div class="bl"><b>Pedodonti</b><span>Çocuk diş hekimliği, 0–14 yaş</span></div>
+    <div class="bl"><b>Ortodonti</b><span>Plak, braket, çene uyumu</span></div>
+    <div class="bl"><b>Endodonti</b><span>Kanal tedavisi</span></div>
+    <div class="bl"><b>Periodontoloji</b><span>Diş eti sağlığı</span></div>
+    <div class="bl"><b>Protetik diş tedavisi</b><span>Kron, köprü, protez</span></div>
+    <div class="bl"><b>Ağız ve çene cerrahisi</b><span>Çekim, gömülü diş, implant cerrahisi</span></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="hekimler" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Hekimler</span><h2 class="se" style="margin-top:12px" data-bol>Ekibimiz.</h2></div></div>
+  <div class="filtre" id="filtre"><button type="button" aria-pressed="true" data-f="*">Tümü</button><button type="button" aria-pressed="false" data-f="ped">Pedodonti</button><button type="button" aria-pressed="false" data-f="ort">Ortodonti</button><button type="button" aria-pressed="false" data-f="end">Endodonti</button><button type="button" aria-pressed="false" data-f="per">Periodontoloji</button><button type="button" aria-pressed="false" data-f="pro">Protez</button><button type="button" aria-pressed="false" data-f="cer">Cerrahi</button></div>
+  <div class="hekimler" id="hk-liste">
+    <div class="hk" data-f="cer"><span class="av">MŞ</span><b>Dt. Murat Şen</b><span>Ağız, diş ve çene cerrahisi</span><small>Mesul müdür · Pzt–Cum</small></div>
+    <div class="hk" data-f="end"><span class="av">EK</span><b>Dt. Emre Kaya</b><span>Endodonti</span><small>Pzt, Çar, Cum</small></div>
+    <div class="hk" data-f="end pro"><span class="av">AT</span><b>Dt. Aslı Tan</b><span>Endodonti · Protez</span><small>Sal, Per, Cmt</small></div>
+    <div class="hk" data-f="ped"><span class="av">DA</span><b>Dt. Deniz Ay</b><span>Pedodonti</span><small>Pzt–Cum</small></div>
+    <div class="hk" data-f="ped"><span class="av">ES</span><b>Dt. Ece Sarı</b><span>Pedodonti</span><small>Cmt, Paz</small></div>
+    <div class="hk" data-f="ort"><span class="av">SÖ</span><b>Dt. Selin Öz</b><span>Ortodonti</span><small>Sal, Per, Cmt</small></div>
+    <div class="hk" data-f="per"><span class="av">BE</span><b>Dt. Burak Er</b><span>Periodontoloji</span><small>Pzt, Çar</small></div>
+    <div class="hk" data-f="pro"><span class="av">CY</span><b>Dt. Can Yurt</b><span>Protetik diş tedavisi</span><small>Pzt–Cum</small></div>
+    <div class="hk" data-f="*"><span class="av">GD</span><b>Dt. Gizem Doğan</b><span>Genel diş hekimi</span><small>Paz · acil hattı</small></div>
+  </div>
+</div></section>
+
+<section class="bolum" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Güvence</span><h2 class="se" style="margin-top:12px" data-bol>Görmediğiniz ayrıntılar.</h2></div></div>
+  <div class="guven" data-rg>
+    <article class="gk"><figure><img src="img/steril.jpg" alt="Sterilizasyon odası" loading="lazy"></figure><div class="ic"><h3>İzlenebilir sterilizasyon</h3><p>Her paketin üzerinde sterilizasyon tarihi ve çevrim numarası bulunur.</p></div></article>
+    <article class="gk"><figure><img src="img/rontgen.jpg" alt="Panoramik röntgen cihazı" loading="lazy"></figure><div class="ic"><h3>Düşük doz görüntüleme</h3><p>Dijital sensörlerle, gerektiği kadar ve hekim istemiyle çekim.</p></div></article>
+    <article class="gk"><figure><img src="img/koridor.jpg" alt="Klinik koridoru" loading="lazy"></figure><div class="ic"><h3>Planlı randevu</h3><p>Randevular arası oda hazırlık süresi, bekleme süresine dahil edilmez.</p></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="randevu" style="padding-top:0"><div class="sarmal"><div class="randevu" data-r>
+  <div><span class="etk" style="color:#8fc3ec">Randevu</span><h2 class="se" style="margin-top:12px">Size en uygun hekim ve saat.</h2><p style="margin-top:14px;max-width:40ch">Talebinizi aldıktan sonra hasta koordinatörümüz aynı gün içinde sizi arar.</p>
+    <div class="acil"><span style="font-size:28px" aria-hidden="true">☎</span><div><span style="font-size:13px;color:#c7d5e6">Pazar ve resmî tatil acil hattı</span><b>0258 000 00 00</b></div></div></div>
+  <form class="demo-form" novalidate style="display:grid;gap:14px">
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>Bölüm<select id="r-bolum"><option>Genel muayene</option><option>Pedodonti</option><option>Ortodonti</option><option>Endodonti</option><option>Periodontoloji</option><option>Protetik diş tedavisi</option><option>Ağız, diş ve çene cerrahisi</option></select></label><label>Tercih edilen gün<input type="date"></label></div>
+    <div class="iki"><label>Zaman dilimi<select><option>Sabah</option><option>Öğle</option><option>Akşam</option></select></label><label>Anlaşmalı kurum<select><option>Yok</option><option>Özel sigorta</option><option>Kurum anlaşması</option></select></label></div>
+    <button class="btn" type="submit" style="justify-self:start;background:var(--nane)">Randevu talebi gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><span class="logo"><i aria-hidden="true"></i><span>Mavikıyı<small>AĞIZ VE DİŞ SAĞLIĞI POLİKLİNİĞİ</small></span></span></div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Hafta içi 08:30 – 20:00<br>Hafta sonu 10:00 – 17:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <div class="yasal">
+    <p>Mesul müdür: Dt. Murat Şen · Ruhsat bilgileri gerçek sitede yer alır.</p>
+    <p>Bu sitedeki içerikler bilgilendirme amaçlıdır. Her cerrahi veya girişimsel işlemde sonuçlar kişiden kişiye değişiklik gösterebilir. İşlem öncesinde hekiminizden detaylı görüş almanız önerilir.</p>
+    <p>Bu site bir örnek çalışmadır. Mavikıyı Poliklinik hayali bir kurumdur; hekimler, adres ve sayılar temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</div></footer>
+
+<script>
+window.SAAT={0:[10,17],1:[8.5,20],2:[8.5,20],3:[8.5,20],4:[8.5,20],5:[8.5,20],6:[10,17]};
+// bölüm rehberi
+(function(){var s=document.getElementById("sikayetler"),o=document.getElementById("oneri"),sel=document.getElementById("r-bolum");
+  s.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;s.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+    o.querySelector("h3").textContent=b.dataset.b;o.querySelector("p").textContent=b.dataset.a;o.querySelector(".hek").innerHTML=b.dataset.h.split("|").map(function(h){return"<span>"+h+"</span>"}).join("");
+    [].forEach.call(sel.options,function(op,i){if(b.dataset.b.indexOf(op.text.split(",")[0])===0)sel.selectedIndex=i})})})();
+// hekim filtresi
+(function(){var f=document.getElementById("filtre");f.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;f.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+  document.querySelectorAll(".hk").forEach(function(h){h.hidden=!(b.dataset.f==="*"||h.dataset.f.split(" ").indexOf(b.dataset.f)>-1)})})})();
+window.SAHNE=function(gsap){
+  var k=gsap.utils.toArray(".kare"),d=gsap.utils.toArray(".durak"),c=gsap.utils.toArray(".tur-cizgi span");
+  gsap.set(d[0],{opacity:1});c[0].classList.add("aktif");
+  var tl=gsap.timeline({scrollTrigger:{trigger:".tur-dis",start:"top top",end:"bottom bottom",scrub:1,onUpdate:function(st){var i=Math.min(4,Math.floor(st.progress*5));c.forEach(function(x,j){x.classList.toggle("aktif",j===i)})}}});
+  k.forEach(function(el,i){tl.to(el.querySelector("img"),{scale:1,duration:1.2,ease:"none"},i);
+    if(i>0){tl.to(el,{opacity:1,duration:.35},i-.15).fromTo(d[i],{opacity:0,y:30},{opacity:1,y:0,duration:.35},i).to(d[i-1],{opacity:0,y:-30,duration:.3},i-.15)}});
+  tl.to({},{duration:.4});
+  return tl;
+};
+window.STATIK=function(){var t=document.querySelector(".tur-dis");t.style.height="auto";document.querySelector(".tur").style.position="relative";document.querySelectorAll(".durak")[0].style.opacity=1};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

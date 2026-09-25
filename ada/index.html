@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ada Estetik Diş Kliniği · Denizli</title>
+<meta name="description" content="Ada Estetik Diş Kliniği: zirkonyum kron, laminate veneer ve dijital gülüş tasarımı hakkında bilgilendirme, randevu talebi. Merkezefendi, Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0D0C0B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#0D0C0B;--gece2:#171513;--gece3:#211E1B;--sampanya:#D8C3A5;--fildisi:#F2EDE6;--soluk:#9C958C;--cizgi:rgba(242,237,230,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--gece);color:var(--fildisi);font-family:Sora,system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+b,strong{font-weight:500}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.co{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.01em;line-height:.98}
+.co i{font-style:italic;color:var(--sampanya);font-weight:400}
+.etk{font-size:11.5px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--sampanya)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 28px;border:1px solid var(--sampanya);color:var(--gece);background:var(--sampanya);font:400 14px Sora,sans-serif;letter-spacing:.08em;cursor:pointer;transition:background .4s,color .4s}
+.btn:hover{background:transparent;color:var(--sampanya)}
+.btn.bos{background:transparent;color:var(--sampanya)}
+.btn.bos:hover{background:var(--sampanya);color:var(--gece)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--gece);display:grid;place-items:center}
+.perde .co{font-size:clamp(46px,7vw,90px);letter-spacing:.3em;font-weight:400}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:20px 0;transition:background .5s}
+header.dolu{background:rgba(13,12,11,.82);backdrop-filter:blur(14px)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:"Cormorant Garamond";font-size:28px;letter-spacing:.32em;font-weight:500}
+.logo small{display:block;font-family:Sora;font-size:9.5px;letter-spacing:.42em;color:var(--soluk);margin-top:-4px}
+nav{display:none;gap:34px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+nav a{color:var(--soluk);transition:color .3s}nav a:hover{color:var(--fildisi)}
+/* sahne */
+.giris{position:relative;height:330vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;place-items:center}
+.gulus-cizgi{position:absolute;left:50%;top:50%;width:min(70vw,900px);transform:translate(-50%,-38%);z-index:2;overflow:visible}
+.gulus-cizgi path{fill:none;stroke:var(--sampanya);stroke-width:1.2;stroke-linecap:round}
+.pencere{position:absolute;inset:0;z-index:3;clip-path:ellipse(0% 0% at 50% 58%)}
+.pencere img{width:100%;height:100%;object-fit:cover}
+.pencere:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,12,11,.85),rgba(13,12,11,.15) 50%,rgba(13,12,11,.5))}
+.sahne-bas{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;z-index:4;padding-bottom:12vh}
+.sahne-bas h1{font-size:clamp(50px,8vw,132px);max-width:11ch}
+.sahne-bas p{color:var(--soluk);max-width:44ch;margin-top:22px}
+.sahne-son{position:absolute;left:0;right:0;bottom:10vh;z-index:5;opacity:0}
+.sahne-son h2{font-size:clamp(40px,5.4vw,84px);max-width:13ch}
+.sahne-alt{position:absolute;left:0;right:0;bottom:5vh;z-index:5}
+.sahne-alt .sarmal{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--soluk)}
+[data-acik]{display:inline-flex;align-items:center;gap:10px;letter-spacing:.06em}
+[data-acik]:before{content:"";width:6px;height:6px;border-radius:50%;background:#5e5850}
+[data-acik].evet:before{background:var(--sampanya);box-shadow:0 0 0 4px rgba(216,195,165,.15)}
+/* yaklaşım */
+.bolum{padding:150px 0}
+.ilkeler{display:grid;gap:1px;background:var(--cizgi);margin-top:60px}
+.ilke{background:var(--gece);padding:40px 0 30px}
+.ilke .no{font-family:"Cormorant Garamond";font-style:italic;font-size:22px;color:var(--sampanya)}
+.ilke h3{font-family:"Cormorant Garamond";font-weight:500;font-size:34px;line-height:1.1;margin:14px 0 10px}
+.ilke p{color:var(--soluk);font-size:15px;max-width:34ch}
+.buyuk{font-size:clamp(40px,5vw,78px);max-width:18ch}
+/* tedaviler */
+.ted{display:grid;gap:40px;align-items:start}
+.ted-liste{display:grid;border-top:1px solid var(--cizgi)}
+.ted-liste button{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:26px 0;border:0;border-bottom:1px solid var(--cizgi);background:transparent;color:var(--soluk);font-family:"Cormorant Garamond";font-size:clamp(28px,3vw,40px);text-align:left;cursor:pointer;transition:color .3s,padding .4s}
+.ted-liste button span{font-family:Sora;font-size:12px;letter-spacing:.2em}
+.ted-liste button[aria-selected=true]{color:var(--fildisi);padding-left:18px}
+.ted-liste button[aria-selected=true] span{color:var(--sampanya)}
+.ted-panel{background:var(--gece2);border:1px solid var(--cizgi);position:sticky;top:110px}
+.ted-panel figure{aspect-ratio:16/10;overflow:hidden}
+.ted-panel figure img{width:100%;height:100%;object-fit:cover}
+.ted-panel .ic{padding:32px;display:grid;gap:16px}
+.ted-panel h3{font-family:"Cormorant Garamond";font-weight:500;font-size:36px;line-height:1.05}
+.ted-panel p{color:var(--soluk);font-size:15px}
+.olcu{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cizgi);border:1px solid var(--cizgi)}
+.olcu div{background:var(--gece2);padding:14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soluk)}
+.olcu b{display:block;font-family:"Cormorant Garamond";font-size:24px;letter-spacing:0;text-transform:none;color:var(--fildisi);font-weight:500}
+/* dijital süreç */
+.surec-dis{position:relative;height:320vh}
+.surec{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:40px}
+.surec-bas{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.surec-bas h2{font-size:clamp(46px,6vw,96px)}
+.serit{display:flex;gap:24px;padding-left:max(20px,calc((100vw - 1240px)/2));will-change:transform}
+.adim{flex:0 0 min(80vw,520px);border:1px solid var(--cizgi);background:var(--gece2);display:flex;flex-direction:column}
+.adim figure{aspect-ratio:16/10;overflow:hidden}
+.adim figure img{width:100%;height:100%;object-fit:cover}
+.adim .ic{padding:26px}
+.adim .no{font-family:"Cormorant Garamond";font-size:64px;line-height:1;color:var(--sampanya);font-style:italic}
+.adim h3{font-family:"Cormorant Garamond";font-weight:500;font-size:30px;margin:6px 0}
+.adim p{color:var(--soluk);font-size:15px}
+.ilerleme{height:1px;background:var(--cizgi);position:relative;margin:0 max(20px,calc((100vw - 1240px)/2))}
+.ilerleme i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--sampanya)}
+/* renk skalası */
+.renk{display:grid;gap:40px;align-items:center}
+.renk-foto{aspect-ratio:4/5;overflow:hidden;position:relative}
+.renk-foto img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.skala{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-top:30px}
+.skala button{aspect-ratio:1/1.6;border-radius:40% 40% 46% 46%/30% 30% 60% 60%;border:1px solid transparent;cursor:pointer;transition:transform .3s,border-color .3s}
+.skala button[aria-pressed=true]{transform:translateY(-8px);border-color:var(--sampanya)}
+.skala-bilgi{margin-top:24px;border-top:1px solid var(--cizgi);padding-top:18px;min-height:110px}
+.skala-bilgi b{font-family:"Cormorant Garamond";font-size:34px;font-weight:500}
+.skala-bilgi p{color:var(--soluk);font-size:15px}
+/* klinik */
+.klinik{position:relative;height:92vh;min-height:560px;overflow:hidden;display:flex;align-items:flex-end}
+.klinik img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.klinik:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,12,11,.9),transparent 55%)}
+.klinik .sarmal{position:relative;z-index:2;padding-bottom:70px;display:grid;gap:30px}
+.klinik h2{font-size:clamp(46px,6.4vw,104px);max-width:12ch}
+.klinik ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 34px;font-size:14px;color:#cfc8bd}
+.klinik li:before{content:"—";color:var(--sampanya);margin-right:10px}
+/* hekimler */
+.hekimler{display:grid;gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);margin-top:50px}
+.hekim{background:var(--gece);padding:34px;display:grid;gap:10px}
+.hekim .harf{font-family:"Cormorant Garamond";font-style:italic;font-size:60px;line-height:1;color:var(--sampanya)}
+.hekim h3{font-family:"Cormorant Garamond";font-weight:500;font-size:30px}
+.hekim p{color:var(--soluk);font-size:14.5px}
+/* randevu */
+.randevu{display:grid;gap:50px}
+.randevu h2{font-size:clamp(46px,6vw,96px)}
+form.rz{display:grid;gap:18px}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:grid;gap:8px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+input,select,textarea{font:300 16px Sora,sans-serif;color:var(--fildisi);background:transparent;border:0;border-bottom:1px solid var(--cizgi);padding:12px 0;width:100%;border-radius:0}
+select option{background:var(--gece2)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sampanya)}
+.form-mesaj{font-size:14.5px;color:var(--sampanya)}
+footer{border-top:1px solid var(--cizgi);padding:80px 0 40px}
+.alt-izgara{display:grid;gap:26px;font-size:14.5px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--fildisi);font-weight:400;margin-bottom:6px;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+.yasal{margin-top:50px;padding-top:22px;border-top:1px solid var(--cizgi);display:grid;gap:10px;font-size:12px;color:#7a746c}
+@media (min-width:920px){
+  nav{display:flex}
+  .ilkeler{grid-template-columns:repeat(3,1fr);background:none;gap:50px}
+  .ilke{border-top:1px solid var(--cizgi)}
+  .ted{grid-template-columns:1fr 1fr;gap:80px}
+  .renk{grid-template-columns:.9fr 1.1fr;gap:90px}
+  .hekimler{grid-template-columns:repeat(3,1fr)}
+  .randevu{grid-template-columns:1fr 1.1fr;gap:90px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .gulus-cizgi{width:92vw}
+  .ted-panel{position:relative;top:0}
+  .skala{grid-template-columns:repeat(4,1fr)}
+  .klinik{height:80vh}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="co">ADA</span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#">ADA<small>ESTETİK DİŞ</small></a>
+  <nav><a href="#yaklasim">Yaklaşım</a><a href="#tedaviler">Tedaviler</a><a href="#surec">Dijital süreç</a><a href="#hekimler">Hekimler</a></nav>
+  <a class="btn bos" href="#randevu" style="padding:11px 18px">Randevu</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <svg class="gulus-cizgi" viewBox="0 0 900 260" aria-hidden="true"><path id="gulus" d="M40 40 C 200 230, 700 230, 860 40"/><path id="gulus2" d="M110 70 C 260 175, 640 175, 790 70" style="opacity:.45"/></svg>
+    <div class="pencere" id="pencere"><img src="img/klinik.jpg" alt="Loş ışıklı, ceviz panelli ve siyah deri koltuklu estetik diş kliniği tedavi odası"></div>
+    <div class="sahne-bas" id="sahne-bas"><span class="etk">Estetik diş kliniği · Denizli</span><h1 class="co" style="margin-top:20px" data-bol data-hemen>Gülüşünüz, <i>size</i> ait kalsın.</h1><p>Doğal görünen, yüzünüze uyan ve uzun yıllar kullanılabilen estetik çözümler için önce dinliyor, sonra planlıyoruz.</p></div>
+    <div class="sahne-son" id="sahne-son"><div class="sarmal"><span class="etk">Klinik</span><h2 class="co" style="margin-top:14px">Sessiz, özenli, <i>acele etmeyen</i> bir ortam.</h2></div></div>
+    <div class="sahne-alt" id="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span><span>Merkezefendi · Denizli</span></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="yaklasim"><div class="sarmal">
+  <span class="etk">Yaklaşım</span>
+  <h2 class="co buyuk" style="margin-top:20px" data-bol>İyi bir estetik çalışma <i>fark edilmez;</i> sadece yakışır.</h2>
+  <div class="ilkeler" data-rg>
+    <div class="ilke"><span class="no">i.</span><h3>Önce sağlık</h3><p>Estetik planlamadan önce diş eti, kemik ve çene eklemi değerlendirilir. Sağlıklı zemin olmadan kalıcı sonuç olmaz.</p></div>
+    <div class="ilke"><span class="no">ii.</span><h3>Az müdahale</h3><p>Mümkün olan her durumda diş dokusunu en az aşındıran seçenek önerilir. Her hasta için uygun seçenek farklıdır.</p></div>
+    <div class="ilke"><span class="no">iii.</span><h3>Birlikte karar</h3><p>Dijital ön çalışmayı birlikte inceler, seçenekleri, süreleri ve olası riskleri konuşarak karar veririz.</p></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="tedaviler" style="padding-top:0"><div class="sarmal">
+  <div style="margin-bottom:50px"><span class="etk">Tedaviler</span><h2 class="co" style="font-size:clamp(46px,6vw,96px);margin-top:18px" data-bol>Uygulama <i>alanlarımız.</i></h2></div>
+  <div class="ted" data-sekmeler>
+    <div class="ted-liste" role="tablist">
+      <button data-sekme="z" aria-selected="true">Zirkonyum kron <span>01</span></button>
+      <button data-sekme="l" aria-selected="false">Laminate veneer <span>02</span></button>
+      <button data-sekme="g" aria-selected="false">Dijital gülüş tasarımı <span>03</span></button>
+      <button data-sekme="b" aria-selected="false">Diş beyazlatma <span>04</span></button>
+      <button data-sekme="i" aria-selected="false">İmplant üstü protez <span>05</span></button>
+    </div>
+    <div>
+      <article class="ted-panel" data-panel="z"><figure><img src="img/kronlar.jpg" alt="Siyah kadife üzerinde zirkonyum kronlar" loading="lazy"></figure><div class="ic"><h3>Zirkonyum kron</h3><p>Metal alt yapı yerine zirkonyum kullanılan, ışığı doğal dişe yakın geçiren kaplamadır. Kırık, geniş dolgulu veya kanal tedavili dişlerde tercih edilebilir.</p><div class="olcu"><div>Seans<b>2–3</b></div><div>Süre<b>7–10 gün</b></div><div>Ölçü<b>Dijital</b></div></div></div></article>
+      <article class="ted-panel" data-panel="l" hidden><figure><img src="img/kronlar.jpg" alt="Porselen laminate veneerler" loading="lazy"></figure><div class="ic"><h3>Laminate veneer</h3><p>Dişin yalnızca ön yüzüne yapıştırılan ince porselen yapraklardır. Renk, form ve küçük aralık sorunlarında, uygun hastalarda az aşındırmayla uygulanabilir.</p><div class="olcu"><div>Seans<b>2–3</b></div><div>Kalınlık<b>0,3–0,7 mm</b></div><div>Prova<b>Var</b></div></div></div></article>
+      <article class="ted-panel" data-panel="g" hidden><figure><img src="img/tarama.jpg" alt="Monitörde dişlerin üç boyutlu ağız içi taraması" loading="lazy"></figure><div class="ic"><h3>Dijital gülüş tasarımı</h3><p>Yüz fotoğrafları ve ağız içi tarama ile olası sonuç önceden modellenir. Tedaviye başlamadan ağızda geçici bir prova yapılarak birlikte değerlendirilir.</p><div class="olcu"><div>Tarama<b>10 dk</b></div><div>Model<b>3B</b></div><div>Prova<b>Ağız içi</b></div></div></div></article>
+      <article class="ted-panel" data-panel="b" hidden><figure><img src="img/renk.jpg" alt="Diş renk skalası tutan eldivenli el" loading="lazy"></figure><div class="ic"><h3>Diş beyazlatma</h3><p>Klinikte ya da hekim kontrolünde evde uygulanan beyazlatma yöntemleridir. Öncesinde diş eti ve hassasiyet değerlendirmesi yapılır; sonuç dişin yapısına göre değişir.</p><div class="olcu"><div>Klinik<b>1 seans</b></div><div>Ev tipi<b>10–14 gün</b></div><div>Kontrol<b>Hekim</b></div></div></div></article>
+      <article class="ted-panel" data-panel="i" hidden><figure><img src="img/klinik.jpg" alt="Klinik tedavi odası" loading="lazy"></figure><div class="ic"><h3>İmplant üstü protez</h3><p>İyileşmesini tamamlamış implantların üzerine yapılan sabit kron ve köprülerdir. Cerrahi aşama anlaşmalı cerrahi uzmanımızla planlanır.</p><div class="olcu"><div>Bekleme<b>2–4 ay</b></div><div>Ölçü<b>Dijital</b></div><div>Kontrol<b>Yıllık</b></div></div></div></article>
+    </div>
+  </div>
+</div></section>
+
+<section class="surec-dis" id="surec">
+  <div class="surec">
+    <div class="sarmal surec-bas"><div><span class="etk">Dijital süreç</span><h2 class="co" style="margin-top:16px">Dört adımda <i>planlama.</i></h2></div><p style="color:var(--soluk);max-width:36ch">Süreler bilgilendirme amaçlıdır; her hastanın planı muayeneden sonra netleşir.</p></div>
+    <div class="serit" id="serit">
+      <article class="adim"><figure><img src="img/bekleme.jpg" alt="Klinik bekleme salonu" loading="lazy"></figure><div class="ic"><span class="no">01</span><h3>Tanışma ve muayene</h3><p>Beklentilerinizi dinler, ağız sağlığınızı değerlendiririz. Gerekirse röntgen çekilir.</p></div></article>
+      <article class="adim"><figure><img src="img/tarama.jpg" alt="Ekranda üç boyutlu diş taraması" loading="lazy"></figure><div class="ic"><span class="no">02</span><h3>Ağız içi tarama</h3><p>Ölçü maddesi yerine dijital tarayıcı kullanılır; yaklaşık on dakika sürer.</p></div></article>
+      <article class="adim"><figure><img src="img/renk.jpg" alt="Diş renk skalası" loading="lazy"></figure><div class="ic"><span class="no">03</span><h3>Tasarım ve prova</h3><p>Form ve renk birlikte seçilir, geçici prova ile ağızda denenir.</p></div></article>
+      <article class="adim"><figure><img src="img/kronlar.jpg" alt="Hazırlanmış zirkonyum kronlar" loading="lazy"></figure><div class="ic"><span class="no">04</span><h3>Uygulama ve kontrol</h3><p>Uygulama sonrası ilk hafta ve altıncı ayda kontrol randevusu verilir.</p></div></article>
+    </div>
+    <div class="ilerleme" aria-hidden="true"><i id="ilerleme"></i></div>
+  </div>
+</section>
+
+<section class="bolum"><div class="sarmal renk">
+  <div class="renk-foto" data-r><img src="img/renk.jpg" alt="Hekimin elinde diş renk skalası" loading="lazy" data-p="0.12"></div>
+  <div>
+    <span class="etk">Renk seçimi</span>
+    <h2 class="co" style="font-size:clamp(42px,5vw,80px);margin-top:18px" data-bol>En beyaz değil, <i>en doğal.</i></h2>
+    <p style="color:var(--soluk);margin-top:16px;max-width:44ch" data-r>Diş rengi skalada harf ve sayılarla tanımlanır. Doğru ton; ten rengine, göz akına ve yaşa göre seçilir. Skalayı inceleyin:</p>
+    <div class="skala" id="skala" data-r>
+      <button type="button" aria-label="BL1" style="background:#FAF8F2" data-k="BL1" data-a="Beyazlatma sonrası tonlar. Çok açık; genç ve açık tenli yüzlerde bile dikkatli seçilir."></button>
+      <button type="button" aria-label="A1" style="background:#F3ECDD" data-k="A1" data-a="Doğal dişler arasında en açık tonlardan biri. Estetik çalışmalarda sık tercih edilir."></button>
+      <button type="button" aria-label="A2" style="background:#EEE3CC" aria-pressed="true" data-k="A2" data-a="Toplumda en sık görülen doğal ton. Yüzle en uyumlu sonucu veren seçeneklerden biridir."></button>
+      <button type="button" aria-label="A3" style="background:#E7D7B6" data-k="A3" data-a="Hafif sarı-kahve alt ton. Yaşla birlikte doğal dişlerde görülür."></button>
+      <button type="button" aria-label="B1" style="background:#F2EEE2" data-k="B1" data-a="Kırmızı-sarı yerine sarımsı alt ton. Açık ve temiz görünür."></button>
+      <button type="button" aria-label="B2" style="background:#ECE3C8" data-k="B2" data-a="Sarımsı, orta açıklıkta ton."></button>
+      <button type="button" aria-label="C1" style="background:#E6E1D3" data-k="C1" data-a="Grimsi alt ton. Mat ve doğal görünür."></button>
+      <button type="button" aria-label="D2" style="background:#E3DACB" data-k="D2" data-a="Kırmızımsı-gri alt ton. Daha az görülen bir tondur."></button>
+    </div>
+    <div class="skala-bilgi" id="skala-bilgi"><b>A2</b><p>Toplumda en sık görülen doğal ton. Yüzle en uyumlu sonucu veren seçeneklerden biridir.</p></div>
+  </div>
+</div></section>
+
+<section class="klinik">
+  <img src="img/bekleme.jpg" alt="Kadife koltuklu ve mermer sehpalı klinik bekleme salonu" loading="lazy" data-p="0.14">
+  <div class="sarmal"><span class="etk">Klinik</span><h2 class="co" data-bol>Beklemek bile <i>dinlendirsin.</i></h2>
+    <ul><li>Randevular arası oda hazırlığı</li><li>Tek kullanımlık ve sterilize ekipman</li><li>Dijital röntgen</li><li>Engelli erişimi</li></ul></div>
+</section>
+
+<section class="bolum" id="hekimler"><div class="sarmal">
+  <span class="etk">Hekimler</span>
+  <h2 class="co" style="font-size:clamp(46px,6vw,96px);margin-top:18px" data-bol>Sizinle ilgilenecek <i>ekip.</i></h2>
+  <div class="hekimler" data-rg>
+    <div class="hekim"><span class="harf">A</span><h3>Dt. Ada Yılmaz</h3><p>Kurucu hekim · Estetik diş hekimliği alanında çalışır. Ege Üniversitesi Diş Hekimliği Fakültesi mezunu.</p></div>
+    <div class="hekim"><span class="harf">K</span><h3>Dt. Kerem Aydın</h3><p>Protetik diş tedavisi ve dijital planlama. Hacettepe Üniversitesi Diş Hekimliği Fakültesi mezunu.</p></div>
+    <div class="hekim"><span class="harf">S</span><h3>Dt. Selin Öz</h3><p>Koruyucu uygulamalar ve beyazlatma. Pamukkale Üniversitesi Diş Hekimliği Fakültesi mezunu.</p></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="randevu" style="padding-top:0"><div class="sarmal randevu">
+  <div><span class="etk">Randevu</span><h2 class="co" style="margin-top:18px" data-bol>Bir <i>tanışma</i> görüşmesi.</h2><p style="color:var(--soluk);margin-top:18px;max-width:40ch" data-r>Formu gönderdiğinizde hasta koordinatörümüz sizi arayarak uygun gün ve saati birlikte belirler.</p>
+    <p style="margin-top:30px;display:grid;gap:6px;font-size:15px" data-r><a href="tel:+902580000000">0258 000 00 00</a><a href="https://wa.me/905000000000" style="color:var(--sampanya)">WhatsApp ile yazın →</a></p></div>
+  <form class="rz demo-form" novalidate data-r>
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>İlgilendiğiniz konu<select><option>Muayene</option><option>Zirkonyum kron</option><option>Laminate veneer</option><option>Gülüş tasarımı</option><option>Beyazlatma</option><option>Diğer</option></select></label><label>Tercih edilen gün<input type="date"></label></div>
+    <label>Notunuz (isteğe bağlı)<textarea rows="3"></textarea></label>
+    <label style="display:flex;gap:10px;align-items:flex-start;text-transform:none;letter-spacing:0;font-size:13px"><input type="checkbox" required style="width:auto;margin-top:4px"> Kişisel verilerimin randevu amacıyla işlenmesine ilişkin aydınlatma metnini okudum.</label>
+    <button class="btn" type="submit" style="justify-self:start">Randevu talebi gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><span class="logo">ADA<small>ESTETİK DİŞ</small></span><p style="margin-top:14px;max-width:36ch">Ada Estetik Ağız ve Diş Sağlığı Polikliniği. Merkezefendi, Denizli.</p></div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Hafta içi 09:00 – 19:00<br>Cumartesi 10:00 – 15:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="#randevu">Randevu talebi</a></div>
+  </div>
+  <div class="yasal">
+    <p>Mesul müdür: Dt. Ada Yılmaz · Ruhsat bilgileri gerçek sitede yer alır.</p>
+    <p>Bu sitedeki içerikler bilgilendirme amaçlıdır. Her cerrahi veya girişimsel işlemde sonuçlar kişiden kişiye değişiklik gösterebilir. İşlem öncesinde hekiminizden detaylı görüş almanız önerilir.</p>
+    <p>Bu site bir örnek çalışmadır. Ada Estetik Diş Kliniği hayali bir kurumdur; hekimler, adres ve içerikler temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+  </div>
+</div></footer>
+
+<script>
+window.SAAT={1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[10,15]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// renk skalası
+(function(){var s=document.getElementById("skala"),b=document.getElementById("skala-bilgi");s.addEventListener("click",function(e){var x=e.target.closest("button");if(!x)return;s.querySelectorAll("button").forEach(function(y){y.setAttribute("aria-pressed",y===x?"true":"false")});b.innerHTML="<b>"+x.dataset.k+"</b><p>"+x.dataset.a+"</p>"})})();
+window.SAHNE=function(gsap){
+  [document.getElementById("gulus"),document.getElementById("gulus2")].forEach(function(p){var L=p.getTotalLength();gsap.set(p,{strokeDasharray:L,strokeDashoffset:L})});
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to("#gulus",{strokeDashoffset:0,duration:1.4,ease:"power2.inOut"},0)
+    .to("#gulus2",{strokeDashoffset:0,duration:1.4,ease:"power2.inOut"},.25)
+    .to("#sahne-alt",{opacity:0,duration:.5},.1)
+    .to("#sahne-bas",{opacity:0,y:-40,duration:.8},1.2)
+    .to("#pencere",{clipPath:"ellipse(18% 9% at 50% 58%)",duration:.8,ease:"power2.out"},1.4)
+    .to("#pencere",{clipPath:"ellipse(90% 90% at 50% 50%)",duration:1.6,ease:"power3.inOut"},2.2)
+    .to(".gulus-cizgi",{opacity:0,duration:.4},2.2)
+    .to("#pencere img",{scale:1.08,duration:2.4},2.2)
+    .to("#sahne-son",{opacity:1,y:-16,duration:.8},3.4)
+    .to({},{duration:.8});
+  var s=document.getElementById("serit");
+  gsap.to(s,{x:function(){return -(s.scrollWidth-innerWidth+40)},ease:"none",scrollTrigger:{trigger:".surec-dis",start:"top top",end:"bottom bottom",scrub:1,invalidateOnRefresh:true,onUpdate:function(st){document.getElementById("ilerleme").style.width=(st.progress*100)+"%"}}});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("pencere").style.clipPath="none";document.getElementById("sahne-bas").style.background="rgba(13,12,11,.55)";document.querySelector(".surec-dis").style.height="auto";document.getElementById("serit").style.cssText="overflow-x:auto;padding-bottom:20px"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

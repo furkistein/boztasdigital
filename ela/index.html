@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ela Lazer Epilasyon · Denizli</title>
+<meta name="description" content="Ela Lazer: buz başlıklı diyot lazer ile epilasyon. Bölge seçin, tahmini seans planınızı ve ücretinizi görün, ücretsiz ön görüşme randevusu alın. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#F3F2F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&family=Red+Hat+Text:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#F3F2F6;--beyaz:#fff;--murdum:#2B2140;--mor:#7C5CFF;--mor2:#B9A8FF;--nane:#5CD6B4;--soluk:#6C6780;--cizgi:rgba(43,33,64,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--murdum);font-family:"Red Hat Text",system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1220px,100% - 40px);margin-inline:auto}
+.rh{font-family:"Red Hat Display",sans-serif;font-weight:700;letter-spacing:-.04em;line-height:.98}
+.rh span{color:var(--mor)}
+.etk{font-family:"Red Hat Display";font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mor)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:var(--murdum);color:#fff;font:700 15px "Red Hat Display",sans-serif;border:0;cursor:pointer;transition:box-shadow .3s,transform .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(124,92,255,.6)}
+.btn.mor{background:var(--mor)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--murdum);color:#fff;display:grid;place-items:center}
+.perde .rh{font-size:clamp(50px,9vw,120px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;transition:background .4s}
+header.dolu{background:rgba(243,242,246,.88);backdrop-filter:blur(14px)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:"Red Hat Display";font-weight:900;font-size:24px;letter-spacing:-.05em;display:flex;align-items:center;gap:8px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--mor);box-shadow:0 0 12px 3px rgba(124,92,255,.6)}
+nav{display:none;gap:26px;font-size:15px;font-weight:500}
+nav a:hover{color:var(--mor)}
+/* sahne */
+.giris{position:relative;height:320vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:grid;align-items:center}
+.sahne-izgara{display:grid;gap:30px;align-items:center;width:min(1220px,100% - 40px);margin-inline:auto;padding-top:60px}
+.sahne h1{font-size:clamp(46px,6.6vw,104px)}
+.sahne p.gir{color:var(--soluk);max-width:36ch;margin-top:18px;font-size:18px}
+.tarayici{position:relative;aspect-ratio:4/5;border-radius:30px;overflow:hidden;background:#ddd}
+.tarayici img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tarayici .ust-kat{filter:saturate(.6) brightness(.9) contrast(.95);clip-path:inset(0 0 0 0)}
+.isin{position:absolute;left:-5%;right:-5%;height:3px;top:0;background:var(--mor);box-shadow:0 0 18px 6px rgba(124,92,255,.55),0 0 60px 20px rgba(124,92,255,.25);z-index:3}
+.bolge{position:absolute;z-index:4;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:500;display:flex;gap:8px;align-items:center;opacity:0}
+.bolge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--nane)}
+.tarayici .cihaz{position:absolute;inset:auto;right:-4%;bottom:-6%;width:44%;height:auto;object-fit:contain;z-index:5;filter:drop-shadow(0 30px 30px rgba(43,33,64,.3))}
+.olcum{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.olcum div b{font-family:"Red Hat Display";font-weight:900;font-size:34px;letter-spacing:-.04em;display:block;line-height:1}
+.olcum div span{font-size:13.5px;color:var(--soluk)}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;margin-top:24px}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#bdb8c9}
+[data-acik].evet:before{background:var(--nane);box-shadow:0 0 0 4px rgba(92,214,180,.25)}
+/* nasıl */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.bas h2{font-size:clamp(40px,5.4vw,84px);max-width:13ch}
+.bas p{color:var(--soluk);max-width:40ch}
+.kartlar{display:grid;gap:16px}
+.kart{background:var(--beyaz);border-radius:26px;padding:28px;display:grid;gap:10px;align-content:start}
+.kart .ikon{width:48px;height:48px;border-radius:14px;background:var(--zemin);display:grid;place-items:center;font-family:"Red Hat Display";font-weight:900;color:var(--mor)}
+.kart h3{font-family:"Red Hat Display";font-weight:700;font-size:21px;letter-spacing:-.03em}
+.kart p{color:var(--soluk);font-size:15px}
+.kart.foto{padding:0;overflow:hidden;min-height:280px;position:relative}
+.kart.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* planlayıcı */
+.plan{background:var(--murdum);color:#fff;border-radius:36px;padding:clamp(24px,4vw,56px);display:grid;gap:36px}
+.plan h2{font-size:clamp(38px,4.6vw,70px)}
+.plan p{color:#b9b2cc}
+.bolgeler{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.bolgeler button{font:500 15px "Red Hat Text";padding:11px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;cursor:pointer;transition:background .2s,border-color .2s}
+.bolgeler button[aria-pressed=true]{background:var(--mor);border-color:var(--mor)}
+.tip{display:flex;gap:6px;margin-top:22px;background:rgba(255,255,255,.07);padding:5px;border-radius:999px;width:max-content;max-width:100%}
+.tip button{font:500 14.5px "Red Hat Text";padding:9px 16px;border-radius:999px;border:0;background:transparent;color:#cfc8e0;cursor:pointer}
+.tip button[aria-pressed=true]{background:#fff;color:var(--murdum)}
+.sonuc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:28px;display:grid;gap:14px;align-content:start}
+.sonuc .buyuk{font-family:"Red Hat Display";font-weight:900;font-size:clamp(50px,6vw,76px);letter-spacing:-.05em;line-height:1}
+.satir{display:flex;justify-content:space-between;font-size:15px;border-bottom:1px solid rgba(255,255,255,.1);padding:9px 0}
+.satir span:first-child{color:#b9b2cc}
+.zaman-cizgi{display:flex;gap:4px;margin-top:4px}
+.zaman-cizgi i{flex:1;height:26px;border-radius:6px;background:rgba(255,255,255,.08);position:relative}
+.zaman-cizgi i.d{background:linear-gradient(180deg,var(--mor2),var(--mor))}
+.not{font-size:13px;color:#8f88a6}
+/* stüdyo */
+.studyo{display:grid;gap:18px}
+.studyo figure{border-radius:28px;overflow:hidden;position:relative;min-height:340px}
+.studyo img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.studyo .yazi{background:var(--beyaz);border-radius:28px;padding:34px;display:grid;gap:14px;align-content:center}
+.studyo h2{font-size:clamp(34px,3.8vw,56px)}
+.sss details{border-bottom:1px solid var(--cizgi);padding:20px 0}
+.sss summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:"Red Hat Display";font-weight:700;font-size:19px;letter-spacing:-.02em}
+.sss summary:after{content:"+";color:var(--mor);font-size:24px;line-height:1}
+.sss details[open] summary:after{content:"−"}
+.sss p{color:var(--soluk);margin-top:10px;max-width:70ch}
+/* randevu */
+.randevu{display:grid;gap:30px;background:var(--beyaz);border-radius:36px;padding:clamp(24px,4vw,56px)}
+.randevu h2{font-size:clamp(38px,4.6vw,70px)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.randevu label{display:grid;gap:6px;font-size:13px;font-weight:500;color:var(--soluk)}
+.randevu input,.randevu select{font:500 16px "Red Hat Text";color:var(--murdum);background:var(--zemin);border:1.5px solid transparent;border-radius:14px;padding:13px 14px;width:100%}
+.randevu input:focus,.randevu select:focus{outline:none;border-color:var(--mor)}
+.form-mesaj{font-size:14.5px;color:#1f8a6a;font-weight:500}
+footer{padding:100px 0 40px}
+.alt-bas{font-family:"Red Hat Display";font-weight:900;font-size:clamp(80px,18vw,280px);letter-spacing:-.07em;line-height:.8;color:#E4E1EC;margin-bottom:44px}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--murdum);margin-bottom:6px}
+.demo-not{margin-top:36px;padding-top:20px;border-top:1px solid var(--cizgi);font-size:12.5px;color:var(--soluk)}
+@media (min-width:920px){
+  nav{display:flex}
+  .sahne-izgara{grid-template-columns:1fr .8fr;gap:70px}
+  .tarayici{max-height:74vh;justify-self:end;width:100%}
+  .kartlar{grid-template-columns:repeat(4,1fr)}
+  .kart.foto{grid-column:span 2}
+  .plan{grid-template-columns:1.2fr .8fr;gap:50px}
+  .studyo{grid-template-columns:1fr 1fr}
+  .randevu{grid-template-columns:1fr 1.1fr;gap:60px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .sahne-izgara{padding-top:80px;gap:18px}
+  .sahne p.gir,.olcum{display:none}
+  .tarayici{aspect-ratio:1/1;max-height:48vh}
+  [data-acik]{margin-top:12px}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="rh">ela<span>.</span></span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"></i>ela lazer</a>
+  <nav><a href="#nasil">Nasıl çalışır</a><a href="#plan">Seans planı</a><a href="#sss">Sorular</a><a href="#randevu">Ön görüşme</a></nav>
+  <a class="btn mor" href="#randevu" style="padding:11px 18px">Ön görüşme</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="sahne-izgara">
+      <div>
+        <span class="etk">Lazer epilasyon · Denizli</span>
+        <h1 class="rh" style="margin-top:16px" data-bol data-hemen>Pürüzsüz bir <span>alışkanlık.</span></h1>
+        <p class="gir">Buz başlıklı diyot lazer, cilt tipinize göre ayarlanan atış ve her seans sonunda yazılı takip. Önce ücretsiz ön görüşme ve deneme atışı.</p>
+        <div class="olcum" aria-hidden="true"><div><b id="o-sicak">−4 °C</b><span>başlık ısısı</span></div><div><b id="o-dalga">808 nm</b><span>dalga boyu</span></div><div><b id="o-bolge">0</b><span>bölge tarandı</span></div></div>
+        <span data-acik>Çalışma saatleri</span>
+      </div>
+      <div class="tarayici" id="tarayici">
+        <img src="img/cilt.jpg" alt="Yumuşak ışıkta pürüzsüz omuz cildi yakın çekim">
+        <img class="ust-kat" id="ust-kat" src="img/cilt.jpg" alt="" aria-hidden="true">
+        <span class="isin" id="isin" aria-hidden="true"></span>
+        <span class="bolge" style="left:8%;top:22%">Omuz</span>
+        <span class="bolge" style="right:10%;top:44%">Kol üstü</span>
+        <span class="bolge" style="left:12%;top:66%">Sırt</span>
+        <img class="cihaz" id="cihaz" src="img/cihaz.webp" alt="Dokunmatik ekranlı beyaz diyot lazer cihazı">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bolum" id="nasil"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Nasıl çalışır</span><h2 class="rh" style="margin-top:14px" data-bol>Işık, kök ve <span>sabır.</span></h2></div><p data-r>Lazer, kıl kökündeki pigmenti hedefler. Kıllar farklı dönemlerde büyüdüğü için seanslar arası 4–8 hafta beklenir.</p></div>
+  <div class="kartlar" data-rg>
+    <div class="kart"><span class="ikon">01</span><h3>Cilt analizi</h3><p>Cilt ve kıl tipi belirlenir, uygun enerji ayarı seçilir.</p></div>
+    <div class="kart"><span class="ikon">02</span><h3>Deneme atışı</h3><p>Küçük bir alanda test; 48 saat sonra kontrol.</p></div>
+    <div class="kart foto"><img src="img/uygulama.jpg" alt="Beyaz önlüklü uzmanın bacakta lazer uygulaması" loading="lazy"></div>
+    <div class="kart foto"><img src="img/oda.jpg" alt="Beyaz tedavi yataklı aydınlık lazer uygulama odası" loading="lazy"></div>
+    <div class="kart"><span class="ikon">03</span><h3>Uygulama</h3><p>Buz başlık sayesinde çoğu kişi hafif sıcaklık hisseder.</p></div>
+    <div class="kart"><span class="ikon">04</span><h3>Takip kartı</h3><p>Her seansın ayarı ve bir sonraki tarih kartınıza yazılır.</p></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="plan" style="padding-top:0"><div class="sarmal"><div class="plan" data-r>
+  <div>
+    <span class="etk" style="color:var(--mor2)">Seans planlayıcı</span>
+    <h2 class="rh" style="margin-top:14px">Bölgelerinizi seçin.</h2>
+    <p style="margin-top:12px;max-width:44ch">Tahmini seans sayısı ve süre ortalama değerlerdir; kesin plan ön görüşmede cilt ve kıl tipinize göre yapılır.</p>
+    <div class="tip" id="tip"><button type="button" aria-pressed="true" data-c="1">Kadın</button><button type="button" aria-pressed="false" data-c="1.25">Erkek</button></div>
+    <div class="bolgeler" id="bolgeler">
+      <button type="button" aria-pressed="true" data-f="450" data-s="6">Koltuk altı</button>
+      <button type="button" aria-pressed="false" data-f="900" data-s="7">Tüm bacak</button>
+      <button type="button" aria-pressed="false" data-f="550" data-s="7">Genital</button>
+      <button type="button" aria-pressed="false" data-f="350" data-s="8">Üst dudak</button>
+      <button type="button" aria-pressed="false" data-f="500" data-s="7">Kol</button>
+      <button type="button" aria-pressed="false" data-f="650" data-s="7">Sırt</button>
+      <button type="button" aria-pressed="false" data-f="600" data-s="8">Yüz</button>
+      <button type="button" aria-pressed="false" data-f="400" data-s="6">Göbek</button>
+    </div>
+  </div>
+  <div class="sonuc" aria-live="polite">
+    <span class="etk" style="color:var(--mor2)">Tahmini plan</span>
+    <span class="buyuk" id="p-fiyat">450 ₺</span>
+    <span class="not" style="margin-top:-8px">seans başına</span>
+    <div class="satir"><span>Bölge sayısı</span><span id="p-bolge">1</span></div>
+    <div class="satir"><span>Tahmini seans</span><span id="p-seans">6–8</span></div>
+    <div class="satir"><span>Tahmini süre</span><span id="p-sure">6–9 ay</span></div>
+    <div class="satir"><span>Seans süresi</span><span id="p-dk">15 dk</span></div>
+    <div class="zaman-cizgi" id="p-cizgi" aria-hidden="true"></div>
+    <span class="not">3 ve üzeri bölgede %15 paket indirimi uygulanır. Fiyatlar örnektir.</span>
+  </div>
+</div></div></section>
+
+<section class="bolum" style="padding-top:0"><div class="sarmal studyo">
+  <figure data-r><img src="img/danisma.jpg" alt="Beyaz masada danışanla konuşan uzman" loading="lazy" data-p="0.1"></figure>
+  <div class="yazi" data-r><span class="etk">Ön görüşme</span><h2 class="rh">Önce konuşalım, sonra karar verin.</h2><p style="color:var(--soluk)">15 dakikalık ücretsiz görüşmede cilt tipiniz değerlendirilir, deneme atışı yapılır ve size özel plan yazılı olarak verilir. Hiçbir paket için ön ödeme istemiyoruz.</p><a class="btn" href="#randevu" style="justify-self:start">Ön görüşme ayarla</a></div>
+</div></section>
+
+<section class="bolum" id="sss" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><h2 class="rh" data-bol>Sık sorulanlar.</h2></div>
+  <div class="sss" data-r>
+    <details open><summary>Yazın lazer yapılır mı?</summary><p>Yapılır; ancak uygulama bölgesinin bronzlaşmamış olması gerekir. Seanslar arasında güneş koruyucu kullanmanızı öneriyoruz.</p></details>
+    <details><summary>Seanstan önce ne yapmalıyım?</summary><p>Bölgeyi bir gün önce tıraş edin; ağda, cımbız ve epilatör kullanmayın. Krem ve deodorant sürmeden gelin.</p></details>
+    <details><summary>Açık renk kıllarda etkili mi?</summary><p>Lazer pigmenti hedeflediği için sarı, beyaz ve kızıl kıllarda etkinlik düşüktür. Ön görüşmede bunu açıkça konuşuruz.</p></details>
+    <details><summary>Uygulamayı kim yapıyor?</summary><p>Sertifikalı uygulayıcılarımız, sorumlu hekim denetiminde çalışır.</p></details>
+  </div>
+</div></section>
+
+<section class="bolum" id="randevu" style="padding-top:0"><div class="sarmal"><div class="randevu" data-r>
+  <div><span class="etk">Ön görüşme</span><h2 class="rh" style="margin-top:14px">15 dakika, ücretsiz.</h2><p style="color:var(--soluk);margin-top:12px;max-width:38ch">Formu gönderin, sizi arayıp uygun saati birlikte belirleyelim.</p>
+    <figure style="margin-top:24px;border-radius:22px;overflow:hidden;aspect-ratio:16/10"><img src="img/havlu.jpg" alt="Tedavi yatağında katlanmış beyaz havlular" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure></div>
+  <form class="demo-form" novalidate style="display:grid;gap:14px">
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>İlgilendiğiniz bölge<select><option>Karar vermedim</option><option>Koltuk altı</option><option>Tüm bacak</option><option>Yüz</option><option>Tüm vücut</option></select></label><label>Tercih edilen gün<input type="date"></label></div>
+    <label>Zaman<select><option>Hafta içi gündüz</option><option>Hafta içi akşam</option><option>Cumartesi</option></select></label>
+    <button class="btn mor" type="submit" style="justify-self:start">Ön görüşme talebi gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-bas" aria-hidden="true">ela.</div>
+  <div class="alt-izgara">
+    <div><b>Ela Lazer</b>Lazer epilasyon stüdyosu.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Pzt – Cmt 10:00 – 20:00<br>Pazar kapalı</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Ela Lazer hayali bir işletmedir; fiyatlar, süreler ve adres temsilidir. Sonuçlar kişiden kişiye değişebilir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={1:[10,20],2:[10,20],3:[10,20],4:[10,20],5:[10,20],6:[10,20]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// seans planlayıcı
+(function(){var c=1,b=document.getElementById("bolgeler"),t=document.getElementById("tip"),$=function(i){return document.getElementById(i)};
+  function yaz(){var s=[].slice.call(b.querySelectorAll("[aria-pressed=true]"));if(!s.length){$("p-fiyat").textContent="—";$("p-bolge").textContent="0";$("p-cizgi").innerHTML="";return}
+    var f=s.reduce(function(a,x){return a+ +x.dataset.f},0)*c,n=s.length;if(n>=3)f*=.85;var mx=Math.max.apply(null,s.map(function(x){return +x.dataset.s}))+(c>1?1:0);
+    $("p-fiyat").textContent=(Math.round(f/10)*10).toLocaleString("tr-TR")+" ₺";$("p-bolge").textContent=n;$("p-seans").textContent=mx+"–"+(mx+2);
+    $("p-sure").textContent=Math.round(mx*1.2)+"–"+Math.round((mx+2)*1.5)+" ay";$("p-dk").textContent=Math.min(90,10+n*12)+" dk";
+    var z="";for(var i=0;i<mx+2;i++)z+="<i"+(i<mx?' class="d"':"")+"></i>";$("p-cizgi").innerHTML=z}
+  b.addEventListener("click",function(e){var x=e.target.closest("button");if(!x)return;x.setAttribute("aria-pressed",x.getAttribute("aria-pressed")==="true"?"false":"true");yaz()});
+  t.addEventListener("click",function(e){var x=e.target.closest("button");if(!x)return;t.querySelectorAll("button").forEach(function(y){y.setAttribute("aria-pressed",y===x?"true":"false")});c=+x.dataset.c;yaz()});yaz()})();
+window.SAHNE=function(gsap){
+  var H=document.getElementById("tarayici").clientHeight,o={b:0},ob=document.getElementById("o-bolge");
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.fromTo("#isin",{y:0},{y:H,duration:3,ease:"none"},0)
+    .fromTo("#ust-kat",{clipPath:"inset(0% 0 0 0)"},{clipPath:"inset(100% 0 0 0)",duration:3,ease:"none"},0)
+    .to(".bolge",{opacity:1,duration:.3,stagger:.9},.5)
+    .to(o,{b:3,duration:2.6,ease:"none",onUpdate:function(){ob.textContent=Math.floor(o.b)}},.5)
+    .fromTo("#cihaz",{y:60,rotation:6},{y:-10,rotation:-2,duration:3},0)
+    .to("#isin",{opacity:0,duration:.3},3)
+    .to({},{duration:.8});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("ust-kat").style.display="none";document.getElementById("isin").style.display="none";document.querySelectorAll(".bolge").forEach(function(b){b.style.opacity=1});document.querySelector(".sahne").style.position="relative"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

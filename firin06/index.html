@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fırın 06 · Ekşi maya fırın & kahve · Denizli</title>
+<meta name="description" content="Fırın 06: 48 saat mayalanan ekşi maya ekmekler, tereyağlı kruvasanlar ve kahve. Fırından çıkış saatleri, ürünler, yarın için ayırtma. Pamukkale, Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#F7F0E4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--un:#FBF7F0;--krem:#F7F0E4;--krem2:#EFE3CF;--kabuk:#8B5A2B;--kabuk2:#6E4520;--kor:#D9772B;--murekkep:#26211B;--soluk:#7A6D5F;--cizgi:rgba(38,33,27,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--murekkep);font-family:"Instrument Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1240px,100% - 40px);margin-inline:auto}
+.ys{font-family:"Young Serif",Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:1.02}
+.mono{font-family:"DM Mono",monospace;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--murekkep);color:var(--un);font:600 15px "Instrument Sans",sans-serif;border:0;cursor:pointer;transition:transform .3s,background .3s}
+.btn:hover{transform:translateY(-2px);background:var(--kabuk2)}
+.btn.kor{background:var(--kor);color:#fff}
+.btn.bos{background:transparent;color:var(--murekkep);border:1.5px solid var(--murekkep)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--murekkep);color:var(--krem);display:grid;place-items:center}
+.perde .ys{font-size:clamp(60px,12vw,160px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:14px 0}
+.ust{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Young Serif",serif;font-size:24px}
+.logo span{background:var(--murekkep);color:var(--un);border-radius:8px;padding:2px 8px;font-family:"DM Mono";font-size:15px}
+nav{display:none;gap:4px;background:rgba(251,247,240,.8);backdrop-filter:blur(12px);border:1px solid var(--cizgi);border-radius:999px;padding:5px}
+nav a{padding:8px 14px;border-radius:999px;font-size:14.5px;font-weight:500}
+nav a:hover{background:var(--krem2)}
+/* giriş */
+.giris{position:relative;min-height:100vh;padding:120px 0 60px;display:grid;align-items:center;overflow:hidden}
+.saat-dev{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);font-family:"Young Serif",serif;font-size:33vw;line-height:1;color:var(--krem2);white-space:nowrap;pointer-events:none;letter-spacing:-.04em}
+.giris-ic{position:relative;display:grid;gap:30px;align-items:center}
+.giris h1{font-size:clamp(50px,7vw,104px)}
+.giris p{font-size:18.5px;color:var(--soluk);max-width:40ch;margin-top:20px}
+.kruvasan{width:min(96%,640px);margin-inline:auto;filter:drop-shadow(0 34px 40px rgba(38,33,27,.28));will-change:transform}
+.sayac-kart{margin-top:30px;background:var(--un);border:1px solid var(--cizgi);border-radius:22px;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:center;max-width:460px}
+.sayac-kart .nabiz{grid-row:span 2;width:44px;height:44px;border-radius:50%;background:var(--kor);position:relative}
+.sayac-kart .nabiz:after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--kor);animation:nabiz 1.8s ease-out infinite}
+@keyframes nabiz{to{transform:scale(1.9);opacity:0}}
+.sayac-kart b{font-size:17px}
+.sayac-kart small{color:var(--soluk)}
+/* saatler şeridi */
+.cikis{background:var(--murekkep);color:var(--un);padding:26px 0}
+.cikis .sarmal{display:flex;gap:14px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.cikis .sarmal::-webkit-scrollbar{display:none}
+.saatcik{flex:0 0 auto;border:1px solid rgba(251,247,240,.18);border-radius:16px;padding:12px 16px;min-width:150px}
+.saatcik b{font-family:"Young Serif",serif;font-size:28px;display:block;line-height:1.1}
+.saatcik small{color:#bfb2a2}
+.saatcik.gecti{opacity:.4}
+.saatcik.sonraki{background:var(--kor);border-color:var(--kor)}
+.saatcik.sonraki small{color:#fff}
+/* ürünler */
+.bolum{padding:120px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.bas h2{font-size:clamp(48px,6.4vw,98px)}
+.bas p{color:var(--soluk);max-width:40ch}
+.urunler{display:grid;gap:16px}
+.urun{background:var(--un);border:1px solid var(--cizgi);border-radius:26px;overflow:hidden;display:flex;flex-direction:column}
+.urun .foto{position:relative;aspect-ratio:5/4;background:var(--krem2);display:grid;place-items:center;overflow:hidden}
+.urun .foto img.kesik{width:78%;filter:drop-shadow(0 18px 18px rgba(38,33,27,.22));transition:transform .6s}
+.urun .foto img.tam{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.urun:hover .foto img{transform:scale(1.05) rotate(-2deg)}
+.urun .ic{padding:20px 22px 22px;display:grid;gap:6px}
+.urun h3{font-family:"Young Serif",serif;font-weight:400;font-size:26px}
+.urun p{color:var(--soluk);font-size:14.5px}
+.urun .alt{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.urun .f{font-family:"Young Serif",serif;font-size:24px;color:var(--kabuk)}
+.durum{font-family:"DM Mono";font-size:11.5px;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:#E3EFD9;color:#3f6b2d}
+.durum.az{background:#F7DFC8;color:#9a4f1c}
+/* süreç */
+.surec{display:grid;gap:18px}
+.adim{background:var(--un);border:1px solid var(--cizgi);border-radius:26px;padding:28px;display:grid;gap:10px;position:relative;overflow:hidden}
+.adim .saat{font-family:"Young Serif",serif;font-size:64px;line-height:1;color:var(--kor)}
+.adim .saat small{font-size:20px;color:var(--soluk)}
+.adim h3{font-size:20px}
+.adim p{color:var(--soluk);font-size:15px}
+.surec-foto{border-radius:26px;overflow:hidden;position:relative;min-height:420px}
+.surec-foto img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+/* vitrin */
+.vitrin{position:relative;height:90vh;min-height:520px;overflow:hidden;border-radius:0}
+.vitrin img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover}
+.vitrin .yazi{position:absolute;left:0;right:0;bottom:0;padding-bottom:8vh;color:var(--un);background:linear-gradient(0deg,rgba(38,33,27,.8),transparent)}
+.vitrin h2{font-size:clamp(46px,7vw,110px);max-width:13ch}
+/* ayırt */
+.ayirt{display:grid;gap:22px;align-items:start}
+.form{background:var(--un);border:1px solid var(--cizgi);border-radius:26px;padding:26px;display:grid;gap:12px}
+.form label{display:grid;gap:6px;font-size:13px;font-weight:600;color:var(--soluk)}
+.form input,.form select{font:inherit;padding:13px 14px;border:1px solid var(--cizgi);border-radius:12px;background:var(--krem);color:var(--murekkep);width:100%}
+.adet{display:grid;gap:8px}
+.adet div{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--krem);border-radius:12px}
+.adet button{width:32px;height:32px;border-radius:50%;border:1px solid var(--cizgi);background:var(--un);cursor:pointer;font-size:16px}
+.adet output{min-width:26px;text-align:center;font-weight:600}
+.toplam{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--cizgi);padding-top:12px}
+.toplam b{font-family:"Young Serif",serif;font-size:32px;color:var(--kabuk)}
+.form .btn{justify-content:center}
+.form-mesaj{font-size:14px;color:var(--kabuk);min-height:1.2em}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bilgi-kart{background:var(--murekkep);color:var(--un);border-radius:26px;padding:28px;display:grid;gap:16px}
+.bilgi-kart img{border-radius:18px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.satir{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(251,247,240,.14);font-size:15px}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#a99a89}
+[data-acik].evet:before{background:#6fbf5a;box-shadow:0 0 0 4px rgba(111,191,90,.22)}
+footer{padding:70px 0 40px;color:var(--soluk);font-size:15px}
+.alt-izgara{display:grid;gap:24px}
+.alt-izgara b{display:block;color:var(--murekkep);margin-bottom:6px}
+.demo-not{margin-top:30px;padding-top:18px;border-top:1px solid var(--cizgi);font-size:12.5px}
+@media (min-width:920px){
+  nav{display:flex}
+  .giris-ic{grid-template-columns:1fr 1fr}
+  .urunler{grid-template-columns:repeat(4,1fr)}
+  .surec{grid-template-columns:1fr 1fr 1fr 1.3fr}
+  .ayirt{grid-template-columns:1fr 1fr}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="ys">06:00</span></div>
+<header><div class="sarmal ust">
+  <a class="logo" href="#">Fırın <span>06</span></a>
+  <nav><a href="#urunler">Ürünler</a><a href="#surec">48 saat</a><a href="#ayirt">Yarın için ayırt</a><a href="#konum">Konum</a></nav>
+  <a class="btn kor" href="#ayirt" style="padding:11px 18px">Ayırt</a>
+</div></header>
+
+<section class="giris">
+  <div class="saat-dev" aria-hidden="true">06:00</div>
+  <div class="sarmal giris-ic">
+    <div>
+      <span class="mono" style="color:var(--kabuk)">Ekşi maya fırın & kahve · Pamukkale</span>
+      <h1 class="ys" style="margin-top:14px" data-bol data-hemen>Fırın her sabah altıda açılır.</h1>
+      <p data-r>48 saat mayalanan ekşi maya ekmekler, 27 katlı tereyağlı kruvasanlar ve yanına iyi bir kahve. Gün boyu beş kez fırından sıcak çıkıyor.</p>
+      <div class="sayac-kart" data-r><span class="nabiz"></span><b id="sonraki">Sıradaki sıcak ekmek</b><small id="kalan">Fırından çıkış saatleri aşağıda</small></div>
+    </div>
+    <img class="kruvasan" src="img/kruvasan.webp" alt="Katları görünen tereyağlı kruvasan" data-p="-0.2">
+  </div>
+</section>
+
+<div class="cikis"><div class="sarmal" id="cikis"></div></div>
+
+<section class="bolum" id="urunler"><div class="sarmal">
+  <div class="bas"><h2 class="ys" data-bol>Bugün tezgâhta</h2><p>Stok durumu gün içinde güncellenir. Fiyatlar örnektir.</p></div>
+  <div class="urunler" data-rg>
+    <article class="urun"><div class="foto"><img class="kesik" src="img/ekmek.webp" alt="Ekşi maya köy ekmeği" loading="lazy"></div><div class="ic"><h3>Köy ekmeği</h3><p>Ekşi maya, taş değirmen un · 900 g</p><div class="alt"><span class="f">150 ₺</span><span class="durum">Sıcak</span></div></div></article>
+    <article class="urun"><div class="foto"><img class="kesik" src="img/kruvasan.webp" alt="Kruvasan" loading="lazy"></div><div class="ic"><h3>Kruvasan</h3><p>Tereyağlı, 27 kat</p><div class="alt"><span class="f">95 ₺</span><span class="durum az">Az kaldı</span></div></div></article>
+    <article class="urun"><div class="foto"><img class="tam" src="img/vitrin.jpg" alt="Tarçınlı çörekler ve pain au chocolat" loading="lazy"></div><div class="ic"><h3>Tarçınlı çörek</h3><p>Kakule ve tarçın, portakal kabuğu</p><div class="alt"><span class="f">110 ₺</span><span class="durum">Var</span></div></div></article>
+    <article class="urun"><div class="foto"><img class="tam" src="img/kahvalti.jpg" alt="Kapuçino ve kruvasan" loading="lazy"></div><div class="ic"><h3>Sabah menüsü</h3><p>Kruvasan, tereyağı, reçel ve kahve</p><div class="alt"><span class="f">210 ₺</span><span class="durum">11:00'e kadar</span></div></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="surec" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><h2 class="ys" data-bol>Bir ekmek 48 saatte olur.</h2><p>Acele edilmiş ekmek hamur gibi kalır. Biz beklemeyi seviyoruz.</p></div>
+  <div class="surec" data-rg>
+    <div class="adim"><div class="saat">0<small> sa</small></div><h3>Ekşi maya</h3><p>12 yıllık anaç mayamızı un ve suyla besliyoruz.</p></div>
+    <div class="adim"><div class="saat">24<small> sa</small></div><h3>Soğuk mayalanma</h3><p>Hamur 4°C'de yavaşça olgunlaşır, lezzeti derinleşir.</p></div>
+    <div class="adim"><div class="saat">48<small> sa</small></div><h3>Taş fırın</h3><p>250°C'de buharla pişer, kabuk çıtırlaşır.</p></div>
+    <div class="surec-foto"><img src="img/hamur.jpg" alt="Hamuru katlayan unlu eller" loading="lazy" data-p="0.18"></div>
+  </div>
+</div></section>
+
+<section class="vitrin">
+  <img src="img/firin.jpg" alt="Taş fırından çıkarılan ekşi maya ekmekler" loading="lazy" data-p="0.2">
+  <div class="yazi"><div class="sarmal"><span class="mono" style="color:#F7DFC8">Her sabah 05:30</span><h2 class="ys" style="margin-top:12px" data-bol>Şehir uyurken fırın çoktan yanıyor.</h2></div></div>
+</section>
+
+<section class="bolum" id="ayirt"><div class="sarmal ayirt">
+  <form class="form demo-form" novalidate data-mesaj="Bu bir örnek sitedir, sipariş oluşturulmadı. Gerçek sitede ayırtma fırının WhatsApp'ına düşer ve sabah hazır tutulur.">
+    <span class="mono" style="color:var(--kabuk)">Yarın için ayırt</span>
+    <h2 class="ys" style="font-size:40px">Sabah gel, <br>paketin hazır olsun.</h2>
+    <div class="adet" id="adet">
+      <div data-f="150"><span>Köy ekmeği · 150 ₺</span><span><button type="button" data-y="-1">−</button> <output>1</output> <button type="button" data-y="1">+</button></span></div>
+      <div data-f="95"><span>Kruvasan · 95 ₺</span><span><button type="button" data-y="-1">−</button> <output>2</output> <button type="button" data-y="1">+</button></span></div>
+      <div data-f="110"><span>Tarçınlı çörek · 110 ₺</span><span><button type="button" data-y="-1">−</button> <output>0</output> <button type="button" data-y="1">+</button></span></div>
+    </div>
+    <div class="iki"><label>Teslim saati<select><option>06:30</option><option selected>08:00</option><option>09:30</option><option>11:00</option></select></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <label>Ad Soyad<input name="ad" autocomplete="name"></label>
+    <div class="toplam"><span>Toplam</span><b id="toplam">340 ₺</b></div>
+    <button class="btn kor" type="submit">Ayırt</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+  <div class="bilgi-kart" id="konum" data-r>
+    <img src="img/mekan.jpg" alt="Fırın 06'nın iç mekânı" loading="lazy">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3 class="ys" style="font-size:32px">Fırın 06</h3><span data-acik>Çalışma saatleri</span></div>
+    <div><div class="satir"><span>Her gün</span><span>06:00 – 20:00</span></div><div class="satir"><span>Adres</span><span>Örnek Mh. 0000 Sk., Pamukkale</span></div><div class="satir"><span>Telefon</span><a href="tel:+902580000000">0258 000 00 00</a></div></div>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Pamukkale+Denizli" style="background:var(--un);color:var(--murekkep);justify-content:center">Yol tarifi al →</a>
+  </div>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><span class="logo">Fırın <span>06</span></span><p style="margin-top:8px">Ekşi maya fırın & kahve.</p></div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Pamukkale / Denizli</div>
+    <div><b>Saatler</b>Her gün 06:00 – 20:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Fırın 06 hayali bir işletmedir; ürünler, fiyatlar ve saatler temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[6,20],1:[6,20],2:[6,20],3:[6,20],4:[6,20],5:[6,20],6:[6,20]};
+(function(){
+  var C=[[6,0,"Köy ekmeği, kruvasan"],[9,0,"Tarçınlı çörek, poğaça"],[12,0,"Köy ekmeği, focaccia"],[15,0,"Kruvasan, pain au chocolat"],[18,0,"Köy ekmeği"]];
+  var el=document.getElementById("cikis");
+  function ciz(){var n=new Date(),dk=n.getHours()*60+n.getMinutes(),sonraki=-1;
+    C.forEach(function(c,i){if(sonraki<0&&c[0]*60+c[1]>dk)sonraki=i});
+    el.innerHTML='<span class="mono" style="color:#bfb2a2;flex:0 0 auto">Fırından çıkış</span>'+C.map(function(c,i){var ge=c[0]*60+c[1]<=dk;return '<div class="saatcik'+(i===sonraki?" sonraki":ge?" gecti":"")+'"><b>'+String(c[0]).padStart(2,"0")+":00</b><small>"+c[2]+"</small></div>"}).join("");
+    var s=document.getElementById("sonraki"),k=document.getElementById("kalan");
+    if(sonraki<0){s.textContent="Bugünkü son ekmek çıktı";k.textContent="Yarın 06:00'da ilk fırın · şimdiden ayırtabilirsin"}
+    else{var fark=C[sonraki][0]*60-dk;s.textContent="Sıradaki sıcak ekmek: "+String(C[sonraki][0]).padStart(2,"0")+":00";k.textContent=(fark>=60?Math.floor(fark/60)+" saat ":"")+(fark%60)+" dakika sonra · "+C[sonraki][2]}}
+  ciz();setInterval(ciz,30000);
+  var a=document.getElementById("adet");
+  function toplam(){var t=0;a.querySelectorAll("[data-f]").forEach(function(r){t+=+r.dataset.f*+r.querySelector("output").textContent});document.getElementById("toplam").textContent=t.toLocaleString("tr-TR")+" ₺"}
+  a.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var o=b.parentNode.querySelector("output");o.textContent=Math.max(0,Math.min(20,+o.textContent+ +b.dataset.y));toplam()});toplam();
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

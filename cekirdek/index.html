@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Çekirdek Mat Pilates · Butik Stüdyo · Denizli</title>
+<meta name="description" content="Çekirdek Mat Pilates: 8 kişilik butik stüdyoda klasik mat pilates. Altı ilke, küçük sınıflar, haftalık program ve deneme dersi. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#FAF8F4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--kagit:#FAF8F4;--kagit2:#F0ECE4;--kil:#C4704F;--ada:#8A9A7B;--murekkep:#1F1E1B;--soluk:#7B776F;--cizgi:rgba(31,30,27,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--murekkep);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:16.5px;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1160px,100% - 40px);margin-inline:auto}
+.cr{font-family:"Crimson Pro",serif;font-weight:300;letter-spacing:-.02em;line-height:1}
+.cr i{color:var(--kil)}
+.etk{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--soluk)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:var(--murekkep);color:var(--kagit);font:500 15px "Schibsted Grotesk",sans-serif;border:0;cursor:pointer;transition:background .3s}
+.btn:hover{background:var(--kil)}
+.btn.bos{background:transparent;color:var(--murekkep);box-shadow:inset 0 0 0 1px var(--murekkep)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--kagit);display:grid;place-items:center}
+.perde i{width:28px;height:28px;border-radius:50%;background:var(--kil)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:18px 0;transition:background .4s}
+header.dolu{background:rgba(250,248,244,.9);backdrop-filter:blur(12px)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:18px;letter-spacing:-.01em}
+.logo i{width:14px;height:14px;border-radius:50%;background:var(--kil);box-shadow:0 0 0 5px rgba(196,112,79,.18)}
+nav{display:none;gap:28px;font-size:15px}
+nav a{color:var(--soluk)}nav a:hover{color:var(--murekkep)}
+/* mat sahnesi */
+.giris{position:relative;height:300vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.mat-alan{position:absolute;left:0;right:0;top:72%;height:min(18vh,150px);transform:translateY(-50%)}
+.mat{position:absolute;left:max(20px,calc((100vw - 1160px)/2));top:0;bottom:0;width:0;background:linear-gradient(180deg,#9AA98B,#8A9A7B 50%,#7C8C6D);border-radius:8px;box-shadow:0 30px 40px -24px rgba(31,30,27,.4)}
+.mat:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 22px,rgba(255,255,255,.06) 22px 23px);border-radius:inherit}
+.rulo{position:absolute;top:50%;left:max(20px,calc((100vw - 1160px)/2));width:min(18vh,150px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#6D7C5F 0 8%,#8A9A7B 9% 18%,#7C8C6D 19% 28%,#94A386 29% 38%,#7C8C6D 39% 48%,#8A9A7B 49% 58%,#6D7C5F 59% 68%,#8A9A7B 69% 100%);box-shadow:0 20px 30px -12px rgba(31,30,27,.45);will-change:transform}
+.sahne-bas{position:absolute;left:0;right:0;top:16vh}
+.sahne-bas h1{font-size:clamp(50px,7.6vw,124px);max-width:11ch}
+.sahne-bas p{color:var(--soluk);max-width:36ch;margin-top:18px}
+.mat-yazi{position:absolute;left:0;right:0;top:calc(72% + min(9vh,75px) + 24px);opacity:0}
+.mat-yazi .sarmal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--soluk)}
+.mat-yazi b{color:var(--murekkep);font-weight:500}
+.sahne-alt{position:absolute;left:0;right:0;bottom:5vh}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-size:14px}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#c6c1b7}
+[data-acik].evet:before{background:var(--ada);box-shadow:0 0 0 4px rgba(138,154,123,.25)}
+/* ilkeler */
+.bolum{padding:140px 0}
+.ilke-izgara{display:grid;gap:40px;align-items:start}
+.ilke-sol{position:sticky;top:120px}
+.ilke-sol h2{font-size:clamp(46px,6vw,96px)}
+.ilke-foto{margin-top:30px;border-radius:24px;overflow:hidden;aspect-ratio:4/5;position:relative}
+.ilke-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s}
+.ilke{padding:40px 0;border-bottom:1px solid var(--cizgi);display:grid;grid-template-columns:70px 1fr;gap:10px 20px;opacity:.35;transition:opacity .5s}
+.ilke.aktif{opacity:1}
+.ilke .no{font-family:"Crimson Pro";font-style:italic;font-size:30px;color:var(--kil);grid-row:span 2}
+.ilke h3{font-family:"Crimson Pro";font-weight:400;font-size:clamp(34px,3.4vw,50px);line-height:1}
+.ilke p{color:var(--soluk);max-width:44ch}
+/* program */
+.program{display:grid;gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);border-radius:24px;overflow:hidden}
+.gun{background:var(--kagit);padding:22px}
+.gun b{display:block;font-family:"Crimson Pro";font-weight:400;font-size:26px;margin-bottom:10px}
+.gun div{display:flex;justify-content:space-between;gap:10px;font-size:14.5px;padding:6px 0;border-top:1px dashed var(--cizgi)}
+.gun div span:first-child{font-weight:600}
+.gun div span:last-child{color:var(--soluk);text-align:right}
+.gun.bugun{background:var(--kagit2)}
+.gun.bugun b:after{content:" · bugün";font-family:"Schibsted Grotesk";font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--kil)}
+/* ekipman + fiyat */
+.ikili{display:grid;gap:22px}
+.kart{background:var(--kagit2);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+.kart figure{aspect-ratio:16/10;overflow:hidden}
+.kart img{width:100%;height:100%;object-fit:cover}
+.kart .ic{padding:28px;display:grid;gap:12px}
+.kart h3{font-family:"Crimson Pro";font-weight:300;font-size:clamp(32px,3vw,46px);line-height:1}
+.fiyat{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--cizgi);font-size:15.5px}
+.fiyat span:last-child{font-weight:600}
+/* eğitmen */
+.egitmen{display:grid;gap:30px;align-items:center}
+.egitmen figure{border-radius:24px;overflow:hidden;aspect-ratio:4/3.3;position:relative}
+.egitmen img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.egitmen blockquote{font-family:"Crimson Pro";font-weight:300;font-size:clamp(28px,3vw,44px);line-height:1.2}
+/* randevu */
+.randevu{display:grid;gap:40px;border-top:1px solid var(--murekkep);padding-top:60px}
+.randevu h2{font-size:clamp(50px,7vw,112px)}
+label{display:grid;gap:6px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--soluk)}
+input,select{font:400 16px "Schibsted Grotesk";color:var(--murekkep);background:transparent;border:0;border-bottom:1px solid var(--cizgi);padding:12px 0;width:100%;border-radius:0}
+input:focus,select:focus{outline:none;border-color:var(--kil)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-mesaj{font-size:15px;color:#5f7550}
+footer{padding:110px 0 40px}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk);border-top:1px solid var(--cizgi);padding-top:30px}
+.alt-izgara b{display:block;color:var(--murekkep);margin-bottom:6px;font-weight:500}
+.demo-not{margin-top:36px;font-size:12.5px;color:var(--soluk)}
+@media (min-width:920px){
+  nav{display:flex}
+  .ilke-izgara{grid-template-columns:.9fr 1.1fr;gap:90px}
+  .program{grid-template-columns:repeat(3,1fr)}
+  .ikili{grid-template-columns:1fr 1fr}
+  .egitmen{grid-template-columns:1fr 1fr;gap:70px}
+  .randevu{grid-template-columns:1fr 1fr;gap:80px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .ilke-sol{position:relative;top:0}
+  .ilke-foto{display:none}
+  .mat-alan{top:68%}
+  .mat-yazi{top:calc(68% + min(9vh,75px) + 18px)}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><i></i></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><i aria-hidden="true"></i>çekirdek</a>
+  <nav><a href="#ilkeler">Yöntem</a><a href="#program">Program</a><a href="#fiyat">Fiyatlar</a><a href="#randevu">Deneme dersi</a></nav>
+  <a class="btn bos" href="#randevu" style="padding:10px 18px">Deneme dersi</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="etk">Mat pilates stüdyosu · Denizli</span><h1 class="cr" style="margin-top:16px" data-bol data-hemen>Bir mat, bir nefes, <i>bir saat.</i></h1><p>Aletsiz, klasik mat pilates. Sekiz kişilik bir oda, her derste aynı eğitmen, her hafta biraz daha güçlü bir merkez.</p></div></div>
+    <div class="mat-alan" aria-hidden="true"><span class="mat" id="mat"></span><span class="rulo" id="rulo"></span></div>
+    <div class="mat-yazi" id="mat-yazi"><div class="sarmal"><span><b>183 × 61 cm</b> · doğal kauçuk</span><span><b>8</b> mat · <b>8</b> kişi</span><span>Mat sizde yoksa bizden</span></div></div>
+    <div class="sahne-alt" id="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="ilkeler"><div class="sarmal ilke-izgara">
+  <div class="ilke-sol">
+    <span class="etk">Yöntem</span>
+    <h2 class="cr" style="margin-top:16px" data-bol>Altı <i>ilke.</i></h2>
+    <p style="color:var(--soluk);margin-top:16px;max-width:36ch" data-r>Joseph Pilates'in yöntemi, sayıdan çok kaliteye dayanır. Derslerimiz bu altı ilke etrafında kurulur.</p>
+    <div class="ilke-foto"><img id="ilke-img" src="img/mat.jpg" alt="Beyaz stüdyoda mat üzerinde roll up egzersizi yapan kadın" loading="lazy"></div>
+  </div>
+  <div id="ilke-liste">
+    <div class="ilke aktif" data-i="img/mat.jpg"><span class="no">01</span><h3>Nefes</h3><p>Her hareket nefesle başlar ve biter. Göğüs kafesine yanlara doğru nefes almayı ilk derste öğrenirsiniz.</p></div>
+    <div class="ilke" data-i="img/esneme.jpg"><span class="no">02</span><h3>Merkez</h3><p>Karın, bel ve kalça çevresindeki "güç merkezi" tüm hareketlerin çıkış noktasıdır.</p></div>
+    <div class="ilke" data-i="img/egitmen.jpg"><span class="no">03</span><h3>Konsantrasyon</h3><p>Telefon dışarıda kalır. Elli dakika boyunca yalnızca bedeninize odaklanırsınız.</p></div>
+    <div class="ilke" data-i="img/ekip.jpg"><span class="no">04</span><h3>Kontrol</h3><p>Hız değil kontrol: her tekrar yavaş, bilinçli ve kaslarınız devrede.</p></div>
+    <div class="ilke" data-i="img/esneme.jpg"><span class="no">05</span><h3>Hassasiyet</h3><p>Az tekrar, doğru açı. Eğitmen her misafirin hizasını tek tek düzeltir.</p></div>
+    <div class="ilke" data-i="img/studyo.jpg"><span class="no">06</span><h3>Akış</h3><p>Hareketler birbirine bağlanır; ders boyunca bir koreografi gibi ilerler.</p></div>
+  </div>
+</div></section>
+
+<section class="bolum" id="program" style="padding-top:0"><div class="sarmal">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:36px"><div><span class="etk">Program</span><h2 class="cr" style="font-size:clamp(46px,6vw,96px);margin-top:14px" data-bol>Haftanın <i>ritmi.</i></h2></div><p style="color:var(--soluk);max-width:34ch" data-r>Her ders 50 dakika, en fazla 8 kişi. Başlangıç derslerine ilk ay en az iki kez katılmanızı öneriyoruz.</p></div>
+  <div class="program" id="program-izgara" data-r></div>
+</div></section>
+
+<section class="bolum" id="fiyat" style="padding-top:0"><div class="sarmal ikili" data-rg>
+  <div class="kart"><figure><img src="img/ekip.jpg" alt="Mat üzerinde küçük top, halka ve direnç bandı, üstten görünüm" loading="lazy"></figure><div class="ic"><span class="etk">Ekipman</span><h3>Küçük ama <i class="cr" style="color:var(--kil)">etkili.</i></h3><p style="color:var(--soluk)">Pilates halkası, küçük top ve direnç bandı her derste hazır; hepsi dersten sonra temizlenir.</p></div></div>
+  <div class="kart"><figure><img src="img/cay.jpg" alt="Pencere kenarında limonlu su bardağı ve rulo mat" loading="lazy"></figure><div class="ic"><span class="etk">Fiyatlar</span>
+    <div class="fiyat"><span>Deneme dersi</span><span>300 ₺</span></div><div class="fiyat"><span>Tek ders</span><span>550 ₺</span></div><div class="fiyat"><span>8 ders · 5 hafta</span><span>3.600 ₺</span></div><div class="fiyat"><span>12 ders · 7 hafta</span><span>4.800 ₺</span></div><div class="fiyat"><span>Birebir ders</span><span>1.200 ₺</span></div></div></div>
+</div></section>
+
+<section class="bolum" style="padding-top:0"><div class="sarmal egitmen">
+  <figure data-r><img src="img/egitmen.jpg" alt="Eğitmenin iki öğrenciye egzersiz gösterdiği minimal stüdyo" loading="lazy" data-p="0.1"></figure>
+  <div><span class="etk">Eğitmen</span><blockquote style="margin-top:18px" data-r>“Pilates bir antrenman değil, bir alışkanlıktır. Üç ay düzenli gelin; nasıl oturduğunuz, yürüdüğünüz değişir.”</blockquote><p style="color:var(--soluk);margin-top:16px" data-r>— Duygu Hanım, kurucu eğitmen · Klasik mat pilates sertifikası</p></div>
+</div></section>
+
+<section class="bolum" id="randevu" style="padding-top:0"><div class="sarmal randevu">
+  <div><span class="etk">Deneme dersi</span><h2 class="cr" style="margin-top:16px" data-bol>Önce bir <i>deneyin.</i></h2><p style="color:var(--soluk);margin-top:16px;max-width:36ch" data-r>Rahat kıyafet ve çorap yeterli. Stüdyoya ayakkabısız girilir.</p></div>
+  <form class="demo-form" novalidate data-r style="display:grid;gap:20px">
+    <div class="iki"><label>Ad Soyad<input name="ad" autocomplete="name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <div class="iki"><label>Gün<select id="r-gun"></select></label><label>Saat<select><option>07:30</option><option>10:00</option><option>18:30</option><option>19:45</option></select></label></div>
+    <label>Bilmemiz gereken bir sağlık durumu var mı?<input placeholder="örn. bel fıtığı, hamilelik"></label>
+    <button class="btn" type="submit" style="justify-self:start">Deneme dersi iste</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-izgara">
+    <div><b>Çekirdek Mat Pilates</b>Butik mat pilates stüdyosu.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Hafta içi 07:30 – 21:00<br>Cumartesi 09:00 – 13:00</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Çekirdek Mat Pilates hayali bir işletmedir; program, fiyatlar ve eğitmen temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={1:[7.5,21],2:[7.5,21],3:[7.5,21],4:[7.5,21],5:[7.5,21],6:[9,13]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// program ızgarası
+(function(){var G=[["Pazartesi",[["07:30","Başlangıç"],["18:30","Orta"],["19:45","Başlangıç"]]],["Salı",[["10:00","Hamile pilatesi"],["18:30","İleri"]]],["Çarşamba",[["07:30","Orta"],["18:30","Başlangıç"],["19:45","Orta"]]],["Perşembe",[["10:00","Sırt sağlığı"],["18:30","İleri"]]],["Cuma",[["07:30","Başlangıç"],["18:30","Akış"]]],["Cumartesi",[["09:30","Tüm seviyeler"],["11:00","Birebir saatleri"]]]],
+  p=document.getElementById("program-izgara"),b=new Date().getDay(),sel=document.getElementById("r-gun");
+  G.forEach(function(g,i){var d=document.createElement("div");d.className="gun"+(i+1===b?" bugun":"");d.innerHTML="<b>"+g[0]+"</b>"+g[1].map(function(s){return"<div><span>"+s[0]+"</span><span>"+s[1]+"</span></div>"}).join("");p.appendChild(d);var o=document.createElement("option");o.textContent=g[0];sel.appendChild(o)})})();
+// ilkeler: görünür olanı vurgula, fotoğrafı değiştir
+(function(){var il=[].slice.call(document.querySelectorAll(".ilke")),img=document.getElementById("ilke-img");
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){il.forEach(function(x){x.classList.toggle("aktif",x===e.target)});var s=e.target.dataset.i;if(img.getAttribute("src")!==s){img.style.opacity=0;setTimeout(function(){img.src=s;img.style.opacity=1},300)}}})},{rootMargin:"-45% 0px -45% 0px"});
+  il.forEach(function(x){io.observe(x)})})();
+window.SAHNE=function(gsap){
+  var W=innerWidth,sol=Math.max(20,(W-1160)/2),uz=W-sol*2,r=document.getElementById("rulo"),cap=r.offsetWidth;
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to("#sahne-alt",{opacity:0,duration:.3},.1)
+    .to("#mat",{width:uz,duration:2,ease:"power1.inOut"},.2)
+    .to(r,{x:uz,rotation:720,scale:.25,duration:2,ease:"power1.inOut"},.2)
+    .to(r,{opacity:0,duration:.3},2.1)
+    .to("#sahne-bas",{y:-30,duration:2},.2)
+    .to("#mat-yazi",{opacity:1,duration:.5},2)
+    .to({},{duration:.6});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("mat").style.width="calc(100% - "+2*Math.max(20,(innerWidth-1160)/2)+"px)";document.getElementById("rulo").style.display="none";document.getElementById("mat-yazi").style.opacity=1};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

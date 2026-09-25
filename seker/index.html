@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Şeker Atölyesi · Butik Pastane · Denizli</title>
+<meta name="description" content="Şeker Atölyesi: siparişe özel pastalar, makaronlar ve meyveli tartlar. Pastanızı kişi sayısı, iç ve renk seçerek tasarlayın. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#F9E4E4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Albert+Sans:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--pembe:#F9E4E4;--pembe2:#F3CFD0;--gul:#D9577A;--fistik:#B9CFA4;--krem:#FFF9F3;--murdum:#3E2233;--soluk:#8A6E78;--cizgi:rgba(62,34,51,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--murdum);font-family:"Albert Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1220px,100% - 40px);margin-inline:auto}
+.dm{font-family:"DM Serif Display",serif;font-weight:400;letter-spacing:-.015em;line-height:.98}
+.dm i{font-style:italic;color:var(--gul)}
+.el{font-family:"Pinyon Script",cursive;font-weight:400;color:var(--gul)}
+.etk{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gul)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;background:var(--murdum);color:var(--krem);font:600 15px "Albert Sans",sans-serif;border:0;cursor:pointer;transition:transform .3s,background .3s}
+.btn:hover{transform:translateY(-2px);background:var(--gul)}
+.btn.acik{background:#fff;color:var(--murdum)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--pembe);display:grid;place-items:center}
+.perde .el{font-size:clamp(70px,12vw,160px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;transition:background .4s}
+header.dolu{background:rgba(255,249,243,.88);backdrop-filter:blur(12px)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:baseline;gap:6px;font-family:"DM Serif Display";font-size:26px}
+.logo .el{font-size:30px}
+nav{display:none;gap:26px;font-size:15px;font-weight:500}
+nav a:hover{color:var(--gul)}
+/* sahne */
+.giris{position:relative;height:320vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--pembe)}
+.katlar{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;pointer-events:none}
+.kat{font-family:"DM Serif Display";font-size:26vw;line-height:.78;letter-spacing:-.04em;white-space:nowrap;display:block;will-change:transform}
+.kat:nth-child(1){color:#F3CFD0}.kat:nth-child(2){color:#EFD9C4;margin-top:-.52em}.kat:nth-child(3){color:#E6C2C8;margin-top:-.52em}
+.pasta{position:absolute;left:50%;bottom:0;width:min(46vh,440px);transform:translateX(-50%);z-index:3;filter:drop-shadow(0 30px 40px rgba(120,40,60,.25));will-change:transform}
+.tabak{position:absolute;left:50%;bottom:0;width:min(62vh,600px);height:34px;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0,rgba(255,255,255,.9),rgba(255,255,255,.5) 60%,transparent 70%);z-index:2}
+.sahne-bas{position:absolute;left:0;right:0;top:14vh;text-align:center;z-index:5}
+.sahne-bas h1{font-size:clamp(44px,6.4vw,100px)}
+.sahne-bas .el{font-size:clamp(34px,4vw,58px);display:block;margin-bottom:-6px}
+.not-kutu{position:absolute;z-index:6;background:#fff;border-radius:18px;padding:14px 18px;box-shadow:0 20px 40px -20px rgba(120,40,60,.35);max-width:230px;font-size:14px;opacity:0}
+.not-kutu b{display:block;font-family:"DM Serif Display";font-weight:400;font-size:21px;line-height:1.1;margin-bottom:4px}
+.not-kutu span{color:var(--soluk)}
+.sahne-alt{position:absolute;left:0;right:0;bottom:4vh;z-index:6}
+.sahne-alt .sarmal{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;background:#fff;padding:9px 16px;border-radius:999px}
+[data-acik]:before{content:"";width:8px;height:8px;border-radius:50%;background:#c3aab3}
+[data-acik].evet:before{background:#5bb370;box-shadow:0 0 0 4px rgba(91,179,112,.2)}
+/* vitrin */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.bas h2{font-size:clamp(48px,6.4vw,100px)}
+.bas p{color:var(--soluk);max-width:38ch}
+.vitrin{display:grid;gap:20px}
+.urun{background:#fff;border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
+.urun .foto{aspect-ratio:1/1;overflow:hidden;background:var(--pembe)}
+.urun .foto img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.urun:hover .foto img{transform:scale(1.06)}
+.urun .ic{padding:20px 22px 24px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.urun h3{font-family:"DM Serif Display";font-weight:400;font-size:25px;line-height:1.1}
+.urun p{color:var(--soluk);font-size:14.5px}
+.urun .f{font-weight:700;white-space:nowrap}
+.urun.genis{grid-column:1/-1}
+.urun.genis .foto{aspect-ratio:16/8}
+/* tasarla */
+.tasarla{background:var(--pembe);border-radius:40px;padding:clamp(24px,4vw,56px);display:grid;gap:36px;align-items:center}
+.onizleme{position:relative;aspect-ratio:1/1;border-radius:30px;background:radial-gradient(circle at 50% 70%,#fff 0%,var(--pembe2) 75%);display:grid;place-items:end center;overflow:hidden}
+.onizleme img{width:74%;margin-bottom:8%;filter:drop-shadow(0 24px 30px rgba(120,40,60,.25));transition:filter .6s,transform .6s}
+.onizleme .rozet{position:absolute;left:20px;top:20px;background:#fff;border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:600}
+.secim{display:grid;gap:22px}
+.secim h3{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soluk);margin-bottom:10px}
+.hap{display:flex;flex-wrap:wrap;gap:8px}
+.hap button{font:600 14.5px "Albert Sans",sans-serif;padding:10px 16px;border-radius:999px;border:1.5px solid var(--murdum);background:transparent;color:var(--murdum);cursor:pointer;transition:background .25s,color .25s}
+.hap button[aria-pressed=true]{background:var(--murdum);color:var(--krem)}
+.renkler{display:flex;gap:10px}
+.renkler button{width:40px;height:40px;border-radius:50%;border:3px solid #fff;cursor:pointer;box-shadow:0 0 0 1.5px var(--cizgi)}
+.renkler button[aria-pressed=true]{box-shadow:0 0 0 2.5px var(--murdum)}
+input,select,textarea{font:500 16px "Albert Sans",sans-serif;color:var(--murdum);background:#fff;border:1.5px solid transparent;border-radius:14px;padding:13px 14px;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--gul)}
+.toplam{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:#fff;border-radius:22px;padding:18px 20px}
+.toplam b{font-family:"DM Serif Display";font-weight:400;font-size:40px;line-height:1}
+.toplam small{display:block;color:var(--soluk);font-size:13px}
+.form-mesaj{font-size:14.5px;color:#2f7a45;font-weight:600}
+/* şef */
+.sef{display:grid;gap:40px;align-items:center}
+.sef-foto{border-radius:999px 999px 30px 30px;overflow:hidden;position:relative;aspect-ratio:4/5}
+.sef-foto img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.sef blockquote{font-family:"DM Serif Display";font-size:clamp(30px,3.4vw,50px);line-height:1.15}
+.adim{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.adim div{border-top:1.5px solid var(--murdum);padding-top:12px;font-size:14.5px;color:var(--soluk)}
+.adim b{display:block;color:var(--murdum);font-size:16px}
+/* kutu bandı */
+.kutu{position:relative;border-radius:40px;overflow:hidden;min-height:520px;display:flex;align-items:center}
+.kutu img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.kutu .ic{position:relative;z-index:2;background:rgba(255,249,243,.92);backdrop-filter:blur(8px);border-radius:30px;padding:clamp(24px,4vw,46px);margin:24px;max-width:520px}
+.kutu h2{font-size:clamp(40px,4.6vw,72px)}
+footer{padding:110px 0 44px;background:var(--pembe);margin-top:130px}
+.alt-bas{font-family:"Pinyon Script";font-size:clamp(80px,14vw,220px);line-height:.9;color:var(--gul);margin-bottom:40px}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--murdum);margin-bottom:6px}
+.demo-not{margin-top:36px;padding-top:20px;border-top:1px solid var(--cizgi);font-size:12.5px;color:var(--soluk)}
+@media (min-width:920px){
+  nav{display:flex}
+  .vitrin{grid-template-columns:repeat(3,1fr)}
+  .urun.genis{grid-column:span 2}
+  .urun.genis .foto{aspect-ratio:auto;height:100%;min-height:300px;flex:1}
+  .tasarla{grid-template-columns:.9fr 1.1fr;gap:56px}
+  .sef{grid-template-columns:.8fr 1.2fr;gap:80px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .pasta{width:74vw}
+  .tabak{width:96vw}
+  .not-kutu{display:none}
+  .kat{font-size:34vw}
+  .adim{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="el">Şeker</span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#"><span class="el">Şeker</span> Atölyesi</a>
+  <nav><a href="#vitrin">Vitrin</a><a href="#tasarla">Pastanı tasarla</a><a href="#atolye">Atölye</a><a href="#iletisim">İletişim</a></nav>
+  <a class="btn" href="#tasarla" style="padding:11px 20px">Sipariş ver</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="katlar" aria-hidden="true"><span class="kat">şeker</span><span class="kat">şeker</span><span class="kat">şeker</span></div>
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><span class="el">el yapımı</span><h1 class="dm" data-bol data-hemen>Kat kat <i>mutluluk.</i></h1></div></div>
+    <span class="tabak" aria-hidden="true"></span>
+    <img class="pasta" id="pasta" src="img/pasta.webp" alt="Taze meyve ve çiçeklerle süslü üç katlı pembe-krem pasta">
+    <div class="not-kutu" id="n1" style="left:12%;top:40%"><b>Taze meyve</b><span>Ahududu ve yaban mersini her sabah gelir.</span></div>
+    <div class="not-kutu" id="n2" style="right:12%;top:30%"><b>Üç kat pandispanya</b><span>Tereyağlı, fazla şekersiz.</span></div>
+    <div class="not-kutu" id="n3" style="right:14%;top:62%"><b>İsviçre bezesi</b><span>Ağır krema değil, ipek gibi hafif.</span></div>
+    <div class="sahne-alt" id="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span><a class="btn" href="#tasarla">Pastanı tasarla ↓</a></div></div>
+  </div>
+</section>
+
+<section class="bolum" id="vitrin"><div class="sarmal">
+  <div class="bas"><div><span class="etk">Bugünün vitrini</span><h2 class="dm" style="margin-top:12px" data-bol>Tatlı bir <i>mola.</i></h2></div><p data-r>Vitrindekiler her sabah 09:00'da hazır; öğleden sonra bitenler olabilir. Günlük liste Instagram hikâyemizde.</p></div>
+  <div class="vitrin" data-rg>
+    <article class="urun genis"><div class="foto"><img src="img/vitrin.jpg" alt="Pastalar, tartlar ve eklerlerle dolu pastane vitrini" loading="lazy"></div><div class="ic"><div><h3>Vitrin tabağı</h3><p>Günün dört mini tatlısı, iki kişilik.</p></div><span class="f">340 ₺</span></div></article>
+    <article class="urun"><div class="foto"><img src="img/makaron.jpg" alt="Pastel renkli Fransız makaronları" loading="lazy"></div><div class="ic"><div><h3>Makaron (6'lı)</h3><p>Fıstık, gül, frambuaz, limon, vanilya, çikolata.</p></div><span class="f">270 ₺</span></div></article>
+    <article class="urun"><div class="foto"><img src="img/tart.jpg" alt="Parlak meyveli tartlar ve cheesecake dilimi" loading="lazy"></div><div class="ic"><div><h3>Meyveli tart</h3><p>Vanilyalı krema, mevsim meyvesi.</p></div><span class="f">150 ₺</span></div></article>
+    <article class="urun"><div class="foto"><img src="img/kutu.jpg" alt="Kurdeleli pembe pasta kutusu ve pasta dilimi" loading="lazy"></div><div class="ic"><div><h3>Dilim pasta</h3><p>Günün pastası; kutuda paket.</p></div><span class="f">180 ₺</span></div></article>
+    <article class="urun"><div class="foto"><img src="img/sef.jpg" alt="Pastaya krema süsleyen pasta şefi" loading="lazy"></div><div class="ic"><div><h3>Atölye dersi</h3><p>Cumartesi 14:00, 6 kişilik grup.</p></div><span class="f">900 ₺</span></div></article>
+  </div>
+</div></section>
+
+<section class="bolum" id="tasarla" style="padding-top:0"><div class="sarmal">
+  <div class="tasarla">
+    <div class="onizleme" data-r><span class="rozet" id="rozet">8 kişilik · Vanilya</span><img id="onizleme-pasta" src="img/pasta.webp" alt="Seçimlerinize göre renklenen pasta önizlemesi"></div>
+    <form class="secim demo-form" novalidate data-mesaj="Teşekkürler! Bu bir örnek sitedir; gerçek sitede siparişiniz WhatsApp'la onaylanır ve kapora bilgisi iletilir.">
+      <div><span class="etk">Siparişe özel pasta</span><h2 class="dm" style="font-size:clamp(40px,4.6vw,70px);margin-top:10px" data-bol>Pastanı <i>tasarla.</i></h2></div>
+      <div><h3>Kişi sayısı</h3><div class="hap" data-grup="kisi"><button type="button" data-d="6" aria-pressed="false">6</button><button type="button" data-d="8" aria-pressed="true">8</button><button type="button" data-d="12" aria-pressed="false">12</button><button type="button" data-d="20" aria-pressed="false">20</button><button type="button" data-d="30" aria-pressed="false">30 · 2 katlı</button></div></div>
+      <div><h3>İç</h3><div class="hap" data-grup="ic"><button type="button" data-d="Vanilya" data-e="0" aria-pressed="true">Vanilya &amp; frambuaz</button><button type="button" data-d="Çikolata" data-e="60" aria-pressed="false">Bitter çikolata</button><button type="button" data-d="Fıstık" data-e="120" aria-pressed="false">Antep fıstığı</button><button type="button" data-d="Limon" data-e="0" aria-pressed="false">Limon &amp; beze</button></div></div>
+      <div><h3>Krema rengi</h3><div class="renkler" data-grup="renk"><button type="button" aria-label="Pudra pembe" data-d="0" style="background:#F2C4CB" aria-pressed="true"></button><button type="button" aria-label="Lila" data-d="-45" style="background:#D8C4EE"></button><button type="button" aria-label="Fıstık yeşili" data-d="110" style="background:#C8DDB5"></button><button type="button" aria-label="Gök mavisi" data-d="170" style="background:#C2DCEB"></button><button type="button" aria-label="Şeftali" data-d="25" style="background:#F6D2B4"></button></div></div>
+      <div class="iki" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><input type="date" aria-label="Teslim tarihi"><input name="tel" type="tel" placeholder="Telefon"></div>
+      <input name="ad" placeholder="Ad Soyad" autocomplete="name">
+      <textarea rows="2" placeholder="Pasta üstü yazı (isteğe bağlı)"></textarea>
+      <div class="toplam"><div><small>Tahmini fiyat</small><b id="toplam">1.600 ₺</b></div><button class="btn" type="submit">Sipariş talebi gönder</button></div>
+      <p class="form-mesaj" role="status"></p>
+      <p style="font-size:13.5px;color:var(--soluk)">Siparişe özel pastalar en az 48 saat önceden alınır. Fiyat tahminidir; süsleme detayına göre değişebilir.</p>
+    </form>
+  </div>
+</div></section>
+
+<section class="bolum" id="atolye" style="padding-top:0"><div class="sarmal sef">
+  <div class="sef-foto" data-r><img src="img/sef.jpg" alt="Pasta şefi krema süslemesi yaparken" loading="lazy" data-p="0.12"></div>
+  <div>
+    <span class="etk">Atölye</span>
+    <blockquote style="margin-top:16px" data-r>“Şekeri azaltıp tereyağını artırırsanız pasta tatlı değil, lezzetli olur.”</blockquote>
+    <p style="color:var(--soluk);margin-top:16px" data-r>— Elif Hanım, pasta şefi ve atölyenin kurucusu</p>
+    <div class="adim" data-rg>
+      <div><b>Sabah 06:00</b>Pandispanyalar fırına girer.</div>
+      <div><b>Öğlen</b>Kremalar çırpılır, meyveler seçilir.</div>
+      <div><b>Akşamüstü</b>Ertesi günün siparişleri süslenir.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="bolum" style="padding-top:0"><div class="sarmal"><div class="kutu" data-r>
+  <img src="img/kutu.jpg" alt="Saten kurdeleli pembe pasta kutusu" loading="lazy" data-p="0.1">
+  <div class="ic"><span class="etk">Hediye kutusu</span><h2 class="dm" style="margin-top:10px">Kurdelesi <i>bizden.</i></h2><p style="color:var(--soluk);margin-top:12px">Makaron ve dilim pasta kutuları el yazısı notla hazırlanır. Denizli merkez içine aynı gün teslimat.</p><p style="margin-top:18px"><a class="btn" href="https://wa.me/905000000000">WhatsApp'tan sor</a></p></div>
+</div></div></section>
+
+<footer id="iletisim"><div class="sarmal">
+  <div class="alt-bas" aria-hidden="true">tatlı kalın</div>
+  <div class="alt-izgara">
+    <div><b>Şeker Atölyesi</b>Butik pastane ve siparişe özel pasta.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Salı – Pazar 09:00 – 20:00<br>Pazartesi kapalı</div>
+    <div><b>İletişim</b><a href="tel:+902580000000">0258 000 00 00</a><br><a href="https://wa.me/905000000000">WhatsApp</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Şeker Atölyesi hayali bir işletmedir; ürünler, fiyatlar ve şef temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[9,20],1:null,2:[9,20],3:[9,20],4:[9,20],5:[9,20],6:[9,20]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// pasta tasarlayıcı
+(function(){var s={kisi:8,ic:"Vanilya",e:0,renk:0},img=document.getElementById("onizleme-pasta"),t=document.getElementById("toplam"),r=document.getElementById("rozet");
+  function hesap(){var fiyat=s.kisi*200+s.e*s.kisi/2+(s.kisi>=30?800:0);t.textContent=fiyat.toLocaleString("tr-TR")+" ₺";r.textContent=s.kisi+" kişilik · "+s.ic;
+    img.style.filter="hue-rotate("+s.renk+"deg) drop-shadow(0 24px 30px rgba(120,40,60,.25))";img.style.transform="scale("+(.84+Math.min(s.kisi,30)/30*.16)+")"}
+  document.querySelectorAll("[data-grup]").forEach(function(g){g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+    g.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+    var k=g.dataset.grup;if(k==="kisi")s.kisi=+b.dataset.d;if(k==="ic"){s.ic=b.dataset.d;s.e=+b.dataset.e}if(k==="renk")s.renk=+b.dataset.d;hesap()})});
+  hesap()})();
+window.SAHNE=function(gsap){
+  var H=innerHeight,m=innerWidth<920;
+  var tl=gsap.timeline({scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.fromTo("#pasta",{y:H*.55,scale:.8},{y:-H*.06,scale:1,duration:2,ease:"power3.out"},0)
+    .to(".kat:nth-child(1)",{y:-H*.16,duration:2.4,ease:"power2.inOut"},.2)
+    .to(".kat:nth-child(3)",{y:H*.16,duration:2.4,ease:"power2.inOut"},.2)
+    .to("#sahne-bas",{y:-50,opacity:0,duration:1},.3)
+    .to("#sahne-alt",{opacity:0,duration:.6},.2)
+    .fromTo(".not-kutu",{opacity:0,y:20},{opacity:1,y:0,duration:.5,stagger:.35},2)
+    .to("#pasta",{rotation:-3,scale:1.04,duration:1.4,ease:"sine.inOut"},2.2)
+    .to({},{duration:1});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("pasta").style.transform="translateX(-50%) translateY(-6vh)";document.querySelectorAll(".not-kutu").forEach(function(n){n.style.opacity=1})};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fade Lab · Barbershop · Denizli</title>
+<meta name="description" content="Fade Lab: skin fade, taper, burst ve crop kesimler. Stil kataloğu, anlık sıra durumu ve online randevu. Denizli. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--kara:#0A0A0F;--kara2:#13131B;--kara3:#1C1C27;--mor:#A855F7;--mavi:#3B82F6;--asit:#C6FF3D;--beyaz:#F4F4F8;--soluk:#8A8A9C;--cizgi:rgba(244,244,248,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kara);color:var(--beyaz);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.sarmal{width:min(1260px,100% - 40px);margin-inline:auto}
+.an{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.9}
+.mono{font-family:"Space Mono",monospace;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.neon{color:var(--asit);text-shadow:0 0 18px rgba(198,255,61,.45)}
+.kit-maske{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.04em}.kit-kelime{display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;background:var(--asit);color:var(--kara);font:700 13px "Space Mono",monospace;letter-spacing:.08em;text-transform:uppercase;border:0;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 70%,92% 100%,0 100%);transition:filter .3s}
+.btn:hover{filter:drop-shadow(0 0 12px rgba(198,255,61,.7))}
+.btn.bos{background:transparent;color:var(--beyaz);outline:1px solid var(--cizgi)}
+.perde{position:fixed;inset:0;z-index:100;background:var(--kara);display:grid;place-items:center}
+.perde .an{font-size:clamp(70px,14vw,200px)}
+header{position:fixed;left:0;right:0;top:0;z-index:50;padding:16px 0;transition:background .3s}
+header.dolu{background:rgba(10,10,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:Anton;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.logo span{color:var(--asit)}
+nav{display:none;gap:26px}
+nav a{font-family:"Space Mono";font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--soluk)}
+nav a:hover{color:var(--asit)}
+/* sahne */
+.giris{position:relative;height:320vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(ellipse 50% 50% at 30% 60%,rgba(168,85,247,.22),transparent 70%),radial-gradient(ellipse 45% 45% at 75% 40%,rgba(59,130,246,.18),transparent 70%),var(--kara)}
+.izgara-bg{position:absolute;inset:0;background-image:linear-gradient(var(--cizgi) 1px,transparent 1px),linear-gradient(90deg,var(--cizgi) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse at 50% 60%,#000 20%,transparent 75%);opacity:.5}
+.fade-yazi{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);font-family:Anton;font-size:min(34vw,56vh);line-height:.8;text-transform:uppercase;white-space:nowrap}
+.fade-yazi .dis{color:transparent;-webkit-text-stroke:1.5px rgba(244,244,248,.35)}
+.fade-yazi .ic{position:absolute;inset:0;background:linear-gradient(180deg,#0A0A0F 0%,#3a2a55 30%,var(--mor) 55%,var(--mavi) 75%,var(--asit) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;clip-path:inset(0 100% 0 0)}
+.makine{position:absolute;left:0;top:54%;width:min(24vw,300px);z-index:3;transform:translate(-50%,-50%) rotate(-90deg);filter:drop-shadow(0 0 30px rgba(168,85,247,.5)) drop-shadow(0 20px 30px rgba(0,0,0,.6))}
+.sahne-bas{position:absolute;left:0;right:0;top:13vh;z-index:4}
+.sahne-bas .sarmal{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.sahne-bas h1{font-size:clamp(34px,4vw,60px);max-width:14ch}
+.sira-kutu{border:1px solid var(--cizgi);background:rgba(19,19,27,.7);backdrop-filter:blur(10px);padding:14px 16px;display:grid;gap:4px;min-width:220px}
+.sira-kutu b{font-family:Anton;font-size:40px;line-height:1;font-weight:400}
+.sahne-alt{position:absolute;left:0;right:0;bottom:4vh;z-index:4}
+.sahne-alt .sarmal{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.olcek{display:flex;gap:4px}
+.olcek span{font-family:"Space Mono";font-size:11px;padding:6px 8px;border:1px solid var(--cizgi);color:var(--soluk);transition:all .2s}
+.olcek span.a{background:var(--asit);color:var(--kara);border-color:var(--asit)}
+[data-acik]{display:inline-flex;align-items:center;gap:8px;font-family:"Space Mono";font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+[data-acik]:before{content:"";width:8px;height:8px;background:#555}
+[data-acik].evet:before{background:var(--asit);box-shadow:0 0 10px var(--asit)}
+/* katalog */
+.bolum{padding:130px 0}
+.bas{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.bas h2{font-size:clamp(56px,9vw,150px)}
+.bas p{color:var(--soluk);max-width:36ch}
+.katalog{display:grid;gap:30px;align-items:start}
+.stil-liste{display:grid;border-top:1px solid var(--cizgi)}
+.stil{display:grid;grid-template-columns:50px 1fr auto;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--cizgi);cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;color:inherit;text-align:left;font:inherit;transition:padding .3s,color .3s}
+.stil .mono{color:var(--soluk)}
+.stil b{font-family:Anton;font-weight:400;font-size:clamp(32px,3.6vw,54px);text-transform:uppercase;line-height:1}
+.stil span.f{font-family:"Space Mono";font-size:14px}
+.stil[aria-pressed=true]{padding-left:16px;color:var(--asit)}
+.stil[aria-pressed=true] .mono{color:var(--asit)}
+.stil-kart{position:sticky;top:100px;border:1px solid var(--cizgi);background:var(--kara2)}
+.stil-kart figure{aspect-ratio:4/3.4;overflow:hidden;position:relative}
+.stil-kart figure img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.stil-kart figure:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,15,.6),transparent 50%)}
+.stil-kart .ic{padding:24px;display:grid;gap:12px}
+.stil-kart h3{font-family:Anton;font-weight:400;font-size:40px;text-transform:uppercase;line-height:1}
+.stil-kart p{color:var(--soluk);font-size:15px}
+.ozellik{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cizgi)}
+.ozellik div{background:var(--kara2);padding:12px}
+.ozellik small{display:block;font-family:"Space Mono";font-size:10.5px;color:var(--soluk);text-transform:uppercase;letter-spacing:.08em}
+.ozellik b{font-family:Anton;font-weight:400;font-size:22px}
+/* bant */
+.bant{overflow:hidden;border-block:1px solid var(--cizgi);padding:18px 0;background:var(--kara2)}
+.bant-ic{display:flex;gap:40px;white-space:nowrap;animation:kay 26s linear infinite;width:max-content}
+.bant-ic span{font-family:Anton;font-size:44px;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(244,244,248,.4)}
+.bant-ic span:nth-child(odd){color:var(--asit);-webkit-text-stroke:0}
+@keyframes kay{to{transform:translateX(-50%)}}
+/* dükkan */
+.dukkan{display:grid;gap:16px}
+.dukkan figure{position:relative;overflow:hidden;min-height:320px}
+.dukkan img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover}
+.dukkan figcaption{position:absolute;left:14px;top:14px;background:var(--kara);padding:6px 10px}
+.fiyatlar{display:grid;gap:0}
+.fiyat{display:flex;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px dashed var(--cizgi);font-size:16px}
+.fiyat span:last-child{font-family:"Space Mono";color:var(--asit)}
+/* randevu */
+.randevu{border:1px solid var(--cizgi);background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(59,130,246,.08));padding:clamp(24px,4vw,56px);display:grid;gap:36px}
+.randevu h2{font-size:clamp(50px,7vw,110px)}
+.saatler{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.saatler button{font:700 14px "Space Mono";padding:12px 0;border:1px solid var(--cizgi);background:var(--kara);color:var(--beyaz);cursor:pointer}
+.saatler button:disabled{opacity:.25;text-decoration:line-through;cursor:not-allowed}
+.saatler button[aria-pressed=true]{background:var(--asit);color:var(--kara);border-color:var(--asit)}
+label{display:grid;gap:6px;font-family:"Space Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soluk)}
+input,select{font:500 16px Inter;color:var(--beyaz);background:var(--kara);border:1px solid var(--cizgi);padding:13px 14px;width:100%;border-radius:0}
+input:focus,select:focus{outline:none;border-color:var(--asit)}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-mesaj{font-family:"Space Mono";font-size:13px;color:var(--asit)}
+footer{padding:90px 0 40px;border-top:1px solid var(--cizgi);margin-top:130px}
+.alt-bas{font-family:Anton;font-size:clamp(90px,21vw,330px);text-transform:uppercase;line-height:.8;margin-bottom:40px;background:linear-gradient(90deg,var(--mor),var(--mavi),var(--asit));-webkit-background-clip:text;background-clip:text;color:transparent}
+.alt-izgara{display:grid;gap:24px;font-size:15px;color:var(--soluk)}
+.alt-izgara b{display:block;color:var(--beyaz);margin-bottom:6px;font-family:"Space Mono";font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.demo-not{margin-top:36px;padding-top:20px;border-top:1px solid var(--cizgi);font-size:12.5px;color:var(--soluk)}
+@media (min-width:920px){
+  nav{display:flex}
+  .katalog{grid-template-columns:1.1fr .9fr;gap:60px}
+  .dukkan{grid-template-columns:1.2fr .8fr 1fr}
+  .dukkan figure:first-child{grid-row:span 2;min-height:560px}
+  .randevu{grid-template-columns:.9fr 1.1fr;gap:60px}
+  .alt-izgara{grid-template-columns:2fr 1fr 1fr 1fr}
+}
+@media (max-width:919px){
+  .makine{width:40vw}
+  .sira-kutu{display:none}
+  .olcek span:nth-child(n+6){display:none}
+  .stil-kart{position:relative;top:0}
+}
+</style>
+</head>
+<body>
+<div class="perde" aria-hidden="true"><span class="an neon">FADE LAB</span></div>
+
+<header id="ust"><div class="sarmal ust">
+  <a class="logo" href="#">Fade<span>Lab</span></a>
+  <nav><a href="#katalog">Stiller</a><a href="#dukkan">Dükkân</a><a href="#randevu">Randevu</a></nav>
+  <a class="btn" href="#randevu" style="padding:11px 16px">Koltuk kap</a>
+</div></header>
+
+<section class="giris">
+  <div class="sahne">
+    <div class="izgara-bg" aria-hidden="true"></div>
+    <div class="fade-yazi" aria-hidden="true"><span class="dis">FADE</span><span class="ic" id="fade-ic">FADE</span></div>
+    <img class="makine" id="makine" src="img/makine.webp" alt="Altın bıçaklı mat siyah profesyonel saç kesme makinesi">
+    <div class="sahne-bas" id="sahne-bas"><div class="sarmal"><div><span class="mono neon">Barbershop · Denizli · 2019</span><h1 class="an" style="margin-top:12px" data-bol data-hemen>Keskin hatlar. Temiz geçişler.</h1></div>
+      <div class="sira-kutu"><span class="mono" style="color:var(--soluk)">Şu an sırada</span><b id="sira">2 kişi</b><span class="mono" id="sira-bekleme" style="color:var(--asit)">~25 dk bekleme</span></div></div></div>
+    <div class="sahne-alt" id="sahne-alt"><div class="sarmal"><span data-acik>Çalışma saatleri</span><div class="olcek" aria-hidden="true" id="olcek"><span class="a">0</span><span>0.5</span><span>1</span><span>1.5</span><span>2</span><span>3</span><span>4</span></div></div></div>
+  </div>
+</section>
+
+<div class="bant" aria-hidden="true"><div class="bant-ic"><span>Skin fade</span><span>Low taper</span><span>Burst fade</span><span>Textured crop</span><span>Beard line</span><span>Skin fade</span><span>Low taper</span><span>Burst fade</span><span>Textured crop</span><span>Beard line</span></div></div>
+
+<section class="bolum" id="katalog"><div class="sarmal">
+  <div class="bas"><h2 class="an" data-bol>Stil <span class="neon">katalog</span></h2><p data-r>Fotoğrafını getirmen yeter. Kafa yapına göre en yakın stili birlikte seçeriz.</p></div>
+  <div class="katalog">
+    <div class="stil-liste" id="stiller">
+      <button class="stil" type="button" aria-pressed="true" data-a="Skin Fade" data-p="Yanlar sıfırdan başlayıp ten görünümüne iner, üst uzunluk korunur. En net geçiş." data-s="45 dk" data-z="0 → 3" data-b="2–3 hf" data-i="img/fade.jpg"><span class="mono">01</span><b>Skin fade</b><span class="f">450₺</span></button>
+      <button class="stil" type="button" aria-pressed="false" data-a="Low Taper" data-p="Geçiş yalnızca ense ve favorilerde; ofis için de uygun, temiz ve sade." data-s="35 dk" data-z="1 → 3" data-b="3–4 hf" data-i="img/kesim.jpg"><span class="mono">02</span><b>Low taper</b><span class="f">400₺</span></button>
+      <button class="stil" type="button" aria-pressed="false" data-a="Burst Fade" data-p="Geçiş kulağın etrafında yarım daire çizer; kıvırcık ve mullet stillerle iyi gider." data-s="45 dk" data-z="0 → 2" data-b="2–3 hf" data-i="img/fade.jpg"><span class="mono">03</span><b>Burst fade</b><span class="f">450₺</span></button>
+      <button class="stil" type="button" aria-pressed="false" data-a="Textured Crop" data-p="Kısa, dokulu üst ve düz kâkül. Şekillendirmesi 2 dakika." data-s="40 dk" data-z="1 → 4" data-b="3–4 hf" data-i="img/kesim.jpg"><span class="mono">04</span><b>Textured crop</b><span class="f">400₺</span></button>
+      <button class="stil" type="button" aria-pressed="false" data-a="Beard Line" data-p="Sakal hattı ustura ile çekilir, sakal ile saç geçişi birleştirilir." data-s="25 dk" data-z="Ustura" data-b="1–2 hf" data-i="img/koltuk.jpg"><span class="mono">05</span><b>Beard line</b><span class="f">250₺</span></button>
+    </div>
+    <div class="stil-kart" data-r aria-live="polite">
+      <figure><img id="k-img" src="img/fade.jpg" alt="Neon ışıkta taze skin fade kesim, arkadan görünüm" loading="lazy"></figure>
+      <div class="ic"><h3 id="k-ad">Skin Fade</h3><p id="k-p">Yanlar sıfırdan başlayıp ten görünümüne iner, üst uzunluk korunur. En net geçiş.</p>
+        <div class="ozellik"><div><small>Süre</small><b id="k-s">45 dk</b></div><div><small>Numara</small><b id="k-z">0 → 3</b></div><div><small>Tekrar</small><b id="k-b">2–3 hf</b></div></div>
+        <a class="btn" href="#randevu" style="justify-self:start">Bu stili kap</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="bolum" id="dukkan" style="padding-top:0"><div class="sarmal">
+  <div class="bas"><h2 class="an" data-bol>Dükkân</h2></div>
+  <div class="dukkan" data-rg>
+    <figure><img src="img/dukkan.jpg" alt="Neon ışıklı, grafiti duvarlı gece berber dükkânı" loading="lazy" data-p="0.08"><figcaption class="mono">3 koltuk · PS5 köşesi</figcaption></figure>
+    <figure><img src="img/kesim.jpg" alt="Dövmeli berber makineyle genç erkeğin saçını keserken" loading="lazy"><figcaption class="mono">Barber: Kaan</figcaption></figure>
+    <div style="border:1px solid var(--cizgi);padding:24px;background:var(--kara2)"><span class="mono neon">Fiyatlar</span><div class="fiyatlar" style="margin-top:10px">
+      <div class="fiyat"><span>Fade + yıkama</span><span>450₺</span></div><div class="fiyat"><span>Kesim (makas)</span><span>400₺</span></div><div class="fiyat"><span>Sakal hattı</span><span>250₺</span></div><div class="fiyat"><span>Kesim + sakal</span><span>600₺</span></div><div class="fiyat"><span>Öğrenci (hafta içi)</span><span>350₺</span></div><div class="fiyat"><span>Siyah maske</span><span>150₺</span></div></div></div>
+    <figure><img src="img/urun.jpg" alt="Neon ışıkta raftaki wax ve şekillendirici ürünler" loading="lazy"><figcaption class="mono">Wax · clay · toz</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="bolum" id="randevu" style="padding-top:0"><div class="sarmal"><div class="randevu" data-r>
+  <div><span class="mono neon">Randevu</span><h2 class="an" style="margin-top:12px">Koltuğunu kap.</h2><p style="color:var(--soluk);margin-top:12px;max-width:34ch">Saat seç, adını bırak. Randevuna 10 dk geç kalırsan sıradaki müşteriye geçiyoruz.</p>
+    <figure style="margin-top:24px;aspect-ratio:4/5;overflow:hidden;max-width:320px"><img src="img/koltuk.jpg" alt="Neon tabela altında siyah deri berber koltuğu" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure></div>
+  <form class="demo-form" novalidate style="display:grid;gap:14px;align-content:start">
+    <div class="iki"><label>Gün<select id="gun"></select></label><label>Hizmet<select><option>Skin fade</option><option>Low taper</option><option>Burst fade</option><option>Textured crop</option><option>Kesim + sakal</option></select></label></div>
+    <label>Boş saatler</label><div class="saatler" id="saatler"></div>
+    <div class="iki"><label>Ad<input name="ad" autocomplete="given-name"></label><label>Telefon<input name="tel" type="tel" placeholder="05xx"></label></div>
+    <button class="btn" type="submit" style="justify-self:start">Randevuyu gönder</button>
+    <p class="form-mesaj" role="status"></p>
+  </form>
+</div></div></section>
+
+<footer><div class="sarmal">
+  <div class="alt-bas" aria-hidden="true">Fade Lab</div>
+  <div class="alt-izgara">
+    <div><b>Fade Lab</b>Barbershop. Randevulu ve sırayla.</div>
+    <div><b>Adres</b>Örnek Mh. 0000 Sk. No: 0<br>Merkezefendi / Denizli</div>
+    <div><b>Saatler</b>Her gün 11:00 – 22:00</div>
+    <div><b>İletişim</b><a href="https://wa.me/905000000000">WhatsApp</a><br><a href="#">Instagram</a></div>
+  </div>
+  <p class="demo-not">Bu site bir örnek çalışmadır. Fade Lab hayali bir işletmedir; fiyatlar, sıra bilgisi ve adres temsilidir. Görseller yapay zekâ ile üretilmiştir. Tasarım ve kodlama: Boztaş Digital.</p>
+</div></footer>
+
+<script>
+window.SAAT={0:[11,22],1:[11,22],2:[11,22],3:[11,22],4:[11,22],5:[11,22],6:[11,22]};
+addEventListener("scroll",function(){document.getElementById("ust").classList.toggle("dolu",scrollY>60)},{passive:true});
+// temsili sıra durumu (saate göre)
+(function(){var h=new Date().getHours(),n=h<11||h>=22?0:[1,2,3,2,1,2,3,4,3,2,1][(h-11)%11];document.getElementById("sira").textContent=n?n+" kişi":"Kapalı";document.getElementById("sira-bekleme").textContent=n?"~"+n*15+" dk bekleme":"11:00'de açılıyor"})();
+// katalog
+(function(){var s=document.getElementById("stiller");s.addEventListener("click",function(e){var b=e.target.closest(".stil");if(!b)return;s.querySelectorAll(".stil").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")});
+  ["a","p","s","z","b"].forEach(function(k){document.getElementById("k-"+(k==="a"?"ad":k)).textContent=b.dataset[k]});document.getElementById("k-img").src=b.dataset.i})})();
+// boş saatler (temsili, güne göre sabit)
+(function(){var g=document.getElementById("gun"),k=document.getElementById("saatler"),gunler=["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+  for(var i=0;i<6;i++){var d=new Date();d.setDate(d.getDate()+i);var o=document.createElement("option");o.value=i;o.textContent=(i===0?"Bugün":i===1?"Yarın":gunler[d.getDay()])+" · "+d.getDate()+"."+(d.getMonth()+1);g.appendChild(o)}
+  function yaz(){k.innerHTML="";var gi=+g.value,simdi=new Date().getHours()+new Date().getMinutes()/60;
+    for(var h=11;h<22;h+=.75){var dolu=((Math.floor(h*4)+gi*3)%5===0)||(gi===0&&h<=simdi+.5);var b=document.createElement("button");b.type="button";b.textContent=String(Math.floor(h)).padStart(2,"0")+":"+String(Math.round(h%1*60)).padStart(2,"0");b.disabled=dolu;b.setAttribute("aria-pressed","false");k.appendChild(b)}}
+  k.addEventListener("click",function(e){var b=e.target.closest("button");if(!b||b.disabled)return;k.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false")})});
+  g.addEventListener("change",yaz);yaz()})();
+window.SAHNE=function(gsap){
+  var W=innerWidth,o=[].slice.call(document.querySelectorAll("#olcek span"));gsap.set("#makine",{xPercent:-50,yPercent:-50,rotation:-90});
+  var tl=gsap.timeline({onUpdate:function(){var i=Math.min(o.length-1,Math.floor(this.progress()*o.length*1.1));o.forEach(function(x,j){x.classList.toggle("a",j===i)})},scrollTrigger:{trigger:".giris",start:"top top",end:"bottom bottom",scrub:1}});
+  tl.to("#sahne-bas",{opacity:0,y:-30,duration:.5},.2)
+    .fromTo("#makine",{x:W*.08},{x:W*.92,duration:3,ease:"none"},0)
+    .fromTo("#fade-ic",{clipPath:"inset(0 100% 0 0)"},{clipPath:"inset(0 0% 0 0)",duration:3,ease:"none"},0)
+    .to("#makine",{opacity:0,scale:.8,duration:.5},3)
+    .to(".fade-yazi",{scale:1.05,duration:1},3)
+    .to({},{duration:.6});
+  return tl;
+};
+window.STATIK=function(){document.querySelector(".giris").style.height="auto";document.getElementById("fade-ic").style.clipPath="none";document.getElementById("makine").style.left="78%"};
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="../ortak/kit.js"></script>
+</body>
+</html>
