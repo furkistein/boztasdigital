@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kumru Specialty Coffee · Menü (alerjen bilgili)</title>
+<meta name="description" content="Kumru Specialty Coffee QR menüsü: 14 alerjen bilgisi, alerjene göre süzme, Türkçe/İngilizce. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#231711">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--espresso:#231711;--kahve:#3A281E;--krem:#F4ECE1;--kum:#E7D9C6;--karamel:#C4874A;--soluk:#8F7A67;--cizgi:rgba(35,23,17,.12);--uyari:#B4432F}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:118px}
+body{background:var(--krem);color:var(--espresso);font-family:"Inter Tight",system-ui,sans-serif;font-size:16px;line-height:1.5}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sarmal{width:min(760px,100% - 32px);margin-inline:auto}
+.ust{background:var(--espresso);color:var(--krem);padding:28px 0 22px}
+.ust .satir{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.marka{font-family:Syne,sans-serif;font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1}
+.marka small{display:block;font-family:"Inter Tight";font-weight:500;font-size:13px;letter-spacing:.14em;color:var(--karamel);margin-top:8px}
+.dil{display:flex;border:1px solid rgba(244,236,225,.3);border-radius:99px;overflow:hidden;flex-shrink:0}
+.dil button{padding:6px 12px;font-size:13px;font-weight:600;color:var(--kum)}
+.dil button.secili{background:var(--karamel);color:var(--espresso)}
+.bilgi{margin-top:16px;font-size:14px;color:var(--kum);opacity:.85}
+.yapiskan{position:sticky;top:0;z-index:5;background:var(--krem);border-bottom:1px solid var(--cizgi)}
+.sekmeler{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;scrollbar-width:none;max-width:760px;margin:auto}
+.sekmeler::-webkit-scrollbar{display:none}
+.sekmeler a{flex-shrink:0;padding:7px 14px;border-radius:99px;background:#fff;border:1px solid var(--cizgi);font-size:14px;font-weight:600;color:var(--espresso);text-decoration:none;white-space:nowrap}
+.sekmeler a.aktif{background:var(--espresso);color:var(--krem);border-color:var(--espresso)}
+.suzgec-dugme{display:flex;align-items:center;justify-content:space-between;width:min(760px,100% - 32px);margin:0 auto 12px;padding:10px 14px;border-radius:12px;background:#fff;border:1px solid var(--cizgi);font-size:14px;font-weight:600}
+.suzgec-dugme .say{background:var(--uyari);color:#fff;border-radius:99px;padding:1px 9px;font-size:12px;margin-left:6px}
+.suzgec{display:none;width:min(760px,100% - 32px);margin:0 auto 12px;padding:14px;background:#fff;border-radius:12px;border:1px solid var(--cizgi)}
+.suzgec.acik{display:block}
+.suzgec p{font-size:13px;color:var(--soluk);margin-bottom:10px}
+.alerjenler{display:flex;flex-wrap:wrap;gap:7px}
+.alerjenler button{display:flex;align-items:center;gap:6px;padding:6px 10px 6px 6px;border-radius:99px;border:1px solid var(--cizgi);font-size:13px;background:var(--krem)}
+.alerjenler button.secili{background:var(--uyari);border-color:var(--uyari);color:#fff}
+.alerjenler button.secili .rozet{background:#fff;color:var(--uyari)}
+.rozet{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--espresso);color:var(--krem);font-size:10.5px;font-weight:700;letter-spacing:0;flex-shrink:0}
+main{padding:10px 0 40px}
+section{margin-top:26px}
+h2{font-family:Syne,sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em;margin-bottom:6px}
+.urun{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--cizgi)}
+.urun h3{font-size:16.5px;font-weight:700}
+.fiyat{font-weight:700;white-space:nowrap}
+.aciklama{grid-column:1/-1;font-size:14px;color:var(--soluk)}
+.urun .rozetler{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.urun .rozetler .rozet{width:auto;height:22px;padding:0 8px;border-radius:99px;font-size:11px;font-weight:600;background:var(--kum);color:var(--espresso)}
+.urun .rozetler .rozet.yok{background:none;border:1px dashed var(--cizgi);color:var(--soluk)}
+.urun .ek{grid-column:1/-1;font-size:12px;color:var(--soluk)}
+.urun.gizli{display:none}
+.bos{display:none;padding:14px;margin-top:10px;border-radius:12px;background:#fff;font-size:14px;color:var(--soluk)}
+.alt{background:var(--espresso);color:var(--kum);padding:26px 0 40px;font-size:13px}
+.alt h4{color:var(--krem);font-size:14px;margin-bottom:8px}
+.lejant{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:10px 0 18px}
+.lejant span{display:flex;align-items:center;gap:8px}
+.lejant .rozet{background:var(--karamel);color:var(--espresso)}
+.ornek{margin-top:16px;padding:10px 12px;border:1px dashed rgba(244,236,225,.35);border-radius:10px}
+.ornek a{color:var(--karamel)}
+</style>
+</head>
+<body>
+<header class="ust">
+  <div class="sarmal">
+    <div class="satir">
+      <div class="marka">Kumru<small data-t="alt">SPECIALTY COFFEE · DENİZLİ</small></div>
+      <div class="dil" role="group" aria-label="Dil"><button data-dil="tr" class="secili">TR</button><button data-dil="en">EN</button></div>
+    </div>
+    <p class="bilgi" data-t="bilgi">Her ürünün altında içerdiği alerjenler yazar. Alerjiniz varsa aşağıdan seçin, o ürünler gizlensin.</p>
+  </div>
+</header>
+
+<div class="yapiskan"><nav class="sekmeler" id="sekmeler"></nav></div>
+
+<main>
+  <button class="suzgec-dugme" id="suzgecDugme" aria-expanded="false"><span><span data-t="suz">Alerjene göre süz</span><span class="say" id="say" hidden>0</span></span><span aria-hidden="true">▾</span></button>
+  <div class="suzgec" id="suzgec">
+    <p data-t="suzAcik">Seçtiğiniz alerjenleri İÇEREN ürünler listeden gizlenir.</p>
+    <div class="alerjenler" id="alerjenler"></div>
+  </div>
+  <div class="sarmal">
+    <div id="menu"></div>
+  </div>
+</main>
+
+<footer class="alt">
+  <div class="sarmal">
+    <h4 data-t="lejant">Alerjen simgeleri</h4>
+    <div class="lejant" id="lejant"></div>
+    <p data-t="yasal">Alerjen ve içerik bilgileri işletme tarafından beyan edilmiştir. Aynı mutfakta hazırlandığı için eser miktarda çapraz bulaşma olabilir; ciddi alerjiniz varsa lütfen sipariş öncesi personelimize söyleyin.</p>
+    <p style="margin-top:8px" data-t="adres">Saraylar Mh., Denizli · Her gün 08:00-23:00 · Fiyatlara KDV dahildir.</p>
+    <div class="ornek" data-t="ornek">Bu sayfa örnek çalışmadır (Boztaş Digital). İşletmenize özel alerjen bilgili QR menü için: <a href="https://furkistein.github.io/boztasdigital/">furkistein.github.io/boztasdigital</a></div>
+  </div>
+</footer>
+
+<script>
+// 14 alerjen (Türk Gıda Kodeksi Etiketleme Yönetmeliği Ek-1)
+const A = {
+  gl:{tr:"Gluten",en:"Gluten"}, ka:{tr:"Kabuklular",en:"Crustaceans"}, yu:{tr:"Yumurta",en:"Egg"},
+  ba:{tr:"Balık",en:"Fish"}, yf:{tr:"Yer fıstığı",en:"Peanut"}, so:{tr:"Soya",en:"Soy"},
+  su:{tr:"Süt",en:"Milk"}, fi:{tr:"Sert kabuklu yemiş",en:"Tree nuts"}, ke:{tr:"Kereviz",en:"Celery"},
+  ha:{tr:"Hardal",en:"Mustard"}, ss:{tr:"Susam",en:"Sesame"}, sf:{tr:"Sülfit",en:"Sulphites"},
+  ab:{tr:"Acı bakla",en:"Lupin"}, ym:{tr:"Yumuşakçalar",en:"Molluscs"}
+};
+// Menü verisi: yeni müşteri için yalnız bu dizi değişir (a = alerjen kodları, kcal isteğe bağlı)
+const MENU = [
+  {id:"kahve", tr:"Kahveler", en:"Coffee", urunler:[
+    {tr:"Espresso", en:"Espresso", d:{tr:"Bu ayın çekirdeği, çift shot", en:"Bean of the month, double shot"}, f:70, a:[]},
+    {tr:"Flat White", en:"Flat White", d:{tr:"Çift shot, ince süt köpüğü", en:"Double shot, silky milk"}, f:105, a:["su"]},
+    {tr:"Latte (yulaf sütüyle)", en:"Oat Latte", d:{tr:"Yulaf içeceği glüten izi taşıyabilir", en:"Oat drink may contain gluten traces"}, f:120, a:["gl"]},
+    {tr:"Filtre Kahve V60", en:"V60 Pour Over", d:{tr:"Günün çekirdeği, 300 ml", en:"Daily bean, 300 ml"}, f:110, a:[]},
+    {tr:"Fındıklı Mocha", en:"Hazelnut Mocha", d:{tr:"Bitter çikolata, Giresun fındığı pralini", en:"Dark chocolate, hazelnut praline"}, f:135, a:["su","fi","so"]}
+  ]},
+  {id:"soguk", tr:"Soğuk içecekler", en:"Cold drinks", urunler:[
+    {tr:"Cold Brew", en:"Cold Brew", d:{tr:"18 saat demlenmiş", en:"Steeped for 18 hours"}, f:115, a:[]},
+    {tr:"Ev Yapımı Limonata", en:"House Lemonade", d:{tr:"Taze nane, az şeker", en:"Fresh mint, low sugar"}, f:90, a:[]},
+    {tr:"Kurutulmuş Kayısılı Soğuk Çay", en:"Dried Apricot Iced Tea", d:{tr:"Kurutulmuş kayısı sülfit içerir", en:"Dried apricot contains sulphites"}, f:95, a:["sf"]}
+  ]},
+  {id:"kahvalti", tr:"Kahvaltı & tuzlu", en:"Breakfast & savoury", urunler:[
+    {tr:"Ekşi Mayalı Avokado Tost", en:"Sourdough Avocado Toast", d:{tr:"Poşe yumurta, susam, pul biber", en:"Poached egg, sesame, chili flakes"}, f:220, a:["gl","yu","ss"]},
+    {tr:"Menemen", en:"Menemen", d:{tr:"Köy yumurtası, domates, biber; ekmekle", en:"Village eggs, tomato, pepper; with bread"}, f:170, a:["yu","gl"]},
+    {tr:"Hellimli Sandviç", en:"Halloumi Sandwich", d:{tr:"Ciabatta, pesto, közlenmiş biber", en:"Ciabatta, pesto, roasted pepper"}, f:210, a:["gl","su","fi"]},
+    {tr:"Ton Balıklı Salata", en:"Tuna Salad", d:{tr:"Hardallı sos, kereviz sapı, yeşillik", en:"Mustard dressing, celery, greens"}, f:230, a:["ba","ha","ke"]}
+  ]},
+  {id:"tatli", tr:"Tatlılar", en:"Desserts", urunler:[
+    {tr:"San Sebastian Cheesecake", en:"San Sebastian Cheesecake", d:{tr:"Günlük pişer", en:"Baked daily"}, f:160, a:["su","yu","gl"]},
+    {tr:"Tereyağlı Kruvasan", en:"Butter Croissant", d:{tr:"Ekşi mayalı hamur", en:"Sourdough laminated dough"}, f:95, a:["gl","su","yu"]},
+    {tr:"Fıstık Ezmeli Brownie", en:"Peanut Butter Brownie", d:{tr:"Bitter çikolata", en:"Dark chocolate"}, f:120, a:["gl","yu","su","yf","so"]},
+    {tr:"Vegan Portakallı Kek", en:"Vegan Orange Cake", d:{tr:"Süt ve yumurta içermez", en:"No milk, no egg"}, f:100, a:["gl"]}
+  ]}
+];
+let dil = "tr"; const secili = new Set();
+const T = {
+  tr:{alt:"SPECIALTY COFFEE · DENİZLİ", bilgi:"Her ürünün altında içerdiği alerjenler yazar. Alerjiniz varsa aşağıdan seçin, o ürünler gizlensin.", suz:"Alerjene göre süz", suzAcik:"Seçtiğiniz alerjenleri İÇEREN ürünler listeden gizlenir.", bos:"Bu seçimle bu bölümde uygun ürün kalmadı.", lejant:"Alerjen simgeleri", yok:"Bilinen alerjen yok", yasal:"Alerjen ve içerik bilgileri işletme tarafından beyan edilmiştir. Aynı mutfakta hazırlandığı için eser miktarda çapraz bulaşma olabilir; ciddi alerjiniz varsa lütfen sipariş öncesi personelimize söyleyin.", adres:"Saraylar Mh., Denizli · Her gün 08:00-23:00 · Fiyatlara KDV dahildir.", ornek:'Bu sayfa örnek çalışmadır (Boztaş Digital). İşletmenize özel alerjen bilgili QR menü için: <a href="https://furkistein.github.io/boztasdigital/">furkistein.github.io/boztasdigital</a>'},
+  en:{alt:"SPECIALTY COFFEE · DENİZLİ", bilgi:"Allergens are listed under every item. Select your allergies below to hide those items.", suz:"Filter by allergen", suzAcik:"Items CONTAINING the selected allergens are hidden.", bos:"No items left in this section for your selection.", lejant:"Allergen key", yok:"No known allergens", yasal:"Allergen information is declared by the business. Items are prepared in a shared kitchen and may contain traces; please tell our staff about serious allergies before ordering.", adres:"Saraylar, Denizli · Daily 08:00-23:00 · Prices include VAT.", ornek:'Sample work by Boztaş Digital. Allergen-ready QR menus for your business: <a href="https://furkistein.github.io/boztasdigital/">furkistein.github.io/boztasdigital</a>'}
+};
+const $ = s => document.querySelector(s);
+const kisa = k => k.toUpperCase();
+function ciz(){
+  document.documentElement.lang = dil;
+  document.querySelectorAll("[data-dil]").forEach(b => b.classList.toggle("secili", b.dataset.dil === dil));
+  document.querySelectorAll("[data-t]").forEach(e => e.innerHTML = T[dil][e.dataset.t]);
+  $("#sekmeler").innerHTML = MENU.map(b => `<a href="#${b.id}">${b[dil]}</a>`).join("");
+  $("#alerjenler").innerHTML = Object.entries(A).map(([k,v]) => `<button data-a="${k}" class="${secili.has(k)?"secili":""}" aria-pressed="${secili.has(k)}"><span class="rozet">${kisa(k)}</span>${v[dil]}</button>`).join("");
+  $("#lejant").innerHTML = Object.entries(A).map(([k,v]) => `<span><span class="rozet">${kisa(k)}</span>${v[dil]}</span>`).join("");
+  $("#menu").innerHTML = MENU.map(b => `<section id="${b.id}"><h2>${b[dil]}</h2>${b.urunler.map(u => {
+    const gizli = u.a.some(x => secili.has(x));
+    const r = u.a.length ? u.a.map(x => `<span class="rozet" title="${A[x][dil]}">${A[x][dil]}</span>`).join("") : `<span class="rozet yok">${T[dil].yok}</span>`;
+    return `<article class="urun${gizli?" gizli":""}"><h3>${u[dil]}</h3><span class="fiyat">${u.f} ₺</span><p class="aciklama">${u.d[dil]}</p><div class="rozetler">${r}</div></article>`;
+  }).join("")}<div class="bos"${b.urunler.every(u => u.a.some(x => secili.has(x))) ? ' style="display:block"' : ""}>${T[dil].bos}</div></section>`).join("");
+  $("#say").hidden = !secili.size; $("#say").textContent = secili.size;
+  gozle();
+}
+document.addEventListener("click", e => {
+  const d = e.target.closest("[data-dil]"); if (d){ dil = d.dataset.dil; document.querySelectorAll("[data-dil]").forEach(b => b.classList.toggle("secili", b === d)); ciz(); return; }
+  const a = e.target.closest("[data-a]"); if (a){ const k = a.dataset.a; secili.has(k) ? secili.delete(k) : secili.add(k); ciz(); return; }
+  if (e.target.closest("#suzgecDugme")){ const s = $("#suzgec"); s.classList.toggle("acik"); $("#suzgecDugme").setAttribute("aria-expanded", s.classList.contains("acik")); }
+});
+let gozcu;
+function gozle(){
+  gozcu && gozcu.disconnect();
+  gozcu = new IntersectionObserver(g => g.forEach(x => { if (x.isIntersecting) document.querySelectorAll("#sekmeler a").forEach(a => { const on = a.getAttribute("href") === "#" + x.target.id; a.classList.toggle("aktif", on); on && a.scrollIntoView({inline:"center", block:"nearest"}); }); }), {rootMargin:"-120px 0px -60% 0px"});
+  document.querySelectorAll("main section").forEach(s => gozcu.observe(s));
+}
+const p = new URLSearchParams(location.search);
+if (p.get("dil") === "en") dil = "en";
+(p.get("suz") || "").split(",").filter(k => A[k]).forEach(k => secili.add(k));
+if (p.has("acik")) $("#suzgec").classList.add("acik");
+ciz();
+</script>
+</body>
+</html>

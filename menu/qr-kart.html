@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Kumru · Masa QR kartı (A6)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@page{size:105mm 148mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter Tight",sans-serif}
+.kart{width:105mm;height:148mm;background:#231711;color:#F4ECE1;padding:12mm 10mm;display:flex;flex-direction:column;align-items:center;text-align:center;page-break-after:always}
+.marka{font-family:Syne,sans-serif;font-size:30pt;letter-spacing:-.03em;line-height:1}
+.alt{font-size:8pt;letter-spacing:.16em;color:#C4874A;margin-top:3mm}
+.qr{background:#F4ECE1;padding:4mm;border-radius:4mm;margin:9mm 0 6mm}
+.qr img{width:52mm;height:52mm;display:block}
+.baslik{font-size:14pt;font-weight:600}
+.not{font-size:9pt;color:#E7D9C6;margin-top:2mm;line-height:1.45}
+.alerjen{margin-top:auto;border-top:1px solid rgba(244,236,225,.25);padding-top:4mm;font-size:7.5pt;color:#E7D9C6;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="kart">
+  <div class="marka">Kumru</div>
+  <div class="alt">SPECIALTY COFFEE · DENİZLİ</div>
+  <div class="qr"><img src="qr.svg" alt="Menü QR"></div>
+  <div class="baslik">Menü için okutun · Scan for menu</div>
+  <div class="not">Türkçe / English · Fiyatlar ve alerjen bilgisi<br>Prices and allergen information</div>
+  <div class="alerjen">Tüm ürünlerde 14 alerjen bilgisi yer alır. Alerjiniz varsa menüde süzebilir ya da personelimize sorabilirsiniz.</div>
+</div>
+</body>
+</html>
