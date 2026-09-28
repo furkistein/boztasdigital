@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>Pizza Palermo 2 Go · Denizli · Sinpaş ve Çamlık şubeleri (örnek önizleme)</title>
+<meta name="description" content="Pizza Palermo 2 Go Denizli: pizza, makarna, salata, tava, atıştırmalık ve tatlı. Sinpaş ve Çamlık şubeleri, telefonla ve paket servisle sipariş. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#B3261E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Karla:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--kirmizi:#B3261E;--koyu:#231A16;--krem:#FFF6E6;--un:#FFFDF8;--feslegen:#2F6B3A;--sari:#F2B632;--soluk:#7A6A5E;--cizgi:rgba(35,26,22,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--koyu);font-family:Karla,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.serit{background:var(--koyu);color:var(--sari);text-align:center;font-size:13px;font-weight:700;padding:7px 12px}
+.ust{background:var(--kirmizi);color:var(--un)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:70px}
+.logo{font-family:"Alfa Slab One",Georgia,serif;font-size:22px;text-decoration:none;letter-spacing:.01em}
+.logo small{font-family:Karla,sans-serif;font-weight:800;font-size:12px;background:var(--sari);color:var(--koyu);border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:14px 22px;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.btn.sari{background:var(--sari);color:var(--koyu)}
+.btn.kir{background:var(--kirmizi);color:var(--un)}
+.btn.hat{border:2px solid currentColor}
+.kahraman{background:var(--kirmizi);color:var(--un);padding:26px 0 0;overflow:hidden}
+.kahraman .sar{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:end}
+.kahraman .yazi{padding-bottom:64px}
+.ufak{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+h1{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;font-size:clamp(46px,7.4vw,100px);line-height:.95;margin:14px 0 20px}
+h1 span{color:var(--sari)}
+.kahraman p{font-size:18px;max-width:40ch;opacity:.92}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.tabak{position:relative;margin-bottom:-60px}
+.tabak img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:50%;border:10px solid rgba(255,253,248,.14)}
+.tabak span{position:absolute;right:8%;top:10%;background:var(--un);color:var(--koyu);font-size:12px;padding:5px 10px;border-radius:99px}
+section{padding:90px 0}
+h2{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.02;margin:10px 0 14px}
+.acik{color:var(--soluk);max-width:56ch}
+.kat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.kat div{background:var(--un);border:1px solid var(--cizgi);border-radius:18px;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.kat b{font-family:"Alfa Slab One",serif;font-weight:400;font-size:26px}
+.kat i{font-style:normal;font-size:13px;color:var(--soluk);text-align:right}
+.kat div:first-child{background:var(--koyu);color:var(--un);border-color:var(--koyu)}
+.kat div:first-child i{color:var(--sari)}
+.subeler{background:var(--koyu);color:var(--un)}
+.subeler .acik{color:#CBBBAE}
+.sube-kart{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.sube{border:1px solid rgba(255,246,230,.18);border-radius:22px;padding:26px;display:grid;gap:14px}
+.sube h3{font-family:"Alfa Slab One",serif;font-weight:400;font-size:30px}
+.sube .tel{font-size:22px;font-weight:800;color:var(--sari);text-decoration:none}
+.sube .satir{display:flex;gap:10px;flex-wrap:wrap}
+.sube .btn.hat{color:var(--un)}
+.siparis{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.kart{background:var(--un);border:1px solid var(--cizgi);border-radius:22px;padding:26px}
+.kart fieldset{border:0;margin-bottom:16px}
+.kart legend{font-weight:800;margin-bottom:10px}
+.secenek{display:flex;flex-wrap:wrap;gap:8px}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:10px;padding:8px 14px;font-size:14px;cursor:pointer;background:var(--krem)}
+.secenek input:checked+span{background:var(--kirmizi);color:var(--un);border-color:var(--kirmizi)}
+.secenek input:focus-visible+span{outline:2px solid var(--sari);outline-offset:2px}
+.mesaj{background:var(--krem);border-left:4px solid var(--sari);border-radius:10px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
+.kart .btn{width:100%}
+.kucuk-not{font-size:13px;color:var(--soluk);margin-top:10px}
+.foto{border-radius:22px;overflow:hidden;aspect-ratio:4/3;margin-top:26px}
+.foto img{width:100%;height:100%;object-fit:cover}
+.kanallar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+footer{background:var(--koyu);color:#CBBBAE;padding:34px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(242,182,50,.5);border-radius:12px;padding:12px 14px;color:var(--krem)}
+.ornek-not a{color:var(--sari);font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(35,26,22,.3)}
+@media (max-width:920px){
+  .kahraman .sar,.siparis{grid-template-columns:1fr;gap:20px}
+  .kahraman .yazi{padding-bottom:10px}
+  .tabak{max-width:420px;width:100%;margin:0 auto -60px}
+  .kat{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{display:none}
+  .kahraman p{font-size:16.5px}
+  section{padding:60px 0}
+  .kat{grid-template-columns:1fr;gap:10px}
+  .sube-kart{grid-template-columns:1fr}
+  .yuzen{display:block}
+}
+</style>
+</head>
+<body>
+<div class="serit">Örnek önizleme · Pizza Palermo 2 Go için Boztaş Digital tarafından hazırlandı</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">Palermo<small>2 GO</small></a>
+    <a class="btn sari" href="#subeler">Hemen ara</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="sar">
+      <div class="yazi">
+        <span class="ufak">İtalyan pizzası · Denizli</span>
+        <h1>Fırından <span>kapına</span> Palermo.</h1>
+        <p>Pizza, makarna, tava ve tatlı. Sinpaş ve Çamlık şubelerinden gel al, telefonla sipariş ver ya da paket servisle iste.</p>
+        <div class="dugmeler">
+          <a class="btn sari" href="#siparis">Sipariş hazırla</a>
+          <a class="btn hat" href="#menu">Menüye bak</a>
+        </div>
+      </div>
+      <div class="tabak"><img src="img/pizza.webp" alt="Taş fırından çıkmış pizza (temsilî görsel)" width="900" height="895" fetchpriority="high"><span>Temsilî görsel</span></div>
+    </div>
+  </div>
+
+  <section id="menu" style="padding-top:120px">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kirmizi)">Menü</span>
+      <h2>Ne yiyelim?</h2>
+      <p class="acik">Başlıklar Instagram'daki öne çıkanlarınızdan alındı. Yayında her başlığın altında ürünleriniz, fotoğrafları ve güncel fiyatları durur; fiyatı siz değiştirdiğinizde sayfa da değişir.</p>
+      <div class="kat">
+        <div><b>Pizza</b><i>Ürünleriniz<br>buraya</i></div>
+        <div><b>Makarna</b><i>Ürünleriniz<br>buraya</i></div>
+        <div><b>Tava</b><i>Ürünleriniz<br>buraya</i></div>
+        <div><b>Salata</b><i>Ürünleriniz<br>buraya</i></div>
+        <div><b>Atıştırmalık</b><i>Ürünleriniz<br>buraya</i></div>
+        <div><b>Tatlı</b><i>Ürünleriniz<br>buraya</i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="subeler" id="subeler">
+    <div class="sar">
+      <span class="ufak" style="color:var(--sari)">Şubeler</span>
+      <h2>Size en yakın Palermo.</h2>
+      <p class="acik">Google'da "pizza" arayan biri şubeyi, telefonu ve yol tarifini tek dokunuşla bulur.</p>
+      <div class="sube-kart">
+        <div class="sube">
+          <h3>Sinpaş</h3>
+          <a class="tel" href="tel:+902585020244">0258 502 02 44</a>
+          <div class="satir"><a class="btn sari" href="tel:+902585020244">Ara</a><a class="btn hat" href="https://www.google.com/maps/search/Pizza+Palermo+2+Go+Sinpa%C5%9F+Denizli">Yol tarifi</a></div>
+        </div>
+        <div class="sube">
+          <h3>Çamlık</h3>
+          <a class="tel" href="tel:+902589991083">0258 999 10 83</a>
+          <div class="satir"><a class="btn sari" href="tel:+902589991083">Ara</a><a class="btn hat" href="https://www.google.com/maps/search/Pizza+Palermo+2+Go+%C3%87aml%C4%B1k+Denizli">Yol tarifi</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="siparis">
+    <div class="sar siparis">
+      <div>
+        <span class="ufak" style="color:var(--kirmizi)">Sipariş</span>
+        <h2>Aramadan önce hazırla.</h2>
+        <p class="acik">Şubeyi ve ne istediğinizi seçin; sipariş notu hazır olur. Aradığınızda okumanız yeterli. Paket servis için uygulamalardaki sayfanız da burada.</p>
+        <div class="kanallar">
+          <a class="btn kir" href="https://getir.com/yemek/restoran/pizza-palermo2-go-pamukkale-kinikli-mah-pamukkale-denizli/">Getir Yemek</a>
+          <a class="btn hat" href="https://www.instagram.com/pizzapalermo2go/">@pizzapalermo2go</a>
+        </div>
+        <div class="foto"><img src="img/pizzaiolo.jpg" alt="Pizza ustası hamuru açıyor (temsilî görsel)" width="1152" height="896" loading="lazy"></div>
+      </div>
+      <form class="kart" id="form" onsubmit="return false">
+        <fieldset><legend>Şube</legend><div class="secenek" id="sube"></div></fieldset>
+        <fieldset><legend>Ne istersiniz?</legend><div class="secenek" id="ne"></div></fieldset>
+        <fieldset><legend>Kaç kişi?</legend><div class="secenek" id="kisi"></div></fieldset>
+        <div class="mesaj" id="mesaj" aria-live="polite"></div>
+        <a class="btn kir" id="ara" href="tel:+902585020244">Şubeyi ara</a>
+        <p class="kucuk-not">Sipariş notu panoya da kopyalanır.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Pizza Palermo 2 Go · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Pizza Palermo 2 Go için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; menü başlıkları ve şube telefonları Instagram profilinizden alındı, ürünler ve fiyatlar sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+
+<div class="yuzen"><a class="btn sari" href="#subeler">Şubeyi ara</a></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const sec = (id, ad, liste, ilk, cok) => $(id).innerHTML = liste.map((x,i) => `<label><input type="${cok?"checkbox":"radio"}" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
+const TEL = {"Sinpaş":"+902585020244","Çamlık":"+902589991083"};
+sec("#sube","s",Object.keys(TEL),0);
+sec("#ne","n",["Pizza","Makarna","Tava","Salata","Atıştırmalık","Tatlı"],0,true);
+sec("#kisi","k",["1","2","3-4","5+"],1);
+function guncelle(){
+  const s = document.querySelector("[name=s]:checked").value, k = document.querySelector("[name=k]:checked").value;
+  const n = [...document.querySelectorAll("[name=n]:checked")].map(x => x.value).join(", ") || "henüz seçmedim";
+  $("#mesaj").textContent = `Merhaba, ${s} şubesinden sipariş vermek istiyorum.\nİstediklerim: ${n}\nKişi sayısı: ${k}\nBugünkü seçenekleri söyler misiniz?`;
+  $("#ara").href = "tel:" + TEL[s]; $("#ara").textContent = s + " şubesini ara";
+}
+$("#form").addEventListener("change", guncelle); guncelle();
+$("#ara").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#mesaj").textContent).catch(() => {}); });
+</script>
+</body>
+</html>
