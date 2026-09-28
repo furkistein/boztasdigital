@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Büyüme ve Veri Analizi — Örnek Teşhis Raporu</title>
+<meta name="description" content="Online eğitim şirketi için örnek büyüme teşhisi: kanal verimliliği, satış hunisi, lead dönüş hızı, temsilci ve sayfa analizi, uygulanabilir aksiyon listesi.">
+<meta name="robots" content="noindex">
+<style>
+:root{--zemin:#f4f4f1;--kart:#fcfcfb;--cizgi:#e3e2dc;--yazi:#0b0b0b;--yazi2:#52514e;--soluk:#7a7973;
+  --seri:#2a78d6;--seriA:#dcebfb;--iyi:#0a7d0a;--kotu:#b3261e;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--zemin);color:var(--yazi);font-size:15px;line-height:1.5}
+.say{font-variant-numeric:tabular-nums}
+header{background:#12161f;color:#fff;padding:36px 20px 30px}
+.ic{max-width:1080px;margin:0 auto;padding:0 20px}
+header .ic{padding:0}
+.etiket{display:inline-block;background:#fff3cd;color:#6b4e00;font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:99px;margin-bottom:14px}
+h1{font-size:clamp(24px,4vw,34px);line-height:1.2;margin-bottom:8px}
+header p{color:#c9ccd3;max-width:720px}
+.kaynaklar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.kaynaklar span{border:1px solid #3a4150;color:#dfe2e8;font-size:12.5px;padding:3px 10px;border-radius:99px}
+section{margin:28px auto}
+h2{font-size:21px;margin-bottom:4px}
+.alt{color:var(--yazi2);margin-bottom:14px;max-width:760px}
+.kart{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);padding:20px}
+.izgara{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tile .deger{font-size:28px;font-weight:700;letter-spacing:-.5px}
+.tile .ad{color:var(--yazi2);font-size:13px}
+.tile .not{color:var(--soluk);font-size:12.5px;margin-top:2px}
+.bulgu{border-left:3px solid var(--seri);padding:10px 14px;background:#eef4fc;border-radius:0 8px 8px 0;margin-top:14px;color:#18324f}
+.bulgu b{color:#0b2340}
+/* çubuklar */
+.cubuklar{display:grid;gap:9px}
+.cubuk{display:grid;grid-template-columns:150px minmax(0,1fr) 88px;align-items:center;gap:10px;cursor:default;padding:2px 0}
+.cubuk .ad{font-size:13.5px;color:var(--yazi2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cubuk .yol{height:22px;position:relative}
+.cubuk .dol{height:100%;background:var(--seri);border-radius:0 4px 4px 0;min-width:2px}
+.cubuk .dol.soluk{background:#86b6ef}
+.cubuk .deg{font-size:13.5px;font-weight:600;text-align:right}
+.cubuk:hover .dol{filter:brightness(.9)}
+.eksen{font-size:12px;color:var(--soluk);margin-top:6px}
+/* tablo */
+.tablo{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--cizgi);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;font-weight:600;color:var(--yazi2);text-transform:uppercase;letter-spacing:.3px}
+td.iyi{color:var(--iyi);font-weight:600}td.kotu{color:var(--kotu);font-weight:600}
+.durum{font-size:12px;font-weight:600;white-space:nowrap}
+.durum.iyi{color:var(--iyi)}.durum.kotu{color:var(--kotu)}
+/* aksiyon */
+.aksiyon{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--cizgi)}
+.aksiyon:last-child{border-bottom:0}
+.aksiyon .no{width:40px;height:40px;border-radius:10px;background:#12161f;color:#fff;display:grid;place-items:center;font-weight:700}
+.aksiyon h3{font-size:16.5px;margin-bottom:4px}
+.aksiyon p{color:var(--yazi2);font-size:14px;margin-top:3px}
+.aksiyon p b{color:var(--yazi)}
+.rozet{display:inline-block;font-size:12px;background:#eceae3;border-radius:99px;padding:2px 9px;margin-top:6px;margin-right:6px}
+.adimlar{counter-reset:a;display:grid;gap:12px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.adim{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);padding:16px}
+.adim b{display:block;margin-bottom:4px}
+.adim span{color:var(--yazi2);font-size:13.5px}
+#ipucu{position:fixed;pointer-events:none;background:#12161f;color:#fff;font-size:12.5px;padding:7px 10px;border-radius:8px;opacity:0;transition:opacity .1s;z-index:9;max-width:260px}
+footer{color:var(--soluk);font-size:13px;text-align:center;padding:30px 20px 44px}
+@media (max-width:760px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2,.adimlar{grid-template-columns:1fr}
+  .cubuk{grid-template-columns:104px minmax(0,1fr) 70px}
+  .tile .deger{font-size:23px}.kart{padding:16px}
+}
+</style>
+</head>
+<body>
+<header><div class="ic">
+  <span class="etiket">ÖRNEK RAPOR · hayali şirket ve örnek veri</span>
+  <h1>Online eğitim şirketi için büyüme teşhisi</h1>
+  <p>"Verilerde ne oldu?" değil; <b>neden oldu, para nerede kaçıyor, önce ne yapılmalı?</b> Reklam, web sitesi, WhatsApp ve çağrı merkezi verileri lead bazında birleştirilip tek hikâyeye çevrildi. Dönem: <span id="donem"></span>.</p>
+  <div class="kaynaklar"><span>GA4</span><span>Google Ads</span><span>Meta Ads</span><span>TikTok Ads</span><span>CRM / satış kayıtları</span><span>WhatsApp</span><span>Çağrı merkezi</span></div>
+</div></header>
+
+<main class="ic">
+<section>
+  <div class="izgara g4" id="tiles"></div>
+</section>
+
+<section>
+  <h2>1. Önce yapılacak 5 iş</h2>
+  <p class="alt">Etkisi en büyükten küçüğe. Her birinin gerekçesi aşağıdaki bölümlerde veriyle gösteriliyor.</p>
+  <div class="kart" id="aksiyonlar"></div>
+</section>
+
+<section>
+  <h2>2. Kanal verimliliği: bütçe nereye gitmeli?</h2>
+  <p class="alt">Ucuz lead her zaman ucuz müşteri değildir. Kanalları lead sayısıyla değil, <b>satış başı maliyet</b> ve <b>harcanan 1 TL'nin getirdiği ciroyla</b> (ROAS) karşılaştırıyoruz.</p>
+  <div class="izgara g2">
+    <div class="kart"><b>Satış başı reklam maliyeti (TL)</b><div class="eksen">Düşük daha iyi</div><div class="cubuklar" id="cac" style="margin-top:12px"></div></div>
+    <div class="kart"><b>Lead → satış oranı</b><div class="eksen">Organik kanallar dahil</div><div class="cubuklar" id="ls" style="margin-top:12px"></div></div>
+  </div>
+  <div class="kart tablo" style="margin-top:14px"><table id="kanalTablo"></table></div>
+  <div class="bulgu" id="kanalBulgu"></div>
+</section>
+
+<section>
+  <h2>3. Satış hunisi: müşteri nerede kayboluyor?</h2>
+  <p class="alt">Lead → ulaşma → görüşme → satış. Her aşamada kaybedilen kişi sayısı, sorunun reklamda mı satış ekibinde mi olduğunu gösterir.</p>
+  <div class="kart"><div class="cubuklar" id="huni"></div></div>
+  <div class="bulgu" id="huniBulgu"></div>
+</section>
+
+<section>
+  <h2>4. İlk dönüş hızı: en ucuz büyüme kaldıracı</h2>
+  <p class="alt">Lead geldikten sonra ilk temasa kadar geçen süreye göre satış oranı. Reklam bütçesi artırmadan ciroyu büyütmenin en hızlı yolu burası.</p>
+  <div class="izgara g2">
+    <div class="kart"><b>İlk dönüş süresine göre satış oranı</b><div class="cubuklar" id="donus" style="margin-top:12px"></div></div>
+    <div class="kart"><b>Temsilci bazında satış oranı</b><div class="eksen">Parantez içinde medyan ilk dönüş süresi</div><div class="cubuklar" id="temsilci" style="margin-top:12px"></div></div>
+  </div>
+  <div class="bulgu" id="donusBulgu"></div>
+</section>
+
+<section>
+  <h2>5. Web sitesi: hangi sayfa iyileştirilmeli?</h2>
+  <p class="alt">Sayfa bazında trafik, lead'e dönüşüm ve çıkış oranı. Trafiği çok ama lead getirmeyen sayfalar ilk müdahale adayıdır.</p>
+  <div class="kart tablo"><table id="sayfaTablo"></table></div>
+</section>
+
+<section>
+  <h2>Nasıl çalışıyorum?</h2>
+  <p class="alt">Bu sayfadaki her sayı, dışa aktarılan CSV'lerden bir Python betiğiyle otomatik hesaplanır; aynı betik her ay yeniden çalıştırılıp gelişme izlenir.</p>
+  <div class="adimlar">
+    <div class="adim"><b>1. Veri toplama</b><span>GA4, reklam panelleri, CRM/satış ve çağrı-WhatsApp kayıtları (salt okuma erişimi ya da dışa aktarım).</span></div>
+    <div class="adim"><b>2. Birleştirme</b><span>Her lead kaynağı, sayfası, dönüş süresi, temsilcisi ve satış sonucuyla tek tabloda.</span></div>
+    <div class="adim"><b>3. Teşhis</b><span>Kanal, huni, hız, temsilci ve sayfa kırılımında kayıp noktaları.</span></div>
+    <div class="adim"><b>4. Aksiyon planı</b><span>Etki sırasına göre, ölçülebilir hedefli iş listesi ve aylık takip raporu.</span></div>
+  </div>
+</section>
+</main>
+<footer>Örnek çalışmadır: şirket, temsilciler ve rakamlar hayalidir; yöntemi göstermek için üretilmiştir.</footer>
+<div id="ipucu"></div>
+
+<script src="veri.js"></script>
+<script>
+const V = window.VERI;
+const tl = n => Math.round(n).toLocaleString('tr-TR') + ' TL';
+const sayi = n => Math.round(n).toLocaleString('tr-TR');
+const yuzde = (x, d = 1) => '%' + (x * 100).toLocaleString('tr-TR', {minimumFractionDigits: d, maximumFractionDigits: d});
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('donem').textContent = V.donem;
+const O = V.ozet;
+$('tiles').innerHTML = [
+  ['Toplam ciro', tl(O.ciro), 'reklam + organik'],
+  ['Reklam harcaması', tl(O.harcama), 'ROAS ' + O.roas.toLocaleString('tr-TR')],
+  ['Lead → satış', yuzde(O.lead_satis), sayi(O.lead) + ' lead, ' + sayi(O.satis) + ' satış'],
+  ['Ortalama satış', tl(O.ort_sepet), 'paket başına'],
+].map(([a, d, n]) => `<div class="kart tile"><div class="ad">${a}</div><div class="deger say">${d}</div><div class="not">${n}</div></div>`).join('');
+
+$('aksiyonlar').innerHTML = V.aksiyonlar.map((a, i) => `<div class="aksiyon"><div class="no">${i + 1}</div><div>
+  <h3>${esc(a.baslik)}</h3><p><b>Neden:</b> ${esc(a.neden)}</p><p><b>Ne yapılacak:</b> ${esc(a.ne)}</p>
+  <span class="rozet">Beklenen etki: ${esc(a.etki)}</span><span class="rozet">Süre: ${esc(a.sure)}</span></div></div>`).join('');
+
+// tek seri yatay çubuk
+function cubuklar(el, satirlar, bicim, soluk) {
+  const max = Math.max(...satirlar.map(s => s.v));
+  $(el).innerHTML = satirlar.map(s => `<div class="cubuk" data-ip="${esc(s.ip)}"><span class="ad" title="${esc(s.ad)}">${esc(s.ad)}</span>
+    <span class="yol"><span class="dol${soluk && soluk(s) ? ' soluk' : ''}" style="display:block;width:${(s.v / max * 100).toFixed(1)}%"></span></span>
+    <span class="deg say">${bicim(s.v)}</span></div>`).join('');
+}
+const reklamli = V.kanallar.filter(k => k.harcama).sort((a, b) => a.cac - b.cac);
+cubuklar('cac', reklamli.map(k => ({ad: k.kanal, v: k.cac, ip: `${k.kanal}: ${sayi(k.satis)} satış, ${tl(k.harcama)} harcama`})), tl);
+const lsSira = [...V.kanallar].sort((a, b) => b.lead_satis - a.lead_satis);
+cubuklar('ls', lsSira.map(k => ({ad: k.kanal, v: k.lead_satis, ip: `${k.kanal}: ${sayi(k.lead)} lead → ${sayi(k.satis)} satış`, org: !k.harcama})), v => yuzde(v), s => s.org);
+
+$('kanalTablo').innerHTML = '<tr><th>Kanal</th><th>Harcama</th><th>Lead</th><th>Lead başı</th><th>Satış</th><th>Satış başı</th><th>Ciro</th><th>ROAS</th></tr>' +
+  V.kanallar.map(k => {
+    const r = k.roas == null ? '<td>—</td>' : `<td class="${k.roas >= O.roas ? 'iyi' : 'kotu'}">${k.roas.toLocaleString('tr-TR')} <span class="durum ${k.roas >= O.roas ? 'iyi' : 'kotu'}">${k.roas >= O.roas ? '▲ ortalama üstü' : '▼ ortalama altı'}</span></td>`;
+    return `<tr><td>${esc(k.kanal)}</td><td class="say">${k.harcama ? tl(k.harcama) : 'organik'}</td><td class="say">${sayi(k.lead)}</td><td class="say">${k.cpl ? tl(k.cpl) : '—'}</td><td class="say">${sayi(k.satis)}</td><td class="say">${k.cac ? tl(k.cac) : '—'}</td><td class="say">${tl(k.ciro)}</td>${r}</tr>`;
+  }).join('');
+const enUcuzLead = [...reklamli].sort((a, b) => a.cpl - b.cpl)[0], enIyi = reklamli[0], enKotu = reklamli[reklamli.length - 1];
+$('kanalBulgu').innerHTML = `<b>Bulgu:</b> En ucuz lead ${esc(enUcuzLead.kanal)}'ta (${tl(enUcuzLead.cpl)}), ama bu leadlerin yalnız ${yuzde(enUcuzLead.lead_satis)}'i satın alıyor. Satış başı maliyette ${esc(enIyi.kanal)} ${tl(enIyi.cac)} ile ${esc(enKotu.kanal)}'dakinden (${tl(enKotu.cac)}) yaklaşık ${Math.round(enKotu.cac / enIyi.cac)} kat düşük. Bütçe lead sayısına göre değil satış başı maliyete göre dağıtılmalı.`;
+
+const H = V.huni;
+cubuklar('huni', H.map((a, i) => ({ad: a.asama, v: a.adet, ip: i ? `Önceki aşamadan geçiş ${yuzde(a.onceki_oran)} · kaybedilen ${sayi(a.kayip)} kişi` : 'Tüm kaynaklardan gelen lead'})), sayi);
+const enBuyukKayip = H.slice(1).sort((a, b) => b.kayip - a.kayip)[0];
+$('huniBulgu').innerHTML = `<b>Bulgu:</b> ${sayi(H[0].adet)} leadin ${sayi(H[0].adet - H[1].adet)}'ine hiç ulaşılamamış (${yuzde(1 - H[1].onceki_oran)}). En çok kişi "${esc(enBuyukKayip.asama)}" aşamasında kaybediliyor (${sayi(enBuyukKayip.kayip)} kişi). Sorun reklamdan çok satış sürecinde.`;
+
+const D = V.donus;
+cubuklar('donus', D.map(d => ({ad: d.kova, v: d.satis_orani, ip: `${sayi(d.lead)} lead, satış oranı ${yuzde(d.satis_orani)}`})), v => yuzde(v));
+const T = [...V.temsilciler].sort((a, b) => b.satis_orani - a.satis_orani);
+cubuklar('temsilci', T.map(t => ({ad: `${t.temsilci} (${sayi(t.medyan_donus_dk)} dk)`, v: t.satis_orani, ip: `${t.temas} · ${sayi(t.lead)} lead · ulaşma ${yuzde(t.ulasma)} · ciro ${tl(t.ciro)}`})), v => yuzde(v));
+const W = V.temas['WhatsApp'], C = V.temas['Çağrı merkezi'];
+$('donusBulgu').innerHTML = `<b>Bulgu:</b> İlk 5 dakikada dönülen lead ${yuzde(D[0].satis_orani)} oranında satın alıyor; 2 saati geçince bu ${yuzde(D[3].satis_orani)}'e düşüyor. Hafta sonu medyan dönüş ${sayi(V.medyan_donus.hafta_sonu)} dk (hafta içi ${sayi(V.medyan_donus.hafta_ici)} dk). WhatsApp ${yuzde(W.satis_orani)}, çağrı merkezi ${yuzde(C.satis_orani)} satış oranında; ama aynı hızdaki temsilciler karşılaştırıldığında farkın büyük kısmı <b>kanaldan değil dönüş hızından</b> geliyor.`;
+
+const S = V.sayfalar, enIyiSayfa = Math.max(...S.map(s => s.lead_orani));
+$('sayfaTablo').innerHTML = '<tr><th>Sayfa</th><th>Oturum</th><th>Çıkış</th><th>Ort. süre</th><th>Lead</th><th>Oturum → lead</th><th>Durum</th></tr>' +
+  S.map(s => {
+    const iyi = s.lead_orani === enIyiSayfa, kotu = s.lead_orani < 0.01 || s.cikis > 0.65;
+    const d = iyi ? '<span class="durum iyi">▲ örnek alınacak</span>' : kotu ? '<span class="durum kotu">▼ iyileştir</span>' : '<span class="durum">● izlenecek</span>';
+    return `<tr><td>${esc(s.sayfa)}</td><td class="say">${sayi(s.oturum)}</td><td class="say">${yuzde(s.cikis, 0)}</td><td class="say">${s.sure} sn</td><td class="say">${sayi(s.lead)}</td><td class="say">${yuzde(s.lead_orani, 2)}</td><td>${d}</td></tr>`;
+  }).join('');
+
+// ipucu (hover)
+const ip = $('ipucu');
+document.addEventListener('mousemove', e => {
+  const c = e.target.closest('[data-ip]');
+  if (!c) { ip.style.opacity = 0; return; }
+  ip.textContent = c.dataset.ip; ip.style.opacity = 1;
+  ip.style.left = Math.min(e.clientX + 14, innerWidth - ip.offsetWidth - 8) + 'px'; ip.style.top = (e.clientY + 14) + 'px';
+});
+</script>
+</body>
+</html>
