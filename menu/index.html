@@ -55,7 +55,7 @@ h2{font-family:Syne,sans-serif;font-weight:800;font-size:24px;letter-spacing:-.0
 .alt{background:var(--espresso);color:var(--kum);padding:26px 0 40px;font-size:13px}
 .alt h4{color:var(--krem);font-size:14px;margin-bottom:8px}
 .lejant{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin:10px 0 18px}
-.lejant span{display:flex;align-items:center;gap:8px}
+.lejant>span{display:flex;align-items:center;gap:8px}
 .lejant .rozet{background:var(--karamel);color:var(--espresso)}
 .ornek{margin-top:16px;padding:10px 12px;border:1px dashed rgba(244,236,225,.35);border-radius:10px}
 .ornek a{color:var(--karamel)}
@@ -158,10 +158,21 @@ document.addEventListener("click", e => {
   const a = e.target.closest("[data-a]"); if (a){ const k = a.dataset.a; secili.has(k) ? secili.delete(k) : secili.add(k); ciz(); return; }
   if (e.target.closest("#suzgecDugme")){ const s = $("#suzgec"); s.classList.toggle("acik"); $("#suzgecDugme").setAttribute("aria-expanded", s.classList.contains("acik")); }
 });
-let gozcu;
+let gozcu, aktifId = null;
+// Etkin sekmeyi yalnız DEĞİŞİNCE işaretle ve yalnız sekme şeridini yatay kaydır.
+// (Eskiden a.scrollIntoView() kullanılıyordu: yapışkan şerit + html smooth-scroll ile SAYFAYI da dikey kaydırıyor,
+// parmakla kaydırmayı kesip sayfayı bölüm sınırına geri çekiyordu — telefonda "aşağı inmiyor, takılıyor" hatası.)
+function sekmeSec(id){
+  if (id === aktifId) return; aktifId = id;
+  const nav = $("#sekmeler");
+  nav.querySelectorAll("a").forEach(a => {
+    const on = a.getAttribute("href") === "#" + id; a.classList.toggle("aktif", on);
+    if (on) nav.scrollTo({left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: "smooth"});
+  });
+}
 function gozle(){
-  gozcu && gozcu.disconnect();
-  gozcu = new IntersectionObserver(g => g.forEach(x => { if (x.isIntersecting) document.querySelectorAll("#sekmeler a").forEach(a => { const on = a.getAttribute("href") === "#" + x.target.id; a.classList.toggle("aktif", on); on && a.scrollIntoView({inline:"center", block:"nearest"}); }); }), {rootMargin:"-120px 0px -60% 0px"});
+  gozcu && gozcu.disconnect(); aktifId = null;
+  gozcu = new IntersectionObserver(g => g.forEach(x => { if (x.isIntersecting) sekmeSec(x.target.id); }), {rootMargin:"-120px 0px -60% 0px"});
   document.querySelectorAll("main section").forEach(s => gozcu.observe(s));
 }
 const p = new URLSearchParams(location.search);

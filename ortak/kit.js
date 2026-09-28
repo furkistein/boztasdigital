@@ -16,6 +16,9 @@
   var AZ = matchMedia("(prefers-reduced-motion: reduce)").matches || /statik/.test(location.search);
   var TEST = (location.search.match(/test=([\d.]+)/) || [])[1];
   document.documentElement.classList.add(AZ ? "az" : "hareket");
+  /* Telefonda yatay taşma olmasın (28 Eyl): "sağdan gelen" (data-r="sag", x:+60) öğeler ve sahnedeki dönen/büyüyen
+     görseller görünmeden önce ekranın sağına taşıyor, sayfa parmakla yana kayıyordu. Kök kırpılır (clip: sticky'yi bozmaz). */
+  var ks = document.createElement("style"); ks.textContent = "html{overflow-x:hidden;overflow-x:clip}"; document.head.appendChild(ks);
 
   /* ---------- açık / kapalı ---------- */
   qq("[data-acik]").forEach(function (el) {
@@ -133,6 +136,10 @@
   qq("[data-say]").forEach(function (el) {
     var son = parseFloat(el.dataset.say), ek = el.dataset.sonEk || "", o = { v: 0 };
     ScrollTrigger.create({ trigger: el, start: "top 90%", once: true, onEnter: function () {
+      /* Sayarken genişlik sabit kalsın (28 Eyl): sayı büyüdükçe yan yana sayaçlar alt satıra geçip geri geliyor,
+         bölüm 1,6 sn boyunca 100px yukarı-aşağı zıplıyordu (Köz & Duman'da CLS 0,16). Son değerin genişliği kilitlenir. */
+      if (getComputedStyle(el).display === "inline") el.style.display = "inline-block";
+      el.style.fontVariantNumeric = "tabular-nums"; el.style.minWidth = el.getBoundingClientRect().width + "px";
       gsap.to(o, { v: son, duration: 1.6, ease: "power2.out", onUpdate: function () { el.textContent = (son % 1 ? o.v.toFixed(1) : Math.round(o.v)).toString().replace(".", ",") + ek } });
     } });
   });
