@@ -109,7 +109,7 @@ footer .sar{display:grid;gap:14px}
   <div class="sar">
     <a class="logo" href="#">RUMA</a>
     <nav class="menu-link"><a href="#saatler">Menüler</a><a href="#bahce">Ruma Bahçe</a><a href="#atolyeler">Atölyeler</a><a href="#rezervasyon">İletişim</a></nav>
-    <a class="btn cizgi" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum." href="#">Rezervasyon</a>
+    <a class="btn cizgi" href="tel:+905343102222">Rezervasyon</a>
   </div>
 </header>
 
@@ -121,8 +121,8 @@ footer .sar{display:grid;gap:14px}
       <h1>Bambaşka bir deneyim için <i>Ruma'ya</i> davetlisiniz.</h1>
       <p>Sabah kahvaltısından akşam şarap eşliğindeki sofraya, bahçede uzun bir öğleden sonraya kadar.</p>
       <div class="dugmeler">
-        <a class="btn dolu" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum. Tarih: , Kişi sayısı: " href="#">WhatsApp'tan rezervasyon</a>
-        <a class="btn cizgi" href="tel:+905343102222">0534 310 22 22</a>
+        <a class="btn dolu" href="tel:+905343102222">Rezervasyon için arayın</a>
+        <a class="btn cizgi" href="https://ig.me/m/ruma.restaurant">Instagram'dan yazın</a>
       </div>
     </div>
   </div>
@@ -195,10 +195,10 @@ footer .sar{display:grid;gap:14px}
   </div>
 </footer>
 
-<div class="yuzen"><a class="btn acik" href="tel:+905343102222">Ara</a><a class="btn dolu" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum. Tarih: , Kişi sayısı: " href="#">WhatsApp rezervasyon</a></div>
+<div class="yuzen"><a class="btn acik" href="tel:+905343102222">Ara</a><a class="btn dolu" href="https://ig.me/m/ruma.restaurant">Instagram'dan yaz</a></div>
 
 <script>
-document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://wa.me/905343102222?text=" + encodeURIComponent(a.dataset.wa));
+document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://ig.me/m/ruma.restaurant");
 </script>
 </body>
 </html>
