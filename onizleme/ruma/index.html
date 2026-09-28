@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>Ruma Restaurant · Denizli · Kahvaltı, öğle, akşam (örnek önizleme)</title>
+<meta name="description" content="Ruma Restaurant Denizli: kahvaltı, öğle ve akşam; Ruma Bahçe, şarap & yemek, atölyeler. Rezervasyon 0534 310 22 22. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2A22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--orman:#1F2A22;--yaprak:#2F4034;--kil:#C06A45;--kum:#EFE6D8;--kagit:#F7F2EA;--soluk:#7C7466;--cizgi:rgba(31,42,34,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--orman);font-family:Manrope,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sar{width:min(1180px,100% - 48px);margin-inline:auto}
+.bodoni{font-family:"Bodoni Moda",Georgia,serif;font-weight:500}
+.serit{background:var(--kil);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:7px 12px}
+.ust{position:absolute;left:0;right:0;z-index:5;color:var(--kagit)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:74px}
+.logo{font-family:"Bodoni Moda",serif;font-size:28px;letter-spacing:.18em;text-decoration:none}
+.menu-link{display:flex;gap:26px;font-size:14px;font-weight:600}
+.menu-link a{text-decoration:none;opacity:.9}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:99px;padding:13px 22px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap}
+.btn.dolu{background:var(--kil);color:#fff}
+.btn.cizgi{border:1px solid currentColor}
+.kahraman{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;color:var(--kagit);background:var(--orman)}
+.kahraman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(31,42,34,.55) 0,rgba(31,42,34,0) 30%,rgba(31,42,34,.85) 100%)}
+.kahraman .sar{position:relative;z-index:2;padding:0 0 64px}
+.kahraman small{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#F0C3A8}
+.kahraman h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(44px,7.4vw,104px);line-height:.98;margin:14px 0 20px;max-width:12ch}
+.kahraman h1 i{color:#F0C3A8}
+.kahraman p{max-width:44ch;font-size:18px;opacity:.9}
+.kahraman .dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+section{padding:88px 0}
+.baslik small{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--kil)}
+.baslik h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(34px,4.6vw,58px);line-height:1.04;margin:10px 0 14px}
+.baslik p{max-width:56ch;color:var(--soluk)}
+.saatler{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:1px solid var(--cizgi)}
+.saat{padding:28px 28px 30px 0;border-right:1px solid var(--cizgi)}
+.saat+.saat{padding-left:28px}
+.saat:last-child{border-right:0}
+.saat b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:34px;display:block;line-height:1.1}
+.saat span{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--kil);font-weight:700;margin:8px 0}
+.saat p{color:var(--soluk);font-size:15px}
+.ikili{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.ikili figure{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5}
+.ikili figure img{width:100%;height:100%;object-fit:cover}
+figcaption{position:absolute;left:12px;bottom:12px;background:rgba(247,242,234,.92);font-size:12px;padding:5px 10px;border-radius:99px}
+.imza{margin-top:26px;display:grid;gap:14px}
+.imza div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--cizgi);padding-bottom:12px}
+.imza b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:21px}
+.imza span{color:var(--soluk);font-size:14px;text-align:right}
+.koyu{background:var(--orman);color:var(--kagit)}
+.koyu .baslik p{color:#B9BFB2}
+.atolyeler{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.atolye{border:1px solid rgba(247,242,234,.18);border-radius:4px;padding:26px 22px;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.atolye h3{font-family:"Bodoni Moda",serif;font-weight:500;font-size:26px;line-height:1.1}
+.atolye p{font-size:14.5px;color:#B9BFB2;margin-top:10px}
+.atolye a{font-size:14px;font-weight:700;color:#F0C3A8;text-decoration:none;margin-top:18px}
+.alerjen{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;background:var(--kum);border-radius:6px;padding:40px}
+.alerjen h3{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(26px,3vw,36px);line-height:1.1;margin-bottom:8px}
+.alerjen p{color:var(--soluk);max-width:56ch}
+.rez{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.rez dl{display:grid;gap:18px;margin-top:10px}
+.rez dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--kil);font-weight:700}
+.rez dd{font-size:18px}
+.harita{border-radius:6px;background:var(--kum) url("img/brunch.jpg") center/cover;min-height:320px;position:relative;overflow:hidden}
+.harita a{position:absolute;left:18px;bottom:18px}
+footer{background:var(--orman);color:#B9BFB2;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(240,195,168,.55);border-radius:10px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:#F0C3A8;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;gap:10px}
+.yuzen .btn{flex:1;justify-content:center;padding:14px}
+.yuzen .btn.acik{background:var(--kagit);color:var(--orman)}
+@media (max-width:960px){
+  .menu-link{display:none}
+  .ikili,.rez{grid-template-columns:1fr;gap:32px}
+  .atolyeler{grid-template-columns:repeat(2,1fr)}
+  .alerjen{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .sar{width:calc(100% - 36px)}
+  .logo{font-size:23px}
+  .ust .btn{display:none}
+  .kahraman .sar{padding-bottom:40px}
+  .kahraman p{font-size:16.5px}
+  section{padding:60px 0}
+  .saatler{grid-template-columns:1fr}
+  .saat,.saat+.saat{padding:22px 0;border-right:0;border-bottom:1px solid var(--cizgi)}
+  .atolyeler{grid-template-columns:1fr;gap:12px}
+  .atolye{min-height:0}
+  .alerjen{padding:26px 22px}
+  .ikili figure{aspect-ratio:4/4.4}
+  .yuzen{display:flex}
+}
+</style>
+</head>
+<body>
+<div class="serit">Örnek önizleme · Ruma Restaurant için Boztaş Digital tarafından hazırlandı</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">RUMA</a>
+    <nav class="menu-link"><a href="#saatler">Menüler</a><a href="#bahce">Ruma Bahçe</a><a href="#atolyeler">Atölyeler</a><a href="#rezervasyon">İletişim</a></nav>
+    <a class="btn cizgi" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum." href="#">Rezervasyon</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="img/sofra.jpg" alt="Kurulmuş akşam sofrası (temsilî görsel)" width="1344" height="768" fetchpriority="high">
+    <div class="sar">
+      <small>Yenişehir · Denizli</small>
+      <h1>Bambaşka bir deneyim için <i>Ruma'ya</i> davetlisiniz.</h1>
+      <p>Sabah kahvaltısından akşam şarap eşliğindeki sofraya, bahçede uzun bir öğleden sonraya kadar.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum. Tarih: , Kişi sayısı: " href="#">WhatsApp'tan rezervasyon</a>
+        <a class="btn cizgi" href="tel:+905343102222">0534 310 22 22</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="saatler">
+    <div class="sar">
+      <div class="baslik"><small>Günün üç hâli</small><h2>Kahvaltı, öğle, akşam.</h2><p>Instagram'daki menü başlıklarınız burada ayrı sayfalar olur; misafir sabah hangi menünün geçerli olduğunu tek dokunuşla görür.</p></div>
+      <div class="saatler">
+        <div class="saat"><span>Sabah</span><b>Kahvaltı</b><p>Ruma'nın kahvaltı serisi; bahçede ya da içeride.</p></div>
+        <div class="saat"><span>Öğle</span><b>Öğle menüsü</b><p>Hafta içi öğle yemeği için hızlı ve dolu tabaklar.</p></div>
+        <div class="saat"><span>Akşam</span><b>Akşam &amp; şarap</b><p>Şarap &amp; yemek eşleşmeleri, kokteyller, paylaşımlık tabaklar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bahce" style="padding-top:0">
+    <div class="sar ikili">
+      <figure><img src="img/bahce.jpg" alt="Yeşillikler içinde bahçe masaları (temsilî görsel)" width="1344" height="768" loading="lazy"><figcaption>Temsilî görsel · yayında Ruma Bahçe fotoğrafları</figcaption></figure>
+      <div>
+        <div class="baslik"><small>Ruma Bahçe</small><h2>Uzun sofralar, açık hava.</h2><p>Bahçe, akşam yemeği ve etkinlikler için ayrı bir bölüm: kaç kişilik masa, hangi saatler, grup rezervasyonu nasıl yapılır.</p></div>
+        <div class="imza">
+          <div><b>Orzolu körili tavuk</b><span>Ruma usulü</span></div>
+          <div><b>Fajita Combo</b><span>İki kişilik, paylaşımlık</span></div>
+          <div><b>Şarap &amp; yemek</b><span>Eşleşmeli akşam menüsü</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="atolyeler" class="koyu">
+    <div class="sar">
+      <div class="baslik"><small>Etkinlikler</small><h2>Atölyeler ve özel geceler.</h2><p>Her etkinliğin tarihi, kontenjanı ve kayıt düğmesi tek yerde. Instagram hikâyesi kaybolur, bu sayfa kalır.</p></div>
+      <div class="atolyeler">
+        <div class="atolye"><div><h3>Kokteyl Atölye</h3><p>Bar ekibiyle birlikte kendi kokteylini hazırla.</p></div><a data-wa="Merhaba, Kokteyl Atölye'nin bir sonraki tarihini öğrenebilir miyim?" href="#">Sonraki tarihi sor →</a></div>
+        <div class="atolye"><div><h3>Pasta Atölyesi</h3><p>Pastanı yap, kahveni iç, evine götür.</p></div><a data-wa="Merhaba, Pasta Atölyesi'nin bir sonraki tarihini öğrenebilir miyim?" href="#">Sonraki tarihi sor →</a></div>
+        <div class="atolye"><div><h3>Şarap &amp; Yemek</h3><p>Eşleşmeli menüyle uzun bir akşam.</p></div><a data-wa="Merhaba, Şarap & Yemek gecesi hakkında bilgi alabilir miyim?" href="#">Bilgi al →</a></div>
+        <div class="atolye"><div><h3>Özel günler</h3><p>Doğum günü, iş yemeği, kapalı grup organizasyonu.</p></div><a data-wa="Merhaba, Ruma'da özel bir organizasyon için bilgi almak istiyorum." href="#">Teklif iste →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sar">
+      <div class="alerjen">
+        <div><h3>Menü, alerjen bilgisiyle.</h3><p>QR menüde her tabağın içerdiği alerjenler (gluten, süt, yumurta, susam...) yazar; misafir alerjisini seçince o ürünler gizlenir. Türkçe ve İngilizce.</p></div>
+        <a class="btn dolu" href="https://furkistein.github.io/boztasdigital/menu/?suz=gl">Örnek QR menüyü aç</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="rezervasyon" style="padding-top:0">
+    <div class="sar rez">
+      <div>
+        <div class="baslik"><small>Rezervasyon &amp; iletişim</small><h2>Masanız hazır olsun.</h2></div>
+        <dl>
+          <div><dt>Adres</dt><dd>Yenişehir Mah. Şirinköy Yolu 77 Sok. No: 8/A, Denizli</dd></div>
+          <div><dt>Rezervasyon</dt><dd><a href="tel:+905343102222">0534 310 22 22</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/ruma.restaurant/">@ruma.restaurant</a></dd></div>
+        </dl>
+      </div>
+      <div class="harita"><a class="btn dolu" href="https://www.google.com/maps/search/?api=1&amp;query=Ruma+Restaurant+Denizli">Yol tarifi al</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Ruma Restaurant · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Ruma Restaurant için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; bilgiler Instagram hesabınızdan alındı, fotoğraflar ve menüler sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+
+<div class="yuzen"><a class="btn acik" href="tel:+905343102222">Ara</a><a class="btn dolu" data-wa="Merhaba, Ruma'da rezervasyon yaptırmak istiyorum. Tarih: , Kişi sayısı: " href="#">WhatsApp rezervasyon</a></div>
+
+<script>
+document.querySelectorAll("[data-wa]").forEach(a => a.href = "https://wa.me/905343102222?text=" + encodeURIComponent(a.dataset.wa));
+</script>
+</body>
+</html>
