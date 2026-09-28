@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mira Mobilya | Dijital Katalog</title>
+<meta name="description" content="Mobil uyumlu mobilya kataloğu: ürünleri inceleyin, kumaş ve ölçü seçin, siparişinizi WhatsApp ile iletin.">
+<meta name="theme-color" content="#f4efe7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232b2520%22/%3E%3Ctext x=%2216%22 y=%2223%22 font-size=%2218%22 text-anchor=%22middle%22 fill=%22%23f4efe7%22 font-family=%22Georgia%22%3EM%3C/text%3E%3C/svg%3E">
+<meta name="robots" content="noindex">
+<style>
+:root{--zemin:#f4efe7;--kart:#fffdf9;--yazi:#2b2520;--soluk:#6f655b;--cizgi:#e4dbcf;--vurgu:#7a5c3e;--yesil:#1f8a4c;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--zemin);color:var(--yazi);line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.kap{max-width:1180px;margin:0 auto;padding:0 18px}
+.serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:500;letter-spacing:-.01em}
+/* üst çubuk */
+header{position:sticky;top:0;z-index:20;background:rgba(244,239,231,.94);border-bottom:1px solid var(--cizgi)}
+.ust{display:flex;align-items:center;gap:14px;height:62px}
+.logo{font-size:1.35rem;white-space:nowrap}
+.ara{flex:1;display:flex;align-items:center;gap:8px;background:var(--kart);border:1px solid var(--cizgi);border-radius:999px;padding:0 14px;height:40px;min-width:0}
+.ara input{border:0;outline:0;background:none;font:inherit;width:100%;min-width:0;color:var(--yazi)}
+.sepetBtn{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--yazi);color:#fff;flex:none}
+.rozet{position:absolute;top:-3px;right:-3px;min-width:20px;height:20px;border-radius:10px;background:var(--vurgu);color:#fff;font-size:.72rem;display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:transform .25s}
+.rozet.var{transform:scale(1)}
+/* kapak */
+.kapak{position:relative;margin:18px 0 8px;border-radius:24px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;background:#d9cdbd}
+.kapak img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kapak::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,22,15,0) 15%,rgba(30,22,15,.72) 78%)}
+.kapakYazi h1,.kapakYazi p{text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.kapakYazi{position:relative;z-index:1;color:#fff;padding:28px}
+.kapakYazi small{letter-spacing:.14em;text-transform:uppercase;font-size:.75rem;opacity:.9}
+.kapakYazi h1{font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.1;margin:6px 0 8px;max-width:14em}
+.kapakYazi p{opacity:.92;max-width:32em}
+/* kategoriler */
+.kategoriler{display:flex;gap:8px;overflow-x:auto;padding:14px 0 6px;scrollbar-width:none}
+.kategoriler::-webkit-scrollbar{display:none}
+.cip{flex:none;padding:9px 16px;border-radius:999px;border:1px solid var(--cizgi);background:var(--kart);font-size:.92rem;transition:background .2s,color .2s}
+.cip[aria-pressed="true"]{background:var(--yazi);color:#fff;border-color:var(--yazi)}
+.bilgiSatiri{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--soluk);font-size:.9rem;padding:8px 0 4px}
+.bilgiSatiri button{text-decoration:underline;text-underline-offset:3px}
+/* ızgara */
+.izgara{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:8px 0 40px}
+@media(min-width:760px){.izgara{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}}
+@media(min-width:1060px){.izgara{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.urun{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);overflow:hidden;text-align:left;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;animation:belir .45s ease both}
+.urun:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(60,40,20,.45)}
+@keyframes belir{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.urunGorsel{aspect-ratio:4/3;background:#efe7db;overflow:hidden}
+.urunGorsel img{width:100%;height:100%;object-fit:cover}
+.urunBilgi{padding:12px 12px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.urunAd{font-size:.98rem;font-weight:600;line-height:1.3}
+.fiyat{font-weight:700;font-size:1.02rem}
+.fiyat s{font-weight:400;color:var(--soluk);font-size:.85rem;margin-left:6px}
+.durum{font-size:.78rem;color:var(--soluk);margin-top:auto;display:flex;align-items:center;gap:6px}
+.durum i{width:7px;height:7px;border-radius:50%;background:var(--yesil);display:inline-block}
+.durum.siparis i{background:#c28a2c}
+.bos{grid-column:1/-1;text-align:center;color:var(--soluk);padding:40px 0}
+/* güven şeridi */
+.guven{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:0 0 36px}
+.guven div{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);padding:16px}
+.guven b{display:block;margin-bottom:2px}
+.guven span{color:var(--soluk);font-size:.9rem}
+footer{border-top:1px solid var(--cizgi);padding:22px 0 110px;color:var(--soluk);font-size:.85rem}
+/* alt panel (ürün + sepet) */
+.perde{position:fixed;inset:0;background:rgba(25,18,12,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.perde.acik{opacity:1;pointer-events:auto}
+.panel{position:fixed;z-index:50;background:var(--kart);left:0;right:0;bottom:0;max-height:92vh;border-radius:24px 24px 0 0;transform:translateY(105%);transition:transform .38s cubic-bezier(.2,.8,.2,1),visibility .38s;display:flex;flex-direction:column;overflow:hidden;visibility:hidden}
+.panel.acik{transform:none;visibility:visible}
+@media(min-width:900px){.panel{left:auto;top:0;bottom:0;width:460px;max-height:none;border-radius:0;transform:translateX(105%)}}
+.panelUst{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--cizgi)}
+.kapat{width:38px;height:38px;border-radius:50%;background:var(--zemin);font-size:1.2rem}
+.panelIc{overflow-y:auto;padding:0 18px 18px;flex:1;overscroll-behavior:contain}
+.panelAlt{padding:14px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--cizgi);background:var(--kart)}
+.detayGorsel{margin:0 -18px 14px;aspect-ratio:4/3;background:#efe7db}
+.detayGorsel img{width:100%;height:100%;object-fit:cover}
+.detay h2{font-size:1.5rem;line-height:1.2}
+.kod{color:var(--soluk);font-size:.8rem}
+.detay p{color:#4a4038;margin:10px 0}
+.ozellik{display:flex;justify-content:space-between;border-top:1px solid var(--cizgi);padding:9px 0;font-size:.93rem}
+.secim{margin:14px 0 4px}
+.secim b{display:block;font-size:.9rem;margin-bottom:6px}
+.secenekler{display:flex;flex-wrap:wrap;gap:8px}
+.secenek{padding:8px 13px;border:1px solid var(--cizgi);border-radius:12px;font-size:.9rem;background:#fff}
+.secenek[aria-pressed="true"]{border-color:var(--yazi);box-shadow:inset 0 0 0 1px var(--yazi);font-weight:600}
+.adet{display:inline-flex;align-items:center;border:1px solid var(--cizgi);border-radius:12px;overflow:hidden}
+.adet button{width:40px;height:40px;font-size:1.1rem}
+.adet span{min-width:30px;text-align:center;font-weight:600}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;border-radius:14px;font-weight:600;font-size:1rem}
+.btnKoyu{background:var(--yazi);color:#fff}
+.btnWa{background:#1f8a4c;color:#fff}
+.btnAcik{border:1px solid var(--cizgi);background:#fff}
+.satir2{display:flex;gap:10px;align-items:center}
+.satir2 .btn{flex:1}
+.sepetKalem{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--cizgi);align-items:center}
+.sepetKalem img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#efe7db}
+.sepetKalem small{color:var(--soluk);display:block;line-height:1.35}
+.sil{color:var(--soluk);font-size:.8rem;text-decoration:underline}
+.toplam{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:700;margin:4px 0 12px}
+.form{display:grid;gap:10px;margin-top:16px}
+.form label{font-size:.85rem;color:var(--soluk)}
+.form input,.form textarea{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--cizgi);border-radius:12px;background:#fff;color:var(--yazi)}
+.not{font-size:.8rem;color:var(--soluk);margin-top:10px}
+.bildirim{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);background:var(--yazi);color:#fff;padding:11px 18px;border-radius:999px;font-size:.9rem;opacity:0;transition:.3s;z-index:60;pointer-events:none;white-space:nowrap}
+.bildirim.gor{opacity:1;transform:translate(-50%,0)}
+.yuzen[hidden]{display:none}
+.yuzen{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:30;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);width:auto;padding:0 20px;border-radius:999px}
+.demoNot{background:#efe4d3;color:#5a4633;font-size:.82rem;text-align:center;padding:7px 12px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{header,.kategoriler,.bilgiSatiri,.yuzen,.panel,.perde,.demoNot,.bildirim{display:none!important}
+ body{background:#fff}.kapak{min-height:220px}.izgara{grid-template-columns:repeat(3,1fr)}.urun{break-inside:avoid;animation:none}}
+</style>
+</head>
+<body>
+<div class="demoNot">Örnek çalışmadır: mağaza, ürünler ve numara temsilidir.</div>
+<header>
+  <div class="kap ust">
+    <div class="logo serif" id="logo"></div>
+    <label class="ara" aria-label="Ürün ara">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="ara" type="search" placeholder="Ürün ara" autocomplete="off">
+    </label>
+    <button class="sepetBtn" id="sepetAc" aria-label="Sipariş listesi">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="rozet" id="rozet">0</span>
+    </button>
+  </div>
+</header>
+
+<main class="kap">
+  <section class="kapak" id="kapak"></section>
+  <nav class="kategoriler" id="kategoriler" aria-label="Kategoriler"></nav>
+  <div class="bilgiSatiri"><span id="sayac"></span><button id="yazdir" type="button">Kataloğu PDF olarak kaydet</button></div>
+  <section class="izgara" id="izgara" aria-live="polite"></section>
+  <section class="guven" id="guven"></section>
+</main>
+<footer><div class="kap" id="altBilgi"></div></footer>
+
+<button class="btn btnWa yuzen" id="yuzen" hidden>Siparişi gönder</button>
+<div class="perde" id="perde"></div>
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelBaslik">
+  <div class="panelUst"><strong id="panelBaslik"></strong><button class="kapat" id="kapat" aria-label="Kapat">×</button></div>
+  <div class="panelIc" id="panelIc"></div>
+  <div class="panelAlt" id="panelAlt"></div>
+</aside>
+<div class="bildirim" id="bildirim"></div>
+
+<script src="katalog.js"></script>
+<script>
+(() => {
+  const M = window.MAGAZA, $ = s => document.querySelector(s);
+  const TL = n => M.paraBirimi + " " + n.toLocaleString("tr-TR");
+  const kacir = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const ek = s => { const m = /\(\+([\d.]+)/.exec(s); return m ? +m[1].replace(/\./g, "") : 0; };
+  const ANAHTAR = "katalog-sepet-" + M.ad;
+  let sepet = []; try { sepet = JSON.parse(localStorage.getItem(ANAHTAR)) || []; } catch (e) {}
+  let kategori = "hepsi", arama = "";
+
+  document.title = M.ad + " | Dijital Katalog";
+  $("#logo").textContent = M.ad;
+  $("#kapak").innerHTML = `<img src="${M.kapak.gorsel}" alt="${kacir(M.ad)} salon düzeni" fetchpriority="high">
+    <div class="kapakYazi"><small>${kacir(M.kapak.ust)}</small><h1 class="serif">${kacir(M.kapak.baslik)}</h1><p>${kacir(M.kapak.alt)}</p></div>`;
+  $("#guven").innerHTML = [
+    ["Ölçüye göre üretim", "Kumaş, renk ve ölçüyü siz seçin, atölyemizde üretelim."],
+    ["Teslimat ve kurulum", M.teslimNotu],
+    ["WhatsApp ile sipariş", "Seçimleriniz tek mesajda gelir, size fiyat ve teslim tarihini yazalım."]
+  ].map(([b, s]) => `<div><b>${b}</b><span>${kacir(s)}</span></div>`).join("");
+  $("#altBilgi").textContent = `${M.ad} · ${M.sehir} · Fiyatlara KDV dahildir. Stok ve fiyatlar sipariş onayında kesinleşir.`;
+
+  const kats = [{ id: "hepsi", ad: "Tümü" }, ...M.kategoriler];
+  $("#kategoriler").innerHTML = kats.map(k => `<button class="cip" data-k="${k.id}" aria-pressed="${k.id === kategori}">${kacir(k.ad)}</button>`).join("");
+  $("#kategoriler").addEventListener("click", e => {
+    const b = e.target.closest(".cip"); if (!b) return;
+    kategori = b.dataset.k;
+    document.querySelectorAll(".cip").forEach(c => c.setAttribute("aria-pressed", c === b));
+    ciz();
+  });
+  $("#ara").addEventListener("input", e => {
+    arama = e.target.value.trim().toLocaleLowerCase("tr");
+    if (arama && kategori !== "hepsi") { kategori = "hepsi"; document.querySelectorAll(".cip").forEach(c => c.setAttribute("aria-pressed", c.dataset.k === "hepsi")); }
+    ciz();
+  });
+
+  function ciz() {
+    const liste = M.urunler.filter(u => (kategori === "hepsi" || u.kat === kategori) &&
+      (!arama || (u.ad + " " + u.id + " " + u.aciklama).toLocaleLowerCase("tr").includes(arama)));
+    $("#sayac").textContent = liste.length + " ürün";
+    $("#izgara").innerHTML = liste.length ? liste.map((u, i) => `
+      <button class="urun" data-id="${u.id}" style="animation-delay:${Math.min(i, 8) * 40}ms">
+        <div class="urunGorsel"><img src="${u.gorsel}" alt="${kacir(u.ad)}" loading="lazy" width="1000" height="750"></div>
+        <div class="urunBilgi">
+          <span class="urunAd">${kacir(u.ad)}</span>
+          <span class="fiyat">${TL(u.fiyat)}${u.eskiFiyat ? `<s>${TL(u.eskiFiyat)}</s>` : ""}</span>
+          <span class="durum ${u.stok}"><i></i>${u.stok === "stokta" ? "Stokta, hemen teslim" : `Siparişe özel · ${u.uretimGun} gün`}</span>
+        </div>
+      </button>`).join("") : `<p class="bos">Aramanıza uygun ürün bulunamadı.</p>`;
+  }
+  $("#izgara").addEventListener("click", e => { const b = e.target.closest(".urun"); if (b) urunAc(b.dataset.id); });
+
+  // panel
+  let sonOdak = null;
+  function panelAc(baslik) {
+    sonOdak = document.activeElement;
+    $("#panelBaslik").textContent = baslik;
+    $("#perde").classList.add("acik"); $("#panel").classList.add("acik");
+    $("#panelIc").scrollTop = 0; document.body.style.overflow = "hidden";
+    setTimeout(() => $("#kapat").focus({ preventScroll: true }), 50);
+  }
+  function panelKapat() {
+    $("#perde").classList.remove("acik"); $("#panel").classList.remove("acik");
+    document.body.style.overflow = ""; if (sonOdak) sonOdak.focus({ preventScroll: true });
+  }
+  $("#kapat").onclick = panelKapat; $("#perde").onclick = panelKapat;
+  addEventListener("keydown", e => { if (e.key === "Escape") panelKapat(); });
+
+  function urunAc(id) {
+    const u = M.urunler.find(x => x.id === id); if (!u) return;
+    const secim = {}; Object.entries(u.secenekler || {}).forEach(([k, v]) => secim[k] = v[0]);
+    let adet = 1;
+    $("#panelIc").innerHTML = `
+      <div class="detayGorsel"><img src="${u.gorsel}" alt="${kacir(u.ad)}"></div>
+      <div class="detay">
+        <span class="kod">Ürün kodu ${u.id}</span>
+        <h2 class="serif">${kacir(u.ad)}</h2>
+        <div class="fiyat" id="dFiyat" style="font-size:1.25rem;margin-top:4px"></div>
+        <p>${kacir(u.aciklama)}</p>
+        <div class="ozellik"><span>Ölçü</span><b>${kacir(u.olcu)}</b></div>
+        <div class="ozellik"><span>Teslim</span><b>${u.stok === "stokta" ? "Stokta, 3 iş günü" : u.uretimGun + " gün üretim"}</b></div>
+        ${Object.entries(u.secenekler || {}).map(([k, v]) => `
+          <div class="secim"><b>${kacir(k)}</b><div class="secenekler" data-grup="${kacir(k)}">
+            ${v.map((s, i) => `<button class="secenek" aria-pressed="${i === 0}" data-deger="${kacir(s)}">${kacir(s)}</button>`).join("")}
+          </div></div>`).join("")}
+        <div class="secim"><b>Adet</b><div class="adet"><button data-a="-1" aria-label="Azalt">−</button><span id="dAdet">1</span><button data-a="1" aria-label="Artır">+</button></div></div>
+      </div>`;
+    $("#panelAlt").innerHTML = `<div class="satir2"><button class="btn btnAcik" id="dSor">WhatsApp'tan sor</button><button class="btn btnKoyu" id="dEkle">Listeye ekle</button></div>`;
+    const birim = () => u.fiyat + Object.values(secim).reduce((t, s) => t + ek(s), 0);
+    const fiyatYaz = () => $("#dFiyat").textContent = TL(birim() * adet);
+    fiyatYaz();
+    $("#panelIc").querySelectorAll(".secenekler").forEach(g => g.addEventListener("click", e => {
+      const b = e.target.closest(".secenek"); if (!b) return;
+      g.querySelectorAll(".secenek").forEach(x => x.setAttribute("aria-pressed", x === b));
+      secim[g.dataset.grup] = b.dataset.deger; fiyatYaz();
+    }));
+    $("#panelIc").querySelector(".adet").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      adet = Math.max(1, Math.min(20, adet + +b.dataset.a)); $("#dAdet").textContent = adet; fiyatYaz();
+    });
+    $("#dEkle").onclick = () => {
+      const anahtar = u.id + "|" + JSON.stringify(secim);
+      const var_ = sepet.find(k => k.anahtar === anahtar);
+      if (var_) var_.adet += adet; else sepet.push({ anahtar, id: u.id, secim: { ...secim }, adet, birim: birim() });
+      kaydet(); panelKapat(); bildir(`${u.ad} listeye eklendi`);
+    };
+    $("#dSor").onclick = () => whatsapp(`Merhaba, ${u.id} kodlu "${u.ad}" hakkında bilgi almak istiyorum.\nSeçimim: ${secimYazi(secim)}`);
+    panelAc("Ürün detayı");
+  }
+
+  const secimYazi = s => Object.entries(s).map(([k, v]) => `${k}: ${v}`).join(", ") || "-";
+  function kaydet() {
+    try { localStorage.setItem(ANAHTAR, JSON.stringify(sepet)); } catch (e) {}
+    const n = sepet.reduce((t, k) => t + k.adet, 0);
+    $("#rozet").textContent = n; $("#rozet").classList.toggle("var", n > 0);
+    $("#yuzen").hidden = n === 0; $("#yuzen").textContent = `Siparişi gönder · ${n} ürün`;
+  }
+  const toplam = () => sepet.reduce((t, k) => t + k.birim * k.adet, 0);
+
+  function sepetAc() {
+    if (!sepet.length) {
+      $("#panelIc").innerHTML = `<p class="bos">Listeniz boş. Ürünlere dokunup seçiminizi ekleyin.</p>`;
+      $("#panelAlt").innerHTML = `<button class="btn btnKoyu" id="alisveris">Kataloğa dön</button>`;
+      $("#alisveris").onclick = panelKapat; panelAc("Sipariş listesi"); return;
+    }
+    $("#panelIc").innerHTML = sepet.map((k, i) => { const u = M.urunler.find(x => x.id === k.id); return `
+      <div class="sepetKalem"><img src="${u.gorsel}" alt="">
+        <div><b>${kacir(u.ad)}</b><small>${kacir(secimYazi(k.secim))}</small><small>${k.adet} adet × ${TL(k.birim)}</small></div>
+        <button class="sil" data-i="${i}">Çıkar</button></div>`; }).join("") + `
+      <div class="form">
+        <div><label for="fAd">Ad soyad</label><input id="fAd" autocomplete="name"></div>
+        <div><label for="fIlce">İlçe / adres (teslimat için)</label><input id="fIlce" autocomplete="address-level2"></div>
+        <div><label for="fNot">Not (ölçü, renk, teslim günü...)</label><textarea id="fNot" rows="2"></textarea></div>
+      </div>
+      <p class="not">Gönder'e basınca seçimleriniz WhatsApp'ta hazır mesaj olarak açılır; ödeme burada alınmaz, sipariş mağaza onayıyla kesinleşir.</p>`;
+    $("#panelAlt").innerHTML = `<div class="toplam"><span>Tahmini toplam</span><span>${TL(toplam())}</span></div>
+      <button class="btn btnWa" id="gonder">WhatsApp ile siparişi gönder</button>`;
+    $("#panelIc").querySelectorAll(".sil").forEach(b => b.onclick = () => { sepet.splice(+b.dataset.i, 1); kaydet(); sepetAc(); });
+    $("#gonder").onclick = () => {
+      const satirlar = sepet.map((k, i) => { const u = M.urunler.find(x => x.id === k.id);
+        return `${i + 1}) ${u.ad} [${u.id}] x${k.adet}\n   ${secimYazi(k.secim)}\n   ${TL(k.birim * k.adet)}`; });
+      const ad = $("#fAd").value.trim(), ilce = $("#fIlce").value.trim(), not = $("#fNot").value.trim();
+      whatsapp(`Merhaba ${M.ad}, katalogdan sipariş vermek istiyorum:\n\n${satirlar.join("\n")}\n\nTahmini toplam: ${TL(toplam())}` +
+        (ad ? `\nAd: ${ad}` : "") + (ilce ? `\nTeslimat: ${ilce}` : "") + (not ? `\nNot: ${not}` : ""));
+    };
+    panelAc("Sipariş listesi");
+  }
+  $("#sepetAc").onclick = sepetAc; $("#yuzen").onclick = sepetAc;
+
+  function whatsapp(metin) { window.open(`https://wa.me/${M.whatsapp}?text=${encodeURIComponent(metin)}`, "_blank", "noopener"); }
+  let zam; function bildir(m) { const b = $("#bildirim"); b.textContent = m; b.classList.add("gor"); clearTimeout(zam); zam = setTimeout(() => b.classList.remove("gor"), 1800); }
+  $("#yazdir").onclick = () => { kategori = "hepsi"; arama = ""; $("#ara").value = ""; document.querySelectorAll(".cip").forEach(c => c.setAttribute("aria-pressed", c.dataset.k === "hepsi")); ciz(); setTimeout(print, 300); };
+
+  ciz(); kaydet();
+})();
+</script>
+</body>
+</html>
