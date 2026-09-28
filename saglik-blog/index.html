@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sağlık Blogu Revize Örneği — Önce / Sonra | Boztaş Digital</title>
+<meta name="description" content="Bir sağlık turizmi blog yazısının arama niyeti, yapı ve tıbbi doğruluk açısından revize örneği; Türkçe ve İngilizce.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#f3f5f4;--yazi:#16211d;--soluk:#5c6a64;--vurgu:#1f7a5c;--uyari:#b4552d;--kart:#fff;--cizgi:#dce3e0}
+*{box-sizing:border-box;margin:0}
+body{background:var(--zemin);color:var(--yazi);font:16px/1.65 Manrope,system-ui,sans-serif}
+.kap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 24px}
+.etiket{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vurgu);font-weight:700}
+h1{font:400 clamp(36px,5.6vw,62px)/1.04 "Instrument Serif",serif;margin:12px 0 16px;max-width:860px}
+h1 em{color:var(--vurgu)}
+.giris{color:var(--soluk);max-width:700px;font-size:17px}
+nav.sekme{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 0}
+nav.sekme a{padding:9px 16px;border-radius:99px;background:var(--kart);color:var(--yazi);text-decoration:none;font-weight:600;font-size:14px;border:1px solid var(--cizgi)}
+nav.sekme a:hover{border-color:var(--vurgu);color:var(--vurgu)}
+section{margin:48px 0}
+section>h2{font:400 34px/1.1 "Instrument Serif",serif;margin-bottom:6px}
+section>p.alt{color:var(--soluk);max-width:720px;margin-bottom:18px}
+.tespitler{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tespit{background:var(--kart);border-radius:14px;padding:16px 18px;border-left:4px solid var(--uyari)}
+.tespit b{display:block;margin-bottom:2px}
+.tespit .once{color:var(--uyari);font-size:13.5px}
+.tespit .sonra{color:var(--vurgu);font-size:13.5px;margin-top:4px}
+.makale{background:var(--kart);border-radius:20px;padding:40px clamp(20px,5vw,56px);max-width:820px}
+.makale .ust{font-size:12.5px;color:var(--soluk);margin-bottom:14px;display:flex;gap:12px;flex-wrap:wrap}
+.makale .ust span{background:var(--zemin);padding:3px 10px;border-radius:99px}
+.makale h3{font:700 30px/1.2 Manrope,sans-serif;margin-bottom:14px;letter-spacing:-.01em}
+.makale h4{font:700 21px/1.3 Manrope,sans-serif;margin:30px 0 8px}
+.makale h5{font:700 17px/1.3 Manrope,sans-serif;margin:18px 0 4px}
+.makale p{margin:0 0 12px}
+.makale ul{margin:0 0 12px;padding-left:20px}
+.makale li{margin:4px 0}
+.ozet{background:#e7f2ee;border-radius:12px;padding:16px 18px;margin:0 0 18px}
+.ozet b{color:var(--vurgu)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:14.5px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--cizgi);vertical-align:top}
+th{background:var(--zemin);font-size:13px;text-transform:uppercase;letter-spacing:.05em}
+.tablo{overflow-x:auto}
+.not{font-size:13px;color:var(--soluk);border-top:1px solid var(--cizgi);padding-top:12px;margin-top:22px}
+.kaynak{font-size:13.5px}
+.kaynak a{color:var(--vurgu)}
+sup a{color:var(--vurgu);text-decoration:none;font-weight:700}
+.paket{background:var(--yazi);color:#eef3f1;border-radius:20px;padding:32px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.paket h2{font:400 34px/1.1 "Instrument Serif",serif;margin-bottom:10px}
+.paket ul{padding-left:18px;color:#cfdad6}
+.paket li{margin:5px 0}
+.fiyat{display:grid;gap:10px}
+.fiyat div{background:rgba(255,255,255,.07);border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;gap:12px}
+.fiyat b{color:#8fe0c0;white-space:nowrap}
+footer{color:var(--soluk);font-size:12.5px;padding:24px 0 48px;border-top:1px solid var(--cizgi)}
+@media(max-width:760px){.tespitler{grid-template-columns:1fr}.paket{grid-template-columns:1fr;padding:24px}header{padding-top:36px}.makale h3{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="kap">
+<header>
+  <span class="etiket">Sağlık içeriği · revize örneği</span>
+  <h1>Bir blog yazısını <em>arama niyeti</em> ve tıbbi doğrulukla yeniden yazmak</h1>
+  <p class="giris">Örnek olarak yayındaki bir saç ekimi yazısını (“Saç Ekimi Fiyatları Neye Göre Belirlenir?”) ele aldım: önce neyin eksik olduğunu tespit ettim, sonra yararlı bölümleri koruyarak yeniden yazdım. Tıbbi her iddia bir kaynağa bağlı; yayından önce hekim onayına sunulacak şekilde işaretli.</p>
+  <nav class="sekme">
+    <a href="#tespit">1 · Tespitler</a>
+    <a href="#tr">2 · Revize yazı (TR)</a>
+    <a href="#en">3 · English sample</a>
+    <a href="#calisma">4 · Çalışma şekli ve fiyat</a>
+  </nav>
+</header>
+
+<section id="tespit">
+  <h2>1 · Mevcut yazıda gördüklerim</h2>
+  <p class="alt">Yazının iyi yanları korunur (yöntem açıklamaları, Norwood/Ludwig vurgusu). Aşağıdakiler arama niyetini karşılamayan ya da güveni zayıflatan noktalar.</p>
+  <div class="tespitler">
+    <div class="tespit"><b>Başlıktaki soru cevapsız kalıyor</b><div class="once">“FUE Saç Ekimi Maliyeti Ne Kadardır?” başlığı altında maliyet bilgisi yok.</div><div class="sonra">Sonra: ilk paragrafta 3 cümlelik net cevap + fiyatı belirleyen 5 etken tablosu.</div></div>
+    <div class="tespit"><b>Arama niyeti: okur “neden bu kadar farklı?” diye soruyor</b><div class="once">Etkenler var ama “benim fiyatım nasıl çıkar” sorusu cevaplanmıyor.</div><div class="sonra">Sonra: “teklif alırken sorulacak 6 soru” bölümü; dönüşüm için doğal çağrı.</div></div>
+    <div class="tespit"><b>Tıbbi iddialar kaynaksız</b><div class="once">İyileşme, iz ve sonuç süresi cümlelerinde kaynak yok.</div><div class="sonra">Sonra: dökülme dönemi, sonuç süresi ve iz bilgisi AAD kaynağına bağlandı.</div></div>
+    <div class="tespit"><b>Mantık hatası</b><div class="once">“FUE gibi modern yöntemler daha fazla tercih edilmekte ve bu da maliyetleri artırmaktadır.”</div><div class="sonra">Sonra: maliyeti artıran tercih değil; işçilik süresi, ekip ve alet (ör. safir uç, Choi kalem).</div></div>
+    <div class="tespit"><b>Yazım ve akış</b><div class="once">“konumda fiyatları etkiler”, “grefta”, eksik boşluklar, tekrar eden “önemli faktör”.</div><div class="sonra">Sonra: editör okuması; kısa paragraflar, tek fikir bir paragraf.</div></div>
+    <div class="tespit"><b>Başlık hiyerarşisi</b><div class="once">“Seyrek Saça…” ve “2500 Greft…” başlık gibi görünüyor ama başlık etiketi değil.</div><div class="sonra">Sonra: H2/H3 düzeni ve SSS bölümü (FAQ şemasına uygun soru-cevap).</div></div>
+    <div class="tespit"><b>Güven sinyali eksik</b><div class="once">Yazar, hekim onayı ve güncelleme tarihi görünmüyor.</div><div class="sonra">Sonra: “tıbbi içerik kontrolü: Dr. …” ve son güncelleme satırı (Google’ın YMYL ölçütü).</div></div>
+    <div class="tespit"><b>İç link fırsatları</b><div class="once">Yöntem sayfaları (DHI, Safir FUE, Tıraşsız) metinde bağlanmamış.</div><div class="sonra">Sonra: 4 iç link önerisi, ilgili yöntem geçtiği ilk yerde.</div></div>
+  </div>
+</section>
+
+<section id="tr">
+  <h2>2 · Revize edilmiş yazı (Türkçe)</h2>
+  <p class="alt">SEO title ve meta description sizden geleceği için dokunmadım; yalnız gövde. [İç link] işaretleri önerilen bağlantı yerleri.</p>
+  <article class="makale">
+    <div class="ust"><span>~700 kelime (örnek; tam yazı 1.000+)</span><span>Arama niyeti: bilgi + karar</span><span>Tıbbi kontrol: hekim onayına</span></div>
+    <h3>Saç Ekimi Fiyatları Neye Göre Belirlenir?</h3>
+    <div class="ozet"><b>Kısaca:</b> Saç ekiminin fiyatı tek bir rakam değildir; ekilecek greft sayısı, seçilen yöntem, ekibin deneyimi, işlemin kaç seans süreceği ve pakete dahil hizmetler birlikte belirler. En doğru fiyatı, saç kaybınızın derecesini ve donör bölgenizi değerlendiren bir hekim muayenesinden sonra alırsınız.</div>
+
+    <p>Saç ekimi araştıran hemen herkes aynı şeyle karşılaşır: iki merkez arasında fiyat farkı birkaç katına çıkabilir. Bu fark çoğu zaman “pahalı ya da ucuz klinik” meselesi değil, aslında farklı bir işlemin fiyatlandırılmasıdır. Aşağıda fiyatı belirleyen etkenleri, her birinin neden fiyatı değiştirdiğini ve teklif alırken neyi sormanız gerektiğini bulacaksınız.</p>
+
+    <h4>Fiyatı belirleyen 5 etken</h4>
+    <div class="tablo"><table>
+      <tr><th>Etken</th><th>Fiyatı neden değiştirir?</th><th>Teklifte neye bakmalı?</th></tr>
+      <tr><td>Greft sayısı</td><td>Her greft tek tek alınır ve yerleştirilir; sayı arttıkça işlem süresi ve ekip emeği artar.</td><td>Greft sayısı muayenede mi belirlendi, fotoğrafla mı?</td></tr>
+      <tr><td>Yöntem (FUE, DHI, FUT)</td><td>Yöntemler kullanılan alet, süre ve ekip yapısı bakımından farklıdır.</td><td>Hangi yöntem, neden sizin için seçildi?</td></tr>
+      <tr><td>Saç kaybının derecesi</td><td>İleri derece kayıpta ekilecek alan büyür, bazen donör bölge tek seansa yetmez.</td><td>Norwood/Ludwig derecem nedir, kaç seans öngörülüyor?</td></tr>
+      <tr><td>Ekip ve hekim</td><td>İşlemi kimin yaptığı ve ekibin deneyimi hem sonucu hem fiyatı etkiler.</td><td>Hangi aşamaları hekim, hangilerini ekip yapıyor?</td></tr>
+      <tr><td>Pakete dahil hizmetler</td><td>Konaklama, transfer, ilaçlar ve kontroller fiyata eklenir.</td><td>Paket içeriği ve kontrol randevuları yazılı mı?</td></tr>
+    </table></div>
+
+    <h4>Greft sayısı: fiyatın temel ölçüsü</h4>
+    <p>Greft, içinde genellikle bir ila birkaç kıl bulunan küçük doku birimidir. Ekim yapılacak alan büyüdükçe ve hedeflenen sıklık arttıkça gereken greft sayısı da artar. Bu yüzden birçok merkez fiyatı greft aralıklarına göre verir. Ancak greft sayısı yalnız ekim alanına değil, ense ve yan bölgedeki <b>donör alanın</b> ne kadar greft verebileceğine de bağlıdır; bu da ancak muayenede netleşir. [İç link: Saç ekimine kimler uygundur?]</p>
+
+    <h4>Yöntemler ve fiyat farkı</h4>
+    <h5>FUE</h5>
+    <p>Kökler donör bölgeden tek tek alınır ve açılan kanallara yerleştirilir. Şerit halinde doku alınmadığı için çizgisel iz bırakmaz; bunun yerine çok sayıda küçük, nokta şeklinde iyileşen alan oluşur.<sup><a href="#k1">1</a></sup> Kanal açmada kullanılan uç (ör. safir) ve işlem süresi fiyata yansır. [İç link: Safir FUE]</p>
+    <h5>DHI</h5>
+    <p>Kökler yine tek tek alınır, ancak “Choi” adı verilen kalem benzeri bir aletle kanal açma ve yerleştirme tek adımda yapılır. Her kalemin ayrı hazırlanması ve ekibin bu tekniğe özel çalışması nedeniyle fiyat çoğunlukla FUE’den farklı hesaplanır. [İç link: DHI Saç Ekimi]</p>
+    <h5>FUT</h5>
+    <p>Ense bölgesinden ince bir şerit doku alınır ve kökler bu şeritten ayrılır. Bu yöntemde genellikle çizgisel bir iz kalır.<sup><a href="#k1">1</a></sup> Günümüzde daha az tercih edilir; fiyatı merkeze ve greft sayısına göre değişir.</p>
+    <p>Önemli olan, yöntemin “en yeni” olması değil, <b>sizin saç yapınıza ve donör alanınıza uygun</b> olmasıdır. Tıraşsız ekim gibi seçenekler de işlem süresini uzatabildiği için fiyatı etkiler. [İç link: Tıraşsız Saç Ekimi]</p>
+
+    <h4>Sonuç ne zaman görülür? (fiyatı değerlendirirken bilinmeli)</h4>
+    <p>Ekilen kıllar ilk 2-8 hafta içinde dökülür; bu, kılın dinlenme evresine girmesinden kaynaklanan beklenen bir süreçtir. Hastaların çoğu sonucu 6-9 ay içinde görmeye başlar, bazıları için bu süre 12 aya uzayabilir.<sup><a href="#k1">1</a></sup> Bu yüzden teklifinizde işlem sonrası kontrollerin ve bakım desteğinin yazılı olması, fiyatın bir parçası olarak değerlendirilmelidir.</p>
+
+    <h4>Teklif alırken sorulacak 6 soru</h4>
+    <ul>
+      <li>Greft sayısı muayene sonucu mu, yoksa fotoğrafa göre tahmin mi?</li>
+      <li>Hangi yöntem öneriliyor ve neden?</li>
+      <li>İşlemin hangi aşamalarını hekim yapıyor?</li>
+      <li>Tek seans yeterli mi, ikinci seans gerekirse nasıl fiyatlanıyor?</li>
+      <li>Pakete neler dahil (ilaç, konaklama, transfer, yıkama, kontroller)?</li>
+      <li>İşlem sonrası kontroller kaç ay boyunca ve nasıl yapılıyor?</li>
+    </ul>
+
+    <h4>Sık sorulan sorular</h4>
+    <h5>2.500 greft saç ekimi ne kadar tutar?</h5>
+    <p>Greft sayısı fiyatın temel ölçüsüdür ama tek başına yeterli değildir; aynı greft sayısı farklı yöntem ve paketlerle farklı fiyatlanır. Kişiye özel fiyat için ücretsiz ön değerlendirme ile saç analizinizi yaptırabilirsiniz. [Çağrı: Ön değerlendirme formu]</p>
+    <h5>Seyrek saça ekim daha mı ucuzdur?</h5>
+    <p>Seyrekleşme bölgesel ise daha az greft gerekebilir. Ancak mevcut saçlara zarar vermeden sıklaştırma yapmak dikkatli planlama ister; uygunluk ve greft ihtiyacı muayenede belirlenir.</p>
+    <h5>Ucuz saç ekimi riskli midir?</h5>
+    <p>Fiyatın düşük olması tek başına risk göstergesi değildir; önemli olan işlemi kimin yaptığı, donör alanın nasıl korunduğu ve sonrasında takibin olup olmadığıdır. Yukarıdaki 6 soru bu farkı görmenizi sağlar.</p>
+
+    <p class="not">Tıbbi içerik kontrolü: [Hekim adı, uzmanlık] · Son güncelleme: [tarih]. Bu yazı bilgilendirme amaçlıdır; tanı ve tedavi için hekiminize başvurun.</p>
+    <p class="kaynak" id="k1">1. American Academy of Dermatology (AAD), “Hair transplant” — dökülme dönemi, sonuç süresi, FUE/FUT izleri: <a href="https://www.aad.org/public/diseases/hair-loss/treatment/transplant" rel="nofollow">aad.org</a></p>
+  </article>
+</section>
+
+<section id="en">
+  <h2>3 · English sample</h2>
+  <p class="alt">Aynı yazının girişi ve bir bölümü İngilizce; çeviri değil, İngilizce arama niyetine göre yazıldı (“hair transplant cost Turkey” okuru fiyat şeffaflığı ve güven arar).</p>
+  <article class="makale" lang="en">
+    <div class="ust"><span>Intro + 1 section</span><span>Intent: cost comparison</span></div>
+    <h3>What Determines the Cost of a Hair Transplant?</h3>
+    <div class="ozet"><b>In short:</b> There is no single price for a hair transplant. The number of grafts, the technique, the experience of the medical team, the number of sessions and what the package includes all shape the final cost. The most accurate quote comes after a doctor has assessed your hair loss and your donor area.</div>
+    <p>If you have compared clinics, you have probably seen quotes that differ several times over. In most cases, the clinics are not pricing the same procedure. Below you will find what drives the price, why each factor matters, and the questions worth asking before you book.</p>
+    <h4>Grafts: the basic unit of price</h4>
+    <p>A graft is a small unit of tissue that usually contains one to a few hairs. The larger the area and the higher the target density, the more grafts you need, which is why many clinics quote by graft ranges. The real limit, however, is your donor area: how many grafts it can safely provide can only be confirmed in a consultation.</p>
+    <h4>When will I see results?</h4>
+    <p>Transplanted hairs usually shed within two to eight weeks; this is an expected part of the hair growth cycle. Most patients start to see results six to nine months after surgery, and for some it takes around twelve months.<sup><a href="#k1">1</a></sup> Follow-up visits during this period should be part of what you are paying for.</p>
+  </article>
+</section>
+
+<section id="calisma">
+  <div class="paket">
+    <div>
+      <h2>Nasıl çalışırım</h2>
+      <ul>
+        <li>Önce yazının arama niyetini ve rakip ilk 5 sonucu okurum; yazı o soruyu ilk paragrafta cevaplar.</li>
+        <li>Tıbbi her iddia güncel ve güvenilir bir kaynağa (hakemli yayın, dernek, resmî kurum) bağlanır; kaynağı olmayan iddia yazılmaz.</li>
+        <li>Revizede mevcut yazının yararlı bölümleri korunur, değişiklik notu ayrıca verilir.</li>
+        <li>Fiyata dahil: araştırma, kaynak gösterimi, iç link önerileri, görsel brifi, editör geri bildirimiyle 2 düzeltme.</li>
+        <li>Yayın öncesi hekim kontrolü için tıbbi cümleler işaretli teslim edilir.</li>
+      </ul>
+    </div>
+    <div class="fiyat">
+      <div><span>Yeni blog içeriği (TR, 1.000-1.500 kelime)</span><b>350 TL</b></div>
+      <div><span>Yeni blog içeriği (EN)</span><b>450 TL</b></div>
+      <div><span>Mevcut yazı revizesi (TR/EN)</span><b>200 TL</b></div>
+      <div><span>Haftalık kapasite</span><b>8-10 içerik</b></div>
+      <div><span>İlk aşama: 1 yeni + 1 revize</span><b>500 TL</b></div>
+    </div>
+  </div>
+</section>
+
+<footer>Boztaş Digital · Bu sayfa bir çalışma örneğidir; ele alınan yazı kamuya açık bir blog yazısıdır ve örnek amaçlı yeniden yazılmıştır. Tıbbi bilgi içeren metinler yayından önce hekim onayına sunulmalıdır.</footer>
+</div>
+</body>
+</html>
