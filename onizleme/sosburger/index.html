@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>S.O.S Burger · Denizli · Street food, glutensiz burger (örnek önizleme)</title>
+<meta name="description" content="S.O.S Burger Denizli: street food burger, glutensiz ve vejeteryan seçenekler, burrito ve taco. Siteler Mh., Havuzlu Köşk yanı. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#111111">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--kara:#111;--kom:#1C1C1C;--sari:#FFD23F;--kirmizi:#E4312B;--yesil:#3BB273;--kagit:#F4EFE6;--gri:#9A968F;--cizgi:rgba(244,239,230,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kara);color:var(--kagit);font-family:Archivo,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.serit{background:var(--sari);color:var(--kara);text-align:center;font-size:13px;font-weight:800;padding:7px 12px}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:72px;border-bottom:1px solid var(--cizgi)}
+.logo{font-family:Anton,Impact,sans-serif;font-size:28px;letter-spacing:.04em;text-decoration:none}
+.logo b{color:var(--kirmizi)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 24px;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.btn.sari{background:var(--sari);color:var(--kara)}
+.btn.kir{background:var(--kirmizi);color:#fff}
+.btn.hat{border:2px solid currentColor;background:transparent}
+.kahraman{padding:56px 0 40px;position:relative}
+.kahraman .sar{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.ufak{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--sari)}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(56px,9vw,128px);line-height:.9;text-transform:uppercase;margin:14px 0 22px}
+h1 span{color:var(--sari);display:block}
+.kahraman p{font-size:18px;max-width:42ch;color:#D8D2C7}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.rozetler{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.rozet{font-size:13px;font-weight:700;border:1px solid var(--cizgi);border-radius:999px;padding:6px 12px}
+.rozet.gf{background:var(--yesil);border-color:var(--yesil);color:#fff}
+.burger{position:relative}
+.burger img{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.burger span{position:absolute;left:4%;bottom:6%;background:var(--kagit);color:var(--kara);font-size:12px;padding:5px 10px;border-radius:99px}
+.bant{background:var(--kirmizi);color:#fff;overflow:hidden;white-space:nowrap;font-family:Anton,sans-serif;font-size:26px;letter-spacing:.06em;padding:12px 0;text-transform:uppercase}
+.bant div{display:inline-block;animation:kay 26s linear infinite}
+@keyframes kay{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.bant div{animation:none}}
+section{padding:90px 0}
+h2{font-family:Anton,Impact,sans-serif;font-weight:400;font-size:clamp(40px,5.6vw,72px);line-height:.95;text-transform:uppercase;margin:12px 0 14px}
+.acik{color:var(--gri);max-width:58ch}
+.filtre{display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 20px}
+.filtre button{font:inherit;font-weight:700;font-size:14px;background:transparent;color:var(--kagit);border:1px solid var(--cizgi);border-radius:999px;padding:9px 16px;cursor:pointer}
+.filtre button[aria-pressed=true]{background:var(--sari);color:var(--kara);border-color:var(--sari)}
+.filtre button.gf[aria-pressed=true]{background:var(--yesil);border-color:var(--yesil);color:#fff}
+.menu{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.menu div{background:var(--kom);border:1px solid var(--cizgi);border-radius:18px;padding:20px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.menu div[hidden]{display:none}
+.menu b{font-family:Anton,sans-serif;font-weight:400;font-size:26px;text-transform:uppercase;line-height:1}
+.menu i{font-style:normal;font-size:13px;color:var(--gri)}
+.menu .etiket{font-size:12px;font-weight:800;color:var(--yesil)}
+.menu-not{font-size:14px;color:var(--gri);margin-top:18px}
+.menu-not a{color:var(--sari)}
+.gorseller{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-top:40px}
+.gorseller figure{background:var(--kom);border-radius:18px;overflow:hidden;aspect-ratio:1;display:grid;place-items:center}
+.gorseller img{width:100%;height:100%;object-fit:cover}
+.gorseller figure.urun img{object-fit:contain;padding:12%}
+.gf-bolum{background:var(--kagit);color:var(--kara)}
+.gf-bolum .sar{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.gf-bolum .ufak{color:var(--yesil)}
+.gf-bolum .acik{color:#5E5A53}
+.adimlar{display:grid;gap:12px}
+.adimlar div{border:2px solid var(--kara);border-radius:18px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start}
+.adimlar span{font-family:Anton,sans-serif;font-size:30px;line-height:1;color:var(--yesil)}
+.siparis{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.kart{background:var(--kom);border:1px solid var(--cizgi);border-radius:22px;padding:26px}
+.kart fieldset{border:0;margin-bottom:16px}
+.kart legend{font-weight:800;margin-bottom:10px}
+.secenek{display:flex;flex-wrap:wrap;gap:8px}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:10px;padding:8px 14px;font-size:14px;cursor:pointer}
+.secenek input:checked+span{background:var(--sari);color:var(--kara);border-color:var(--sari)}
+.secenek input:focus-visible+span{outline:2px solid var(--kirmizi);outline-offset:2px}
+.mesaj{background:var(--kara);border-left:4px solid var(--sari);border-radius:10px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
+.kart .btn{width:100%}
+.kucuk-not{font-size:13px;color:var(--gri);margin-top:10px}
+.bilgi{display:grid;gap:14px;margin-top:26px}
+.bilgi div{border-top:1px solid var(--cizgi);padding-top:14px}
+.bilgi small{display:block;color:var(--gri);font-size:13px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.bilgi a{font-weight:800;text-decoration:none;color:var(--sari)}
+footer{border-top:1px solid var(--cizgi);color:var(--gri);padding:34px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(255,210,63,.5);border-radius:12px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:var(--sari);font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(0,0,0,.5)}
+@media (max-width:920px){
+  .kahraman .sar,.siparis,.gf-bolum .sar{grid-template-columns:1fr;gap:26px}
+  .burger{max-width:440px;margin:0 auto}
+  .menu{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{display:none}
+  .kahraman{padding-top:34px}
+  .kahraman p{font-size:16.5px}
+  section{padding:60px 0}
+  .menu div{min-height:112px;padding:16px}
+  .menu b{font-size:22px}
+  .gorseller{grid-template-columns:1fr 1fr}
+  .gorseller figure:first-child{grid-column:1/-1;aspect-ratio:16/10}
+  .yuzen{display:block}
+}
+</style>
+</head>
+<body>
+<div class="serit">Örnek önizleme · S.O.S Burger için Boztaş Digital tarafından hazırlandı</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">S.O.S <b>BURGER</b></a>
+    <a class="btn sari" href="tel:+905559723020">Sipariş ver</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="sar">
+      <div>
+        <span class="ufak">Street food · Denizli</span>
+        <h1>Acil durum? <span>Burger.</span></h1>
+        <p>Etli, tavuklu, balık ve vejeteryan burger; burrito, taco ve glutensiz seçenekler. Siteler'de, Havuzlu Köşk'ün yanında, her gün 11:00-23:00.</p>
+        <div class="dugmeler">
+          <a class="btn sari" href="#siparis">Sipariş hazırla</a>
+          <a class="btn hat" href="#menu">Menüye bak</a>
+        </div>
+        <div class="rozetler"><span class="rozet gf">Glutensiz burger</span><span class="rozet">Vejeteryan</span><span class="rozet">Tex-Mex</span></div>
+      </div>
+      <div class="burger"><img src="img/hero-burger.webp" alt="Katlı burger (temsilî görsel)" width="900" height="861" fetchpriority="high"><span>Temsilî görsel</span></div>
+    </div>
+  </div>
+
+  <div class="bant" aria-hidden="true"><div>Etli burger · Tavuklu burger · Glutensiz · Burrito · Taco · Sosisli burger · Balık burger · Vejeteryan · Etli burger · Tavuklu burger · Glutensiz · Burrito · Taco · Sosisli burger · Balık burger · Vejeteryan ·&nbsp;</div></div>
+
+  <section id="menu">
+    <div class="sar">
+      <span class="ufak">Menü</span>
+      <h2>Ne canın istiyor?</h2>
+      <p class="acik">Başlıklar dijital menünüzden alındı. Glutensiz arayan biri tek dokunuşla yalnız kendi yiyebileceklerini görür; yayında her başlığın altında ürünleriniz ve güncel fiyatlarınız durur.</p>
+      <div class="filtre" role="group" aria-label="Menü filtresi">
+        <button type="button" data-f="hepsi" aria-pressed="true">Hepsi</button>
+        <button type="button" data-f="gf" class="gf" aria-pressed="false">Glutensiz yiyebileceklerim</button>
+        <button type="button" data-f="vej" aria-pressed="false">Etsiz</button>
+      </div>
+      <div class="menu" id="liste">
+        <div data-t="et"><b>Etli Burger</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="et"><b>Tavuklu Burger</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="gf"><b>Glutensiz</b><span class="etiket">Glutensiz ekmekle</span><i>Ürünleriniz buraya</i></div>
+        <div data-t="vej"><b>Vejeteryan</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="et"><b>Balık Burger</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="et"><b>Sosisli Burger</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="et"><b>Burrito</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="et"><b>Taco</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="diger"><b>Aperatifler</b><i>Ürünleriniz buraya</i></div>
+        <div data-t="vej"><b>Tatlılar</b><i>Ürünleriniz buraya</i></div>
+      </div>
+      <p class="menu-not">Filtre örnektir: hangi ürünün glutensiz ya da etsiz olduğunu siz işaretlersiniz, sayfa ona göre süzer. Tam menü şimdilik <a href="https://sosburger.dijital.menu/">dijital menünüzde</a>.</p>
+      <div class="gorseller">
+        <figure><img src="img/mekan.jpg" alt="Burgerci salonu (temsilî görsel)" width="1200" height="686" loading="lazy"></figure>
+        <figure class="urun"><img src="img/m-tavuk.webp" alt="Tavuk burger (temsilî görsel)" width="900" height="564" loading="lazy"></figure>
+        <figure class="urun"><img src="img/m-patates.webp" alt="Patates kızartması (temsilî görsel)" width="900" height="454" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="gf-bolum">
+    <div class="sar">
+      <div>
+        <span class="ufak">Glutensiz</span>
+        <h2>Denizli'de glutensiz burger arayan sizi bulsun.</h2>
+        <p class="acik">Glutensiz beslenen biri "glutensiz burger Denizli" diye arar. Bu sayfa o aramaya cevap verir: ne yiyebileceğini, nasıl hazırlandığını ve nereden sipariş vereceğini tek yerde görür.</p>
+      </div>
+      <div class="adimlar">
+        <div><span>1</span><p><b>Glutensiz ürünler ayrı işaretli.</b> Menüde tek dokunuşla süzülür.</p></div>
+        <div><span>2</span><p><b>Hazırlık notu sizden.</b> Glutensiz ekmek, ayrı ızgara ya da tezgâh gibi uyguladığınız ne varsa kendi cümlenizle yazılır.</p></div>
+        <div><span>3</span><p><b>Siparişte hatırlatma.</b> Sipariş notuna "glutensiz" otomatik eklenir, mutfağa doğru gider.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="siparis">
+    <div class="sar siparis">
+      <div>
+        <span class="ufak">Sipariş</span>
+        <h2>Aramadan önce hazırla.</h2>
+        <p class="acik">Ne istediğinizi seçin; sipariş notu hazır olur. Aradığınızda okumanız yeterli.</p>
+        <div class="bilgi">
+          <div><small>Telefon</small><a href="tel:+905559723020">0555 972 30 20</a> · <a href="tel:+902582655888">0258 265 58 88</a></div>
+          <div><small>Adres</small>Siteler Mh. 6220 Sk. No:3/A, Pamukkale · Havuzlu Köşk yanı<br><a href="https://www.google.com/maps/search/S.O.S+Burger+Denizli">Yol tarifi</a></div>
+          <div><small>Saatler</small>Her gün 11:00-23:00</div>
+          <div><small>Instagram</small><a href="https://www.instagram.com/s.o.sburger/">@s.o.sburger</a></div>
+        </div>
+      </div>
+      <form class="kart" id="form" onsubmit="return false">
+        <fieldset><legend>Ne istersiniz?</legend><div class="secenek" id="ne"></div></fieldset>
+        <fieldset><legend>Kaç kişi?</legend><div class="secenek" id="kisi"></div></fieldset>
+        <fieldset><legend>Not</legend><div class="secenek" id="not"></div></fieldset>
+        <div class="mesaj" id="mesaj" aria-live="polite"></div>
+        <a class="btn kir" href="tel:+905559723020" id="ara">Hemen ara</a>
+        <p class="kucuk-not">Sipariş notu panoya da kopyalanır.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© S.O.S Burger · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: S.O.S Burger için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; menü başlıkları, saat, adres ve telefonlar Instagram profilinizden ve dijital menünüzden alındı, ürünler ve fiyatlar sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+
+<div class="yuzen"><a class="btn sari" href="tel:+905559723020">Ara, sipariş ver</a></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const sec = (id, ad, liste, ilk, cok) => $(id).innerHTML = liste.map((x,i) => `<label><input type="${cok?"checkbox":"radio"}" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
+sec("#ne","n",["Etli burger","Tavuklu burger","Glutensiz burger","Vejeteryan","Burrito","Taco","Aperatif"],0,true);
+sec("#kisi","k",["1","2","3-4","5+"],0);
+sec("#not","t",["Glutensiz","Acısız","Gel al"],-1,true);
+function guncelle(){
+  const n = [...document.querySelectorAll("[name=n]:checked")].map(x => x.value).join(", ") || "henüz seçmedim";
+  const t = [...document.querySelectorAll("[name=t]:checked")].map(x => x.value);
+  if (n.includes("Glutensiz") && !t.includes("Glutensiz")) t.unshift("Glutensiz");
+  const k = document.querySelector("[name=k]:checked").value;
+  $("#mesaj").textContent = `Merhaba, sipariş vermek istiyorum.\nİstediklerim: ${n}\nKişi sayısı: ${k}` + (t.length ? `\nNot: ${t.join(", ")}` : "");
+}
+$("#form").addEventListener("change", guncelle); guncelle();
+$("#ara").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#mesaj").textContent).catch(() => {}); });
+document.querySelectorAll(".filtre button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filtre button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  const f = b.dataset.f;
+  document.querySelectorAll("#liste > div").forEach(d => d.hidden = !(f === "hepsi" || (f === "gf" && d.dataset.t === "gf") || (f === "vej" && d.dataset.t === "vej")));
+}));
+</script>
+</body>
+</html>
