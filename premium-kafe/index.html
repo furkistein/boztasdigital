@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Travertina — Kahve & Mutfak · Denizli</title>
+  <meta name="description" content="Travertina: Pamukkale'nin beyaz taraçalarından ilham alan kahve ve mutfak evi. Menü, alerjen bilgili menü, rezervasyon ve konum. (Örnek çalışma — Boztaş Digital)">
+  <meta name="theme-color" content="#F3EDE3">
+  <meta property="og:title" content="Travertina — Kahve & Mutfak">
+  <meta property="og:description" content="Taşın sükûneti, fincanın sıcaklığı. Denizli'de bir kahve ve mutfak evi (örnek çalışma).">
+  <meta property="og:image" content="img/og.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script type="module" crossorigin src="./assets/index-C9_sTpFD.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CFyUGA5p.css">
+</head>
+<body>
+  <a class="atla" href="#icerik">İçeriğe geçin</a>
+
+  <header class="ust" id="ust">
+    <a class="marka" href="#sahne" data-kaydir aria-label="Travertina, başa dön">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4 0 4-3 8-3s4 3 8 3 4-3 8-3M4 16c4 0 4-3 8-3s4 3 8 3 4-3 8-3M4 10c4 0 4-3 8-3s4 3 8 3 4-3 8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Travertina</span>
+    </a>
+    <nav class="ust-nav" aria-label="Ana menü">
+      <a href="#secki" data-kaydir>Menü</a>
+      <a href="#gun" data-kaydir>Gün boyu</a>
+      <a href="#mekan" data-kaydir>Mekân</a>
+      <a href="#rezervasyon" data-kaydir>Rezervasyon</a>
+    </nav>
+    <a class="hap" href="../menu/" data-miknatis>Alerjen menü <span aria-hidden="true">↗</span></a>
+    <button class="menu-dugme" id="menuDugme" aria-expanded="false" aria-controls="mobilMenu"><span></span><span></span><span class="gizli-metin">Menüyü açın</span></button>
+  </header>
+
+  <div class="mobil-menu" id="mobilMenu" hidden>
+    <nav aria-label="Mobil menü">
+      <a href="#secki" data-kaydir>Menü</a>
+      <a href="#gun" data-kaydir>Gün boyu</a>
+      <a href="#mekan" data-kaydir>Mekân</a>
+      <a href="#rezervasyon" data-kaydir>Rezervasyon</a>
+      <a href="../menu/">Alerjen bilgili menü ↗</a>
+    </nav>
+    <p>Denizli · Her gün 08:00 – 23:00</p>
+  </div>
+
+  <main id="icerik">
+    <!-- 1. Kahraman: 3B fincan (Three.js) -->
+    <section class="sahne-sarmal" id="sahne" aria-label="Travertina'ya hoş geldiniz">
+      <div class="sahne">
+        <picture class="sahne-poster" id="sahnePoster"><source media="(max-aspect-ratio: 9/10)" srcset="img/poster-dik.webp"><img src="img/poster.webp" alt="" aria-hidden="true" width="1440" height="900" fetchpriority="high"></picture>
+        <canvas class="sahne-tuval" id="sahneTuval" aria-hidden="true"></canvas>
+        <div class="sahne-yazi" id="sahneYazi1">
+          <p class="ust-baslik"><span class="cizgi"></span>Denizli · Kahve &amp; Mutfak</p>
+          <h1 class="dev-baslik">
+            <span class="satir"><span>Taşın sükûneti,</span></span>
+            <span class="satir"><em>fincanın sıcaklığı.</em></span>
+          </h1>
+          <p class="sahne-alt">Pamukkale'nin beyaz taraçalarından ilham alan bir kahve ve mutfak evi. Sabah kahvesinden akşam yemeğine, yavaş ve özenli.</p>
+          <div class="dugmeler">
+            <a class="dugme dolu" href="#rezervasyon" data-kaydir data-miknatis>Masa ayırtın</a>
+            <a class="dugme cizgili" href="#secki" data-kaydir data-miknatis>Menüye göz atın</a>
+          </div>
+        </div>
+        <div class="sahne-yazi ikinci" id="sahneYazi2" aria-hidden="true">
+          <p class="ust-baslik"><span class="cizgi"></span>Yukarıdan bakınca</p>
+          <p class="orta-baslik">Her fincan,<br><em>yavaş bir sabah</em> gibi.</p>
+          <p class="sahne-alt">Çekirdekler haftalık kavrulur, süt tek tek köpürtülür. Acele etmeyiz; siz de etmeyin.</p>
+        </div>
+        <div class="kaydir-ipucu" aria-hidden="true"><span></span>Kaydırın</div>
+      </div>
+    </section>
+
+    <!-- 2. Manifesto: kelime kelime aydınlanan metin -->
+    <section class="manifesto" aria-label="Hikâyemiz">
+      <p class="ust-baslik"><span class="cizgi"></span>Hikâye</p>
+      <p class="manifesto-metin" id="manifesto">Traverten, suyun binlerce yıl boyunca sabırla bıraktığı taştır. Biz de mutfağımızı aynı sabırla kurduk: iyi çekirdek, yerel üretici, mevsiminde sebze ve her tabağa ayrılan zaman.</p>
+    </section>
+
+    <!-- 3. Seçkiler: masaüstünde yatay kayan şerit -->
+    <section class="secki-sarmal" id="secki" aria-label="Menüden seçkiler">
+      <div class="secki">
+        <div class="secki-bas">
+          <p class="ust-baslik"><span class="cizgi"></span>Mutfaktan seçkiler</p>
+          <h2 class="bolum-baslik">Beş tabak,<br><em>tek bir özen.</em></h2>
+          <p class="bolum-alt">Her tabağın alerjen bilgisi yanında. Tam menü ve 14 alerjen süzgeci tek dokunuş uzakta.</p>
+          <a class="metin-bag" href="../menu/">Alerjen bilgili menünün tamamı <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="serit-pencere"><div class="serit" id="serit">
+          <article class="tabak" data-imlec="Tadın">
+            <figure class="tabak-gorsel"><img src="img/flatwhite-700.webp" srcset="img/flatwhite-700.webp 700w, img/flatwhite-1100.webp 1100w" sizes="(max-width: 899px) 90vw, 30vw" width="700" height="900" alt="Traverten masada krem fincanda rozet desenli flat white" loading="lazy" decoding="async"></figure>
+            <div class="tabak-bilgi"><span class="no">01</span><h3>Travertina flat white</h3><p>Haftalık kavrulan tek köken espresso, ipeksi süt.</p><ul class="alerjen" aria-label="Alerjenler"><li>Süt</li></ul></div>
+          </article>
+          <article class="tabak" data-imlec="Tadın">
+            <figure class="tabak-gorsel"><img src="img/kahvalti-700.webp" srcset="img/kahvalti-700.webp 700w, img/kahvalti-1100.webp 1100w" sizes="(max-width: 899px) 90vw, 30vw" width="700" height="900" alt="Yukarıdan serpme kahvaltı: peynirler, zeytin, bal, simit ve çay" loading="lazy" decoding="async"></figure>
+            <div class="tabak-bilgi"><span class="no">02</span><h3>Taraça kahvaltısı</h3><p>Yerel peynirler, çiçek balı ve kaymak, sıcak simit, demlik çay.</p><ul class="alerjen" aria-label="Alerjenler"><li>Gluten</li><li>Süt</li><li>Yumurta</li></ul></div>
+          </article>
+          <article class="tabak" data-imlec="Tadın">
+            <figure class="tabak-gorsel"><img src="img/ana-700.webp" srcset="img/ana-700.webp 700w, img/ana-1100.webp 1100w" sizes="(max-width: 899px) 90vw, 30vw" width="700" height="900" alt="Lavaş üzerinde közde kuzu şiş, domates ve biber" loading="lazy" decoding="async"></figure>
+            <div class="tabak-bilgi"><span class="no">03</span><h3>Közde kuzu şiş</h3><p>Meşe kömüründe kuzu, közlenmiş domates ve biber, sıcak lavaş.</p><ul class="alerjen" aria-label="Alerjenler"><li>Gluten</li></ul></div>
+          </article>
+          <article class="tabak" data-imlec="Tadın">
+            <figure class="tabak-gorsel"><img src="img/tatli-700.webp" srcset="img/tatli-700.webp 700w, img/tatli-1100.webp 1100w" sizes="(max-width: 899px) 90vw, 30vw" width="700" height="900" alt="Pencere kenarında San Sebastian cheesecake dilimi, kruvasan ve kahve" loading="lazy" decoding="async"></figure>
+            <div class="tabak-bilgi"><span class="no">04</span><h3>San Sebastian</h3><p>Yanık yüzeyli, içi akışkan cheesecake; yanında günün kahvesi.</p><ul class="alerjen" aria-label="Alerjenler"><li>Süt</li><li>Yumurta</li><li>Gluten</li></ul></div>
+          </article>
+          <article class="tabak" data-imlec="Tadın">
+            <figure class="tabak-gorsel"><img src="img/limonata-700.webp" srcset="img/limonata-700.webp 700w, img/limonata-1100.webp 1100w" sizes="(max-width: 899px) 90vw, 30vw" width="700" height="900" alt="Naneli, limon dilimli ev yapımı limonata" loading="lazy" decoding="async"></figure>
+            <div class="tabak-bilgi"><span class="no">05</span><h3>Naneli ev limonatası</h3><p>Günlük sıkılır, az şekerli, bol buzlu.</p><ul class="alerjen bos" aria-label="Alerjenler"><li>14 alerjenden hiçbiri yok</li></ul></div>
+          </article>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- 4. Günün üç hali: kaydırmaya bağlı shader geçişi -->
+    <section class="gun-sarmal" id="gun" aria-label="Gün boyu Travertina">
+      <div class="gun">
+        <canvas class="gun-tuval" id="gunTuval" aria-hidden="true"></canvas>
+        <picture><source media="(max-width: 899px)" srcset="img/sabah-dik-900.webp"><img class="gun-yedek" src="img/sabah-1600.webp" alt="Sabah güneşi alan, portakal ağaçlı kış bahçesi" width="1600" height="933" loading="lazy" decoding="async"></picture>
+        <div class="gun-ic">
+          <p class="ust-baslik acik"><span class="cizgi"></span>Günün üç hali</p>
+          <ol class="gun-liste" id="gunListe">
+            <li class="etkin"><span class="saat">08:00</span><b>Sabah</b><span class="acik-metin">Güneş alan kış bahçesinde taze demlenmiş kahve ve kahvaltı.</span></li>
+            <li><span class="saat">13:00</span><b>Öğle</b><span class="acik-metin">Dağlara bakan terasta hafif tabaklar ve soğuk içecekler.</span></li>
+            <li><span class="saat">20:00</span><b>Akşam</b><span class="acik-metin">Asma altında fener ışığı, akşam yemeği ve yavaş bir sohbet.</span></li>
+          </ol>
+          <div class="gun-cubuk" aria-hidden="true"><span id="gunCubuk"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Mekân -->
+    <section class="mekan" id="mekan" aria-label="Mekân">
+      <div class="mekan-yazi">
+        <p class="ust-baslik"><span class="cizgi"></span>Mekân</p>
+        <h2 class="bolum-baslik">Işık, ahşap<br><em>ve sükûnet.</em></h2>
+        <p class="bolum-alt">Geniş pencereler, gün boyu değişen ışık, 60 kişilik salon ve dağlara bakan teras. Doğum günü, iş yemeği ya da sadece sessiz bir kahve için.</p>
+        <dl class="olcu">
+          <div><dt>Salon</dt><dd>60 kişi</dd></div>
+          <div><dt>Teras</dt><dd>40 kişi</dd></div>
+          <div><dt>Özel masa</dt><dd>12 kişi</dd></div>
+        </dl>
+      </div>
+      <figure class="mekan-gorsel g1" data-imlec="Keşfedin"><div class="maske"><img src="img/barista-900.webp" srcset="img/barista-900.webp 900w, img/barista-1400.webp 1400w" sizes="(max-width: 899px) 92vw, 44vw" width="900" height="700" alt="Baristanın fincana köpük süt döktüğü an" loading="lazy" decoding="async" data-paralaks></div><figcaption>Bar · her fincan elde</figcaption></figure>
+      <figure class="mekan-gorsel g2" data-imlec="Keşfedin"><div class="maske"><img src="img/mekan1-700.webp" srcset="img/mekan1-700.webp 700w, img/mekan1-1100.webp 1100w" sizes="(max-width: 899px) 92vw, 26vw" width="700" height="900" alt="Geniş pencereli, ahşap masalı aydınlık salon" loading="lazy" decoding="async" data-paralaks></div><figcaption>Salon · gün ışığı</figcaption></figure>
+      <figure class="mekan-gorsel g3" data-imlec="Keşfedin"><div class="maske"><img src="img/mekan2-700.webp" srcset="img/mekan2-700.webp 700w, img/mekan2-1100.webp 1100w" sizes="(max-width: 899px) 92vw, 26vw" width="700" height="900" alt="Raflarında fincanlar dizili ahşap kahve tezgâhı" loading="lazy" decoding="async" data-paralaks></div><figcaption>Tezgâh · sabahın ilk demlemesi</figcaption></figure>
+    </section>
+
+    <!-- 6. Alerjen bilgili menü (QR menü ürünü) -->
+    <section class="alerjen-bant" aria-label="Alerjen bilgili menü">
+      <div class="alerjen-ic">
+        <div class="qr" aria-hidden="true">
+          <svg viewBox="0 0 29 29" shape-rendering="crispEdges" id="qrSekil"></svg>
+          <span class="qr-tarama"></span>
+        </div>
+        <div>
+          <p class="ust-baslik acik"><span class="cizgi"></span>Masanızdaki QR</p>
+          <h2 class="bolum-baslik acik">14 alerjen,<br><em>tek dokunuşla.</em></h2>
+          <p class="bolum-alt acik">Gluten, süt, fındık, susam… Menüdeki her tabağın içeriği açıkça yazılı. Kaçınmak istediklerinizi seçin, menü size uygun tabakları göstersin.</p>
+          <a class="dugme acik-dolu" href="../menu/" data-miknatis>Alerjen bilgili menüyü açın <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Rezervasyon ve konum -->
+    <section class="rezervasyon" id="rezervasyon" aria-label="Rezervasyon ve konum">
+      <div class="rez-kart">
+        <p class="ust-baslik"><span class="cizgi"></span>Rezervasyon</p>
+        <h2 class="bolum-baslik">Masanız<br><em>hazır olsun.</em></h2>
+        <form class="rez-form" id="rezForm" novalidate>
+          <fieldset><legend>Gün</legend><div class="secenekler" id="rezGun"></div></fieldset>
+          <fieldset><legend>Saat</legend><div class="secenekler" id="rezSaat"></div></fieldset>
+          <fieldset class="kisi"><legend>Kişi sayısı</legend>
+            <div class="sayac"><button type="button" id="kisiAz" aria-label="Bir kişi azaltın">−</button><output id="kisiSay" aria-live="polite">2</output><button type="button" id="kisiCok" aria-label="Bir kişi ekleyin">+</button></div>
+          </fieldset>
+          <p class="ozet" id="rezOzet" aria-live="polite"></p>
+          <button class="dugme dolu genis" type="submit" data-miknatis>Rezervasyon isteği gönderin</button>
+          <p class="not" id="rezNot" hidden>Bu bir örnek çalışmadır. Gerçek sitede isteğiniz WhatsApp üzerinden doğrudan işletmeye iletilir.</p>
+        </form>
+      </div>
+      <div class="konum-kart">
+        <div class="harita" aria-hidden="true">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+            <path class="yol" d="M-10 210 C 80 190, 140 240, 220 200 S 360 120, 420 140"/>
+            <path class="yol ince" d="M60 -10 C 90 80, 70 160, 120 310"/>
+            <path class="yol ince" d="M300 -10 C 280 90, 330 180, 290 310"/>
+            <path class="yol ince" d="M-10 80 C 120 100, 260 60, 420 90"/>
+            <circle class="nabiz" cx="214" cy="160" r="10"/>
+            <circle class="nokta" cx="214" cy="160" r="6"/>
+          </svg>
+        </div>
+        <div class="konum-bilgi">
+          <p class="ust-baslik"><span class="cizgi"></span>Konum</p>
+          <p class="adres">Merkez, Denizli<br><small>(örnek adres)</small></p>
+          <dl class="saatler"><div><dt>Hafta içi</dt><dd>08:00 – 23:00</dd></div><div><dt>Hafta sonu</dt><dd>09:00 – 24:00</dd></div></dl>
+          <a class="dugme cizgili" href="https://www.google.com/maps/search/?api=1&amp;query=Denizli" target="_blank" rel="noopener" data-miknatis>Yol tarifi alın <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Yorumlar: Google'a yönlendirme (uydurma yorum yok) -->
+    <section class="yorumlar" aria-label="Misafir yorumları">
+      <p class="ust-baslik"><span class="cizgi"></span>Misafirlerimiz ne diyor?</p>
+      <h2 class="dev-baslik kucuk">Yorumları biz yazmıyoruz.<br><em>Misafirlerimiz yazıyor.</em></h2>
+      <p class="bolum-alt">Düzenlenmemiş, süzülmemiş: bütün yorumlar Google profilimizde.</p>
+      <a class="dugme dolu" href="https://www.google.com/maps/search/?api=1&amp;query=Denizli%20kafe" target="_blank" rel="noopener" data-miknatis>Google yorumlarını okuyun <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="alt">
+    <p class="alt-marka" aria-hidden="true">Travertina</p>
+    <div class="alt-satir">
+      <p>Kahve &amp; Mutfak · Denizli</p>
+      <p><a href="../menu/">Alerjen menü</a> · <a href="#rezervasyon" data-kaydir>Rezervasyon</a> · <a href="#sahne" data-kaydir>Başa dön ↑</a></p>
+      <p class="ornek">Örnek çalışma — <a href="../">Boztaş Digital</a> tarafından hazırlanmıştır. İşletme adı kurgusaldır.</p>
+    </div>
+  </footer>
+
+  <div class="imlec" id="imlec" aria-hidden="true"><span></span></div>
+</body>
+</html>
