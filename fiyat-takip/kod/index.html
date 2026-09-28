@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaynak kodu | Tedarikçi fiyat &amp; stok senkronu</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2317191c%22/%3E%3Cpath d=%22M8 20l5-5 4 4 7-8%22 stroke=%22%2358d68d%22 stroke-width=%223%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<style>
+:root{--zemin:#f3f1ec;--kart:#fffefb;--m:#17191c;--s:#5f646b;--c:#e2ded5;--mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--zemin);color:var(--m);font-size:14px}
+header{padding:16px 20px;border-bottom:1px solid var(--c);display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--kart)}
+header h1{font-size:17px}
+header a{color:var(--m);font-weight:600}
+.duzen{display:grid;grid-template-columns:270px 1fr;min-height:calc(100vh - 58px)}
+nav{border-right:1px solid var(--c);padding:12px 8px;background:var(--kart);overflow:auto}
+nav .grup{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--s);margin:12px 10px 4px;font-weight:700}
+nav a{display:block;padding:5px 10px;border-radius:7px;color:var(--m);text-decoration:none;font-family:var(--mono);font-size:12.5px;word-break:break-all}
+nav a:hover{background:#efece5}
+nav a[aria-current="true"]{background:var(--m);color:#fff}
+nav small{display:block;font-family:inherit;color:var(--s);font-size:11.5px}
+nav a[aria-current="true"] small{color:#c9c6bf}
+main{min-width:0;padding:16px 20px}
+.dosya-bas{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.dosya-bas b{font-family:var(--mono)}
+.dosya-bas span{color:var(--s);font-size:12.5px}
+pre{background:#16181b;color:#e6e3dc;border-radius:12px;padding:16px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.55;tab-size:4;counter-reset:s}
+pre .s{display:block;padding-left:3.6em;text-indent:-3.6em;white-space:pre-wrap;word-break:break-word}
+pre .s::before{counter-increment:s;content:counter(s);display:inline-block;width:2.8em;margin-right:.8em;text-align:right;color:#6b6f75;text-indent:0}
+.yorum{color:#8e9aa6}.dize{color:#a6d9a0}.anah{color:#f2b872}.degisken{color:#9ec5f8}
+@media (max-width:760px){.duzen{grid-template-columns:1fr}nav{border-right:0;border-bottom:1px solid var(--c);max-height:260px}main{padding:12px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Kaynak kodu — tedarikçi fiyat &amp; stok senkronu (PHP 8)</h1>
+  <a href="../">← Senkron raporu (demo)</a>
+</header>
+<div class="duzen">
+  <nav id="liste" aria-label="Dosyalar"></nav>
+  <main>
+    <div class="dosya-bas"><b id="ad"></b><span id="bilgi"></span></div>
+    <pre id="icerik">Yükleniyor…</pre>
+  </main>
+</div>
+<script>
+(() => {
+  const gruplar = [
+    ['Başlangıç', [['README.md', 'kurulum, cron, yeni tedarikçi'], ['senkron.php', 'cron betiği'], ['ayarlar.example.php', 'tüm ayarlar'], ['sema.sql', 'MySQL tabloları'], ['onay.php', 'büyük zam onayı']]],
+    ['Motor', [['lib/Senkron.php', 'eşle, seç, fiyatla, yaz'], ['lib/Fiyatlama.php', 'kâr kuralı, yuvarlama'], ['lib/Doviz.php', 'TCMB kuru'], ['lib/Bildirim.php', 'e-posta / Telegram'], ['lib/yardimci.php', 'sayı, SKU, günlük'], ['lib/yukle.php', '']]],
+    ['Tedarikçi adaptörleri', [['tedarikci/Tedarikci.php', 'ortak arayüz'], ['tedarikci/JsonApiTedarikci.php', ''], ['tedarikci/XmlFeedTedarikci.php', ''], ['tedarikci/CsvTedarikci.php', '']]],
+    ['Test', [['test/demo.php', 'iki turluk uçtan uca demo'], ['test/testler.php', 'birim + uçtan uca testler'], ['test/ayarlar.demo.php', ''], ['test/sqlite.php', '']]],
+    ['Örnek veri', [['ornek-veri/guncel/anadolu-sayfa1.json', 'JSON API, sayfa 1'], ['ornek-veri/guncel/ege.xml', 'XML feed'], ['ornek-veri/guncel/marmara.csv', 'CSV, Windows-1254'], ['ornek-veri/guncel/global.json', 'JSON, USD'], ['ornek-veri/guncel/tcmb-today.xml', 'TCMB kur örneği'], ['ornek-veri/site-urunler.csv', 'örnek mağaza']]],
+  ];
+  const nav = document.getElementById('liste');
+  nav.innerHTML = gruplar.map(([g, l]) => `<div class="grup">${g}</div>` + l.map(([d, a]) => `<a href="#${d}" data-d="${d}">${d}${a ? `<small>${a}</small>` : ''}</a>`).join('')).join('');
+  const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+  // Çok basit renklendirme (PHP/SQL): yorum, dize, anahtar kelime, değişken
+  const renk = (satir, uzanti) => {
+    if (!/^(php|sql)$/.test(uzanti)) return esc(satir);
+    const kalip = /(\/\/.*$|#(?!\[).*$|--\s.*$|\/\*.*?\*\/|^\s*\*.*$)|('(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*")|(\$[A-Za-z_]\w*)|\b(function|return|if|else|elseif|foreach|for|while|try|catch|finally|throw|new|class|final|abstract|interface|implements|extends|private|protected|public|static|const|require|require_once|match|default|fn|yield|array|null|true|false|CREATE|TABLE|PRIMARY|KEY|NOT|NULL|DEFAULT|INSERT|UPDATE|SELECT|DELETE|FROM|WHERE|SET|INTO|VALUES)\b/g;
+    let cikti = '', son = 0, m;
+    while ((m = kalip.exec(satir))) {
+      cikti += esc(satir.slice(son, m.index));
+      const sinif = m[1] ? 'yorum' : m[2] ? 'dize' : m[3] ? 'degisken' : 'anah';
+      cikti += `<span class="${sinif}">${esc(m[0])}</span>`;
+      son = m.index + m[0].length;
+    }
+    return cikti + esc(satir.slice(son));
+  };
+  const ac = async d => {
+    document.querySelectorAll('nav a').forEach(a => a.setAttribute('aria-current', String(a.dataset.d === d)));
+    document.getElementById('ad').textContent = d;
+    const pre = document.getElementById('icerik');
+    try {
+      const y = await fetch(d, {cache: 'no-cache'});
+      if (!y.ok) throw new Error('HTTP ' + y.status);
+      const tampon = await y.arrayBuffer();
+      const metin = new TextDecoder(d.endsWith('marmara.csv') ? 'windows-1254' : 'utf-8').decode(tampon);
+      const satirlar = metin.replace(/\n$/, '').split(/\r?\n/);
+      const uz = d.split('.').pop();
+      pre.innerHTML = satirlar.map(s => `<span class="s">${renk(s, uz) || ' '}</span>`).join('');
+      document.getElementById('bilgi').textContent = `${satirlar.length} satır · ${(tampon.byteLength / 1024).toFixed(1).replace('.', ',')} KB`;
+    } catch (e) {
+      pre.textContent = 'Dosya açılamadı (' + e.message + '). Sayfayı bir web sunucusu üzerinden açın.';
+    }
+  };
+  const hash = () => decodeURIComponent(location.hash.slice(1)) || 'README.md';
+  window.addEventListener('hashchange', () => ac(hash()));
+  ac(hash());
+})();
+</script>
+</body>
+</html>

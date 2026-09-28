@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tarih_Date Tarih="26.09.2026" Date="26.09.2026" Bulten_No="2026/185">
+<Currency CrossOrder="0" Kod="USD" CurrencyCode="USD"><Unit>1</Unit><Isim>ABD DOLARI</Isim><CurrencyName>US DOLLAR</CurrencyName><ForexBuying>46.0232</ForexBuying><ForexSelling>46.1032</ForexSelling></Currency>
+<Currency CrossOrder="9" Kod="EUR" CurrencyCode="EUR"><Unit>1</Unit><Isim>EURO</Isim><CurrencyName>EURO</CurrencyName><ForexBuying>53.6915</ForexBuying><ForexSelling>53.7815</ForexSelling></Currency>
+</Tarih_Date>

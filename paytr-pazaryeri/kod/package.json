@@ -1,0 +1,15 @@
+{
+  "name": "paytr-pazaryeri-rezervasyon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rezervasyon uygulaması için PayTR iFrame + Pazaryeri (Platform Transfer) entegrasyonu örneği",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=20.12" },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

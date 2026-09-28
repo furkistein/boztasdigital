@@ -1,0 +1,47 @@
+stok_kodu;barkod;urun_adi;kategori;fiyat;stok;aktif;resim
+EV-1001;8690000100017;Tost Makinesi 1800W Granit Plaka;Küçük Ev Aletleri;1654.90;5;1;
+EV-1002;8690000100024;Cam Kettle 1.7 L LED Işıklı;Küçük Ev Aletleri;1003.90;6;1;/resimler/ev-1002.jpg
+EV-1003;8690000100031;Smoothie Blender 600W;Küçük Ev Aletleri;1413.90;7;1;/resimler/ev-1003.jpg
+EV-1004;8690000100048;Filtre Kahve Makinesi 1.25 L;Küçük Ev Aletleri;1822.90;8;1;/resimler/ev-1004.jpg
+EV-1005;8690000100055;Airfryer 4.5 L Dijital;Küçük Ev Aletleri;3998.90;9;1;/resimler/ev-1005.jpg
+EV-1006;8690000100062;Buharlı Ütü 2400W Seramik Taban;Küçük Ev Aletleri;2082.90;10;1;
+EV-1007;8690000100079;Dikey Şarjlı Süpürge 22.2V;Küçük Ev Aletleri;6286.90;11;1;/resimler/ev-1007.jpg
+EV-1008;8690000100086;El Mikseri 5 Kademe;Küçük Ev Aletleri;1134.90;12;1;/resimler/ev-1008.jpg
+EV-1009;8690000100093;Doğrayıcı 500 ml Cam Hazneli;Küçük Ev Aletleri;873.90;13;1;/resimler/ev-1009.jpg
+EV-1010;8690000100109;Türk Kahvesi Makinesi Köpük Sensörlü;Küçük Ev Aletleri;2491.90;5;1;/resimler/ev-1010.jpg
+EV-1011;8690000100116;Mini Fırın 36 L Turbo;Küçük Ev Aletleri;5188.90;6;1;
+EV-1012;8690000100123;Waffle Makinesi Çift;Küçük Ev Aletleri;1338.90;7;1;/resimler/ev-1012.jpg
+TA-2001;8690000200014;Hızlı Şarj Adaptörü 20W USB-C;Telefon Aksesuar;269.90;8;1;/resimler/ta-2001.jpg
+TA-2002;8690000200021;USB-C Örgülü Kablo 1 m;Telefon Aksesuar;114.90;9;1;/resimler/ta-2002.jpg
+TA-2003;8690000200038;Powerbank 10.000 mAh PD;Telefon Aksesuar;762.90;10;1;/resimler/ta-2003.jpg
+TA-2004;8690000200045;Kablosuz Kulak İçi Kulaklık ANC;Telefon Aksesuar;1282.90;11;1;
+TA-2005;8690000200052;Araç İçi Manyetik Telefon Tutucu;Telefon Aksesuar;218.90;12;1;/resimler/ta-2005.jpg
+TA-2006;8690000200069;Kablosuz Şarj Pedi 15W;Telefon Aksesuar;436.90;13;1;/resimler/ta-2006.jpg
+TA-2007;8690000200076;Temperli Ekran Koruyucu 2'li;Telefon Aksesuar;70.90;5;1;/resimler/ta-2007.jpg
+TA-2008;8690000200083;Bluetooth Hoparlör 10W Suya Dayanıklı;Telefon Aksesuar;966.90;6;1;/resimler/ta-2008.jpg
+TA-2009;8690000200090;Akıllı Saat Silikon Kordon;Telefon Aksesuar;101.90;7;1;
+TA-2010;8690000200106;Çift Portlu Araç Şarjı 38W;Telefon Aksesuar;311.90;8;1;/resimler/ta-2010.jpg
+BL-3001;8690000300011;Kablosuz Sessiz Mouse;Bilgisayar;343.90;9;1;/resimler/bl-3001.jpg
+BL-3002;8690000300028;Mekanik Klavye TR Q RGB;Bilgisayar;1822.90;10;1;/resimler/bl-3002.jpg
+BL-3003;8690000300035;USB 3.2 Flash Bellek 64 GB;Bilgisayar;231.90;11;1;/resimler/bl-3003.jpg
+BL-3004;8690000300042;NVMe SSD 512 GB;Bilgisayar;2398.90;12;1;
+BL-3005;8690000300059;Webcam 1080p Mikrofonlu;Bilgisayar;1189.90;13;1;/resimler/bl-3005.jpg
+BL-3006;8690000300066;Alüminyum Laptop Standı;Bilgisayar;613.90;5;1;/resimler/bl-3006.jpg
+BL-3007;8690000300073;Mousepad XL 90x40;Bilgisayar;259.90;6;1;/resimler/bl-3007.jpg
+BL-3008;8690000300080;USB-C Hub 7'si 1 Arada;Bilgisayar;1041.90;7;1;/resimler/bl-3008.jpg
+BL-3009;8690000300097;Harici Disk Kutusu 2.5 inç;Bilgisayar;390.90;8;1;
+BL-3010;8690000300103;Oyuncu Kulaklığı 7.1;Bilgisayar;1617.90;9;1;/resimler/bl-3010.jpg
+KB-4001;8690000400018;Seramik Saç Düzleştirici;Kişisel Bakım;1282.90;10;1;/resimler/kb-4001.jpg
+KB-4002;8690000400025;Islak Kuru Tıraş Makinesi;Kişisel Bakım;2138.90;11;1;/resimler/kb-4002.jpg
+KB-4003;8690000400032;Şarjlı Diş Fırçası 2 Başlıklı;Kişisel Bakım;1003.90;12;1;/resimler/kb-4003.jpg
+KB-4004;8690000400049;Dijital Banyo Tartısı;Kişisel Bakım;483.90;13;1;
+KB-4005;8690000400056;Saç Kesme Makinesi Şarjlı;Kişisel Bakım;1338.90;5;1;/resimler/kb-4005.jpg
+KB-4006;8690000400063;Saç Kurutma Makinesi 2200W İyonik;Kişisel Bakım;1543.90;6;1;/resimler/kb-4006.jpg
+YS-5001;8690000500015;LED Masa Lambası Dokunmatik;Ev & Yaşam;548.90;7;1;/resimler/ys-5001.jpg
+YS-5002;8690000500022;Akıllı Priz Wi-Fi Enerji Ölçer;Ev & Yaşam;445.90;8;1;/resimler/ys-5002.jpg
+YS-5003;8690000500039;Akım Korumalı Uzatma 5'li;Ev & Yaşam;390.90;9;1;
+YS-5004;8690000500046;Çelik Termos 500 ml;Ev & Yaşam;325.90;10;1;/resimler/ys-5004.jpg
+YS-5005;8690000500053;Hava Nemlendirici Ultrasonik;Ev & Yaşam;1134.90;11;1;/resimler/ys-5005.jpg
+YS-5006;8690000500060;Hareket Sensörlü Dolap Işığı 3'lü;Ev & Yaşam;278.90;12;1;/resimler/ys-5006.jpg
+YS-5007;8690000500077;Dijital Mutfak Tartısı;Ev & Yaşam;306.90;13;1;/resimler/ys-5007.jpg
+YS-5008;8690000500084;Kablosuz Kapı Zili;Ev & Yaşam;427.90;5;1;

@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PayTR Pazaryeri akış simülatörü | Rezervasyon uygulaması</title>
+<meta name="description" content="Rezervasyon uygulaması için PayTR iFrame + Pazaryeri (Platform Transfer) akışının adım adım simülasyonu: token, ödeme, bildirim doğrulama, işletmeye transfer, platform komisyonu.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e6ecf2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2314213d%22/%3E%3Cpath d=%22M8 21h7v-10h9%22 stroke=%22%23e0a100%22 stroke-width=%223%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;750&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kagit:#e6ecf2; --kart:#fbfcfd; --murekkep:#14213d; --soluk:#566377; --cizgi:#cbd5e1;
+  --platform:#c98f00; --platformAcik:#fff2cc; --isletme:#0f7c75; --isletmeAcik:#d6f0ec; --hata:#c2362b; --hataAcik:#fbe3e0;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Onest,ui-sans-serif,"Segoe UI",Roboto,Arial,sans-serif;background:var(--kagit);color:var(--murekkep);line-height:1.55;font-size:16px;overflow-x:hidden}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--platform);outline-offset:2px;border-radius:6px}
+.kap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.not{background:var(--murekkep);color:#e6ecf2;font-size:.9rem;padding:9px 16px;text-align:center}
+.not b{color:#ffd66b;font-weight:600}
+
+/* kapak */
+.kapak{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 40px}
+.kapak h1{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.06;letter-spacing:-.025em;font-weight:750;max-width:13em}
+.kapak p{color:var(--soluk);max-width:36em;margin-top:16px;font-size:1.06rem}
+.kapak ul{list-style:none;margin-top:22px;display:grid;gap:8px;color:var(--murekkep);font-size:.97rem}
+.kapak li{padding-left:22px;position:relative}
+.kapak li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--isletme)}
+
+/* dekont (tutar bölüşümü) */
+.dekont{background:var(--kart);border-radius:14px;padding:26px 26px 22px;box-shadow:0 1px 0 #fff inset,0 18px 40px -24px rgba(20,33,61,.45);position:relative}
+.dekont h2{font-size:1.02rem;font-weight:600;margin-bottom:14px}
+.senaryolar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.senaryo{border:1.5px solid var(--cizgi);background:transparent;border-radius:10px;padding:10px 10px 9px;text-align:left;line-height:1.25;min-width:0}
+.senaryo b{display:block;font-weight:600;font-size:.93rem}
+.senaryo span{font-size:.8rem;color:var(--soluk)}
+.senaryo[aria-pressed=true]{border-color:var(--murekkep);background:var(--murekkep);color:#fff}
+.senaryo[aria-pressed=true] span{color:#c7d2e0}
+.alanlar{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.alanlar label{font-size:.85rem;color:var(--soluk);display:grid;gap:4px}
+.alanlar input{border:1.5px solid var(--cizgi);background:#fff;border-radius:9px;padding:9px 11px;font-family:var(--mono);font-size:1rem;width:100%;min-width:0}
+.alanlar input:focus{outline:none;border-color:var(--murekkep)}
+.uyari{color:var(--hata);font-size:.85rem;min-height:1.3em;margin-top:6px}
+.toplam{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;border-top:1.5px dashed var(--cizgi);padding-top:14px}
+.toplam span{color:var(--soluk)}
+.toplam strong{font-family:var(--mono);font-size:1.7rem;font-weight:600;letter-spacing:-.02em}
+.serit{display:flex;height:46px;border-radius:9px;overflow:hidden;margin:14px 0 10px;background:var(--cizgi)}
+.serit div{display:flex;align-items:center;padding:0 10px;font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;transition:flex-basis .5s cubic-bezier(.3,.7,.2,1)}
+.serit .s-isl{background:var(--isletme);color:#fff}
+.serit .s-plt{background:var(--platform);color:#241a00;justify-content:flex-end}
+.paylar{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pay{border-radius:9px;padding:9px 11px;min-width:0}
+.pay small{display:block;font-size:.8rem}
+.pay b{font-family:var(--mono);font-size:1.08rem;font-weight:600}
+.pay.isl{background:var(--isletmeAcik)}.pay.plt{background:var(--platformAcik)}
+.pay em{display:block;font-style:normal;font-size:.75rem;color:var(--soluk);font-family:var(--mono)}
+
+/* akış */
+.bolum{padding-block:34px}
+.bolum>h2{font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.015em;font-weight:750}
+.bolum>p.ac{color:var(--soluk);max-width:44em;margin-top:6px}
+.harita{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin:26px 0 22px;padding:0 4px}
+.harita::before{content:"";position:absolute;left:12.5%;right:12.5%;top:27px;height:2px;background:repeating-linear-gradient(90deg,var(--cizgi) 0 8px,transparent 8px 14px)}
+.dugum{position:relative;text-align:center;font-size:.86rem;color:var(--soluk);transition:color .3s}
+.dugum i{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 6px;border-radius:50%;background:var(--kart);border:2px solid var(--cizgi);font-style:normal;font-weight:750;font-size:1.05rem;color:var(--soluk);transition:all .3s}
+.dugum.aktif{color:var(--murekkep)}
+.dugum.aktif i{border-color:var(--murekkep);color:var(--murekkep);box-shadow:0 0 0 5px rgba(20,33,61,.08)}
+.paket{position:absolute;top:18px;left:12.5%;width:20px;height:20px;margin-left:-10px;border-radius:5px;background:var(--murekkep);transition:left .9s cubic-bezier(.5,0,.2,1),background .3s;z-index:2;box-shadow:0 4px 10px -2px rgba(20,33,61,.5)}
+.paket.p-plt{background:var(--platform)}.paket.p-isl{background:var(--isletme)}.paket.p-hata{background:var(--hata)}
+
+.akis{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start}
+.adimlar{list-style:none;counter-reset:a;display:grid;gap:4px;position:sticky;top:14px}
+.adimlar button{width:100%;display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center;text-align:left;background:none;border:0;border-radius:10px;padding:8px 10px;color:var(--soluk);line-height:1.25}
+.adimlar button span.n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--cizgi);font-size:.82rem;font-weight:600;font-family:var(--mono)}
+.adimlar button.bitti{color:var(--murekkep)}
+.adimlar button.bitti span.n{background:var(--isletme);border-color:var(--isletme);color:#fff}
+.adimlar button.simdi{background:var(--kart);color:var(--murekkep);font-weight:600}
+.adimlar button.simdi span.n{border-color:var(--murekkep);background:var(--murekkep);color:#fff}
+.adimlar button:disabled{cursor:default;opacity:.55}
+.kontrol{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:600;background:var(--murekkep);color:#fff}
+.btn.ikincil{background:transparent;border:1.5px solid var(--murekkep);color:var(--murekkep)}
+.btn.tehlike{background:transparent;border:1.5px solid var(--hata);color:var(--hata)}
+.btn:disabled{opacity:.4;cursor:default}
+
+.panel{background:var(--kart);border-radius:14px;padding:26px;min-width:0;min-height:420px}
+.panel h3{font-size:1.3rem;letter-spacing:-.01em;line-height:1.2}
+.panel .kim{font-size:.9rem;color:var(--soluk);margin-top:4px}
+.panel p.acik{margin-top:12px;max-width:62ch}
+.uc{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:.82rem;background:var(--kagit);border-radius:7px;padding:6px 9px;word-break:break-all}
+.uc b{color:var(--isletme);font-weight:600;margin-right:6px}
+.tablo{width:100%;border-collapse:collapse;margin-top:16px;font-size:.86rem;table-layout:fixed}
+.tablo td{border-top:1px solid #e3e8ef;padding:7px 8px 7px 0;vertical-align:top;overflow-wrap:anywhere}
+.tablo td:first-child{font-family:var(--mono);color:var(--soluk);width:38%}
+.tablo td:last-child{font-family:var(--mono)}
+.tablo tr.imza td:last-child{color:var(--isletme);font-weight:600}
+.h4{font-size:.95rem;font-weight:600;margin-top:22px}
+.mesaj{margin-top:8px;font-family:var(--mono);font-size:.8rem;line-height:1.9;background:var(--kagit);border-radius:9px;padding:12px;word-break:break-all}
+.mesaj span{border-radius:4px;padding:1px 2px;margin-right:1px}
+.mesaj .salt{background:var(--platformAcik);outline:1px dashed var(--platform)}
+.mesaj span:nth-child(3n+1):not(.salt){background:#dde7f5}
+.mesaj span:nth-child(3n+2):not(.salt){background:#e2f1ee}
+.mesaj span:nth-child(3n):not(.salt){background:#ece4f6}
+.formul{font-size:.84rem;color:var(--soluk);margin-top:8px}
+.formul code{font-family:var(--mono);font-size:.8rem;color:var(--murekkep);overflow-wrap:anywhere}
+.sonuc>div{min-width:0}
+.sonuc{margin-top:16px;border-radius:10px;padding:12px 14px;font-size:.93rem;display:flex;gap:10px;align-items:flex-start}
+.sonuc.iyi{background:var(--isletmeAcik)}.sonuc.kotu{background:var(--hataAcik)}.sonuc.bilgi{background:var(--platformAcik)}
+.sonuc code{font-family:var(--mono);font-size:.82rem;overflow-wrap:anywhere}
+.odeme{margin-top:18px;max-width:360px;border:1.5px solid var(--cizgi);border-radius:12px;padding:16px}
+.odeme .kartno{font-family:var(--mono);letter-spacing:.08em;background:var(--kagit);border-radius:8px;padding:10px 12px;margin:10px 0}
+.odeme .kucuk{font-size:.8rem;color:var(--soluk)}
+.ozet{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.ozet div{border-radius:10px;padding:12px;background:var(--kagit);min-width:0}
+.ozet small{display:block;font-size:.8rem;color:var(--soluk)}
+.ozet b{font-family:var(--mono);font-size:1.15rem}
+.ozet .o-isl{background:var(--isletmeAcik)}.ozet .o-plt{background:var(--platformAcik)}
+.yeni{animation:gel .35s ease-out}
+@keyframes gel{from{opacity:0;transform:translateY(6px)}}
+
+/* kod */
+.sekmeler{display:flex;gap:6px;margin-top:18px;flex-wrap:wrap}
+.sekme{border:1.5px solid var(--cizgi);background:transparent;border-radius:9px;padding:7px 12px;font-family:var(--mono);font-size:.85rem}
+.sekme[aria-selected=true]{background:var(--murekkep);border-color:var(--murekkep);color:#fff}
+.kod{margin-top:10px;background:#101a30;color:#dbe4f0;border-radius:12px;padding:18px 0;max-height:640px;overflow:auto;font-family:var(--mono);font-size:.8rem;line-height:1.6;tab-size:2}
+.kod pre{padding:0 18px;white-space:pre;min-width:max-content}
+.kod .c{color:#7f8fa8;font-style:italic}.kod .s{color:#9fd8b0}.kod .k{color:#f2c46b}.kod .n{color:#9cc3ff}
+.dosyalar{margin-top:14px;display:flex;gap:10px 18px;flex-wrap:wrap;font-size:.92rem}
+.dosyalar a{color:var(--murekkep);text-underline-offset:3px}
+.testler{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.testler div{background:var(--kart);border-radius:12px;padding:14px 16px;font-size:.92rem}
+.testler b{display:block;margin-bottom:2px}
+footer{padding-block:30px 50px;color:var(--soluk);font-size:.85rem}
+
+@media (max-width:980px){
+  .kapak{grid-template-columns:1fr;gap:30px;padding-block:36px 30px}
+  .akis{grid-template-columns:1fr}
+  .adimlar{position:static;grid-template-columns:repeat(2,1fr)}
+  .testler{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .kap{padding-inline:14px}
+  .not{font-size:.84rem}
+  .dekont{padding:20px 16px 18px}
+  .senaryolar{grid-template-columns:1fr}
+  .senaryo{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .senaryo b{display:inline}
+  .panel{padding:18px 14px}
+  .adimlar{grid-template-columns:1fr}
+  .adimlar button{padding:6px 8px}
+  .dugum{font-size:.74rem}
+  .dugum i{width:46px;height:46px;font-size:.95rem}
+  .harita::before{top:22px}.paket{top:13px}
+  .ozet{grid-template-columns:1fr}
+  .tablo td:first-child{width:44%}
+  .serit div{font-size:.74rem;padding:0 6px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="not">Demo: <b>test anahtarlarıyla simülasyon, gerçek ödeme alınmaz.</b> Tüm imzalar tarayıcınızda gerçek HMAC-SHA256 ile hesaplanır.</div>
+
+<header class="kap kapak">
+  <div>
+    <h1>Rezervasyon parası önce platforma, sonra işletmeye</h1>
+    <p>Replit ile yazılmış bir rezervasyon uygulamasına PayTR Pazaryeri bağlanınca para böyle akar. Bir rezervasyon seçin, tutarı ve platform komisyonunu girin, akışı adım adım izleyin.</p>
+    <ul>
+      <li>Müşteri PayTR iFrame ile öder, onay yalnızca imzası doğrulanmış bildirimle verilir</li>
+      <li>İşletmenin payı Platform Transfer ile IBAN'ına gider, komisyon platformda kalır</li>
+      <li>Bütün tutarlar kuruş cinsinden tamsayıyla hesaplanır, yuvarlama kaybı olmaz</li>
+    </ul>
+  </div>
+  <section class="dekont" aria-labelledby="dk">
+    <h2 id="dk">Örnek rezervasyon</h2>
+    <div class="senaryolar" id="senaryolar" role="group" aria-label="Rezervasyon seç"></div>
+    <div class="alanlar">
+      <label>Tutar (TL)<input id="tutar" inputmode="decimal" autocomplete="off"></label>
+      <label>Platform komisyonu (%)<input id="oran" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <div class="uyari" id="uyari" role="alert"></div>
+    <div class="toplam"><span>Müşteriden alınan</span><strong id="tToplam">0,00 TL</strong></div>
+    <div class="serit" aria-hidden="true"><div class="s-isl" id="sIsl"></div><div class="s-plt" id="sPlt"></div></div>
+    <div class="paylar">
+      <div class="pay isl"><small>İşletmeye transfer</small><b id="tIsl">0,00 TL</b><em id="kIsl">0 kuruş</em></div>
+      <div class="pay plt"><small>Platform komisyonu</small><b id="tPlt">0,00 TL</b><em id="kPlt">0 kuruş</em></div>
+    </div>
+  </section>
+</header>
+
+<main>
+<section class="kap bolum" id="akis" aria-labelledby="akisBaslik">
+  <h2 id="akisBaslik">Akış simülatörü</h2>
+  <p class="ac">Her adımda PayTR'ye giden ya da PayTR'den gelen alanları ve imzanın hangi sırayla oluşturulduğunu görürsünüz. Örnek mağaza anahtarları: <code style="font-family:var(--mono);font-size:.85em">merchant_key = DEMO_KEY_X7Q2</code>, <code style="font-family:var(--mono);font-size:.85em">merchant_salt = DEMO_SALT_K9M4</code>.</p>
+
+  <div class="harita" aria-hidden="true">
+    <div class="paket" id="paket"></div>
+    <div class="dugum" data-d="0"><i>M</i>Müşteri</div>
+    <div class="dugum" data-d="1"><i>R</i>Rezervasyon uygulaması</div>
+    <div class="dugum" data-d="2"><i>P</i>PayTR</div>
+    <div class="dugum" data-d="3"><i>İ</i>İşletme</div>
+  </div>
+
+  <div class="akis">
+    <div>
+      <ol class="adimlar" id="adimlar"></ol>
+      <div class="kontrol">
+        <button class="btn" id="ileri">Başlat</button>
+        <button class="btn ikincil" id="oynat">Otomatik oynat</button>
+        <button class="btn ikincil" id="basa">Baştan</button>
+      </div>
+    </div>
+    <article class="panel" id="panel" aria-live="polite"></article>
+  </div>
+</section>
+
+<section class="kap bolum" id="kodlar" aria-labelledby="kodBaslik">
+  <h2 id="kodBaslik">Kod dosyaları</h2>
+  <p class="ac">Simülatördeki her imza, aşağıdaki Node.js modülündeki fonksiyonların aynısıdır. Modül bağımlılıksızdır; Express örneği, testler ve Türkçe kurulum notları <code style="font-family:var(--mono);font-size:.85em">kod/</code> klasöründe.</p>
+  <div class="sekmeler" role="tablist" id="sekmeler">
+    <button class="sekme" role="tab" aria-selected="true" data-dosya="kod/paytr.js">paytr.js</button>
+    <button class="sekme" role="tab" aria-selected="false" data-dosya="kod/server.js">server.js</button>
+    <button class="sekme" role="tab" aria-selected="false" data-dosya="kod/test/paytr.test.js">test/paytr.test.js</button>
+  </div>
+  <div class="kod" role="tabpanel" tabindex="0"><pre id="kodMetin">Yükleniyor…</pre></div>
+  <div class="dosyalar">
+    <a href="kod/paytr.js">paytr.js</a>
+    <a href="kod/server.js">server.js</a>
+    <a href="kod/README.md">README.md (kurulum, Replit Secrets, Python/Flask)</a>
+    <a href="kod/.env.example">.env.example</a>
+    <a href="kod/test/paytr.test.js">test/paytr.test.js</a>
+    <a href="kod/test/akis.test.js">test/akis.test.js</a>
+  </div>
+  <div class="testler">
+    <div><b>Üç yoldan aynı imza</b>Node crypto, Web Crypto ve Python hmac aynı test girdisinde aynı base64 çıktıyı veriyor.</div>
+    <div><b>Sahte bildirim reddi</b>Uydurma hash, değiştirilmiş tutar ya da durum, yanlış anahtar: hepsi reddediliyor.</div>
+    <div><b>Kuruşu kuruşuna</b>20.000 rastgele tutar ve oranda platform + işletme payı her zaman toplamı veriyor.</div>
+  </div>
+  <p class="ac" id="ozTest" style="margin-top:14px"></p>
+</section>
+</main>
+
+<footer class="kap">PayTR alan adları ve imza sıraları PayTR'nin resmi geliştirici belgesine göredir. Bu sayfa PayTR'ye hiçbir istek göndermez.</footer>
+
+<script>
+(() => {
+  'use strict';
+  const DEMO = { merchant_id: '100000', key: 'DEMO_KEY_X7Q2', salt: 'DEMO_SALT_K9M4', ip: '85.34.78.112', eposta: 'musteri-eposta-adresi' };
+  const SENARYOLAR = [
+    { id: 'kuafor', ad: 'Kuaför', alt: 'Dip boya', sepetAd: 'Dip boya randevusu', birim: '1250.00', adet: 1, isletme: 'Örnek Kuaför Salonu', unvan: 'ORNEK KUAFOR LTD STI', iban: 'TR460001000000000000012345', oran: '10' },
+    { id: 'tekne', ad: 'Tekne turu', alt: '2 kişi', sepetAd: 'Günlük koy turu (kişi)', birim: '1499.90', adet: 2, isletme: 'Örnek Tekne Turları', unvan: 'ORNEK DENIZCILIK TURIZM AS', iban: 'TR460006200000000000067890', oran: '12.5' },
+    { id: 'pilates', ad: 'Pilates', alt: '8 derslik paket', sepetAd: 'Reformer pilates 8 ders', birim: '3200.00', adet: 1, isletme: 'Örnek Pilates Stüdyosu', unvan: 'ORNEK SPOR HIZMETLERI', iban: 'TR530001500000000000054321', oran: '15' },
+  ];
+  const $ = (s) => document.querySelector(s);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  /* ---------- paytr.js ile aynı yardımcılar ---------- */
+  function tlToKurus(tl) {
+    const s = String(tl).trim().replace(',', '.');
+    if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
+    const [tam, kes = ''] = s.split('.');
+    return Number(tam) * 100 + Number((kes + '00').slice(0, 2));
+  }
+  const kurusToTl = (k) => Math.floor(k / 100) + '.' + String(k % 100).padStart(2, '0');
+  const tlGoster = (k) => (k / 100).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' TL';
+  function komisyonBol(toplam, oran) {
+    const bps = tlToKurus(oran);
+    const platform = Math.floor((toplam * bps + 5000) / 10000);
+    return { toplam, platform, isletme: toplam - platform };
+  }
+  const b64utf8 = (s) => { const b = new TextEncoder().encode(s); let x = ''; for (const c of b) x += String.fromCharCode(c); return btoa(x); };
+  const anahtarOnbellek = {};
+  async function hmacB64(key, mesaj) {
+    if (!crypto.subtle) return '(Web Crypto için HTTPS gerekli)';
+    anahtarOnbellek[key] ||= crypto.subtle.importKey('raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    const imza = await crypto.subtle.sign('HMAC', await anahtarOnbellek[key], new TextEncoder().encode(mesaj));
+    let x = ''; for (const c of new Uint8Array(imza)) x += String.fromCharCode(c); return btoa(x);
+  }
+  const rastgele = (n) => Array.from(crypto.getRandomValues(new Uint8Array(n)), (b) => b.toString(36).padStart(2, '0')).join('').toUpperCase().slice(0, n);
+  function birSonrakiIsGunu() {
+    const t = new Date(); t.setDate(t.getDate() + 1);
+    while (t.getDay() === 0 || t.getDay() === 6) t.setDate(t.getDate() + 1);
+    return t.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long' });
+  }
+
+  /* ---------- durum ---------- */
+  let sen = SENARYOLAR[1];
+  let d = null;      // hesaplanmış akış verisi
+  let adim = -1;     // gösterilen adım
+  let sahteDenendi = false;
+  let oynatZamanlayici = null;
+
+  function hesapla() {
+    const toplam = tlToKurus($('#tutar').value);
+    const oranK = tlToKurus($('#oran').value);
+    let hata = '';
+    if (!toplam) hata = 'Tutarı 1250 ya da 1499,90 gibi en çok iki ondalıkla yazın.';
+    else if (oranK === null || oranK > 10000) hata = 'Komisyonu 0 ile 100 arasında, en çok iki ondalıkla yazın.';
+    $('#uyari').textContent = hata;
+    if (hata) return null;
+    return komisyonBol(toplam, $('#oran').value);
+  }
+
+  function dekontCiz(b) {
+    if (!b) return;
+    $('#tToplam').textContent = tlGoster(b.toplam);
+    $('#tIsl').textContent = tlGoster(b.isletme); $('#kIsl').textContent = b.isletme.toLocaleString('tr-TR') + ' kuruş';
+    $('#tPlt').textContent = tlGoster(b.platform); $('#kPlt').textContent = b.platform.toLocaleString('tr-TR') + ' kuruş';
+    const yp = (b.platform / b.toplam) * 100;
+    $('#sIsl').style.flexBasis = (100 - yp) + '%'; $('#sPlt').style.flexBasis = yp + '%';
+    $('#sIsl').textContent = yp < 92 ? 'İşletme %' + (100 - yp).toLocaleString('tr-TR', { maximumFractionDigits: 2 }) : '';
+    $('#sPlt').textContent = yp >= 7 ? '%' + yp.toLocaleString('tr-TR', { maximumFractionDigits: 1 }) : '';
+  }
+
+  async function veriHazirla() {
+    const b = hesapla();
+    dekontCiz(b);
+    if (!b) return false;
+    const oid = 'RZV' + Date.now().toString(36).toUpperCase() + rastgele(6);
+    const birimK = tlToKurus(sen.birim);
+    // tutar elle değiştirildiyse sepette tek kalem olarak gösterilir
+    const sepet = birimK * sen.adet === b.toplam ? [[sen.sepetAd, sen.birim, sen.adet]] : [[sen.sepetAd, kurusToTl(b.toplam), 1]];
+    const token = {
+      merchant_id: DEMO.merchant_id, user_ip: DEMO.ip, merchant_oid: oid, email: DEMO.eposta,
+      payment_amount: String(b.toplam), user_basket: b64utf8(JSON.stringify(sepet)),
+      no_installment: '1', max_installment: '0', currency: 'TL', test_mode: '1',
+    };
+    const tokenSira = ['merchant_id', 'user_ip', 'merchant_oid', 'email', 'payment_amount', 'user_basket', 'no_installment', 'max_installment', 'currency', 'test_mode'];
+    token.paytr_token = await hmacB64(DEMO.key, tokenSira.map((k) => token[k]).join('') + DEMO.salt);
+
+    const cb = { merchant_oid: oid, status: 'success', total_amount: String(b.toplam), payment_amount: String(b.toplam), payment_type: 'card', currency: 'TL', test_mode: '1' };
+    cb.hash = await hmacB64(DEMO.key, cb.merchant_oid + DEMO.salt + cb.status + cb.total_amount);
+    const cbHesap = await hmacB64(DEMO.key, cb.merchant_oid + DEMO.salt + cb.status + cb.total_amount);
+    // Sahte bildirim: saldırgan tutarı düşürüp kendi hash'ini uyduruyor (merchant_key'i bilmiyor)
+    const sahte = { merchant_oid: oid, status: 'success', total_amount: String(Math.max(1, Math.floor(b.toplam / 10))) };
+    sahte.hash = await hmacB64('TAHMIN_EDILEN_KEY', sahte.merchant_oid + DEMO.salt + sahte.status + sahte.total_amount);
+    const sahteHesap = await hmacB64(DEMO.key, sahte.merchant_oid + DEMO.salt + sahte.status + sahte.total_amount);
+
+    const tr = {
+      merchant_id: DEMO.merchant_id, merchant_oid: oid, trans_id: 'TRF' + rastgele(10),
+      submerchant_amount: String(b.isletme), total_amount: String(b.toplam), transfer_name: sen.unvan, transfer_iban: sen.iban,
+    };
+    const trSira = ['merchant_id', 'merchant_oid', 'trans_id', 'submerchant_amount', 'total_amount', 'transfer_name', 'transfer_iban'];
+    tr.paytr_token = await hmacB64(DEMO.key, trSira.map((k) => tr[k]).join('') + DEMO.salt);
+    const trIds = JSON.stringify([tr.trans_id]);
+    const trSonucHash = await hmacB64(DEMO.key, trIds + DEMO.salt);
+
+    const iade = { merchant_id: DEMO.merchant_id, merchant_oid: oid, return_amount: kurusToTl(b.toplam) };
+    iade.paytr_token = await hmacB64(DEMO.key, iade.merchant_id + iade.merchant_oid + iade.return_amount + DEMO.salt);
+
+    d = { b, oid, sepet, token, tokenSira, cb, cbHesap, sahte, sahteHesap, tr, trSira, trIds, trSonucHash, iade };
+    return true;
+  }
+
+  /* ---------- görünüm parçaları ---------- */
+  const tablo = (o, imzaAlani) => '<table class="tablo"><tbody>' + Object.entries(o).map(([k, v]) =>
+    `<tr${k === imzaAlani ? ' class="imza"' : ''}><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('') + '</tbody></table>';
+  const mesaj = (parcalar) => '<div class="mesaj">' + parcalar.map(([ad, v, salt]) =>
+    `<span${salt ? ' class="salt"' : ''} title="${esc(ad)}">${esc(v)}</span>`).join('') + '</div>';
+  const uc = (y, url) => `<div class="uc"><b>${y}</b>${esc(url)}</div>`;
+
+  const ADIMLAR = [
+    { ad: 'Rezervasyon oluşur', paket: [0, 1], d: [0, 1], ciz: () => `
+      <h3>Müşteri rezervasyonu oluşturur</h3><p class="kim">Rezervasyon uygulaması</p>
+      <p class="acik">${esc(sen.isletme)} için rezervasyon <b>ödeme bekliyor</b> durumunda kaydedilir. PayTR'ye gidecek benzersiz sipariş numarası (<code>merchant_oid</code>) yalnız harf ve rakamdan üretilir.</p>
+      ${tablo({ merchant_oid: d.oid, isletme: sen.isletme, sepet: JSON.stringify(d.sepet), tutar_kurus: d.b.toplam, durum: 'odeme_bekliyor' })}` },
+
+    { ad: 'Ödeme token isteği', paket: [1, 2], d: [1, 2], ciz: () => `
+      <h3>Sunucu PayTR'den ödeme token'ı ister</h3><p class="kim">Rezervasyon uygulaması → PayTR</p>
+      ${uc('POST', 'https://www.paytr.com/odeme/api/get-token')}
+      <p class="acik">Tutar kuruş olarak gider (${esc(kurusToTl(d.b.toplam))} TL = ${d.b.toplam}). Sepet JSON'u base64'e çevrilir. Test modu açık.</p>
+      ${tablo(d.token, 'paytr_token')}
+      <div class="h4">paytr_token nasıl oluştu</div>
+      ${mesaj(d.tokenSira.map((k) => [k, d.token[k]]).concat([['merchant_salt', DEMO.salt, 1]]))}
+      <p class="formul"><code>base64( HMAC-SHA256( merchant_key, yukarıdaki metin ) )</code> = <code>${esc(d.token.paytr_token)}</code></p>
+      <div class="sonuc iyi"><div>PayTR cevabı: <code>{"status":"success","token":"…"}</code>. Müşteriye <code>https://www.paytr.com/odeme/guvenli/&lt;token&gt;</code> iFrame'i gösterilir.</div></div>` },
+
+    { ad: 'Müşteri öder', paket: [0, 2], d: [0, 2], ciz: () => `
+      <h3>Müşteri PayTR iFrame içinde öder</h3><p class="kim">Müşteri → PayTR</p>
+      <p class="acik">Kart bilgisi uygulamanıza hiç uğramaz; PayTR'nin güvenli sayfasında girilir. Aşağıdaki kutu yalnızca temsilidir.</p>
+      <div class="odeme"><div class="kucuk">PayTR güvenli ödeme (temsili)</div>
+        <div class="kartno">•••• •••• •••• ••••</div>
+        <div style="display:flex;justify-content:space-between"><span>${esc(sen.sepetAd)}</span><b style="font-family:var(--mono)">${tlGoster(d.b.toplam)}</b></div>
+        <div class="kucuk" style="margin-top:8px">Test modu: kart çekimi yapılmaz</div></div>
+      <div class="sonuc bilgi"><div>Müşteri <code>merchant_ok_url</code> sayfasına dönse bile rezervasyon henüz onaylanmaz. Onayı yalnızca bir sonraki adımdaki bildirim verir.</div></div>` },
+
+    { ad: 'Bildirim doğrulanır', paket: [2, 1], d: [2, 1], ciz: () => `
+      <h3>PayTR bildirimi gelir, imzası doğrulanır</h3><p class="kim">PayTR → Bildirim URL (/paytr/bildirim)</p>
+      ${tablo(d.cb, 'hash')}
+      <div class="h4">Sunucunun kendi hesapladığı imza</div>
+      ${mesaj([['merchant_oid', d.cb.merchant_oid], ['merchant_salt', DEMO.salt, 1], ['status', d.cb.status], ['total_amount', d.cb.total_amount]])}
+      <p class="formul">Sıra farklıdır: <code>merchant_oid + merchant_salt + status + total_amount</code> = <code>${esc(d.cbHesap)}</code></p>
+      <div class="sonuc iyi"><div><b>Eşleşti.</b> Sunucu PayTR'ye düz metin <code>OK</code> döner. Aynı bildirim tekrar gelirse yine <code>OK</code> der, rezervasyonu ikinci kez işlemez.</div></div>
+      <div style="margin-top:14px"><button class="btn tehlike" id="sahteBtn">Sahte bildirim gönder</button></div>
+      <div id="sahteAlan">${sahteDenendi ? sahteCiz() : ''}</div>` },
+
+    { ad: 'Rezervasyon onaylanır', paket: [1, 0], d: [1, 0], ciz: () => `
+      <h3>Rezervasyon onaylanır, paylar ayrılır</h3><p class="kim">Rezervasyon uygulaması</p>
+      <p class="acik">Komisyon kuruş cinsinden tamsayıyla hesaplanır: <code>platform = (toplam × oran_bp + 5000) ÷ 10000</code>, işletme payı kalan tutardır. İkisinin toplamı her zaman ödenen tutara eşittir.</p>
+      ${tablo({ durum: 'onaylandi', toplam_kurus: d.b.toplam, komisyon_orani: '%' + $('#oran').value.replace('.', ','), platform_kurus: d.b.platform, isletme_kurus: d.b.isletme, kontrol: `${d.b.platform} + ${d.b.isletme} = ${d.b.platform + d.b.isletme}` })}
+      <div class="sonuc bilgi"><div>İşletmenin transferi <b>${esc(birSonrakiIsGunu())}</b> gününe planlanır. PayTR, transfer talebini ödeme günü kabul etmez; en erken ertesi gün, saat 10:00'a kadar gönderilmelidir.</div></div>` },
+
+    { ad: 'İşletmeye transfer', paket: [1, 3], d: [1, 2, 3], paketRenk: 'p-isl', ciz: () => `
+      <h3>İşletmenin payı için transfer talimatı</h3><p class="kim">Rezervasyon uygulaması → PayTR → İşletme IBAN</p>
+      ${uc('POST', 'https://www.paytr.com/odeme/platform/transfer')}
+      ${tablo(d.tr, 'paytr_token')}
+      <div class="h4">paytr_token nasıl oluştu</div>
+      ${mesaj(d.trSira.map((k) => [k, d.tr[k]]).concat([['merchant_salt', DEMO.salt, 1]]))}
+      <p class="formul"><code>base64( HMAC-SHA256( merchant_key, yukarıdaki metin ) )</code> = <code>${esc(d.tr.paytr_token)}</code></p>
+      <div class="sonuc iyi"><div>Transfer sonucu, Platform Transfer Sonuç Bildirim URL'sine gelir: <code>trans_ids = ${esc(d.trIds)}</code>, <code>hash = ${esc(d.trSonucHash)}</code> (<code>trans_ids + merchant_salt</code>). İmza eşleşince <code>OK</code> dönülür ve transfer tamamlandı işaretlenir.</div></div>` },
+
+    { ad: 'Komisyon platformda', paket: [2, 1], d: [1], paketRenk: 'p-plt', ciz: () => `
+      <h3>Para yerine ulaştı</h3><p class="kim">Özet</p>
+      <div class="ozet">
+        <div><small>Müşteri ödedi</small><b>${tlGoster(d.b.toplam)}</b></div>
+        <div class="o-isl"><small>${esc(sen.isletme)}</small><b>${tlGoster(d.b.isletme)}</b></div>
+        <div class="o-plt"><small>Platform komisyonu</small><b>${tlGoster(d.b.platform)}</b></div>
+      </div>
+      <p class="acik">PayTR'nin kendi hizmet bedeli mağaza sözleşmesine göre ayrıca kesilir; yukarıdaki komisyon, platformun işletmeyle anlaştığı paydır.</p>
+      <div class="h4">Rezervasyon iptal edilirse: iade</div>
+      ${uc('POST', 'https://www.paytr.com/odeme/iade')}
+      ${tablo(d.iade, 'paytr_token')}
+      <p class="formul">İadede tutar kuruş değil, noktalı TL'dir: <code>merchant_id + merchant_oid + return_amount + merchant_salt</code>. İşletmeye transfer yapıldıysa iadeden önce mutabakat gerekir; kod bu durumda iadeyi durdurur.</p>` },
+  ];
+
+  function sahteCiz() {
+    return `<div class="yeni"><div class="h4">Saldırganın gönderdiği sahte bildirim</div>${tablo(d.sahte, 'hash')}
+      <div class="sonuc kotu"><div><b>Reddedildi (HTTP 400).</b> Gelen hash <code>${esc(d.sahte.hash)}</code>, olması gereken <code>${esc(d.sahteHesap)}</code>. Tutar ${esc(d.sahte.total_amount)} kuruşa düşürülmüş, ama merchant_key bilinmeden geçerli imza üretilemez. Rezervasyon değişmez.</div></div></div>`;
+  }
+
+  function adimListesi() {
+    $('#adimlar').innerHTML = ADIMLAR.map((a, i) =>
+      `<li><button data-i="${i}" class="${i < adim ? 'bitti' : ''} ${i === adim ? 'simdi' : ''}" ${i > adim ? 'disabled' : ''} ${i === adim ? 'aria-current="step"' : ''}><span class="n">${i + 1}</span><span>${a.ad}</span></button></li>`).join('');
+  }
+
+  function paketGit(dugum, renk) {
+    const p = $('#paket');
+    p.className = 'paket' + (renk ? ' ' + renk : '');
+    p.style.left = (12.5 + dugum * 25) + '%';
+  }
+
+  function goster(i, animasyon = true) {
+    adim = i;
+    adimListesi();
+    const a = ADIMLAR[i];
+    document.querySelectorAll('.dugum').forEach((el) => el.classList.toggle('aktif', a.d.includes(Number(el.dataset.d))));
+    const p = $('#paket');
+    if (animasyon) {
+      p.style.transition = 'none'; paketGit(a.paket[0], a.paketRenk); void p.offsetWidth; p.style.transition = '';
+      requestAnimationFrame(() => paketGit(a.paket[1], a.paketRenk));
+    } else paketGit(a.paket[1], a.paketRenk);
+    const panel = $('#panel');
+    panel.innerHTML = `<div class="yeni">${a.ciz()}</div>`;
+    const sb = $('#sahteBtn');
+    if (sb) sb.onclick = () => { sahteDenendi = true; $('#sahteAlan').innerHTML = sahteCiz(); paketGit(1, 'p-hata'); };
+    $('#ileri').textContent = i >= ADIMLAR.length - 1 ? 'Akış tamamlandı' : 'Sonraki adım';
+    $('#ileri').disabled = i >= ADIMLAR.length - 1;
+  }
+
+  function bosPanel() {
+    adim = -1; adimListesi();
+    document.querySelectorAll('.dugum').forEach((el) => el.classList.remove('aktif'));
+    paketGit(0);
+    $('#panel').innerHTML = `<h3>Akış hazır</h3><p class="acik">Seçili rezervasyon: <b>${esc(sen.isletme)}</b>, ${esc(sen.alt.toLowerCase())}. Başlat'a basın ya da otomatik oynatın. Tutarı veya komisyonu değiştirirseniz akış yeni değerlerle baştan hesaplanır.</p>`;
+    $('#ileri').textContent = 'Başlat'; $('#ileri').disabled = false;
+  }
+
+  function durdur() { clearInterval(oynatZamanlayici); oynatZamanlayici = null; $('#oynat').textContent = 'Otomatik oynat'; }
+
+  async function yenile() {
+    durdur(); sahteDenendi = false;
+    const ok = await veriHazirla();
+    if (!ok) { bosPanel(); $('#ileri').disabled = true; $('#oynat').disabled = true; return; }
+    $('#oynat').disabled = false;
+    bosPanel();
+  }
+
+  function senaryoCiz() {
+    $('#senaryolar').innerHTML = SENARYOLAR.map((s) =>
+      `<button class="senaryo" data-id="${s.id}" aria-pressed="${s === sen}"><b>${s.ad}</b><span>${s.alt}</span></button>`).join('');
+  }
+  function senaryoSec(s) {
+    sen = s; senaryoCiz();
+    $('#tutar').value = kurusToTl(tlToKurus(s.birim) * s.adet).replace('.', ',');
+    $('#oran').value = s.oran.replace('.', ',');
+    yenile();
+  }
+
+  $('#senaryolar').addEventListener('click', (e) => { const b = e.target.closest('.senaryo'); if (b) senaryoSec(SENARYOLAR.find((s) => s.id === b.dataset.id)); });
+  let gecikme;
+  ['#tutar', '#oran'].forEach((s) => $(s).addEventListener('input', () => { clearTimeout(gecikme); gecikme = setTimeout(yenile, 250); }));
+  $('#adimlar').addEventListener('click', (e) => { const b = e.target.closest('button[data-i]'); if (b && !b.disabled) { durdur(); goster(Number(b.dataset.i), false); } });
+  $('#ileri').addEventListener('click', () => { durdur(); if (d && adim < ADIMLAR.length - 1) goster(adim + 1); });
+  $('#basa').addEventListener('click', () => { durdur(); sahteDenendi = false; bosPanel(); });
+  $('#oynat').addEventListener('click', () => {
+    if (oynatZamanlayici) return durdur();
+    if (!d) return;
+    if (adim >= ADIMLAR.length - 1) bosPanel();
+    $('#oynat').textContent = 'Durdur';
+    goster(adim + 1);
+    oynatZamanlayici = setInterval(() => { if (adim >= ADIMLAR.length - 1) return durdur(); goster(adim + 1); }, 2600);
+  });
+
+  /* ---------- kod görüntüleyici ---------- */
+  const KW = /\b(const|let|var|function|async|await|return|if|else|for|of|new|throw|try|catch|require|module|exports|true|false|null|undefined|typeof)\b/;
+  function renklendir(kod) {
+    const re = /(\/\*[\s\S]*?\*\/|\/\/[^\n]*)|('(?:\\.|[^'\\\n])*'|"(?:\\.|[^"\\\n])*"|`(?:\\.|[^`\\])*`)|\b(\d+)\b|\b([A-Za-z_]\w*)\b/g;
+    let cikti = '', son = 0, m;
+    while ((m = re.exec(kod))) {
+      cikti += esc(kod.slice(son, m.index));
+      if (m[1]) cikti += `<span class="c">${esc(m[1])}</span>`;
+      else if (m[2]) cikti += `<span class="s">${esc(m[2])}</span>`;
+      else if (m[3]) cikti += `<span class="n">${m[3]}</span>`;
+      else cikti += KW.test(m[4]) && m[4].match(KW)[0] === m[4] ? `<span class="k">${m[4]}</span>` : esc(m[4]);
+      son = re.lastIndex;
+    }
+    return cikti + esc(kod.slice(son));
+  }
+  const kodOnbellek = {};
+  async function kodYukle(yol) {
+    const pre = $('#kodMetin');
+    try {
+      kodOnbellek[yol] ||= fetch(yol).then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); });
+      pre.innerHTML = renklendir(await kodOnbellek[yol]);
+    } catch {
+      delete kodOnbellek[yol];
+      pre.textContent = 'Dosya bu görünümde okunamadı. Aşağıdaki bağlantıdan açabilirsiniz: ' + yol;
+    }
+  }
+  $('#sekmeler').addEventListener('click', (e) => {
+    const b = e.target.closest('.sekme'); if (!b) return;
+    document.querySelectorAll('.sekme').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+    kodYukle(b.dataset.dosya);
+  });
+
+  /* ---------- sayfa içi öz-denetim: kod/test'teki Python vektörüyle aynı mı ---------- */
+  async function ozDenetim() {
+    const beklenen = 'Ng6ZyXsY8mXf0BebqIZNDCMROb2BY7wCWzFnnps7wes=';
+    const sepet = b64utf8(JSON.stringify([['Günlük koy turu (kişi)', '1499.90', 2]]));
+    const h = await hmacB64('TEST_MERCHANT_KEY', '123456' + '85.34.78.112' + 'RZV1TEST' + 'ornek-musteri-eposta' + '299980' + sepet + '1' + '0' + 'TL' + '1' + 'TEST_SALT');
+    $('#ozTest').textContent = h === beklenen
+      ? 'Bu sayfanın tarayıcıda hesapladığı token, test dosyasındaki Python ile hesaplanmış vektörle birebir aynı.'
+      : 'Uyarı: tarayıcı imzası test vektörüyle eşleşmedi (' + h + ').';
+  }
+
+  senaryoCiz();
+  senaryoSec(sen);
+  kodYukle('kod/paytr.js');
+  ozDenetim();
+})();
+</script>
+</body>
+</html>

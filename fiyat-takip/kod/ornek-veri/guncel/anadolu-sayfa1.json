@@ -1,0 +1,128 @@
+{
+ "status": "ok",
+ "page": 1,
+ "data": {
+  "items": [
+   {
+    "stockCode": "AT-EV1001",
+    "barcode": "8690000100017",
+    "name": "Tost Makinesi 1800W Granit Plaka",
+    "price": 920.75,
+    "currency": "TRY",
+    "quantity": 38,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1001-v2.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1002",
+    "barcode": "8690000100024",
+    "name": "Cam Kettle 1.7 L LED Işıklı",
+    "price": 569.94,
+    "currency": "TRY",
+    "quantity": 51,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1002.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1003",
+    "barcode": "8690000100031",
+    "name": "Smoothie Blender 600W",
+    "price": 818.03,
+    "currency": "TRY",
+    "quantity": 0,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1003.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1004",
+    "barcode": "8690000100048",
+    "name": "Filtre Kahve Makinesi 1.25 L",
+    "price": 1003.62,
+    "currency": "TRY",
+    "quantity": 17,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1004.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1005",
+    "barcode": "8690000100055",
+    "name": "Airfryer 4.5 L Dijital",
+    "price": 2246.75,
+    "currency": "TRY",
+    "quantity": 30,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1005.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1006",
+    "barcode": "8690000100062",
+    "name": "Buharlı Ütü 2400W Seramik Taban",
+    "price": 1193.81,
+    "currency": "TRY",
+    "quantity": 0,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1006.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1007",
+    "barcode": "8690000100079",
+    "name": "Dikey Şarjlı Süpürge 22.2V",
+    "price": 3426.14,
+    "currency": "TRY",
+    "quantity": 56,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1007.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1008",
+    "barcode": "8690000100086",
+    "name": "El Mikseri 5 Kademe",
+    "price": 631.08,
+    "currency": "TRY",
+    "quantity": 0,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1008.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1009",
+    "barcode": "8690000100093",
+    "name": "Doğrayıcı 500 ml Cam Hazneli",
+    "price": 496.06,
+    "currency": "TRY",
+    "quantity": 22,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1009.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1010",
+    "barcode": "8690000100109",
+    "name": "Türk Kahvesi Makinesi Köpük Sensörlü",
+    "price": 1442.31,
+    "currency": "TRY",
+    "quantity": 35,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1010.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1011",
+    "barcode": "8690000100116",
+    "name": "Mini Fırın 36 L Turbo",
+    "price": 3828.7,
+    "currency": "TRY",
+    "quantity": 48,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1011.jpg",
+    "category": "Küçük Ev Aletleri"
+   },
+   {
+    "stockCode": "AT-EV1012",
+    "barcode": "8690000100123",
+    "name": "Waffle Makinesi Çift",
+    "price": 752.4,
+    "currency": "TRY",
+    "quantity": 61,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1012.jpg",
+    "category": "Küçük Ev Aletleri"
+   }
+  ]
+ }
+}

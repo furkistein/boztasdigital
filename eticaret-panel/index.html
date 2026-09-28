@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tekpanel | E-ticaret Entegrasyon Paneli (Demo)</title>
+<meta name="description" content="Pazaryeri ve web sitesi siparişlerini, net kârı ve stoğu tek ekrandan izleyen e-ticaret entegrasyon paneli demosu.">
+<meta name="theme-color" content="#131a26">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23131a26%22/%3E%3Cpath d=%22M9 20l5-5 4 3 6-7%22 stroke=%22%234ade80%22 stroke-width=%223%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<style>
+:root{
+  --yan:#131a26;--yan2:#1c2535;--yanYazi:#aab4c5;
+  --zemin:#f3f5f8;--kart:#fff;--cizgi:#e4e8ef;--yazi:#1a2230;--soluk:#5f6b7d;
+  --vurgu:#2f5bea;--yesil:#0f7a52;--yesilA:#e6f5ee;--kirmizi:#c0362c;--kirmiziA:#fdecea;--sari:#9a6700;--sariA:#fff4d6;
+  --ty:#e0692a;--hb:#7b55c9;--wc:#2c79cf;
+  --r:12px;--golge:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.06)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--zemin);color:var(--yazi);font-size:14px;line-height:1.45;overflow-x:hidden}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.say{font-variant-numeric:tabular-nums}
+.app{display:grid;grid-template-columns:228px minmax(0,1fr);min-height:100vh;background:linear-gradient(to right,var(--yan) 228px,transparent 228px)}
+/* yan menü */
+aside{background:var(--yan);color:var(--yanYazi);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:18px 12px}
+.marka{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:1.08rem;padding:4px 8px 20px}
+.marka i{width:30px;height:30px;border-radius:8px;background:#22304a;display:grid;place-items:center}
+.marka small{display:block;font-weight:400;font-size:.72rem;color:var(--yanYazi)}
+nav a{display:flex;align-items:center;gap:11px;padding:10px 10px;border-radius:8px;color:var(--yanYazi);text-decoration:none;margin-bottom:2px;font-weight:500}
+nav a svg{flex:none;opacity:.85}
+nav a:hover{background:var(--yan2);color:#fff}
+nav a.aktif{background:#24324b;color:#fff}
+nav a .sayac{margin-left:auto;background:var(--kirmizi);color:#fff;border-radius:10px;font-size:.7rem;padding:1px 7px;font-weight:600}
+.kanallarDurum{margin-top:auto;border-top:1px solid #243047;padding:14px 8px 4px;font-size:.78rem}
+.kanallarDurum h4{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#7f8aa0;margin-bottom:8px;font-weight:600}
+.kanallarDurum div{display:flex;align-items:center;gap:8px;padding:3px 0}
+.nokta{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.15);flex:none}
+.kanallarDurum span.z{margin-left:auto;color:#7f8aa0}
+/* içerik */
+main{min-width:0;padding:0 26px 40px}
+.demoNot{margin:0 -26px;background:#fff7e0;border-bottom:1px solid #f1e2b3;color:#6b5210;font-size:.8rem;text-align:center;padding:7px 16px}
+.ust{display:flex;align-items:center;gap:14px;padding:18px 0 16px;flex-wrap:wrap}
+.ust h1{font-size:1.35rem;font-weight:700;letter-spacing:-.01em;margin-right:auto}
+.ust h1 small{display:block;font-size:.8rem;color:var(--soluk);font-weight:400;letter-spacing:0}
+.seg{display:inline-flex;background:#e7ebf1;border-radius:9px;padding:3px}
+.seg button{padding:6px 13px;border-radius:7px;font-weight:600;font-size:.83rem;color:var(--soluk);white-space:nowrap}
+.seg button.sec{background:#fff;color:var(--yazi);box-shadow:var(--golge)}
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--yazi);color:#fff;border-radius:8px;padding:8px 13px;font-weight:600;font-size:.83rem;white-space:nowrap}
+.btn:hover{background:#2b3548}
+.btn.acik{background:#fff;color:var(--yazi);border:1px solid var(--cizgi)}
+.gorunum{display:none}
+.kisaEt{display:none}
+.gorunum.aktif{display:block}
+/* kartlar */
+.kartlar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:16px}
+.kpi{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);padding:15px 16px;box-shadow:var(--golge);min-width:0}
+.kpi h3{font-size:.78rem;color:var(--soluk);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.kpi b{display:block;font-size:1.55rem;margin:4px 0 3px;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi p{font-size:.8rem;color:var(--soluk)}
+.kpi.vurgulu{border-color:#bfe3d2;background:linear-gradient(180deg,#f3fbf7,#fff)}
+.kpi.vurgulu b{color:var(--yesil)}
+.kpi.vurgulu b.eksi{color:var(--kirmizi)}
+.kutu{background:var(--kart);border:1px solid var(--cizgi);border-radius:var(--r);box-shadow:var(--golge);margin-bottom:16px;min-width:0}
+.kutu>header{display:flex;align-items:center;gap:10px;padding:14px 16px 10px;flex-wrap:wrap}
+.kutu>header h2{font-size:1rem;font-weight:700;margin-right:auto}
+.kutu>header h2 small{display:block;font-size:.78rem;font-weight:400;color:var(--soluk)}
+.ic{padding:4px 16px 16px}
+.izgara2{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:16px}
+.izgara2>.kutu{margin-bottom:16px}
+.izgara2.genis{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.urunAd{min-width:150px}
+/* tablolar */
+.tabloSar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--soluk);font-weight:600;padding:9px 12px;border-bottom:1px solid var(--cizgi);background:#fafbfc;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.sag,th.sag{text-align:right;white-space:nowrap}
+tfoot td{font-weight:700;background:#fafbfc;border-top:1px solid var(--cizgi)}
+tbody tr.tik{cursor:pointer}
+tbody tr.tik:hover td{background:#f6f8fc}
+.arti{color:var(--yesil);font-weight:600}
+.eksi{color:var(--kirmizi);font-weight:600}
+.soluk{color:var(--soluk)}
+.kucuk{font-size:.78rem}
+.rozet{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.rozet::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.r-ty{color:var(--ty);background:#fdf0e8;border-color:#f6d7c4}
+.r-hb{color:var(--hb);background:#f3eefc;border-color:#ddd0f3}
+.r-wc{color:var(--wc);background:#eaf2fc;border-color:#c9ddf4}
+.durum{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.d-yeni{background:#e8efff;color:#2346b8}
+.d-kargoda{background:var(--sariA);color:var(--sari)}
+.d-teslim{background:var(--yesilA);color:var(--yesil)}
+.d-iade{background:var(--kirmiziA);color:var(--kirmizi)}
+.urunAd{font-weight:600;max-width:280px}
+.urunAd small{display:block;font-weight:400;color:var(--soluk);font-size:.75rem}
+/* kanal çubuk grafiği */
+.kanalGrafik{display:grid;gap:14px}
+.kg-satir{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 12px;align-items:center}
+.kg-satir svg{width:100%;height:26px;display:block;border-radius:5px}
+.kg-alt{grid-column:2;font-size:.76rem;color:var(--soluk)}
+.lejant{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.76rem;color:var(--soluk);padding-top:12px}
+.lejant span{display:inline-flex;align-items:center;gap:6px}
+.lejant i{width:10px;height:10px;border-radius:3px;display:inline-block}
+#trend{width:100%;display:block}
+#trend text{font-size:11px;fill:#6b7688}
+.bos{padding:26px 16px;text-align:center;color:var(--soluk)}
+/* filtreler */
+.filtre{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 16px 12px}
+.filtre input[type=search],.filtre select{height:36px;border:1px solid var(--cizgi);border-radius:8px;background:#fff;padding:0 10px;min-width:0}
+.filtre input[type=search]{flex:1 1 220px}
+.filtre label{display:inline-flex;align-items:center;gap:6px;font-size:.83rem;color:var(--soluk);white-space:nowrap}
+.sonucSay{font-size:.8rem;color:var(--soluk);margin-left:auto;white-space:nowrap}
+/* stok */
+.cubuk{display:flex;height:8px;border-radius:4px;overflow:hidden;background:#edf0f4;width:110px}
+.cubuk span{display:block;height:100%}
+.gunRozet{font-weight:700;font-size:.8rem;padding:2px 8px;border-radius:6px;white-space:nowrap;display:inline-block}
+.g-kritik{background:var(--kirmiziA);color:var(--kirmizi)}
+.g-az{background:var(--sariA);color:var(--sari)}
+.g-iyi{background:var(--yesilA);color:var(--yesil)}
+.g-yok{background:#eef1f5;color:var(--soluk)}
+.senk{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--soluk);white-space:nowrap}
+.senk .nokta{width:6px;height:6px}
+.bilgi{font-size:.8rem;color:var(--soluk);background:#f7f9fc;border:1px dashed var(--cizgi);border-radius:8px;padding:9px 12px;margin:0 16px 12px}
+/* matris / komisyon */
+.hucre{white-space:nowrap}
+.hucre small{display:block;font-size:.72rem;color:var(--soluk);font-weight:400}
+td.zarar{background:#fff5f4}
+.komForm input{width:72px;height:32px;border:1px solid var(--cizgi);border-radius:7px;padding:0 8px;text-align:right}
+.komForm input:focus,.filtre input:focus,.filtre select:focus{outline:2px solid #c5d3fb;border-color:var(--vurgu)}
+.komForm td{padding:7px 10px}
+.komForm th{padding:9px 10px}
+.komForm input{width:62px}
+.yuzde{display:inline-flex;align-items:center;gap:4px}
+/* alt menü (telefon) */
+.altMenu{display:none}
+/* çekmece */
+.perde{position:fixed;inset:0;background:rgba(15,20,30,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:40}
+.perde.acik{opacity:1;pointer-events:auto}
+.cekmece{position:fixed;top:0;right:0;height:100%;width:420px;max-width:100%;background:#fff;z-index:41;transform:translateX(100%);transition:transform .25s ease,visibility 0s .25s;visibility:hidden;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.12)}
+.cekmece.acik{transform:none;visibility:visible;transition:transform .25s ease}
+.cekmece header{display:flex;align-items:flex-start;gap:10px;padding:18px 18px 12px;border-bottom:1px solid var(--cizgi)}
+.cekmece header h3{font-size:1.02rem;margin-right:auto}
+.cekmece header h3 small{display:block;font-weight:400;color:var(--soluk);font-size:.8rem;margin-top:2px}
+.kapat{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;border:1px solid var(--cizgi);flex:none}
+.cekmeceIc{padding:16px 18px 24px;overflow-y:auto}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.meta div{background:#f7f9fc;border-radius:8px;padding:8px 10px;font-size:.8rem;color:var(--soluk);min-width:0}
+.meta b{display:block;color:var(--yazi);font-size:.88rem}
+.dokum{border:1px solid var(--cizgi);border-radius:10px;overflow:hidden}
+.dokum div{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;border-bottom:1px solid #eef1f5;font-size:.88rem}
+.dokum div span:first-child{min-width:0}
+.dokum div small{display:block;color:var(--soluk);font-size:.74rem}
+.dokum div span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.dokum .top{background:#fafbfc;font-weight:700;font-size:.95rem;border-bottom:0}
+.dokum .top.ok span:last-child{color:var(--yesil)}
+.dokum .top.no span:last-child{color:var(--kirmizi)}
+.dokum .alt{padding-left:26px;color:var(--soluk);font-size:.8rem}
+.not{font-size:.78rem;color:var(--soluk);margin-top:12px}
+.uyari{margin-top:14px;padding:10px 12px;border-radius:8px;font-size:.83rem}
+.uyari.no{background:var(--kirmiziA);color:#8a241c}
+.uyari.ok{background:var(--yesilA);color:#0b5c3d}
+.bildirim{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);background:var(--yazi);color:#fff;padding:11px 16px;border-radius:10px;font-size:.85rem;opacity:0;transition:.25s;z-index:60;max-width:calc(100% - 28px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.bildirim.goster{opacity:1;transform:translate(-50%,0)}
+tr.yeniSatir td{animation:parla 2.2s ease}
+@keyframes parla{0%,40%{background:#fff4c2}100%{background:transparent}}
+
+@media (max-width:1180px){
+  .izgara2,.izgara2.genis{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:980px){
+  .kartlar{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr);background:none}
+  aside{display:none}
+  main{padding:0 12px 86px}
+  .demoNot{margin:0 -12px;font-size:.74rem;padding:6px 10px}
+  .ust{padding:12px 0 12px;gap:10px}
+  .ust h1{font-size:1.15rem;flex:1 1 100%}
+  .ust .seg{flex:1}
+  .ust .seg button{flex:1;padding:6px 8px}
+  .ust .btn{padding:8px 11px}
+  .ust .btn span:not(.kisaEt){display:none}
+  .ust .btn .kisaEt{display:inline}
+  .kartlar{gap:10px}
+  .kpi{padding:12px}
+  .kpi b{font-size:1.2rem}
+  .kpi h3{font-size:.7rem}
+  .kpi p{font-size:.74rem}
+  .kg-satir{grid-template-columns:minmax(0,1fr)}
+  .kg-alt{grid-column:1}
+  .altMenu{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;background:var(--yan);z-index:30;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .altMenu a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--yanYazi);text-decoration:none;font-size:.7rem;padding:5px 0;border-radius:8px;position:relative}
+  .altMenu a.aktif{color:#fff;background:#24324b}
+  .altMenu a .sayac{position:absolute;top:1px;left:calc(50% + 6px);background:var(--kirmizi);color:#fff;border-radius:8px;font-size:.62rem;padding:0 5px;font-weight:700}
+  .bildirim{bottom:84px}
+  /* sipariş tablosu kart görünümü */
+  table.kartli thead{display:none}
+  table.kartli,table.kartli tbody{display:block}
+  table.kartli tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 10px;padding:11px 14px;border-bottom:1px solid #eef1f5}
+  table.kartli td{display:block;padding:0;border:0}
+  table.kartli td[data-k=urun]{grid-column:1;grid-row:1}
+  table.kartli td[data-k=net]{grid-column:2;grid-row:1;text-align:right}
+  table.kartli td[data-k=ust]{grid-column:1 / -1;grid-row:2;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  table.kartli td[data-k=tutar]{grid-column:2;grid-row:3;text-align:right}
+  table.kartli td[data-k=tarih]{grid-column:1;grid-row:3}
+  table.kartli td.gizM{display:none}
+  table.kartli .urunAd,#stokTablo .urunAd{max-width:none;min-width:0}
+  .urunAd{min-width:130px}
+  #stokTablo thead{display:none}
+  #stokTablo,#stokTablo tbody{display:block}
+  #stokTablo tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:12px 14px;border-bottom:1px solid #eef1f5;align-items:center}
+  #stokTablo td{display:block;padding:0;border:0;text-align:left}
+  #stokTablo td[data-k=kat]{display:none}
+  #stokTablo td[data-k=urun]{grid-column:1;grid-row:1}
+  #stokTablo td[data-k=gun]{grid-column:2;grid-row:1;text-align:right}
+  #stokTablo td[data-k=stok]{grid-column:1;grid-row:2}
+  #stokTablo td[data-k=stok]::before{content:"Havuz: ";color:var(--soluk);font-size:.8rem}
+  #stokTablo td[data-k=hiz]{grid-column:2;grid-row:2;text-align:right}
+  #stokTablo td[data-k=yayin]{grid-column:1 / -1;grid-row:3}
+  #stokTablo td[data-k=pay]{grid-column:1 / -1;grid-row:4}
+  #stokTablo .cubuk{width:100%}
+  #matris thead{display:none}
+  #matris,#matris tbody{display:block}
+  #matris tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:11px 12px;border-bottom:1px solid #eef1f5}
+  #matris td{display:block;padding:0;border:0}
+  #matris td.gizM{display:none}
+  #matris td[data-k=urun]{grid-column:1 / -1}
+  #matris td.hucre{text-align:left;background:#f7f9fc;border-radius:7px;padding:6px 8px;white-space:normal}
+  #matris td.hucre.zarar{background:#fdecea}
+  #matris td.hucre::before{content:attr(data-e);display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--soluk);font-weight:600}
+  #matris td.bos{grid-column:1 / -1}
+  .komForm td,.komForm th{padding:6px 5px}
+  .komForm td:first-child,.komForm th:first-child{padding-left:12px}
+  .komForm th{font-size:.62rem;letter-spacing:0}
+  .komForm input{width:52px;padding:0 5px}
+  .yuzde{gap:2px}
+  .cekmece{top:auto;bottom:0;height:auto;max-height:88vh;width:100%;border-radius:16px 16px 0 0;transform:translateY(100%)}
+  .filtre{padding:0 12px 10px}
+  .filtre input[type=search]{flex:1 1 100%}
+  .filtre select{flex:1 1 40%}
+  .sonucSay{margin-left:0}
+  .bilgi{margin:0 12px 10px}
+}
+@media (min-width:861px){ .gizD{display:none} table.kompakt .gizK{display:none} }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <div class="marka"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l5-5 4 3 7-8"/></svg></i><div>Tekpanel<small>E-ticaret entegrasyonu</small></div></div>
+    <nav id="yanMenu">
+      <a href="#ozet" data-g="ozet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Genel bakış</a>
+      <a href="#siparisler" data-g="siparisler"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12l2 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M4 7h16M9 11h6"/></svg>Siparişler<span class="sayac" id="sayYeni" hidden></span></a>
+      <a href="#stok" data-g="stok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg>Stok<span class="sayac" id="sayKritik" hidden></span></a>
+      <a href="#karlilik" data-g="karlilik"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kârlılık &amp; komisyon<span class="sayac" id="sayZarar" hidden></span></a>
+    </nav>
+    <div class="kanallarDurum">
+      <h4>Bağlı kanallar</h4>
+      <div><span class="nokta"></span>Trendyol<span class="z">senkron</span></div>
+      <div><span class="nokta"></span>Hepsiburada<span class="z">senkron</span></div>
+      <div><span class="nokta"></span>WooCommerce<span class="z">senkron</span></div>
+      <div style="margin-top:6px;color:#7f8aa0">Son eşitleme: <span id="sonSenk">az önce</span></div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="demoNot">Demo — örnek veriler. Gerçek sürümde Trendyol, Hepsiburada ve WooCommerce API'lerinden otomatik çekilir.</div>
+    <div class="ust">
+      <h1 id="baslik">Genel bakış<small id="altBaslik">Tüm kanallar tek ekranda</small></h1>
+      <div class="seg" id="donemSec" role="group" aria-label="Dönem">
+        <button data-d="1">Bugün</button><button data-d="7">7 gün</button><button data-d="30" class="sec">30 gün</button>
+      </div>
+      <button class="btn" id="simBtn" title="Bir kanaldan sipariş gelmiş gibi yap: stok tüm kanallarda düşer">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span>Sipariş simüle et</span><span class="kisaEt">Simüle et</span></button>
+    </div>
+
+    <!-- GENEL BAKIŞ -->
+    <section class="gorunum" id="g-ozet">
+      <div class="kartlar" id="kpiler"></div>
+      <div class="izgara2">
+        <div class="kutu">
+          <header><h2>Kanal bazında kârlılık<small>Cironun nereye gittiği: maliyet, komisyon, kargo, KDV ve size kalan</small></h2></header>
+          <div class="ic"><div class="kanalGrafik" id="kanalGrafik"></div><div class="lejant" id="lejant"></div></div>
+        </div>
+        <div class="kutu">
+          <header><h2>Ciro ve net kâr<small id="trendAlt"></small></h2></header>
+          <div class="ic"><svg id="trend" height="230" role="img" aria-label="Ciro ve net kâr grafiği"></svg>
+            <div class="lejant"><span><i style="background:#cdd6e4"></i>Ciro</span><span><i style="background:var(--yesil)"></i>Net kâr</span><span><i style="background:var(--kirmizi)"></i>Zararlı gün</span></div></div>
+        </div>
+      </div>
+      <div class="kutu">
+        <header><h2>Kanal kâr tablosu<small>Tutarlar KDV dahil; KDV sütunu ödenecek KDV farkıdır (satış KDV'si − indirilecek KDV)</small></h2></header>
+        <div class="tabloSar"><table id="kanalTablo"></table></div>
+      </div>
+      <div class="izgara2">
+        <div class="kutu">
+          <header><h2>Son siparişler</h2><a href="#siparisler" class="btn acik">Tümü</a></header>
+          <div class="tabloSar"><table class="kartli kompakt" id="sonSiparis"></table></div>
+        </div>
+        <div class="kutu">
+          <header><h2>Kritik stok<small>Son 7 günün satış hızına göre</small></h2><a href="#stok" class="btn acik">Stok</a></header>
+          <div class="tabloSar"><table id="kritikMini"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SİPARİŞLER -->
+    <section class="gorunum" id="g-siparisler">
+      <div class="kutu">
+        <header><h2>Tüm kanallardan siparişler<small>Satıra tıklayın: siparişin kâr dökümü açılır</small></h2></header>
+        <div class="filtre">
+          <input type="search" id="ara" placeholder="Ürün, sipariş no veya şehir ara" aria-label="Ara">
+          <select id="fKanal" aria-label="Kanal"><option value="">Tüm kanallar</option><option value="ty">Trendyol</option><option value="hb">Hepsiburada</option><option value="wc">WooCommerce</option></select>
+          <select id="fDurum" aria-label="Durum"><option value="">Tüm durumlar</option><option value="yeni">Yeni</option><option value="kargoda">Kargoda</option><option value="teslim">Teslim edildi</option><option value="iade">İade</option></select>
+          <label><input type="checkbox" id="fZarar"> Yalnız zarar edenler</label>
+          <span class="sonucSay" id="sonucSay"></span>
+        </div>
+        <div class="tabloSar"><table class="kartli" id="siparisTablo"></table></div>
+      </div>
+    </section>
+
+    <!-- STOK -->
+    <section class="gorunum" id="g-stok">
+      <div class="kartlar" id="stokKpi"></div>
+      <div class="kutu">
+        <header><h2>Tek stok havuzu<small>Bir kanalda satılan ürün, diğer kanallarda da aynı anda düşer</small></h2>
+          <div class="seg" id="stokFiltre"><button data-s="hepsi" class="sec">Tümü</button><button data-s="kritik">Kritik</button></div></header>
+        <div class="bilgi">"Kaç gün yeter" = havuzdaki stok ÷ son 7 günde satılan adedin günlük ortalaması. 10 gün ve altı kritik sayılır. Kanal payı çubuğu son 30 günde hangi kanaldan ne kadar satıldığını gösterir.</div>
+        <div class="tabloSar"><table id="stokTablo"></table></div>
+      </div>
+    </section>
+
+    <!-- KÂRLILIK -->
+    <section class="gorunum" id="g-karlilik">
+      <div class="kutu">
+        <header><h2>Ürün × kanal birim kârı<small>Güncel satış fiyatı ve komisyon oranlarıyla 1 adet satışta cebe kalan; zarar edenler üstte</small></h2>
+          <label class="kucuk soluk" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="yalnizZarar"> Yalnız zarar edenler</label></header>
+        <div class="tabloSar"><table id="matris"></table></div>
+      </div>
+      <div class="izgara2 genis">
+        <div class="kutu">
+          <header><h2>Komisyon oranları<small>Kategori bazında düzenleyin; tüm kârlar anında yeniden hesaplanır</small></h2><button class="btn acik" id="komSifirla">Varsayılana dön</button></header>
+          <div class="tabloSar"><table class="komForm" id="komTablo"></table></div>
+          <p class="bilgi" style="margin-top:12px">WooCommerce için oran, sanal POS / ödeme kuruluşu kesintisidir.</p>
+        </div>
+        <div class="kutu">
+          <header><h2>Dönemde zarar eden siparişler<small id="zararAlt"></small></h2></header>
+          <div class="tabloSar"><table class="kartli kompakt" id="zararTablo"></table></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="altMenu" id="altMenu">
+  <a href="#ozet" data-g="ozet"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Özet</a>
+  <a href="#siparisler" data-g="siparisler"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12l2 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/><path d="M4 7h16M9 11h6"/></svg>Siparişler<span class="sayac" data-sayac="yeni" hidden></span></a>
+  <a href="#stok" data-g="stok"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg>Stok<span class="sayac" data-sayac="kritik" hidden></span></a>
+  <a href="#karlilik" data-g="karlilik"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Kârlılık<span class="sayac" data-sayac="zarar" hidden></span></a>
+</nav>
+
+<div class="perde" id="perde"></div>
+<div class="cekmece" id="cekmece" role="dialog" aria-modal="true" aria-labelledby="cBaslik">
+  <header><h3 id="cBaslik"></h3><button class="kapat" id="kapat" aria-label="Kapat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>
+  <div class="cekmeceIc" id="cIc"></div>
+</div>
+<div class="bildirim" id="bildirim" role="status"></div>
+
+<script src="panel.js?v=7"></script>
+</body>
+</html>

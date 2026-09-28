@@ -1,0 +1,98 @@
+{
+ "status": "ok",
+ "page": 2,
+ "data": {
+  "items": [
+   {
+    "stockCode": "AT-TA2001",
+    "barcode": "8690000200014",
+    "name": "Hızlı Şarj Adaptörü 20W USB-C",
+    "price": 147.9,
+    "currency": "TRY",
+    "quantity": 14,
+    "image": "https://cdn.anadolutoptan.example/urun/ta-2001.jpg",
+    "category": "Telefon Aksesuar"
+   },
+   {
+    "stockCode": "AT-TA2002",
+    "barcode": "8690000200021",
+    "name": "USB-C Örgülü Kablo 1 m",
+    "price": 60.14,
+    "currency": "TRY",
+    "quantity": 27,
+    "image": "https://cdn.anadolutoptan.example/urun/ta-2002.jpg",
+    "category": "Telefon Aksesuar"
+   },
+   {
+    "stockCode": "AT-TA2003",
+    "barcode": "8690000200038",
+    "name": "Powerbank 10.000 mAh PD",
+    "price": 405.9,
+    "currency": "TRY",
+    "quantity": 40,
+    "image": "https://cdn.anadolutoptan.example/urun/ta-2003.jpg",
+    "category": "Telefon Aksesuar"
+   },
+   {
+    "stockCode": "AT-BL3001",
+    "barcode": "8690000300011",
+    "name": "Kablosuz Sessiz Mouse",
+    "price": 186.85,
+    "currency": "TRY",
+    "quantity": 24,
+    "image": "https://cdn.anadolutoptan.example/urun/bl-3001.jpg",
+    "category": "Bilgisayar"
+   },
+   {
+    "stockCode": "AT-BL3002",
+    "barcode": "8690000300028",
+    "name": "Mekanik Klavye TR Q RGB",
+    "price": 1009.4,
+    "currency": "TRY",
+    "quantity": 37,
+    "image": "https://cdn.anadolutoptan.example/urun/bl-3002.jpg",
+    "category": "Bilgisayar"
+   },
+   {
+    "stockCode": "AT-BL3003",
+    "barcode": "8690000300035",
+    "name": "USB 3.2 Flash Bellek 64 GB",
+    "price": 122.5,
+    "currency": "TRY",
+    "quantity": 50,
+    "image": "https://cdn.anadolutoptan.example/urun/bl-3003.jpg",
+    "category": "Bilgisayar"
+   },
+   {
+    "stockCode": "AT-YS5001",
+    "barcode": "8690000500015",
+    "name": "LED Masa Lambası Dokunmatik",
+    "price": 289.1,
+    "currency": "TRY",
+    "quantity": 52,
+    "image": "https://cdn.anadolutoptan.example/urun/ys-5001.jpg",
+    "category": "Ev & Yaşam"
+   },
+   {
+    "stockCode": "AT-YS5002",
+    "barcode": "8690000500022",
+    "name": "Akıllı Priz Wi-Fi Enerji Ölçer",
+    "price": 240.0,
+    "currency": "TRY",
+    "quantity": 5,
+    "image": "https://cdn.anadolutoptan.example/urun/ys-5002.jpg",
+    "category": "Ev & Yaşam"
+   },
+   {
+    "stockCode": "AT-EV1999",
+    "barcode": "8690000109999",
+    "name": "Yoğurt Makinesi 1 L",
+    "price": 455.0,
+    "currency": "TRY",
+    "quantity": 14,
+    "image": "https://cdn.anadolutoptan.example/urun/ev-1999.jpg",
+    "category": "Küçük Ev Aletleri"
+   }
+  ]
+ }
+}

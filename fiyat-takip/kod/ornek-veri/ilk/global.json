@@ -1,0 +1,165 @@
+{
+ "products": [
+  {
+   "sku": "GITA2001",
+   "ean": "8690000200014",
+   "title": "Hızlı Şarj Adaptörü 20W USB-C",
+   "price_usd": 2.87,
+   "stock": "35",
+   "images": [
+    "https://cdn.globalimport.example/urun/ta-2001.jpg"
+   ],
+   "cat": "Telefon Aksesuar"
+  },
+  {
+   "sku": "GITA2002",
+   "ean": "8690000200021",
+   "title": "USB-C Örgülü Kablo 1 m",
+   "price_usd": 1.25,
+   "stock": "48",
+   "images": [
+    "https://cdn.globalimport.example/urun/ta-2002.jpg"
+   ],
+   "cat": "Telefon Aksesuar"
+  },
+  {
+   "sku": "GITA2004",
+   "ean": "8690000200045",
+   "title": "Kablosuz Kulak İçi Kulaklık ANC",
+   "price_usd": 13.5,
+   "stock": "14",
+   "images": [
+    "https://cdn.globalimport.example/urun/ta-2004.jpg"
+   ],
+   "cat": "Telefon Aksesuar"
+  },
+  {
+   "sku": "GITA2006",
+   "ean": "8690000200069",
+   "title": "Kablosuz Şarj Pedi 15W",
+   "price_usd": 4.79,
+   "stock": "40",
+   "images": [
+    "https://cdn.globalimport.example/urun/ta-2006.jpg"
+   ],
+   "cat": "Telefon Aksesuar"
+  },
+  {
+   "sku": "GITA2008",
+   "ean": "8690000200083",
+   "title": "Bluetooth Hoparlör 10W Suya Dayanıklı",
+   "price_usd": 10.28,
+   "stock": "6",
+   "images": [
+    "https://cdn.globalimport.example/urun/ta-2008.jpg"
+   ],
+   "cat": "Telefon Aksesuar"
+  },
+  {
+   "sku": "GIBL3001",
+   "ean": "8690000300011",
+   "title": "Kablosuz Sessiz Mouse",
+   "price_usd": 3.62,
+   "stock": "45",
+   "images": [
+    "https://cdn.globalimport.example/urun/bl-3001.jpg"
+   ],
+   "cat": "Bilgisayar"
+  },
+  {
+   "sku": "GIBL3004",
+   "ean": "8690000300042",
+   "title": "NVMe SSD 512 GB",
+   "price_usd": 26.8,
+   "stock": "24",
+   "images": [
+    "https://cdn.globalimport.example/urun/bl-3004.jpg"
+   ],
+   "cat": "Bilgisayar"
+  },
+  {
+   "sku": "GIBL3005",
+   "ean": null,
+   "title": "Webcam 1080p Mikrofonlu",
+   "price_usd": 12.65,
+   "stock": "37",
+   "images": [
+    "https://cdn.globalimport.example/urun/bl-3005.jpg"
+   ],
+   "cat": "Bilgisayar"
+  },
+  {
+   "sku": "GIBL3006",
+   "ean": "8690000300066",
+   "title": "Alüminyum Laptop Standı",
+   "price_usd": 6.66,
+   "stock": "50",
+   "images": [
+    "https://cdn.globalimport.example/urun/bl-3006.jpg"
+   ],
+   "cat": "Bilgisayar"
+  },
+  {
+   "sku": "GIBL3008",
+   "ean": "8690000300080",
+   "title": "USB-C Hub 7'si 1 Arada",
+   "price_usd": 10.96,
+   "stock": "16",
+   "images": [
+    "https://cdn.globalimport.example/urun/bl-3008.jpg"
+   ],
+   "cat": "Bilgisayar"
+  },
+  {
+   "sku": "GIKB4004",
+   "ean": "8690000400049",
+   "title": "Dijital Banyo Tartısı",
+   "price_usd": 5.35,
+   "stock": "34",
+   "images": [
+    "https://cdn.globalimport.example/urun/kb-4004.jpg"
+   ],
+   "cat": "Kişisel Bakım"
+  },
+  {
+   "sku": "GIYS5006",
+   "ean": "8690000500060",
+   "title": "Hareket Sensörlü Dolap Işığı 3'lü",
+   "price_usd": 2.94,
+   "stock": "18",
+   "images": [
+    "https://cdn.globalimport.example/urun/ys-5006.jpg"
+   ],
+   "cat": "Ev & Yaşam"
+  },
+  {
+   "sku": "GIYS5008",
+   "ean": null,
+   "title": "Kablosuz Kapı Zili",
+   "price_usd": 4.69,
+   "stock": "44",
+   "images": [
+    "https://cdn.globalimport.example/urun/ys-5008.jpg"
+   ],
+   "cat": "Ev & Yaşam"
+  },
+  {
+   "sku": "GI-BROKEN-1",
+   "ean": null,
+   "title": "Hatalı kayıt (fiyat yok)",
+   "price_usd": null,
+   "stock": "5",
+   "images": [],
+   "cat": ""
+  },
+  {
+   "sku": "",
+   "ean": null,
+   "title": "Hatalı kayıt (kod yok)",
+   "price_usd": 12.5,
+   "stock": "3",
+   "images": [],
+   "cat": ""
+  }
+ ]
+}
