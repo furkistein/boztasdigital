@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>Balkon Cafe Denizli · Servergazi · Kahvaltıdan geceye (örnek önizleme)</title>
+<meta name="description" content="Balkon Cafe Denizli: kahvaltı, sıcaklar, kahve ve tatlı; her gün 09:00-01:00. Servergazi Mah. Çınar Sk. No:7. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16302B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--cam:#16302B;--gece:#0F211D;--gunbatimi:#E07A4F;--seftali:#F6C9A8;--kum:#F7F1E8;--altin:#C9A96A;--gri:#9FB0AA;--cizgi:rgba(247,241,232,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cam);color:var(--kum);font-family:"DM Sans",system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.serit{background:var(--gunbatimi);color:var(--gece);text-align:center;font-size:13px;font-weight:700;padding:7px 12px}
+.ust{position:relative;z-index:2}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-family:Marcellus,serif;font-size:28px;letter-spacing:.14em;text-decoration:none;color:var(--altin)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 24px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.btn.gun{background:var(--gunbatimi);color:var(--gece)}
+.btn.kum{background:var(--kum);color:var(--gece)}
+.btn.hat{border:1.5px solid currentColor;background:transparent}
+.kahraman{position:relative;min-height:min(720px,86vh);display:flex;align-items:flex-end;margin-top:-76px;overflow:hidden}
+.kahraman>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,33,29,.6) 0%,rgba(15,33,29,.45) 40%,rgba(15,33,29,.95) 100%)}
+.kahraman h1,.kahraman p{text-shadow:0 2px 18px rgba(15,33,29,.6)}
+.kahraman .sar{position:relative;z-index:1;padding:140px 0 60px}
+.ufak{font-size:12px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:var(--seftali)}
+h1{font-family:Marcellus,serif;font-weight:400;font-size:clamp(46px,7vw,96px);line-height:1;margin:14px 0 18px;max-width:14ch}
+.kahraman p{font-size:18px;max-width:44ch;color:#E6DED2}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.etiket{position:absolute;right:24px;top:96px;z-index:1;background:var(--kum);color:var(--gece);font-size:12px;padding:5px 10px;border-radius:99px}
+section{padding:90px 0}
+h2{font-family:Marcellus,serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);line-height:1.06;margin:10px 0 16px}
+.acik{color:var(--gri);max-width:58ch}
+.akis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.akis article{position:relative;border-radius:24px;overflow:hidden;min-height:380px;display:flex;align-items:flex-end}
+.akis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.akis article::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(15,33,29,.9))}
+.akis div{position:relative;z-index:1;padding:22px}
+.akis b{display:block;font-family:Marcellus,serif;font-weight:400;font-size:28px}
+.akis small{color:var(--seftali);font-weight:700;letter-spacing:.14em}
+.menu{background:var(--kum);color:var(--gece)}
+.menu .sar{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.menu .acik{color:#5E6B66}
+.menu .ufak{color:var(--gunbatimi)}
+.basliklar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:24px 0}
+.basliklar span{border:1px solid rgba(15,33,29,.18);border-radius:14px;padding:14px 16px;font-family:Marcellus,serif;font-size:22px}
+.telefon{justify-self:center;width:min(300px,100%);aspect-ratio:9/17;border-radius:40px;background:var(--gece);padding:14px;box-shadow:0 30px 60px rgba(15,33,29,.25)}
+.ekran{height:100%;border-radius:28px;background:var(--kum);overflow:hidden;display:flex;flex-direction:column}
+.ekran header{background:var(--cam);color:var(--altin);font-family:Marcellus,serif;letter-spacing:.14em;text-align:center;padding:16px 0}
+.ekran .sat{display:flex;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(15,33,29,.1);font-size:14px}
+.ekran .sat i{font-style:normal;color:#8A8F8C}
+.ekran .not{margin:auto 12px 12px;background:#fff;border-radius:14px;padding:12px;font-size:12px;color:#5E6B66}
+.rez .sar{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.kart{background:var(--gece);border:1px solid var(--cizgi);border-radius:24px;padding:26px}
+.kart fieldset{border:0;margin-bottom:16px}
+.kart legend{font-weight:700;margin-bottom:10px}
+.secenek{display:flex;flex-wrap:wrap;gap:8px}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:8px 15px;font-size:14px;cursor:pointer}
+.secenek input:checked+span{background:var(--gunbatimi);border-color:var(--gunbatimi);color:var(--gece)}
+.secenek input:focus-visible+span{outline:2px solid var(--kum);outline-offset:2px}
+.mesaj{background:var(--cam);border-left:3px solid var(--gunbatimi);border-radius:8px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
+.kart .btn{width:100%}
+.kucuk-not{font-size:13px;color:var(--gri);margin-top:10px}
+.bilgi{display:grid;gap:14px;margin-top:26px}
+.bilgi div{border-top:1px solid var(--cizgi);padding-top:14px}
+.bilgi small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--seftali);font-weight:700}
+.bilgi a{font-weight:700}
+footer{background:var(--gece);color:var(--gri);padding:34px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(224,122,79,.55);border-radius:12px;padding:12px 14px;color:var(--kum)}
+.ornek-not a{color:var(--seftali);font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(0,0,0,.45)}
+@media (max-width:920px){
+  .menu .sar,.rez .sar{grid-template-columns:1fr;gap:34px}
+  .akis{grid-template-columns:1fr}
+  .akis article{min-height:260px}
+}
+@media (max-width:600px){
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{display:none}
+  .kahraman{min-height:640px}
+  .kahraman p{font-size:16.5px}
+  .etiket{right:14px}
+  section{padding:60px 0}
+  .yuzen{display:block}
+}
+</style>
+</head>
+<body>
+<div class="serit">Örnek önizleme · Balkon Cafe Denizli için Boztaş Digital tarafından hazırlandı</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">BALKON</a>
+    <a class="btn gun" href="tel:+905331619532">Masa ayırt</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="img/teras.jpg" alt="Manzaralı teras masaları (temsilî görsel)" width="1200" height="686" fetchpriority="high">
+    <span class="etiket">Temsilî görsel</span>
+    <div class="sar">
+      <span class="ufak">Lounge · Servergazi, Denizli</span>
+      <h1>Kahvaltıdan geceye, Balkon'da.</h1>
+      <p>Usta ellerden usta lezzetler. Her gün 09:00'dan gece 01:00'e kadar açığız; sabah kahvaltısına da akşam kahvesine de bekleriz.</p>
+      <div class="dugmeler">
+        <a class="btn gun" href="#rezervasyon">Masa ayırt</a>
+        <a class="btn hat" href="#menu">Menü</a>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sar">
+      <span class="ufak">Günün akışı</span>
+      <h2>Ne zaman gelirseniz gelin.</h2>
+      <p class="acik">Sabah kahvaltısı, gün ortası sıcaklar, akşam kahve ve tatlı. Yayında her bölümde kendi fotoğraflarınız durur.</p>
+      <div class="akis">
+        <article><img src="img/brunch.jpg" alt="Kahvaltı tabağı (temsilî görsel)" width="1152" height="896" loading="lazy"><div><small>09:00</small><b>Kahvaltı</b></div></article>
+        <article><img src="img/buzlu.jpg" alt="Soğuk içecek (temsilî görsel)" width="896" height="1152" loading="lazy"><div><small>ÖĞLEDEN SONRA</small><b>Sıcaklar ve içecekler</b></div></article>
+        <article><img src="img/tatli.jpg" alt="Tatlı tabağı (temsilî görsel)" width="1152" height="896" loading="lazy"><div><small>01:00'E KADAR</small><b>Kahve ve tatlı</b></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="sar">
+      <div>
+        <span class="ufak">Menü</span>
+        <h2>Menünüz sayfanızın içinde.</h2>
+        <p class="acik">Şu an menünüz Kardo'da. Sayfada menüye tek dokunuşla ulaşılır; isterseniz aynı menü alerjen bilgisiyle birlikte sayfanın içine de taşınır, misafir alerjisini seçince uygun olmayan ürünler gizlenir.</p>
+        <div class="basliklar"><span>Kahvaltı</span><span>Sıcaklar</span><span>Kahve</span><span>Tatlı</span></div>
+        <a class="btn kum" style="background:var(--cam);color:var(--kum)" href="https://kardoapp.com/balkon-kafe/menu">Güncel menüye bak</a>
+      </div>
+      <div class="telefon" aria-hidden="true">
+        <div class="ekran">
+          <header>BALKON</header>
+          <div class="sat"><span>Kahvaltı</span><i>ürünleriniz</i></div>
+          <div class="sat"><span>Sıcaklar</span><i>ürünleriniz</i></div>
+          <div class="sat"><span>Kahve</span><i>ürünleriniz</i></div>
+          <div class="sat"><span>Tatlı</span><i>ürünleriniz</i></div>
+          <div class="not">Alerjim var: gluten ✓ süt ✓<br>Uygun olmayan ürünler gizlendi.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rez" id="rezervasyon">
+    <div class="sar">
+      <div>
+        <span class="ufak">Rezervasyon</span>
+        <h2>Masanızı ayırtın.</h2>
+        <p class="acik">Gün, saat ve kişi sayısını seçin; rezervasyon notu hazır olsun. Arayıp okumanız ya da Instagram'dan göndermeniz yeterli.</p>
+        <div class="bilgi">
+          <div><small>Telefon</small><a href="tel:+905331619532">0533 161 95 32</a></div>
+          <div><small>Adres</small>Servergazi Mah., Çınar Sk. No:7, Denizli<br><a href="https://www.google.com/maps/search/Balkon+Cafe+Denizli">Yol tarifi</a></div>
+          <div><small>Saatler</small>Her gün 09:00 - 01:00</div>
+          <div><small>Instagram</small><a href="https://www.instagram.com/balkoncafedenizli/">@balkoncafedenizli</a></div>
+        </div>
+      </div>
+      <form class="kart" id="form" onsubmit="return false">
+        <fieldset><legend>Hangi gün?</legend><div class="secenek" id="gun"></div></fieldset>
+        <fieldset><legend>Ne zaman?</legend><div class="secenek" id="saat"></div></fieldset>
+        <fieldset><legend>Kaç kişi?</legend><div class="secenek" id="kisi"></div></fieldset>
+        <div class="mesaj" id="mesaj" aria-live="polite"></div>
+        <a class="btn gun" href="tel:+905331619532" id="ara">Arayıp ayırt</a>
+        <p class="kucuk-not">Rezervasyon notu panoya da kopyalanır.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Balkon Cafe Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Balkon Cafe Denizli için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; saatler, adres, telefon ve menü bağlantısı Instagram profilinizden alındı, fotoğraflar ve içerik sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+
+<div class="yuzen"><a class="btn gun" href="#rezervasyon">Masa ayırt</a></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const sec = (id, ad, liste, ilk) => $(id).innerHTML = liste.map((x,i) => `<label><input type="radio" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
+const GUNLER = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+sec("#gun","g",[...Array(7)].map((_, i) => { const d = new Date(); d.setDate(d.getDate() + i); return i === 0 ? "Bugün" : i === 1 ? "Yarın" : `${d.getDate()} ${GUNLER[d.getDay()]}`; }),0);
+sec("#saat","s",["Kahvaltı (09-12)","Öğlen","Akşam","Gece"],0);
+sec("#kisi","k",["2","3-4","5-6","7+"],0);
+function guncelle(){
+  const v = n => document.querySelector(`[name=${n}]:checked`).value;
+  $("#mesaj").textContent = `Merhaba Balkon, masa ayırtmak istiyorum.\nGün: ${v("g")}\nZaman: ${v("s")}\nKişi sayısı: ${v("k")}\nUygun mu?`;
+}
+$("#form").addEventListener("change", guncelle); guncelle();
+$("#ara").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#mesaj").textContent).catch(() => {}); });
+</script>
+</body>
+</html>
