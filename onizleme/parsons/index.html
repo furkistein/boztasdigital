@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>The Parsons Coffee · Selçukbey, Denizli · Kahve dükkânı (örnek önizleme)</title>
+<meta name="description" content="The Parsons Coffee: Denizli Selçukbey'de kahve dükkânı. Kahve, tatlı ve etkinlikler. Anadolu Yıldızı Sitesi, 665 Sk. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1B1917">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--is:#1B1917;--kul:#2A2724;--mum:#F3EBDD;--mor:#7B6CF6;--kahve:#A8744A;--gri:#A39C92;--cizgi:rgba(243,235,221,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--is);color:var(--mum);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.serit{background:var(--mor);color:#fff;text-align:center;font-size:13px;font-weight:700;padding:7px 12px}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px;border-bottom:1px solid var(--cizgi)}
+.logo{text-decoration:none;text-align:center;line-height:1}
+.logo b{font-family:"Libre Caslon Text",serif;font-size:26px;letter-spacing:.06em;display:block}
+.logo small{font-size:10px;letter-spacing:.42em;color:var(--gri)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:4px;padding:14px 24px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
+.btn.mor{background:var(--mor);color:#fff}
+.btn.mum{background:var(--mum);color:var(--is)}
+.btn.hat{border:1px solid currentColor;background:transparent}
+.kahraman .sar{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:60px 0 90px}
+.ufak{font-size:12px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--kahve)}
+.kesik{display:block;width:150px;border-top:3px dashed var(--mor);margin:18px 0}
+h1{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:clamp(44px,6.4vw,84px);line-height:1.02;margin-bottom:20px}
+h1 i{color:var(--kahve)}
+.kahraman p{font-size:18px;max-width:40ch;color:#D6CEC2}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kemer{position:relative}
+.kemer img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:260px 260px 4px 4px}
+.kemer span{position:absolute;left:14px;bottom:14px;background:var(--mum);color:var(--is);font-size:12px;padding:5px 10px;border-radius:99px}
+section{padding:90px 0}
+h2{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:10px 0 16px}
+.acik{color:var(--gri);max-width:56ch}
+.el{font-family:"Amatic SC",cursive;font-size:30px;color:var(--mor);line-height:1}
+.rafa{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.rafa article{background:var(--kul);border-radius:6px;overflow:hidden}
+.rafa img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
+.rafa .yazi{padding:18px 20px 22px}
+.rafa h3{font-family:"Amatic SC",cursive;font-size:36px;line-height:1}
+.rafa p{font-size:14px;color:var(--gri);margin-top:6px}
+.rafa article.bos{display:flex;flex-direction:column;justify-content:center;border:1px dashed var(--cizgi);background:transparent}
+.yorum{background:var(--mum);color:var(--is)}
+.yorum .sar{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.yorum .acik{color:#6B645B}
+.yorum .ufak{color:var(--mor)}
+.balon{background:#fff;border-radius:18px;padding:22px 24px;box-shadow:0 20px 40px rgba(27,25,23,.1);display:grid;gap:14px}
+.balon .satir{display:flex;gap:12px;align-items:flex-start}
+.balon .av{width:38px;height:38px;border-radius:50%;background:#E7DFD2;flex:none}
+.balon .satir div{background:#F4F0E9;border-radius:12px;padding:10px 14px;font-size:14px;color:#6B645B;flex:1}
+.balon .cevap{margin-left:50px}
+.balon .cevap div{background:var(--is);color:var(--mum)}
+.balon small{font-size:12px;color:#9C958B}
+.iletisim .sar{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.kart{background:var(--kul);border-radius:6px;padding:26px}
+.kart fieldset{border:0;margin-bottom:16px}
+.kart legend{font-weight:700;margin-bottom:10px}
+.secenek{display:flex;flex-wrap:wrap;gap:8px}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:4px;padding:8px 14px;font-size:14px;cursor:pointer}
+.secenek input:checked+span{background:var(--mor);border-color:var(--mor);color:#fff}
+.secenek input:focus-visible+span{outline:2px solid var(--mum);outline-offset:2px}
+.mesaj{background:var(--is);border-left:3px solid var(--mor);padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
+.kart .btn{width:100%}
+.kucuk-not{font-size:13px;color:var(--gri);margin-top:10px}
+.bilgi{display:grid;gap:14px;margin-top:26px}
+.bilgi div{border-top:1px solid var(--cizgi);padding-top:14px}
+.bilgi small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--kahve);font-weight:700}
+.bilgi a{font-weight:700}
+.mekan{border-radius:6px;overflow:hidden;margin-top:26px}
+.mekan img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+footer{border-top:1px solid var(--cizgi);color:var(--gri);padding:34px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(123,108,246,.6);border-radius:6px;padding:12px 14px;color:var(--mum)}
+.ornek-not a{color:#B3A9FF;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(0,0,0,.45)}
+@media (max-width:920px){
+  .kahraman .sar,.yorum .sar,.iletisim .sar{grid-template-columns:1fr;gap:34px}
+  .kemer{max-width:380px;width:84%;margin:0 auto}
+  .rafa{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{display:none}
+  .kahraman .sar{padding:40px 0 60px}
+  .kahraman p{font-size:16.5px}
+  section{padding:60px 0}
+  .rafa{gap:10px}
+  .rafa .yazi{padding:14px}
+  .rafa h3{font-size:30px}
+  .yuzen{display:block}
+}
+</style>
+</head>
+<body>
+<div class="serit">Örnek önizleme · The Parsons Coffee için Boztaş Digital tarafından hazırlandı</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#"><b>PARSONS</b><small lang="en">ORIGINAL COFFEE</small></a>
+    <a class="btn mor" href="https://wa.me/905418444008">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="sar">
+      <div>
+        <span class="ufak">Kahve dükkânı · Selçukbey, Denizli</span>
+        <span class="kesik" aria-hidden="true"></span>
+        <h1>Bu keşişlerin <i>bir bildiği var.</i></h1>
+        <p>Kahve, tatlı ve arada bir etkinlik. Anadolu Yıldızı Sitesi'ndeki dükkânımızda bir fincanlık mola sizi bekliyor.</p>
+        <div class="dugmeler">
+          <a class="btn mor" href="#iletisim">Masa ya da sipariş</a>
+          <a class="btn hat" href="https://www.google.com/maps/search/The+Parsons+Coffee+Denizli">Yol tarifi</a>
+        </div>
+      </div>
+      <div class="kemer"><img src="img/latte.jpg" alt="Latte art yapılmış kahve (temsilî görsel)" width="1200" height="1200" fetchpriority="high"><span>Temsilî görsel</span></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sar">
+      <span class="el">raftan seçin</span>
+      <h2>Kahve, tatlı, etkinlik.</h2>
+      <p class="acik">Başlıklar Instagram'daki öne çıkanlarınızdan alındı. Yayında her birinin altında ürünleriniz ve güncel fiyatlarınız durur; etkinlik duyurusunu da buradan yaparsınız.</p>
+      <div class="rafa">
+        <article><img src="img/barista.jpg" alt="Barista kahve hazırlıyor (temsilî görsel)" width="1200" height="933" loading="lazy"><div class="yazi"><h3>Kahve</h3><p>Ürünleriniz buraya.</p></div></article>
+        <article><img src="img/tatli.jpg" alt="Tatlı tabağı (temsilî görsel)" width="1200" height="933" loading="lazy"><div class="yazi"><h3>Tatlı</h3><p>Ürünleriniz buraya.</p></div></article>
+        <article><img src="img/mekan.jpg" alt="Kahve dükkânı içi (temsilî görsel)" width="1200" height="686" loading="lazy"><div class="yazi"><h3>Event</h3><p>Sıradaki etkinliğiniz buraya.</p></div></article>
+        <article class="bos"><div class="yazi"><h3>Sizden</h3><p>Misafirlerin paylaştığı kareler, izinleriyle burada.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="yorum">
+    <div class="sar">
+      <div>
+        <span class="ufak">Google yorumları</span>
+        <h2>300 yorum, 300 sohbet fırsatı.</h2>
+        <p class="acik">Google Haritalar'da 300 civarında değerlendirmeniz var. Yoruma verilen kısa, samimi bir cevap hem yazan misafiri geri getirir hem de profile bakan yeni misafire "burada bizi dinliyorlar" der. Bu işi haftalık olarak biz üstlenebiliriz; cevaplar sizin üslubunuzla, sizin onayınızla gider.</p>
+      </div>
+      <div class="balon" aria-label="Örnek yorum ve cevap görünümü">
+        <div class="satir"><span class="av"></span><div>Misafirin yorumu burada görünür.<br><small>Google Haritalar · örnek</small></div></div>
+        <div class="satir cevap"><div>Teşekkürler! Bir dahaki kahveniz keşişlerden. <br><small>Sahibinin yanıtı · örnek</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <div>
+        <span class="ufak">Bize ulaşın</span>
+        <h2>Uğramadan önce yazın.</h2>
+        <p class="acik">Ne için yazdığınızı seçin; mesajınız hazır olsun, WhatsApp'ta tek dokunuşla gitsin.</p>
+        <div class="bilgi">
+          <div><small>WhatsApp ve telefon</small><a href="tel:+905418444008">0541 844 40 08</a></div>
+          <div><small>Adres</small>Selçukbey Mh. 665 Sk. No:2/5A, Anadolu Yıldızı Sitesi, Denizli<br><a href="https://www.google.com/maps/search/The+Parsons+Coffee+Denizli">Yol tarifi</a></div>
+          <div><small>Instagram</small><a href="https://www.instagram.com/theparsonscoffee/">@theparsonscoffee</a></div>
+        </div>
+      </div>
+      <form class="kart" id="form" onsubmit="return false">
+        <fieldset><legend>Ne için yazıyorsunuz?</legend><div class="secenek" id="ne"></div></fieldset>
+        <fieldset><legend>Ne zaman?</legend><div class="secenek" id="ne-zaman"></div></fieldset>
+        <fieldset><legend>Kaç kişi?</legend><div class="secenek" id="kisi"></div></fieldset>
+        <div class="mesaj" id="mesaj" aria-live="polite"></div>
+        <a class="btn mor" id="gonder" href="https://wa.me/905418444008">WhatsApp'ta gönder</a>
+        <p class="kucuk-not">Mesaj WhatsApp'ta hazır açılır, siz gönderirsiniz.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© The Parsons Coffee · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: The Parsons Coffee için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; slogan, adres, telefon ve başlıklar Instagram profilinizden alındı, ürünler ve fotoğraflar sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+
+<div class="yuzen"><a class="btn mor" href="#iletisim">Yazın, hazırlayalım</a></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const sec = (id, ad, liste, ilk) => $(id).innerHTML = liste.map((x,i) => `<label><input type="radio" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
+sec("#ne","n",["Masa ayırtmak","Gel-al sipariş","Etkinlik bilgisi","Toplu kahve siparişi"],0);
+sec("#ne-zaman","z",["Bugün","Yarın","Hafta sonu"],0);
+sec("#kisi","k",["1-2","3-4","5-8","8+"],0);
+function guncelle(){
+  const v = n => document.querySelector(`[name=${n}]:checked`).value;
+  const m = `Merhaba Parsons, ${v("n").toLowerCase()} için yazıyorum.\nNe zaman: ${v("z")}\nKişi sayısı: ${v("k")}\nMüsait misiniz?`;
+  $("#mesaj").textContent = m;
+  $("#gonder").href = "https://wa.me/905418444008?text=" + encodeURIComponent(m);
+}
+$("#form").addEventListener("change", guncelle); guncelle();
+</script>
+</body>
+</html>
