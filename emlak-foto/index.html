@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emlak Fotoğrafı Düzenleme — Önce / Sonra | Boztaş Digital</title>
+<meta name="description" content="İlan fotoğraflarında renk, ışık ve eğik dikey düzeltmesi: önce/sonra örnekleri.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#f4f1ec;--yazi:#1d1b18;--soluk:#6d665c;--vurgu:#b4552d;--kart:#fff}
+*{box-sizing:border-box;margin:0}
+body{background:var(--zemin);color:var(--yazi);font:16px/1.6 Manrope,system-ui,sans-serif}
+.kap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 28px}
+.etiket{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vurgu);font-weight:700}
+h1{font:400 clamp(38px,6vw,68px)/1.02 "Instrument Serif",serif;margin:12px 0 16px;max-width:820px}
+h1 em{color:var(--vurgu)}
+.giris{color:var(--soluk);max-width:640px;font-size:17px}
+.adimlar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:32px 0 8px}
+.adim{background:var(--kart);border-radius:14px;padding:16px;font-size:14px}
+.adim b{display:block;font-size:15px;margin-bottom:2px}
+.ornek{margin:44px 0}
+.ornek h2{font:400 30px/1.1 "Instrument Serif",serif;margin-bottom:6px}
+.ornek p{color:var(--soluk);margin-bottom:14px;max-width:700px}
+.kiyas{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#ddd;user-select:none;touch-action:pan-y}
+.kiyas img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.kiyas .ust{clip-path:inset(0 calc(100% - var(--k,50%)) 0 0)}
+.kiyas .cizgi{position:absolute;top:0;bottom:0;left:var(--k,50%);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.kiyas .tutamac{position:absolute;top:50%;left:var(--k,50%);width:44px;height:44px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);box-shadow:0 4px 14px rgba(0,0,0,.25);display:grid;place-items:center;font-weight:700;color:var(--vurgu);pointer-events:none}
+.kiyas input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.rozet{position:absolute;top:12px;padding:4px 10px;border-radius:99px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:600;pointer-events:none}
+.rozet.o{left:12px}.rozet.s{right:12px}
+.paket{background:var(--yazi);color:#f4f1ec;border-radius:20px;padding:32px;margin:56px 0 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.paket h2{font:400 34px/1.1 "Instrument Serif",serif;margin-bottom:10px}
+.paket ul{padding-left:18px;color:#d8d2c8}
+.paket li{margin:4px 0}
+footer{color:var(--soluk);font-size:12.5px;padding:24px 0 48px;border-top:1px solid #ddd6cb}
+footer a{color:inherit}
+@media(max-width:760px){.adimlar{grid-template-columns:1fr 1fr}.paket{grid-template-columns:1fr;padding:24px}header{padding-top:36px}}
+</style>
+</head>
+<body>
+<div class="kap">
+<header>
+  <span class="etiket">Boztaş Digital · Örnek çalışma</span>
+  <h1>İlan fotoğrafınız <em>evin kendisi</em> kadar iyi görünsün.</h1>
+  <p class="giris">Emlak fotoğraflarında en sık üç sorun var: ampul ışığının boyadığı sarı-turuncu duvarlar, karanlık köşeler ve eğik tutulan telefondan yamulan duvar çizgileri. Aşağıdaki örneklerde çizgiyi sürükleyerek önce ve sonrasını karşılaştırabilirsiniz.</p>
+  <div class="adimlar">
+    <div class="adim"><b>Renk dengesi</b>Duvarlar ve zemin gerçek rengine döner.</div>
+    <div class="adim"><b>Işık</b>Gölgeler açılır, pencere dışı patlamaz.</div>
+    <div class="adim"><b>Dikey düzeltme</b>Kapı, pencere ve duvar çizgileri dikleşir.</div>
+    <div class="adim"><b>İlan ölçüsü</b>Sahibinden/Emlakjet'e uygun JPG, aynı adlarla.</div>
+  </div>
+</header>
+
+<section class="ornek">
+  <h2>Sarı ampul ışığı</h2>
+  <p>Renk dengesi düzeltildi, duvarlar gerçek rengine döndü; lamba ve kapı ışığı patlamadan korundu.</p>
+  <div class="kiyas"><img src="img/sari-isik-sonra.jpg" alt="Düzenlenmiş salon"><img class="ust" src="img/sari-isik-once.jpg" alt="Düzenlenmemiş salon"><span class="rozet o">Önce</span><span class="rozet s">Sonra</span><div class="cizgi"></div><div class="tutamac">⇆</div><input type="range" min="0" max="100" value="50" aria-label="Önce/sonra karşılaştırma"></div>
+</section>
+<section class="ornek">
+  <h2>Karanlık akşam çekimi</h2>
+  <p>Gölgeler açıldı, sarı ton temizlendi, pencere dışı korunarak ortam aydınlatıldı.</p>
+  <div class="kiyas"><img src="img/karanlik-salon-sonra.jpg" alt="Düzenlenmiş oturma odası"><img class="ust" src="img/karanlik-salon-once.jpg" alt="Düzenlenmemiş oturma odası"><span class="rozet o">Önce</span><span class="rozet s">Sonra</span><div class="cizgi"></div><div class="tutamac">⇆</div><input type="range" min="0" max="100" value="50" aria-label="Önce/sonra karşılaştırma"></div>
+</section>
+<section class="ornek">
+  <h2>Soluk ve eğik oda</h2>
+  <p>Pozlama ve kontrast düzeltildi, eğilen duvar çizgileri dikleştirildi.</p>
+  <div class="kiyas"><img src="img/soluk-oda-sonra.jpg" alt="Düzenlenmiş oda"><img class="ust" src="img/soluk-oda-once.jpg" alt="Düzenlenmemiş oda"><span class="rozet o">Önce</span><span class="rozet s">Sonra</span><div class="cizgi"></div><div class="tutamac">⇆</div><input type="range" min="0" max="100" value="50" aria-label="Önce/sonra karşılaştırma"></div>
+</section>
+<section class="ornek">
+  <h2>Eğik tutulmuş telefon</h2>
+  <p>Kadraj döndürülüp dikeyler (pencere, raf) düz hâle getirildi.</p>
+  <div class="kiyas"><img src="img/egik-cekim-sonra.jpg" alt="Düzenlenmiş yemek alanı"><img class="ust" src="img/egik-cekim-once.jpg" alt="Düzenlenmemiş yemek alanı"><span class="rozet o">Önce</span><span class="rozet s">Sonra</span><div class="cizgi"></div><div class="tutamac">⇆</div><input type="range" min="0" max="100" value="50" aria-label="Önce/sonra karşılaştırma"></div>
+</section>
+
+<section class="paket">
+  <div>
+    <h2>Toplu iş nasıl yürür?</h2>
+    <ul>
+      <li>RAW (CR2, NEF, ARW, DNG...) ya da JPG fotoğraflarınızı klasör klasör gönderirsiniz.</li>
+      <li>Önce bir gayrimenkulün fotoğraflarını düzenleyip onayınıza sunarım.</li>
+      <li>Onaylanan ayarla kalanlar aynı tonda işlenir, her fotoğraf tek tek kontrol edilir.</li>
+      <li>Çıktı aynı klasör yapısında, ilan ölçüsünde JPG olarak teslim edilir.</li>
+    </ul>
+  </div>
+  <div>
+    <h2>Neler yapılmaz?</h2>
+    <ul>
+      <li>Evde olmayan eşya, manzara ya da oda eklenmez; fotoğraf gerçeği gösterir.</li>
+      <li>Kusurlar (çatlak, leke) istenirse yalnız geçici olanlar temizlenir.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Bu sayfa bir örnek çalışmadır. Örnek fotoğraflar Wikimedia Commons'tan, özgür lisanslarıyla kullanılmıştır:
+  <a href="https://commons.wikimedia.org/wiki/File:Living_room_facing_bedroom_at_a_typical_1940s_apartment_at_Nordiska_museet_in_October_2023.jpg">JIP, CC BY-SA 4.0</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:Living_room_with_1960s_objects.jpg">Kotivalo, CC BY-SA 4.0</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:Hotel_room_interior_at_apartment_hotel_Ona_Cala_P%C3%AD_Club,_Mallorca,_Spain.jpg">JIP, CC BY-SA 3.0</a> ·
+  <a href="https://commons.wikimedia.org/wiki/File:The_living_room_that_needs_houseplants.jpg">Lo, CC0</a>.
+  Düzenlenmiş hâlleri aynı lisanslarla paylaşılmıştır.
+</footer>
+</div>
+<script>
+document.querySelectorAll('.kiyas').forEach(k=>{const i=k.querySelector('input');const f=()=>k.style.setProperty('--k',i.value+'%');i.addEventListener('input',f);f();});
+</script>
+</body>
+</html>
