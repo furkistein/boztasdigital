@@ -1,0 +1,11 @@
+{
+  "ad": "Emina Güzellik Merkezi",
+  "renk": "#3C4F3F",
+  "giris": "Cilt bakımından lazer epilasyona, ipek kirpikten özel günlere hizmet başlıklarınız, 29 Ekim Bulvarı adresiniz ve WhatsApp'a hazır düşen randevu notu. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["11 hizmet başlığı, kat ve daire bilgili adres, yol tarifi ve WhatsApp'tan randevu"],
+    "profesyonel": ["Cilt, lazer, incelme, kirpik-özel gün sekmeleri: seçtikçe WhatsApp randevu notu yazılır (lazerde bölge seçimi)", "Üç adımda randevu, büyütülebilir galeri, harita ve sık sorulanlar"],
+    "premium": ["Randevu masası: birden çok hizmet, önümüzdeki 10 gün, saat dilimi, ilk ziyaret ve birlikte gelenlerle hazır mesaj", "Özel günler hikâyesi (gelin, nişan, kına) ve talep formu, galeri şeridi, harita"]
+  }
+}

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Oident Ağız ve Diş Sağlığı Polikliniği · Denizli · Profesyonel örnek</title>
+<meta name="description" content="Oident Ağız ve Diş Sağlığı Polikliniği Denizli: tedavi bilgileri, WhatsApp'a hazır randevu notu, harita ve sık sorulanlar. Her gün 09.00-22.00. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FAF8F6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#FAF8F6;--lila:#EEE9F1;--murdum:#2B2138;--mercan:#C9573F;--soluk:#675F70;--cizgi:rgba(43,33,56,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--murdum);font-family:Sora,system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:inherit}
+b,strong{font-weight:600}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+em,.it{font-family:"Source Serif 4",Georgia,serif;font-style:italic;font-weight:400}
+.ufak{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--mercan)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:14px 22px;font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--murdum);color:#fff}
+.btn.dolu:hover{background:var(--mercan)}
+.btn.hat{border:1px solid rgba(43,33,56,.25)}
+.btn.hat:hover{border-color:var(--murdum)}
+.btn.wa{background:#1F7A4D;color:#fff}
+.btn.wa:hover{background:#17623D}
+/* üst */
+.ust{position:sticky;top:0;z-index:20;background:rgba(250,248,246,.95);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:68px;gap:20px}
+.logo{font-size:22px;font-weight:600;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:9px}
+.logo i{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--murdum);position:relative}
+.logo i::after{content:"";position:absolute;right:-5px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--mercan)}
+.ust nav{display:flex;gap:26px;font-size:14px;font-weight:400}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--mercan)}
+/* kahraman */
+.kahraman{display:grid;grid-template-columns:6fr 6fr;min-height:calc(100vh - 110px)}
+.kahraman .yazi{padding:64px 56px 56px max(28px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:space-between;gap:44px}
+h1{font-weight:300;font-size:clamp(44px,5.2vw,80px);line-height:1.02;letter-spacing:-.035em;margin-top:18px}
+h1 em{color:var(--mercan);letter-spacing:-.01em}
+.kahraman p{max-width:40ch;color:var(--soluk);margin-top:22px;font-size:17px}
+.dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.halka-satir{display:flex;align-items:center;gap:22px;border-top:1px solid var(--cizgi);padding-top:22px}
+.halka{width:118px;height:118px;flex:none}
+.halka text{font-family:Sora,sans-serif;font-size:7px;fill:var(--soluk)}
+.halka-satir b{display:block;font-size:17px}
+.halka-satir span{font-size:14px;color:var(--soluk)}
+.kahraman figure{position:relative;overflow:hidden;background:#3a3040}
+.kahraman figure img{width:100%;height:100%;object-fit:cover;animation:yavas 16s ease-out both}
+@keyframes yavas{from{transform:scale(1.06)}to{transform:scale(1)}}
+figcaption{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85)}
+section{padding:110px 0}
+h2{font-weight:300;font-size:clamp(34px,4.2vw,58px);line-height:1.05;letter-spacing:-.03em;margin:12px 0 16px}
+h2 em{color:var(--mercan)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.etiket{display:inline-block;font-size:12.5px;color:var(--soluk);border:1px dashed rgba(43,33,56,.3);border-radius:6px;padding:5px 10px;margin-top:10px}
+/* tedaviler (akordeon) */
+.tedavi{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.tedavi .yapisik{position:sticky;top:96px}
+.tedavi .yapisik img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:12px;margin-top:28px}
+.akordeon details{border-bottom:1px solid var(--cizgi)}
+.akordeon details:first-child{border-top:1px solid var(--cizgi)}
+.akordeon summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:48px 1fr 28px;align-items:center;padding:22px 0;font-size:clamp(20px,2vw,26px);font-weight:400;letter-spacing:-.02em}
+.akordeon summary::-webkit-details-marker{display:none}
+.akordeon summary span{font-size:12px;color:var(--mercan);font-weight:600;letter-spacing:.1em}
+.akordeon summary i{width:28px;height:28px;border-radius:50%;border:1px solid var(--cizgi);position:relative;transition:transform .35s,background .3s}
+.akordeon summary i::before,.akordeon summary i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.akordeon summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.akordeon details[open] summary i{transform:rotate(45deg);background:var(--lila)}
+.akordeon .ic{padding:0 0 26px 48px;color:var(--soluk);max-width:60ch}
+.akordeon .ic p+p{margin-top:8px}
+.akordeon .bu{margin-top:14px;font-size:14px;font-weight:600;color:var(--murdum);border-bottom:1px solid var(--mercan);padding-bottom:1px}
+/* randevu notu */
+.randevu{background:var(--lila)}
+.randevu-izgara{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:start;margin-top:44px}
+.randevu fieldset{border:0;margin-bottom:26px}
+.randevu legend{font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.02em}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;background:#fff;border:1px solid rgba(43,33,56,.14);border-radius:10px;padding:9px 14px;font-size:14px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.secenek input:checked+span{background:var(--murdum);color:#fff;border-color:var(--murdum)}
+.secenek input:focus-visible+span{outline:2px solid var(--mercan);outline-offset:2px}
+.randevu input[type=text]{width:100%;max-width:360px;font:inherit;font-size:15px;background:#fff;border:1px solid rgba(43,33,56,.18);border-radius:10px;padding:11px 14px;color:var(--murdum)}
+.fis{position:sticky;top:96px;background:#fff;border-radius:14px;padding:28px;box-shadow:0 24px 50px -30px rgba(43,33,56,.35)}
+.fis h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.fis .mesaj{white-space:pre-wrap;font-size:14.5px;line-height:1.65;background:var(--zemin);border-left:3px solid var(--mercan);border-radius:4px;padding:14px 16px;margin:16px 0 18px;min-height:150px}
+.fis .btn{width:100%}
+.fis .btn+.btn{margin-top:10px}
+.fis small{display:block;color:var(--soluk);font-size:12.5px;margin-top:12px;line-height:1.5}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:10px}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 7;aspect-ratio:3/2}
+.galeri .g2{grid-column:span 5;aspect-ratio:15/14}
+.galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 4;aspect-ratio:1}
+.kutu{position:fixed;inset:0;z-index:50;background:rgba(27,21,34,.93);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;width:auto;border-radius:6px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+/* konum */
+.konum{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:44px;align-items:start}
+.konum iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:12px;background:#e7e2ea}
+.konum dl{display:grid;gap:18px}
+.konum dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soluk);font-weight:600}
+.konum dd{font-size:19px;font-weight:400}
+.konum dd a{text-decoration:none}
+.konum .dugmeler{margin-top:26px}
+/* SSS */
+.sss{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.sss .akordeon summary{font-size:19px;grid-template-columns:1fr 28px}
+.sss .akordeon .ic{padding-left:0}
+footer{background:var(--murdum);color:#BEB4C8;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(250,248,246,.3);border-radius:8px;padding:12px 14px;color:#EDE7F1}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:960px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/3}
+  .kahraman .yazi{padding:36px 28px 44px}
+  .tedavi,.randevu-izgara,.konum,.sss{grid-template-columns:1fr;gap:36px}
+  .tedavi .yapisik,.fis{position:static}
+  .tedavi .yapisik img{aspect-ratio:16/10}
+}
+@media (max-width:600px){
+  body{font-size:15.5px}
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{padding:10px 14px;font-size:13.5px}
+  .kahraman .yazi{padding:28px 18px 40px;gap:32px}
+  h1{font-size:clamp(40px,11.5vw,52px)}
+  .halka{width:96px;height:96px}
+  section{padding:72px 0}
+  .akordeon summary{grid-template-columns:38px 1fr 28px;padding:18px 0}
+  .akordeon .ic{padding-left:38px}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2}
+  .galeri .g2,.galeri .g3{grid-column:span 1;aspect-ratio:3/4}
+  .galeri .g4,.galeri .g5{grid-column:span 1}
+  .fis{padding:22px}
+  .yuzen{display:block}
+}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman figure img{animation:none}.akordeon summary i,.galeri img{transition:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Oident Ağız ve Diş Sağlığı Polikliniği">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#"><i aria-hidden="true"></i>oident</a>
+    <nav><a href="#tedaviler">Tedaviler</a><a href="#randevu">Randevu notu</a><a href="#galeri">Klinik</a><a href="#konum">Konum</a><a href="#sss">Sık sorulanlar</a></nav>
+    <a class="btn dolu" href="#randevu">Randevu</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <div>
+        <span class="ufak">Ağız ve diş sağlığı · Yenişafak - Cinkaya</span>
+        <h1>Diş hekimine <em>mesaiden sonra</em> da gidilir.</h1>
+        <p>Oident her gün 09.00'dan 22.00'ye kadar açık. Şikâyetinizi seçin, size uyan zamanı işaretleyin; WhatsApp mesajınız hazır olsun.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="#randevu">Randevu notu hazırla</a>
+          <a class="btn hat" href="tel:+905337339620">0533 733 96 20</a>
+        </div>
+      </div>
+      <div class="halka-satir">
+        <svg class="halka" id="halka" viewBox="0 0 100 100" role="img" aria-label="Günün 24 saati içinde 09.00-22.00 açık saatleri"></svg>
+        <div><b id="durumB">Her gün 09.00 – 22.00</b><span id="durumS">Hafta sonu dahil, yedi gün.</span></div>
+      </div>
+    </div>
+    <figure>
+      <img src="../img/gercek/sohbet.webp" srcset="../img/gercek/sohbet-900.webp 900w, ../img/gercek/sohbet.webp 1800w" sizes="(max-width:960px) 100vw, 50vw" alt="Diş hekimi koltuktaki hastayla sohbet ediyor (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high" style="object-position:60% 40%">
+      <figcaption>Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="tedaviler">
+    <div class="sar tedavi">
+      <div class="yapisik">
+        <span class="ufak">Tedaviler</span>
+        <h2 data-belir>Ne yapılır, <em>nasıl</em> ilerler?</h2>
+        <p class="acik-yazi">Her başlığın altında sade, genel bir bilgi. Tedavinin size uygun olup olmadığına muayenede hekiminiz karar verir.</p>
+        <span class="etiket">Örnek başlıklar: kliniğin kendi listesiyle değişir.</span>
+        <img src="../img/gercek/tablet-900.webp" alt="Diş hekimi tablet üzerinden hastaya bilgi veriyor (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:30% 50%">
+      </div>
+      <div class="akordeon" id="akordeon"></div>
+    </div>
+  </section>
+
+  <section class="randevu" id="randevu">
+    <div class="sar">
+      <span class="ufak">Randevu notu</span>
+      <h2 data-belir>Seçin, mesajınız <em>yazılsın.</em></h2>
+      <p class="acik-yazi">Şikâyetinizi ve size uyan zamanı işaretleyin. WhatsApp açıldığında mesaj hazırdır; klinik size kesin saati yazar.</p>
+      <div class="randevu-izgara">
+        <form id="form" onsubmit="return false">
+          <fieldset><legend>Ne için?</legend><div class="secenek" id="sikayet"></div></fieldset>
+          <fieldset><legend>Ne zaman uygun?</legend><div class="secenek" id="zaman"></div></fieldset>
+          <fieldset><legend><label for="ad">Adınız (isteğe bağlı)</label></legend><input type="text" id="ad" autocomplete="given-name" placeholder="Ör. Ayşe"></fieldset>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>WhatsApp mesajınız</h3>
+          <div class="mesaj" id="mesaj"></div>
+          <a class="btn wa" id="wa" href="https://wa.me/905337339620">WhatsApp'ta aç</a>
+          <a class="btn hat" href="tel:+905337339620">Ya da arayın: 0533 733 96 20</a>
+          <small>Sağlık bilgisi paylaşmanız gerekmez; kısa bir not yeterli. Acil ağrıda aramanız daha hızlıdır.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Klinik</span>
+      <h2 data-belir>Kapıdan içeri <em>bir bakış.</em></h2>
+      <p class="acik-yazi">Yayında bu kareler kliniğinizde çekilen fotoğraflarla değişir: bekleme alanı, muayene odası, ekibiniz.</p>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/ekip.webp"><img src="../img/gercek/ekip-900.webp" alt="Aydınlık muayene odasında diş hekimi ve asistanı (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/unite.webp"><img src="../img/gercek/unite-900.webp" alt="Muayene ünitesi ve ahşap bekleme köşesi (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/cocuk.webp"><img src="../img/gercek/cocuk-900.webp" alt="Diş hekimi koltuktaki gülümseyen çocuğa ayna gösteriyor (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:65% 50%"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/fircalama.webp"><img src="../img/gercek/fircalama-900.webp" alt="Diş modeli üzerinde fırçalama anlatımı (temsilî fotoğraf)" width="900" height="900" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/lamba.webp"><img src="../img/gercek/lamba-900.webp" alt="Muayene lambası ve ünite (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="konum" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Konum</span>
+      <h2 data-belir>Yenişafak - Cinkaya, <em>Denizli.</em></h2>
+      <div class="konum">
+        <iframe loading="lazy" title="Oident konumu" src="https://www.google.com/maps?q=Oident+A%C4%9F%C4%B1z+ve+Di%C5%9F+Sa%C4%9Fl%C4%B1%C4%9F%C4%B1+Poliklini%C4%9Fi+Denizli&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Adres</dt><dd>Yenişafak - Cinkaya, Denizli<br><span style="font-size:14px;color:var(--soluk)">Açık adres yayında eklenir.</span></dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Her gün 09.00 – 22.00</dd></div>
+            <div><dt>Telefon / WhatsApp</dt><dd><a href="tel:+905337339620">0533 733 96 20</a></dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://maps.app.goo.gl/oBjYLMHfP5TEEFYC7">Yol tarifi al</a><a class="btn hat" href="tel:+905337339620">Ara</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sss" style="border-top:1px solid var(--cizgi)">
+    <div class="sar sss">
+      <div>
+        <span class="ufak">Sık sorulanlar</span>
+        <h2 data-belir>Gelmeden <em>önce.</em></h2>
+        <span class="etiket">Cevaplar örnektir: kliniğin kendi cevaplarıyla değişir.</span>
+      </div>
+      <div class="akordeon" id="sssListe"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Oident Ağız ve Diş Sağlığı Polikliniği · Denizli · <a href="https://www.instagram.com/oident20/">@oident20</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Oident Ağız ve Diş Sağlığı Polikliniği için Boztaş Digital tarafından hazırlandı, kliniğin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kliniğinizin fotoğrafları kullanılır. Tedavi başlıkları ve sık sorulan cevapları örnektir, genel bilgilendirme amaçlıdır. Telefon, konum ve çalışma saatleri Instagram profilinizden alındı. Sağlık tanıtım kurallarına uygun olarak fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel içermez. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#randevu">Randevu notu</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+
+// Saat halkası: 24 saatlik gün, 09-22 açık yayı, şu anki Türkiye saati işaretli
+(() => {
+  const tr = new Date(Date.now() + 3 * 3600e3), dk = tr.getUTCHours() * 60 + tr.getUTCMinutes();
+  const acik = dk >= 540 && dk < 1320, R = 40, C = 2 * Math.PI * R;
+  const nokta = (saat, r) => { const a = (saat / 24) * 2 * Math.PI - Math.PI / 2; return [50 + r * Math.cos(a), 50 + r * Math.sin(a)]; };
+  const [x, y] = nokta(dk / 60, R);
+  const etiket = [0, 6, 12, 18].map((s) => { const [a, b] = nokta(s, 29); return `<text x="${a}" y="${b + 2.4}" text-anchor="middle">${String(s).padStart(2, "0")}</text>`; }).join("");
+  $("#halka").innerHTML = `<circle cx="50" cy="50" r="${R}" fill="none" stroke="rgba(43,33,56,.12)" stroke-width="7"/>
+    <circle cx="50" cy="50" r="${R}" fill="none" stroke="#C9573F" stroke-width="7" stroke-dasharray="${(C * 13) / 24} ${C}" stroke-dashoffset="${-(C * 9) / 24}" transform="rotate(-90 50 50)"/>
+    ${etiket}<circle cx="${x}" cy="${y}" r="5.5" fill="${acik ? "#2B2138" : "#fff"}" stroke="#2B2138" stroke-width="2"/>`;
+  $("#durumB").textContent = acik ? "Şu an açık · 22.00'ye kadar" : "Şu an kapalı · " + (dk < 540 ? "bugün" : "yarın") + " 09.00'da açılır";
+  $("#durumS").textContent = "Her gün 09.00 – 22.00, hafta sonu dahil.";
+})();
+
+// Tedavi akordeonu (genel bilgi, vaat yok)
+const TEDAVI = [
+  ["Muayene ve kontrol", "Ağız ve dişlerin genel değerlendirmesidir. Gerekirse röntgen istenir; bulgular ve tedavi seçenekleri size anlatılır.", "Şikâyetiniz yoksa da düzenli kontrol aralığını hekiminizle konuşabilirsiniz.", "Kontrol / muayene"],
+  ["Diş temizliği", "Diş taşı ve plakların temizlenmesidir. Ne sıklıkla yapılacağı diş eti durumunuza göre belirlenir.", "Evde fırçalama ve diş ipi kullanımı hakkında da bilgi alabilirsiniz.", "Diş temizliği"],
+  ["Dolgu", "Çürük ya da kırılma nedeniyle kaybedilen diş dokusunun onarılmasıdır.", "Hangi dolgu malzemesinin uygun olduğu dişin durumuna göre muayenede konuşulur.", "Çürük / dolgu"],
+  ["Kanal tedavisi", "Dişin iç kısmındaki dokunun (pulpa) temizlenip doldurulmasıdır; amaç dişi ağızda tutmaktır.", "Kaç seansta tamamlanacağı dişe göre değişir; hekiminiz süreci baştan anlatır.", "Diş ağrısı"],
+  ["İmplant", "Eksik dişin yerine çene kemiğine yerleştirilen yapay köktür; üzerine diş yapılır.", "Uygun olup olmadığı muayene ve görüntülemeyle belirlenir.", "Eksik diş"],
+  ["Ortodonti", "Diş ve çene dizilimindeki düzensizliklerin tel ya da plaklarla düzeltilmesidir.", "Tedavi süresi ve yöntemi kişiye göre planlanır.", "Diş dizilimi"],
+  ["Çocuk diş hekimliği", "Çocukların ilk diş kontrolleri, koruyucu uygulamalar ve süt dişi tedavileridir.", "İlk ziyarette çocuğunuzun ortamı tanıması için kısa bir tanışma yapılabilir.", "Çocuğum için"],
+];
+$("#akordeon").innerHTML = TEDAVI.map(([ad, a, b, k], i) => `<details${i === 0 ? " open" : ""}><summary><span>${String(i + 1).padStart(2, "0")}</span>${ad}<i aria-hidden="true"></i></summary><div class="ic"><p>${a}</p><p>${b}</p><button type="button" class="bu" data-k="${k}">Bu konuda randevu notu →</button></div></details>`).join("");
+
+// Randevu notu
+const SIKAYET = ["Kontrol / muayene", "Diş ağrısı", "Diş eti kanaması / hassasiyet", "Kırık diş / düşen dolgu", "Çürük / dolgu", "Diş temizliği", "Eksik diş", "Diş dizilimi", "Çocuğum için"];
+const ZAMAN = ["Hafta içi sabah (09-12)", "Hafta içi öğleden sonra (12-18)", "İş çıkışı (18-22)", "Cumartesi", "Pazar", "Fark etmez"];
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#sikayet", "k", SIKAYET); secim("#zaman", "z", ZAMAN, 2);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function yaz() {
+  const ad = $("#ad").value.trim();
+  const m = `Merhaba${ad ? ", ben " + ad : ""}. Oident'ten randevu almak istiyorum.\nKonu: ${deger("k")}\nBana uygun zaman: ${deger("z")}\nUygun bir saat yazabilir misiniz?`;
+  $("#mesaj").textContent = m;
+  $("#wa").href = "https://wa.me/905337339620?text=" + encodeURIComponent(m);
+}
+$("#form").addEventListener("input", yaz); yaz();
+$("#akordeon").addEventListener("click", (e) => {
+  const b = e.target.closest(".bu"); if (!b) return;
+  const r = document.querySelector(`[name=k][value="${b.dataset.k}"]`); if (r) r.checked = true;
+  yaz(); $("#randevu").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
+
+// SSS
+const SSS = [
+  ["Akşam ya da hafta sonu gelebilir miyim?", "Instagram profilinizdeki bilgiye göre klinik her gün 09.00-22.00 arası açık; cumartesi ve pazar dahil. Kesin saat için önceden yazmanız yeterli."],
+  ["Randevusuz gelebilir miyim?", "Yayında kliniğin kendi cevabı yazılır. Önceden aramanız ya da WhatsApp'tan yazmanız size uygun saatin ayarlanmasını kolaylaştırır."],
+  ["İlk muayenede ne olur?", "Şikâyetiniz dinlenir, ağız içi muayene yapılır, gerekirse röntgen istenir. Tedavi seçenekleri anlatılır; karar sizindir."],
+  ["Yanımda ne getirmeliyim?", "Kullandığınız ilaçların listesi ve varsa daha önce çekilmiş diş röntgenleri faydalı olur."],
+  ["Çocuğumu kaç yaşında getirmeliyim?", "İlk kontrol yaşı ve sıklığı için hekiminize danışın; yayında kliniğin kendi önerisi yazılır."],
+];
+$("#sssListe").innerHTML = SSS.map(([s, c]) => `<details><summary>${s}<i aria-hidden="true"></i></summary><div class="ic"><p>${c}</p></div></details>`).join("");
+
+// Galeri büyütme
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- aksam.webp: Arda Kaykısız — https://www.pexels.com/photo/dentists-treating-a-male-patient-at-a-clinic-19976571/
+- pencere.webp: Arda Kaykısız — https://www.pexels.com/photo/a-dentist-performing-a-medical-procedure-on-a-patient-19879746/
+- sohbet.webp: Marco Dental Tourism Stomatolog  Beograd — https://www.pexels.com/photo/a-dentist-doctor-talking-the-woman-14052564/
+- gulus.webp: Andrea Piacquadio — https://www.pexels.com/photo/cheerful-young-female-dentist-talking-with-patient-during-therapy-in-modern-hospital-3884103/
+- danisma.webp: Cedric Fauntleroy — https://www.pexels.com/photo/a-doctor-talking-to-her-patient-4269360/
+- aile.webp: cottonbro studio — https://www.pexels.com/photo/a-man-and-a-girl-having-a-dental-consultation-with-a-dentist-6502163/
+- unite.webp: Engin Akyurt — https://www.pexels.com/photo/a-dental-engine-in-a-clinic-4562895/
+- cocuk.webp: Nadezhda Moryak — https://www.pexels.com/photo/dentist-showing-a-dental-tool-to-patient-7800560/
+- tablet.webp: Tima Miroshnichenko — https://www.pexels.com/photo/woman-in-white-scrub-suit-holding-a-tablet-5355693/
+- fircalama.webp: Bakytzhan  Baurzhanov — https://www.pexels.com/photo/close-up-of-a-dentist-cleaning-a-denture-9951396/
+- ekip.webp: Cedric Fauntleroy — https://www.pexels.com/photo/a-woman-in-gray-scrub-suit-holding-the-dental-equipment-4269949/
+- genc.webp: https://kaboompics.com/ — https://www.pexels.com/photo/a-boy-in-long-sleeves-sitting-on-a-dental-chair-6627383/
+- implant.webp: cottonbro studio — https://www.pexels.com/photo/close-up-shot-of-dental-implant-model-6502343/
+- lamba.webp: Daniel Frank — https://www.pexels.com/photo/white-dental-equipment-near-wall-305567/

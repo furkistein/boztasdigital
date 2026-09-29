@@ -1,0 +1,11 @@
+{
+  "ad": "Oident Ağız ve Diş Sağlığı Polikliniği",
+  "renk": "#C8553D",
+  "giris": "Yenişafak - Cinkaya'daki kliniğiniz için her gün 09.00-22.00 açık göstergesi, akşam ve hafta sonu vurgusu, WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Şu an açık mı göstergesi, yedi günlük saat tablosu (bugün işaretli), tedavi başlıkları, tek dokunuşla arama, WhatsApp ve yol tarifi"],
+    "profesyonel": ["Günün saat halkası, tedavi bilgi akordeonu ve şikâyet seçince dolan WhatsApp randevu notu", "Sık sorulanlar, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: kimin için, konu, önümüzdeki yedi gün ve saat aralığı (geçmiş saatler kapalı) ile hazır mesaj", "Canlı haftalık saat çizelgesi, adım adım ilk muayene anlatımı, konum paylaşma, galeri şeridi"]
+  }
+}

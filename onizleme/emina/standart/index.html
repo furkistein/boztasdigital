@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Emina Güzellik Merkezi · Denizli · Standart örnek</title>
+<meta name="description" content="Emina Güzellik Merkezi, Merkezefendi Denizli: cilt bakım, lazer epilasyon, bölgesel incelme, ipek kirpik ve özel günler. WhatsApp ile randevu. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ECE7DE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--tas:#ECE7DE;--kagit:#F7F4EE;--murekkep:#1E2420;--yosun:#3C4F3F;--adacayi:#A7B29C;--kil:#A8563A;--soluk:#667067;--cizgi:rgba(30,36,32,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--tas);color:var(--murekkep);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.serif{font-family:Petrona,Georgia,serif}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--yosun)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:4px;padding:14px 24px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--yosun);color:var(--kagit)}
+.btn.dolu:hover{background:var(--murekkep)}
+.btn.hat{border:1px solid var(--cizgi)}
+.btn.hat:hover{border-color:var(--murekkep)}
+/* kahraman: yazı solda, dikey fotoğraf sağda */
+.kahraman{display:grid;grid-template-columns:6fr 5fr;min-height:92vh}
+.kahraman .yazi{display:flex;flex-direction:column;justify-content:space-between;padding:34px 64px 56px max(24px,calc((100vw - 1160px)/2))}
+.logo{font-family:Petrona,serif;font-size:30px;font-weight:500;text-decoration:none;letter-spacing:.01em}
+.logo small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--soluk);margin-top:-2px}
+h1{font-family:Petrona,serif;font-weight:400;font-size:clamp(48px,6.2vw,96px);line-height:.98;letter-spacing:-.015em;margin:18px 0 22px}
+h1 em{color:var(--kil)}
+.kahraman p{max-width:40ch;color:var(--soluk);font-size:18px}
+.dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.adres-kisa{font-size:14px;color:var(--soluk);border-top:1px solid var(--cizgi);padding-top:16px;margin-top:44px}
+.kahraman figure{position:relative;overflow:hidden;background:#cfc6b8}
+.kahraman figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+figcaption{position:absolute;right:14px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85);z-index:2}
+section{padding:104px 0}
+h2{font-family:Petrona,serif;font-weight:400;font-size:clamp(36px,4.4vw,58px);line-height:1.04;margin:12px 0 14px;letter-spacing:-.01em}
+h2 em{color:var(--kil)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+/* hizmet dizini */
+.hizmet{background:var(--kagit)}
+.dizin{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-top:1px solid var(--cizgi)}
+.dizin li{display:flex;gap:16px;align-items:baseline;padding:22px 18px 22px 0;border-bottom:1px solid var(--cizgi)}
+.dizin li span{font-size:13px;color:var(--kil);font-weight:600;min-width:24px}
+.dizin li b{font-family:Petrona,serif;font-weight:400;font-size:25px;line-height:1.15}
+.dizin-alt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+.dizin-alt figure{position:relative}
+.dizin-alt img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:3px}
+.dizin-alt figcaption{position:static;color:var(--soluk);margin-top:8px}
+/* adres */
+.adres{display:grid;grid-template-columns:5fr 6fr;gap:72px;align-items:center}
+.adres address{font-style:normal;font-family:Petrona,serif;font-size:clamp(28px,3vw,40px);line-height:1.2;margin:18px 0 8px}
+.adres .kat{display:inline-block;background:var(--yosun);color:var(--kagit);border-radius:3px;padding:4px 10px;font-size:14px;font-weight:600;margin-top:6px}
+.adres img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+/* whatsapp */
+.wa{background:var(--yosun);color:var(--kagit);text-align:center}
+.wa .ufak{color:var(--adacayi)}
+.wa h2 em{color:#E6C2A8}
+.wa .acik-yazi{color:#C9D0C3;margin:0 auto}
+.wa .dugmeler{justify-content:center}
+.wa .btn.dolu{background:var(--kagit);color:var(--murekkep)}
+.wa .btn.dolu:hover{background:#fff}
+.wa .numara{font-family:Petrona,serif;font-size:clamp(34px,4vw,52px);text-decoration:none;display:inline-block;margin-top:18px}
+footer{background:var(--murekkep);color:#AEB5AC;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(236,231,222,.3);border-radius:8px;padding:12px 14px;color:#E4E0D6}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:900px){
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/5;max-height:62vh}
+  .kahraman .yazi{padding:24px 24px 48px}
+  .kahraman .ust-satir{order:-2}
+  .dizin{grid-template-columns:1fr 1fr}
+  .adres{grid-template-columns:1fr;gap:40px}
+  .adres img{aspect-ratio:4/3}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman .yazi{padding:22px 18px 44px}
+  .kahraman figure{max-height:46vh;aspect-ratio:1}
+  h1{font-size:44px;margin:12px 0 16px}
+  .kahraman p{font-size:16.5px}
+  section{padding:72px 0}
+  .dizin{grid-template-columns:1fr}
+  .dizin li{padding:16px 0}
+  .dizin li b{font-size:23px}
+  .dizin-alt{grid-template-columns:1fr}
+  .yuzen{display:block}
+}
+.mobil-logo{display:none}
+@media (max-width:900px){.mobil-logo{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}.kahraman .yazi .logo{display:none}}
+@media (max-width:600px){.mobil-logo{padding:16px 18px}}
+/* hafif hareket */
+.kahraman .yazi>div>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .yazi>div>*:nth-child(2){animation-delay:.1s}.kahraman .yazi>div>*:nth-child(3){animation-delay:.2s}.kahraman .yazi>div>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.kahraman figure img{animation:sakin 14s ease-out both}
+@keyframes sakin{from{transform:scale(1.05)}}
+@media (prefers-reduced-motion:reduce){.kahraman figure img,.kahraman .yazi>div>*{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Emina Güzellik Merkezi">
+<header class="mobil-logo"><a class="logo" href="#">Emina<small>Güzellik Merkezi</small></a><a class="btn hat" href="#adres" style="padding:10px 16px;font-size:14px">Adres</a></header>
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <a class="logo" href="#">Emina<small>Güzellik Merkezi</small></a>
+      <div>
+        <span class="ufak">Merkezefendi · Denizli</span>
+        <h1>Cildinize ayrılmış <em>sakin</em> bir saat.</h1>
+        <p>Cilt bakımından lazer epilasyona, ipek kirpikten özel gün hazırlığına. Hizmetlerimize göz atın, randevunuz için WhatsApp'tan yazın.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://wa.me/905415404055?text=Merhaba%2C%20randevu%20almak%20istiyorum.">WhatsApp'tan yazın</a>
+          <a class="btn hat" href="#hizmetler">Hizmetler</a>
+        </div>
+      </div>
+      <div class="adres-kisa">29 Ekim Bulvarı No:142, Kat 4 · Merkezefendi</div>
+    </div>
+    <figure>
+      <img src="../img/gercek/havlu-bas.webp" srcset="../img/gercek/havlu-bas-900.webp 900w, ../img/gercek/havlu-bas.webp 1800w" sizes="(max-width:900px) 100vw, 46vw" alt="Uzman, bakım öncesi danışanın başını havluyla sarıyor (temsilî fotoğraf)" width="1800" height="2700" fetchpriority="high">
+      <figcaption>Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section class="hizmet" id="hizmetler">
+    <div class="sar">
+      <span class="ufak">Hizmetler</span>
+      <h2 data-belir>Neler <em>yapıyoruz?</em></h2>
+      <p class="acik-yazi">Başlıklar Instagram profilinizden alındı. Yayında her başlığın altında o işlemin kısa açıklaması durur; size uygun olanı ön görüşmede birlikte belirleriz.</p>
+      <ul class="dizin" data-sirali="50">
+        <li data-belir><span>01</span><b>Cilt Bakım</b></li>
+        <li data-belir><span>02</span><b>Lazer Epilasyon</b></li>
+        <li data-belir><span>03</span><b>Bölgesel İncelme</b></li>
+        <li data-belir><span>04</span><b>Kırışıklık ve Leke Tedavisi</b></li>
+        <li data-belir><span>05</span><b>Plazma</b></li>
+        <li data-belir><span>06</span><b>Yosun Peeling</b></li>
+        <li data-belir><span>07</span><b>Lifting</b></li>
+        <li data-belir><span>08</span><b>İpek Kirpik</b></li>
+        <li data-belir><span>09</span><b>Mezoterapi</b></li>
+        <li data-belir><span>10</span><b>Çatlak Tedavisi</b></li>
+        <li data-belir><span>11</span><b>Özel Günler</b></li>
+        <li data-belir><span>?</span><b><a href="https://wa.me/905415404055?text=Merhaba%2C%20bir%20hizmet%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." style="text-decoration-color:var(--adacayi)">Bilgi almak için yazın →</a></b></li>
+      </ul>
+      <div class="dizin-alt">
+        <figure data-belir><img src="../img/gercek/el-900.webp" alt="Yüz bakımında uzmanın elleri (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>Cilt bakım</figcaption></figure>
+        <figure data-belir><img src="../img/gercek/kirpik-900.webp" alt="İpek kirpik uygulaması (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>İpek kirpik</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="adres">
+    <div class="sar adres">
+      <div>
+        <span class="ufak">Adres</span>
+        <h2 data-belir>Bizi <em>bulun.</em></h2>
+        <address>M. Akif Ersoy Mh.<br>29 Ekim Bulvarı No:142<br>Merkezefendi / Denizli</address>
+        <span class="kat">Kat 4 · Daire 20-21</span>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://www.google.com/maps/search/?api=1&amp;query=Emina+G%C3%BCzellik+Merkezi+29+Ekim+Bulvar%C4%B1+142+Merkezefendi+Denizli">Yol tarifi al</a>
+          <a class="btn hat" href="https://www.instagram.com/eminaguzellikmerkezii/">@eminaguzellikmerkezii</a>
+        </div>
+      </div>
+      <img data-belir src="../img/gercek/oda-900.webp" alt="Aydınlık bakım odası (temsilî fotoğraf)" width="900" height="651" loading="lazy">
+    </div>
+  </section>
+
+  <section class="wa" id="randevu">
+    <div class="sar">
+      <span class="ufak">Randevu</span>
+      <h2 data-belir>Bir mesaj <em>yeter.</em></h2>
+      <p class="acik-yazi">Hangi hizmeti düşündüğünüzü yazın; uygun gün ve saati WhatsApp'tan birlikte ayarlayalım.</p>
+      <a class="numara" href="https://wa.me/905415404055?text=Merhaba%2C%20randevu%20almak%20istiyorum.">0541 540 40 55</a>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905415404055?text=Merhaba%2C%20randevu%20almak%20istiyorum.">WhatsApp'tan yazın</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Emina Güzellik Merkezi · Merkezefendi / Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Emina Güzellik Merkezi için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kendi fotoğraflarınız kullanılır. Hizmet başlıkları, adres ve WhatsApp numarası Instagram profilinizden alındı. Güzellik hizmetlerindeki reklam kuralları gereği sayfada fiyat, kampanya ve müşteri yorumu yer almaz. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905415404055?text=Merhaba%2C%20randevu%20almak%20istiyorum.">WhatsApp'tan randevu</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

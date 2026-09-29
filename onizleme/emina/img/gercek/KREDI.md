@@ -1,0 +1,19 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- el.webp: Tima Miroshnichenko — https://www.pexels.com/photo/person-s-hands-massaging-a-person-s-face-6187298/
+- ust.webp: Engin Akyurt — https://www.pexels.com/photo/person-touching-woman-s-face-3148935/
+- havlu-bas.webp: DΛVΞ GΛRCIΛ — https://www.pexels.com/photo/relaxing-facial-spa-treatment-for-skin-care-37229280/
+- orman.webp: cottonbro studio — https://www.pexels.com/photo/woman-with-towel-on-hair-putting-facial-cream-6635915/
+- lazer2.webp: Pexels User — https://www.pexels.com/photo/professional-laser-hair-removal-treatment-session-29021129/
+- kirpik.webp: José Antonio Otegui Auzmendi — https://www.pexels.com/photo/close-up-of-eyelash-extension-application-in-salon-34930118/
+- kirpik-sb.webp: Ekaterina Bogdanova — https://www.pexels.com/photo/close-up-of-eyelash-extension-application-process-35013077/
+- gelin.webp: Alexander Mass — https://www.pexels.com/photo/bride-preparing-for-wedding-day-in-satin-robe-35556921/
+- gelin2.webp: Alexander Mass — https://www.pexels.com/photo/bride-getting-ready-with-makeup-artist-37710473/
+- gelin3.webp: Jonathan Borba — https://www.pexels.com/photo/a-woman-sitting-at-a-hairdresser-10479671/
+- havlu.webp: Tima Miroshnichenko — https://www.pexels.com/photo/close-up-shot-of-white-bathtowels-6188050/
+- maske.webp: DΛVΞ GΛRCIΛ — https://www.pexels.com/photo/relaxing-facial-treatment-at-spa-37229305/
+- oda.webp: MIKE GIOVINAZZO — https://www.pexels.com/photo/marble-lavatory-counter-11024140/
+- sirt.webp: KoolShooters — https://www.pexels.com/photo/a-person-having-a-body-massage-6628701/
+- krem.webp: Ivan S — https://www.pexels.com/photo/hands-of-a-woman-holding-a-white-plastic-container-4491164/
+- bornoz.webp: Polina Tankilevitch — https://www.pexels.com/photo/a-woman-holding-a-skin-care-product-5468646/
+- cilt.webp: Gustavo Fring — https://www.pexels.com/photo/woman-getting-a-facial-treatment-7446659/
+- el2.webp: Tima Miroshnichenko — https://www.pexels.com/photo/close-up-shot-of-a-person-doing-a-massage-6187305/

@@ -1,0 +1,19 @@
+{
+  "ad": "Diamond Plus Güzellik Merkezi",
+  "renk": "#2B3A63",
+  "giris": "Altı hizmetiniz, saatleriniz ve yolunuz tek sayfada; sizi Google'da ya da Instagram'da bulan kişi WhatsApp'tan tek dokunuşla randevu ister. Fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": [
+      "Altı hizmet başlığı, çalışma saatleri, tek dokunuşla arama, WhatsApp ve yol tarifi"
+    ],
+    "profesyonel": [
+      "Hizmet sekmeleri: seçtikçe WhatsApp randevu notu kendiliğinden yazılır",
+      "Ön görüşme-uygulama-takip anlatımı, harita, sık sorulan sorular, büyütülebilir galeri"
+    ],
+    "premium": [
+      "Randevu masası: hizmet, gün ve saat dilimi seçince kişiye hazır WhatsApp mesajı",
+      "Ay sonu Pazar bilgisi, yüz-vücut-kalıcı makyaj hikâye bölümleri, galeri şeridi"
+    ]
+  }
+}

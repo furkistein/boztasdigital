@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Emina Güzellik Merkezi · Denizli · Profesyonel örnek</title>
+<meta name="description" content="Emina Güzellik Merkezi, Merkezefendi Denizli: hizmet sekmeleri, WhatsApp randevu notu, galeri, harita ve sık sorulanlar. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5F2EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Castoro:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#F5F2EC;--kagit:#FBFAF6;--yosun:#2F4234;--yosun2:#46604B;--adacayi:#DDE2D5;--kil:#B0603F;--koyu:#1B211D;--soluk:#68706A;--cizgi:rgba(27,33,29,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--koyu);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:16.5px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1220px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--yosun2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 24px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--yosun);color:var(--kagit)}
+.btn.dolu:hover{background:var(--koyu)}
+.btn.hat{border:1px solid var(--cizgi)}
+.btn.hat:hover{border-color:var(--koyu)}
+/* üst */
+.ust{position:sticky;top:0;z-index:20;background:rgba(245,242,236,.94);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:66px;gap:20px}
+.logo{font-family:Castoro,serif;font-size:25px;letter-spacing:.16em;text-decoration:none}
+.logo i{font-style:italic;text-transform:none;letter-spacing:0;font-size:16px;color:var(--kil);margin-left:6px}
+.ust nav{display:flex;gap:26px;font-size:14.5px}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--kil)}
+/* kahraman */
+.kahraman{padding:56px 0 0}
+.kahraman .ust-blok{display:grid;grid-template-columns:7fr 4fr;gap:56px;align-items:end}
+h1{font-family:Castoro,serif;font-weight:400;font-size:clamp(50px,6.6vw,108px);line-height:.96;letter-spacing:-.02em}
+h1 em{color:var(--kil)}
+.kahraman p{color:var(--soluk);max-width:36ch}
+.dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.bant{position:relative;margin-top:48px;height:min(60vh,620px);overflow:hidden;border-radius:8px}
+.bant img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;animation:yavas 20s ease-out both}
+@keyframes yavas{from{transform:scale(1.07)}to{transform:scale(1)}}
+.bant figcaption{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85)}
+.bilgi{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--cizgi)}
+.bilgi div{padding:20px 20px 22px 0;font-size:14.5px;color:var(--soluk)}
+.bilgi b{display:block;color:var(--koyu);font-weight:600;font-size:15.5px}
+section{padding:112px 0}
+h2{font-family:Castoro,serif;font-weight:400;font-size:clamp(38px,4.8vw,66px);line-height:1;letter-spacing:-.015em;margin:12px 0 16px}
+h2 em{color:var(--kil)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+/* hizmet sekmeleri */
+.hizmet-alani{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.hizmet-ust{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.sekme{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px}
+.sekme button{padding:10px 18px;font-size:15px;border:1px solid var(--cizgi);border-radius:999px;transition:background .25s,color .25s,border-color .25s}
+.sekme button:hover{border-color:var(--koyu)}
+.sekme button[aria-selected=true]{background:var(--koyu);color:var(--kagit);border-color:var(--koyu)}
+.govde{display:grid;grid-template-columns:1fr 380px;gap:56px;margin-top:28px;align-items:start}
+.sekme-foto{width:100%;aspect-ratio:21/8;object-fit:cover;border-radius:6px;margin-bottom:8px}
+.islem{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:22px 0;border-bottom:1px solid var(--cizgi)}
+.islem h3{font-family:Castoro,serif;font-weight:400;font-size:28px;line-height:1.1}
+.islem p{color:var(--soluk);font-size:15px;grid-column:1}
+.ekle{grid-column:2;grid-row:1/3;align-self:center;font-size:14px;font-weight:600;border:1px solid var(--cizgi);border-radius:999px;padding:8px 16px;transition:border-color .2s,background .2s,color .2s}
+.ekle:hover{border-color:var(--koyu)}
+.ekle.var{background:var(--yosun);color:var(--kagit);border-color:var(--yosun)}
+.bolgeler{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.secenek{display:flex;gap:6px;flex-wrap:wrap}
+.secenek label,.bolgeler label{position:relative}
+.secenek input,.bolgeler input{position:absolute;opacity:0;inset:0}
+.secenek span,.bolgeler span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer;background:var(--kagit)}
+.secenek input:checked+span,.bolgeler input:checked+span{background:var(--adacayi);border-color:var(--yosun2)}
+.secenek input:focus-visible+span,.bolgeler input:focus-visible+span{outline:2px solid var(--kil);outline-offset:2px}
+.not-kart{position:sticky;top:90px;background:var(--zemin);border:1px solid var(--cizgi);border-radius:8px;padding:26px}
+.not-kart h3{font-family:Castoro,serif;font-weight:400;font-size:30px}
+.not-kart fieldset{border:0;margin-top:16px}
+.not-kart legend{font-size:13px;font-weight:600;margin-bottom:8px}
+.not-metin{white-space:pre-wrap;font-size:14.5px;background:var(--kagit);border-left:2px solid var(--kil);padding:12px 14px;margin:18px 0 14px;min-height:110px}
+.not-kart .btn{width:100%}
+.not-kart small{display:block;color:var(--soluk);font-size:12.5px;margin-top:10px}
+.bosalt{font-size:13px;color:var(--soluk);text-decoration:underline;margin-top:8px}
+/* adımlar */
+.adimlar{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+.adimlar img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:6px}
+.adimlar span{display:block;font-family:Castoro,serif;font-style:italic;color:var(--kil);font-size:20px;margin-top:18px}
+.adimlar h3{font-family:Castoro,serif;font-weight:400;font-size:28px;margin:2px 0 4px}
+.adimlar p{color:var(--soluk);font-size:15.5px}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:6px;display:block}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 5;grid-row:span 2}
+.galeri .g2{grid-column:span 7;aspect-ratio:16/9}
+.galeri .g3{grid-column:span 4;aspect-ratio:4/3}
+.galeri .g4{grid-column:span 3;aspect-ratio:3/4}
+.kutu{position:fixed;inset:0;z-index:50;background:rgba(20,24,21,.93);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;width:auto;border-radius:4px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+/* adres */
+.adres{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:44px;align-items:start}
+.adres iframe{width:100%;aspect-ratio:16/11;border:0;border-radius:8px;background:#e2e0d8;filter:grayscale(.4) sepia(.08)}
+.adres address{font-style:normal;font-family:Castoro,serif;font-size:30px;line-height:1.2}
+.adres .kat{display:inline-block;background:var(--adacayi);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:600;margin:14px 0 22px}
+.adres dl{display:grid;gap:14px;margin-bottom:26px}
+.adres dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.adres dd{font-size:18px}
+.adres dd a{text-decoration:none}
+/* SSS */
+.sss{display:grid;grid-template-columns:4fr 7fr;gap:64px}
+.sss details{border-top:1px solid var(--cizgi);padding:20px 0}
+.sss details:last-child{border-bottom:1px solid var(--cizgi)}
+.sss summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-family:Castoro,serif;font-size:24px;line-height:1.25}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::after{content:"+";font-family:"Schibsted Grotesk";color:var(--kil);font-size:22px;transition:transform .3s}
+.sss details[open] summary::after{transform:rotate(45deg)}
+.sss details p{color:var(--soluk);margin-top:10px;max-width:60ch}
+footer{background:var(--yosun);color:#C4CCC2;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(245,242,236,.3);border-radius:8px;padding:12px 14px;color:#EDEBE4}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .kahraman .ust-blok{grid-template-columns:1fr;gap:18px}
+  .govde{grid-template-columns:1fr}
+  .not-kart{position:static}
+  .adimlar{grid-template-columns:1fr;gap:40px}
+  .adimlar img{aspect-ratio:4/3}
+  .adres,.sss{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman{padding-top:30px}
+  h1{font-size:clamp(46px,13vw,58px)}
+  .bant{margin-top:30px;height:42vh}
+  .bilgi{grid-template-columns:1fr 1fr}
+  .bilgi div:last-child{display:none}
+  section{padding:76px 0}
+  .sekme{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-18px;padding-inline:18px}
+  .sekme button{flex:none}
+  .sekme-foto{aspect-ratio:16/9}
+  .islem h3{font-size:24px}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2;grid-row:auto;aspect-ratio:4/3}
+  .galeri .g2{grid-column:span 2}
+  .galeri .g3,.galeri .g4{grid-column:span 1;aspect-ratio:3/4}
+  .sss summary{font-size:21px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.bant img{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Emina Güzellik Merkezi">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">EMINA<i>güzellik</i></a>
+    <nav><a href="#hizmetler">Hizmetler</a><a href="#nasil">Nasıl ilerler</a><a href="#galeri">Galeri</a><a href="#adres">Adres</a><a href="#sss">SSS</a></nav>
+    <a class="btn dolu" href="#hizmetler" style="padding:10px 18px;font-size:14px">Randevu notu</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="sar">
+      <div class="ust-blok">
+        <div>
+          <span class="ufak">Güzellik merkezi · Merkezefendi</span>
+          <h1 style="margin-top:16px">Kendinize <em>ayırdığınız</em> zaman.</h1>
+        </div>
+        <div>
+          <p>Hizmetleri seçin, gün ve saat tercihinizi işaretleyin; randevu notunuz kendiliğinden yazılsın, tek dokunuşla WhatsApp'a gitsin.</p>
+          <div class="dugmeler"><a class="btn dolu" href="#hizmetler">Hizmetler ve randevu</a><a class="btn hat" href="#adres">Adres</a></div>
+        </div>
+      </div>
+      <figure class="bant">
+        <img src="../img/gercek/orman.webp" srcset="../img/gercek/orman-900.webp 900w, ../img/gercek/orman.webp 1800w" sizes="(max-width:600px) 100vw, 1220px" alt="Açık havada bornozlu kadın cildine krem sürüyor (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+        <figcaption>Fotoğraf temsilîdir</figcaption>
+      </figure>
+      <div class="bilgi">
+        <div><b>29 Ekim Bulvarı No:142</b>Kat 4 · Merkezefendi</div>
+        <div><b>WhatsApp</b><a href="https://wa.me/905415404055" style="text-decoration:none">0541 540 40 55</a></div>
+        <div><b>11 hizmet başlığı</b>cilt, lazer, incelme, kirpik, özel günler</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="hizmet-alani" id="hizmetler">
+    <div class="sar">
+      <div class="hizmet-ust">
+        <div>
+          <span class="ufak">Hizmetler</span>
+          <h2 data-belir>Seçin, <em>not</em> yazılsın.</h2>
+        </div>
+        <p class="acik-yazi" style="max-width:42ch">Başlıklar Instagram profilinizden; kısa açıklamalar örnektir. Yayında her işlemin açıklamasını sizinle birlikte yazarız.</p>
+      </div>
+      <div class="sekme" id="sekme" role="tablist"></div>
+      <div class="govde">
+        <div>
+          <img class="sekme-foto" id="sekmeFoto" src="../img/gercek/el-900.webp" alt="" width="900" height="600">
+          <div id="islemler" aria-live="polite"></div>
+        </div>
+        <aside class="not-kart">
+          <h3>Randevu notu</h3>
+          <fieldset><legend>Hangi günler uyar?</legend><div class="secenek" id="gunSec"></div></fieldset>
+          <fieldset><legend>Hangi saatler?</legend><div class="secenek" id="saatSec"></div></fieldset>
+          <fieldset><legend>İlk ziyaretiniz mi?</legend><div class="secenek" id="ilkSec"></div></fieldset>
+          <div class="not-metin" id="notMetin"></div>
+          <a class="btn dolu" id="gonder" href="https://wa.me/905415404055" target="_blank" rel="noopener">WhatsApp'a gönder</a>
+          <button class="bosalt" id="bosalt" type="button">Notu temizle</button>
+          <small>Not hazır mesaj olarak WhatsApp'ta açılır; gün ve saati salon teyit eder.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="nasil">
+    <div class="sar">
+      <span class="ufak">Nasıl ilerler</span>
+      <h2 data-belir>Mesajdan <em>koltuğa</em> üç adım.</h2>
+      <p class="acik-yazi">Ziyaretçi ilk kez gelmeden önce ne olacağını bilmek ister. Yayında bu kareler sizin salonunuzdan olur.</p>
+      <div class="adimlar" data-sirali="120">
+        <div data-belir><img src="../img/gercek/krem-900.webp" alt="Eller kremi kavanozdan alıyor (temsilî fotoğraf)" width="900" height="600" loading="lazy"><span>01</span><h3>Yazın</h3><p>Hizmeti ve size uyan zamanı WhatsApp'tan iletin.</p></div>
+        <div data-belir><img src="../img/gercek/cilt-900.webp" alt="Uzman bakım odasında danışanla çalışıyor (temsilî fotoğraf)" width="900" height="600" loading="lazy"><span>02</span><h3>Ön görüşme</h3><p>İlk gelişte cildiniz ve beklentiniz konuşulur, uygun uygulama birlikte belirlenir.</p></div>
+        <div data-belir><img src="../img/gercek/maske-900.webp" alt="Bakım sırasında yüze maske sürülüyor (temsilî fotoğraf)" width="900" height="1350" loading="lazy" style="object-position:50% 40%"><span>03</span><h3>Uygulama</h3><p>Plan hazır olunca randevunuz kesinleşir; sonraki adımlar size yazılı iletilir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Salondan <em>kareler.</em></h2>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/sirt.webp"><img src="../img/gercek/sirt-900.webp" alt="Sırt masajında uzmanın elleri (temsilî fotoğraf)" width="900" height="1350" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/oda.webp"><img src="../img/gercek/oda-900.webp" alt="Aydınlık bakım odası (temsilî fotoğraf)" width="900" height="651" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/kirpik.webp"><img src="../img/gercek/kirpik-900.webp" alt="İpek kirpik uygulaması (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/bornoz.webp"><img src="../img/gercek/bornoz-900.webp" alt="Bornozlu kadın gün ışığında kremini sürüyor (temsilî fotoğraf)" width="900" height="1350" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="adres" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Adres</span>
+      <h2 data-belir>Bulvarın üstünde, <em>dördüncü kat.</em></h2>
+      <div class="adres">
+        <iframe loading="lazy" title="Emina Güzellik Merkezi haritası" src="https://www.google.com/maps?q=Emina+G%C3%BCzellik+Merkezi+29+Ekim+Bulvar%C4%B1+142+Merkezefendi+Denizli&amp;output=embed"></iframe>
+        <div>
+          <address>M. Akif Ersoy Mh. 29 Ekim Bulvarı No:142, Merkezefendi / Denizli</address>
+          <span class="kat">Kat 4 · Daire 20-21</span>
+          <dl>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/905415404055">0541 540 40 55</a></dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://www.google.com/maps/search/?api=1&amp;query=Emina+G%C3%BCzellik+Merkezi+29+Ekim+Bulvar%C4%B1+142+Merkezefendi+Denizli">Yol tarifi</a><a class="btn hat" href="https://www.instagram.com/eminaguzellikmerkezii/">Instagram</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sss" style="padding-top:0">
+    <div class="sar sss">
+      <div>
+        <span class="ufak">Sık sorulanlar</span>
+        <h2 data-belir>Aklınıza <em>takılan.</em></h2>
+        <p class="acik-yazi">Örnek sorular; yanıtları yayından önce sizinle birlikte yazarız.</p>
+      </div>
+      <div>
+        <details open><summary>Randevuyu nasıl alırım?</summary><p>WhatsApp'tan yazmanız yeterli. Yukarıdaki randevu notunu doldurursanız mesajınız hazır gider; gün ve saati salon teyit eder.</p></details>
+        <details><summary>Hangi uygulamanın bana uygun olduğunu nasıl bilirim?</summary><p>İlk gelişinizde kısa bir ön görüşme yapılır. Uygun işlem cildinize ve beklentinize göre uzmanla birlikte belirlenir.</p></details>
+        <details><summary>Salon binanın kaçıncı katında?</summary><p>29 Ekim Bulvarı No:142, 4. kat, daire 20-21. Yol tarifi düğmesi sizi doğrudan kapıya götürür.</p></details>
+        <details><summary>Gelin ya da nişan hazırlığı için ne zaman yazmalıyım?</summary><p>Tarihiniz belli olunca yazmanız planlamayı kolaylaştırır; cilt bakımı ve kirpik gibi adımlar takvime göre sıralanır.</p></details>
+        <details><summary>Ücret bilgisini nereden alırım?</summary><p>Ücretler uygulamaya göre değiştiği için WhatsApp'tan sorduğunuzda bilgi verilir.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Emina Güzellik Merkezi · Merkezefendi / Denizli · <a href="https://www.instagram.com/eminaguzellikmerkezii/">@eminaguzellikmerkezii</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Emina Güzellik Merkezi için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kendi fotoğraflarınız kullanılır. Hizmet başlıkları, adres ve WhatsApp numarası Instagram profilinizden alındı; açıklamalar ve sorular örnektir. Güzellik hizmetlerindeki reklam kuralları gereği sayfada fiyat, kampanya ve müşteri yorumu yer almaz. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#hizmetler">Randevu notu</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+const HIZMET = {
+  "Cilt": { foto: ["el", "Yüz bakımında uzmanın elleri"], l: [
+    ["Cilt Bakım", "Cilt tipinize göre planlanan temizlik ve bakım."],
+    ["Yosun Peeling", "Yosun içerikli peeling uygulaması; uygunluk ön görüşmede konuşulur."],
+    ["Kırışıklık ve Leke Tedavisi", "Cildiniz değerlendirildikten sonra uzmanla birlikte planlanır."],
+    ["Plazma", "Uygulamanın nasıl yapıldığı ve size uygunluğu görüşmede anlatılır."],
+    ["Mezoterapi", "Bölge ve içerik, ön görüşmede birlikte belirlenir."],
+    ["Lifting", "Yöntem ve seans planı görüşmede belirlenir."]] },
+  "Lazer epilasyon": { foto: ["lazer2", "Lazer epilasyon uygulaması"], l: [
+    ["Lazer Epilasyon", "Bölgeleri işaretleyin, notunuza eklensin.", ["Yüz", "Koltuk altı", "Kol", "Bacak", "Bikini", "Tüm vücut"]]] },
+  "Bölgesel incelme": { foto: ["sirt", "Sırt bakımında uzmanın elleri"], l: [
+    ["Bölgesel İncelme", "Bölge ve uygulama planı ön görüşmede konuşulur."],
+    ["Çatlak Tedavisi", "Uygulama türü ve seans planı görüşmede belirlenir."]] },
+  "Kirpik & özel günler": { foto: ["kirpik", "İpek kirpik uygulaması"], l: [
+    ["İpek Kirpik", "Uzunluk ve yoğunluk tercihinizi uygulama öncesi konuşuruz."],
+    ["Özel Günler", "Gelin, nişan, kına ya da mezuniyet öncesi hazırlık."]] },
+};
+const secili = new Set(), bolge = new Set();
+const kats = Object.keys(HIZMET);
+$("#sekme").innerHTML = kats.map((k, i) => `<button role="tab" aria-selected="${i === 0}" data-k="${k}">${k}</button>`).join("");
+let aktif = kats[0];
+function goster(k) {
+  aktif = k;
+  document.querySelectorAll("#sekme button").forEach((b) => b.setAttribute("aria-selected", b.dataset.k === k));
+  const [f, alt] = HIZMET[k].foto, im = $("#sekmeFoto");
+  im.src = `../img/gercek/${f}-900.webp`; im.alt = alt + " (temsilî fotoğraf)";
+  $("#islemler").innerHTML = HIZMET[k].l.map(([ad, ic, bl]) => `<article class="islem"><h3>${ad}</h3><p>${ic}</p><button class="ekle${secili.has(ad) ? " var" : ""}" data-ad="${ad}" aria-pressed="${secili.has(ad)}">${secili.has(ad) ? "Notta ✓" : "+ Nota ekle"}</button>${bl ? `<div class="bolgeler">${bl.map((b) => `<label><input type="checkbox" value="${b}"${bolge.has(b) ? " checked" : ""}><span>${b}</span></label>`).join("")}</div>` : ""}</article>`).join("");
+}
+$("#sekme").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) goster(b.dataset.k); });
+$("#islemler").addEventListener("click", (e) => {
+  const b = e.target.closest(".ekle"); if (!b) return;
+  const ad = b.dataset.ad; secili.has(ad) ? secili.delete(ad) : secili.add(ad);
+  goster(aktif); yaz();
+});
+$("#islemler").addEventListener("change", (e) => {
+  if (e.target.type !== "checkbox") return;
+  e.target.checked ? bolge.add(e.target.value) : bolge.delete(e.target.value);
+  if (bolge.size && !secili.has("Lazer Epilasyon")) { secili.add("Lazer Epilasyon"); goster(aktif); }
+  yaz();
+});
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#gunSec", "g", ["Hafta içi", "Hafta sonu", "Fark etmez"]);
+secim("#saatSec", "s", ["Sabah", "Öğleden sonra", "Akşamüstü"]);
+secim("#ilkSec", "i", ["Evet, ilk kez", "Hayır"]);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function yaz() {
+  const liste = [...secili].map((ad) => "· " + ad + (ad === "Lazer Epilasyon" && bolge.size ? ` (${[...bolge].join(", ")})` : "")).join("\n") || "· (soldan hizmet ekleyin)";
+  const metin = `Merhaba, randevu almak istiyorum:\n${liste}\nGün: ${deger("g").toLowerCase()} · Saat: ${deger("s").toLowerCase()}\nİlk ziyaretim: ${deger("i") === "Hayır" ? "hayır" : "evet"}`;
+  $("#notMetin").textContent = metin;
+  $("#gonder").href = "https://wa.me/905415404055?text=" + encodeURIComponent(metin);
+}
+document.querySelector(".not-kart").addEventListener("change", yaz);
+$("#bosalt").addEventListener("click", () => { secili.clear(); bolge.clear(); goster(aktif); yaz(); });
+goster(aktif); yaz();
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>
