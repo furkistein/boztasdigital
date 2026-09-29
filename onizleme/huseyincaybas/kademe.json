@@ -1,0 +1,10 @@
+{
+  "ad": "Hüseyin Çaybaş Hair Art Center",
+  "renk": "#7A1826",
+  "giris": "Fade, sanatsal kesim, cilt bakımı ve manikür; sahne ve basın işleriniz ve salonrandevu takviminize giden kısa yol. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": ["Hizmet başlıkları, sahne ve basın durakları, tek dokunuşla online randevu takvimi"],
+    "profesyonel": ["Hizmet sekmeleri: seçtikçe randevu notu yazılır, takvim açılır", "Makine-makas-ustura hikâyesi, sahne durakları, galeri, harita, Google yorum yönlendirmesi"],
+    "premium": ["Randevu masası: hizmet, geçiş, üst ve gün seçilince stil kartı", "Özel gün talebi (damat, çekim, sahne), hikâye bölümleri, galeri şeridi"]
+  }
+}

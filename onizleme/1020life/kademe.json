@@ -1,0 +1,11 @@
+{
+  "ad": "Beyza Korkmaz 1020 Life Güzellik Salonu",
+  "renk": "#8E4B5E",
+  "giris": "Cilt bakımından beslenme danışmanlığına hizmetleriniz, Cinkaya Bulvarı adresiniz ve WhatsApp'a hazır düşen randevu notu. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Hizmet başlıkları, bakım ve beslenme bölümü, WhatsApp'a hazır randevu notu"],
+    "profesyonel": ["Hizmet sekmeleri: işlemi notunuza ekleyin, randevu notu kendiliğinden yazılır", "Bakım-beslenme hikâyesi, galeri, harita ve 'şu an açık mı' göstergesi"],
+    "premium": ["Randevu masası: hizmet, gün, saat, ilk ziyaret ve not ile hazır mesaj", "Cilt-bakış-beslenme bölümleri, birlikte gelme talebi, galeri şeridi"]
+  }
+}

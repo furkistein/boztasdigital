@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Solis Pilates Studio · Denizli · Standart örnek</title>
+<meta name="description" content="Solis Pilates Studio, Kınıklı / Denizli: mat pilates, postür, bireysel, düet, grup ve hamile pilatesi. İlk ders rehberi ve deneme dersi talebi. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5EFE6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--kum:#F5EFE6;--kagit:#FBF8F3;--koyu:#2A241F;--gunes:#C0692A;--soluk:#766B61;--cizgi:rgba(42,36,31,.13)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kum);color:var(--koyu);font-family:Outfit,system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1120px,100% - 48px);margin-inline:auto}
+.ust{position:absolute;left:0;right:0;z-index:5;color:#fff}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-weight:600;font-size:22px;letter-spacing:.32em;text-decoration:none}
+.ust nav{display:flex;gap:26px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.92}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:500;font-size:15.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--gunes);color:#fff}
+.btn.dolu:hover{background:#A5571F}
+.btn.koyu{background:var(--koyu);color:var(--kagit)}
+.btn.koyu:hover{background:var(--gunes)}
+.btn.hat{border:1.5px solid currentColor}
+.kahraman{position:relative;min-height:90vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.kahraman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,30,24,.72) 0%,rgba(38,30,24,.4) 42%,rgba(38,30,24,0) 70%),linear-gradient(180deg,rgba(38,30,24,.35) 0%,rgba(38,30,24,0) 24%,rgba(38,30,24,0) 70%,rgba(38,30,24,.4) 100%)}
+@media (max-width:600px){.kahraman::after{background:linear-gradient(180deg,rgba(38,30,24,.4) 0%,rgba(38,30,24,.05) 28%,rgba(38,30,24,.5) 55%,rgba(38,30,24,.9) 82%)}}
+.kahraman .sar{position:relative;z-index:2;padding-bottom:76px}
+.ufak{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+h1{font-weight:300;font-size:clamp(46px,6.8vw,90px);line-height:1;letter-spacing:-.025em;margin:16px 0 20px;max-width:12ch}
+h1 b{font-weight:500;color:#F6C79A}
+.kahraman p{font-size:18px;max-width:44ch;opacity:.95}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.not-foto{position:absolute;right:18px;bottom:14px;z-index:2;font-size:12px;opacity:.75}
+section{padding:100px 0}
+h2{font-weight:300;font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-.02em;margin:12px 0 16px}
+h2 b{font-weight:500;color:var(--gunes)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.gunes{color:var(--gunes)}
+.dersler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--cizgi);border:1px solid var(--cizgi);margin-top:44px}
+.ders{background:var(--kagit);padding:30px 28px 32px}
+.ders small{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gunes);font-weight:500}
+.ders h3{font-weight:500;font-size:26px;margin:8px 0 6px;letter-spacing:-.01em}
+.ders p{color:var(--soluk);font-size:15.5px}
+.ilk{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.ilk-izgara{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:center}
+.ilk img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.adimlar{list-style:none;margin-top:28px;counter-reset:a}
+.adimlar li{display:grid;grid-template-columns:48px 1fr;padding:16px 0;border-top:1px solid var(--cizgi)}
+.adimlar li::before{counter-increment:a;content:counter(a);font-size:28px;font-weight:300;color:var(--gunes);line-height:1.1}
+.adimlar b{display:block;font-weight:500;font-size:19px}
+.adimlar span{color:var(--soluk);font-size:15.5px}
+.talep-izgara{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.talep fieldset{border:0;margin-top:22px}
+.talep legend{font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;color:var(--soluk)}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid rgba(42,36,31,.22);border-radius:999px;padding:8px 16px;font-size:15px;cursor:pointer;transition:background .2s,color .2s}
+.secenek input:checked+span{background:var(--koyu);color:var(--kagit);border-color:var(--koyu)}
+.secenek input:focus-visible+span{outline:2px solid var(--gunes);outline-offset:2px}
+.mesaj{background:var(--kagit);border:1px solid var(--cizgi);border-radius:8px;padding:26px}
+.mesaj p{white-space:pre-wrap;font-size:16px;border-left:3px solid var(--gunes);padding-left:14px;min-height:110px}
+.mesaj .btn{width:100%;margin-top:20px}
+.mesaj small{display:block;color:var(--soluk);font-size:13px;margin-top:10px;text-align:center}
+.konum{background:var(--koyu);color:var(--kum)}
+.konum .acik-yazi{color:#BDB1A5}
+.konum-izgara{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.konum img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px}
+.konum dl{display:grid;gap:16px;margin-top:22px}
+.konum dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A89C90}
+.konum dd{font-size:19px}
+.konum .btn.hat{color:var(--kum)}
+footer{background:var(--koyu);color:#A89C90;padding:36px 0 110px;font-size:14px;border-top:1px solid rgba(245,239,230,.12)}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(245,239,230,.3);border-radius:10px;padding:12px 14px;color:var(--kum)}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:860px){
+  .ust nav{display:none}
+  .dersler{grid-template-columns:1fr 1fr}
+  .ilk-izgara,.talep-izgara,.konum-izgara{grid-template-columns:1fr;gap:36px}
+  .ilk img{aspect-ratio:4/3}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman{min-height:86vh}
+  .kahraman img{object-position:62% 50%}
+  .kahraman .sar{padding-bottom:48px}
+  .kahraman p{font-size:16.5px}
+  section{padding:68px 0}
+  .dersler{grid-template-columns:1fr}
+  .ders{padding:24px 20px}
+  .yuzen{display:block}
+}
+.kahraman .sar>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>*:nth-child(2){animation-delay:.1s}.kahraman .sar>*:nth-child(3){animation-delay:.2s}.kahraman .sar>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){.kahraman .sar>*{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Solis Pilates Studio">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">SOLIS</a>
+    <nav><a href="#dersler">Dersler</a><a href="#ilk">İlk ders</a><a href="#deneme">Deneme dersi</a><a href="#konum">Konum</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/isik.webp" srcset="../img/gercek/isik-900.webp 900w, ../img/gercek/isik.webp 1800w" sizes="100vw" alt="Güneş alan stüdyoda matta esneme yapan iki kadın (temsilî fotoğraf)" width="1800" height="1201" fetchpriority="high">
+    <div class="sar">
+      <span class="ufak">Pilates stüdyosu · Kınıklı, Denizli</span>
+      <h1>Duruşun, nefesin, <b>kendi temponla.</b></h1>
+      <p>Mat pilates ve postür (duruş) çalışmaları; bireysel, düet ya da küçük grup. Hamile pilatesi için ayrı program.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="#deneme">Deneme dersi iste</a>
+        <a class="btn hat" href="#dersler">Dersleri gör</a>
+      </div>
+    </div>
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+  </div>
+
+  <section id="dersler">
+    <div class="sar">
+      <span class="ufak gunes">Dersler</span>
+      <h2 data-belir>Size uyan <b>ders biçimi.</b></h2>
+      <p class="acik-yazi">Başlıklar Instagram profilinizden alındı. Yayında her dersin süresi, seviyesi ve kimler için uygun olduğu yazar; fiyatları göstermek isteyip istemediğinize siz karar verirsiniz.</p>
+      <div class="dersler" data-sirali="70">
+        <div class="ders" data-belir><small>Birebir</small><h3>Bireysel ders</h3><p>Programı yalnız size göre kurulan, en yakından takip edilen ders.</p></div>
+        <div class="ders" data-belir><small>İki kişi</small><h3>Düet</h3><p>Bir arkadaşınız, eşiniz ya da annenizle birlikte.</p></div>
+        <div class="ders" data-belir><small>Küçük grup</small><h3>Grup dersleri</h3><p>Az kişiyle, kalabalık olmayan dersler.</p></div>
+        <div class="ders" data-belir><small>Temel</small><h3>Mat pilates</h3><p>Kendi vücut ağırlığınızla; core ve esneklik odaklı.</p></div>
+        <div class="ders" data-belir><small>Günlük hayat</small><h3>Postür çalışmaları</h3><p>Masa başında geçen günlerin duruşa etkisine karşı.</p></div>
+        <div class="ders" data-belir><small>Anne adayları</small><h3>Hamile pilatesi</h3><p>Doktorunuzun onayıyla, döneminize uygun hareketlerle.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ilk" id="ilk">
+    <div class="sar ilk-izgara">
+      <img data-belir src="../img/gercek/postur-900.webp" alt="Eğitmen matta çalışan öğrencinin duruşunu düzeltiyor (temsilî fotoğraf)" width="900" height="601" loading="lazy" style="object-position:55% 50%">
+      <div>
+        <span class="ufak gunes">İlk kez mi geliyorsunuz?</span>
+        <h2 data-belir>İlk dersiniz <b>nasıl geçer?</b></h2>
+        <p class="acik-yazi">Yeni başlayanın en çok çekindiği şey bilinmezlik. Bu bölüm "ne giyeyim, ne kadar sürer" sorularını gelmeden cevaplar.</p>
+        <ol class="adimlar">
+          <li data-belir><div><b>Kısa tanışma</b><span>Hedefiniz, varsa ağrı ya da sakatlık geçmişiniz konuşulur.</span></div></li>
+          <li data-belir><div><b>Duruş gözlemi</b><span>Eğitmen duruşunuza bakar, programı buna göre kurar.</span></div></li>
+          <li data-belir><div><b>Temel hareketler</b><span>Nefes ve core ile başlanır, zorlamadan ilerlenir.</span></div></li>
+          <li data-belir><div><b>Size uygun ders biçimi</b><span>Bireysel, düet ya da grup: birlikte karar verilir.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="talep" id="deneme">
+    <div class="sar talep-izgara">
+      <div>
+        <span class="ufak gunes">Deneme dersi</span>
+        <h2 data-belir>İki dokunuşla <b>talep.</b></h2>
+        <p class="acik-yazi">Ders biçimini ve uygun zamanı seçin; mesaj hazır olarak açılır. Stüdyo telefon ya da WhatsApp hattı eklendiğinde düğme doğrudan oraya gider.</p>
+        <form id="talep" onsubmit="return false">
+          <fieldset><legend>Ders biçimi</legend><div class="secenek" id="tDers"></div></fieldset>
+          <fieldset><legend>Size uygun zaman</legend><div class="secenek" id="tZaman"></div></fieldset>
+        </form>
+      </div>
+      <div class="mesaj">
+        <p id="mesaj" aria-live="polite"></p>
+        <a class="btn koyu" id="gonder" href="https://ig.me/m/solis.pilates">Instagram'dan gönder</a>
+        <small>Metin panoya kopyalanır, sohbet açılınca yapıştırmanız yeterli.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="konum" id="konum">
+    <div class="sar konum-izgara">
+      <div>
+        <span class="ufak" style="color:#E3A36A">Konum</span>
+        <h2 data-belir>Kınıklı'da, <b style="color:#F0B47D">güneş alan</b> bir oda.</h2>
+        <dl>
+          <div><dt>Stüdyo</dt><dd>Solis Pilates Studio · Kınıklı, Pamukkale / Denizli</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/solis.pilates/">@solis.pilates</a></dd></div>
+        </dl>
+        <div class="dugmeler"><a class="btn hat" href="https://maps.app.goo.gl/x5TGgWsQDBhYhquw8">Haritada aç</a></div>
+      </div>
+      <img data-belir src="../img/gercek/grup-900.webp" alt="Ahşap zeminde matta esneyen küçük grup (temsilî fotoğraf)" width="900" height="601" loading="lazy">
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Solis Pilates Studio · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Solis Pilates Studio için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında stüdyonuzun fotoğrafları kullanılır. Ders başlıkları Instagram profilinizden alındı, ayrıntılar sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="#deneme">Deneme dersi iste</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const secim = (id, ad, liste) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === 0 ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#tDers", "d", ["Bireysel", "Düet", "Grup", "Mat pilates", "Postür", "Hamile pilatesi"]);
+secim("#tZaman", "z", ["Hafta içi sabah", "Hafta içi akşam", "Hafta sonu"]);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function yaz() { $("#mesaj").textContent = `Merhaba, ${deger("d").toLowerCase()} ders için deneme dersi almak istiyorum.\nBana uygun zaman: ${deger("z").toLowerCase()}.\nİlk kez geleceğim; nasıl ilerleyebiliriz?`; }
+$("#talep").addEventListener("change", yaz); yaz();
+$("#gonder").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#mesaj").textContent).catch(() => {}); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

@@ -4,236 +4,83 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
-<title>Karaca Pastanesi Denizli · Kişiye özel pasta siparişi (örnek önizleme)</title>
-<meta name="description" content="Karaca Pastanesi Denizli: Atatürk Caddesi ve Yenişafak. Yaş pasta, organizasyon, baklava, lokma, dondurma, cupcake, kurabiye. Boztaş Digital örnek önizlemesi.">
+<title>Karaca Pastanesi · 3 seviyede örnek site · Boztaş Digital</title>
+<meta name="description" content="Karaca Pastanesi için Boztaş Digital'in hazırladığı 3 seviyede örnek site: Standart, Profesyonel, Premium.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#5A1726">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F5F3EF">
 <style>
-:root{--visne:#5A1726;--koyu:#3A0E18;--pembe:#F4D9D6;--kaymak:#FFF8F3;--altin:#C8973E;--yazi:#2B1B1E;--soluk:#7A6064;--cizgi:rgba(43,27,30,.12)}
+:root{--vurgu:#5A1726;--koyu:#141414;--soluk:#6b6862;--zemin:#F5F3EF;--cizgi:rgba(20,20,20,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--kaymak);color:var(--yazi);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
-a{color:inherit}
+body{background:var(--zemin);color:var(--koyu);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 img{display:block;max-width:100%;height:auto}
-.sar{width:min(1140px,100% - 48px);margin-inline:auto}
-.serit{background:var(--altin);color:var(--koyu);text-align:center;font-size:13px;font-weight:800;padding:7px 12px}
-.ust{background:var(--visne);color:var(--kaymak)}
-.ust .sar{display:flex;justify-content:space-between;align-items:center;height:72px}
-.logo{font-family:Gloock,serif;font-size:26px;text-decoration:none;letter-spacing:.02em}
-.logo small{font-family:Figtree,sans-serif;font-size:11px;letter-spacing:.3em;margin-left:8px;color:var(--altin);font-weight:800}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 24px;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
-.btn.visne{background:var(--visne);color:var(--kaymak)}
-.btn.altin{background:var(--altin);color:var(--koyu)}
-.btn.hat{border:1.5px solid currentColor;background:transparent}
-.kahraman{background:var(--visne);color:var(--kaymak);padding:30px 0 0;overflow:hidden}
-.kahraman .sar{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:end}
-.kahraman .yazi{padding-bottom:70px}
-.ufak{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--altin)}
-h1{font-family:Gloock,serif;font-weight:400;font-size:clamp(44px,6.2vw,84px);line-height:1.02;margin:14px 0 18px}
-.kahraman p{font-size:18px;max-width:42ch;color:#EBCFD2}
-.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.foto{position:relative;border-radius:30px 30px 0 0;overflow:hidden;aspect-ratio:1/1}
-.foto img{width:100%;height:100%;object-fit:cover}
-.etiket{position:absolute;right:14px;top:14px;background:var(--kaymak);color:var(--yazi);font-size:12px;padding:5px 10px;border-radius:99px}
-section{padding:86px 0}
-h2{font-family:Gloock,serif;font-weight:400;font-size:clamp(32px,4.2vw,54px);line-height:1.08;margin:10px 0 14px;color:var(--visne)}
-.acik{color:var(--soluk);max-width:60ch}
-.cesit{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
-.cesit div{background:#fff;border:1px solid var(--cizgi);border-radius:18px;padding:18px;min-width:0}
-.cesit b{display:block;font-family:Gloock,serif;font-weight:400;font-size:24px;color:var(--visne)}
-.cesit span{font-size:14px;color:var(--soluk)}
-.ikili{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
-.ikili img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:22px}
-.siparis{background:var(--pembe)}
-.siparis .sar{display:grid;grid-template-columns:1fr 1.05fr;gap:44px;align-items:start}
-.kart{background:#fff;border-radius:26px;padding:26px;box-shadow:0 20px 50px rgba(90,23,38,.12)}
-.kart fieldset{border:0;margin-bottom:16px}
-.kart legend{font-weight:800;margin-bottom:10px}
-.secenek{display:flex;flex-wrap:wrap;gap:8px}
-.secenek label{position:relative}
-.secenek input{position:absolute;opacity:0;inset:0}
-.secenek span{display:inline-block;border:1.5px solid var(--cizgi);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer}
-.secenek input:checked+span{background:var(--visne);border-color:var(--visne);color:var(--kaymak)}
-.secenek input:focus-visible+span{outline:2px solid var(--altin);outline-offset:2px}
-.kart input[type=text]{width:100%;border:1.5px solid var(--cizgi);border-radius:12px;padding:12px 14px;font:inherit;font-size:16px}
-.mesaj{background:var(--kaymak);border-left:3px solid var(--altin);border-radius:8px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
-.kart .btn{width:100%}
-.kucuk-not{font-size:13px;color:var(--soluk);margin-top:10px}
-.adimlar{display:grid;gap:12px;margin-top:24px;counter-reset:a}
-.adimlar li{list-style:none;display:flex;gap:14px;align-items:flex-start}
-.adimlar li::before{counter-increment:a;content:counter(a);flex:none;width:32px;height:32px;border-radius:50%;background:var(--visne);color:var(--kaymak);display:grid;place-items:center;font-weight:800}
-.alerjen .sar{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.telefon{justify-self:center;width:min(290px,100%);aspect-ratio:9/17;border-radius:40px;background:var(--koyu);padding:13px;box-shadow:0 30px 60px rgba(58,14,24,.25)}
-.ekran{height:100%;border-radius:28px;background:var(--kaymak);overflow:hidden;display:flex;flex-direction:column}
-.ekran header{background:var(--visne);color:var(--kaymak);font-family:Gloock,serif;text-align:center;padding:15px 0;font-size:18px}
-.ekran .sat{display:flex;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--cizgi);font-size:14px}
-.ekran .sat i{font-style:normal;color:var(--soluk);font-size:12px}
-.ekran .not{margin:auto 12px 12px;background:#fff;border-radius:14px;padding:12px;font-size:12px;color:var(--soluk)}
-.subeler{background:var(--visne);color:var(--kaymak)}
-.subeler h2{color:var(--kaymak)}
-.subeler .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.sube{border:1px solid rgba(255,248,243,.2);border-radius:22px;padding:24px}
-.sube b{font-family:Gloock,serif;font-weight:400;font-size:28px;display:block}
-.sube a{font-weight:800;color:var(--altin)}
-.sube .dugmeler{margin-top:16px}
-footer{background:var(--koyu);color:#CDB3B7;padding:34px 0 110px;font-size:14px}
-footer .sar{display:grid;gap:14px}
-.ornek-not{border:1px dashed rgba(200,151,62,.6);border-radius:12px;padding:12px 14px;color:var(--kaymak)}
-.ornek-not a{color:var(--altin);font-weight:800}
-.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
-.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
-@media (max-width:920px){
-  .kahraman .sar,.siparis .sar,.alerjen .sar{grid-template-columns:1fr;gap:30px}
-  .kahraman .yazi{padding-bottom:0}
-  .cesit{grid-template-columns:1fr 1fr}
-}
-@media (max-width:600px){
-  .sar{width:calc(100% - 36px)}
-  .ust .btn{display:none}
-  .kahraman p{font-size:16.5px}
-  section{padding:58px 0}
-  .ikili,.subeler .grid{grid-template-columns:1fr}
-  .cesit b{font-size:21px}
-  .yuzen{display:block}
-}
+a{color:inherit}
+.sar{width:min(1200px,100% - 40px);margin-inline:auto}
+header{padding:56px 0 34px}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--vurgu)}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.02em;margin:12px 0 14px;max-width:22ch}
+header p{color:var(--soluk);max-width:60ch;font-size:17px}
+.izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:40px}
+.kart{background:#fff;border:1px solid var(--cizgi);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;animation:gel .7s cubic-bezier(.2,.7,.2,1) both}
+.kart:nth-child(2){animation-delay:.08s}.kart:nth-child(3){animation-delay:.16s}
+@keyframes gel{from{opacity:0;transform:translateY(20px)}}
+.kart.one{border:2px solid var(--vurgu);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.kapak{display:block;aspect-ratio:16/10;overflow:hidden;background:#ddd;border-bottom:1px solid var(--cizgi)}
+.kapak img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.kart:hover .kapak img{transform:scale(1.04)}
+.y{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ust{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+h2{font-size:26px;letter-spacing:-.01em}
+.ust b{font-size:20px;color:var(--vurgu);white-space:nowrap}
+.rozet{align-self:start;background:var(--vurgu);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px}
+ul{list-style:none;display:grid;gap:7px;align-content:start;color:#3d3b37;font-size:15px;flex:1}
+li{padding-left:22px;position:relative}
+li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid var(--vurgu);border-bottom:2px solid var(--vurgu);transform:rotate(-45deg)}
+.btn{display:flex;justify-content:center;border-radius:12px;padding:14px;font-weight:700;text-decoration:none;background:var(--koyu);color:#fff;transition:background .25s}
+.btn:hover{background:var(--vurgu)}
+.not{color:var(--soluk);font-size:14px;border-top:1px solid var(--cizgi);padding:24px 0 50px;display:grid;gap:8px}
+.not a{color:var(--koyu);font-weight:700}
+@media (prefers-reduced-motion:reduce){.kart{animation:none}.kapak img{transition:none}}
+@media (max-width:900px){.izgara{grid-template-columns:1fr}.kart.one{order:-1}header{padding:40px 0 26px}}
 </style>
 </head>
 <body>
-<div class="serit">Örnek önizleme · Karaca Pastanesi Denizli için Boztaş Digital tarafından hazırlandı</div>
-<header class="ust">
-  <div class="sar">
-    <a class="logo" href="#">Karaca<small>DENİZLİ</small></a>
-    <a class="btn altin" href="#siparis">Pasta siparişi</a>
-  </div>
+<header class="sar">
+  <span class="ufak">Boztaş Digital · örnek önizleme</span>
+  <h1>Karaca Pastanesi için 3 farklı seviyede örnek</h1>
+  <p>Atatürk Caddesi ve Yenişafak şubeleri, vitrin başlıklarınız ve DM'deki soru-cevabı bitiren tek mesajlık pasta sipariş notu. Aynı içerik üç farklı tasarım ve özellik düzeyinde hazırlandı; hangisi işletmenize uygunsa onunla devam ederiz. Her sayfanın üstündeki çubukla seviyeler arasında geçebilirsiniz.</p>
 </header>
-
-<main>
-  <div class="kahraman">
-    <div class="sar">
-      <div class="yazi">
-        <span class="ufak">Pastane · Atatürk Caddesi & Yenişafak</span>
-        <h1>Fabrikasyon değil, size özel.</h1>
-        <p>Nişan, söz, doğum günü ya da canınız çektiğinde. İstediğiniz figür, renk ve lezzette pastayı buradan tarif edin; sipariş notu hazır olarak bize gelsin.</p>
-        <div class="dugmeler">
-          <a class="btn altin" href="#siparis">Pastamı tarif edeyim</a>
-          <a class="btn hat" href="#subeler">Şubeler</a>
-        </div>
+<main class="sar izgara">
+    <article class="kart">
+      <a class="kapak" href="standart/" aria-label="Standart seviyesini aç"><img src="img/kademe-standart.webp" alt="Karaca Pastanesi Standart seviye ekran görüntüsü" width="720" height="450" loading="eager"></a>
+      <div class="y">
+        <div class="ust"><h2>Standart</h2><b>2.500 TL</b></div>
+        
+        <ul><li>Tek sayfa, telefona tam uyumlu</li><li>Menü/hizmet başlıkları, arama ve yol tarifi düğmeleri</li><li>Sade tasarım, gerçek fotoğraf</li><li>Pasta tarif formu: sipariş notu WhatsApp'a hazır gelir</li><li>İki şube tek dokunuşla aranır</li></ul>
+        <a class="btn" href="standart/">Standart örneği aç →</a>
       </div>
-      <div class="foto">
-        <img src="img/pasta.jpg" alt="Süslü yaş pasta (temsilî görsel)" width="1024" height="1152" fetchpriority="high">
-        <span class="etiket">Temsilî görsel</span>
+    </article>
+    <article class="kart one">
+      <a class="kapak" href="profesyonel/" aria-label="Profesyonel seviyesini aç"><img src="img/kademe-profesyonel.webp" alt="Karaca Pastanesi Profesyonel seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Profesyonel</h2><b>4.000 TL</b></div>
+        <span class="rozet">En çok tercih edilen</span>
+        <ul><li>Ürün ürün menü ya da hizmet listesi</li><li>Galeri, harita ve Google yorum yönlendirmesi</li><li>Sektöre özel araç (sipariş/randevu notu)</li><li>5 adımlı pasta tarifi: kişi, kat, lezzet, krema rengi, yazı; WhatsApp / DM için hazır not</li><li>Sekmeli vitrin, büyütmeli galeri, iki şube haritası</li></ul>
+        <a class="btn" href="profesyonel/">Profesyonel örneği aç →</a>
       </div>
-    </div>
-  </div>
-
-  <section>
-    <div class="sar">
-      <span class="ufak" style="color:var(--visne)">Vitrinimiz</span>
-      <h2>Pastadan lokmaya, tek sayfada.</h2>
-      <p class="acik">Instagram'daki öne çıkanlarınız burada birer bölüm olur; müşteri aradığını hikâyeler arasında kaybolmadan bulur. Yayında her bölümde kendi fotoğraflarınız durur.</p>
-      <div class="cesit">
-        <div><b>Yaş Pasta</b><span>Kişiye özel figür ve renk</span></div>
-        <div><b>Organizasyon</b><span>Nişan, söz, doğum günü</span></div>
-        <div><b>Baklava</b><span>Tepsi ve kutu</span></div>
-        <div><b>Lokma</b><span>Hayır ve davetler için</span></div>
-        <div><b>Dondurma</b><span>Külah ve kutu</span></div>
-        <div><b>Cupcake</b><span>Kutlama kutuları</span></div>
-        <div><b>Kurabiye</b><span>Çay saati ve ikram</span></div>
-        <div><b>Karaca</b><span>Size özel köşe</span></div>
+    </article>
+    <article class="kart">
+      <a class="kapak" href="premium/" aria-label="Premium seviyesini aç"><img src="img/kademe-premium.webp" alt="Karaca Pastanesi Premium seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Premium</h2><b>7.500 TL</b></div>
+        
+        <ul><li>Editoryal tasarım, tam ekran gerçek fotoğraflar</li><li>Hikâye bölümleri ve fotoğraf çekimi planı</li><li>Gelişmiş araçlar: tam sipariş/randevu masası ve özel talep formları</li><li>Sipariş masası: vitrinden adet + özel pasta tarifi tek fişte, WhatsApp / DM'ye hazır</li><li>Atölye hikâyesi, şube seçici, toplu tatlı talebi (lokma, baklava) ve galeri şeridi</li></ul>
+        <a class="btn" href="premium/">Premium örneği aç →</a>
       </div>
-      <div class="ikili">
-        <img src="img/vitrin.jpg" alt="Pastane vitrini (temsilî görsel)" width="1344" height="768" loading="lazy">
-        <img src="img/kutu.jpg" alt="Hediye kutusunda tatlılar (temsilî görsel)" width="1152" height="896" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <section class="siparis" id="siparis">
-    <div class="sar">
-      <div>
-        <span class="ufak" style="color:var(--visne)">Özel pasta siparişi</span>
-        <h2>DM'de on mesaj yerine tek not.</h2>
-        <p class="acik">Şu an siparişler DM'den, soru-cevapla ilerliyor. Burada müşteri gün, kişi sayısı, lezzet ve süslemeyi baştan seçer; siz tek mesajda her şeyi görürsünüz.</p>
-        <ol class="adimlar">
-          <li><span>Müşteri pastasını seçeneklerle tarif eder.</span></li>
-          <li><span>Hazır not WhatsApp'ınıza ya da DM'nize gelir.</span></li>
-          <li><span>Siz fiyatı ve teslim saatini yazarsınız.</span></li>
-        </ol>
-      </div>
-      <form class="kart" id="form" onsubmit="return false">
-        <fieldset><legend>Ne için?</legend><div class="secenek" id="neden"></div></fieldset>
-        <fieldset><legend>Kaç kişilik?</legend><div class="secenek" id="kisi"></div></fieldset>
-        <fieldset><legend>Lezzet</legend><div class="secenek" id="lezzet"></div></fieldset>
-        <fieldset><legend>Hangi şube?</legend><div class="secenek" id="sube"></div></fieldset>
-        <fieldset><legend>Tarih ve süsleme notu</legend><input type="text" id="not" placeholder="Örn. 12 Ekim, pembe, üstünde isim"></fieldset>
-        <div class="mesaj" id="mesaj" aria-live="polite"></div>
-        <a class="btn visne" id="gonder" href="#">WhatsApp'tan gönder</a>
-        <p class="kucuk-not">Not panoya da kopyalanır; isteyen Instagram DM'ye yapıştırır.</p>
-      </form>
-    </div>
-  </section>
-
-  <section class="alerjen">
-    <div class="sar">
-      <div>
-        <span class="ufak" style="color:var(--visne)">Alerjen bilgili menü</span>
-        <h2>"İçinde fındık var mı?" sorusuna hazır cevap.</h2>
-        <p class="acik">Tezgâhtaki QR kodla açılan menüde her ürünün içeriği yazar; müşteri kaçındığını seçince uygun olmayanlar gizlenir. Ürünleri ve içeriklerini sizinle birlikte gireriz.</p>
-      </div>
-      <div class="telefon" aria-hidden="true">
-        <div class="ekran">
-          <header>Karaca</header>
-          <div class="sat"><span>Yaş Pasta</span><i>ürünleriniz</i></div>
-          <div class="sat"><span>Baklava</span><i>ürünleriniz</i></div>
-          <div class="sat"><span>Cupcake</span><i>ürünleriniz</i></div>
-          <div class="sat"><span>Kurabiye</span><i>ürünleriniz</i></div>
-          <div class="sat"><span>Dondurma</span><i>ürünleriniz</i></div>
-          <div class="not">Kaçındığım: fındık ✓<br>Uygun olmayan ürünler gizlendi.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="subeler" id="subeler">
-    <div class="sar">
-      <span class="ufak">İki şube</span>
-      <h2>Size en yakın Karaca.</h2>
-      <div class="grid">
-        <div class="sube"><b>Atatürk Caddesi</b><a href="tel:+902582413668">0258 241 36 68</a><div class="dugmeler"><a class="btn altin" href="tel:+902582413668">Ara</a><a class="btn hat" href="https://www.google.com/maps/search/Karaca+Pastanesi+Atat%C3%BCrk+Caddesi+Denizli">Yol tarifi</a></div></div>
-        <div class="sube"><b>Yenişafak</b><a href="tel:+905445028598">0544 502 85 98</a><div class="dugmeler"><a class="btn altin" href="tel:+905445028598">Ara</a><a class="btn hat" href="https://www.google.com/maps/search/Karaca+Pastanesi+Yeni%C5%9Fafak+Denizli">Yol tarifi</a></div></div>
-      </div>
-    </div>
-  </section>
+    </article>
 </main>
-
-<footer>
-  <div class="sar">
-    <div>© Karaca Pastanesi Denizli · <a href="https://www.instagram.com/karacapastanesidenizli/">@karacapastanesidenizli</a></div>
-    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Karaca Pastanesi Denizli için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Görseller temsilîdir; şube, telefon ve ürün başlıkları Instagram profilinizden alındı. Fotoğraflar, fiyatlar ve menü içerikleri sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
-  </div>
+<footer class="sar not">
+  <div>Fiyatlar tek seferliktir; alan adı yıllık ücreti ayrıdır. İçerikleriniz geldikten sonra 7 iş günü içinde önizleme, 1 tur ücretsiz düzeltme.</div>
+  <div>Bu sayfalar <b>örnek önizlemedir</b>, işletmenin onayı yoktur; görseller temsilîdir. Bilgi ve iletişim: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
 </footer>
-
-<div class="yuzen"><a class="btn visne" href="#siparis">Pastamı tarif edeyim</a></div>
-
-<script>
-const $ = s => document.querySelector(s);
-const sec = (id, ad, liste, ilk) => $(id).innerHTML = liste.map((x,i) => `<label><input type="radio" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
-sec("#neden","n",["Doğum günü","Nişan / söz","Kına / düğün","Kutlama"],0);
-sec("#kisi","k",["6-8","10-12","15-20","25+"],1);
-sec("#lezzet","l",["Çikolatalı","Meyveli","Karamelli","Fıstıklı","Siz önerin"],0);
-sec("#sube","s",["Atatürk Cd.","Yenişafak"],0);
-function guncelle(){
-  const v = n => document.querySelector(`[name=${n}]:checked`).value;
-  const not = $("#not").value.trim();
-  const metin = `Merhaba Karaca Pastanesi, özel pasta siparişi vermek istiyorum.\nNe için: ${v("n")}\nKişi sayısı: ${v("k")}\nLezzet: ${v("l")}\nŞube: ${v("s")}${not ? `\nNot: ${not}` : ""}\nFiyat ve teslim için bilgi alabilir miyim?`;
-  $("#mesaj").textContent = metin;
-  $("#gonder").href = "https://wa.me/905445028598?text=" + encodeURIComponent(metin);
-}
-$("#form").addEventListener("change", guncelle); $("#not").addEventListener("input", guncelle); guncelle();
-$("#gonder").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#mesaj").textContent).catch(() => {}); });
-</script>
 </body>
 </html>

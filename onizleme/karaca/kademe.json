@@ -1,0 +1,19 @@
+{
+  "ad": "Karaca Pastanesi",
+  "renk": "#5A1726",
+  "giris": "Atatürk Caddesi ve Yenişafak şubeleri, vitrin başlıklarınız ve DM'deki soru-cevabı bitiren tek mesajlık pasta sipariş notu.",
+  "ozellik": {
+    "standart": [
+      "Pasta tarif formu: sipariş notu WhatsApp'a hazır gelir",
+      "İki şube tek dokunuşla aranır"
+    ],
+    "profesyonel": [
+      "5 adımlı pasta tarifi: kişi, kat, lezzet, krema rengi, yazı; WhatsApp / DM için hazır not",
+      "Sekmeli vitrin, büyütmeli galeri, iki şube haritası"
+    ],
+    "premium": [
+      "Sipariş masası: vitrinden adet + özel pasta tarifi tek fişte, WhatsApp / DM'ye hazır",
+      "Atölye hikâyesi, şube seçici, toplu tatlı talebi (lokma, baklava) ve galeri şeridi"
+    ]
+  }
+}

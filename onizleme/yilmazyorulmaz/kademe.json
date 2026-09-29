@@ -1,0 +1,19 @@
+{
+  "ad": "Diş Hekimi Yılmaz Yorulmaz",
+  "renk": "#1C2B4A",
+  "giris": "Adalet Mahallesi'ndeki kliniğiniz için tedavi başlıkları, okulun karşısı yol tarifi ve WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": [
+      "Dört tedavi başlığı, WhatsApp'a hazır randevu mesajı"
+    ],
+    "profesyonel": [
+      "Sekmeli tedavi anlatımı ve \"bu konuda randevu\" ile dolan randevu notu",
+      "İlk ziyaretin üç adımı, sık sorulanlar, büyütülebilir galeri ve harita"
+    ],
+    "premium": [
+      "Randevu masası: konu, diş haritasından diş, gün, saat aralığı ve not ile hazır mesaj",
+      "Zirkonyum kronun yolu, aile randevusu talebi, okulun karşısı tarifi ve adres paylaşma"
+    ]
+  }
+}

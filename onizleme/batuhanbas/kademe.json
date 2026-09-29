@@ -1,0 +1,11 @@
+{
+  "ad": "Diş Hekimi Batuhan Baş",
+  "renk": "#1F5C56",
+  "giris": "Yenişehir'deki kliniğiniz için tedavi başlıklarınız, ilk muayene notları ve WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Altı tedavi başlığı, ilk muayene notları, konu ve zaman seçince hazır WhatsApp mesajı"],
+    "profesyonel": ["Sekmeli tedavi anlatımı ve \"bu konuda randevu\" ile dolan randevu notu", "İlk ziyaretin üç adımı, sık sorulanlar, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: konu, diş haritasından diş, gün, saat aralığı ve not ile hazır mesaj", "Aile randevusu talebi, açılır tedavi kataloğu, adres paylaşma"]
+  }
+}

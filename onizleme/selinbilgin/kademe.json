@@ -1,0 +1,11 @@
+{
+  "ad": "Uzm. Dt. Selin Bilgin Özdemir",
+  "renk": "#2F4B7C",
+  "giris": "Çocuk diş hekimliği kliniğiniz için yaşa göre veli rehberi, tedavi başlıklarınız, kreş/okul ziyaret talebi ve WhatsApp'a hazır randevu notu. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Yaşa göre veli rehberi, tedavi başlıkları, kreş/okul ziyaret talebi", "Yaş ve konu seçince hazır açılan WhatsApp randevu mesajı"],
+    "profesyonel": ["Fotoğraflı veli rehberi, sekmeli tedavi listesi, ilk ziyaretin üç adımı", "Randevu notu (yaş, konu, ilk kez mi, zaman), galeri ve harita"],
+    "premium": ["Randevu masası: kardeşler, birden çok yaş, hekim tercihi, zaman ve not", "Kreş/okul talep masası (kurum, yaş grubu, öğrenci sayısı), hikâye bölümleri, galeri şeridi"]
+  }
+}

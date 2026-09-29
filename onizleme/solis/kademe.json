@@ -1,0 +1,18 @@
+{
+  "ad": "Solis Pilates Studio",
+  "renk": "#C9772B",
+  "giris": "Mat, postür, bireysel, düet, grup ve hamile pilatesi derslerinizle; Instagram'a hazır deneme dersi mesajı. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": [
+      "Ders biçimleri, ilk ders rehberi, iki dokunuşla deneme dersi mesajı"
+    ],
+    "profesyonel": [
+      "Sekmeli ders seçici: \"bu dersle deneme iste\" deneme fişini kendiliğinden doldurur",
+      "Fotoğraflı ilk ders adımları, galeri, harita ve Google değerlendirme bağlantısı"
+    ],
+    "premium": [
+      "3 soruluk ders bulucu ve deneme dersi masası: ders, gün, saat, sağlık notu ile hazır mesaj",
+      "Ders bölümleri, arkadaşla başlama talebi, sık sorulanlar, galeri şeridi"
+    ]
+  }
+}

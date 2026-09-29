@@ -1,0 +1,11 @@
+{
+  "ad": "Moderna Ağız ve Diş Sağlığı Polikliniği",
+  "renk": "#E6A74A",
+  "giris": "Akkonak'taki kliniğiniz için 09.00-23.00 açık göstergesi, implant, ortodonti ve Moderna kids bilgisi, iş çıkışı ve geç saat için WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Şu an açık mı göstergesi, üç bölüm başlığı, konu ve saat seçince hazır WhatsApp mesajı"],
+    "profesyonel": ["Günün dört dilimi (şu anki işaretli) ve geçen dilimleri kapatan randevu fişi", "Sekmeli tedavi anlatımı, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: konu, diş haritasından diş, gün, saat saat seçim ve not ile hazır mesaj", "Gün boyu hikâye, aile randevusu ve iş yeri kontrol günü talebi, nereden gelirsiniz yol tarifi"]
+  }
+}

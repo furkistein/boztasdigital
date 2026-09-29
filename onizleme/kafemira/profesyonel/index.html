@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Kafe Mira · Kuşpınar, Denizli · Profesyonel örnek</title>
+<meta name="description" content="Kafe Mira Denizli: içerik süzgeçli menü, WhatsApp'a hazır sipariş fişi, galeri ve harita. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F3EEE3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#F3EEE3;--kagit:#FBF8F1;--koyu:#1F2A22;--zeytin:#3F5A3C;--kiremit:#B4552F;--soluk:#6A675C;--cizgi:rgba(31,42,34,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--koyu);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--soluk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--zeytin);color:var(--kagit)}
+.btn.dolu:hover{background:var(--koyu)}
+.btn.hat{border:1px solid var(--cizgi)}
+.btn.hat:hover{border-color:var(--koyu)}
+.ust{position:sticky;top:0;z-index:20;background:rgba(243,238,227,.93);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:68px}
+.logo{font-family:"Young Serif",serif;font-size:26px;text-decoration:none;color:var(--zeytin)}
+.logo i{font-style:normal;color:var(--kiremit)}
+.ust nav{display:flex;gap:28px;font-size:15px}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--kiremit)}
+.kahraman{display:grid;grid-template-columns:5fr 7fr;min-height:calc(100vh - 110px)}
+.kahraman .yazi{padding:72px 56px 64px max(28px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+h1{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(46px,5.6vw,88px);line-height:1;letter-spacing:-.015em;color:var(--zeytin)}
+h1 em{font-style:normal;color:var(--kiremit)}
+.kahraman p{max-width:38ch;color:var(--soluk);margin-top:22px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.bilgi{display:flex;gap:34px;font-size:14px;border-top:1px solid var(--cizgi);padding-top:18px;flex-wrap:wrap}
+.bilgi b{display:block;font-weight:600}
+.kahraman figure{position:relative;overflow:hidden;background:#3a3a2e}
+.kahraman figure img{width:100%;height:100%;object-fit:cover;animation:yavas 18s ease-out both}
+@keyframes yavas{from{transform:scale(1.06)}to{transform:scale(1)}}
+figcaption{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85)}
+section{padding:110px 0}
+h2{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(36px,4.4vw,60px);line-height:1.05;margin:12px 0 16px;color:var(--zeytin)}
+h2 em{font-style:normal;color:var(--kiremit)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+.hikaye{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
+.hikaye figure img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px}
+.hikaye h3{font-family:"Young Serif",serif;font-weight:400;font-size:28px;margin:18px 0 4px;color:var(--zeytin)}
+.hikaye p{color:var(--soluk);font-size:15.5px}
+.hikaye span{font-size:13px;color:var(--kiremit);font-weight:700}
+.menu-alani{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.menu-ust{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.suzgec{margin-top:36px;padding:20px 22px;border:1px solid var(--cizgi);border-radius:8px;background:var(--zemin);display:flex;gap:14px 22px;align-items:center;flex-wrap:wrap}
+.suzgec b{font-size:14px;font-weight:700}
+.secenek{display:flex;gap:6px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:6px 14px;font-size:14px;cursor:pointer;background:var(--kagit);transition:background .2s,color .2s}
+.secenek input:checked+span{background:var(--kiremit);color:#fff;border-color:var(--kiremit)}
+.secenek input:focus-visible+span{outline:2px solid var(--zeytin);outline-offset:2px}
+.sayac{font-size:14px;color:var(--soluk);margin-left:auto}
+.sekme{display:flex;gap:6px;flex-wrap:wrap;margin-top:26px;border-bottom:1px solid var(--cizgi)}
+.sekme button{padding:12px 16px;font-size:15px;color:var(--soluk);border-bottom:2px solid transparent;margin-bottom:-1px}
+.sekme button[aria-selected=true]{color:var(--koyu);border-color:var(--kiremit)}
+.sekme button small{font-size:12px;color:var(--soluk);margin-left:4px}
+.menu-govde{display:grid;grid-template-columns:1fr 360px;gap:56px;margin-top:10px;align-items:start}
+.urun{display:grid;grid-template-columns:1fr auto;gap:6px 20px;padding:22px 0;border-bottom:1px solid var(--cizgi)}
+.urun h3{font-family:"Young Serif",serif;font-weight:400;font-size:24px;line-height:1.15}
+.urun p{color:var(--soluk);font-size:15px}
+.urun .fiyat{color:var(--soluk);font-size:15px;text-align:right}
+.icerik{display:flex;gap:5px;flex-wrap:wrap;grid-column:1}
+.icerik i{font-style:normal;font-size:12px;font-weight:600;background:#EAE3D3;border-radius:4px;padding:2px 8px}
+.icerik i.yok{background:#DCE6D6;color:var(--zeytin)}
+.ekle{grid-column:2;grid-row:2/4;align-self:end;justify-self:end;font-size:14px;font-weight:600;border:1px solid var(--cizgi);border-radius:999px;padding:6px 14px;transition:border-color .2s,background .2s}
+.ekle:hover{border-color:var(--koyu)}
+.ekle.var{background:var(--zeytin);color:var(--kagit);border-color:var(--zeytin)}
+.bos{padding:26px 0;color:var(--soluk)}
+.fis{position:sticky;top:96px;background:var(--zemin);border:1px solid var(--cizgi);border-radius:6px;padding:26px}
+.fis h3{font-family:"Young Serif",serif;font-weight:400;font-size:28px;color:var(--zeytin)}
+.fis fieldset{border:0;margin-top:16px}
+.fis legend{font-size:13px;font-weight:700;margin-bottom:8px}
+.fis-metin{white-space:pre-wrap;font-size:14.5px;background:var(--kagit);border-left:2px solid var(--kiremit);padding:12px 14px;margin:18px 0 14px;min-height:110px}
+.fis .btn{width:100%}
+.fis small{display:block;color:var(--soluk);font-size:12.5px;margin-top:10px}
+.bosalt{font-size:13px;color:var(--soluk);text-decoration:underline;margin-top:8px}
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:4px}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 7;aspect-ratio:3/2}
+.galeri .g2{grid-column:span 5;aspect-ratio:15/14}
+.galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 4;aspect-ratio:1}
+.kutu{position:fixed;inset:0;z-index:50;background:rgba(18,22,18,.92);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;width:auto;border-radius:4px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+.konum{display:grid;grid-template-columns:7fr 5fr;gap:44px;margin-top:44px;align-items:start}
+.konum iframe{width:100%;aspect-ratio:16/10;border:0;border-radius:4px;background:#e2dccd;filter:grayscale(.3)}
+.konum dl{display:grid;gap:18px}
+.konum dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk);font-weight:600}
+.konum dd{font-family:"Young Serif",serif;font-size:22px;color:var(--zeytin)}
+.konum dd a{text-decoration:none}
+.yorum{margin-top:64px;border-top:1px solid var(--cizgi);padding-top:34px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.yorum p{font-family:"Young Serif",serif;font-size:28px;line-height:1.2;max-width:28ch;color:var(--zeytin)}
+footer{background:var(--koyu);color:#B4BCB2;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(243,238,227,.3);border-radius:8px;padding:12px 14px;color:#EAE5D8}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:960px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/3}
+  .kahraman .yazi{padding:40px 28px 48px}
+  .menu-govde,.konum{grid-template-columns:1fr}
+  .fis{position:static}
+  .hikaye{grid-template-columns:1fr;gap:40px}
+  .hikaye figure img{aspect-ratio:4/3}
+  .sayac{margin-left:0;width:100%}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman .yazi{padding:32px 18px 40px}
+  .bilgi{gap:22px}
+  section{padding:72px 0}
+  .suzgec{padding:16px}
+  .sekme{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .sekme button{flex:none}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2}
+  .galeri .g2,.galeri .g3{grid-column:span 1;aspect-ratio:3/4}
+  .galeri .g4,.galeri .g5{grid-column:span 1}
+  .yorum p{font-size:24px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.kahraman figure img{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Kafe Mira">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Kafe <i>Mira</i></a>
+    <nav><a href="#gun">Bir gün</a><a href="#menu">Menü</a><a href="#galeri">Galeri</a><a href="#konum">Konum</a></nav>
+    <a class="btn dolu" href="#menu">Sipariş</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <div>
+        <span class="ufak">Kuşpınar · Emek Caddesi 131</span>
+        <h1 style="margin-top:18px">Neyin içinde ne var, <em>menü söylesin.</em></h1>
+        <p>Pastalar, kurabiyeler, tuzlular. Kaçındığınız içeriği seçin, size uygun olanlar kalsın; siparişiniz hazır mesajla WhatsApp'a gitsin.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="#menu">İçerik süzgeçli menü</a>
+          <a class="btn hat" href="#konum">Yol tarifi</a>
+        </div>
+      </div>
+      <div class="bilgi">
+        <div><b>Telefon</b>0258 264 06 64</div>
+        <div><b>WhatsApp</b>0531 204 96 46</div>
+      </div>
+    </div>
+    <figure>
+      <img src="../img/gercek/granola.webp" srcset="../img/gercek/granola-900.webp 900w, ../img/gercek/granola.webp 1800w" sizes="(max-width:960px) 100vw, 58vw" alt="Ahşap masada meyveli granola kâseleri (temsilî fotoğraf)" width="1800" height="2586" fetchpriority="high" style="object-position:50% 40%">
+      <figcaption>Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="gun">
+    <div class="sar">
+      <span class="ufak">Kafede bir gün</span>
+      <h2 data-belir>Sabahtan ikindiye <em>üç masa.</em></h2>
+      <p class="acik-yazi">Misafir gelmeden önce tezgâhınıza bir göz atar. Yayında bu üç kare sizin tuzlularınızın, tabaklarınızın ve pastalarınızın fotoğrafı olur.</p>
+      <div class="hikaye" data-sirali="120">
+        <figure data-belir><img src="../img/gercek/pogaca-900.webp" alt="Tepside susamlı poğaçalar (temsilî fotoğraf)" width="900" height="1200" loading="lazy"><span>Sabah</span><h3>Tuzlular</h3><p>Fırından yeni çıkmış poğaça ve sabah tuzluları.</p></figure>
+        <figure data-belir><img src="../img/gercek/salata-900.webp" alt="Tabakta taze salata (temsilî fotoğraf)" width="900" height="1200" loading="lazy"><span>Öğle</span><h3>Hafif tabaklar</h3><p>Salata, granola, tam buğday sandviç (örnek).</p></figure>
+        <figure data-belir><img src="../img/gercek/cheesecake-900.webp" alt="Ahşap masada tabakta dilim cheesecake (temsilî fotoğraf)" width="900" height="1350" loading="lazy"><span>İkindi</span><h3>Pasta ve kahve</h3><p>Dilim pasta, kurabiye ve yanında bir kahve.</p></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-alani" id="menu">
+    <div class="sar">
+      <div class="menu-ust">
+        <div>
+          <span class="ufak">İçerik süzgeçli menü</span>
+          <h2 data-belir>"Bunda un var mı?" <em>sorusu bitsin.</em></h2>
+        </div>
+        <p class="acik-yazi" style="max-width:40ch">Misafir kaçındığını seçer, içinde olan ürünler listeden kalkar. Ürünler ve içerikler örnektir; yayında kendi tariflerinizin gerçek içeriğini birlikte gireriz.</p>
+      </div>
+      <div class="suzgec">
+        <b>Kaçındığım:</b>
+        <div class="secenek" id="suzgec"></div>
+        <span class="sayac" id="sayac" aria-live="polite"></span>
+      </div>
+      <div class="sekme" id="sekme" role="tablist"></div>
+      <div class="menu-govde">
+        <div id="urunler" aria-live="polite"></div>
+        <aside class="fis">
+          <h3>Sipariş fişi</h3>
+          <fieldset><legend>Ne zaman?</legend><div class="secenek" id="zamanSec"></div></fieldset>
+          <fieldset><legend>Nasıl?</legend><div class="secenek" id="nasilSec"></div></fieldset>
+          <div class="fis-metin" id="fisMetin"></div>
+          <a class="btn dolu" id="gonder" href="https://wa.me/905312049646">WhatsApp'tan gönder</a>
+          <button class="bosalt" id="bosalt" type="button">Fişi temizle</button>
+          <small>Kaçındığınız içerik fişe kendiliğinden yazılır.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Masadan <em>kareler.</em></h2>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/kose.webp"><img src="../img/gercek/kose-900.webp" alt="Güneşli köşede ahşap masa ve kâseler (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/sandvic.webp"><img src="../img/gercek/sandvic-900.webp" alt="Tam buğday sandviç ve latte (temsilî fotoğraf)" width="900" height="1350" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/kahve.webp"><img src="../img/gercek/kahve-900.webp" alt="Latteye süt dökülüyor (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/kruvasan.webp"><img src="../img/gercek/kruvasan-900.webp" alt="Mermer masada kruvasan ve kahve (temsilî fotoğraf)" width="900" height="1200" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/simit.webp"><img src="../img/gercek/simit-900.webp" alt="Ahşap masada çay ve simit (temsilî fotoğraf)" width="900" height="1200" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="konum" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Konum</span>
+      <h2 data-belir>Kuşpınar'da, <em>Emek Caddesi'nde.</em></h2>
+      <div class="konum">
+        <iframe loading="lazy" title="Kafe Mira haritası" src="https://www.google.com/maps?q=Kafe+Mira+Ku%C5%9Fp%C4%B1nar+Emek+Cad.+131+Denizli&amp;output=embed"></iframe>
+        <div data-belir>
+          <dl>
+            <div><dt>Adres</dt><dd>Kuşpınar Mah., Emek Cad. No:131, Denizli</dd></div>
+            <div><dt>Telefon</dt><dd><a href="tel:+902582640664">0258 264 06 64</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/905312049646">0531 204 96 46</a></dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="tel:+902582640664">Ara</a><a class="btn hat" href="https://www.google.com/maps/search/Kafe+Mira+Ku%C5%9Fp%C4%B1nar+Emek+Cad.+131+Denizli">Yol tarifi</a></div>
+        </div>
+      </div>
+      <div class="yorum">
+        <p>Beğendiyseniz, bir sonraki misafirimize de söyleyin.</p>
+        <a class="btn dolu" href="https://www.google.com/maps/search/Kafe+Mira+Ku%C5%9Fp%C4%B1nar+Denizli">Google'da yorum yazın</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Kafe Mira · Kuşpınar, Denizli · <a href="https://www.instagram.com/kafe_mira/">@kafe_mira</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Kafe Mira için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); ürün adları ve içerik bilgileri örnektir, yayında tariflerinizin gerçek içeriğiyle doldurulur. Adres, telefon ve slogan Instagram profilinizden alındı. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#menu">Menü ve sipariş</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+const ALERJEN = ["Gluten", "Süt", "Yumurta", "Kuruyemiş", "Susam"];
+const MENU = {
+  "Pastalar": [["Çikolatalı pasta", "Dilim", ["Gluten", "Süt", "Yumurta"]], ["Frambuazlı cheesecake", "Dilim", ["Gluten", "Süt", "Yumurta"]], ["Havuçlu tarçınlı kek", "Cevizli", ["Gluten", "Yumurta", "Kuruyemiş"]], ["Muzlu yulaf keki", "Şekersiz", ["Yumurta"]]],
+  "Kurabiyeler": [["Yulaflı kurabiye", "Üzümlü", ["Gluten", "Süt"]], ["Fındıklı kurabiye", "Tereyağlı", ["Gluten", "Süt", "Kuruyemiş"]], ["Hurmalı top", "Pişmeyen", ["Kuruyemiş"]]],
+  "Tuzlular": [["Susamlı poğaça", "Sabah tuzlusu", ["Gluten", "Süt", "Yumurta", "Susam"]], ["Kruvasan", "Tereyağlı", ["Gluten", "Süt", "Yumurta"]], ["Mercimek köftesi", "Nar ekşili", ["Gluten"]]],
+  "Tabaklar": [["Granola kâsesi", "Yoğurt, meyve", ["Süt", "Kuruyemiş"]], ["Mevsim salatası", "Zeytinyağlı", []], ["Tam buğday sandviç", "Peynirli, yeşillikli", ["Gluten", "Süt", "Susam"]]],
+  "İçecekler": [["Filtre kahve", "Sıcak", []], ["Latte", "Sıcak ya da buzlu", ["Süt"]], ["Taze sıkma portakal", "Mevsiminde", []]],
+};
+const sepet = new Map();
+const kats = Object.keys(MENU);
+let aktif = kats[0];
+$("#suzgec").innerHTML = ALERJEN.map((a) => `<label><input type="checkbox" value="${a}"><span>${a}</span></label>`).join("");
+const kacin = () => [...document.querySelectorAll("#suzgec input:checked")].map((x) => x.value);
+const uygun = (al) => !kacin().some((a) => al.includes(a));
+function sekmeler() {
+  $("#sekme").innerHTML = kats.map((k) => { const n = MENU[k].filter(([, , al]) => uygun(al)).length; return `<button role="tab" aria-selected="${k === aktif}" data-k="${k}">${k}<small>${n}</small></button>`; }).join("");
+}
+function goster(k) {
+  aktif = k; sekmeler();
+  const liste = MENU[k].filter(([, , al]) => uygun(al));
+  $("#urunler").innerHTML = liste.length ? liste.map(([ad, not, al]) => `<article class="urun"><h3>${ad}</h3><span class="fiyat">— ₺</span><p>${not} <em style="font-size:12px">(örnek)</em></p><div class="icerik">${al.length ? al.map((x) => `<i>${x}</i>`).join("") : '<i class="yok">Listedeki içeriklerden yok</i>'}</div><button class="ekle${sepet.has(ad) ? " var" : ""}" data-ad="${ad}">${sepet.has(ad) ? "Fişte · " + sepet.get(ad) : "+ Ekle"}</button></article>`).join("")
+    : `<p class="bos">Bu bölümde seçiminize uygun ürün kalmadı. Diğer sekmelere bakın ya da bize yazın, seçenek sunalım.</p>`;
+  const toplam = kats.reduce((t, x) => t + MENU[x].filter(([, , al]) => uygun(al)).length, 0);
+  $("#sayac").textContent = kacin().length ? `${toplam} ürün size uygun` : "Seçin, uygun olmayanlar kalksın";
+}
+$("#suzgec").addEventListener("change", () => { goster(aktif); fis(); });
+$("#sekme").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) goster(b.dataset.k); });
+$("#urunler").addEventListener("click", (e) => {
+  const b = e.target.closest(".ekle"); if (!b) return;
+  const ad = b.dataset.ad; sepet.set(ad, (sepet.get(ad) || 0) + 1);
+  b.classList.add("var"); b.textContent = "Fişte · " + sepet.get(ad); fis();
+});
+const secim = (id, ad, liste) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === 0 ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#zamanSec", "z", ["Hemen", "Bugün öğlen", "Bugün akşam", "Yarın"]);
+secim("#nasilSec", "n", ["Gelip alacağım", "Kafede oturacağım"]);
+function fis() {
+  const z = document.querySelector("[name=z]:checked").value, n = document.querySelector("[name=n]:checked").value, k = kacin();
+  const satir = [...sepet].map(([ad, a]) => `· ${a} × ${ad}`).join("\n") || "· (menüden ürün ekleyin)";
+  const metin = `Merhaba Kafe Mira, sipariş vermek istiyorum:\n${satir}\nNe zaman: ${z}\n${n}${k.length ? `\nKaçındığım: ${k.join(", ")}` : ""}`;
+  $("#fisMetin").textContent = metin;
+  $("#gonder").href = "https://wa.me/905312049646?text=" + encodeURIComponent(metin);
+}
+document.querySelector(".fis").addEventListener("change", fis);
+$("#bosalt").addEventListener("click", () => { sepet.clear(); goster(aktif); fis(); });
+goster(aktif); fis();
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

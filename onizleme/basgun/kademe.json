@@ -1,0 +1,11 @@
+{
+  "ad": "Dt. Mustafa Resul Başgün",
+  "renk": "#2F5F7A",
+  "giris": "Sırakapılar'daki muayenehaneniz için implant süreci, zirkonyum ve lamina bilgisi, WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["İmplant süreci dört adımda, diğer tedaviler, durum ve zaman seçince hazır WhatsApp mesajı"],
+    "profesyonel": ["İmplant zaman çizelgesi, sekmeli tedavi anlatımı ve \"bu konuda randevu\" ile dolan randevu notu", "İmplant sık sorulanları, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: konu, diş haritasından diş, gün, saat ve hekimin bilmesi gerekenler listesi ile hazır mesaj", "Üç bölümlük implant hikâyesi, şehir dışından gelen hasta için ziyaret planı talebi, adres paylaşma"]
+  }
+}

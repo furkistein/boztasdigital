@@ -4,246 +4,83 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
-<title>Dt. Anıl Deniz Yıldırım Kliniği · Denizli · Tedavi bilgisi ve randevu (örnek önizleme)</title>
-<meta name="description" content="Dt. Anıl Deniz Yıldırım Kliniği, Yenişehir / Merkezefendi, Denizli: gülüş tasarımı, implant, tel ve şeffaf plak, kanal, çocuk diş tedavisi, protez. Türkçe, Almanca ve İngilizce randevu talebi. Boztaş Digital örnek önizlemesi.">
+<title>Dt. Anıl Deniz Yıldırım Kliniği · 3 seviyede örnek site · Boztaş Digital</title>
+<meta name="description" content="Dt. Anıl Deniz Yıldırım Kliniği için Boztaş Digital'in hazırladığı 3 seviyede örnek site: Standart, Profesyonel, Premium.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1D2B44">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F5F3EF">
 <style>
-:root{--gece:#1D2B44;--gece2:#2A3B5A;--kum:#F6EFE4;--kum2:#EFE4D2;--krem:#FFFCF7;--mercan:#E07A5F;--soluk:#5B6475;--cizgi:rgba(29,43,68,.14)}
+:root{--vurgu:#1D2B44;--koyu:#141414;--soluk:#6b6862;--zemin:#F5F3EF;--cizgi:rgba(20,20,20,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--krem);color:var(--gece);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
-a{color:inherit}
+body{background:var(--zemin);color:var(--koyu);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 img{display:block;max-width:100%;height:auto}
-.sar{width:min(1160px,100% - 48px);margin-inline:auto}
-.serit{background:var(--mercan);color:#fff;text-align:center;font-size:13px;font-weight:600;padding:7px 12px}
-.ust .sar{display:flex;justify-content:space-between;align-items:center;gap:16px;height:78px}
-.logo{text-decoration:none;line-height:1.1}
-.logo b{display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:21px}
-.logo span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soluk)}
-.dil{display:flex;background:var(--kum);border-radius:99px;padding:4px;gap:2px}
-.dil button{border:0;background:none;font:600 13px Figtree,sans-serif;color:var(--gece);padding:7px 12px;border-radius:99px;cursor:pointer}
-.dil button[aria-pressed=true]{background:var(--gece);color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:14px 24px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
-.btn.koyu{background:var(--gece);color:#fff}
-.btn.mercan{background:var(--mercan);color:#fff}
-.btn.hat{border:1.5px solid var(--gece)}
-.kahraman{padding:26px 0 72px}
-.kahraman .sar{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-.ufak{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--mercan)}
-h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(42px,6vw,80px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 22px}
-h1 i{color:var(--mercan)}
-.kahraman p{font-size:18px;max-width:44ch;color:var(--soluk)}
-.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.gorsel{position:relative;border-radius:200px 200px 28px 28px;overflow:hidden;aspect-ratio:4/4.6;background:var(--kum)}
-.gorsel img{width:100%;height:100%;object-fit:cover}
-.etiket{position:absolute;left:14px;bottom:14px;background:rgba(255,252,247,.94);font-size:12px;padding:5px 11px;border-radius:99px}
-.diller-not{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:26px;font-size:14px;color:var(--soluk)}
-.diller-not b{font-weight:700;color:var(--gece)}
-section{padding:84px 0}
-h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(32px,4.4vw,54px);line-height:1.06;margin:10px 0 14px;letter-spacing:-.01em}
-.acik{color:var(--soluk);max-width:60ch}
-.tedaviler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:38px}
-.ted{background:var(--kum);border-radius:22px;padding:26px 24px}
-.ted h3{font-family:Fraunces,serif;font-weight:600;font-size:23px;line-height:1.2;margin-bottom:8px}
-.ted p{font-size:15px;color:var(--soluk)}
-.ted.gorselli{background:var(--gece);color:#fff;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;overflow:hidden}
-.ted.gorselli p{color:#C9D2E3}
-.ted.gorselli img{width:74px;border-radius:12px}
-.cocuk{background:var(--kum2)}
-.cocuk .ikili{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
-.cocuk figure{border-radius:28px;overflow:hidden;aspect-ratio:4/3;margin:0}
-.cocuk figure img{width:100%;height:100%;object-fit:cover}
-.liste{list-style:none;margin-top:22px;display:grid;gap:12px}
-.liste li{display:grid;grid-template-columns:26px 1fr;gap:10px}
-.liste li::before{content:"";width:18px;height:18px;border-radius:6px;background:var(--mercan);margin-top:4px;transform:rotate(45deg) scale(.7)}
-.uzak{background:var(--gece);color:#fff}
-.uzak .acik{color:#C9D2E3}
-.adimlar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px;counter-reset:a}
-.adim{border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:24px}
-.adim::before{counter-increment:a;content:"0" counter(a);font-family:Fraunces,serif;font-size:34px;color:var(--mercan);display:block;margin-bottom:6px}
-.adim p{color:#C9D2E3;font-size:15px}
-.adim b{display:block;font-size:17px;margin-bottom:4px}
-.randevu{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
-.kart{background:#fff;border:1px solid var(--cizgi);border-radius:26px;padding:26px;box-shadow:0 24px 60px rgba(29,43,68,.08)}
-.kart fieldset{border:0;margin-bottom:16px}
-.kart legend{font-weight:700;margin-bottom:10px}
-.secenek{display:flex;flex-wrap:wrap;gap:8px}
-.secenek label{position:relative}
-.secenek input{position:absolute;opacity:0;inset:0}
-.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:99px;padding:8px 14px;font-size:14px;cursor:pointer;background:var(--kum)}
-.secenek input:checked+span{background:var(--gece);color:#fff;border-color:var(--gece)}
-.secenek input:focus-visible+span{outline:2px solid var(--mercan);outline-offset:2px}
-.mesaj{background:var(--kum);border-radius:16px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
-.kart .btn{width:100%}
-.kucuk-not{font-size:13px;color:var(--soluk);margin-top:10px}
-.iletisim dl{display:grid;gap:18px;margin-top:24px}
-.iletisim dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mercan);font-weight:700}
-footer{background:var(--gece);color:#AEB8CC;padding:34px 0 110px;font-size:14px}
-footer .sar{display:grid;gap:14px}
-.ornek-not{border:1px dashed rgba(255,255,255,.3);border-radius:14px;padding:12px 14px;color:#fff}
-.ornek-not a{color:#F2B8A6;font-weight:700}
-.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
-.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(29,43,68,.35)}
-@media (max-width:940px){
-  .kahraman .sar,.cocuk .ikili,.randevu{grid-template-columns:1fr;gap:34px}
-  .gorsel{max-width:440px;width:100%;margin:0 auto}
-  .tedaviler,.adimlar{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:600px){
-  .sar{width:calc(100% - 36px)}
-  .ust .sar{height:auto;padding:14px 0;flex-wrap:wrap}
-  .kahraman p{font-size:16.5px}
-  section{padding:58px 0}
-  .tedaviler,.adimlar{grid-template-columns:1fr;gap:10px}
-  .yuzen{display:block}
-}
+a{color:inherit}
+.sar{width:min(1200px,100% - 40px);margin-inline:auto}
+header{padding:56px 0 34px}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--vurgu)}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.02em;margin:12px 0 14px;max-width:22ch}
+header p{color:var(--soluk);max-width:60ch;font-size:17px}
+.izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:40px}
+.kart{background:#fff;border:1px solid var(--cizgi);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;animation:gel .7s cubic-bezier(.2,.7,.2,1) both}
+.kart:nth-child(2){animation-delay:.08s}.kart:nth-child(3){animation-delay:.16s}
+@keyframes gel{from{opacity:0;transform:translateY(20px)}}
+.kart.one{border:2px solid var(--vurgu);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.kapak{display:block;aspect-ratio:16/10;overflow:hidden;background:#ddd;border-bottom:1px solid var(--cizgi)}
+.kapak img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.kart:hover .kapak img{transform:scale(1.04)}
+.y{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ust{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+h2{font-size:26px;letter-spacing:-.01em}
+.ust b{font-size:20px;color:var(--vurgu);white-space:nowrap}
+.rozet{align-self:start;background:var(--vurgu);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px}
+ul{list-style:none;display:grid;gap:7px;align-content:start;color:#3d3b37;font-size:15px;flex:1}
+li{padding-left:22px;position:relative}
+li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid var(--vurgu);border-bottom:2px solid var(--vurgu);transform:rotate(-45deg)}
+.btn{display:flex;justify-content:center;border-radius:12px;padding:14px;font-weight:700;text-decoration:none;background:var(--koyu);color:#fff;transition:background .25s}
+.btn:hover{background:var(--vurgu)}
+.not{color:var(--soluk);font-size:14px;border-top:1px solid var(--cizgi);padding:24px 0 50px;display:grid;gap:8px}
+.not a{color:var(--koyu);font-weight:700}
+@media (prefers-reduced-motion:reduce){.kart{animation:none}.kapak img{transition:none}}
+@media (max-width:900px){.izgara{grid-template-columns:1fr}.kart.one{order:-1}header{padding:40px 0 26px}}
 </style>
 </head>
 <body>
-<div class="serit">Örnek önizleme · Dt. Anıl Deniz Yıldırım Kliniği için Boztaş Digital tarafından hazırlandı</div>
-<header class="ust">
-  <div class="sar">
-    <a class="logo" href="#"><b>Dt. Anıl Deniz Yıldırım</b><span>Diş Kliniği · Denizli</span></a>
-    <div class="dil" role="group" aria-label="Dil">
-      <button type="button" data-dil="tr" aria-pressed="true">TR</button>
-      <button type="button" data-dil="de" aria-pressed="false">DE</button>
-      <button type="button" data-dil="en" aria-pressed="false">EN</button>
-    </div>
-  </div>
+<header class="sar">
+  <span class="ufak">Boztaş Digital · örnek önizleme</span>
+  <h1>Dt. Anıl Deniz Yıldırım Kliniği için 3 farklı seviyede örnek</h1>
+  <p>Tedavi başlıklarınız, "Çocuk Dostlarım" rehberi ve Türkçe, Almanca ya da İngilizce hazır açılan WhatsApp randevu mesajı. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî). Fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel yoktur. Aynı içerik üç farklı tasarım ve özellik düzeyinde hazırlandı; hangisi işletmenize uygunsa onunla devam ederiz. Her sayfanın üstündeki çubukla seviyeler arasında geçebilirsiniz.</p>
 </header>
-
-<main>
-  <div class="kahraman">
-    <div class="sar">
-      <div>
-        <span class="ufak" data-t="yer">Yenişehir · Merkezefendi</span>
-        <h1 data-t="h1" data-html>Denizli'deki kliniğiniz, <i>nerede yaşarsanız yaşayın.</i></h1>
-        <p data-t="giris">Gülüş tasarımı, implant, tel ve şeffaf plak, kanal ve çocuk diş tedavisi hakkında sade bilgiler. Randevu talebinizi Türkçe, Almanca ya da İngilizce hazırlayıp WhatsApp'tan gönderin.</p>
-        <div class="dugmeler">
-          <a class="btn koyu" href="#randevu" data-t="b1">Randevu iste</a>
-          <a class="btn hat" href="#tedaviler" data-t="b2">Tedaviler</a>
-        </div>
-        <div class="diller-not"><b data-t="dn1">Sayfa üç dilde:</b> <span>Türkçe · Deutsch · English</span></div>
+<main class="sar izgara">
+    <article class="kart">
+      <a class="kapak" href="standart/" aria-label="Standart seviyesini aç"><img src="img/kademe-standart.webp" alt="Dt. Anıl Deniz Yıldırım Kliniği Standart seviye ekran görüntüsü" width="720" height="450" loading="eager"></a>
+      <div class="y">
+        <div class="ust"><h2>Standart</h2><b>2.500 TL</b></div>
+        
+        <ul><li>Tek sayfa, telefona tam uyumlu</li><li>Menü/hizmet başlıkları, arama ve yol tarifi düğmeleri</li><li>Sade tasarım, gerçek fotoğraf</li><li>Sayfanın tamamı TR / DE / EN, üç dilde WhatsApp randevu mesajı</li></ul>
+        <a class="btn" href="standart/">Standart örneği aç →</a>
       </div>
-      <div class="gorsel"><img src="img/klinik.jpg" alt="Aydınlık muayene odası (temsilî görsel)" width="1200" height="686" fetchpriority="high"><span class="etiket" data-t="tems">Temsilî görsel · yayında kliniğinizin fotoğrafları</span></div>
-    </div>
-  </div>
-
-  <section id="tedaviler" style="padding-top:24px">
-    <div class="sar">
-      <span class="ufak" data-t="tu">Tedaviler</span>
-      <h2 data-t="th">Hangi tedavi, nasıl ilerler?</h2>
-      <p class="acik" data-t="ta">Başlıklar Instagram profilinizden alındı. Metinler genel bilgilendirmedir; tedavi planı muayenede kişiye göre belirlenir. Sayfada fiyat, kampanya, hasta yorumu ya da öncesi-sonrası görsel yer almaz.</p>
-      <div class="tedaviler">
-        <div class="ted"><h3 data-t="t1">Gülüş tasarımı</h3><p data-t="t1p">Diş şekli, rengi ve dizilimi yüz oranlarıyla birlikte planlanır; seçenekler muayenede konuşulur.</p></div>
-        <div class="ted gorselli"><div><h3 data-t="t2">İmplant cerrahisi</h3><p data-t="t2p">Eksik diş yerine çene kemiğine yerleştirilen yapay kök. Uygunluk muayene ve röntgenle değerlendirilir.</p></div><img src="img/implant.webp" alt="İmplant modeli (temsilî)" width="370" height="900" loading="lazy"></div>
-        <div class="ted"><h3 data-t="t3">Tel ve şeffaf plak</h3><p data-t="t3p">Diş dizilimindeki çapraşıklıklar için sabit tel ya da şeffaf plakla ortodonti; uygun yöntem muayenede belirlenir.</p></div>
-        <div class="ted"><h3 data-t="t4">Kanal tedavisi</h3><p data-t="t4p">Dişin içindeki iltihaplı dokunun temizlenip kanalların doldurulması. Amaç dişi korumaktır.</p></div>
-        <div class="ted"><h3 data-t="t5">Çocuk diş tedavisi</h3><p data-t="t5p">Süt dişleri ve ilk kontroller; çocuğun alışması için kısa ve sakin randevular.</p></div>
-        <div class="ted"><h3 data-t="t6">Protez tedavisi</h3><p data-t="t6p">Eksik dişlerin sabit ya da hareketli protezle tamamlanması; seçenekler ağız yapısına göre konuşulur.</p></div>
+    </article>
+    <article class="kart one">
+      <a class="kapak" href="profesyonel/" aria-label="Profesyonel seviyesini aç"><img src="img/kademe-profesyonel.webp" alt="Dt. Anıl Deniz Yıldırım Kliniği Profesyonel seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Profesyonel</h2><b>4.000 TL</b></div>
+        <span class="rozet">En çok tercih edilen</span>
+        <ul><li>Ürün ürün menü ya da hizmet listesi</li><li>Galeri, harita ve yol tarifi</li><li>Sektöre özel araç (sipariş/randevu notu)</li><li>Sekmeli tedavi bilgisi: seçtiğiniz konu randevu fişine eklenir</li><li>Yurt dışından gelenler için geliş-dönüş tarihli mesaj, galeri ve harita</li></ul>
+        <a class="btn" href="profesyonel/">Profesyonel örneği aç →</a>
       </div>
-    </div>
-  </section>
-
-  <section class="cocuk">
-    <div class="sar ikili">
-      <figure><img src="img/cocuk.jpg" alt="Çocuklara uygun renkli muayene odası (temsilî görsel)" width="1200" height="686" loading="lazy"></figure>
-      <div>
-        <span class="ufak" data-t="cu">Çocuk Dostlarım</span>
-        <h2 data-t="ch">İlk diş hekimi ziyareti korkutucu olmasın.</h2>
-        <p class="acik" data-t="ca">Instagram'daki "Çocuk Dostlarım" bölümünüz burada velilere yönelik kısa bir rehbere dönüşür.</p>
-        <ul class="liste">
-          <li><span data-t="c1">İlk kontrol için ağrı beklemeyin; erken tanışma alışmayı kolaylaştırır.</span></li>
-          <li><span data-t="c2">Randevu öncesi çocuğunuza "acıyacak" yerine "dişlerini sayacağız" deyin.</span></li>
-          <li><span data-t="c3">Çocuğun dinlendiği bir saat seçin; formda "çocuk kontrolü"nü işaretlemeniz yeterli.</span></li>
-        </ul>
+    </article>
+    <article class="kart">
+      <a class="kapak" href="premium/" aria-label="Premium seviyesini aç"><img src="img/kademe-premium.webp" alt="Dt. Anıl Deniz Yıldırım Kliniği Premium seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Premium</h2><b>7.500 TL</b></div>
+        
+        <ul><li>Editoryal tasarım, tam ekran gerçek fotoğraflar</li><li>Hikâye bölümleri ve fotoğraf çekimi planı</li><li>Gelişmiş araçlar: tam sipariş/randevu masası ve özel talep formları</li><li>Randevu masası: dil, kimin için, ülke, tarih, röntgen ve not ile tek mesaj</li><li>Aile randevusu (yetişkin + çocuk aynı gün), muayene-çocuk-uzaktan hikâye bölümleri</li></ul>
+        <a class="btn" href="premium/">Premium örneği aç →</a>
       </div>
-    </div>
-  </section>
-
-  <section class="uzak">
-    <div class="sar">
-      <span class="ufak" data-t="uu">Yurt dışından gelenler için</span>
-      <h2 data-t="uh">Tatilde Denizli'ye gelmeden planlayın.</h2>
-      <p class="acik" data-t="ua">Öne çıkanlarınızda İsviçre, Hollanda, Almanya ve Azerbaycan bayrakları var. Uzaktan gelen hasta için en değerli şey, gelmeden önce neyin nasıl ilerleyeceğini bilmek.</p>
-      <div class="adimlar">
-        <div class="adim"><b data-t="a1">Önceden yazın</b><p data-t="a1p">Formda "yurt dışından geliyorum" seçin, geliş tarihinizi yazın. Mesaj kendi dilinizde hazırlanır.</p></div>
-        <div class="adim"><b data-t="a2">Röntgeninizi gönderin</b><p data-t="a2p">Elinizde yakın tarihli röntgen varsa WhatsApp'tan iletin; ilk muayenede birlikte bakılır.</p></div>
-        <div class="adim"><b data-t="a3">Planı muayenede konuşun</b><p data-t="a3p">Tedavi süresi ve seans sayısı muayeneden sonra, kalacağınız günlere göre planlanır.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="randevu">
-    <div class="sar randevu">
-      <div class="iletisim">
-        <span class="ufak" data-t="ru">Randevu</span>
-        <h2 data-t="rh">Birkaç dokunuşla randevu talebi.</h2>
-        <p class="acik" data-t="ra">Konuyu ve zamanı seçin; WhatsApp mesajı seçtiğiniz dilde hazır açılır. Klinik uygun saati size yazar.</p>
-        <dl>
-          <div><dt data-t="dt1">Telefon / WhatsApp</dt><dd><a href="tel:+905011300020">0501 130 00 20</a></dd></div>
-          <div><dt data-t="dt2">Adres</dt><dd>Yenişehir Mah. 13. Sokak, Ferah Evler No:17, Merkezefendi / Denizli · <a href="https://www.google.com/maps/search/?api=1&query=Dt.+An%C4%B1l+Deniz+Y%C4%B1ld%C4%B1r%C4%B1m+Denizli" data-t="harita">Haritada aç</a></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/klinikanlyildirim/">@klinikanlyildirim</a></dd></div>
-        </dl>
-      </div>
-      <form class="kart" id="form" onsubmit="return false">
-        <fieldset><legend data-t="l1">Konu</legend><div class="secenek" id="konu"></div></fieldset>
-        <fieldset><legend data-t="l2">Size uygun zaman</legend><div class="secenek" id="zaman"></div></fieldset>
-        <div class="mesaj" id="mesaj" aria-live="polite"></div>
-        <a class="btn mercan" id="gonder" href="https://wa.me/905011300020" data-t="gonder">WhatsApp'tan gönder</a>
-        <p class="kucuk-not" data-t="acil">Acil ağrıda telefonla arayın.</p>
-      </form>
-    </div>
-  </section>
+    </article>
 </main>
-
-<footer>
-  <div class="sar">
-    <div>© Dt. Anıl Deniz Yıldırım Kliniği · Denizli</div>
-    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Dt. Anıl Deniz Yıldırım Kliniği için Boztaş Digital tarafından hazırlandı, hekimin onayı yoktur. Görseller temsilîdir; tedavi başlıkları, telefon ve adres Instagram profilinizden alındı, Almanca/İngilizce metinler yayından önce kontrol edilir. Sağlık tanıtım kurallarına uygun olarak fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel içermez. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
-  </div>
+<footer class="sar not">
+  <div>Fiyatlar tek seferliktir; alan adı yıllık ücreti ayrıdır. İçerikleriniz geldikten sonra 7 iş günü içinde önizleme, 1 tur ücretsiz düzeltme. Sağlık tanıtım yönetmeliğine uygun: fiyat, kampanya, hasta yorumu ve öncesi-sonrası görseli yoktur.</div>
+  <div>Bu sayfalar <b>örnek önizlemedir</b>, işletmenin onayı yoktur; görseller temsilîdir. Bilgi ve iletişim: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
 </footer>
-
-<div class="yuzen"><a class="btn koyu" href="#randevu" data-t="b1">Randevu iste</a></div>
-
-<script>
-const T = {
- de:{yer:"Yenişehir · Denizli",h1:"Ihre Zahnarztpraxis in Denizli, <i>egal wo Sie leben.</i>",giris:"Klare Informationen zu Lächeln-Design, Implantaten, Zahnspange und Alignern, Wurzel- und Kinderbehandlung. Terminanfrage auf Türkisch, Deutsch oder Englisch per WhatsApp.",b1:"Termin anfragen",b2:"Behandlungen",dn1:"Seite in drei Sprachen:",tems:"Symbolbild · später Fotos Ihrer Praxis",tu:"Behandlungen",th:"Welche Behandlung, wie läuft sie ab?",ta:"Allgemeine Informationen; der Behandlungsplan wird bei der Untersuchung individuell festgelegt. Keine Preise, Aktionen, Patientenbewertungen oder Vorher-Nachher-Bilder.",t1:"Lächeln-Design",t1p:"Form, Farbe und Stellung der Zähne werden passend zum Gesicht geplant; die Möglichkeiten besprechen wir bei der Untersuchung.",t2:"Implantologie",t2p:"Künstliche Zahnwurzel im Kieferknochen als Ersatz für einen fehlenden Zahn. Die Eignung wird mit Untersuchung und Röntgenbild geprüft.",t3:"Zahnspange und Aligner",t3p:"Kieferorthopädie mit fester Spange oder durchsichtigen Schienen; die passende Methode wird bei der Untersuchung bestimmt.",t4:"Wurzelbehandlung",t4p:"Entzündetes Gewebe im Zahninneren wird entfernt und die Kanäle werden gefüllt. Ziel ist der Erhalt des Zahns.",t5:"Kinderzahnheilkunde",t5p:"Milchzähne und erste Kontrollen; kurze, ruhige Termine zum Eingewöhnen.",t6:"Zahnersatz",t6p:"Fehlende Zähne werden mit festem oder herausnehmbarem Zahnersatz ergänzt.",cu:"Kinderfreunde",ch:"Der erste Zahnarztbesuch soll keine Angst machen.",ca:"Ein kurzer Leitfaden für Eltern.",c1:"Warten Sie für die erste Kontrolle nicht auf Schmerzen; frühes Kennenlernen hilft.",c2:"Sagen Sie Ihrem Kind vorher lieber „wir zählen deine Zähne“ statt „es tut nicht weh“.",c3:"Wählen Sie eine Uhrzeit, zu der Ihr Kind ausgeruht ist, und markieren Sie „Kinderkontrolle“ im Formular.",uu:"Für Patienten aus dem Ausland",uh:"Planen Sie, bevor Sie nach Denizli kommen.",ua:"Wer aus dem Ausland kommt, möchte vorher wissen, wie alles abläuft.",a1:"Vorher schreiben",a1p:"Wählen Sie „Ich komme aus dem Ausland“ und nennen Sie Ihr Ankunftsdatum. Die Nachricht wird in Ihrer Sprache erstellt.",a2:"Röntgenbild senden",a2p:"Wenn Sie ein aktuelles Röntgenbild haben, schicken Sie es per WhatsApp; wir sehen es bei der ersten Untersuchung gemeinsam an.",a3:"Plan bei der Untersuchung",a3p:"Dauer und Anzahl der Sitzungen werden nach der Untersuchung passend zu Ihrem Aufenthalt geplant.",ru:"Termin",rh:"Terminanfrage in wenigen Klicks.",ra:"Thema und Zeit wählen; die WhatsApp-Nachricht öffnet sich fertig in Ihrer Sprache. Die Praxis schreibt Ihnen einen passenden Termin.",dt1:"Telefon / WhatsApp",dt2:"Adresse",harita:"Karte öffnen",l1:"Thema",l2:"Passende Zeit",gonder:"Per WhatsApp senden",acil:"Bei akuten Schmerzen bitte anrufen.",
-  konu:["Kontrolle / Untersuchung","Implantat","Zahnspange / Aligner","Wurzelbehandlung","Kinderkontrolle","Zahnersatz","Lächeln-Design"],zaman:["Vormittags","Nachmittags","Abends","Samstag","Ich komme aus dem Ausland"],
-  msg:(k,z)=>`Guten Tag, ich möchte einen Termin anfragen.\nThema: ${k}\nPassende Zeit: ${z}\nWelche Tage und Uhrzeiten sind frei?`},
- en:{yer:"Yenişehir · Denizli",h1:"Your dental clinic in Denizli, <i>wherever you live.</i>",giris:"Plain information on smile design, implants, braces and clear aligners, root canal and children's treatment. Prepare your appointment request in Turkish, German or English and send it on WhatsApp.",b1:"Request appointment",b2:"Treatments",dn1:"Page in three languages:",tems:"Illustrative image · your clinic's photos when live",tu:"Treatments",th:"Which treatment, and how does it go?",ta:"General information; the treatment plan is set individually at the examination. No prices, offers, patient reviews or before-after images.",t1:"Smile design",t1p:"Tooth shape, colour and alignment are planned with your facial proportions; options are discussed at the examination.",t2:"Implant surgery",t2p:"An artificial root placed in the jawbone to replace a missing tooth. Suitability is checked with an examination and X-ray.",t3:"Braces and clear aligners",t3p:"Orthodontics with fixed braces or clear aligners; the right method is decided at the examination.",t4:"Root canal treatment",t4p:"Inflamed tissue inside the tooth is cleaned and the canals are filled, to save the tooth.",t5:"Children's dentistry",t5p:"Milk teeth and first check-ups; short, calm visits so children get used to it.",t6:"Prosthetics",t6p:"Missing teeth replaced with fixed or removable prostheses.",cu:"Little friends",ch:"A first dental visit shouldn't be scary.",ca:"A short guide for parents.",c1:"Don't wait for pain for the first check-up; meeting early helps.",c2:"Tell your child \"we'll count your teeth\" rather than \"it won't hurt\".",c3:"Pick a time when your child is rested and tick \"child check-up\" in the form.",uu:"Coming from abroad",uh:"Plan before you arrive in Denizli.",ua:"Patients travelling from abroad want to know how things will go before they arrive.",a1:"Write in advance",a1p:"Choose \"coming from abroad\" and add your arrival date. The message is written in your language.",a2:"Send your X-ray",a2p:"If you have a recent X-ray, send it on WhatsApp; it is reviewed together at the first visit.",a3:"Plan at the examination",a3p:"Duration and number of sessions are planned after the examination, around the days you stay.",ru:"Appointment",rh:"Appointment request in a few taps.",ra:"Choose the topic and time; the WhatsApp message opens ready in your language. The clinic replies with a suitable time.",dt1:"Phone / WhatsApp",dt2:"Address",harita:"Open map",l1:"Topic",l2:"Preferred time",gonder:"Send on WhatsApp",acil:"For acute pain, please call.",
-  konu:["Check-up","Implant","Braces / aligners","Root canal","Child check-up","Prosthetics","Smile design"],zaman:["Morning","Afternoon","Evening","Saturday","Coming from abroad"],
-  msg:(k,z)=>`Hello, I would like to request an appointment.\nTopic: ${k}\nPreferred time: ${z}\nWhich days and times are available?`}
-};
-const TR = {konu:["Kontrol / muayene","İmplant","Tel / şeffaf plak","Kanal tedavisi","Çocuk kontrolü","Protez","Gülüş tasarımı"],zaman:["Hafta içi sabah","Öğleden sonra","Akşam","Cumartesi","Yurt dışından geliyorum"],
-  msg:(k,z)=>`Merhaba, randevu almak istiyorum.\nKonu: ${k}\nBana uygun zaman: ${z}\nUygun gün ve saatleri öğrenebilir miyim?`};
-document.querySelectorAll("[data-t]").forEach(e => e.dataset.tr = e.dataset.html !== undefined ? e.innerHTML : e.textContent);
-let dil = "tr";
-const $ = s => document.querySelector(s);
-const sec = (id, ad, liste, ilk) => $(id).innerHTML = liste.map((x,i) => `<label><input type="radio" name="${ad}" value="${i}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
-function ciz(){
-  const s = dil === "tr" ? TR : T[dil];
-  const k = +(document.querySelector("[name=k]:checked")||{value:0}).value, z = +(document.querySelector("[name=z]:checked")||{value:1}).value;
-  sec("#konu","k",s.konu,k); sec("#zaman","z",s.zaman,z); guncelle();
-}
-function guncelle(){
-  const s = dil === "tr" ? TR : T[dil];
-  const k = s.konu[+document.querySelector("[name=k]:checked").value], z = s.zaman[+document.querySelector("[name=z]:checked").value];
-  const m = s.msg(k,z);
-  $("#mesaj").textContent = m; $("#gonder").href = "https://wa.me/905011300020?text=" + encodeURIComponent(m);
-}
-document.querySelectorAll(".dil button").forEach(b => b.addEventListener("click", () => {
-  dil = b.dataset.dil; document.documentElement.lang = dil;
-  document.querySelectorAll(".dil button").forEach(x => x.setAttribute("aria-pressed", x === b));
-  document.querySelectorAll("[data-t]").forEach(e => { const v = dil === "tr" ? e.dataset.tr : T[dil][e.dataset.t]; if (v === undefined) return; if (e.dataset.html !== undefined) e.innerHTML = v; else e.textContent = v; });
-  ciz();
-}));
-$("#form").addEventListener("change", guncelle);
-sec("#konu","k",TR.konu,0); sec("#zaman","z",TR.zaman,1); guncelle();
-</script>
 </body>
 </html>

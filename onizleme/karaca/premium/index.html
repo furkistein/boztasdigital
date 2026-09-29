@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Karaca Pastanesi · Denizli · Premium örnek</title>
+<meta name="description" content="Karaca Pastanesi Denizli: atölye hikâyesi, vitrin, pasta ve tatlı sipariş masası, şube seçici, toplu tatlı talebi ve galeri. Boztaş Digital örnek önizlemesi (Premium seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#170B0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#170B0D;--gece2:#211114;--krem:#F4E9E0;--kum:#D9C3B6;--soluk:#A48E89;--kor:#D9A15A;--visne:#7A2436;--cizgi:rgba(244,233,224,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--gece);color:var(--krem);font-family:Jost,system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1240px,100% - 64px);margin-inline:auto}
+.ufak{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--kor);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 28px;font-weight:500;font-size:15px;letter-spacing:.03em;text-decoration:none;white-space:nowrap;transition:background .35s,color .35s,border-color .35s}
+.btn.dolu{background:var(--krem);color:var(--gece)}
+.btn.dolu:hover{background:#fff}
+.btn.hat{border:1px solid rgba(244,233,224,.35)}
+.btn.hat:hover{border-color:var(--krem)}
+/* üst */
+.ust{position:fixed;top:var(--cubuk,0px);left:0;right:0;z-index:20;transition:background .5s,top .3s}
+.ust.dolu{background:rgba(23,11,13,.92);top:0}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:74px}
+.logo{font-family:"Playfair Display",serif;font-size:29px;font-weight:500;text-decoration:none;font-style:italic}
+.logo small{font-family:Jost;font-style:normal;font-size:10.5px;letter-spacing:.34em;margin-left:9px;color:var(--kor)}
+.ust nav{display:flex;gap:30px;font-size:14.5px;letter-spacing:.04em}
+.ust nav a{text-decoration:none;color:var(--kum);transition:color .3s}
+.ust nav a:hover{color:var(--krem)}
+/* kahraman */
+.kahraman{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.kahraman .foto{position:absolute;inset:0;transform:scale(calc(1.02 + var(--p,0) * .08));transform-origin:60% 55%;will-change:transform}
+.kahraman .foto img{width:100%;height:100%;object-fit:cover;object-position:60% 58%}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,11,13,.6) 0%,rgba(23,11,13,0) 24%,rgba(23,11,13,.2) 52%,rgba(23,11,13,.94) 100%),linear-gradient(90deg,rgba(23,11,13,.78) 0%,rgba(23,11,13,.2) 50%,rgba(23,11,13,0) 70%)}
+.kahraman .icerik{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:64px}
+.kahraman .icerik .sar{display:flex;justify-content:space-between;align-items:end;gap:40px}
+h1{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(54px,7vw,112px);line-height:.96;letter-spacing:-.015em}
+h1 em{font-style:italic;color:#EFD2B8}
+.kahraman p{max-width:34ch;color:var(--kum);font-size:16.5px}
+.kahraman .dugmeler{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.foto-not{position:absolute;right:20px;top:calc(var(--cubuk,0px) + 86px);z-index:2;font-size:11.5px;color:rgba(244,233,224,.6);letter-spacing:.05em}
+.acilis>*{animation:acil 1.6s cubic-bezier(.2,.7,.2,1) both}
+.acilis>*:nth-child(2){animation-delay:.15s}.acilis>*:nth-child(3){animation-delay:.3s}
+@keyframes acil{from{opacity:0;transform:translateY(16px)}}
+section{padding:140px 0}
+h2{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(40px,5vw,78px);line-height:1.04;letter-spacing:-.01em}
+h2 em{font-style:italic;color:var(--kum)}
+.acik-yazi{color:var(--soluk);max-width:52ch}
+/* giriş */
+.giris{display:grid;grid-template-columns:7fr 5fr;gap:80px;align-items:end}
+.giris blockquote{font-family:"Playfair Display",serif;font-size:clamp(28px,3.2vw,46px);line-height:1.24}
+.giris blockquote em{color:var(--kor)}
+.giris figure img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.giris figcaption{font-size:13px;color:var(--soluk);margin-top:10px}
+/* bölümler */
+.bolum{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:var(--gece2)}
+.bolum .gorsel{position:relative;overflow:hidden}
+.bolum .gorsel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bolum .metin{padding:120px clamp(32px,6vw,110px);display:flex;flex-direction:column;justify-content:center;gap:22px}
+.bolum .no{font-family:"Playfair Display",serif;font-size:20px;color:var(--kor);font-style:italic}
+.bolum.ters .gorsel{order:2}
+/* vitrin */
+.menu-ust{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:0 80px}
+.kategori{padding:34px 0;border-top:1px solid var(--cizgi)}
+.kategori h3{font-family:"Playfair Display",serif;font-weight:400;font-size:34px;margin-bottom:10px}
+.kategori h3 small{font-family:Jost;font-size:13px;color:var(--soluk);margin-left:10px;letter-spacing:.04em}
+.kalem{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:12px 0;align-items:baseline}
+.kalem b{font-weight:500;font-size:17px}
+.kalem span{font-size:14px;color:var(--soluk);grid-column:1}
+.kalem .adet{grid-column:2;grid-row:1/3;display:flex;align-items:center;gap:6px}
+.adet button{width:32px;height:32px;border:1px solid var(--cizgi);border-radius:50%;font-size:17px;line-height:1;transition:border-color .25s}
+.adet button:hover{border-color:var(--krem)}
+.adet output{min-width:18px;text-align:center;font-size:15px;color:var(--kum)}
+.kalem.secili b{color:#fff}
+.kalem.secili .adet output{color:var(--kor)}
+/* sipariş masası */
+.masa{background:var(--krem);color:var(--gece)}
+.masa .ufak{color:var(--visne)}
+.masa h2 em{color:var(--visne)}
+.masa .acik-yazi{color:#6E5A57}
+.masa-izgara{display:grid;grid-template-columns:1fr 420px;gap:72px;margin-top:52px;align-items:start}
+.adim{padding:24px 0;border-top:1px solid rgba(23,11,13,.14)}
+.adim legend,.adim h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.adim fieldset{border:0}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(23,11,13,.22);border-radius:999px;padding:9px 18px;font-size:15px;cursor:pointer;transition:background .25s,color .25s}
+.secenek span i{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.18)}
+.secenek input:checked+span{background:var(--gece);color:var(--krem);border-color:var(--gece)}
+.secenek input:focus-visible+span{outline:2px solid var(--visne);outline-offset:2px}
+.masa textarea,.masa input.alan{width:100%;font:inherit;font-size:15px;background:transparent;border:1px solid rgba(23,11,13,.22);border-radius:6px;padding:12px 14px;color:var(--gece)}
+.masa textarea{min-height:84px;resize:vertical}
+.ikili{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ikili label>span{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#6E5A57;margin-bottom:6px}
+.ozet-sepet{font-size:15px;color:#5E4B48}
+.anahtar{display:flex;align-items:center;gap:12px;font-size:15.5px;cursor:pointer}
+.anahtar input{width:20px;height:20px;accent-color:var(--visne)}
+.ozel{display:grid;gap:18px;margin-top:18px}
+.ozel[hidden]{display:none}
+.ozel .alt-baslik{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#6E5A57;margin-bottom:8px}
+.fis{position:sticky;top:100px;background:#FFFAF5;padding:34px 30px;box-shadow:0 30px 60px -30px rgba(23,11,13,.4)}
+.fis::before,.fis::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 7px 0,transparent 6px,#FFFAF5 6.5px) repeat-x;background-size:14px 10px}
+.fis::before{top:-10px;transform:rotate(180deg)}
+.fis::after{bottom:-10px}
+.fis h3{font-family:"Playfair Display",serif;font-weight:400;font-style:italic;font-size:32px;text-align:center}
+.fis .alt{text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#7A6461;margin-bottom:18px}
+.fis pre{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:13.5px;line-height:1.7;white-space:pre-wrap;border-block:1px dashed rgba(23,11,13,.3);padding:16px 0;min-height:190px}
+.fis .btn{width:100%;margin-top:14px}
+.fis .btn.dolu{background:var(--visne);color:#fff}
+.fis .btn.dolu:hover{background:var(--gece)}
+.fis .btn.hat{border-color:rgba(23,11,13,.25);margin-top:10px}
+.fis small{display:block;text-align:center;color:#7A6461;font-size:12.5px;margin-top:12px}
+/* ara fotoğraf */
+.ara-foto{position:relative;height:88vh;overflow:hidden}
+.ara-foto img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;transform:translateY(calc((var(--p,.5) - .5) * -6%))}
+.ara-foto p{position:absolute;left:0;right:0;bottom:56px;z-index:2;font-family:"Playfair Display",serif;font-size:clamp(32px,4vw,58px);line-height:1.12;text-align:center;padding:0 24px;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.ara-foto p em{color:#EFD2B8}
+.ara-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,11,13,0) 40%,rgba(23,11,13,.82))}
+/* şubeler */
+.sube-sec{display:flex;border-bottom:1px solid var(--cizgi);margin-top:44px;flex-wrap:wrap}
+.sube-sec button{font-family:"Playfair Display",serif;font-size:32px;padding:8px 0 14px;margin-right:36px;color:var(--soluk);border-bottom:1px solid transparent;margin-bottom:-1px;transition:color .3s,border-color .3s}
+.sube-sec button[aria-selected=true]{color:var(--krem);border-color:var(--kor)}
+.sube-govde{display:grid;grid-template-columns:7fr 5fr;gap:56px;margin-top:40px;align-items:start}
+.sube-govde iframe{width:100%;aspect-ratio:16/11;border:0;filter:grayscale(1) invert(.9) contrast(.85) sepia(.15);background:#2a1a1c}
+.sube-bilgi dl{display:grid;gap:18px}
+.sube-bilgi dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.sube-bilgi dd{font-size:20px}
+.sube-bilgi dd a{text-decoration:none}
+.sube-bilgi .dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+/* toplu */
+.toplu{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+.toplu img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.toplu .secenek span{border-color:var(--cizgi)}
+.toplu .secenek input:checked+span{background:var(--krem);color:var(--gece);border-color:var(--krem)}
+.toplu-ozet{font-family:"Playfair Display",serif;font-size:23px;line-height:1.4;color:var(--kum);margin:26px 0 22px;min-height:66px}
+.toplu fieldset{border:0;margin-top:20px}
+.toplu legend{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk);margin-bottom:10px}
+.toplu .dugmeler{display:flex;gap:10px;flex-wrap:wrap}
+/* galeri şerit */
+.serit{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 max(32px,calc((100vw - 1240px)/2)) 12px;scrollbar-width:thin;scrollbar-color:#4a2c30 transparent;margin-top:48px}
+.serit figure{flex:none;scroll-snap-align:start}
+.serit img{height:min(62vh,560px);width:auto;object-fit:cover}
+.serit figcaption{font-size:13px;color:var(--soluk);margin-top:10px}
+.kapanis{text-align:center}
+.kapanis h2{max-width:15ch;margin:14px auto 0}
+.kapanis .dugmeler{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+footer{border-top:1px solid var(--cizgi);color:var(--soluk);padding:40px 0 120px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(244,233,224,.25);border-radius:8px;padding:12px 14px;color:var(--kum)}
+.ornek-not a{color:var(--krem);font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+[data-belir]{transition-duration:1.2s!important}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .giris,.toplu{grid-template-columns:1fr;gap:44px}
+  .bolum{grid-template-columns:1fr;min-height:0}
+  .bolum .gorsel{aspect-ratio:4/5}
+  .bolum.ters .gorsel{order:0}
+  .bolum .metin{padding:64px 28px 80px}
+  .menu{grid-template-columns:1fr}
+  .masa-izgara,.sube-govde{grid-template-columns:1fr;gap:40px}
+  .fis{position:static}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 40px)}
+  .ust .btn{padding:10px 16px!important;font-size:13.5px}
+  .kahraman{height:auto;min-height:0}
+  .kahraman .foto{position:relative;height:60svh;transform:none}
+  .kahraman .foto img{object-position:62% 60%}
+  .kahraman::after{bottom:auto;height:60svh;background:linear-gradient(180deg,rgba(23,11,13,.6) 0%,rgba(23,11,13,0) 30%,rgba(23,11,13,0) 68%,var(--gece) 100%)}
+  .kahraman .icerik{position:relative;padding:4px 0 64px}
+  .kahraman .icerik .sar{flex-direction:column;align-items:flex-start;gap:18px}
+  h1{font-size:clamp(46px,13vw,62px)}
+  section{padding:88px 0}
+  .giris figure{width:78%;margin-left:auto}
+  .ikili{grid-template-columns:1fr}
+  .kategori h3{font-size:30px}
+  .sube-sec button{font-size:26px;margin-right:24px}
+  .serit{padding:0 20px 10px;gap:12px}
+  .serit img{height:52vh}
+  .ara-foto{height:70vh}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.kahraman .foto,.ara-foto img{transform:none!important}.acilis>*{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="premium" data-isletme="Karaca Pastanesi">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Karaca<small>PASTANE</small></a>
+    <nav><a href="#atolye">Atölye</a><a href="#vitrin">Vitrin</a><a href="#masa">Sipariş</a><a href="#subeler">Şubeler</a><a href="#toplu">Toplu tatlı</a></nav>
+    <a class="btn hat" href="#masa" style="padding:11px 22px">Sipariş ver</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman" id="kahraman">
+    <div class="foto"><img src="../img/gercek/cikolata.webp" srcset="../img/gercek/cikolata-900.webp 900w, ../img/gercek/cikolata.webp 1800w" sizes="100vw" alt="Dilimi kesilmiş katlı çikolatalı pasta (temsilî fotoğraf)" width="1800" height="2048" fetchpriority="high"></div>
+    <span class="foto-not">Fotoğraf temsilîdir</span>
+    <div class="icerik">
+      <div class="sar">
+        <div class="acilis">
+          <span class="ufak">Denizli · Atatürk Caddesi &amp; Yenişafak</span>
+          <h1 style="margin-top:14px">Her kutlamanın<br>ilk <em>dilimi.</em></h1>
+        </div>
+        <div class="acilis">
+          <p>Yaş pasta, baklava, lokma, kurabiye. Vitrinden seçin, özel pastanızı tarif edin; sipariş fişiniz tek mesajda şubeye gitsin.</p>
+          <div class="dugmeler"><a class="btn dolu" href="#masa">Sipariş masası</a><a class="btn hat" href="#vitrin">Vitrin</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sar giris">
+      <blockquote data-belir>Bir pastanın asıl hikâyesi vitrinden önce başlar: <em>kimin için</em>, kaç kişilik, üstünde hangi isim. Bu sayfa o soruları müşteriye baştan sorar.</blockquote>
+      <figure data-belir><img src="../img/gercek/usta-900.webp" alt="Pastacı döner altlıkta pastanın kremasını düzeltiyor (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 62%"><figcaption>Yayında: kendi pastacınızın elleri, kendi atölyeniz.</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="bolum" id="atolye">
+    <div class="gorsel"><img src="../img/gercek/susleme.webp" srcset="../img/gercek/susleme-900.webp 900w, ../img/gercek/susleme.webp 1800w" sizes="(max-width:980px) 100vw, 50vw" alt="Pastacı pastanın üstüne çilek diziyor (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:48% 50%"></div>
+    <div class="metin">
+      <span class="no">i. Atölye</span>
+      <h2 data-belir>Elde süslenir,<br><em>isminizle</em> çıkar.</h2>
+      <p class="acik-yazi" data-belir>Bu bölümde atölyenizin hikâyesi durur: pastaların nasıl hazırlandığı, hangi gün için kaç gün önce sipariş verilmesi gerektiği. Bilgiyi sizden alırız; uydurma bir cümle yazmayız.</p>
+    </div>
+  </div>
+  <div class="bolum ters">
+    <div class="gorsel"><img src="../img/gercek/baklava.webp" srcset="../img/gercek/baklava-900.webp 900w, ../img/gercek/baklava.webp 1800w" sizes="(max-width:980px) 100vw, 50vw" alt="Tepsilerde baklava ve şöbiyet (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:40% 50%"></div>
+    <div class="metin">
+      <span class="no">ii. Tepsi</span>
+      <h2 data-belir>Bayramın, misafirin,<br><em>tepsi</em> tatlısı.</h2>
+      <p class="acik-yazi" data-belir>Baklava ve şöbiyet tepsiyle ya da kutuyla. Bayram öncesi yoğunluğunda siparişler bu sayfadan, gün ve adetle birlikte gelir.</p>
+    </div>
+  </div>
+  <div class="bolum">
+    <div class="gorsel"><img src="../img/gercek/lokma-kazan.webp" srcset="../img/gercek/lokma-kazan-900.webp 900w, ../img/gercek/lokma-kazan.webp 1800w" sizes="(max-width:980px) 100vw, 50vw" alt="Kazanda kızaran lokmalar (temsilî fotoğraf)" width="1800" height="2700" loading="lazy" style="object-position:50% 70%"></div>
+    <div class="metin">
+      <span class="no">iii. Kazan</span>
+      <h2 data-belir>Hayır lokması,<br><em>kalabalığa</em> göre.</h2>
+      <p class="acik-yazi" data-belir>Mevlit, hayır, açılış. Kaç kişi geleceği ve hangi gün olduğu belli olunca aşağıdaki toplu talep formu şubeye tek mesaj gönderir.</p>
+    </div>
+  </div>
+
+  <section id="vitrin">
+    <div class="sar">
+      <div class="menu-ust">
+        <div><span class="ufak">Vitrin</span><h2 data-belir style="margin-top:12px">Bugün <em>ne alalım?</em></h2></div>
+        <p class="acik-yazi" style="max-width:40ch">Başlıklar Instagram'ınızdaki öne çıkanlardan; ürün adları örnektir. Adet seçtikçe aşağıdaki sipariş fişine yazılır.</p>
+      </div>
+      <div class="menu" id="menuListe"></div>
+    </div>
+  </section>
+
+  <div class="ara-foto" data-ilerle>
+    <img src="../img/gercek/katli.webp" srcset="../img/gercek/katli-900.webp 900w, ../img/gercek/katli.webp 1800w" sizes="100vw" alt="Pastane vitrininde üç katlı pasta (temsilî fotoğraf)" width="1800" height="2702" loading="lazy" style="object-position:50% 55%">
+    <p data-belir>Nişanda, kınada, doğum gününde:<br><em>masanın ortası.</em></p>
+  </div>
+
+  <section class="masa" id="masa">
+    <div class="sar">
+      <span class="ufak">Sipariş masası</span>
+      <h2 data-belir style="margin-top:12px">Seçin, tarif edin, <em>fiş</em> yazılsın.</h2>
+      <p class="acik-yazi" style="margin-top:14px">DM'de gün, kişi, lezzet için giden on mesaj yerine tek fiş. WhatsApp'a hazır gider; isteyen kopyalayıp Instagram DM'ye yapıştırır.</p>
+      <div class="masa-izgara">
+        <form id="siparisForm" onsubmit="return false">
+          <div class="adim"><h3>1 · Vitrinden</h3><p class="ozet-sepet" id="ozetSepet"></p><a href="#vitrin" style="font-size:14px">Vitrinden ürün ekle ↑</a></div>
+          <div class="adim">
+            <h3>2 · Özel pasta</h3>
+            <label class="anahtar"><input type="checkbox" id="ozelAc" checked> Özel pasta da istiyorum</label>
+            <div class="ozel" id="ozel">
+              <div><div class="alt-baslik">Ne için?</div><div class="secenek" id="pNe"></div></div>
+              <div><div class="alt-baslik">Kaç kişilik, kaç kat?</div><div class="secenek" id="pKisi"></div><div class="secenek" id="pKat" style="margin-top:8px"></div></div>
+              <div><div class="alt-baslik">Lezzet</div><div class="secenek" id="pLez"></div></div>
+              <div><div class="alt-baslik">Krema rengi</div><div class="secenek" id="pRenk"></div></div>
+              <label><span class="alt-baslik" style="display:block">Pasta üstü yazı</span><input class="alan" type="text" id="pYazi" maxlength="40" placeholder="Ör. İyi ki doğdun Elif"></label>
+            </div>
+          </div>
+          <div class="adim"><fieldset><legend>3 · Şube</legend><div class="secenek" id="sSube"></div></fieldset></div>
+          <div class="adim">
+            <h3>4 · Ne zaman?</h3>
+            <div class="ikili">
+              <label><span>Teslim günü</span><input class="alan" type="date" id="sGun"></label>
+              <label><span>Saat aralığı</span><input class="alan" type="text" id="sSaat" placeholder="Ör. 17:00-18:00"></label>
+            </div>
+          </div>
+          <div class="adim"><h3><label for="sNot">5 · Not</label></h3><textarea id="sNot" placeholder="Ör. fıstık alerjisi var, mum da koyun…"></textarea></div>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>Karaca</h3>
+          <div class="alt" id="fisSube">Atatürk Caddesi şubesi</div>
+          <pre id="fisMetin"></pre>
+          <a class="btn dolu" id="fisWa" href="https://wa.me/905445028598">WhatsApp'tan gönder</a>
+          <a class="btn hat" id="fisAra" href="tel:+902582413668">Atatürk Cd. şubesini ara</a>
+          <button class="btn hat" id="fisKopya" type="button">DM için kopyala</button>
+          <small>Fiyat ve teslim saati pastaneden size yazılır; sitede fiyat gösterilmez. Arama sırasında fiş panoya da kopyalanır.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="subeler">
+    <div class="sar">
+      <span class="ufak">Şubeler</span>
+      <h2 data-belir style="margin-top:12px">Size en yakın <em>Karaca.</em></h2>
+      <div class="sube-sec" role="tablist" id="subeSec">
+        <button role="tab" aria-selected="true" data-s="Atatürk Caddesi">Atatürk Caddesi</button>
+        <button role="tab" aria-selected="false" data-s="Yenişafak">Yenişafak</button>
+      </div>
+      <div class="sube-govde">
+        <iframe id="harita" loading="lazy" title="Şube haritası" src="https://www.google.com/maps?q=Karaca+Pastanesi+Atat%C3%BCrk+Caddesi+Denizli&amp;output=embed"></iframe>
+        <div class="sube-bilgi">
+          <dl>
+            <div><dt>Telefon</dt><dd><a id="subeTel" href="tel:+902582413668">0258 241 36 68</a></dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+            <div><dt>Özel pasta</dt><dd>Sipariş masasından ya da Instagram DM'den</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" id="subeAra" href="tel:+902582413668">Ara</a><a class="btn hat" id="subeYol" href="https://www.google.com/maps/search/Karaca+Pastanesi+Atat%C3%BCrk+Caddesi+Denizli">Yol tarifi</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="toplu" style="padding-top:40px">
+    <div class="sar toplu">
+      <img data-belir src="../img/gercek/lokma-900.webp" alt="Şerbetli, cevizli lokmalar (temsilî fotoğraf)" width="900" height="1350" loading="lazy">
+      <div>
+        <span class="ufak">Toplu tatlı talebi</span>
+        <h2 data-belir style="margin-top:12px">Hayır, nişan, <em>ofis ikramı.</em></h2>
+        <form id="topluForm" onsubmit="return false">
+          <fieldset><legend>Ne için?</legend><div class="secenek" id="tNe"></div></fieldset>
+          <fieldset><legend>Ne olsun?</legend><div class="secenek" id="tUrun"></div></fieldset>
+          <fieldset><legend>Kaç kişi?</legend><div class="secenek" id="tKac"></div></fieldset>
+          <fieldset><legend>Ne zaman?</legend><div class="secenek" id="tGun"></div></fieldset>
+        </form>
+        <p class="toplu-ozet" id="topluOzet" aria-live="polite"></p>
+        <div class="dugmeler"><a class="btn dolu" id="topluWa" href="https://wa.me/905445028598">WhatsApp'tan sor</a><a class="btn hat" href="tel:+902582413668">Ara</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:40px 0 120px">
+    <div class="sar"><span class="ufak">Galeri</span><h2 data-belir style="margin-top:12px">Vitrinden, <em>masadan.</em></h2></div>
+    <div class="serit" tabindex="0" aria-label="Fotoğraf galerisi, yana kaydırın">
+      <figure><img src="../img/gercek/kutlama-900.webp" alt="Mumları yakılan kutlama pastası (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Kutlama</figcaption></figure>
+      <figure><img src="../img/gercek/vitrin-900.webp" alt="Pastane vitrininde tatlılar (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>Vitrin</figcaption></figure>
+      <figure><img src="../img/gercek/cilek-900.webp" alt="Cam altlıkta çilekli pasta (temsilî fotoğraf)" width="600" height="800" loading="lazy"><figcaption>Çilekli</figcaption></figure>
+      <figure><img src="../img/gercek/baklava2-900.webp" alt="Fıstıklı baklava dilimleri (temsilî fotoğraf)" width="900" height="517" loading="lazy"><figcaption>Fıstıklı baklava</figcaption></figure>
+      <figure><img src="../img/gercek/dilim-900.webp" alt="Tabaklarda dilim pastalar (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Dilim</figcaption></figure>
+      <figure><img src="../img/gercek/dogumgunu-900.webp" alt="Doğum günü masasında mum üfleyen misafir (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>Doğum günü</figcaption></figure>
+      <figure><img src="../img/gercek/kurabiye-900.webp" alt="Tepsiye sıkılan kurabiye hamuru (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Kurabiye</figcaption></figure>
+      <figure><img src="../img/gercek/dondurma-900.webp" alt="Külahta dondurma (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>Dondurma</figcaption></figure>
+      <figure><img src="../img/gercek/cupcake-900.webp" alt="Beyaz kutuda meyveli cupcake'ler (temsilî fotoğraf)" width="600" height="902" loading="lazy"><figcaption>Kutu</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="kapanis" style="border-top:1px solid var(--cizgi)">
+    <div class="sar">
+      <span class="ufak">@karacapastanesidenizli</span>
+      <h2 data-belir>Pastanız güzel olduysa, <em>söyleyin.</em></h2>
+      <p class="acik-yazi" style="margin:18px auto 0">Google'daki yorumlar bir sonraki müşterinin kararını verir. Sitede uydurma puan ya da yorum göstermeyiz; doğrudan Google sayfanıza yönlendiririz.</p>
+      <div class="dugmeler"><a class="btn dolu" href="https://www.google.com/maps/search/Karaca+Pastanesi+Denizli">Google'da yorum yazın</a><a class="btn hat" href="https://www.instagram.com/karacapastanesidenizli/">Instagram</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Karaca Pastanesi · Denizli · Atatürk Caddesi 0258 241 36 68 · Yenişafak 0544 502 85 98</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Karaca Pastanesi Denizli için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels, gerçek fotoğrafçı çekimleri); yayında sizin atölyenizde ve vitrininizde çekilen fotoğraflar kullanılır. Ürün adları örnektir; şube, telefon ve ürün başlıkları Instagram profilinizden alındı. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+<div class="yuzen"><a class="btn dolu" href="#masa">Sipariş masası</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ust = $("#ust"), kc = document.querySelector(".kd-cubuk");
+const cubukH = () => (kc ? kc.offsetHeight : 0);
+document.documentElement.style.setProperty("--cubuk", cubukH() + "px");
+const kah = $("#kahraman"), ara = document.querySelector("[data-ilerle]");
+let bekliyor = false;
+function kaydir() {
+  bekliyor = false;
+  const y = scrollY;
+  ust.classList.toggle("dolu", y > cubukH() + 10);
+  if (az) return;
+  kah.style.setProperty("--p", Math.min(1, Math.max(0, y / kah.offsetHeight)).toFixed(3));
+  const r = ara.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) ara.style.setProperty("--p", ((innerHeight - r.top) / (innerHeight + r.height)).toFixed(3));
+}
+addEventListener("scroll", () => { if (!bekliyor) { bekliyor = true; requestAnimationFrame(kaydir); } }, { passive: true });
+kaydir();
+
+// vitrin + sepet
+const MENU = {
+  "Yaş pasta": ["dilim", [["Çilekli dilim", "Kremalı, taze meyveli"], ["Çikolatalı dilim", "Bitter kremalı"], ["Bütün yaş pasta", "6-8 kişilik"]]],
+  "Baklava": ["kutu / tepsi", [["Fıstıklı baklava", "Kutu"], ["Cevizli baklava", "Kutu"], ["Şöbiyet", "Kutu"]]],
+  "Lokma": ["kutu", [["Şerbetli lokma", "Kutu"], ["Cevizli lokma", "Kutu"]]],
+  "Kurabiye": ["kutu", [["Un kurabiyesi", "Çay saati"], ["Tuzlu kurabiye", "İkram"]]],
+  "Cupcake": ["kutu", [["Meyveli cupcake", "6'lı kutu"], ["Renkli cupcake", "Doğum günleri için"]]],
+  "Dondurma": ["mevsiminde", [["Külah dondurma", "Tek top / çift top"], ["Kutu dondurma", "Eve"]]],
+};
+const sepet = new Map();
+$("#menuListe").innerHTML = Object.entries(MENU).map(([k, [birim, l]]) => `<div class="kategori"><h3>${k}<small>${birim}</small></h3>${l.map(([ad, ic]) => `<div class="kalem" data-ad="${ad}"><b>${ad}</b><span>${ic} · örnek · — ₺</span><div class="adet"><button type="button" data-d="-1" aria-label="${ad} azalt">−</button><output>0</output><button type="button" data-d="1" aria-label="${ad} ekle">+</button></div></div>`).join("")}</div>`).join("");
+$("#menuListe").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-d]"); if (!b) return;
+  const k = b.closest(".kalem"), ad = k.dataset.ad, n = Math.max(0, (sepet.get(ad) || 0) + +b.dataset.d);
+  n ? sepet.set(ad, n) : sepet.delete(ad);
+  k.querySelector("output").textContent = n; k.classList.toggle("secili", n > 0); fis();
+});
+
+// sipariş masası
+const TEL = { "Atatürk Caddesi": ["+902582413668", "0258 241 36 68", "Atatürk Cd."], "Yenişafak": ["+905445028598", "0544 502 85 98", "Yenişafak"] };
+const WA = "905445028598";
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#pNe", "pne", ["Doğum günü", "Nişan / söz", "Kına / düğün", "Kutlama", "Canım çekti"]);
+secim("#pKisi", "pkisi", ["6-8 kişi", "10-12 kişi", "15-20 kişi", "25+ kişi"], 1);
+secim("#pKat", "pkat", ["Tek kat", "İki kat", "Üç kat"]);
+secim("#pLez", "plez", ["Çikolatalı", "Çilekli", "Muzlu", "Karamelli", "Fıstıklı", "Siz önerin"]);
+const RENK = [["Beyaz", "#FFFFFF"], ["Pembe", "#F2BFC6"], ["Lila", "#CDB8E0"], ["Mavi", "#B9D3EC"], ["Krem", "#F1E0C0"], ["Çikolata", "#6B3F2A"]];
+$("#pRenk").innerHTML = RENK.map(([ad, r], i) => `<label><input type="radio" name="prenk" value="${ad}"${i === 0 ? " checked" : ""}><span><i style="background:${r}"></i>${ad}</span></label>`).join("");
+secim("#sSube", "s", Object.keys(TEL));
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+const wa = (m) => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+function fis() {
+  const s = deger("s"), ozelVar = $("#ozelAc").checked, gun = $("#sGun").value, saat = $("#sSaat").value.trim(), not = $("#sNot").value.trim(), yazi = $("#pYazi").value.trim();
+  $("#ozel").hidden = !ozelVar;
+  const satir = [...sepet].map(([ad, n]) => `${String(n).padStart(2, " ")} × ${ad}`).join("\n");
+  $("#ozetSepet").textContent = sepet.size ? [...sepet].map(([ad, n]) => `${n} ${ad}`).join(", ") : "Henüz vitrinden ürün seçmediniz (isteğe bağlı).";
+  const g = gun ? new Date(gun + "T12:00").toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" }) : "(gün seçin)";
+  let m = `Merhaba Karaca Pastanesi, sipariş:\n`;
+  if (satir) m += `\nVitrinden:\n${satir}\n`;
+  if (ozelVar) m += `\nÖzel pasta: ${deger("pne")}\n  ${deger("pkisi")}, ${deger("pkat").toLowerCase()}\n  Lezzet : ${deger("plez")}\n  Krema  : ${deger("prenk")}${yazi ? `\n  Üstünde: "${yazi}"` : ""}\n`;
+  if (!satir && !ozelVar) m += "\n — vitrinden seçin ya da özel pasta ekleyin —\n";
+  m += `\nŞube : ${s}\nGün  : ${g}${saat ? "\nSaat : " + saat : ""}${not ? "\nNot  : " + not : ""}\n\nFiyat ve teslim saati için bilgi alabilir miyim?`;
+  $("#fisSube").textContent = s + " şubesi";
+  $("#fisMetin").textContent = m;
+  $("#fisWa").href = wa(m);
+  $("#fisAra").href = "tel:" + TEL[s][0]; $("#fisAra").textContent = TEL[s][2] + " şubesini ara";
+}
+$("#siparisForm").addEventListener("input", fis); $("#siparisForm").addEventListener("change", fis);
+const kopya = () => navigator.clipboard && navigator.clipboard.writeText($("#fisMetin").textContent).catch(() => {});
+$("#fisAra").addEventListener("click", kopya); $("#fisWa").addEventListener("click", kopya);
+$("#fisKopya").addEventListener("click", () => { kopya(); $("#fisKopya").textContent = "Kopyalandı"; setTimeout(() => ($("#fisKopya").textContent = "DM için kopyala"), 1600); });
+fis();
+
+// şube seçici
+$("#subeSec").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  const s = b.dataset.s, q = encodeURIComponent("Karaca Pastanesi " + s + " Denizli").replace(/%20/g, "+");
+  document.querySelectorAll("#subeSec button").forEach((x) => x.setAttribute("aria-selected", x === b));
+  $("#harita").src = `https://www.google.com/maps?q=${q}&output=embed`;
+  $("#subeTel").href = $("#subeAra").href = "tel:" + TEL[s][0]; $("#subeTel").textContent = TEL[s][1];
+  $("#subeYol").href = "https://www.google.com/maps/search/" + q;
+});
+
+// toplu tatlı talebi
+secim("#tNe", "tn", ["Hayır / mevlit", "Nişan / kına", "Ofis ikramı", "Bayram", "Diğer"]);
+secim("#tUrun", "tu", ["Lokma", "Baklava", "Kurabiye", "Tatlı masası"]);
+secim("#tKac", "tk", ["20-50", "50-100", "100-200", "200+"]);
+secim("#tGun", "tg", ["Bu hafta", "Gelecek hafta", "Bu ay"]);
+function toplu() {
+  const m = `${deger("tg")}, ${deger("tk")} kişilik ${deger("tn").toLowerCase()} için ${deger("tu").toLowerCase()}; şube size miktarı ve teslim saatini söyler.`;
+  $("#topluOzet").textContent = m;
+  $("#topluWa").href = wa(`Merhaba Karaca Pastanesi, toplu sipariş sormak istiyorum:\n${deger("tn")} · ${deger("tu")} · ${deger("tk")} kişi · ${deger("tg")}`);
+}
+$("#topluForm").addEventListener("change", toplu); toplu();
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

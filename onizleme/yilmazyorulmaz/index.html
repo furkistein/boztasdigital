@@ -4,198 +4,83 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
-<title>Diş Hekimi Yılmaz Yorulmaz · Adalet Mahallesi, Denizli · Randevu (örnek önizleme)</title>
-<meta name="description" content="Diş Hekimi Yılmaz Yorulmaz, Adalet Mah. 10103 Sk. No:10/B, Merkezefendi / Denizli: şeffaf plak, zirkonyum, implant hakkında bilgilendirme ve WhatsApp'tan randevu. Boztaş Digital örnek önizlemesi.">
+<title>Diş Hekimi Yılmaz Yorulmaz · 3 seviyede örnek site · Boztaş Digital</title>
+<meta name="description" content="Diş Hekimi Yılmaz Yorulmaz için Boztaş Digital'in hazırladığı 3 seviyede örnek site: Standart, Profesyonel, Premium.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1C2B4A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F5F3EF">
 <style>
-:root{--lacivert:#1C2B4A;--kum:#F5EEE3;--kagit:#FFFBF5;--mercan:#E07A5F;--gok:#DDE7F2;--soluk:#66707F;--cizgi:rgba(28,43,74,.13)}
+:root{--vurgu:#1C2B4A;--koyu:#141414;--soluk:#6b6862;--zemin:#F5F3EF;--cizgi:rgba(20,20,20,.12)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--kum);color:var(--lacivert);font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+body{background:var(--zemin);color:var(--koyu);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-img{display:block;max-width:100%}
-.sar{width:min(1140px,100% - 48px);margin-inline:auto}
-.serit{background:var(--lacivert);color:var(--gok);text-align:center;font-size:13px;font-weight:600;padding:7px 12px}
-.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo i{width:38px;height:38px;border-radius:12px;background:var(--lacivert);color:var(--kum);display:grid;place-items:center;font-style:normal;font-family:Fraunces,serif;font-weight:600;font-size:18px}
-.logo b{font-weight:700;font-size:16px;line-height:1.2}
-.logo span{display:block;font-size:12px;color:var(--soluk);font-weight:500}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:14px 22px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border:0;cursor:pointer}
-.btn.koyu{background:var(--lacivert);color:var(--kagit)}
-.btn.mercan{background:var(--mercan);color:#fff}
-.btn.hat{border:1px solid var(--lacivert)}
-.kahraman{padding:26px 0 76px}
-.kahraman .sar{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.cip{display:inline-flex;align-items:center;gap:8px;background:var(--kagit);border:1px solid var(--cizgi);border-radius:99px;padding:7px 14px;font-size:14px;font-weight:600}
-.cip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mercan)}
-h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(44px,6.6vw,88px);line-height:1;letter-spacing:-.02em;margin:18px 0 22px}
-h1 em{font-style:italic;color:var(--mercan)}
-.kahraman p{font-size:18px;max-width:42ch;color:var(--soluk)}
-.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.yigin{position:relative;padding:0 0 40px 40px}
-.yigin .b{border-radius:26px;overflow:hidden;aspect-ratio:4/3.4}
-.yigin .b img{width:100%;height:100%;object-fit:cover}
-.yigin .k{position:absolute;left:0;bottom:0;width:46%;border-radius:20px;overflow:hidden;border:6px solid var(--kum);aspect-ratio:1}
-.yigin .k img{width:100%;height:100%;object-fit:cover}
-.yigin span{position:absolute;right:12px;top:12px;background:rgba(255,251,245,.92);font-size:12px;padding:5px 10px;border-radius:99px}
-section{padding:86px 0}
-.ufak{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--mercan)}
-h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.05;letter-spacing:-.01em;margin:10px 0 14px}
-.acik{color:var(--soluk);max-width:58ch}
-.tedavi{background:var(--kagit)}
-.kartlar{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
-.kartlar article{border:1px solid var(--cizgi);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;background:var(--kum)}
-.kartlar article:first-child{background:var(--lacivert);color:var(--kagit);border-color:var(--lacivert)}
-.kartlar article:first-child p{color:#B9C4D6}
-.kartlar h3{font-family:Fraunces,serif;font-weight:600;font-size:24px;line-height:1.15}
-.kartlar p{color:var(--soluk);font-size:15px}
-.kartlar small{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mercan)}
-.randevu{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.kart{background:var(--kagit);border:1px solid var(--cizgi);border-radius:22px;padding:26px}
-.kart fieldset{border:0;margin-bottom:16px}
-.kart legend{font-weight:700;margin-bottom:10px}
-.secenek{display:flex;flex-wrap:wrap;gap:8px}
-.secenek label{position:relative}
-.secenek input{position:absolute;opacity:0;inset:0}
-.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:12px;padding:8px 14px;font-size:14px;cursor:pointer;background:var(--kum)}
-.secenek input:checked+span{background:var(--lacivert);color:var(--kagit);border-color:var(--lacivert)}
-.secenek input:focus-visible+span{outline:2px solid var(--mercan);outline-offset:2px}
-.mesaj{background:var(--gok);border-radius:14px;padding:14px 16px;font-size:15px;white-space:pre-wrap;margin:6px 0 16px}
-.kart .btn{width:100%}
-.kucuk-not{font-size:13px;color:var(--soluk);margin-top:10px}
-.yol{background:var(--lacivert);color:var(--kagit)}
-.yol .acik{color:#B9C4D6}
-.yol .ikili{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
-.tarif{list-style:none;counter-reset:t;display:grid;gap:0;margin-top:20px}
-.tarif li{counter-increment:t;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:16px 0;border-top:1px solid rgba(255,251,245,.15)}
-.tarif li::before{content:counter(t);font-family:Fraunces,serif;font-size:28px;line-height:1;color:var(--mercan)}
-.yol figure{border-radius:24px;overflow:hidden;aspect-ratio:4/3}
-.yol figure img{width:100%;height:100%;object-fit:cover}
-footer{background:#141F36;color:#9AA7BD;padding:34px 0 110px;font-size:14px}
-footer .sar{display:grid;gap:14px}
-.ornek-not{border:1px dashed rgba(221,231,242,.4);border-radius:12px;padding:12px 14px;color:var(--kagit)}
-.ornek-not a{color:var(--mercan);font-weight:700}
-.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
-.yuzen .btn{width:100%;padding:15px;box-shadow:0 12px 28px rgba(28,43,74,.3)}
-@media (max-width:920px){
-  .kahraman .sar,.randevu,.yol .ikili{grid-template-columns:1fr;gap:34px}
-  .yigin{max-width:480px;width:100%;margin:0 auto}
-  .kartlar{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:600px){
-  .sar{width:calc(100% - 36px)}
-  .ust .btn{display:none}
-  .kahraman p{font-size:16.5px}
-  .yigin{padding:0 0 30px 26px}
-  section{padding:58px 0}
-  .kartlar{grid-template-columns:1fr;gap:10px}
-  .yuzen{display:block}
-}
+.sar{width:min(1200px,100% - 40px);margin-inline:auto}
+header{padding:56px 0 34px}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--vurgu)}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.02em;margin:12px 0 14px;max-width:22ch}
+header p{color:var(--soluk);max-width:60ch;font-size:17px}
+.izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:40px}
+.kart{background:#fff;border:1px solid var(--cizgi);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;animation:gel .7s cubic-bezier(.2,.7,.2,1) both}
+.kart:nth-child(2){animation-delay:.08s}.kart:nth-child(3){animation-delay:.16s}
+@keyframes gel{from{opacity:0;transform:translateY(20px)}}
+.kart.one{border:2px solid var(--vurgu);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.kapak{display:block;aspect-ratio:16/10;overflow:hidden;background:#ddd;border-bottom:1px solid var(--cizgi)}
+.kapak img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.kart:hover .kapak img{transform:scale(1.04)}
+.y{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ust{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+h2{font-size:26px;letter-spacing:-.01em}
+.ust b{font-size:20px;color:var(--vurgu);white-space:nowrap}
+.rozet{align-self:start;background:var(--vurgu);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px}
+ul{list-style:none;display:grid;gap:7px;align-content:start;color:#3d3b37;font-size:15px;flex:1}
+li{padding-left:22px;position:relative}
+li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid var(--vurgu);border-bottom:2px solid var(--vurgu);transform:rotate(-45deg)}
+.btn{display:flex;justify-content:center;border-radius:12px;padding:14px;font-weight:700;text-decoration:none;background:var(--koyu);color:#fff;transition:background .25s}
+.btn:hover{background:var(--vurgu)}
+.not{color:var(--soluk);font-size:14px;border-top:1px solid var(--cizgi);padding:24px 0 50px;display:grid;gap:8px}
+.not a{color:var(--koyu);font-weight:700}
+@media (prefers-reduced-motion:reduce){.kart{animation:none}.kapak img{transition:none}}
+@media (max-width:900px){.izgara{grid-template-columns:1fr}.kart.one{order:-1}header{padding:40px 0 26px}}
 </style>
 </head>
 <body>
-<div class="serit">Örnek önizleme · Diş Hekimi Yılmaz Yorulmaz için Boztaş Digital tarafından hazırlandı</div>
-<header class="ust">
-  <div class="sar">
-    <a class="logo" href="#"><i>YY</i><b>Dt. Yılmaz Yorulmaz<span>Ağız ve Diş Sağlığı · Denizli</span></b></a>
-    <a class="btn mercan" href="#randevu">Randevu</a>
-  </div>
+<header class="sar">
+  <span class="ufak">Boztaş Digital · örnek önizleme</span>
+  <h1>Diş Hekimi Yılmaz Yorulmaz için 3 farklı seviyede örnek</h1>
+  <p>Adalet Mahallesi'ndeki kliniğiniz için tedavi başlıkları, okulun karşısı yol tarifi ve WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî). Aynı içerik üç farklı tasarım ve özellik düzeyinde hazırlandı; hangisi işletmenize uygunsa onunla devam ederiz. Her sayfanın üstündeki çubukla seviyeler arasında geçebilirsiniz.</p>
 </header>
-
-<main>
-  <div class="kahraman">
-    <div class="sar">
-      <div>
-        <span class="cip">Adalet Mah. · Şehit Burak Erten İlkokulu karşısı</span>
-        <h1>Mahallenizin <em>diş kliniği,</em> bir mesaj uzağınızda.</h1>
-        <p>Şeffaf plak, zirkonyum ve implant hakkında sade bilgiler. Randevunuzu yine WhatsApp'tan alırsınız; bu sefer mesajınız hazır gelir.</p>
-        <div class="dugmeler">
-          <a class="btn mercan" href="#randevu">WhatsApp'tan randevu</a>
-          <a class="btn hat" href="tel:+905444903060">0544 490 30 60</a>
-        </div>
+<main class="sar izgara">
+    <article class="kart">
+      <a class="kapak" href="standart/" aria-label="Standart seviyesini aç"><img src="img/kademe-standart.webp" alt="Diş Hekimi Yılmaz Yorulmaz Standart seviye ekran görüntüsü" width="720" height="450" loading="eager"></a>
+      <div class="y">
+        <div class="ust"><h2>Standart</h2><b>2.500 TL</b></div>
+        
+        <ul><li>Tek sayfa, telefona tam uyumlu</li><li>Menü/hizmet başlıkları, arama ve yol tarifi düğmeleri</li><li>Sade tasarım, gerçek fotoğraf</li><li>Dört tedavi başlığı, WhatsApp'a hazır randevu mesajı</li></ul>
+        <a class="btn" href="standart/">Standart örneği aç →</a>
       </div>
-      <div class="yigin">
-        <div class="b"><img src="img/resepsiyon.jpg" alt="Sıcak renkli klinik karşılama alanı (temsilî görsel)" width="1344" height="768" fetchpriority="high"></div>
-        <div class="k"><img src="img/steril.jpg" alt="Sterilize edilmiş aletler (temsilî görsel)" width="1152" height="896"></div>
-        <span>Temsilî görseller</span>
+    </article>
+    <article class="kart one">
+      <a class="kapak" href="profesyonel/" aria-label="Profesyonel seviyesini aç"><img src="img/kademe-profesyonel.webp" alt="Diş Hekimi Yılmaz Yorulmaz Profesyonel seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Profesyonel</h2><b>4.000 TL</b></div>
+        <span class="rozet">En çok tercih edilen</span>
+        <ul><li>Ürün ürün menü ya da hizmet listesi</li><li>Galeri, harita ve yol tarifi</li><li>Sektöre özel araç (sipariş/randevu notu)</li><li>Sekmeli tedavi anlatımı ve "bu konuda randevu" ile dolan randevu notu</li><li>İlk ziyaretin üç adımı, sık sorulanlar, büyütülebilir galeri ve harita</li></ul>
+        <a class="btn" href="profesyonel/">Profesyonel örneği aç →</a>
       </div>
-    </div>
-  </div>
-
-  <section class="tedavi" id="tedaviler">
-    <div class="sar">
-      <span class="ufak">Tedaviler</span>
-      <h2>Sık sorulanlar, kısaca.</h2>
-      <p class="acik">Başlıklar Instagram'daki öne çıkanlarınızdan alındı. Metinler genel bilgilendirmedir, yayındakileri siz onaylarsınız. Sayfada fiyat, kampanya, hasta yorumu ya da öncesi-sonrası görsel yer almaz.</p>
-      <div class="kartlar">
-        <article><small>İlk adım</small><h3>Muayene</h3><p>Ağız içi inceleme, gerekirse röntgen; seçenekler birlikte konuşulur.</p></article>
-        <article><small>Ortodonti</small><h3>Şeffaf plak</h3><p>Dişleri kademeli olarak hareket ettiren, çıkarılabilir şeffaf plaklarla tedavi. Uygunluk muayenede belirlenir.</p></article>
-        <article><small>Protez</small><h3>Zirkonyum</h3><p>Metal alt yapı yerine zirkonyumdan yapılan kron ve köprüler. Diş hazırlığı ve ölçüyle ilerler.</p></article>
-        <article><small>Eksik diş</small><h3>İmplant</h3><p>Eksik dişin yerine yapay kök uygulaması. Kemik durumu muayene ve görüntülemeyle değerlendirilir.</p></article>
+    </article>
+    <article class="kart">
+      <a class="kapak" href="premium/" aria-label="Premium seviyesini aç"><img src="img/kademe-premium.webp" alt="Diş Hekimi Yılmaz Yorulmaz Premium seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Premium</h2><b>7.500 TL</b></div>
+        
+        <ul><li>Editoryal tasarım, tam ekran gerçek fotoğraflar</li><li>Hikâye bölümleri ve fotoğraf çekimi planı</li><li>Gelişmiş araçlar: tam sipariş/randevu masası ve özel talep formları</li><li>Randevu masası: konu, diş haritasından diş, gün, saat aralığı ve not ile hazır mesaj</li><li>Zirkonyum kronun yolu, aile randevusu talebi, okulun karşısı tarifi ve adres paylaşma</li></ul>
+        <a class="btn" href="premium/">Premium örneği aç →</a>
       </div>
-    </div>
-  </section>
-
-  <section id="randevu">
-    <div class="sar randevu">
-      <div>
-        <span class="ufak">Randevu</span>
-        <h2>Mesajınız hazır, siz yalnız gönderin.</h2>
-        <p class="acik">Randevular zaten WhatsApp'tan alınıyor. Konu ve zaman seçilince mesaj kendiliğinden yazılır; klinik uygun saati size döner. Google'da bu sayfayı bulan hasta da aynı yoldan gelir.</p>
-      </div>
-      <form class="kart" id="form" onsubmit="return false">
-        <fieldset><legend>Konu</legend><div class="secenek" id="konu"></div></fieldset>
-        <fieldset><legend>Size uygun zaman</legend><div class="secenek" id="zaman"></div></fieldset>
-        <div class="mesaj" id="mesaj" aria-live="polite"></div>
-        <a class="btn koyu" id="gonder" href="https://wa.me/905444903060">WhatsApp'tan gönder</a>
-        <p class="kucuk-not">Acil ağrıda telefonla arayın: 0544 490 30 60</p>
-      </form>
-    </div>
-  </section>
-
-  <section class="yol">
-    <div class="sar ikili">
-      <div>
-        <span class="ufak">Nasıl gelinir?</span>
-        <h2>Okulun tam karşısı.</h2>
-        <p class="acik">Adalet Mah. 10103 Sk. No:10/B, Merkezefendi / Denizli.</p>
-        <ol class="tarif">
-          <li><span>Adalet Mahallesi'nde Şehit Burak Erten İlkokulu'nu bulun.</span></li>
-          <li><span>Klinik, okulun karşısındaki 10/B numarada.</span></li>
-          <li><span>Kapıdan önce aramak isterseniz: 0544 490 30 60.</span></li>
-        </ol>
-        <div class="dugmeler"><a class="btn mercan" href="https://www.google.com/maps/search/Y%C4%B1lmaz+Yorulmaz+Di%C5%9F+Klini%C4%9Fi+Adalet+Denizli">Haritada aç</a></div>
-      </div>
-      <figure><img src="img/bina.jpg" alt="Klinik binası girişi (temsilî görsel)" width="1344" height="768" loading="lazy"></figure>
-    </div>
-  </section>
+    </article>
 </main>
-
-<footer>
-  <div class="sar">
-    <div>© Diş Hekimi Yılmaz Yorulmaz · Denizli · <a href="https://www.instagram.com/adalet_mah_dis_klinigi/">@adalet_mah_dis_klinigi</a></div>
-    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Diş Hekimi Yılmaz Yorulmaz için Boztaş Digital tarafından hazırlandı, hekimin onayı yoktur. Görseller temsilîdir; tedavi başlıkları, telefon ve adres Instagram profilinizden alındı. Sağlık tanıtım kurallarına uygun olarak fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel içermez. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
-  </div>
+<footer class="sar not">
+  <div>Fiyatlar tek seferliktir; alan adı yıllık ücreti ayrıdır. İçerikleriniz geldikten sonra 7 iş günü içinde önizleme, 1 tur ücretsiz düzeltme. Sağlık tanıtım yönetmeliğine uygun: fiyat, kampanya, hasta yorumu ve öncesi-sonrası görseli yoktur.</div>
+  <div>Bu sayfalar <b>örnek önizlemedir</b>, işletmenin onayı yoktur; görseller temsilîdir. Bilgi ve iletişim: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
 </footer>
-
-<div class="yuzen"><a class="btn mercan" href="#randevu">WhatsApp'tan randevu</a></div>
-
-<script>
-const $ = s => document.querySelector(s);
-const sec = (id, ad, liste, ilk) => $(id).innerHTML = liste.map((x,i) => `<label><input type="radio" name="${ad}" value="${x}"${i===ilk?" checked":""}><span>${x}</span></label>`).join("");
-sec("#konu","k",["Muayene / kontrol","Şeffaf plak","Zirkonyum","İmplant","Diş ağrısı"],0);
-sec("#zaman","z",["Hafta içi sabah","Hafta içi öğleden sonra","Hafta içi akşam","Cumartesi"],1);
-function guncelle(){
-  const k = document.querySelector("[name=k]:checked").value, z = document.querySelector("[name=z]:checked").value;
-  const m = `Merhaba, randevu almak istiyorum.\nKonu: ${k}\nBana uygun zaman: ${z}\nUygun gün ve saatleri öğrenebilir miyim?`;
-  $("#mesaj").textContent = m; $("#gonder").href = "https://wa.me/905444903060?text=" + encodeURIComponent(m);
-}
-$("#form").addEventListener("change", guncelle); guncelle();
-</script>
 </body>
 </html>

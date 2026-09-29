@@ -1,0 +1,11 @@
+{
+  "ad": "Şengül Çardaklı Güzellik ve Bakım",
+  "renk": "#5E2F48",
+  "giris": "Lazer, G8, cilt bakımı, altın oran kaş, kirpik lifting, ayak bakımı ve protez tırnak bir arada; müşteri istediği hizmetleri işaretliyor, randevu notu tek mesajla WhatsApp'ınıza düşüyor. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Hizmet başlıkları, birden çok hizmet seçip tek WhatsApp mesajıyla randevu notu, altın oran kaş anlatımı"],
+    "profesyonel": ["Yüz, vücut, el-ayak sekmeleri: seçtikçe randevu notu kendiliğinden yazılır", "Salonun üç alanı, adım adım altın oran kaş, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: hizmetler, aynı gün mü ayrı gün mü, gün, zaman, ilk ziyaret ve not ile hazır mesaj", "Yüz-vücut-el ve ayak bölümleri, birlikte gelme talebi, galeri şeridi"]
+  }
+}

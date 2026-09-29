@@ -1,0 +1,11 @@
+{
+  "ad": "Dt. Anıl Deniz Yıldırım Kliniği",
+  "renk": "#1D2B44",
+  "saglik": true,
+  "giris": "Tedavi başlıklarınız, \"Çocuk Dostlarım\" rehberi ve Türkçe, Almanca ya da İngilizce hazır açılan WhatsApp randevu mesajı. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî). Fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel yoktur.",
+  "ozellik": {
+    "standart": ["Sayfanın tamamı TR / DE / EN, üç dilde WhatsApp randevu mesajı"],
+    "profesyonel": ["Sekmeli tedavi bilgisi: seçtiğiniz konu randevu fişine eklenir", "Yurt dışından gelenler için geliş-dönüş tarihli mesaj, galeri ve harita"],
+    "premium": ["Randevu masası: dil, kimin için, ülke, tarih, röntgen ve not ile tek mesaj", "Aile randevusu (yetişkin + çocuk aynı gün), muayene-çocuk-uzaktan hikâye bölümleri"]
+  }
+}
