@@ -1,0 +1,29 @@
+/* Seviye çubuğu + belirme animasyonları (her kademe yükler) */
+.kd-cubuk{background:#121212;color:#e9e6e1;font:500 13px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;position:relative;z-index:60}
+.kd-cubuk .kd-ic{width:min(1200px,100% - 32px);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px 0}
+.kd-baslik{color:#bdb8b0;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.kd-baslik b{color:#fff;font-weight:600}
+.kd-baslik:hover{color:#fff}
+.kd-secici{display:flex;gap:4px;background:#232323;border-radius:999px;padding:3px;flex:none}
+.kd-secici a{display:flex;align-items:baseline;gap:6px;color:#cfcac2;text-decoration:none;border-radius:999px;padding:6px 12px;transition:background .25s,color .25s}
+.kd-secici a small{font-size:11px;opacity:.7}
+.kd-secici a:hover{color:#fff;background:#303030}
+.kd-secici a.aktif{background:#fff;color:#111}
+.kd-secici a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.kd-alt{border-top:1px solid #2a2a2a}
+@media (max-width:760px){
+  .kd-cubuk .kd-ic{flex-direction:column;align-items:stretch;gap:6px;padding:7px 0 8px}
+  .kd-baslik{text-align:center;font-size:12px}
+  .kd-secici a{flex:1;flex-direction:column;align-items:center;gap:0;padding:5px 4px;line-height:1.2}
+  .kd-secici a span{font-size:13px}
+}
+
+[data-belir]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+[data-belir="sol"]{transform:translateX(-34px)}
+[data-belir="sag"]{transform:translateX(34px)}
+[data-belir="olcek"]{transform:scale(.94)}
+[data-belir].gorundu{opacity:1;transform:none}
+.az-hareket [data-belir]{opacity:1;transform:none;transition:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}

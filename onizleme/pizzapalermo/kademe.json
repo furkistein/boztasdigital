@@ -1,0 +1,10 @@
+{
+  "ad": "Pizza Palermo 2 Go",
+  "renk": "#C8281E",
+  "giris": "Sinpaş ve Çamlık şubeleri, menü başlıklarınız ve telefonla sipariş için hazır not. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": ["Menü başlıkları, iki şube için tek dokunuşla arama, Getir bağlantısı"],
+    "profesyonel": ["Sekmeli menü ve sipariş fişi: seçtikçe not yazılır", "Hamur-fırın-kutu hikâyesi, iki şube haritası, büyütülebilir galeri"],
+    "premium": ["Sipariş masası: adet, şube, teslimat, saat ve not ile fiş", "Şube seçici harita, toplu sipariş (ofis, doğum günü) talebi"]
+  }
+}

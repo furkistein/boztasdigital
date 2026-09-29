@@ -1,0 +1,16 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- firin.webp: Katie Barget — https://www.pexels.com/photo/artisan-pizza-baking-in-wood-fired-oven-29626981/
+- firina.webp: Antonius Ferret — https://www.pexels.com/photo/pizzerman-putting-a-pizza-in-the-oven-6223172/
+- usta.webp: Canan Ataklı — https://www.pexels.com/photo/chef-tossing-pizza-dough-in-rustic-kitchen-setting-28857295/
+- usta-el.webp: Anhelina Vasylyk — https://www.pexels.com/photo/chef-kneading-pizza-dough-in-rustic-kitchen-34413615/
+- hamur.webp: Antonius Ferret — https://www.pexels.com/photo/chef-making-pizza-dough-6223171/
+- hamur2.webp: Max Avans — https://www.pexels.com/photo/man-preparing-a-pizza-dough-5056624/
+- masa.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/pizza-and-kettle-on-wooden-table-5903382/
+- masa2.webp: Valeria Boltneva — https://www.pexels.com/photo/pizzas-with-agurola-15953050/
+- pizza-ust.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/close-up-shot-of-pizzas-5903172/
+- aksam.webp: Anhelina Vasylyk — https://www.pexels.com/photo/delicious-artisan-pizzas-on-wooden-table-34425639/
+- makarna.webp: Gu Ko — https://www.pexels.com/photo/delicious-spaghetti-in-tomato-sauce-close-up-31637791/
+- tatli.webp: Arian Fernandez — https://www.pexels.com/photo/a-piece-of-chocolate-cake-with-mint-on-top-26838690/
+- mutfak.webp: Max Avans — https://www.pexels.com/photo/raw-pizza-dough-on-the-counter-at-a-pizzeria-5056611/
+- kutu.webp: Mathias Reding — https://www.pexels.com/photo/pizza-boxes-on-top-of-ceramic-plates-9685241/
+- salon.webp: Joaquin Carfagna — https://www.pexels.com/photo/pizza-boxes-in-a-restaurant-17626467/
