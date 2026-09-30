@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Alida Hotel · Pamukkale · Standart örnek</title>
+<meta name="description" content="Alida Hotel, Pamukkale: kemer çerçeveli açılış, kısa tanıtım, Pamukkale çevresi, arama ve WhatsApp düğmeleri, harita. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#262A1B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--zeytin:#262A1B;--zeytin2:#383E27;--kil:#B4532A;--kil-a:#E39A6C;--kagit:#F3EADB;--kum:#E7D8BE;--soluk:#6B6452;--cizgi:rgba(38,42,27,.18)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--zeytin);font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1160px,100% - 56px);margin-inline:auto}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn.dolu{background:var(--kil);color:#fff}
+.btn.dolu:hover{background:#9A4321}
+.btn.hat{border:1.5px solid currentColor}
+.btn.hat:hover{background:rgba(255,255,255,.1)}
+/* üst */
+.ust{position:absolute;left:0;right:0;z-index:5;color:var(--kagit)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:84px;gap:18px}
+.logo{font-family:"Instrument Serif",serif;font-size:38px;line-height:1;text-decoration:none;letter-spacing:.01em}
+.logo small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.8;margin-top:4px}
+.ust nav{display:flex;gap:30px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.92}
+.ust nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+/* kahraman */
+.kahraman{background:var(--zeytin);color:var(--kagit);padding:150px 0 90px;overflow:hidden}
+.kahraman .sar{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(52px,6.8vw,104px);line-height:.98;margin:18px 0 22px;overflow-wrap:break-word}
+h1 em{font-style:italic;color:var(--kil-a)}
+.kahraman p{font-size:18px;max-width:42ch;color:#DCD3BF}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.kahraman .btn.hat{color:var(--kagit)}
+.kemer{position:relative;margin:0 auto;width:min(100%,430px)}
+.kemer::before{content:"";position:absolute;inset:-14px 14px 14px -14px;border:1px solid rgba(227,154,108,.55);border-radius:999px 999px 0 0;pointer-events:none}
+.kemer img{position:relative;width:100%;aspect-ratio:3/4.3;object-fit:cover;object-position:50% 40%;border-radius:999px 999px 0 0;animation:yavas 2.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes yavas{from{clip-path:inset(18% 10% 0 10% round 999px 999px 0 0);transform:scale(1.08)}to{clip-path:inset(0 round 999px 999px 0 0);transform:none}}
+.kemer figcaption{font-size:12.5px;color:#B5AD98;margin-top:14px;text-align:right}
+.kahraman .sar>div>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>div>*:nth-child(2){animation-delay:.1s}.kahraman .sar>div>*:nth-child(3){animation-delay:.2s}.kahraman .sar>div>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+/* bölümler */
+section{padding:112px 0}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(38px,4.8vw,64px);line-height:1.04;margin:12px 0 18px}
+h2 em{font-style:italic;color:var(--kil)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+.ev .sar{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:88px;align-items:center}
+.ev .resimler{position:relative;padding-bottom:40px}
+.ev .resimler .buyuk{width:82%;aspect-ratio:3/4.1;object-fit:cover;border-radius:999px 999px 0 0}
+.ev .resimler .kucuk{position:absolute;right:0;bottom:0;width:44%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:8px solid var(--kagit)}
+.ev .resimler small{display:block;font-size:12.5px;color:var(--soluk);margin-top:12px;max-width:46%;line-height:1.45}
+.ornek-kutu{margin-top:26px;border:1px dashed rgba(38,42,27,.4);border-radius:10px;padding:16px 18px;font-size:15px;color:var(--soluk)}
+.ornek-kutu b{color:var(--zeytin)}
+.cevre{background:var(--kum)}
+.kemerler{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:52px}
+.kemerler figure img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:999px 999px 0 0}
+.kemerler figcaption{text-align:center;margin-top:16px}
+.kemerler figcaption b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:30px;line-height:1.1}
+.kemerler figcaption span{display:block;font-size:14.5px;color:var(--soluk);margin-top:4px;line-height:1.5}
+.diger{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px}
+.diger span{border:1px solid rgba(38,42,27,.28);border-radius:999px;padding:7px 16px;font-size:14.5px}
+.iletisim .sar{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center}
+.iletisim iframe{width:100%;aspect-ratio:4/3.3;border:0;border-radius:240px 240px 0 0;background:var(--kum);display:block}
+.liste{list-style:none;margin:26px 0 0;border-top:1px solid var(--cizgi)}
+.liste li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--cizgi);font-size:16px;flex-wrap:wrap}
+.liste li span:first-child{color:var(--soluk)}
+footer{background:var(--zeytin);color:#BDB59F;padding:38px 0 112px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(243,234,219,.35);border-radius:10px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+@media (max-width:900px){
+  .ust nav{display:none}
+  .kahraman .sar,.ev .sar,.iletisim .sar{grid-template-columns:minmax(0,1fr);gap:44px}
+  .kahraman{padding:112px 0 64px}
+  .kahraman figure{order:-1}
+  .kemer{width:min(74%,340px)}
+  .kemer img{aspect-ratio:3/3.7}
+  .ev .resimler{max-width:420px}
+  .kemerler{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-28px;padding:0 28px 8px;scrollbar-width:none}
+  .kemerler::-webkit-scrollbar{display:none}
+  .kemerler figure{flex:0 0 min(72%,300px);scroll-snap-align:center}
+  .iletisim iframe{border-radius:160px 160px 0 0;aspect-ratio:1/1}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 40px)}
+  .ust .sar{height:70px}
+  .logo{font-size:32px}
+  .kemerler{margin-inline:-20px;padding:0 20px 8px}
+  section{padding:74px 0}
+  .kahraman p{font-size:16.5px}
+  .dugmeler .btn{flex:1 1 auto}
+  .yuzen{display:block}
+  .liste li{font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){.kemer img,.kahraman .sar>div>*{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Alida Hotel">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">Alida<small>Hotel · Pamukkale</small></a>
+    <nav><a href="#hikaye">Otel</a><a href="#pamukkale">Pamukkale</a><a href="#iletisim">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="sar">
+      <div>
+        <span class="ufak" style="color:var(--kil-a)">Aile işletmesi otel · Pamukkale</span>
+        <h1>Pamukkale'de, bir ev <em>sıcaklığı.</em></h1>
+        <p>Alida Hotel'de kalmak için arayın ya da WhatsApp'tan yazın. Tarihinizi ve kişi sayınızı söylemeniz yeter.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://wa.me/905365102394">WhatsApp'tan yazın</a>
+          <a class="btn hat" href="tel:+905365102394">Hemen arayın</a>
+        </div>
+      </div>
+      <figure class="kemer">
+        <img src="../img/gercek/aksam-selvi.webp" srcset="../img/gercek/aksam-selvi-900.webp 600w, ../img/gercek/aksam-selvi.webp 1200w" sizes="(max-width:900px) 74vw, 430px" alt="Akşam ışığında Pamukkale travertenleri ve selvi ağaçları (temsilî fotoğraf)" width="1200" height="1800" fetchpriority="high">
+        <figcaption>Fotoğraf temsilîdir</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <section class="ev" id="hikaye">
+    <div class="sar">
+      <div class="resimler" data-belir>
+        <img class="buyuk" src="../img/gercek/zeytin-bahce-900.webp" alt="Zeytin ağaçları ve taş duvarlı bir bahçe köşesi (temsilî fotoğraf)" width="600" height="921" loading="lazy" style="object-position:50% 45%">
+        <img class="kucuk" src="../img/gercek/cay-masa-900.webp" alt="Ahşap masada bir bardak çay (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 55%">
+        <small>Fotoğraflar temsilîdir; yayında otelin kendi kareleri yer alır.</small>
+      </div>
+      <div>
+        <span class="ufak" style="color:var(--kil)">Otel</span>
+        <h2 data-belir>Bir ailenin <em>kapısı</em> açık.</h2>
+        <p class="acik-yazi" data-belir>Alida Hotel, Pamukkale'de aile işletmesi olarak biliniyor. Bu bölüm sizin hikâyeniz için ayrıldı: otel nasıl başladı, misafirlerinize ne anlatmak istersiniz? Buradaki cümleler örnektir; yayında sizin sözlerinizle doldururuz.</p>
+        <div class="ornek-kutu" data-belir><b>Odalar ve olanaklar (örnek yer).</b> Oda tipleri, kahvaltı ve benzeri olanaklar yayında sizden alınarak bu bölüme yazılır; bilmediğimiz hiçbir şeyi burada yazmıyoruz.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cevre" id="pamukkale">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil)">Pamukkale'de ne var</span>
+      <h2 data-belir>Beyaz teraslar, <em>antik</em> taşlar.</h2>
+      <p class="acik-yazi" data-belir>Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde. Konaklamanızı bu rotaya göre kurabilirsiniz; saat ve giriş koşullarını gitmeden teyit edin.</p>
+      <div class="kemerler" data-sirali="120" tabindex="0" aria-label="Pamukkale çevresi, yana kaydırın">
+        <figure data-belir><img src="../img/gercek/travertin-mavi-900.webp" alt="Beyaz kalker kayalıkları ve açık mavi su (temsilî fotoğraf)" width="600" height="800" loading="lazy"><figcaption><b>Travertenler</b><span>Kalker teraslar ve açık renkli havuzlar.</span></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/sutun-gunbatimi-900.webp" alt="Antik bir kentte ayakta kalan sütunlu kemer (temsilî fotoğraf)" width="600" height="800" loading="lazy"><figcaption><b>Antik kentler</b><span>Hierapolis ve Laodikeia'nın taşları.</span></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/gunbatimi-sicak-900.webp" alt="Gün batımında Pamukkale travertenleri (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:62% 50%"><figcaption><b>Akşam ışığı</b><span>Gün batımı, teraslarda fotoğrafın saati.</span></figcaption></figure>
+      </div>
+      <div class="diger" data-belir><span>Kleopatra (Antik) Havuzu</span><span>Karahayıt kırmızı su</span><span>Sıcak hava balonu turları</span><span>Denizli</span></div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <div>
+        <span class="ufak" style="color:var(--kil)">İletişim</span>
+        <h2 data-belir>Yazın, <em>yer</em> ayıralım.</h2>
+        <p class="acik-yazi" data-belir>Hangi tarihlerde, kaç kişi; bir mesaj yeter. Kısa sürede size dönülür.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://wa.me/905365102394">WhatsApp</a>
+          <a class="btn hat" href="tel:+905365102394">Ara</a>
+        </div>
+        <ul class="liste">
+          <li><span>Konum</span><span>Pamukkale, Denizli</span></li>
+          <li><span>Giriş-çıkış saatleri</span><span>Sizden alınıp eklenecek</span></li>
+        </ul>
+      </div>
+      <iframe loading="lazy" title="Alida Hotel, Pamukkale haritası" src="https://www.google.com/maps?q=Alida+Hotel+Pamukkale&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Alida Hotel · Pamukkale</div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Alida Hotel için Boztaş Digital tarafından hazırlandı; otelle ilgili tek bilgi, Pamukkale'de aile işletmesi olduğudur. Oda, olanak, adres ve saat bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905365102394">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen"),m=document.getElementById("iletisim");if(!y)return;const f=()=>{const r=m.getBoundingClientRect();y.classList.toggle("goster",scrollY>innerHeight*.7&&!(r.top<innerHeight*.6&&r.bottom>0))};addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

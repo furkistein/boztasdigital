@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Alida Hotel · Pamukkale · Profesyonel örnek</title>
+<meta name="description" content="Alida Hotel, Pamukkale: rezervasyon talebi bileti, galeri ve büyütme kutusu, Pamukkale çevresi, harita. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#262A1B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--zeytin:#262A1B;--zeytin2:#383E27;--kil:#B4532A;--kil-d:#963F1C;--kil-a:#E39A6C;--kagit:#F3EADB;--kum:#E7D8BE;--soluk:#6B6452;--cizgi:rgba(38,42,27,.18)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--zeytin);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sar{width:min(1180px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s;cursor:pointer}
+.btn.dolu{background:var(--kil);color:#fff}
+.btn.dolu:hover{background:var(--kil-d)}
+.btn.hat{border:1.5px solid currentColor}
+/* üst */
+.ust{position:sticky;top:0;z-index:40;background:rgba(243,234,219,.97);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+.ust.golge{border-color:var(--cizgi);box-shadow:0 8px 24px -16px rgba(38,42,27,.35)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:70px;gap:18px}
+.logo{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:27px;letter-spacing:.01em;text-decoration:none;display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.logo small{font-family:Figtree,sans-serif;font-weight:500;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--soluk)}
+.ust nav{display:flex;gap:28px;font-size:15px}
+.ust nav a{text-decoration:none;color:var(--soluk);transition:color .25s}
+.ust nav a:hover{color:var(--zeytin)}
+.ust .btn{padding:10px 22px;font-size:14px}
+/* kahraman */
+.kahraman{position:relative;min-height:calc(88vh - 70px);display:flex;align-items:flex-end;color:var(--kagit);background:var(--zeytin);overflow:hidden}
+.kahraman>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%;animation:yavas 24s ease-out both}
+@keyframes yavas{from{transform:scale(1.08)}to{transform:scale(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(32,36,22,.94) 0%,rgba(32,36,22,.7) 34%,rgba(32,36,22,0) 66%),linear-gradient(90deg,rgba(32,36,22,.55) 0%,rgba(32,36,22,0) 55%)}
+.kahraman .sar{position:relative;z-index:2;padding:96px 0 168px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(44px,6vw,88px);line-height:1.02;margin:16px 0 18px;max-width:15ch;letter-spacing:-.01em;overflow-wrap:break-word}
+h1 em{font-style:italic;color:var(--kil-a)}
+.kahraman p{font-size:18px;max-width:46ch;color:#E4DBC7}
+.not-foto{position:absolute;right:20px;bottom:104px;z-index:2;font-size:12px;color:rgba(243,234,219,.8)}
+.kahraman .sar>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>*:nth-child(2){animation-delay:.1s}.kahraman .sar>*:nth-child(3){animation-delay:.2s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+/* hızlı tarih çubuğu */
+.hizli{position:relative;z-index:6;margin-top:-84px}
+.hizli form{background:#FCF8F0;border:1px solid var(--cizgi);border-radius:18px;box-shadow:0 30px 60px -34px rgba(38,42,27,.55);display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:stretch;padding:8px}
+.hizli label{display:block;padding:14px 22px;border-right:1px dashed var(--cizgi)}
+.hizli label span{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--soluk)}
+.hizli input,.hizli select{width:100%;min-width:0;background:transparent;border:0;padding:4px 0 0;font-size:17px;font-weight:500;outline-offset:4px}
+.hizli .btn{margin:6px;padding-inline:30px}
+/* bölümler */
+section{padding:112px 0}
+h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.06;margin:12px 0 18px;letter-spacing:-.01em}
+h2 em{font-style:italic;color:var(--kil)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.otel .sar{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:84px;align-items:center}
+.otel .foto-ikili{position:relative;padding:0 0 70px 0}
+.otel .foto-ikili .a{width:88%;aspect-ratio:4/3.2;object-fit:cover;border-radius:4px}
+.otel .foto-ikili .b{position:absolute;right:0;bottom:0;width:40%;aspect-ratio:3/4;object-fit:cover;border-radius:999px 999px 0 0;border:8px solid var(--kagit)}
+.otel .foto-ikili small{position:absolute;left:0;bottom:12px;max-width:46%;font-size:12.5px;color:var(--soluk);line-height:1.45}
+.ornek-kutu{margin-top:26px;border:1px dashed rgba(38,42,27,.4);border-radius:10px;padding:16px 18px;font-size:15px;color:var(--soluk)}
+.ornek-kutu b{color:var(--zeytin)}
+.odalar{background:var(--zeytin);color:var(--kagit)}
+.odalar h2 em{color:var(--kil-a)}
+.odalar .acik-yazi{color:#BDB59F}
+.oda-liste{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:48px}
+.oda-liste figure img{width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:4px}
+.oda-liste figcaption{margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.oda-liste figcaption b{font-family:Fraunces,serif;font-weight:400;font-size:24px;line-height:1.15}
+.oda-liste figcaption span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--kil-a);white-space:nowrap}
+.oda-liste p{font-size:14.5px;color:#BDB59F;margin-top:4px;line-height:1.5}
+.cevre-izgara{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:30px;margin-top:52px;align-items:start}
+.cevre-izgara article img{width:100%;object-fit:cover;border-radius:4px}
+.cevre-izgara .sag{display:grid;gap:30px}
+.cevre-izgara .buyuk img{aspect-ratio:4/4.6}
+.cevre-izgara .sag img{aspect-ratio:16/9}
+.cevre-izgara h3{font-family:Fraunces,serif;font-weight:400;font-size:28px;line-height:1.15;margin-top:14px;display:flex;gap:12px;align-items:baseline}
+.cevre-izgara h3 i{font-style:italic;font-size:17px;color:var(--kil)}
+.cevre-izgara p{font-size:15px;color:var(--soluk);margin-top:4px;max-width:46ch}
+.diger{margin-top:40px;display:flex;flex-wrap:wrap;gap:10px}
+.diger span{border:1px solid rgba(38,42,27,.28);border-radius:999px;padding:7px 16px;font-size:14.5px}
+/* bilet */
+.talep{background:var(--kum)}
+.bilet{display:grid;grid-template-columns:minmax(0,1fr) 392px;margin-top:52px;background:#FCF8F0;border-radius:22px;box-shadow:0 40px 70px -40px rgba(38,42,27,.5);position:relative}
+.bilet::before,.bilet::after{content:"";position:absolute;width:30px;height:30px;border-radius:50%;background:var(--kum);right:377px;z-index:2}
+.bilet::before{top:-15px}.bilet::after{bottom:-15px}
+.bilet form{padding:40px 44px 44px}
+.adim{padding:20px 0;border-top:1px solid var(--cizgi)}
+.adim:first-child{padding-top:0;border-top:0}
+.adim legend,.adim h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:12px;padding:0;display:block}
+.adim fieldset{border:0;min-width:0}
+.alan{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.alan label{display:block;font-size:13px;color:var(--soluk);margin-bottom:4px}
+.bilet input[type=text],.bilet input[type=date],.bilet select,.bilet textarea{width:100%;min-width:0;background:#fff;border:1px solid rgba(38,42,27,.26);border-radius:8px;padding:11px 14px;font-size:15.5px}
+.bilet textarea{min-height:84px;resize:vertical}
+.bilet input:focus-visible,.bilet select:focus-visible,.bilet textarea:focus-visible{outline:2px solid var(--kil);outline-offset:2px}
+.kutucuk{display:flex;flex-direction:column;gap:10px}
+.kutucuk label{display:flex;gap:12px;align-items:center;font-size:15px;cursor:pointer;border:1px solid rgba(38,42,27,.2);border-radius:10px;padding:12px 14px;background:#fff}
+.kutucuk input{width:18px;height:18px;accent-color:var(--kil);flex:none}
+.ipucu{font-size:13.5px;color:var(--soluk);margin-top:8px}
+.uyari{font-size:14px;color:#A03A1E;margin-top:10px;min-height:1.2em}
+.kupon{border-left:2px dashed rgba(38,42,27,.35);padding:40px 34px 36px;min-width:0}
+.kupon .ic{position:sticky;top:96px}
+.kupon .alt{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--soluk);font-weight:700}
+.kupon h3{font-family:Fraunces,serif;font-weight:400;font-size:30px;line-height:1.1;margin:4px 0 10px}
+.kupon .gece{font-size:14px;color:var(--soluk);margin-bottom:12px}
+.kupon .gece b{font-family:Fraunces,serif;font-size:52px;font-weight:400;color:var(--kil);line-height:1;margin-right:8px;vertical-align:-6px}
+.kupon pre{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:12.8px;line-height:1.7;white-space:pre-wrap;word-break:break-word;border-block:1px dashed rgba(38,42,27,.3);padding:16px 0;min-height:190px}
+.kupon .btn{width:100%;margin-top:18px}
+.kupon .btn.hat{border-color:rgba(38,42,27,.3);margin-top:10px}
+.kupon .btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+.kupon small{display:block;color:var(--soluk);font-size:12.5px;margin-top:12px;line-height:1.5}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:210px;grid-auto-flow:dense;gap:14px;margin-top:48px}
+.galeri button{position:relative;overflow:hidden;border-radius:4px;padding:0;display:block;background:var(--kum)}
+.galeri button img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.05)}
+.galeri button:focus-visible{outline:3px solid var(--kil);outline-offset:3px}
+.galeri .w{grid-column:span 2}.galeri .t{grid-row:span 2}
+/* kutu */
+.kutu{position:fixed;inset:0;z-index:100;background:rgba(24,27,15,.94);display:none;align-items:center;justify-content:center;padding:56px 70px}
+.kutu.acik{display:flex}
+.kutu img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px;width:auto;height:auto}
+.kutu .kapat{position:absolute;top:16px;right:18px;color:#fff;font-size:15px;padding:10px 14px;border:1px solid rgba(255,255,255,.4);border-radius:999px}
+.kutu .ok{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:22px;line-height:1}
+.kutu .ok.on{left:14px}.kutu .ok.son{right:14px}
+.kutu .say{position:absolute;left:0;right:0;bottom:16px;text-align:center;color:#D8D0BC;font-size:13px}
+/* yer */
+.yer{padding-top:0}
+.yer-govde{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;margin-top:40px;align-items:center}
+.yer iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:4px;background:var(--kum);display:block}
+.yer dl{display:grid;gap:18px}
+.yer dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk);font-weight:700}
+.yer dd{font-size:20px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.yorum{margin-top:64px;border:1px dashed rgba(38,42,27,.4);border-radius:10px;padding:26px 28px}
+.yorum p{font-family:Fraunces,serif;font-size:24px;line-height:1.3;max-width:34ch}
+.yorum small{display:block;margin-top:10px;color:var(--soluk);font-size:14px}
+footer{background:var(--zeytin);color:#BDB59F;padding:40px 0 112px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(243,234,219,.35);border-radius:10px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+@media (max-width:1000px){
+  .ust nav{display:none}
+  .otel .sar,.cevre-izgara,.yer-govde{grid-template-columns:minmax(0,1fr);gap:44px}
+  .oda-liste{grid-template-columns:minmax(0,1fr);gap:34px}
+  .bilet{grid-template-columns:minmax(0,1fr)}
+  .bilet::before,.bilet::after{right:auto;top:auto;bottom:auto}
+  .bilet::before{left:-15px;top:auto;bottom:auto;display:none}.bilet::after{display:none}
+  .kupon{border-left:0;border-top:2px dashed rgba(38,42,27,.35);padding:34px 28px 32px}
+  .kupon .ic{position:static}
+  .galeri{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:170px}
+}
+@media (max-width:760px){
+  .kahraman{display:block;min-height:0}
+  .kahraman>img{position:relative;width:100%;height:54svh;animation:none}
+  .kahraman::after{bottom:auto;height:54svh;background:linear-gradient(180deg,rgba(32,36,22,.35) 0%,rgba(32,36,22,0) 30%,rgba(38,42,27,0) 62%,#262A1B 100%)}
+  .kahraman .sar{padding:20px 0 84px}
+  .not-foto{right:14px;bottom:auto;top:calc(54svh - 28px)}
+  .hizli{margin-top:-52px}
+  .hizli form{grid-template-columns:repeat(2,minmax(0,1fr));padding:6px}
+  .hizli label{padding:11px 14px}
+  .hizli label:nth-of-type(2){border-right:0}
+  .hizli label:nth-of-type(3){grid-column:1/-1;border-right:0;border-top:1px dashed var(--cizgi)}
+  .hizli .btn{grid-column:1/-1;margin:6px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 40px)}
+  .ust .sar{height:62px}
+  .logo{font-size:24px}
+  .logo small{display:none}
+  .ust .btn{padding:9px 18px}
+  .kahraman p{font-size:16.5px}
+  section{padding:76px 0}
+  .otel .foto-ikili{padding-bottom:64px}
+  .bilet form{padding:30px 20px 28px}
+  .alan{grid-template-columns:1fr}
+  .bilet{border-radius:16px}
+  .galeri{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:10px}
+  .kutu{padding:56px 10px 50px}
+  .kutu .ok{top:auto;bottom:10px;transform:none;width:42px;height:42px}
+  .kutu .ok.on{left:14px}.kutu .ok.son{right:14px}
+  .yorum p{font-size:21px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.kahraman>img,.kahraman .sar>*{animation:none}.galeri button img{transition:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Alida Hotel">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Alida <small>Hotel · Pamukkale</small></a>
+    <nav><a href="#otel">Otel</a><a href="#odalar">Odalar</a><a href="#cevre">Pamukkale</a><a href="#galeri">Galeri</a><a href="#yer">Konum</a></nav>
+    <a class="btn dolu" href="#talep">Talep gönder</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/gunbatimi-sicak.webp" srcset="../img/gercek/gunbatimi-sicak-900.webp 900w, ../img/gercek/gunbatimi-sicak.webp 1800w" sizes="100vw" alt="Gün batımında Pamukkale travertenleri (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil-a)">Aile işletmesi otel · Pamukkale</span>
+      <h1>Tarihinizi seçin, mesajınız <em>hazır</em> olsun.</h1>
+      <p>Giriş-çıkış tarihi ve misafir sayısı yeter; hazır rezervasyon talebiniz WhatsApp'ta Alida Hotel'e ulaşsın.</p>
+    </div>
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+  </div>
+
+  <div class="hizli">
+    <div class="sar">
+      <form id="hizli" onsubmit="return false" novalidate aria-label="Hızlı tarih seçimi">
+        <label><span>Giriş</span><input type="date" id="hg"></label>
+        <label><span>Çıkış</span><input type="date" id="hc"></label>
+        <label><span>Misafir</span><select id="hk"></select></label>
+        <a class="btn dolu" id="hbtn" href="#talep">Talebi hazırla</a>
+      </form>
+    </div>
+  </div>
+
+  <section class="otel" id="otel">
+    <div class="sar">
+      <div class="foto-ikili" data-belir>
+        <img class="a" src="../img/gercek/avlu-zeytin-900.webp" alt="Taş duvarlı bir avluda zeytin ağacı (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+        <img class="b" src="../img/gercek/cay-el-900.webp" alt="Pencere ışığında elde tutulan çay bardağı (temsilî fotoğraf)" width="600" height="800" loading="lazy" style="object-position:50% 35%">
+        <small>Fotoğraflar temsilîdir; yayında otelin kendi kareleri yer alır.</small>
+      </div>
+      <div>
+        <span class="ufak" style="color:var(--kil)">Otel</span>
+        <h2 data-belir>Bir ailenin <em>kapısı</em> açık.</h2>
+        <p class="acik-yazi" data-belir>Alida Hotel, Pamukkale'de aile işletmesi olarak biliniyor. Bu bölüm sizin hikâyeniz için ayrıldı: otel nasıl başladı, misafirlerinize ne anlatmak istersiniz? Buradaki cümleler örnektir; yayında sizin sözlerinizle doldururuz.</p>
+        <div class="ornek-kutu" data-belir><b>Örnek yer.</b> Adres, yıl, oda sayısı ve benzeri bilgileri sizden alırız; bilmediğimiz hiçbir şeyi burada yazmıyoruz.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="odalar" id="odalar">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil-a)">Odalar · örnek yer</span>
+      <h2 data-belir>Odalarınız, <em>kendi</em> fotoğraflarınızla.</h2>
+      <p class="acik-yazi" data-belir>Aşağıdaki kareler yalnız yerleşimi göstermek içindir. Oda tipleri, kapasite ve olanaklar yayında sizden alınarak bu bölüme yazılır.</p>
+      <div class="oda-liste" data-sirali="120">
+        <figure data-belir><img src="../img/gercek/oda-ahsap-900.webp" alt="Ahşap başlıklı, beyaz yataklı sade bir oda (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:40% 50%"><figcaption><b>Oda tipi 1</b><span>örnek</span></figcaption><p>Oda adı, yatak düzeni ve kapasite burada yazılır.</p></figure>
+        <figure data-belir><img src="../img/gercek/oda-tahta-900.webp" alt="Tahta kaplı duvarlı, beyaz havlulu bir oda (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:55% 60%"><figcaption><b>Oda tipi 2</b><span>örnek</span></figcaption><p>Aile ya da geniş oda gibi seçenekler için ayrılmış yer.</p></figure>
+        <figure data-belir><img src="../img/gercek/kahvalti-kase-900.webp" alt="Kaselerle kurulmuş bir kahvaltı sofrası (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 45%"><figcaption><b>Sofra</b><span>örnek</span></figcaption><p>Kahvaltı ve yemek bilgisi sizden alınarak eklenir.</p></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="cevre">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil)">Pamukkale çevresi</span>
+      <h2 data-belir>Kalkerin beyazı, <em>antik</em> taşın sarısı.</h2>
+      <p class="acik-yazi" data-belir>Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde. Çevrede görülecekler genel bilgidir; saat ve giriş koşullarını gitmeden teyit etmenizi öneririz.</p>
+      <div class="cevre-izgara" data-sirali="140">
+        <article class="buyuk" data-belir><img src="../img/gercek/travertin-sade-900.webp" alt="Beyaz travertenlerin sade bir manzarası (temsilî fotoğraf)" width="600" height="800" loading="lazy" style="object-position:50% 60%"><h3><i>01</i>Travertenler</h3><p>Beyaz teraslar ve açık renkli kalker havuzlar; sabah ve akşam ışığı fotoğraf için sevilir.</p></article>
+        <div class="sag">
+          <article data-belir><img src="../img/gercek/sutun-kemer-900.webp" alt="Antik kalıntılar ve sütunlar, arkada dağlar (temsilî fotoğraf)" width="900" height="675" loading="lazy" style="object-position:50% 55%"><h3><i>02</i>Antik kentler</h3><p>Hierapolis ve Laodikeia; taş sütunlar, geniş kalıntı alanları.</p></article>
+          <article data-belir><img src="../img/gercek/havuz-golge-900.webp" alt="Sütun gölgeleri düşen kalker bir havuz ve uzaktaki ova (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:50% 40%"><h3><i>03</i>Yukarıdan ova</h3><p>Teraslardan Büyük Menderes ovasına bakan sakin köşeler.</p></article>
+        </div>
+      </div>
+      <div class="diger" data-belir><span>Kleopatra (Antik) Havuzu</span><span>Karahayıt kırmızı su</span><span>Sıcak hava balonu turları</span><span>Denizli</span></div>
+    </div>
+  </section>
+
+  <section class="talep" id="talep">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil)">Rezervasyon talebi</span>
+      <h2 data-belir>Bileti doldurun, <em>mesajınız</em> yazılsın.</h2>
+      <p class="acik-yazi" data-belir>Fiyat ve oda tipi bu önizlemede yok: talebinizi iletirsiniz, müsaitlik ve seçenekler size yazılı dönülür. Sağdaki kupon WhatsApp'a hazır gelir.</p>
+      <div class="bilet" data-belir>
+        <form id="form" onsubmit="return false" novalidate>
+          <div class="adim"><h3>1 · Tarihler</h3>
+            <div class="alan">
+              <div><label for="giris">Giriş</label><input type="date" id="giris"></div>
+              <div><label for="cikis">Çıkış</label><input type="date" id="cikis"></div>
+            </div>
+            <p class="uyari" id="uyari" role="alert"></p>
+          </div>
+          <div class="adim"><h3>2 · Misafirler</h3>
+            <div class="alan">
+              <div><label for="yetiskin">Yetişkin</label><select id="yetiskin"></select></div>
+              <div><label for="cocuk">Çocuk</label><select id="cocuk"></select></div>
+            </div>
+            <p class="ipucu">Çocukların yaşlarını not alanına yazabilirsiniz.</p>
+          </div>
+          <div class="adim"><fieldset><legend>3 · İsteğe bağlı bilgi</legend>
+            <div class="kutucuk">
+              <label><input type="checkbox" id="trHava"> Havalimanı transferi hakkında bilgi istiyorum</label>
+              <label><input type="checkbox" id="trOtogar"> Otogar transferi hakkında bilgi istiyorum</label>
+              <label><input type="checkbox" id="balon"> Sıcak hava balonu turu hakkında bilgi istiyorum</label>
+            </div></fieldset></div>
+          <div class="adim"><h3><label for="isim">4 · Adınız (isteğe bağlı)</label></h3><input type="text" id="isim" placeholder="Ad Soyad" autocomplete="name"></div>
+          <div class="adim"><h3><label for="not">5 · Konuk notu</label></h3><textarea id="not" placeholder="Ör. sessiz bir oda, geç varış, çocuk yaşları..."></textarea></div>
+        </form>
+        <aside class="kupon" aria-live="polite"><div class="ic">
+          <div class="alt">Talep kuponu</div>
+          <h3>Alida Hotel</h3>
+          <div class="gece"><b id="geceSayi">0</b><span id="geceYazi">gece, tarih seçin</span></div>
+          <pre id="fisMetin"></pre>
+          <a class="btn dolu" id="wa" href="https://wa.me/905365102394" target="_blank" rel="noopener">WhatsApp'ta aç</a>
+          <button class="btn hat" id="kopya" type="button">Mesajı kopyala</button>
+          <small>Düğmeye bastığınızda WhatsApp açılır; mesajı orada gönderirsiniz. Bu önizlemede kimseye bir şey gitmez.</small>
+        </div></aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil)">Galeri</span>
+      <h2 data-belir>Pamukkale'den <em>kareler.</em></h2>
+      <p class="acik-yazi" data-belir>Temsilî fotoğraflar; büyütmek için dokunun. Yayında otelin odaları, bahçesi ve manzaraları kendi karelerinizle yer alır.</p>
+      <div class="galeri" data-sirali="70">
+        <button class="w" data-belir data-buyuk="../img/gercek/gunbatimi-sicak.webp"><img src="../img/gercek/gunbatimi-sicak-900.webp" alt="Gün batımında Pamukkale travertenleri (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="t" data-belir data-buyuk="../img/gercek/cay-masa.webp"><img src="../img/gercek/cay-masa-900.webp" alt="Ahşap masada bir bardak çay (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button data-belir data-buyuk="../img/gercek/oda-ahsap.webp"><img src="../img/gercek/oda-ahsap-900.webp" alt="Beyaz yataklı sade bir oda (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:35% 50%"></button>
+        <button class="t" data-belir data-buyuk="../img/gercek/sutun-gunbatimi.webp"><img src="../img/gercek/sutun-gunbatimi-900.webp" alt="Antik bir kentte ayakta kalan sütunlu kemer (temsilî fotoğraf)" width="600" height="800" loading="lazy"></button>
+        <button data-belir data-buyuk="../img/gercek/zeytin-bahce.webp"><img src="../img/gercek/zeytin-bahce-900.webp" alt="Zeytin ağaçları ve taş duvarlı bahçe köşesi (temsilî fotoğraf)" width="600" height="921" loading="lazy"></button>
+        <button class="w" data-belir data-buyuk="../img/gercek/havuz-golge.webp"><img src="../img/gercek/havuz-golge-900.webp" alt="Sütun gölgeleri düşen kalker havuz ve ova (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button data-belir data-buyuk="../img/gercek/testi-kil.webp"><img src="../img/gercek/testi-kil-900.webp" alt="Sıra sıra dizilmiş kırmızı kil testiler (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button data-belir data-buyuk="../img/gercek/aksam-selvi.webp"><img src="../img/gercek/aksam-selvi-900.webp" alt="Akşam ışığında travertenler ve selvi ağaçları (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 70%"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="yer" id="yer">
+    <div class="sar">
+      <span class="ufak" style="color:var(--kil)">Konum</span>
+      <h2 data-belir>Pamukkale, <em>Denizli.</em></h2>
+      <div class="yer-govde">
+        <iframe loading="lazy" title="Alida Hotel, Pamukkale haritası" src="https://www.google.com/maps?q=Alida+Hotel+Pamukkale&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Konum</dt><dd>Pamukkale, Denizli</dd></div>
+            <div><dt>Giriş-çıkış saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+            <div><dt>Adres</dt><dd>Sizden alınıp eklenecek</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://wa.me/905365102394">WhatsApp</a><a class="btn hat" href="tel:+905365102394">Ara</a></div>
+        </div>
+      </div>
+      <div class="yorum" data-belir>
+        <p>Misafir yorumları: Booking ve Google'daki puanınız burada görünür.</p>
+        <small>Örnek yer. Uydurma puan ya da yorum göstermeyiz; yayında gerçek sayfalarınıza bağlantı verilir.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Alida Hotel · Pamukkale</div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Alida Hotel için Boztaş Digital tarafından hazırlandı; otelle ilgili tek bilgi, Pamukkale'de aile işletmesi olduğudur. Oda, olanak, adres ve saat bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-modal="true" aria-label="Büyük fotoğraf">
+  <button type="button" class="kapat" id="kapat">Kapat ✕</button>
+  <button type="button" class="ok on" id="onceki" aria-label="Önceki fotoğraf">‹</button>
+  <img alt="" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+  <button type="button" class="ok son" id="sonraki" aria-label="Sonraki fotoğraf">›</button>
+  <div class="say" id="say"></div>
+</div>
+<div class="yuzen"><a class="btn dolu" href="#talep">Rezervasyon talebi</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+const opt = (id, n, ilk, yaz) => ($(id).innerHTML = Array.from({ length: n }, (_, i) => `<option value="${i + ilk}">${yaz(i + ilk)}</option>`).join(""));
+opt("#yetiskin", 8, 1, (n) => n + " yetişkin");
+opt("#cocuk", 5, 0, (n) => (n === 0 ? "Çocuk yok" : n + " çocuk"));
+opt("#hk", 8, 1, (n) => n + (n === 1 ? " kişi" : " kişi"));
+$("#yetiskin").value = "2"; $("#hk").value = "2";
+const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const gun = (s) => new Date(s + "T12:00");
+const bugun = iso(new Date());
+["#giris", "#cikis", "#hg", "#hc"].forEach((k) => ($(k).min = bugun));
+const uzun = (s) => gun(s).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+function fis() {
+  const g = $("#giris").value, c = $("#cikis").value;
+  let uyari = "", gece = 0;
+  if (g && g < bugun) uyari = "Giriş tarihi geçmişte görünüyor, lütfen kontrol edin.";
+  if (g) { const e = iso(new Date(gun(g).getTime() + 864e5)); $("#cikis").min = e > bugun ? e : bugun; $("#hc").min = $("#cikis").min; }
+  if (g && c) {
+    if (c <= g) uyari = "Çıkış tarihi, giriş tarihinden sonra olmalı.";
+    else gece = Math.round((gun(c) - gun(g)) / 864e5);
+  }
+  $("#uyari").textContent = uyari;
+  $("#geceSayi").textContent = gece;
+  $("#geceYazi").textContent = uyari ? "tarihleri kontrol edin" : gece ? "gece konaklama" : "gece, tarih seçin";
+  const ya = +$("#yetiskin").value, co = +$("#cocuk").value, isim = $("#isim").value.trim(), not = $("#not").value.trim();
+  const tr = [$("#trHava").checked && "havalimanı", $("#trOtogar").checked && "otogar"].filter(Boolean);
+  const sat = ["Merhaba, rezervasyon talebi iletmek istiyorum.", ""];
+  if (isim) sat.push(`Adım: ${isim}`);
+  sat.push(`Giriş: ${g ? uzun(g) : "henüz seçmedim"}`, `Çıkış: ${c ? uzun(c) : "henüz seçmedim"}`);
+  if (gece) sat.push(`Gece sayısı: ${gece}`);
+  sat.push(`Misafir: ${ya} yetişkin${co ? ", " + co + " çocuk" : ""}`);
+  if (tr.length) sat.push(`Transfer: ${tr.join(" ve ")} transferi hakkında bilgi istiyorum`);
+  if ($("#balon").checked) sat.push("Sıcak hava balonu turu hakkında bilgi istiyorum");
+  if (not) sat.push(`Not: ${not}`);
+  sat.push("", "Müsaitlik ve uygun oda seçeneklerini paylaşabilir misiniz? Teşekkürler.");
+  const metin = sat.join("\n");
+  $("#fisMetin").textContent = metin;
+  const wa = $("#wa");
+  wa.href = "https://wa.me/905365102394?text=" + encodeURIComponent(metin);
+  wa.setAttribute("aria-disabled", uyari ? "true" : "false");
+}
+/* hızlı çubuk <-> bilet eşleşmesi */
+const cift = [["#hg", "#giris"], ["#hc", "#cikis"], ["#hk", "#yetiskin"]];
+cift.forEach(([h, b]) => {
+  $(h).addEventListener("change", () => { $(b).value = $(h).value; fis(); });
+  $(b).addEventListener("change", () => { $(h).value = $(b).value; });
+});
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis); fis();
+$("#kopya").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#fisMetin").textContent).catch(() => {}); $("#kopya").textContent = "Kopyalandı"; setTimeout(() => ($("#kopya").textContent = "Mesajı kopyala"), 1600); });
+
+/* büyütme kutusu */
+const kutu = $("#kutu"), kImg = kutu.querySelector("img"), dugmeler = [...document.querySelectorAll("[data-buyuk]")];
+let su = 0, onceki = null;
+function goster(n) {
+  su = (n + dugmeler.length) % dugmeler.length;
+  const b = dugmeler[su];
+  kImg.src = b.dataset.buyuk; kImg.alt = b.querySelector("img").alt;
+  $("#say").textContent = `${su + 1} / ${dugmeler.length} · temsilî fotoğraf`;
+}
+function ac(n) { onceki = document.activeElement; goster(n); kutu.classList.add("acik"); document.body.style.overflow = "hidden"; $("#kapat").focus(); }
+function kapat() { kutu.classList.remove("acik"); document.body.style.overflow = ""; onceki && onceki.focus && onceki.focus(); }
+dugmeler.forEach((b, i) => b.addEventListener("click", () => ac(i)));
+$("#kapat").addEventListener("click", kapat);
+$("#onceki").addEventListener("click", () => goster(su - 1));
+$("#sonraki").addEventListener("click", () => goster(su + 1));
+kutu.addEventListener("click", (e) => { if (e.target === kutu) kapat(); });
+addEventListener("keydown", (e) => {
+  if (!kutu.classList.contains("acik")) return;
+  if (e.key === "Escape") kapat();
+  if (e.key === "ArrowLeft") goster(su - 1);
+  if (e.key === "ArrowRight") goster(su + 1);
+});
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const m=document.getElementById("talep");const f=()=>{const r=m.getBoundingClientRect();y.classList.toggle("goster",scrollY>innerHeight*.7&&!(r.top<innerHeight*.6&&r.bottom>0))};addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "ad": "Alida Hotel",
+  "renk": "#B4532A",
+  "giris": "Pamukkale'deki aile işletmesi otelinizin üç seviyesi: arama ve WhatsApp düğmeleri, tarih seçip hazır talep mesajı çıkaran rezervasyon bileti, ve üç dilli (TR / EN / DE) sinematik sayfa. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî); oda ve olanak metinleri örnektir.",
+  "ozellik": {
+    "standart": ["Kemer çerçeveli güçlü açılış, kısa tanıtım (sizin hikâyenizle doldurulur), Pamukkale çevresi, arama ve WhatsApp düğmeleri, harita"],
+    "profesyonel": ["Rezervasyon bileti: giriş-çıkış tarihi, gece sayısı, yetişkin/çocuk, transfer ve balon turu bilgisi isteği, hazır WhatsApp mesajına dönüşür", "Kapak üzerinde hızlı tarih çubuğu, galeri ve büyütme kutusu (önceki/sonraki), Pamukkale çevresi, harita"],
+    "premium": ["TR / EN / DE dil düğmesi: sayfa metni ve WhatsApp talep mesajı seçilen dilde yazılır", "Sinematik açılış (kemer kaydırdıkça tüm ekrana açılır), 1-2-3 günlük plan seçici ve tam rezervasyon masası"]
+  }
+}
