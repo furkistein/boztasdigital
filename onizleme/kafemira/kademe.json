@@ -3,8 +3,17 @@
   "renk": "#2F4A3A",
   "giris": "Kuşpınar'daki kafeniz için: pastalar, kurabiyeler ve tuzlular, misafirin kaçındığı içeriğe göre süzülen menü ve WhatsApp'a hazır düşen sipariş. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
   "ozellik": {
-    "standart": ["Vitrin başlıkları, tek dokunuşla arama, WhatsApp ve yol tarifi"],
-    "profesyonel": ["İçerik süzgeci: misafir kaçındığını seçer, uygun olmayan ürünler kalkar", "Sipariş fişi WhatsApp'a hazır gider; galeri, harita, Google yorum yönlendirmesi"],
-    "premium": ["Sipariş masası: adet, kaçınılan içerik, gel al / masada, saat ve not", "İkram kutusu talebi (ofis, toplantı, doğum günü), hikâye bölümleri, galeri şeridi"]
+    "standart": [
+      "Vitrin başlıkları, tek dokunuşla arama, WhatsApp ve yol tarifi"
+    ],
+    "profesyonel": [
+      "İçerik süzgeci: misafir kaçındığını seçer, uygun olmayan ürünler kalkar",
+      "Sipariş fişi WhatsApp'a hazır gider; galeri, harita, Google yorum yönlendirmesi"
+    ],
+    "premium": [
+      "Sipariş masası: adet, kaçınılan içerik, gel al / masada, saat ve not",
+      "İkram kutusu talebi (ofis, toplantı, doğum günü), hikâye bölümleri, galeri şeridi",
+      "Sık sorulanlar sohbet kutusu: yalnız sizin onayladığınız cevapları verir, bilmediğinde WhatsApp'a yönlendirir"
+    ]
   }
 }

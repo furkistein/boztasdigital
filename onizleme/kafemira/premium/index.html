@@ -176,6 +176,7 @@ footer .sar{display:grid;gap:14px}
   .yuzen{display:block}
 }
 @media (prefers-reduced-motion:reduce){.kahraman .foto,.ara-foto img{transform:none!important}.acilis>*{animation:none}}
+@media (max-width:600px){:root{--as-alt:84px}}
 .yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
 </style>
 <link rel="stylesheet" href="../../_kademe/kademe.css">
@@ -346,6 +347,23 @@ footer .sar{display:grid;gap:14px}
 <div class="yuzen"><a class="btn dolu" href="#masa">Sipariş masası</a></div>
 
 <script src="../../_kademe/temel.js"></script>
+<script src="../../_asistan/sss-asistan.js"></script>
+<script>
+SssAsistan.baslat({
+  ad: "Kafe Mira", renk: "#2F4A3A", zemin: "#F1EADC", yazi: "#16201A",
+  whatsapp: "905312049646", telefon: "+902582640664", alt: "20px",
+  ornekNot: "Örnek: cevaplar Kafe Mira'nın onayıyla yazılır. Bu asistan yapay zekâ değildir; yalnız onaylı cevapları gösterir, bilmediğinde WhatsApp'a yönlendirir.",
+  sss: [
+    { s: "Adres ve yol tarifi", k: ["adres", "nerede", "yol tarifi", "konum", "harita", "nasil gel", "ulasim"], c: "Kafe Mira, Kuşpınar Mahallesi, Emek Caddesi No:131, Denizli adresinde. Yol tarifi düğmesi Google Haritalar'ı açar.", eylem: [{ ad: "Yol tarifi", href: "https://www.google.com/maps/search/Kafe+Mira+Ku%C5%9Fp%C4%B1nar+Emek+Cad.+131+Denizli" }] },
+    { s: "Telefon ve WhatsApp", k: ["telefon", "numara", "ara", "whatsapp", "iletisim", "ulas"], c: "Telefon: 0258 264 06 64. WhatsApp: 0531 204 96 46.", eylem: [{ ad: "Ara", href: "tel:+902582640664" }, { ad: "WhatsApp", href: "https://wa.me/905312049646" }] },
+    { s: "Sipariş nasıl veririm?", k: ["siparis", "paket", "gelip al", "hazir olsun", "nasil ver"], c: "Menüden ürünleri seçin, sipariş masasında nasıl ve ne zaman alacağınızı işaretleyin; hazır mesaj WhatsApp'a düşer. Siparişi Kafe Mira onaylar.", eylem: [{ ad: "Sipariş masası", href: "#masa" }] },
+    { s: "İçinde süt, gluten, kuruyemiş var mı?", k: ["alerji", "alerjen", "icerik", "gluten", "sut", "yumurta", "kuruyemis", "susam", "fistik", "laktoz", "icinde"], c: "Menüdeki 'Kaçındığım' süzgecinden seçtiğiniz içeriği barındıran ürünler listeden kalkar. Bu sayfadaki içerik bilgileri örnektir; yayında Kafe Mira'nın onayladığı liste yazılır. Ciddi bir alerjiniz varsa sipariş verirken ve kasada mutlaka belirtin.", eylem: [{ ad: "Menüde süz", href: "#menu" }] },
+    { s: "Toplantı ya da doğum günü için toplu sipariş", k: ["ikram", "toplu", "toplanti", "dogum gunu", "kutu", "ofis", "kisilik", "misafir"], c: "İkram kutusu talebini sayfadaki formdan iletebilirsiniz: ne için, kaç kişi, hangi gün. Talebiniz WhatsApp'a hazır düşer; içerik ve zamanı Kafe Mira sizinle netleştirir.", eylem: [{ ad: "Talep formu", href: "#ikram" }] },
+    { s: "Çalışma saatleri", k: ["saat", "acik mi", "kacta", "kapanis", "acilis", "kadar acik", "hafta sonu", "pazar"], c: "Çalışma saatleri henüz bu sayfaya eklenmedi; yayında işletmeden alınıp burada yazılır. Şimdilik telefondan ya da WhatsApp'tan sorabilirsiniz.", eylem: [{ ad: "WhatsApp'tan sor", href: "https://wa.me/905312049646?text=Merhaba%2C%20%C3%A7al%C4%B1%C5%9Fma%20saatlerinizi%20%C3%B6%C4%9Frenebilir%20miyim%3F" }, { ad: "Ara", href: "tel:+902582640664" }] }
+  ]
+});
+</script>
+
 <script>
 const $ = (s) => document.querySelector(s);
 const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
