@@ -42,7 +42,12 @@ const rezervasyonlar = new Map(); // merchant_oid -> kayıt
 
 const app = express();
 app.set('trust proxy', true); // Replit / proxy arkasında gerçek istemci IP'si için
-app.use(express.json());
+app.disable('x-powered-by');
+app.use((req, res, next) => {
+  res.set({ 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'strict-origin-when-cross-origin' });
+  next();
+});
+app.use(express.json({ limit: '20kb' }));
 app.use(express.urlencoded({ extended: false })); // PayTR callback'leri form-urlencoded gelir
 
 function istemciIp(req) {

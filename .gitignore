@@ -1,0 +1,9 @@
+# Sirlar
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.keystore
+*.jks
+node_modules/
