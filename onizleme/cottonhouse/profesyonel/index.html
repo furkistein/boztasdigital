@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>The Cotton House · Pamukkale · Profesyonel örnek</title>
+<meta name="description" content="The Cotton House Hotel, Pamukkale: doğrudan rezervasyon talebi (tarih, misafir, transfer, balon turu bilgisi), Pamukkale çevresi, galeri ve harita. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F7F2E9">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#F7F2E9;--kagit:#FCF9F3;--kum:#EADFCB;--petrol:#0F3A47;--turkuaz:#1E7F9A;--derin:#166880;--soluk:#5E6D71;--cizgi:rgba(15,58,71,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--petrol);font-family:Commissioner,system-ui,sans-serif;font-size:17px;line-height:1.62;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea,select{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--soluk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s;cursor:pointer}
+.btn.dolu{background:var(--turkuaz);color:#fff}
+.btn.dolu:hover{background:var(--derin)}
+.btn.hat{border:1px solid rgba(15,58,71,.3)}
+.btn.hat:hover{border-color:var(--petrol)}
+.ust{position:sticky;top:0;z-index:20;background:rgba(247,242,233,.95);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:70px;gap:16px}
+.logo{font-family:"Libre Caslon Text",serif;font-size:22px;text-decoration:none;white-space:nowrap}
+.logo em{color:var(--turkuaz)}
+.ust nav{display:flex;gap:28px;font-size:15px}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--turkuaz)}
+.kahraman{display:grid;grid-template-columns:6fr 5fr;min-height:calc(100vh - 70px)}
+.kahraman .yazi{padding:60px 56px 52px max(28px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:space-between;gap:36px}
+h1{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:clamp(40px,4.9vw,78px);line-height:1.06;margin-top:18px}
+h1 em{color:var(--turkuaz)}
+.kahraman p{max-width:42ch;color:var(--soluk);margin-top:22px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.bilgi{display:flex;gap:34px;font-size:14px;border-top:1px solid var(--cizgi);padding-top:18px;flex-wrap:wrap}
+.bilgi b{display:block;font-weight:600}
+.kahraman figure{position:relative;overflow:hidden;background:#cfe0e3}
+.kahraman figure img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:yavas 20s ease-out both}
+@keyframes yavas{from{transform:scale(1.06)}to{transform:scale(1)}}
+figcaption.foto-not{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+section{padding:108px 0}
+h2{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.1;margin:12px 0 16px}
+h2 em{color:var(--turkuaz)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+/* çevre */
+.cevre{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.cevre article img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:3px}
+.cevre h3{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:24px;margin:14px 0 4px;line-height:1.2}
+.cevre p{color:var(--soluk);font-size:15px}
+.kucuk{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:40px;border-top:1px solid var(--cizgi)}
+.kucuk div{padding:18px 0;border-bottom:1px solid var(--cizgi)}
+.kucuk b{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:20px;display:block}
+.kucuk span{font-size:14.5px;color:var(--soluk)}
+/* talep */
+.talep-alani{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.talep-izgara{display:grid;grid-template-columns:minmax(0,1fr) 410px;gap:64px;margin-top:44px;align-items:start}
+.adim{padding:22px 0;border-top:1px solid var(--cizgi)}
+.adim legend,.adim h3{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;padding:0}
+.adim fieldset{border:0;min-width:0}
+.alan{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.alan label{display:block;font-size:13px;color:var(--soluk);margin-bottom:4px}
+.adim input[type=date],.adim input[type=text],.adim select,.adim textarea{width:100%;min-width:0;background:var(--zemin);border:1px solid var(--cizgi);border-radius:8px;padding:11px 14px;font-size:15px}
+.adim textarea{min-height:84px;resize:vertical}
+.kutucuk{display:flex;flex-direction:column;gap:10px}
+.kutucuk label{display:flex;gap:12px;align-items:center;font-size:15.5px;cursor:pointer;border:1px solid var(--cizgi);border-radius:10px;padding:12px 14px;background:var(--zemin)}
+.kutucuk input{width:18px;height:18px;accent-color:var(--turkuaz);flex:none}
+.ipucu{font-size:13px;color:var(--soluk);margin-top:8px}
+.uyari{font-size:14px;color:#9A3A1F;margin-top:10px;min-height:1.2em}
+.fis{position:sticky;top:92px;background:var(--zemin);border:1px solid var(--cizgi);border-radius:8px;padding:26px;min-width:0}
+.fis h3{font-family:"Libre Caslon Text",serif;font-weight:400;font-size:24px}
+.gece{display:flex;align-items:baseline;gap:10px;margin-top:10px}
+.gece b{font-family:"Libre Caslon Text",serif;font-size:46px;font-weight:400;color:var(--turkuaz);line-height:1}
+.gece span{color:var(--soluk);font-size:14.5px}
+.fis-metin{white-space:pre-wrap;font-size:14.5px;background:var(--kagit);border-left:2px solid var(--turkuaz);padding:14px 16px;margin:16px 0;min-height:170px;word-break:break-word}
+.fis .btn{width:100%}
+.fis .btn+.btn{margin-top:10px}
+.fis .btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+.fis small{display:block;color:var(--soluk);font-size:12.5px;margin-top:10px}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:3px;position:relative;display:block;background:#dfe8e9}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 7;aspect-ratio:3/2}
+.galeri .g2{grid-column:span 5;aspect-ratio:15/14}
+.galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 4;aspect-ratio:3/4}
+.kutu{position:fixed;inset:0;z-index:50;background:rgba(6,26,33,.94);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;max-width:100%;width:auto;height:auto;border-radius:3px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+/* yer */
+.yer{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:40px;align-items:center}
+.yer iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:3px;background:var(--kum)}
+.yer dl{display:grid;gap:18px}
+.yer dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.yer dd{font-size:20px}
+.yer dd a{text-decoration:none}
+.yorum{margin-top:64px;border:1px dashed rgba(15,58,71,.35);border-radius:10px;padding:26px 28px}
+.yorum p{font-family:"Libre Caslon Text",serif;font-size:24px;line-height:1.3;max-width:34ch}
+.yorum small{display:block;margin-top:10px;color:var(--soluk);font-size:14px}
+footer{background:var(--petrol);color:#B6CDD3;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(247,242,233,.32);border-radius:8px;padding:12px 14px;color:#EDE7DA}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:960px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/3}
+  .kahraman .yazi{padding:40px 28px 48px}
+  .cevre{grid-template-columns:1fr 1fr}
+  .kucuk{grid-template-columns:1fr 1fr}
+  .talep-izgara,.yer{grid-template-columns:minmax(0,1fr);gap:36px}
+  .fis{position:static}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .ust .sar>.btn{padding:10px 18px}
+  .kahraman .yazi{padding:32px 18px 40px}
+  section{padding:72px 0}
+  .cevre{gap:14px}
+  .cevre h3{font-size:20px}
+  .kucuk{grid-template-columns:1fr}
+  .alan{grid-template-columns:1fr}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2}
+  .galeri .g2{grid-column:span 2;aspect-ratio:3/2}
+  .galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 1;aspect-ratio:3/4}
+  .galeri .g5{display:none}
+  .yorum p{font-size:21px}
+  .yuzen{display:block}
+}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman figure img{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="The Cotton House">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">The <em>Cotton</em> House</a>
+    <nav><a href="#talep">Rezervasyon</a><a href="#cevre">Pamukkale</a><a href="#galeri">Galeri</a><a href="#yer">Konum</a></nav>
+    <a class="btn dolu" href="#talep">Talep gönder</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <div>
+        <span class="ufak">Butik otel · Pamukkale</span>
+        <h1>Tarihlerinizi seçin, <em>talebiniz</em> yazılsın.</h1>
+        <p>Giriş-çıkış tarihi, misafir sayısı ve isteklerinizi seçin; hazır mesajınız WhatsApp'ta bize ulaşsın. Doğrudan otelle konuşursunuz.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="#talep">Rezervasyon talebi</a>
+          <a class="btn hat" href="#cevre">Pamukkale çevresi</a>
+        </div>
+      </div>
+      <div class="bilgi">
+        <div><b>WhatsApp / GSM</b>0545 862 45 05</div>
+        <div><b>İkinci hat</b>0506 627 53 54</div>
+      </div>
+    </div>
+    <figure>
+      <img src="../img/gercek/travertin-agac.webp" srcset="../img/gercek/travertin-agac-900.webp 600w, ../img/gercek/travertin-agac.webp 1200w" sizes="(max-width:960px) 100vw, 45vw" alt="Pamukkale travertenlerinde beyaz teraslar ve ağaçlar (temsilî fotoğraf)" width="1200" height="1800" fetchpriority="high">
+      <figcaption class="foto-not">Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="cevre">
+    <div class="sar">
+      <span class="ufak">Pamukkale çevresi</span>
+      <h2 data-belir>Kalkerin beyazı, <em>antik</em> taşın sarısı.</h2>
+      <p class="acik-yazi">Pamukkale travertenleri ve Hierapolis antik kenti UNESCO Dünya Mirası. Çevrede görülecekler genel bilgidir; saat ve giriş koşullarını gitmeden teyit etmenizi öneririz.</p>
+      <div class="cevre" data-sirali="100">
+        <article data-belir><img src="../img/gercek/kalker-havuz-900.webp" alt="Beyaz kalker kenarlı turkuaz havuz (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="aspect-ratio:4/5;object-position:30% 50%"><h3>Travertenler</h3><p>Beyaz teraslar ve turkuaz kalker havuzlar; gün batımı ışığı fotoğraf için sevilir.</p></article>
+        <article data-belir><img src="../img/gercek/tiyatro-900.webp" alt="Hierapolis antik tiyatrosu (temsilî fotoğraf)" width="900" height="724" loading="lazy" style="aspect-ratio:4/5;object-position:50% 50%"><h3>Hierapolis</h3><p>Antik tiyatro ve geniş bir antik kent; travertenlerle birlikte gezilir.</p></article>
+        <article data-belir><img src="../img/gercek/balon-hava-900.webp" alt="Pamukkale üzerinde sıcak hava balonları (temsilî fotoğraf)" width="900" height="675" loading="lazy" style="aspect-ratio:4/5;object-position:30% 50%"><h3>Balon turları</h3><p>Pamukkale'de sıcak hava balonu turları yapılır; uçuşlar hava koşullarına bağlıdır.</p></article>
+      </div>
+      <div class="kucuk" data-belir>
+        <div><b>Kleopatra (Antik) Havuzu</b><span>Antik kalıntıların arasında mineralli havuz.</span></div>
+        <div><b>Karahayıt</b><span>Kırmızı su ile bilinen kaynak alanı.</span></div>
+        <div><b>Laodikeia</b><span>Denizli'de bir başka antik kent.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="talep-alani" id="talep">
+    <div class="sar">
+      <span class="ufak">Rezervasyon talebi</span>
+      <h2 data-belir>Seçin, <em>mesajınız</em> yazılsın.</h2>
+      <p class="acik-yazi">Fiyat ve oda tipi bu önizlemede yok: talebinizi iletirsiniz, müsaitlik ve seçenekler size yazılı dönülür. Sağdaki metin WhatsApp'a hazır gelir.</p>
+      <div class="talep-izgara">
+        <form id="form" onsubmit="return false" novalidate>
+          <div class="adim"><h3>1 · Tarihler</h3>
+            <div class="alan">
+              <div><label for="giris">Giriş</label><input type="date" id="giris"></div>
+              <div><label for="cikis">Çıkış</label><input type="date" id="cikis"></div>
+            </div>
+            <p class="uyari" id="uyari" role="alert"></p>
+          </div>
+          <div class="adim"><h3>2 · Misafirler</h3>
+            <div class="alan">
+              <div><label for="yetiskin">Yetişkin</label><select id="yetiskin"></select></div>
+              <div><label for="cocuk">Çocuk</label><select id="cocuk"></select></div>
+            </div>
+            <p class="ipucu">Çocukların yaşlarını mesaj notunda yazabilirsiniz.</p>
+          </div>
+          <div class="adim"><fieldset><legend>3 · İsteğe bağlı bilgi</legend>
+            <div class="kutucuk">
+              <label><input type="checkbox" id="trHava"> Havalimanı transferi hakkında bilgi istiyorum</label>
+              <label><input type="checkbox" id="trOtogar"> Otogar transferi hakkında bilgi istiyorum</label>
+              <label><input type="checkbox" id="balon"> Sıcak hava balonu turu hakkında bilgi istiyorum</label>
+            </div></fieldset></div>
+          <div class="adim"><h3><label for="isim">4 · Adınız (isteğe bağlı)</label></h3><input type="text" id="isim" placeholder="Ad Soyad" autocomplete="name"></div>
+          <div class="adim"><h3><label for="not">5 · Konuk notu</label></h3><textarea id="not" placeholder="Ör. sessiz bir oda, geç varış, çocuk yaşları..."></textarea></div>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>Talep mesajınız</h3>
+          <div class="gece"><b id="geceSayi">0</b><span id="geceYazi">gece, tarih seçin</span></div>
+          <div class="fis-metin" id="fisMetin"></div>
+          <a class="btn dolu" id="wa" href="https://wa.me/905458624505" target="_blank" rel="noopener">WhatsApp'ta aç</a>
+          <button class="btn hat" id="kopya" type="button">Mesajı kopyala</button>
+          <small>Düğmeye bastığınızda WhatsApp açılır; mesajı orada gönderirsiniz. Bu önizlemede kimseye bir şey gitmez. Mesaj gitmezse arayabilirsiniz: <a href="tel:+905458624505">0545 862 45 05</a>.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Pamukkale'den <em>kareler.</em></h2>
+      <p class="acik-yazi">Temsilî fotoğraflar. Yayında otelin odaları, bahçesi ve manzaraları kendi karelerinizle yer alır.</p>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/pamuk-gunbatimi.webp"><img src="../img/gercek/pamuk-gunbatimi-900.webp" alt="Gün batımında Pamukkale travertenleri (temsilî fotoğraf)" width="900" height="596" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/zeytin-bahce.webp"><img src="../img/gercek/zeytin-bahce-900.webp" alt="Zeytin ağaçları ve çimenli bahçe (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/turkuaz-cikma.webp"><img src="../img/gercek/turkuaz-cikma-900.webp" alt="Turkuaz cumbalı, çiçekli bir ev (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/yatak-ahsap.webp"><img src="../img/gercek/yatak-ahsap-900.webp" alt="Beyaz yatak takımlı sade bir oda (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/teras-sofra.webp"><img src="../img/gercek/teras-sofra-900.webp" alt="Teras üzerinde kurulmuş bir sofra (temsilî fotoğraf)" width="675" height="900" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="yer" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Konum</span>
+      <h2 data-belir>Pamukkale, <em>Denizli.</em></h2>
+      <div class="yer">
+        <iframe loading="lazy" title="The Cotton House Hotel, Pamukkale haritası" src="https://www.google.com/maps?q=The+Cotton+House+Hotel+Pamukkale&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Konum</dt><dd>Pamukkale</dd></div>
+            <div><dt>WhatsApp / GSM</dt><dd><a href="tel:+905458624505">0545 862 45 05</a></dd></div>
+            <div><dt>İkinci hat</dt><dd><a href="tel:+905066275354">0506 627 53 54</a></dd></div>
+            <div><dt>Giriş-çıkış saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://wa.me/905458624505">WhatsApp</a><a class="btn hat" href="https://www.instagram.com/the.cottonhouse/">Instagram</a></div>
+        </div>
+      </div>
+      <div class="yorum">
+        <p>Misafir yorumları: Booking ve Google'daki puanınız burada görünür.</p>
+        <small>Örnek yer. Uydurma puan ya da yorum göstermeyiz; yayında gerçek sayfalarınıza bağlantı verilir.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© The Cotton House · Pamukkale · <a href="https://www.instagram.com/the.cottonhouse/">@the.cottonhouse</a></div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa The Cotton House için Boztaş Digital tarafından hazırlandı. Telefonlar Instagram profilinizden alındı; oda, olanak ve saat bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#talep">Rezervasyon talebi</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+const opt = (id, n, ilk, yaz) => ($(id).innerHTML = Array.from({ length: n }, (_, i) => `<option value="${i + ilk}">${yaz(i + ilk)}</option>`).join(""));
+opt("#yetiskin", 8, 1, (n) => n + (n === 1 ? " yetişkin" : " yetişkin"));
+opt("#cocuk", 5, 0, (n) => (n === 0 ? "Çocuk yok" : n + " çocuk"));
+$("#yetiskin").value = "2";
+const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const gun = (s) => new Date(s + "T12:00");
+const bugun = iso(new Date());
+$("#giris").min = bugun; $("#cikis").min = bugun;
+const uzun = (s) => gun(s).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+function fis() {
+  const g = $("#giris").value, c = $("#cikis").value;
+  let uyari = "", gece = 0;
+  if (g && g < bugun) uyari = "Giriş tarihi geçmişte görünüyor, lütfen kontrol edin.";
+  if (g) { const e = new Date(gun(g).getTime() + 864e5); $("#cikis").min = iso(e) > bugun ? iso(e) : bugun; }
+  if (g && c) {
+    if (c <= g) uyari = "Çıkış tarihi, giriş tarihinden sonra olmalı.";
+    else gece = Math.round((gun(c) - gun(g)) / 864e5);
+  }
+  $("#uyari").textContent = uyari;
+  $("#geceSayi").textContent = gece;
+  $("#geceYazi").textContent = uyari ? "tarihleri kontrol edin" : gece ? (gece === 1 ? "gece konaklama" : "gece konaklama") : "gece, tarih seçin";
+  const ya = +$("#yetiskin").value, co = +$("#cocuk").value, isim = $("#isim").value.trim(), not = $("#not").value.trim();
+  const tr = [$("#trHava").checked && "havalimanı", $("#trOtogar").checked && "otogar"].filter(Boolean);
+  const sat = ["Merhaba, rezervasyon talebi iletmek istiyorum.", ""];
+  if (isim) sat.push(`Adım: ${isim}`);
+  sat.push(`Giriş: ${g ? uzun(g) : "henüz seçmedim"}`, `Çıkış: ${c ? uzun(c) : "henüz seçmedim"}`);
+  if (gece) sat.push(`Gece sayısı: ${gece}`);
+  sat.push(`Misafir: ${ya} yetişkin${co ? ", " + co + " çocuk" : ""}`);
+  if (tr.length) sat.push(`Transfer: ${tr.join(" ve ")} transferi hakkında bilgi istiyorum`);
+  if ($("#balon").checked) sat.push("Sıcak hava balonu turu hakkında bilgi istiyorum");
+  if (not) sat.push(`Not: ${not}`);
+  sat.push("", "Müsaitlik ve uygun oda seçeneklerini paylaşabilir misiniz? Teşekkürler.");
+  const metin = sat.join("\n");
+  $("#fisMetin").textContent = metin;
+  const wa = $("#wa");
+  wa.href = "https://wa.me/905458624505?text=" + encodeURIComponent(metin);
+  wa.setAttribute("aria-disabled", uyari ? "true" : "false");
+}
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis); fis();
+$("#kopya").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#fisMetin").textContent).catch(() => {}); $("#kopya").textContent = "Kopyalandı"; setTimeout(() => ($("#kopya").textContent = "Mesajı kopyala"), 1600); });
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

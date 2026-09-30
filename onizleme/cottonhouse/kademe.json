@@ -1,0 +1,10 @@
+{
+  "ad": "The Cotton House",
+  "renk": "#1E7F9A",
+  "giris": "Pamukkale'deki küçük ölçekli butik otelinizin üç seviyesi: arama ve WhatsApp düğmeleri, doğrudan rezervasyon talebi fişi, ve üç dilli (TR / EN / DE) sinematik sayfa. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî).",
+  "ozellik": {
+    "standart": ["Güçlü açılış fotoğrafı, kısa tanıtım, Pamukkale'de ne var, arama ve WhatsApp düğmeleri, harita"],
+    "profesyonel": ["Rezervasyon talebi fişi: giriş-çıkış tarihi, gece sayısı, yetişkin/çocuk, transfer ve balon turu bilgisi isteği, hazır WhatsApp mesajına dönüşür", "Pamukkale çevresi bölümü, galeri ve büyütme kutusu, harita"],
+    "premium": ["TR / EN / DE dil düğmesi: sayfa metni ve WhatsApp talep mesajı seçilen dilde yazılır", "Pamukkale'de 1-2-3 gün plan seçici (gün sayısı ve ilgi alanına göre rota), tam rezervasyon masası, sinematik açılış"]
+  }
+}

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>The Cotton House · Pamukkale · Standart örnek</title>
+<meta name="description" content="The Cotton House Hotel, Pamukkale: butik, küçük ölçekli konaklama. Arama, WhatsApp ve harita. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F3A47">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--turkuaz:#1E7F9A;--petrol:#0F3A47;--pamuk:#F7F2E9;--kum:#E9DFCE;--soluk:#5F6E72;--cizgi:rgba(15,58,71,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--pamuk);color:var(--petrol);font-family:Mulish,system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1120px,100% - 48px);margin-inline:auto}
+.ust{position:absolute;left:0;right:0;z-index:5;color:#fff}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:78px}
+.logo{font-family:Cardo,Georgia,serif;font-size:25px;text-decoration:none;letter-spacing:.01em}
+.logo small{display:block;font-family:Mulish,sans-serif;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.85;margin-top:-2px}
+.ust nav{display:flex;gap:26px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.94}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.btn.dolu{background:var(--turkuaz);color:#fff}
+.btn.dolu:hover{background:#166880}
+.btn.hat{border:1.5px solid currentColor}
+.kahraman{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#0F3A47}
+.kahraman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%;animation:yavas 22s ease-out both}
+@keyframes yavas{from{transform:scale(1.07)}to{transform:scale(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,36,45,.78) 0%,rgba(9,36,45,.42) 44%,rgba(9,36,45,0) 74%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 26%)}
+.kahraman .sar{position:relative;z-index:2;padding-bottom:76px}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+h1{font-family:Cardo,Georgia,serif;font-weight:400;font-size:clamp(44px,6.4vw,86px);line-height:1.04;margin:14px 0 18px;max-width:14ch}
+h1 em{font-style:italic;color:#BFE6EF}
+.kahraman p{font-size:18px;max-width:44ch;opacity:.96}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kahraman .btn.hat{color:#fff}
+.not-foto{position:absolute;right:18px;bottom:14px;z-index:2;font-size:12px;opacity:.78}
+section{padding:100px 0}
+h2{font-family:Cardo,Georgia,serif;font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:10px 0 14px}
+h2 em{font-style:italic;color:var(--turkuaz)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.bina{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.bina img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:3px}
+.bina figure{position:relative}
+.bina figcaption{font-size:12.5px;color:var(--soluk);margin-top:8px}
+.ornek-kutu{margin-top:26px;border:1px dashed rgba(15,58,71,.35);border-radius:10px;padding:16px 18px;font-size:15px;color:var(--soluk)}
+.ornek-kutu b{color:var(--petrol)}
+.neler{background:var(--petrol);color:var(--pamuk)}
+.neler .acik-yazi{color:#B6CDD3}
+.neler h2 em{color:#8FD0E2}
+.neler-izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.neler-izgara figure img{aspect-ratio:4/3;object-fit:cover;width:100%;border-radius:3px}
+.neler-izgara figcaption{font-family:Cardo,serif;font-size:23px;margin-top:12px;line-height:1.2}
+.neler-izgara small{display:block;font-family:Mulish,sans-serif;font-size:14px;color:#B6CDD3;margin-top:4px;line-height:1.5}
+.diger{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+.diger span{border:1px solid rgba(247,242,233,.28);border-radius:999px;padding:7px 16px;font-size:14.5px}
+.iletisim .sar{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.iletisim iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:3px;background:var(--kum)}
+.tel-liste{list-style:none;margin:26px 0 0;border-top:1px solid var(--cizgi)}
+.tel-liste li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--cizgi);font-size:19px;flex-wrap:wrap}
+.tel-liste a{text-decoration:none;font-weight:700}
+footer{background:var(--petrol);color:#B6CDD3;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(247,242,233,.35);border-radius:10px;padding:12px 14px;color:var(--pamuk)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+@media (max-width:900px){
+  .ust nav{display:none}
+  .bina,.iletisim .sar{grid-template-columns:1fr;gap:36px}
+  .bina img{aspect-ratio:4/3}
+  .neler-izgara{grid-template-columns:1fr;gap:30px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman{min-height:0;display:block}
+  .kahraman img{position:relative;height:58svh;width:100%;animation:none}
+  .kahraman::after{bottom:auto;height:58svh;background:linear-gradient(180deg,rgba(9,36,45,.5) 0%,rgba(9,36,45,0) 30%,rgba(15,58,71,0) 70%,#0F3A47 100%)}
+  .kahraman .sar{padding:26px 0 52px}
+  .kahraman p{font-size:16.5px}
+  .not-foto{top:calc(58svh - 30px);bottom:auto}
+  section{padding:68px 0}
+  .yuzen{display:block}
+}
+.kahraman .sar>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>*:nth-child(2){animation-delay:.1s}.kahraman .sar>*:nth-child(3){animation-delay:.2s}.kahraman .sar>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman img,.kahraman .sar>*{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="The Cotton House">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">The Cotton House<small>Hotel · Pamukkale</small></a>
+    <nav><a href="#otel">Otel</a><a href="#pamukkale">Pamukkale</a><a href="#iletisim">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/teras-havuz.webp" srcset="../img/gercek/teras-havuz-900.webp 900w, ../img/gercek/teras-havuz.webp 1800w" sizes="100vw" alt="Pamukkale'de beyaz travertenler ve turkuaz kalker havuz (temsilî fotoğraf)" width="1800" height="1201" fetchpriority="high">
+    <div class="sar">
+      <span class="ufak">Butik otel · Pamukkale</span>
+      <h1>Pamukkale'de, <em>pamuk</em> gibi bir konaklama.</h1>
+      <p>The Cotton House, Pamukkale'de küçük ölçekli, butik bir otel. Oda için arayın ya da WhatsApp'tan yazın.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905458624505">WhatsApp'tan yazın</a>
+        <a class="btn hat" href="tel:+905458624505">Ara: 0545 862 45 05</a>
+      </div>
+    </div>
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+  </div>
+
+  <section id="otel">
+    <div class="sar bina">
+      <div>
+        <span class="ufak" style="color:var(--turkuaz)">Otel</span>
+        <h2 data-belir>Krem-beyaz duvar, <em>turkuaz</em> balkon.</h2>
+        <p class="acik-yazi" data-belir>Üç katlı, küçük bir bina; bahçesinde ağaçlar var. Büyük bir otelin kalabalığı yerine, birkaç kişinin tanıdığı bir ev sakinliği.</p>
+        <div class="ornek-kutu" data-belir><b>Odalar ve olanaklar (örnek yer).</b> Oda tipleri, kahvaltı, havuz ve benzeri olanaklar yayında sizden alınarak bu bölüme yazılır; burada bilmediğimiz hiçbir şeyi yazmıyoruz.</div>
+      </div>
+      <figure data-belir>
+        <img src="../img/gercek/bina-turkuaz-900.webp" alt="Bej duvarlı, turkuaz panjurlu küçük bir bina (temsilî fotoğraf)" width="600" height="900" loading="lazy">
+        <figcaption>Fotoğraf temsilîdir; yayında otelin kendi binası görünür.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="neler" id="pamukkale">
+    <div class="sar">
+      <span class="ufak">Pamukkale'de ne var</span>
+      <h2 data-belir>Beyaz teraslar, <em>antik</em> şehir.</h2>
+      <p class="acik-yazi">Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde. Konaklamanızı bu rotaya göre kurabilirsiniz.</p>
+      <div class="neler-izgara" data-sirali="120">
+        <figure data-belir><img src="../img/gercek/kalker-havuz-900.webp" alt="Pamukkale'de beyaz kalker kenarlı turkuaz havuz (temsilî fotoğraf)" width="900" height="600" loading="lazy"><figcaption>Travertenler<small>Kalker teraslar ve turkuaz havuzlar.</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/tiyatro-900.webp" alt="Hierapolis antik tiyatrosu ve ova manzarası (temsilî fotoğraf)" width="900" height="724" loading="lazy" style="object-position:50% 40%"><figcaption>Hierapolis<small>Antik tiyatro ve geniş bir antik kent.</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/balon-hava-900.webp" alt="Pamukkale üzerinde sıcak hava balonları, havadan görünüm (temsilî fotoğraf)" width="900" height="675" loading="lazy"><figcaption>Gökyüzünden<small>Pamukkale'de sıcak hava balonu turları yapılır.</small></figcaption></figure>
+      </div>
+      <div class="diger" data-belir><span>Kleopatra (Antik) Havuzu</span><span>Karahayıt kırmızı su</span><span>Laodikeia</span><span>Denizli</span></div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <div>
+        <span class="ufak" style="color:var(--turkuaz)">İletişim</span>
+        <h2 data-belir>Yazın, <em>yer</em> ayıralım.</h2>
+        <p class="acik-yazi">Hangi tarihlerde, kaç kişi; mesajınız yeter.</p>
+        <ul class="tel-liste">
+          <li><span>0545 862 45 05</span><a href="https://wa.me/905458624505">WhatsApp</a><a href="tel:+905458624505">Ara</a></li>
+          <li><span>0506 627 53 54</span><a href="tel:+905066275354">Ara</a></li>
+        </ul>
+        <p style="margin-top:18px;font-size:15px;color:var(--soluk)">Pamukkale · <a href="https://www.instagram.com/the.cottonhouse/">@the.cottonhouse</a></p>
+      </div>
+      <iframe loading="lazy" title="The Cotton House Hotel, Pamukkale haritası" src="https://www.google.com/maps?q=The+Cotton+House+Hotel+Pamukkale&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© The Cotton House · Pamukkale</div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa The Cotton House için Boztaş Digital tarafından hazırlandı; telefonlar Instagram profilinizden alındı, oda ve olanak bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905458624505">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>
