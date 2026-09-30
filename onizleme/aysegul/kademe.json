@@ -1,0 +1,19 @@
+{
+  "ad": "Ayşegül Uygur Reformer Pilates Studio",
+  "renk": "#5F7A66",
+  "saglik": true,
+  "giris": "Reformer/Cadillac pilatesi, hamile pilatesi ve fonksiyonel antrenman derslerinizle; WhatsApp'a hazır deneme dersi mesajı. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": [
+      "Üç ders başlığı (reformer/cadillac, hamile, fonksiyonel), adres ve WhatsApp düğmesi"
+    ],
+    "profesyonel": [
+      "Ders, seviye ve gün seçince kendiliğinden yazılan WhatsApp deneme dersi mesajı",
+      "İlk ders adımları, galeri, harita ve yol tarifi"
+    ],
+    "premium": [
+      "Yavaş sinematik açılış ve kaydırmayla beliren bölümler",
+      "Örnek haftalık ders akışı ve etkileşimli program seçici: hedef, seviye ve gün seçince size uygun ders önerisi ile hazır mesaj"
+    ]
+  }
+}

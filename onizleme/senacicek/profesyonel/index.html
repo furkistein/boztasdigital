@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Sena Çiçekçilik · Denizli · Profesyonel örnek</title>
+<meta name="description" content="Sena Çiçekçilik Denizli: çiçek sipariş formu (özel gün, teslim tarihi, bütçe, mesaj kartı), galeri ve harita. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2EFE7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#F2EFE7;--kagit:#FAF8F3;--koyu:#1F2A23;--yesil:#3F5B4A;--gul:#B0486A;--soluk:#68706A;--cizgi:rgba(31,42,35,.15)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--koyu);font-family:"DM Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--soluk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--yesil);color:#fff}
+.btn.dolu:hover{background:var(--koyu)}
+.btn.hat{border:1px solid var(--cizgi)}
+.btn.hat:hover{border-color:var(--koyu)}
+.ust{position:sticky;top:0;z-index:20;background:rgba(242,239,231,.93);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:68px}
+.logo{font-family:"Bodoni Moda",serif;font-size:24px;text-decoration:none;font-style:italic}
+.ust nav{display:flex;gap:28px;font-size:15px}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--gul)}
+.kahraman{display:grid;grid-template-columns:6fr 5fr;min-height:calc(100vh - 68px)}
+.kahraman .yazi{padding:64px 56px 56px max(28px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+h1{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(46px,5.6vw,92px);line-height:1.02;letter-spacing:-.01em;margin-top:18px}
+h1 em{color:var(--gul)}
+.kahraman p{max-width:40ch;color:var(--soluk);margin-top:22px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.bilgi{display:flex;gap:34px;font-size:14px;border-top:1px solid var(--cizgi);padding-top:18px;flex-wrap:wrap}
+.bilgi b{display:block;font-weight:600}
+.kahraman figure{position:relative;overflow:hidden;background:#3a2f28}
+.kahraman figure img{width:100%;height:100%;object-fit:cover;animation:yavas 18s ease-out both}
+@keyframes yavas{from{transform:scale(1.06)}to{transform:scale(1)}}
+figcaption.foto-not{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.5)}
+section{padding:110px 0}
+h2{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(36px,4.6vw,62px);line-height:1.04;margin:12px 0 16px}
+h2 em{color:var(--gul)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+/* kategoriler */
+.kat{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.kat article img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px}
+.kat h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:24px;margin:14px 0 2px;line-height:1.15}
+.kat p{color:var(--soluk);font-size:14.5px}
+.kat span{font-size:12px;color:var(--gul);font-weight:600;letter-spacing:.05em}
+/* sipariş */
+.siparis-alani{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.siparis-izgara{display:grid;grid-template-columns:1fr 400px;gap:64px;margin-top:44px;align-items:start}
+.adim{padding:22px 0;border-top:1px solid var(--cizgi)}
+.adim legend,.adim h3{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;padding:0}
+.adim fieldset{border:0}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0;width:100%;height:100%}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:8px 16px;font-size:14.5px;cursor:pointer;background:var(--zemin);transition:background .2s,color .2s}
+.secenek input:checked+span{background:var(--yesil);color:#fff;border-color:var(--yesil)}
+.secenek input:focus-visible+span{outline:2px solid var(--gul);outline-offset:2px}
+.alan{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.alan input,.adim textarea{width:100%;background:var(--zemin);border:1px solid var(--cizgi);border-radius:8px;padding:11px 14px;font-size:15px}
+.adim textarea{min-height:84px;resize:vertical}
+.ipucu{font-size:13px;color:var(--soluk);margin-top:8px}
+.fis{position:sticky;top:92px;background:var(--zemin);border:1px solid var(--cizgi);border-radius:8px;padding:26px}
+.fis h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:26px}
+.fis-metin{white-space:pre-wrap;font-size:14.5px;background:var(--kagit);border-left:2px solid var(--gul);padding:14px 16px;margin:16px 0 16px;min-height:150px;word-break:break-word}
+.fis .btn{width:100%}
+.fis small{display:block;color:var(--soluk);font-size:12.5px;margin-top:10px}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:4px;position:relative}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 7;aspect-ratio:3/2}
+.galeri .g2{grid-column:span 5;aspect-ratio:15/14}
+.galeri .g3{grid-column:span 4;aspect-ratio:3/4}
+.galeri .g4{grid-column:span 4;aspect-ratio:3/4}
+.galeri .g5{grid-column:span 4;aspect-ratio:3/4}
+.kutu{position:fixed;inset:0;z-index:50;background:rgba(18,24,20,.93);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;width:auto;border-radius:4px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+/* yer */
+.yer{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:40px;align-items:center}
+.yer iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:4px;background:#dcd8cc;filter:grayscale(.3)}
+.yer dl{display:grid;gap:18px}
+.yer dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.yer dd{font-size:20px}
+.yer dd a{text-decoration:none}
+.yorum{margin-top:64px;border-top:1px solid var(--cizgi);padding-top:34px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.yorum p{font-family:"Bodoni Moda",serif;font-size:28px;line-height:1.2;max-width:26ch}
+footer{background:var(--koyu);color:#B9C1BA;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(242,239,231,.3);border-radius:8px;padding:12px 14px;color:#E8E6DC}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:960px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/3}
+  .kahraman .yazi{padding:40px 28px 48px}
+  .kat{grid-template-columns:1fr 1fr}
+  .siparis-izgara,.yer{grid-template-columns:1fr;gap:36px}
+  .fis{position:static}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman .yazi{padding:32px 18px 40px}
+  section{padding:72px 0}
+  .kat{gap:14px}
+  .kat h3{font-size:20px}
+  .alan{grid-template-columns:1fr}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2}
+  .galeri .g2{grid-column:span 2;aspect-ratio:3/2}
+  .galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 1;aspect-ratio:3/4}
+  .galeri .g5{display:none}
+  .yorum p{font-size:24px}
+  .yuzen{display:block}
+}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman figure img{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Sena Çiçekçilik">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Sena Çiçekçilik</a>
+    <nav><a href="#cicekler">Çiçekler</a><a href="#siparis">Sipariş</a><a href="#galeri">Galeri</a><a href="#yer">Adres</a></nav>
+    <a class="btn dolu" href="#siparis">Sipariş ver</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <div>
+        <span class="ufak">Çiçekçi · Denizli</span>
+        <h1>Doğru gün,<br>doğru <em>çiçek.</em></h1>
+        <p>Özel günü, teslim tarihini ve bütçenizi seçin; hazır mesajınız WhatsApp'ta bize ulaşsın. Buketiniz ona göre hazırlansın.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="#siparis">Sipariş formu</a>
+          <a class="btn hat" href="#cicekler">Çiçeklere bak</a>
+        </div>
+      </div>
+      <div class="bilgi">
+        <div><b>WhatsApp / GSM</b>0554 278 09 59</div>
+        <div><b>Sabit hat</b>0258 377 09 37</div>
+      </div>
+    </div>
+    <figure>
+      <img src="../img/gercek/el-sarma-dik.webp" srcset="../img/gercek/el-sarma-dik-900.webp 600w, ../img/gercek/el-sarma-dik.webp 1200w" sizes="(max-width:960px) 100vw, 45vw" alt="Ahşap tezgâhta pembe gül ve zambaklar kraft kâğıda sarılıyor (temsilî fotoğraf)" width="1200" height="1800" fetchpriority="high" style="object-position:50% 60%">
+      <figcaption class="foto-not">Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="cicekler">
+    <div class="sar">
+      <span class="ufak">Çiçekler</span>
+      <h2 data-belir>Her özel güne <em>bir başlık.</em></h2>
+      <p class="acik-yazi">Başlıklar Instagram profilinizdeki öne çıkanlardan alındı; açıklamalar örnektir. Yayında her kartta kendi çalışmalarınız ve güncel bilgiler durur.</p>
+      <div class="kat" data-sirali="100">
+        <article data-belir><img src="../img/gercek/buket-ranunkul-900.webp" alt="Ranunkül ve gül buketi (temsilî fotoğraf)" width="600" height="900" loading="lazy"><h3>Gül ve mevsim buketleri</h3><p>Elde sarılı, kâğıt ve kurdelesiyle.</p><span>ÖRNEK</span></article>
+        <article data-belir><img src="../img/gercek/vazo-900.webp" alt="Cam vazolarda karanfil ve lilyum (temsilî fotoğraf)" width="600" height="900" loading="lazy"><h3>Vazo ve kutu aranjman</h3><p>Masaya ya da hediyeye hazır.</p><span>ÖRNEK</span></article>
+        <article data-belir><img src="../img/gercek/orkide-900.webp" alt="Mor saksıda fuşya orkide (temsilî fotoğraf)" width="600" height="900" loading="lazy"><h3>Orkide ve saksı çiçekleri</h3><p>Uzun ömürlü, sakin bir hediye.</p><span>ÖRNEK</span></article>
+        <article data-belir><img src="../img/gercek/arac-kaput-900.webp" alt="Araç kaputunda çiçek süsü (temsilî fotoğraf)" width="600" height="900" loading="lazy"><h3>Araç süsleme</h3><p>Düğün, nişan ve karşılama için.</p><span>ÖRNEK</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="siparis-alani" id="siparis">
+    <div class="sar">
+      <span class="ufak">Sipariş formu</span>
+      <h2 data-belir>Seçin, <em>mesajınız</em> yazılsın.</h2>
+      <p class="acik-yazi">Fiyat listesi yok: bütçenizi kendi cümlenizle söylersiniz, size uygun çiçeği önerir ve onayınızla hazırlarız. Sağdaki metin WhatsApp'a hazır gelir.</p>
+      <div class="siparis-izgara">
+        <form id="form" onsubmit="return false">
+          <div class="adim"><fieldset><legend>1 · Özel gün</legend><div class="secenek" id="sGun"></div></fieldset></div>
+          <div class="adim"><fieldset><legend>2 · Ne istersiniz?</legend><div class="secenek" id="sTur"></div></fieldset></div>
+          <div class="adim"><h3>3 · Teslim tarihi</h3>
+            <div class="alan"><input type="date" id="tarih" aria-label="Teslim tarihi"><div class="secenek" id="sSaat" style="align-self:center"></div></div>
+          </div>
+          <div class="adim"><fieldset><legend>4 · Teslimat</legend><div class="secenek" id="sTeslim"></div></fieldset>
+            <div class="alan" id="adresAlan" style="margin-top:12px"><input id="alici" placeholder="Alıcının adı" aria-label="Alıcının adı"><input id="semt" placeholder="Semt / mahalle" aria-label="Semt veya mahalle"></div>
+            <p class="ipucu">Açık adresi WhatsApp'ta yazarsınız; formda gerek yok.</p></div>
+          <div class="adim"><fieldset><legend>5 · Bütçe aralığı</legend><div class="secenek" id="sButce"></div></fieldset></div>
+          <div class="adim"><h3><label for="kart">6 · Mesaj kartında ne yazsın?</label></h3><textarea id="kart" placeholder="Ör. Doğum günün kutlu olsun, iyi ki varsın."></textarea></div>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>Sipariş mesajınız</h3>
+          <div class="fis-metin" id="fisMetin"></div>
+          <a class="btn dolu" id="wa" href="https://wa.me/905542780959" target="_blank" rel="noopener">WhatsApp'ta gönder</a>
+          <small>Düğmeye bastığınızda WhatsApp açılır; mesajı orada gönderirsiniz. Bu önizlemede kimseye bir şey gitmez.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Tezgâhtan <em>kareler.</em></h2>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/lale-ip.webp"><img src="../img/gercek/lale-ip-900.webp" alt="Çiçekçi lale ve okaliptüsü iple bağlıyor (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/gul-el.webp"><img src="../img/gercek/gul-el-900.webp" alt="Ellerde pembe gül buketi (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/buket-siyah.webp"><img src="../img/gercek/buket-siyah-900.webp" alt="Siyah kâğıda sarılmış buket (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/sakayik.webp"><img src="../img/gercek/sakayik-900.webp" alt="Pembe şakayıklar (temsilî fotoğraf)" width="600" height="800" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/kova.webp"><img src="../img/gercek/kova-900.webp" alt="Beyaz kovalarda çiçekler (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="yer" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Adres</span>
+      <h2 data-belir>Adalet Mahallesi'nde, <em>Tuna Caddesi.</em></h2>
+      <div class="yer">
+        <iframe loading="lazy" title="Sena Çiçekçilik haritası" src="https://www.google.com/maps?q=Sena+%C3%87i%C3%A7ek%C3%A7ilik+Adalet+Mah.+Tuna+Cad.+No:33+Denizli&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Adres</dt><dd>Adalet Mh. Tuna Cd. No:33, Denizli</dd></div>
+            <div><dt>WhatsApp / GSM</dt><dd><a href="tel:+905542780959">0554 278 09 59</a></dd></div>
+            <div><dt>Sabit hat</dt><dd><a href="tel:+902583770937">0258 377 09 37</a></dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://www.google.com/maps/search/Sena+%C3%87i%C3%A7ek%C3%A7ilik+Adalet+Mah.+Tuna+Cad.+No:33+Denizli">Yol tarifi</a><a class="btn hat" href="https://www.instagram.com/senacicekcilik20/">Instagram</a></div>
+        </div>
+      </div>
+      <div class="yorum">
+        <p>Beğendiyseniz, bir sonraki müşterimize de söyleyin.</p>
+        <a class="btn dolu" href="https://www.google.com/maps/search/Sena+%C3%87i%C3%A7ek%C3%A7ilik+Denizli">Google'da yorum yazın</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Sena Çiçekçilik · Denizli · <a href="https://www.instagram.com/senacicekcilik20/">@senacicekcilik20</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Sena Çiçekçilik için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); açıklamalar örnektir. Başlıklar ve telefonlar Instagram profilinizden alındı. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#siparis">Sipariş formu</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#sGun", "g", ["Doğum günü", "Sevgililer Günü", "Yıl dönümü", "Anneler Günü", "Yeni iş / açılış", "Düğün, nişan", "Taziye", "Sadece güzel bir gün"]);
+secim("#sTur", "t", ["Buket", "Aranjman (vazo/kutu)", "Orkide / saksı", "Araç süsleme", "Çelenk", "Önerinizi isterim"], 5);
+secim("#sSaat", "h", ["Sabah", "Öğleden sonra", "Akşam", "Fark etmez"], 3);
+secim("#sTeslim", "d", ["Adrese gönderin", "Mağazadan alacağım"]);
+secim("#sButce", "b", ["Sizin bütçenize göre", "Sade ve şık", "Dolgun", "Gösterişli"]);
+const bugun = new Date(); const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+$("#tarih").min = iso(bugun);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function fis() {
+  const gun = deger("g"), tur = deger("t"), saat = deger("h"), tes = deger("d"), but = deger("b");
+  const adres = tes === "Adrese gönderin";
+  $("#adresAlan").style.display = adres ? "" : "none";
+  const tv = $("#tarih").value;
+  const tarih = tv ? new Date(tv + "T12:00").toLocaleDateString("tr-TR", { day: "numeric", month: "long", weekday: "long" }) : "henüz seçmedim";
+  const kart = $("#kart").value.trim(), alici = $("#alici").value.trim(), semt = $("#semt").value.trim();
+  const sat = [
+    "Merhaba, çiçek siparişi vermek istiyorum.",
+    "",
+    `Özel gün: ${gun}`,
+    `Ne istiyorum: ${tur}`,
+    `Teslim tarihi: ${tarih}${saat !== "Fark etmez" ? " (" + saat.toLowerCase() + ")" : ""}`,
+    `Teslimat: ${tes}${adres && (alici || semt) ? " · " + [alici, semt].filter(Boolean).join(", ") : ""}`,
+    `Bütçe: ${but === "Sizin bütçenize göre" ? "sizin bütçenize göre, önerinizi bekliyorum" : but.toLowerCase()}`,
+    `Mesaj kartı: ${kart || "yazmayacağım / sonra söylerim"}`,
+  ];
+  const metin = sat.join("\n");
+  $("#fisMetin").textContent = metin;
+  $("#wa").href = "https://wa.me/905542780959?text=" + encodeURIComponent(metin);
+}
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis); fis();
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

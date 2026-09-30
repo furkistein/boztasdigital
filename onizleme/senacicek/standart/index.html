@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Sena Çiçekçilik · Denizli · Standart örnek</title>
+<meta name="description" content="Sena Çiçekçilik Denizli: buket, aranjman, orkide, araç süsleme ve çelenk. Adalet Mah. Tuna Cad. No:33. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2B1A20">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gul:#B04A66;--koyu:#2B1A20;--krem:#FBF5F1;--kagit:#FFFDFB;--soluk:#7A6A6E;--cizgi:rgba(43,26,32,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--koyu);font-family:"Nunito Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1120px,100% - 48px);margin-inline:auto}
+.ust{position:absolute;left:0;right:0;z-index:5;color:#fff}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-family:Fraunces,Georgia,serif;font-size:25px;text-decoration:none;font-style:italic}
+.ust nav{display:flex;gap:26px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.92}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.btn.dolu{background:var(--gul);color:#fff}
+.btn.dolu:hover{background:#933A54}
+.btn.acik{background:#fff;color:var(--koyu)}
+.btn.hat{border:1.5px solid currentColor}
+.kahraman{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.kahraman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:yavas 20s ease-out both}
+@keyframes yavas{from{transform:scale(1.07)}to{transform:scale(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,14,19,.8) 0%,rgba(28,14,19,.5) 42%,rgba(28,14,19,0) 72%),linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 25%)}
+@media (max-width:600px){.kahraman::after{background:linear-gradient(180deg,rgba(28,14,19,.4) 0%,rgba(28,14,19,.1) 28%,rgba(28,14,19,.86) 74%)}}
+.kahraman .sar{position:relative;z-index:2;padding-bottom:72px}
+.ufak{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+h1{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(44px,6.6vw,88px);line-height:1.02;margin:14px 0 18px;max-width:13ch}
+h1 em{font-style:italic}
+.kahraman p{font-size:18px;max-width:44ch;opacity:.95}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kahraman .btn.hat{color:#fff}
+.not-foto{position:absolute;right:18px;bottom:14px;z-index:2;font-size:12px;opacity:.75}
+section{padding:96px 0}
+h2{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.06;margin:10px 0 14px}
+h2 em{font-style:italic;color:var(--gul)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.hizmet{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hizmet img{border-radius:6px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.liste{list-style:none;margin-top:28px;border-top:1px solid var(--cizgi)}
+.liste li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--cizgi)}
+.liste b{font-family:Fraunces,serif;font-weight:400;font-size:24px}
+.liste span{font-size:14px;color:var(--soluk);text-align:right}
+.ozel{background:var(--koyu);color:var(--krem)}
+.ozel .acik-yazi{color:#CDBFC3}
+.ozel h2 em{color:#E7A3B8}
+.ozel-izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.ozel-izgara figure img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px}
+.ozel-izgara figcaption{font-family:Fraunces,serif;font-size:22px;margin-top:12px}
+.ozel-izgara small{display:block;font-family:"Nunito Sans";font-size:14px;color:#CDBFC3;margin-top:2px}
+.iletisim{text-align:center}
+.iletisim .acik-yazi{margin:0 auto}
+.iletisim .dugmeler{justify-content:center}
+.adres{margin-top:26px;font-size:16px;color:var(--soluk)}
+.adres b{color:var(--koyu);font-weight:600}
+footer{background:var(--koyu);color:#CDBFC3;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(251,245,241,.35);border-radius:10px;padding:12px 14px;color:var(--krem)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+@media (max-width:860px){
+  .ust nav{display:none}
+  .hizmet{grid-template-columns:1fr;gap:36px}
+  .hizmet img{aspect-ratio:4/3}
+  .ozel-izgara{grid-template-columns:1fr;gap:28px}
+  .ozel-izgara figure img{aspect-ratio:4/3}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .kahraman{min-height:82vh}
+  .kahraman .sar{padding-bottom:48px}
+  .kahraman p{font-size:16.5px}
+  section{padding:64px 0}
+  .liste span{max-width:52%}
+  .yuzen{display:block}
+}
+.kahraman .sar>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>*:nth-child(2){animation-delay:.1s}.kahraman .sar>*:nth-child(3){animation-delay:.2s}.kahraman .sar>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman img,.kahraman .sar>*{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Sena Çiçekçilik">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">Sena Çiçekçilik</a>
+    <nav><a href="#cicekler">Çiçekler</a><a href="#ozel">Özel işler</a><a href="#iletisim">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/el-sarma.webp" srcset="../img/gercek/el-sarma-900.webp 900w, ../img/gercek/el-sarma.webp 1800w" sizes="100vw" alt="Çiçekçi tezgâhında buketi kraft kâğıda sarıyor (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high" style="object-position:55% 50%">
+    <div class="sar">
+      <span class="ufak">Çiçekçi · Denizli</span>
+      <h1>Her buket <em>elle</em> sarılır.</h1>
+      <p>Buket, aranjman, orkide, araç süsleme ve çelenk. Denizli'de sevdiklerinize çiçek göndermek için arayın ya da WhatsApp'tan yazın.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905542780959">WhatsApp'tan yazın</a>
+        <a class="btn hat" href="tel:+905542780959">0554 278 09 59</a>
+      </div>
+    </div>
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+  </div>
+
+  <section id="cicekler">
+    <div class="sar hizmet">
+      <div>
+        <span class="ufak" style="color:var(--gul)">Çiçekler</span>
+        <h2 data-belir>Ne <em>göndermek</em> istersiniz?</h2>
+        <p class="acik-yazi">Başlıklar Instagram profilinizdeki öne çıkanlardan alındı. Yayında her başlığın altında kendi fotoğraflarınız durur.</p>
+        <ul class="liste" data-sirali="60">
+          <li data-belir><b>Gül buketleri</b><span>örnek: kırmızı, pembe, beyaz</span></li>
+          <li data-belir><b>Mevsim buketleri</b><span>örnek: mevsimin çiçekleriyle</span></li>
+          <li data-belir><b>Vazo ve kutu aranjman</b><span>örnek: masa ve hediye için</span></li>
+          <li data-belir><b>Orkide ve saksı çiçekleri</b><span>örnek: uzun ömürlü hediye</span></li>
+          <li data-belir><b>Sevgililer Günü</b><span>özel gün hazırlıkları</span></li>
+          <li data-belir><b>Çikolata</b><span>çiçeğin yanına, örnek</span></li>
+        </ul>
+      </div>
+      <img data-belir src="../img/gercek/buket-siyah-900.webp" alt="Siyah kâğıda sarılmış şeftali tonlu gül buketi (temsilî fotoğraf)" width="600" height="900" loading="lazy">
+    </div>
+  </section>
+
+  <section class="ozel" id="ozel">
+    <div class="sar">
+      <span class="ufak">Özel işler</span>
+      <h2 data-belir>Bir günün <em>çiçeği.</em></h2>
+      <p class="acik-yazi">Açılış, düğün, taziye ve tebrik için hazırlanan işler. Çelenk ve taziye çiçeklerinde ölçüyü ve yazıyı sizinle birlikte, sakin bir dille netleştiririz.</p>
+      <div class="ozel-izgara" data-sirali="120">
+        <figure data-belir><img src="../img/gercek/arac-kaput-900.webp" alt="Araç kaputunda pudra tonlu çiçek süsü (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Araç süsleme<small>düğün, nişan, karşılama (örnek)</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/vitrin-900.webp" alt="Bir çiçekçi vitrininde buketler (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Açılış çiçekleri<small>yeni iş yeri için (örnek)</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/orkide-900.webp" alt="Mor saksıda fuşya orkide (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Orkide<small>uzun ömürlü hediye (örnek)</small></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <span class="ufak" style="color:var(--gul)">İletişim</span>
+      <h2 data-belir>Yazın, <em>hazırlayalım.</em></h2>
+      <p class="acik-yazi">Ne zaman, kime, hangi çiçek olsun; mesajınız yeter.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905542780959">WhatsApp 0554 278 09 59</a>
+        <a class="btn hat" href="tel:+902583770937">Sabit hat 0258 377 09 37</a>
+        <a class="btn hat" href="https://www.google.com/maps/search/Sena+%C3%87i%C3%A7ek%C3%A7ilik+Adalet+Mah.+Tuna+Cad.+No:33+Denizli">Yol tarifi</a>
+      </div>
+      <p class="adres"><b>Adalet Mh. Tuna Cd. No:33, Denizli</b> · <a href="https://www.instagram.com/senacicekcilik20/">@senacicekcilik20</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Sena Çiçekçilik · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Sena Çiçekçilik için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kendi çalışmalarınızın fotoğrafları kullanılır. Başlıklar ve telefonlar Instagram profilinizden alındı; açıklamalar örnektir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905542780959">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

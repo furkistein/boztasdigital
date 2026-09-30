@@ -1,0 +1,18 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- cilt.webp: DΛVΞ GΛRCIΛ — https://www.pexels.com/photo/relaxing-spa-facial-treatment-session-37229301/
+- cilt2.webp: Eumorfia  Panera — https://www.pexels.com/photo/cosmetologist-making-beauty-procedures-to-woman-in-salon-16120490/
+- cilt3.webp: Denys Mikhalevych — https://www.pexels.com/photo/unrecognizable-beautician-removing-clay-mask-from-woman-face-12115040/
+- lazer.webp: Farhad Ibrahimzade — https://www.pexels.com/photo/close-up-of-hair-removal-procedure-on-legs-in-salon-laser-epilation-on-beautiful-female-legs-at-beauty-clinic-19239114/
+- lazer2.webp: Kerim Eveyik — https://www.pexels.com/photo/woman-during-laser-hair-removal-16032305/
+- incelme.webp: KoolShooters — https://www.pexels.com/photo/a-person-holding-an-electronic-device-6628656/
+- incelme2.webp: KoolShooters — https://www.pexels.com/photo/a-person-having-a-massage-6628651/
+- kas.webp: Roberto Colatosti — https://www.pexels.com/photo/close-up-of-beautician-doing-permanent-brow-tattoo-8826403/
+- kas2.webp: Nataliya Vaitkevich — https://www.pexels.com/photo/woman-in-white-shirt-kissing-woman-in-teal-sleeveless-dress-5128265/
+- bas.webp: Oleskandra Biliak — https://www.pexels.com/photo/a-hairdresser-massaging-woman-head-23349902/
+- bas2.webp: Pete Miller Portraits — https://www.pexels.com/photo/traditional-thai-wooden-tool-massage-session-35176569/
+- ayak.webp: José Antonio Otegui Auzmendi — https://www.pexels.com/photo/professional-pedicure-session-at-a-salon-34930123/
+- ayak2.webp: Jonathan Borba — https://www.pexels.com/photo/woman-massaging-foot-of-a-man-19695978/
+- cihaz.webp: Khuram Naseem — https://www.pexels.com/photo/woman-having-a-facial-treatment-12556701/
+- oda.webp: Max Vakhtbovych — https://www.pexels.com/photo/table-for-beauty-procedure-in-clinic-6899554/
+- mum.webp: Tima Miroshnichenko — https://www.pexels.com/photo/white-candle-holder-on-wooden-surface-6186740/
+- mum2.webp: Aan Amrin — https://www.pexels.com/photo/lighted-candles-on-white-candle-holder-1926811/

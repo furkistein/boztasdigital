@@ -1,0 +1,21 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- el-sarma.webp: Amina Filkins — https://www.pexels.com/photo/crop-woman-arranging-flowers-in-paper-5410116/
+- el-sarma-dik.webp: Amina Filkins — https://www.pexels.com/photo/crop-woman-creating-bouquet-of-flowers-5410125/
+- usta-koyu.webp: Anna Shvets — https://www.pexels.com/photo/person-in-pink-long-sleeve-shirt-arranging-flowers-5894062/
+- lale-ip.webp: Adrienn — https://www.pexels.com/photo/person-s-hand-near-flowers-1458282/
+- buket-ranunkul.webp: alleksana — https://www.pexels.com/photo/person-holding-bouquet-of-mixed-flowers-4238335/
+- buket-siyah.webp: Kader D. Kahraman — https://www.pexels.com/photo/abundant-bouquet-in-hands-16536447/
+- gul-el.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/person-holding-a-bunch-of-pink-flowers-5927198/
+- makas.webp: Oleskandra Biliak — https://www.pexels.com/photo/person-holding-garden-shears-near-flower-bouquets-24896802/
+- pazar.webp: Sofía  Nuñez — https://www.pexels.com/photo/bouquets-in-a-flower-shop-17403112/
+- kova.webp: Mariya Eskina — https://www.pexels.com/photo/flowers-in-a-store-25945747/
+- vitrin.webp: Hilal  Bülbül — https://www.pexels.com/photo/colorful-flower-display-at-florist-shop-38392600/
+- arac-kaput.webp: Filip Sestrenek — https://www.pexels.com/photo/wedding-car-decoration-made-with-flowers-11474248/
+- arac-kirmizi.webp: Oktay Köseoğlu — https://www.pexels.com/photo/classic-red-car-decorated-with-wedding-flowers-39023285/
+- orkide.webp: Karolina Grabowska www.kaboompics.com — https://www.pexels.com/photo/pink-orchid-5646/
+- orkide-sari.webp: Damir K — https://www.pexels.com/photo/yellow-orchid-plant-on-window-sill-31582039/
+- yabani.webp: Maria Tyutina — https://www.pexels.com/photo/bouquet-of-wild-flowers-17903880/
+- sakayik.webp: Sviatlana Kazheunikava — https://www.pexels.com/photo/close-up-of-pink-peony-flowers-in-bloom-33955699/
+- vazo.webp: Jenkin Shen — https://www.pexels.com/photo/floral-arrangement-with-colorful-blooms-in-vases-33559207/
+- kuru.webp: Julia  Malushko — https://www.pexels.com/photo/ceramic-vases-near-the-glass-window-8070381/
+- selofan.webp: Teona Swift — https://www.pexels.com/photo/woman-wrapping-flowers-in-plastic-package-6912875/

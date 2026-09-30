@@ -1,0 +1,11 @@
+{
+  "ad": "Uzman Healing Gold Güzellik Merkezi",
+  "renk": "#B58F52",
+  "saglik": true,
+  "giris": "Lazer epilasyondan cilt bakımına, microblading'den ayak bakımına sekiz hizmet başlığınız, Hastane Caddesi adresiniz ve WhatsApp'a hazır düşen randevu notu. Mevcut Google Sites sayfanızın yenilenmiş hâli; üç seviye özellik ve içerik bakımından ayrılır, fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": ["Sekiz hizmet başlığı, kat bilgili adres, Pazar kapalı çalışma saatleri, yol tarifi ve WhatsApp'tan randevu"],
+    "profesyonel": ["Hizmetleri seçtikçe tek bir WhatsApp randevu mesajı hazırlanır (lazerde bölge seçimi, gün ve saat tercihi)", "Üç adımda randevu, büyütülebilir galeri, harita ve sık sorulanlar"],
+    "premium": ["Yavaş açılışlı sinematik sayfa ve 'ilk ziyaret nasıl geçer' adım adım akışı", "Etkileşimli randevu masası: birden çok hizmet, Pazar günü hariç önümüzdeki günler, saat dilimi ve birlikte gelenlerle hazır mesaj"]
+  }
+}

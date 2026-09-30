@@ -1,0 +1,20 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- studyo.webp: Lê Đức — https://www.pexels.com/photo/a-modern-fitness-studio-18499500/
+- reformer.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-exercising-on-pilates-reformer-machine-25596677/
+- esneme.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-in-gray-top-stretching-on-pilates-reformer-25596676/
+- kule.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-on-a-pilates-tower-25599837/
+- salon.webp: Ahmet Kurt — https://www.pexels.com/photo/white-room-with-pilates-towers-25596895/
+- egitmen.webp: Nicholas Fu — https://www.pexels.com/photo/fitness-instructor-assisting-woman-doing-pilates-9288101/
+- egitmen2.webp: Kampus Production — https://www.pexels.com/photo/a-man-doing-pilates-exercise-6111607/
+- cadillac.webp: Gustavo Fring — https://www.pexels.com/photo/rehabilitation-with-use-of-equipment-8769162/
+- hamile-top.webp: Gustavo Fring — https://www.pexels.com/photo/content-young-pregnant-women-during-fitness-workout-in-modern-studio-3984376/
+- hamile-grup.webp: Gustavo Fring — https://www.pexels.com/photo/cheerful-group-of-pregnant-women-practicing-yoga-in-modern-studio-3984367/
+- hamile-reformer.webp: Jessica Monte — https://www.pexels.com/photo/woman-in-red-shirt-sitting-on-fitness-equipment-1103242/
+- hamile-ev.webp: Pavel Danilyuk — https://www.pexels.com/photo/women-doing-pilates-at-home-7055647/
+- fonksiyonel.webp: Andrea Piacquadio — https://www.pexels.com/photo/group-of-woman-doing-yoga-868483/
+- sira.webp: Lê Đức — https://www.pexels.com/photo/a-modern-fitness-studio-18499504/
+- kemer.webp: Paulina Vargas — https://www.pexels.com/photo/modern-pilates-studio-with-reformers-36833353/
+- tugla.webp: Karl Solano — https://www.pexels.com/photo/the-interior-of-a-pilates-studio-11036673/
+- varil.webp: Lê Đức — https://www.pexels.com/photo/woman-stretching-in-a-fitness-studio-18499517/
+- kule-bitki.webp: Ahmet Kurt — https://www.pexels.com/photo/pilates-towers-in-a-white-room-25599824/
+- pozisyon.webp: Maria Charizani — https://www.pexels.com/photo/woman-doing-pilates-exercise-5473896/

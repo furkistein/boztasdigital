@@ -1,0 +1,10 @@
+{
+  "ad": "Sena Çiçekçilik",
+  "renk": "#B04A66",
+  "giris": "Buket, aranjman, orkide, araç süsleme ve çelenk başlıklarınız, tek dokunuşla arama ve WhatsApp. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî).",
+  "ozellik": {
+    "standart": ["Çiçek başlıkları (buket, aranjman, orkide, araç süsleme, çelenk), arama ve WhatsApp düğmeleri"],
+    "profesyonel": ["Sipariş formu: özel gün, teslim tarihi, bütçe aralığı ve mesaj kartı yazısı, hazır WhatsApp mesajına dönüşür", "Kategori galerisi, büyütülebilir fotoğraflar, harita"],
+    "premium": ["Buket tarifi seçici: özel gün, ruh hâli ve renk seçin, tarif ve sipariş notu kendiliğinden yazılsın", "Mevsim ve özel gün takvimi, yavaş sinematik açılış, tam sipariş masası"]
+  }
+}
