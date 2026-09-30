@@ -1,0 +1,11 @@
+{
+  "ad": "Hazan Ağız ve Diş Sağlığı Polikliniği",
+  "renk": "#5F7F6C",
+  "giris": "Fatih Cd., Denizli'deki kliniğiniz için adaçayı yeşili ve ekru bir kimlik; ailece gelenler için WhatsApp'a hazır randevu mesajı. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Aile randevu planlayıcı (özet): kaç kişi geldiğinizi, çocuk olup olmadığını, arka arda gelmek isteyip istemediğinizi ve uygun zamanı seçin; WhatsApp mesajı hazır olsun", "Tedavi başlıkları, tek dokunuşla arama, WhatsApp ve yol tarifi"],
+    "profesyonel": ["Aile randevu planlayıcı: her aile üyesi için ayrı satır (kim ve ne için), kişi ekleme ve çıkarma, uygun zaman; mesaj satır satır yazılır", "Tedavi akordeonu (\"Bu konuda randevu notu\" planlayıcıyı doldurur), büyütülebilir galeri, harita ve sık sorulanlar"],
+    "premium": ["Aile randevu masası: kişileri seçip sıralama (kim önce oturacak), her biri için konu, yedi günlük gün seçimi ve zaman dilimi, arka arda ya da ayrı günler; bilet biçiminde özet ve mesajı kopyalama", "İlk ziyaret adım adım anlatımı, sinematik tam ekran açılış, konum paylaşma, galeri şeridi"]
+  }
+}

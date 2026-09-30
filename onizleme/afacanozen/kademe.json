@@ -1,0 +1,11 @@
+{
+  "ad": "Dt. Burak Afacan & Dt. Hamitcan Özen",
+  "renk": "#1B4A3F",
+  "giris": "Gümüşler Bulvarı'ndaki iki hekimli kliniğiniz için hekim seçimli WhatsApp randevu mesajı: Dt. Burak, Dt. Hamitcan ya da fark etmez. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Hekim seçici: Dt. Burak Afacan, Dt. Hamitcan Özen ya da fark etmez + konu seçince hazır WhatsApp mesajı; şu an açık göstergesi ve haftalık saat tablosu"],
+    "profesyonel": ["Hekim, konu ve gün/saat tercihi seçince yazılan randevu notu fişi (WhatsApp'a hazır)", "Başlık akordeonu, günün saat halkası, büyütülebilir galeri ve harita"],
+    "premium": ["Randevu masası: hekim, kimin için, konu, önümüzdeki 7 gün (kapalı günler ve geçmiş saatler elenir) ve saat aralığı ile hazır mesaj", "İki hekim sahnesi, canlı haftalık çizelge, adım adım ilk muayene anlatımı, konum paylaşma, galeri şeridi"]
+  }
+}

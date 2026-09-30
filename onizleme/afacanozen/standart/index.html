@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Dt. Burak Afacan &amp; Dt. Hamitcan Özen · Denizli · Standart örnek</title>
+<meta name="description" content="Dt. Burak Afacan ve Dt. Hamitcan Özen, Gümüşler Bulvarı, Denizli. Hekim seçimli WhatsApp randevu mesajı, çalışma saatleri ve ulaşım. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#12352E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--cam:#12352E;--cam2:#1B4A3F;--ada:#D9E6DC;--sut:#F8F5EE;--kagit:#FFFEFB;--misket:#CDE457;--soluk:#55665F;--cizgi:rgba(18,53,46,.15)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--sut);color:var(--cam);font-family:"Familjen Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1160px,100% - 56px);margin-inline:auto}
+.ufak{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 26px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--cam);color:#fff}
+.btn.dolu:hover{background:var(--cam2)}
+.btn.misket{background:var(--misket);color:var(--cam)}
+.btn.misket:hover{background:#DBF07A}
+.btn.hat{border:1.5px solid currentColor}
+/* üst */
+.ust{position:absolute;left:0;right:0;z-index:5}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:78px}
+.logo{font-family:"Instrument Serif",Georgia,serif;font-size:27px;text-decoration:none;display:flex;align-items:baseline;gap:10px;line-height:1}
+.logo i{font-style:normal;display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--misket);color:var(--cam);font-size:19px;transform:translateY(3px)}
+.logo small{font-family:"Familjen Grotesk",sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soluk)}
+.ust nav{display:flex;gap:26px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.85}
+.ust nav a:hover{opacity:1}
+/* kahraman: iki sütun, sol metin sağ fotoğraf */
+.kahraman{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);min-height:min(92vh,860px)}
+.kahraman .metin{padding:118px 40px 64px max(28px,calc((100vw - 1160px)/2));display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:18px}
+h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(50px,6.6vw,100px);line-height:.94;letter-spacing:-.015em}
+h1 .dt{display:block;font-family:"Familjen Grotesk",sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--soluk);margin-bottom:6px}
+h1 .ve{display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:50%;background:var(--misket);font-style:italic;font-size:34px;line-height:1;margin:16px 0 12px;padding-bottom:4px}
+h1 .ad{display:block;white-space:nowrap}
+.kahraman p.alt{font-size:19px;max-width:38ch;color:var(--soluk)}
+.durum{display:inline-flex;align-items:center;gap:10px;background:var(--ada);border-radius:999px;padding:8px 16px;font-size:14.5px;font-weight:500}
+.durum i{width:9px;height:9px;border-radius:50%;background:#2E9E6B;box-shadow:0 0 0 4px rgba(46,158,107,.2)}
+.durum.kapali i{background:#B8654A;box-shadow:0 0 0 4px rgba(184,101,74,.2)}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap}
+.foto{position:relative;background:var(--cam);overflow:hidden}
+.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:44% 40%}
+.not-foto{position:absolute;right:16px;bottom:12px;z-index:2;font-size:12px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+section{padding:100px 0}
+h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(38px,5vw,66px);line-height:1;letter-spacing:-.01em;margin:12px 0 14px}
+h2 em{font-style:italic;color:var(--cam2)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+/* hekim seçici */
+.secici{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+.hkart{position:relative;display:block}
+.hkart input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.hkart .kutu{display:grid;gap:6px;height:100%;background:var(--kagit);border:1.5px solid var(--cizgi);border-radius:18px;padding:26px 26px 24px;transition:background .3s,border-color .3s,color .3s}
+.hkart .kutu small{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soluk);font-weight:600}
+.hkart .kutu b{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(34px,4vw,50px);line-height:1}
+.hkart .kutu span{font-size:14.5px;color:var(--soluk)}
+.hkart input:checked+.kutu{background:var(--cam);border-color:var(--cam);color:#fff}
+.hkart input:checked+.kutu small,.hkart input:checked+.kutu span{color:#C4D8CC}
+.hkart input:focus-visible+.kutu{outline:3px solid var(--misket);outline-offset:3px}
+.fark{grid-column:1/-1}
+.fark .kutu{padding:16px 26px;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.fark .kutu b{font-size:28px}
+.konular{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+.konular label{position:relative}
+.konular input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.konular span{display:inline-block;border:1.5px solid var(--cizgi);border-radius:999px;padding:8px 16px;font-size:15px;background:var(--kagit);transition:background .25s,color .25s,border-color .25s}
+.konular input:checked+span{background:var(--misket);border-color:var(--misket);font-weight:600}
+.konular input:focus-visible+span{outline:3px solid var(--cam);outline-offset:2px}
+.mesaj{margin-top:30px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;border-top:1px solid var(--cizgi);padding-top:26px}
+.mesaj pre{font-family:inherit;white-space:pre-wrap;font-size:15px;line-height:1.65;color:var(--soluk)}
+.mesaj .dugmeler{justify-content:flex-end}
+.btn.wa{background:#1F7A4D;color:#fff}
+.btn.wa:hover{background:#17623D}
+/* başlıklar */
+.baslik-blok{background:var(--ada)}
+.b-izgara{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.b-izgara figure img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%;object-position:50% 45%}
+.b-izgara figcaption{font-size:13px;color:var(--soluk);margin-top:8px}
+.liste{list-style:none;margin-top:26px;border-top:1px solid var(--cizgi)}
+.liste li{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:8px;padding:14px 0;border-bottom:1px solid var(--cizgi)}
+.liste span.no{font-size:13px;font-weight:600;color:var(--cam2)}
+.liste b{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(25px,2.6vw,32px);line-height:1.15}
+.liste em{font-style:normal;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border-radius:999px;padding:3px 10px;background:var(--cam);color:#fff;white-space:nowrap}
+.liste em.ornek{background:transparent;color:var(--soluk);border:1px dashed rgba(18,53,46,.4)}
+.etiket{display:inline-block;margin-top:16px;font-size:13px;color:var(--soluk)}
+/* saatler */
+.saatler{background:var(--cam);color:var(--sut)}
+.saatler .acik-yazi{color:#B9CFC3}
+.saatler h2 em{color:var(--misket)}
+.saat-izgara{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:center}
+.buyuk{font-family:"Instrument Serif",serif;font-size:clamp(84px,12vw,170px);line-height:.88;letter-spacing:-.02em}
+.buyuk small{display:block;font-family:"Familjen Grotesk",sans-serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#B9CFC3;margin-top:14px}
+.gunler{list-style:none;border-top:1px solid rgba(248,245,238,.2);margin-top:22px}
+.gunler li{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid rgba(248,245,238,.2)}
+.gunler li span{font-variant-numeric:tabular-nums;color:#DCEBE1}
+.gunler li.bugun b::after{content:"bugün";margin-left:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;background:var(--misket);color:var(--cam);border-radius:999px;padding:3px 9px;vertical-align:2px}
+.gunler li.kapali span{opacity:.7}
+.saatler .etiket{color:#B9CFC3}
+/* ulaşım */
+.ulasim{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.kart{background:var(--kagit);border:1px solid var(--cizgi);border-radius:18px;padding:28px;display:grid;gap:12px;align-content:start}
+.kart h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:32px;line-height:1}
+.kart .tel{font-size:26px;text-decoration:none;font-variant-numeric:tabular-nums;font-weight:500}
+.kart p{color:var(--soluk);font-size:15.5px}
+.kart .satir{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+footer{background:var(--cam);color:#B9CFC3;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(248,245,238,.4);border-radius:12px;padding:12px 14px;color:var(--sut)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;gap:8px}
+.yuzen .btn{flex:1;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+@media (max-width:900px){
+  .ust nav{display:none}
+  .b-izgara,.saat-izgara{grid-template-columns:1fr;gap:40px}
+  .b-izgara figure img{aspect-ratio:4/3}
+  .mesaj{grid-template-columns:1fr}
+  .mesaj .dugmeler{justify-content:flex-start}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .ust .sar{height:64px}
+  .ust{position:relative}
+  .logo small{display:none}
+  .kahraman{display:flex;flex-direction:column;min-height:0}
+  .foto{order:-1;height:44svh;min-height:260px}
+  .foto img{object-position:42% 30%}
+  .not-foto{bottom:auto;top:calc(44svh - 28px)}
+  .kahraman .metin{padding:26px 18px 56px;gap:16px}
+  h1{font-size:clamp(44px,13vw,60px)}
+  .kahraman p.alt{font-size:17px}
+  section{padding:64px 0}
+  .secici{grid-template-columns:1fr}
+  .hkart .kutu{padding:20px}
+  .ulasim{grid-template-columns:1fr}
+  .kart{padding:22px}
+  .liste li{grid-template-columns:34px 1fr}
+  .liste em{grid-column:2;justify-self:start;margin-top:4px}
+  .yuzen{display:flex}
+}
+/* Standart: hafif hareket */
+.kahraman .metin>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .metin>*:nth-child(2){animation-delay:.1s}.kahraman .metin>*:nth-child(3){animation-delay:.2s}.kahraman .metin>*:nth-child(4){animation-delay:.3s}.kahraman .metin>*:nth-child(5){animation-delay:.4s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman .metin>*{animation:none}.yuzen{transition:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Dt. Burak Afacan &amp; Dt. Hamitcan Özen">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#"><i aria-hidden="true">&amp;</i>Afacan &amp; Özen<small>Denizli</small></a>
+    <nav><a href="#randevu">Randevu</a><a href="#basliklar">Başlıklar</a><a href="#saatler">Saatler</a><a href="#ulasim">Ulaşım</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="metin">
+      <span class="ufak">Diş hekimleri · Gümüşler Bulvarı, Denizli</span>
+      <h1><span class="ad"><span class="dt">Dt.</span>Burak Afacan</span><span class="ve" aria-label="ve">&amp;</span><span class="ad"><span class="dt">Dt.</span>Hamitcan Özen</span></h1>
+      <p class="alt">İki hekim, tek adres. Randevu için arayın ya da WhatsApp'tan yazın.</p>
+      <div><span class="durum" id="durum"><i></i><span>Çalışma saatleri aşağıda</span></span></div>
+      <div class="dugmeler">
+        <a class="btn dolu" href="tel:+905066042020">Hemen arayın</a>
+        <a class="btn hat" href="#randevu">Hekim seçip yazın</a>
+      </div>
+    </div>
+    <figure class="foto">
+      <img src="../img/gercek/model-900.webp" srcset="../img/gercek/model-900.webp 900w, ../img/gercek/model.webp 1800w" sizes="(max-width:700px) 100vw, 46vw" alt="Diş hekimi hastaya diş modelini gösteriyor (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+      <figcaption class="not-foto">Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="randevu">
+    <div class="sar">
+      <span class="ufak" style="color:var(--cam2)">Randevu isteği</span>
+      <h2 data-belir>Hangi hekimle <em>görüşmek</em> istersiniz?</h2>
+      <p class="acik-yazi">Hekimi ve konuyu seçin, WhatsApp mesajınız yazılsın. Tercihiniz yoksa "fark etmez" yeterli; klinik size uygun saati söyler.</p>
+      <div class="secici" role="radiogroup" aria-label="Hekim seçimi">
+        <label class="hkart"><input type="radio" name="hekim" value="Dt. Burak Afacan"><span class="kutu"><small>Dt.</small><b>Burak Afacan</b><span>Randevu talebini bu hekim adına yazın</span></span></label>
+        <label class="hkart"><input type="radio" name="hekim" value="Dt. Hamitcan Özen"><span class="kutu"><small>Dt.</small><b>Hamitcan Özen</b><span>Randevu talebini bu hekim adına yazın</span></span></label>
+        <label class="hkart fark"><input type="radio" name="hekim" value="fark etmez" checked><span class="kutu"><b>Fark etmez</b><span>İki hekimden hangisi uygunsa</span></span></label>
+      </div>
+      <div class="konular" id="konular" role="radiogroup" aria-label="Konu seçimi"></div>
+      <div class="mesaj">
+        <pre id="mesajMetin" aria-live="polite"></pre>
+        <div class="dugmeler"><a class="btn wa" id="waBtn" href="https://wa.me/905066042020">WhatsApp'ta gönder</a><a class="btn hat" href="tel:+905066042020">Ara</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="baslik-blok" id="basliklar">
+    <div class="sar b-izgara">
+      <div>
+        <span class="ufak" style="color:var(--cam2)">Başlıklar</span>
+        <h2 data-belir>Kayıttaki <em>hizmet</em> başlıkları.</h2>
+        <p class="acik-yazi">İlk altı başlık Google Haritalar kaydında ve Instagram profilinde geçen başlıklardır. Yayında her birinin altına kliniğin kendi kısa açıklaması gelir.</p>
+        <ul class="liste" data-sirali="60">
+          <li data-belir><span class="no">01</span><b>İmplant</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">02</span><b>Kanal tedavisi</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">03</span><b>Zirkonyum ve porselen diş</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">04</span><b>Diş taşı temizliği</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">05</span><b>Diş çekimi</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">06</span><b>Estetik diş hekimliği</b><em>Kayıtta</em></li>
+          <li data-belir><span class="no">07</span><b>Muayene ve kontrol</b><em class="ornek">Örnek</em></li>
+          <li data-belir><span class="no">08</span><b>Dolgu</b><em class="ornek">Örnek</em></li>
+        </ul>
+        <span class="etiket">"Örnek" işaretli başlıklar genel başlıktır; kliniğin kendi listesiyle değişir.</span>
+      </div>
+      <figure data-belir>
+        <img src="../img/gercek/koltuk-900.webp" alt="Muayene koltuğunda hasta ve diş hekimi (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:40% 50%">
+        <figcaption>Yayında: kliniğinizin kendi muayene odası.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="saatler" id="saatler">
+    <div class="sar saat-izgara">
+      <div>
+        <span class="ufak" style="color:var(--misket)">Çalışma saatleri</span>
+        <div class="buyuk" data-belir>09–20<small>hafta içi her gün</small></div>
+      </div>
+      <div>
+        <h2 data-belir>Cumartesi de <em>açık.</em></h2>
+        <p class="acik-yazi">Bugünün satırı işaretlidir. Saatler Google Haritalar kaydından alındı; tatil günleri için önce arayın.</p>
+        <ul class="gunler" id="gunler"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ulasim">
+    <div class="sar">
+      <span class="ufak" style="color:var(--cam2)">Ulaşım ve iletişim</span>
+      <h2 data-belir>Gümüşler Bulvarı, <em>Denizli.</em></h2>
+      <p class="acik-yazi">Telefon, WhatsApp ve yol tarifi tek dokunuşta.</p>
+      <div class="ulasim" data-sirali="120">
+        <div class="kart" data-belir>
+          <h3>Randevu</h3>
+          <a class="tel" href="tel:+905066042020">0506 604 20 20</a>
+          <p>Arayabilir ya da WhatsApp'tan yazabilirsiniz; klinik size uygun saati söyler.</p>
+          <div class="satir"><a class="btn dolu" href="tel:+905066042020">Ara</a><a class="btn hat" href="https://wa.me/905066042020?text=Merhaba%2C%20randevu%20almak%20istiyorum.">WhatsApp</a></div>
+        </div>
+        <div class="kart" data-belir>
+          <h3>Adres</h3>
+          <p style="font-size:18px;color:var(--cam)">Şemikler, Gümüşler Blv. No:60<br>20030 Merkezefendi / Denizli</p>
+          <p>Adres Google Haritalar kaydından alındı. Kat ve giriş bilgisi yayında eklenir.</p>
+          <div class="satir"><a class="btn dolu" href="https://www.google.com/maps/search/?api=1&amp;query=37.8030257,29.057697">Yol tarifi al</a><a class="btn hat" href="https://www.instagram.com/denizlidisdoktoru/">Instagram</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Dt. Burak Afacan &amp; Dt. Hamitcan Özen · Gümüşler Bulvarı, Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Dt. Burak Afacan ve Dt. Hamitcan Özen için Boztaş Digital tarafından hazırlandı, hekimlerin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kliniğinizin fotoğrafları kullanılır. Kliniğin tescilli adı bilinmediği için başlıkta hekim adları kullanıldı. Adres, telefon ve çalışma saatleri Google Haritalar kaydından, hizmet başlıkları kayıt ve Instagram profilinden alındı; "Örnek" işaretli başlıklar örnektir. Sağlık tanıtım kurallarına uygun olarak fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel içermez. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="tel:+905066042020">Ara</a><a class="btn misket" href="#randevu">Hekim seç, yaz</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const trNow = () => new Date(Date.now() + 3 * 3600e3); // Türkiye saati (UTC+3), UTC alanlarıyla okunur
+  // Google Haritalar kaydı: Pzt-Cum 09-20, Cmt 09-17, Pazar kapalı (getUTCDay: 0=Pazar)
+  const PLAN = { 1: [540, 1200], 2: [540, 1200], 3: [540, 1200], 4: [540, 1200], 5: [540, 1200], 6: [540, 1020], 0: null };
+  const GUN = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+  const hm = (d) => String(d / 60 | 0).padStart(2, "0") + "." + String(d % 60).padStart(2, "0");
+
+  // şu an açık mı + haftalık tablo
+  const t = trNow(), dk = t.getUTCHours() * 60 + t.getUTCMinutes(), gun = t.getUTCDay(), p = PLAN[gun];
+  const acik = !!p && dk >= p[0] && dk < p[1];
+  let yazi;
+  if (acik) yazi = "Google kaydına göre şu an açık · " + hm(p[1]) + "'e kadar";
+  else {
+    let ad = "", saat = "";
+    for (let i = (p && dk < p[0]) ? 0 : 1; i < 8; i++) { const g = (gun + i) % 7; if (PLAN[g]) { ad = i === 0 ? "bugün" : i === 1 ? "yarın" : GUN[g]; saat = hm(PLAN[g][0]); break; } }
+    yazi = "Google kaydına göre şu an kapalı · " + ad + " " + saat + "'da açılır";
+  }
+  $("#durum").classList.toggle("kapali", !acik);
+  $("#durum span").textContent = yazi;
+  $("#gunler").innerHTML = [1, 2, 3, 4, 5, 6, 0].map((g) => `<li class="${g === gun ? "bugun" : ""}${PLAN[g] ? "" : " kapali"}"><b>${GUN[g]}</b><span>${PLAN[g] ? hm(PLAN[g][0]) + " – " + hm(PLAN[g][1]) : "Kapalı"}</span></li>`).join("");
+
+  // hekim seçimli WhatsApp mesajı
+  const KONU = ["Fark etmez / muayene", "İmplant", "Kanal tedavisi", "Zirkonyum / porselen diş", "Diş taşı temizliği", "Diş çekimi", "Estetik diş hekimliği"];
+  $("#konular").innerHTML = KONU.map((k, i) => `<label><input type="radio" name="konu" value="${k}"${i === 0 ? " checked" : ""}><span>${k}</span></label>`).join("");
+  const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+  function mesaj() {
+    const h = deger("hekim"), k = deger("konu");
+    const m = "Merhaba, randevu almak istiyorum.\n" + (h === "fark etmez" ? "Hekim tercihim yok, hangisi uygunsa." : "Hekim tercihim: " + h + ".") + "\nKonu: " + k + "\nUygun bir gün ve saat var mı?";
+    $("#mesajMetin").textContent = m;
+    $("#waBtn").href = "https://wa.me/905066042020?text=" + encodeURIComponent(m);
+  }
+  document.addEventListener("change", (e) => { if (e.target.name === "hekim" || e.target.name === "konu") mesaj(); });
+  mesaj();
+
+  const y = document.querySelector(".yuzen"); if (y) { const f = () => y.classList.toggle("goster", scrollY > innerHeight * .7); addEventListener("scroll", f, { passive: true }); f(); }
+})();
+</script>
+</body>
+</html>

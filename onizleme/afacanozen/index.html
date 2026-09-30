@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../ortak/favicon.svg" type="image/svg+xml">
+<title>Dt. Burak Afacan &amp; Dt. Hamitcan Özen · 3 seviyede örnek site · Boztaş Digital</title>
+<meta name="description" content="Dt. Burak Afacan &amp; Dt. Hamitcan Özen için Boztaş Digital'in hazırladığı 3 seviyede örnek site: Standart, Profesyonel, Premium.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5F3EF">
+<style>
+:root{--vurgu:#1B4A3F;--koyu:#141414;--soluk:#6b6862;--zemin:#F5F3EF;--cizgi:rgba(20,20,20,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--zemin);color:var(--koyu);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.sar{width:min(1200px,100% - 40px);margin-inline:auto}
+header{padding:56px 0 34px}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--vurgu)}
+h1{font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.02em;margin:12px 0 14px;max-width:22ch}
+header p{color:var(--soluk);max-width:60ch;font-size:17px}
+.izgara{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:40px}
+.kart{background:#fff;border:1px solid var(--cizgi);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;animation:gel .7s cubic-bezier(.2,.7,.2,1) both}
+.kart:nth-child(2){animation-delay:.08s}.kart:nth-child(3){animation-delay:.16s}
+@keyframes gel{from{opacity:0;transform:translateY(20px)}}
+.kart.one{border:2px solid var(--vurgu);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.kapak{display:block;aspect-ratio:16/10;overflow:hidden;background:#ddd;border-bottom:1px solid var(--cizgi)}
+.kapak img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.kart:hover .kapak img{transform:scale(1.04)}
+.y{padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.ust{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+h2{font-size:26px;letter-spacing:-.01em}
+.ust b{font-size:20px;color:var(--vurgu);white-space:nowrap}
+.rozet{align-self:start;background:var(--vurgu);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:3px 10px}
+ul{list-style:none;display:grid;gap:7px;align-content:start;color:#3d3b37;font-size:15px;flex:1}
+li{padding-left:22px;position:relative}
+li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid var(--vurgu);border-bottom:2px solid var(--vurgu);transform:rotate(-45deg)}
+.btn{display:flex;justify-content:center;border-radius:12px;padding:14px;font-weight:700;text-decoration:none;background:var(--koyu);color:#fff;transition:background .25s}
+.btn:hover{background:var(--vurgu)}
+.not{color:var(--soluk);font-size:14px;border-top:1px solid var(--cizgi);padding:24px 0 50px;display:grid;gap:8px}
+.not a{color:var(--koyu);font-weight:700}
+@media (prefers-reduced-motion:reduce){.kart{animation:none}.kapak img{transition:none}}
+@media (max-width:900px){.izgara{grid-template-columns:1fr}.kart.one{order:-1}header{padding:40px 0 26px}}
+</style>
+</head>
+<body>
+<header class="sar">
+  <span class="ufak">Boztaş Digital · örnek önizleme</span>
+  <h1>Dt. Burak Afacan &amp; Dt. Hamitcan Özen için 3 farklı seviyede örnek</h1>
+  <p>Gümüşler Bulvarı'ndaki iki hekimli kliniğiniz için hekim seçimli WhatsApp randevu mesajı: Dt. Burak, Dt. Hamitcan ya da fark etmez. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî). Aynı içerik üç farklı tasarım ve özellik düzeyinde hazırlandı; hangisi işletmenize uygunsa onunla devam ederiz. Her sayfanın üstündeki çubukla seviyeler arasında geçebilirsiniz.</p>
+</header>
+<main class="sar izgara">
+    <article class="kart">
+      <a class="kapak" href="standart/" aria-label="Standart seviyesini aç"><img src="img/kademe-standart.webp" alt="Dt. Burak Afacan &amp; Dt. Hamitcan Özen Standart seviye ekran görüntüsü" width="720" height="450" loading="eager"></a>
+      <div class="y">
+        <div class="ust"><h2>Standart</h2><b>2.500 TL</b></div>
+        
+        <ul><li>Tek sayfa, telefona tam uyumlu</li><li>Menü/hizmet başlıkları, arama ve yol tarifi düğmeleri</li><li>Sade tasarım, gerçek fotoğraf</li><li>Hekim seçici: Dt. Burak Afacan, Dt. Hamitcan Özen ya da fark etmez + konu seçince hazır WhatsApp mesajı; şu an açık göstergesi ve haftalık saat tablosu</li></ul>
+        <a class="btn" href="standart/">Standart örneği aç →</a>
+      </div>
+    </article>
+    <article class="kart one">
+      <a class="kapak" href="profesyonel/" aria-label="Profesyonel seviyesini aç"><img src="img/kademe-profesyonel.webp" alt="Dt. Burak Afacan &amp; Dt. Hamitcan Özen Profesyonel seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Profesyonel</h2><b>4.000 TL</b></div>
+        <span class="rozet">En çok tercih edilen</span>
+        <ul><li>Ürün ürün menü ya da hizmet listesi</li><li>Galeri, harita ve yol tarifi</li><li>Sektöre özel araç (sipariş/randevu notu)</li><li>Hekim, konu ve gün/saat tercihi seçince yazılan randevu notu fişi (WhatsApp'a hazır)</li><li>Başlık akordeonu, günün saat halkası, büyütülebilir galeri ve harita</li></ul>
+        <a class="btn" href="profesyonel/">Profesyonel örneği aç →</a>
+      </div>
+    </article>
+    <article class="kart">
+      <a class="kapak" href="premium/" aria-label="Premium seviyesini aç"><img src="img/kademe-premium.webp" alt="Dt. Burak Afacan &amp; Dt. Hamitcan Özen Premium seviye ekran görüntüsü" width="720" height="450" loading="lazy"></a>
+      <div class="y">
+        <div class="ust"><h2>Premium</h2><b>7.500 TL</b></div>
+        
+        <ul><li>Editoryal tasarım, tam ekran gerçek fotoğraflar</li><li>Bölümlü anlatım ve fotoğraf çekimi planı</li><li>Gelişmiş araçlar: tam sipariş/randevu masası ve özel talep formları</li><li>Randevu masası: hekim, kimin için, konu, önümüzdeki 7 gün (kapalı günler ve geçmiş saatler elenir) ve saat aralığı ile hazır mesaj</li><li>İki hekim sahnesi, canlı haftalık çizelge, adım adım ilk muayene anlatımı, konum paylaşma, galeri şeridi</li></ul>
+        <a class="btn" href="premium/">Premium örneği aç →</a>
+      </div>
+    </article>
+</main>
+<footer class="sar not">
+  <div>Fiyatlar tek seferliktir; alan adı yıllık ücreti ayrıdır. İçerikleriniz geldikten sonra 7 iş günü içinde önizleme, 1 tur ücretsiz düzeltme. Sağlık tanıtım yönetmeliğine uygun: fiyat, kampanya, hasta yorumu ve öncesi-sonrası görseli yoktur.</div>
+  <div>Bu sayfalar <b>örnek önizlemedir</b>, işletmenin onayı yoktur; görseller temsilîdir. Bilgi ve iletişim: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+</footer>
+</body>
+</html>

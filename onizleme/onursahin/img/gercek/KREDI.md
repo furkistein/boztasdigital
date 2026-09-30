@@ -1,0 +1,13 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- danisma.webp: Pavel Danilyuk — https://www.pexels.com/photo/two-men-looking-at-the-monitor-6812518/
+- model-anlat.webp: Esma Karagoz — https://www.pexels.com/photo/dentist-showing-a-dental-model-to-a-patient-12746003/
+- rontgen.webp: Cedric Fauntleroy — https://www.pexels.com/photo/person-wearing-blue-latex-gloves-holding-white-tablet-computer-4270094/
+- implant-model.webp: Jonathan Borba — https://www.pexels.com/photo/dental-implants-with-screw-on-table-in-clinic-4687905/
+- klinik.webp: Pavel Danilyuk — https://www.pexels.com/photo/empty-dentist-office-6812461/
+- tedavi.webp: https://kaboompics.com/ — https://www.pexels.com/photo/a-man-at-the-dentists-6627413/
+- planlama.webp: Cedric Fauntleroy — https://www.pexels.com/photo/side-view-of-a-man-wearing-face-mask-while-typing-on-computer-keyboard-4269490/
+- hekim.webp: Semih Demirbaş — https://www.pexels.com/photo/doctor-wearing-gloves-and-face-mask-16228026/
+- ekipman.webp: Pavel Danilyuk — https://www.pexels.com/photo/screen-and-dental-instruments-in-doctors-office-6809639/
+- implant-plan.webp: The Row Dental — https://www.pexels.com/photo/dental-consultation-with-3d-model-display-31017708/
+- unite.webp: Engin Akyurt — https://www.pexels.com/photo/a-dental-engine-in-a-clinic-4562895/
+- lamba.webp: Daniel Frank — https://www.pexels.com/photo/white-dental-equipment-near-wall-305567/

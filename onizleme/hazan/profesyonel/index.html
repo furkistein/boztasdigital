@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Hazan Ağız ve Diş Sağlığı Polikliniği · Denizli · Profesyonel örnek</title>
+<meta name="description" content="Hazan Ağız ve Diş Sağlığı Polikliniği, Fatih Cd., Denizli: tedavi bilgileri, aile randevu planlayıcı, galeri, harita ve sık sorulanlar. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FBF9F3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#FBF9F3;--nane:#E6EDE3;--orman:#1F3A30;--adacayi:#7C9A86;--gul:#C4877B;--gulk:#92514A;--soluk:#5A685E;--cizgi:rgba(31,58,48,.15)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--zemin);color:var(--orman);font-family:Lexend,system-ui,sans-serif;font-weight:300;font-size:16px;line-height:1.7;overflow-x:hidden}
+a{color:inherit}
+b,strong{font-weight:600}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+em{font-family:Lora,Georgia,serif;font-style:italic;font-weight:400;color:var(--gulk)}
+.ufak{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--gulk)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:14px 22px;font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--orman);color:#fff}
+.btn.dolu:hover{background:#2E5545}
+.btn.hat{border:1px solid rgba(31,58,48,.3)}
+.btn.hat:hover{border-color:var(--orman)}
+.btn.wa{background:#256B47;color:#fff}
+.btn.wa:hover{background:#1C5638}
+.btn.kucuk{padding:9px 16px;font-size:13.5px}
+/* üst */
+.ust{position:sticky;top:0;z-index:20;background:rgba(251,249,243,.96);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:68px;gap:20px}
+.logo{font-size:23px;font-weight:600;letter-spacing:-.03em;text-decoration:none;display:flex;align-items:center;gap:9px}
+.logo i{width:18px;height:23px;border:2.5px solid var(--adacayi);border-bottom:0;border-radius:99px 99px 0 0}
+.ust nav{display:flex;gap:26px;font-size:14px;font-weight:400}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--gulk)}
+/* kahraman */
+.kahraman{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center;padding:28px 0 84px}
+h1{font-weight:300;font-size:clamp(38px,4.6vw,66px);line-height:1.07;letter-spacing:-.035em;margin:18px 0 22px}
+.yazi>p{color:var(--soluk);font-size:17px;max-width:42ch}
+.dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.bilgi{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px;border-top:1px solid var(--cizgi)}
+.bilgi div{padding:16px 14px 0 0;font-size:13px;color:var(--soluk);line-height:1.5}
+.bilgi b{display:block;font-size:15px;color:var(--orman);margin-bottom:2px}
+.kah-foto{position:relative;margin:0}
+.kah-foto img{width:100%;aspect-ratio:6/5;object-fit:cover;border-radius:220px 28px 28px 28px;animation:yavas 14s ease-out both;background:var(--nane)}
+@keyframes yavas{from{transform:scale(1.05)}to{transform:none}}
+.kah-foto .kap{overflow:hidden;border-radius:220px 28px 28px 28px}
+.kah-foto .kap img{border-radius:0}
+.kah-foto figcaption{font-size:12.5px;color:var(--soluk);margin-top:10px;text-align:right}
+section{padding:104px 0}
+h2{font-weight:300;font-size:clamp(32px,4vw,54px);line-height:1.08;letter-spacing:-.03em;margin:12px 0 16px}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.etiket{display:inline-block;font-size:12.5px;color:var(--soluk);border:1px dashed rgba(31,58,48,.35);border-radius:6px;padding:5px 10px;margin-top:10px}
+/* tedaviler */
+.tedavi{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.tedavi .yapisik{position:sticky;top:96px}
+.tedavi .yapisik img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:200px 200px 24px 24px;margin-top:28px}
+.akordeon details{border-bottom:1px solid var(--cizgi)}
+.akordeon details:first-child{border-top:1px solid var(--cizgi)}
+.akordeon summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:48px 1fr 28px;align-items:center;padding:21px 0;font-size:clamp(19px,2vw,25px);font-weight:400;letter-spacing:-.02em}
+.akordeon summary::-webkit-details-marker{display:none}
+.akordeon summary span{font-size:12px;color:var(--gulk);font-weight:600;letter-spacing:.1em}
+.akordeon summary i{width:28px;height:28px;border-radius:50%;border:1px solid var(--cizgi);position:relative;transition:transform .35s,background .3s}
+.akordeon summary i::before,.akordeon summary i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.akordeon summary i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.akordeon details[open] summary i{transform:rotate(45deg);background:var(--nane)}
+.akordeon summary:focus-visible{outline:2px solid var(--gulk);outline-offset:2px}
+.akordeon .ic{padding:0 0 26px 48px;color:var(--soluk);max-width:60ch}
+.akordeon .ic p+p{margin-top:8px}
+.akordeon .bu{margin-top:14px;font-size:14px;font-weight:600;color:var(--orman);border-bottom:1px solid var(--gul);padding-bottom:1px}
+/* aile planlayıcı */
+.aile{background:var(--nane)}
+.aile-izgara{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:start;margin-top:44px}
+.aile fieldset{border:0;margin-bottom:26px;min-width:0}
+.aile legend{font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:.02em}
+.satirlar{display:grid;gap:10px}
+.kisi{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(0,1.5fr) auto;gap:10px;align-items:center;background:#fff;border:1px solid rgba(31,58,48,.14);border-radius:16px;padding:10px 12px}
+.kisi .no{width:30px;height:30px;border-radius:50%;background:var(--orman);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:600}
+.kisi select{width:100%;min-width:0;font:inherit;font-size:14.5px;font-weight:400;color:var(--orman);background:var(--zemin);border:1px solid rgba(31,58,48,.16);border-radius:10px;padding:9px 10px}
+.kisi .sil{width:34px;height:34px;border-radius:50%;font-size:18px;line-height:1;color:var(--soluk);border:1px solid var(--cizgi)}
+.kisi .sil:hover{background:var(--nane);color:var(--orman)}
+.kisi .yer{width:34px}
+.ekle{margin-top:12px}
+.ekle:disabled{opacity:.4;cursor:not-allowed}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0}
+.secenek span{display:inline-block;background:#fff;border:1px solid rgba(31,58,48,.16);border-radius:12px;padding:9px 14px;font-size:14px;font-weight:400;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.secenek input:checked+span{background:var(--orman);color:#fff;border-color:var(--orman)}
+.secenek input:focus-visible+span,.kisi select:focus-visible,.kisi .sil:focus-visible,.btn:focus-visible{outline:2px solid var(--gulk);outline-offset:2px}
+.fis{position:sticky;top:96px;background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 50px -30px rgba(31,58,48,.4);min-width:0}
+.fis h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.fis .mesaj{white-space:pre-wrap;font-size:14.5px;line-height:1.65;font-weight:400;background:var(--zemin);border-left:3px solid var(--gul);border-radius:4px;padding:14px 16px;margin:16px 0 18px;min-height:150px;overflow-wrap:anywhere}
+.fis .btn{width:100%}
+.fis .btn+.btn{margin-top:10px}
+.fis small{display:block;color:var(--soluk);font-size:12.5px;margin-top:12px;line-height:1.5}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+.galeri button{overflow:hidden;border-radius:18px;position:relative;min-width:0}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.03)}
+.galeri .g1{grid-column:span 7;aspect-ratio:3/2}
+.galeri .g2{grid-column:span 5;aspect-ratio:15/14}
+.galeri .g3,.galeri .g4,.galeri .g5{grid-column:span 4;aspect-ratio:1}
+.kutu{position:fixed;inset:0;z-index:70;background:rgba(19,32,27,.94);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:86vh;width:auto;border-radius:8px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px}
+/* konum */
+.konum{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:44px;align-items:start}
+.konum iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:20px;background:var(--nane)}
+.konum dl{display:grid;gap:18px}
+.konum dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--soluk);font-weight:600}
+.konum dd{font-size:19px;font-weight:400}
+.konum dd a{text-decoration:none}
+.konum .dugmeler{margin-top:26px}
+/* SSS */
+.sss{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.sss .akordeon summary{font-size:18px;grid-template-columns:1fr 28px}
+.sss .akordeon .ic{padding-left:0}
+footer{background:var(--orman);color:#BFCFC5;padding:40px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(251,249,243,.35);border-radius:10px;padding:12px 14px;color:#EEF3EC}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+@media (max-width:960px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;gap:36px}
+  .kah-foto{order:-1}
+  .tedavi,.aile-izgara,.konum,.sss{grid-template-columns:1fr;gap:36px}
+  .tedavi .yapisik,.fis{position:static}
+  .tedavi .yapisik img{aspect-ratio:16/10;border-radius:120px 120px 20px 20px}
+}
+@media (max-width:600px){
+  body{font-size:15.5px}
+  .sar{width:calc(100% - 36px)}
+  .ust .btn{padding:10px 14px;font-size:13.5px}
+  .kahraman{padding:12px 0 56px}
+  .kah-foto img,.kah-foto .kap{border-radius:110px 20px 20px 20px}
+  .kah-foto img{aspect-ratio:4/3}
+  h1{font-size:clamp(34px,10vw,46px)}
+  .bilgi{grid-template-columns:1fr;}
+  .bilgi div{padding:12px 0;border-bottom:1px solid var(--cizgi)}
+  section{padding:72px 0}
+  .akordeon summary{grid-template-columns:38px 1fr 28px;padding:18px 0}
+  .akordeon .ic{padding-left:38px}
+  .kisi{grid-template-columns:30px minmax(0,1fr) 34px;padding:10px}
+  .kisi .sil,.kisi .yer{grid-column:3;grid-row:1}
+  .kisi select.konu{grid-column:2/4}
+  .kisi .no{grid-row:1/3;align-self:start;margin-top:3px}
+  .galeri{grid-template-columns:1fr 1fr;gap:10px}
+  .galeri .g1{grid-column:span 2}
+  .galeri .g2,.galeri .g3{grid-column:span 1;aspect-ratio:3/4}
+  .galeri .g4,.galeri .g5{grid-column:span 1}
+  .fis{padding:22px}
+  .yuzen{display:block}
+}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kah-foto img{animation:none}.akordeon summary i,.galeri img{transition:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Hazan Ağız ve Diş Sağlığı Polikliniği">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#"><i aria-hidden="true"></i>hazan</a>
+    <nav><a href="#tedaviler">Tedaviler</a><a href="#aile">Aile randevusu</a><a href="#galeri">Klinik</a><a href="#konum">Konum</a><a href="#sss">Sık sorulanlar</a></nav>
+    <a class="btn dolu" href="#aile">Randevu</a>
+  </div>
+</header>
+
+<main>
+  <div class="sar kahraman">
+    <div class="yazi">
+      <span class="ufak">Ağız ve diş sağlığı · Fatih Cd., Denizli</span>
+      <h1>Herkesin şikâyeti <em>ayrı,</em> randevu notu tek.</h1>
+      <p>Eşiniz, çocuğunuz, anneniz: gelecek herkesi ve ne için geldiğini ekleyin. WhatsApp mesajı satır satır yazılsın.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="#aile">Aile randevusunu hazırla</a>
+        <a class="btn hat" href="tel:+905324917320">0532 491 73 20</a>
+      </div>
+      <div class="bilgi">
+        <div><b>Telefon ve WhatsApp</b>tek numara</div>
+        <div><b>Fatih Cd. 78 A</b>yol tarifi hazır</div>
+        <div><b>Yetişkin ve çocuk</b>ailece başvuru</div>
+      </div>
+    </div>
+    <figure class="kah-foto">
+      <div class="kap"><img src="../img/gercek/muayene.webp" srcset="../img/gercek/muayene-900.webp 900w, ../img/gercek/muayene.webp 1800w" sizes="(max-width:960px) 100vw, 55vw" alt="Diş hekimi muayene sonrası hastaya bulguları anlatıyor (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high" style="object-position:30% 45%"></div>
+      <figcaption>Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="tedaviler" style="padding-top:40px">
+    <div class="sar tedavi">
+      <div class="yapisik">
+        <span class="ufak">Tedaviler</span>
+        <h2 data-belir>Ne yapılır, <em>nasıl</em> ilerler?</h2>
+        <p class="acik-yazi">Her başlığın altında sade, genel bir bilgi. Tedavinin size uygun olup olmadığına muayenede hekiminiz karar verir.</p>
+        <span class="etiket">Örnek başlıklar: kliniğin kendi listesiyle değişir.</span>
+        <img src="../img/gercek/tablet-900.webp" alt="Diş hekimi tabletle hastaya bilgi veriyor (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:28% 50%">
+      </div>
+      <div class="akordeon" id="akordeon"></div>
+    </div>
+  </section>
+
+  <section class="aile" id="aile">
+    <div class="sar">
+      <span class="ufak">Aile randevu planlayıcı</span>
+      <h2 data-belir>Kim geliyor, <em>ne için?</em></h2>
+      <p class="acik-yazi">Her kişi için bir satır ekleyin. Klinik, mesajınızdaki sıraya göre size uygun gün ve saati WhatsApp'tan bildirir.</p>
+      <div class="aile-izgara">
+        <form id="form" onsubmit="return false">
+          <fieldset><legend>Gelecek kişiler</legend>
+            <div class="satirlar" id="kisiler"></div>
+            <button type="button" class="btn hat kucuk ekle" id="ekle">+ Bir kişi daha ekle</button>
+          </fieldset>
+          <fieldset id="siraKutu"><legend>Nasıl gelmek istersiniz?</legend><div class="secenek" id="sira"></div></fieldset>
+          <fieldset><legend>Ne zaman uygun?</legend><div class="secenek" id="zaman"></div></fieldset>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>WhatsApp mesajınız</h3>
+          <div class="mesaj" id="mesaj"></div>
+          <a class="btn wa" id="wa" href="https://wa.me/905324917320">WhatsApp'ta aç</a>
+          <a class="btn hat" href="tel:+905324917320">Ya da arayın: 0532 491 73 20</a>
+          <small>Sağlık bilgisi paylaşmanız gerekmez; kısa bir not yeterli. Acil ağrıda aramanız daha hızlıdır.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Klinik</span>
+      <h2 data-belir>Kapıdan içeri <em>bir bakış.</em></h2>
+      <p class="acik-yazi">Yayında bu kareler kliniğinizde çekilen fotoğraflarla değişir: bekleme alanı, muayene odası, ekibiniz.</p>
+      <div class="galeri" data-sirali="80">
+        <button class="g1" data-belir data-buyuk="../img/gercek/ekip.webp"><img src="../img/gercek/ekip-900.webp" alt="Aydınlık muayene odasında hekim ve asistan (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/unite.webp"><img src="../img/gercek/unite-900.webp" alt="Muayene ünitesi ve ahşap bekleme köşesi (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/cocuk.webp"><img src="../img/gercek/cocuk-900.webp" alt="Diş hekimi gülümseyen çocuğa ayna gösteriyor (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:65% 50%"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/fircalama.webp"><img src="../img/gercek/fircalama-900.webp" alt="Diş modeli üzerinde fırçalama anlatımı (temsilî fotoğraf)" width="900" height="900" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/implant.webp"><img src="../img/gercek/implant-900.webp" alt="Masada implant diş modeli (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:62% 50%"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="konum" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">Konum</span>
+      <h2 data-belir>Fatih Caddesi, <em>Denizli.</em></h2>
+      <div class="konum">
+        <iframe loading="lazy" title="Hazan Polikliniği konumu" src="https://www.google.com/maps?q=Hazan+A%C4%9F%C4%B1z+ve+Di%C5%9F+Sa%C4%9Fl%C4%B1%C4%9F%C4%B1+Poliklini%C4%9Fi+Denizli&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Adres</dt><dd>Fatih Cd. 78 A<br><span style="font-size:14px;color:var(--soluk)">Merkezefendi / Denizli</span></dd></div>
+            <div><dt>Randevu</dt><dd>Arayın veya WhatsApp'tan yazın</dd></div>
+            <div><dt>Telefon / WhatsApp</dt><dd><a href="tel:+905324917320">0532 491 73 20</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/hazandental/">@hazandental</a></dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://www.google.com/maps/search/?api=1&amp;query=Hazan+A%C4%9F%C4%B1z+ve+Di%C5%9F+Sa%C4%9Fl%C4%B1%C4%9F%C4%B1+Poliklini%C4%9Fi+Denizli">Yol tarifi al</a><a class="btn hat" href="tel:+905324917320">Ara</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sss" style="border-top:1px solid var(--cizgi)">
+    <div class="sar sss">
+      <div>
+        <span class="ufak">Sık sorulanlar</span>
+        <h2 data-belir>Gelmeden <em>önce.</em></h2>
+        <span class="etiket">Cevaplar örnektir: kliniğin kendi cevaplarıyla değişir.</span>
+      </div>
+      <div class="akordeon" id="sssListe"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Hazan Ağız ve Diş Sağlığı Polikliniği · Denizli · <a href="https://www.instagram.com/hazandental/">@hazandental</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Hazan Ağız ve Diş Sağlığı Polikliniği için Boztaş Digital tarafından hazırlandı, kliniğin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kliniğinizin fotoğrafları kullanılır. Tedavi başlıkları ve sık sorulan cevapları örnektir, genel bilgilendirme amaçlıdır. Telefon, adres ve Instagram bilgisi herkese açık kayıtlardan alındı; çalışma saatleri doğrulanamadığı için yazılmadı. Sağlık tanıtım kurallarına uygun olarak fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel içermez. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="#aile">Aile randevusu</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+
+// Tedavi akordeonu (genel bilgi, vaat yok)
+const TEDAVI = [
+  ["Muayene ve kontrol", "Ağız ve dişlerin genel değerlendirmesidir. Gerekirse röntgen istenir; bulgular ve seçenekler size anlatılır.", "Şikâyetiniz yoksa da kontrol aralığını hekiminizle konuşabilirsiniz.", "Kontrol / muayene", "Ben"],
+  ["Diş temizliği", "Diş taşı ve plakların temizlenmesidir. Ne sıklıkla yapılacağı diş eti durumuna göre belirlenir.", "Evde fırçalama ve diş ipi kullanımı hakkında da bilgi alabilirsiniz.", "Diş temizliği", "Ben"],
+  ["Dolgu", "Çürük ya da kırılma nedeniyle kaybedilen diş dokusunun onarılmasıdır.", "Hangi malzemenin uygun olduğu dişin durumuna göre muayenede konuşulur.", "Çürük / dolgu", "Ben"],
+  ["Kanal tedavisi", "Dişin iç kısmındaki dokunun temizlenip doldurulmasıdır; amaç dişi ağızda tutmaktır.", "Kaç seansta tamamlanacağı dişe göre değişir; hekiminiz süreci baştan anlatır.", "Diş ağrısı", "Ben"],
+  ["İmplant", "Eksik dişin yerine çene kemiğine yerleştirilen yapay köktür; üzerine diş yapılır.", "Uygun olup olmadığı muayene ve görüntülemeyle belirlenir.", "Eksik diş", "Ben"],
+  ["Ortodonti", "Diş ve çene dizilimindeki düzensizliklerin tel ya da plaklarla düzeltilmesidir.", "Tedavi süresi ve yöntemi kişiye göre planlanır.", "Diş dizilimi", "Ben"],
+  ["Çocuk diş hekimliği", "Çocukların ilk kontrolleri, koruyucu uygulamalar ve süt dişi tedavileridir.", "İlk ziyarette çocuğunuzun ortamı tanıması için kısa bir tanışma yapılabilir.", "Çocuk kontrolü", "Çocuğum"],
+];
+$("#akordeon").innerHTML = TEDAVI.map(([ad, a, b, k, kim], i) => `<details${i === 0 ? " open" : ""}><summary><span>${String(i + 1).padStart(2, "0")}</span>${ad}<i aria-hidden="true"></i></summary><div class="ic"><p>${a}</p><p>${b}</p><button type="button" class="bu" data-k="${k}" data-kim="${kim}">Bu konuda randevu notu →</button></div></details>`).join("");
+
+// Aile randevu planlayıcı
+const KIM = ["Ben", "Eşim", "Çocuğum", "Annem", "Babam", "Diğer"];
+const KONU = ["Kontrol / muayene", "Diş ağrısı", "Diş eti kanaması / hassasiyet", "Kırık diş / düşen dolgu", "Çürük / dolgu", "Diş temizliği", "Eksik diş", "Diş dizilimi", "Çocuk kontrolü", "Diğer"];
+const MAKS = 5;
+let kisiler = [{ kim: "Ben", konu: "Kontrol / muayene" }, { kim: "Çocuğum", konu: "Çocuk kontrolü" }];
+const opt = (liste, s) => liste.map((x) => `<option${x === s ? " selected" : ""}>${x}</option>`).join("");
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#sira", "sira", ["Arka arda, aynı gün", "Farklı günler de olur"]);
+secim("#zaman", "zaman", ["Hafta içi sabah", "Hafta içi öğleden sonra", "Hafta içi akşam", "Cumartesi", "Fark etmez"], 4);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function ciz() {
+  $("#kisiler").innerHTML = kisiler.map((k, i) => `<div class="kisi" data-i="${i}"><span class="no">${i + 1}</span><select class="kim" aria-label="${i + 1}. kişi kim">${opt(KIM, k.kim)}</select><select class="konu" aria-label="${i + 1}. kişi ne için">${opt(KONU, k.konu)}</select>${kisiler.length > 1 ? `<button type="button" class="sil" aria-label="${i + 1}. kişiyi çıkar">×</button>` : '<span class="yer"></span>'}</div>`).join("");
+  $("#ekle").disabled = kisiler.length >= MAKS;
+  $("#siraKutu").hidden = kisiler.length < 2;
+  yaz();
+}
+function yaz() {
+  const n = kisiler.length, sira = deger("sira").startsWith("Arka");
+  const liste = kisiler.map((k, i) => `${i + 1}) ${k.kim}: ${k.konu}`).join("\n");
+  const m = `Merhaba, Hazan Polikliniği'nden ${n > 1 ? "aile randevusu almak istiyoruz" : "randevu almak istiyorum"}.\n${n > 1 ? "Gelecek kişiler" : "Konu"}:\n${liste}${n > 1 ? (sira ? "\nMümkünse aynı gün, arka arda randevu verilmesini rica ederiz." : "\nAynı gün olması şart değil, farklı günler de olur.") : ""}\nBize uygun zaman: ${deger("zaman").toLowerCase()}\nUygun bir gün ve saat yazabilir misiniz?`;
+  $("#mesaj").textContent = m;
+  $("#wa").href = "https://wa.me/905324917320?text=" + encodeURIComponent(m);
+}
+$("#kisiler").addEventListener("change", (e) => {
+  const satir = e.target.closest(".kisi"); if (!satir) return;
+  const k = kisiler[+satir.dataset.i];
+  if (e.target.classList.contains("kim")) { k.kim = e.target.value; if (k.kim === "Çocuğum" && k.konu === "Kontrol / muayene") { k.konu = "Çocuk kontrolü"; satir.querySelector(".konu").value = k.konu; } }
+  else k.konu = e.target.value;
+  yaz();
+});
+$("#kisiler").addEventListener("click", (e) => {
+  const b = e.target.closest(".sil"); if (!b) return;
+  kisiler.splice(+b.closest(".kisi").dataset.i, 1); ciz();
+});
+$("#ekle").addEventListener("click", () => {
+  if (kisiler.length >= MAKS) return;
+  const kullanilan = kisiler.map((k) => k.kim);
+  kisiler.push({ kim: KIM.find((x) => x === "Diğer" || !kullanilan.includes(x)) || "Diğer", konu: "Kontrol / muayene" }); ciz();
+});
+$("#form").addEventListener("change", (e) => { if (e.target.name) yaz(); });
+$("#akordeon").addEventListener("click", (e) => {
+  const b = e.target.closest(".bu"); if (!b) return;
+  const kim = b.dataset.kim, konu = b.dataset.k;
+  // aynı kişi + konu zaten varsa yeni satır açma; ilk satırı, çocuk için çocuk satırını güncelle
+  let k = kisiler.find((x) => x.kim === kim) || kisiler[0];
+  k.kim = kim; k.konu = konu; ciz();
+  $("#aile").scrollIntoView({ behavior: az ? "auto" : "smooth" });
+});
+ciz();
+
+// SSS
+const SSS = [
+  ["Ailece aynı gün gelebilir miyiz?", "Planlayıcıda \"Arka arda, aynı gün\" seçeneğini işaretleyin; klinik uygun olup olmadığını size yazar."],
+  ["Çalışma saatleri neler?", "Yayında kliniğin kendi saatleri yazılır. Şimdilik arayarak ya da WhatsApp'tan yazarak öğrenebilirsiniz."],
+  ["Randevusuz gelebilir miyim?", "Yayında kliniğin kendi cevabı yazılır. Önceden aramanız ya da yazmanız size uygun zamanın ayarlanmasını kolaylaştırır."],
+  ["İlk muayenede ne olur?", "Şikâyetiniz dinlenir, ağız içi muayene yapılır, gerekirse röntgen istenir. Tedavi seçenekleri anlatılır; karar sizindir."],
+  ["Yanımda ne getirmeliyim?", "Kullandığınız ilaçların listesi ve varsa daha önce çekilmiş diş röntgenleri faydalı olur."],
+];
+$("#sssListe").innerHTML = SSS.map(([s, c]) => `<details><summary>${s}<i aria-hidden="true"></i></summary><div class="ic"><p>${c}</p></div></details>`).join("");
+
+// Galeri büyütme
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "ad": "Uzm. Dt. Onur Şahin - Uzman Diş Hekimi",
+  "renk": "#24594A",
+  "giris": "Denizli Merkezefendi'deki uzman diş hekimi muayenehaneniz için tek hekimli, sakin ve ciddi bir kimlik: periodontoloji (diş eti) ve implantoloji başlıkları, telefon ve WhatsApp ile randevu, haritalı adres. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Mesajınızı hazırlayın: konuları işaretleyin, adınızı yazın; uzman hekime WhatsApp mesajı kendiliğinden oluşsun", "İki uzmanlık alanı (periodontoloji, implantoloji), hizmet başlıkları, tek dokunuşla arama ve yol tarifi"],
+    "profesyonel": ["Görüşme defteri: konu akordeonundan seçtiğiniz ifadeler tek bir randevu notuna toplanır, tek tek çıkarılır, WhatsApp'a hazır gider", "Sık sorulanlar, büyütülebilir galeri, harita ve randevu notu"],
+    "premium": ["Randevu masası: kimin için, konu, önümüzdeki yedi gün ve gün içi tercih aralığı ile bilet biçiminde hazır mesaj", "Sinematik gerçek fotoğraf kahramanı, ilk görüşme adımları, konum paylaşma, galeri şeridi"]
+  }
+}
