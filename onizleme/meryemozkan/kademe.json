@@ -1,0 +1,11 @@
+{
+  "ad": "Dt. Meryem Özkan",
+  "renk": "#7A2E4F",
+  "giris": "29 Ekim Bulvarı'ndaki muayenehaneniz için porselen ve mürdüm tonlarında, estetik kron odaklı bir kimlik: Instagram'daki \"Soru cevap\" öne çıkanınız sitede de var, randevu mesajı şikâyete göre kendiliğinden yazılır. Üç seviye içerik ve özellik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "saglik": true,
+  "ozellik": {
+    "standart": ["Randevu notu: şikâyetinizi seçin, muayeneye yanınızda neyi getireceğiniz ve WhatsApp mesajı hazır olsun", "Estetik kron başta hizmet başlıkları, ilk muayene dört adımda, tek dokunuşla arama ve yol tarifi"],
+    "profesyonel": ["Estetik kron soru-cevap (Instagram hikâyesi biçiminde): soruyu okuyun, muayenede sormak için randevu notuna ekleyin", "Hazırlık listeli randevu notu (konu, süre, ilk kez mi, zaman), hizmet sekmeleri, büyütülebilir galeri, harita ve sık sorulanlar"],
+    "premium": ["Randevu masası: kimin için, çoklu konu, önümüzdeki yedi gün, sorularınız ve işaretlenebilir hazırlık listesi; bilet biçiminde mesaj, kopyalama", "Soru-cevap sohbeti, estetik kronun beş aşaması yatay anlatım, sinematik renk skalası açılışı, Instagram öne çıkanları, konum paylaşma, galeri şeridi"]
+  }
+}
