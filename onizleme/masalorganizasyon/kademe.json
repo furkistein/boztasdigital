@@ -1,0 +1,33 @@
+{
+  "ad": "Masal Organizasyon",
+  "renk": "#7D3248",
+  "giris": "Kına, düğün, giriş yolu ve masa tasarımı başlıklarınız, tek dokunuşla arama ve WhatsApp. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar temsilîdir.",
+  "ozellik": {
+    "standart": [
+      "Hizmet başlıkları (kına, düğün, giriş yolu, masa tasarımı), Instagram öne çıkanları, arama ve WhatsApp düğmeleri"
+    ],
+    "profesyonel": [
+      "Talep planlayıcı: etkinlik türü, kişi sayısı, tarih ve hayal notu, hazır WhatsApp mesajına dönüşür",
+      "Hizmet sekmeleri, büyütülebilir galeri, konum alanı"
+    ],
+    "premium": [
+      "Etkinlik planlayıcı: tür, tarih, kişi kaydırıcısı ve mekân tercihi seçin, kalan süre ve yaklaşık masa sayısıyla mesaj kendiliğinden yazılsın",
+      "Sinematik açılış, yavaş yakınlaşma, tam ekran bölümler"
+    ]
+  },
+  "ortak": {
+    "standart": [
+      "Tek sayfa, telefona tam uyumlu",
+      "Kına, düğün, giriş yolu ve masa tasarımı başlıkları",
+      "Sade tasarım, temsilî fotoğraf"
+    ],
+    "profesyonel": [
+      "Hizmet sekmeleri ve galeri",
+      "Harita bağlantısı ve yorum alanı"
+    ],
+    "premium": [
+      "Editoryal tasarım, tam ekran temsilî fotoğraflar",
+      "Hikâye bölümleri ve resimli mekân kartları"
+    ]
+  }
+}

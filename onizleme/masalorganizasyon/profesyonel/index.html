@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Masal Organizasyon · Denizli · Profesyonel örnek</title>
+<meta name="description" content="Masal Organizasyon Denizli: etkinlik talep planlayıcı (tür, kişi sayısı, tarih), hizmet sekmeleri, galeri. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16100F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#16100F;--gece2:#1F1715;--kagit:#F5ECDD;--mum:#E0A75E;--dut:#C77A8E;--soluk:#B5A592;--cizgi:rgba(245,236,221,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--gece);color:var(--kagit);font-family:Manrope,system-ui,sans-serif;font-size:16.5px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sar{width:min(1200px,100% - 56px);margin-inline:auto}
+.onay-serit{background:#2A1D1A;color:#E9D9C0;text-align:center;font-size:12.5px;line-height:1.4;padding:6px 14px}
+.ufak{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--mum)}
+.serif{font-family:Newsreader,Georgia,serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 26px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn.dolu{background:var(--mum);color:var(--gece)}
+.btn.dolu:hover{background:#F0BE7C}
+.btn.hat{border:1px solid rgba(245,236,221,.3)}
+.btn.hat:hover{border-color:var(--kagit)}
+.ust{position:sticky;top:0;z-index:20;background:rgba(22,16,15,.95);border-bottom:1px solid transparent;transition:border-color .3s}
+.ust.golge{border-color:var(--cizgi)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:70px}
+.logo{font-family:Newsreader,serif;font-size:27px;text-decoration:none;font-style:italic;font-weight:400}
+.logo small{font-family:Manrope,sans-serif;font-style:normal;font-size:11px;letter-spacing:.26em;text-transform:uppercase;margin-left:10px;color:var(--soluk)}
+.ust nav{display:flex;gap:28px;font-size:14.5px;font-weight:500}
+.ust nav a{text-decoration:none;color:var(--soluk);transition:color .3s}
+.ust nav a:hover{color:var(--kagit)}
+.kahraman{display:grid;grid-template-columns:6fr 5fr;min-height:calc(100vh - 70px)}
+.kahraman .yazi{padding:64px 56px 56px max(28px,calc((100vw - 1200px)/2));display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+h1{font-family:Newsreader,serif;font-weight:300;font-size:clamp(46px,5.8vw,94px);line-height:1;letter-spacing:-.015em;margin-top:20px}
+h1 em{color:var(--mum);font-style:italic}
+.kahraman p{max-width:42ch;color:var(--soluk);margin-top:24px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.bilgi{display:flex;gap:40px;font-size:14px;border-top:1px solid var(--cizgi);padding-top:18px;flex-wrap:wrap;color:var(--soluk)}
+.bilgi b{display:block;font-weight:600;color:var(--kagit)}
+.kahraman figure{position:relative;overflow:hidden;background:var(--gece2)}
+.kahraman figure img{width:100%;height:100%;object-fit:cover;animation:yavas 20s ease-out both}
+@keyframes yavas{from{transform:scale(1.07)}to{transform:scale(1)}}
+figcaption.foto-not{position:absolute;right:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.6)}
+section{padding:112px 0}
+h2{font-family:Newsreader,serif;font-weight:300;font-size:clamp(36px,4.6vw,64px);line-height:1.04;margin:12px 0 16px;letter-spacing:-.01em}
+h2 em{color:var(--mum)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+/* hizmet sekmeleri */
+.sekmeler{display:flex;gap:6px;flex-wrap:wrap;margin-top:40px;border-bottom:1px solid var(--cizgi)}
+.sekmeler button{padding:13px 20px;font-size:15px;font-weight:500;color:var(--soluk);border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s}
+.sekmeler button:hover{color:var(--kagit)}
+.sekmeler button[aria-selected=true]{color:var(--kagit);border-color:var(--mum)}
+.sekmeler button:focus-visible{outline:2px solid var(--mum);outline-offset:-2px}
+.panel{display:grid;grid-template-columns:5fr 6fr;gap:64px;margin-top:48px;align-items:center}
+.panel[hidden]{display:none}
+.panel figure{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--gece2);border-radius:4px}
+.panel figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.panel h3{font-family:Newsreader,serif;font-weight:300;font-size:clamp(32px,3.6vw,50px);line-height:1.08}
+.panel h3 em{color:var(--mum)}
+.panel p{color:var(--soluk);max-width:48ch;margin:16px 0 22px}
+.panel ul{list-style:none;display:grid;gap:8px;margin-bottom:28px;font-size:15.5px}
+.panel li{padding-left:22px;position:relative}
+.panel li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--mum)}
+.etiket{display:inline-block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mum);border:1px solid rgba(224,167,94,.4);border-radius:999px;padding:2px 10px;margin-bottom:16px}
+/* talep */
+.talep{background:var(--gece2);border-block:1px solid var(--cizgi)}
+.talep-izgara{display:grid;grid-template-columns:1fr 420px;gap:64px;margin-top:48px;align-items:start}
+.adim{padding:24px 0;border-top:1px solid var(--cizgi)}
+.adim legend,.adim h3{font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;padding:0;color:var(--kagit)}
+.adim fieldset{border:0}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:9px 18px;font-size:14.5px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.secenek input:checked+span{background:var(--kagit);color:var(--gece);border-color:var(--kagit)}
+.secenek input:focus-visible+span{outline:2px solid var(--mum);outline-offset:2px}
+.alan{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center}
+.alan input[type=date],.alan input[type=text],.adim textarea{width:100%;background:transparent;border:1px solid var(--cizgi);border-radius:8px;padding:11px 14px;font-size:15px;color-scheme:dark}
+.adim textarea{min-height:84px;resize:vertical}
+.ipucu{font-size:13px;color:var(--soluk);margin-top:10px}
+.fis{position:sticky;top:94px;background:var(--kagit);color:var(--gece);padding:32px 28px;border-radius:4px}
+.fis h3{font-family:Newsreader,serif;font-weight:400;font-size:30px;text-align:center;font-style:italic}
+.fis .alt{text-align:center;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#7B6A5F;margin:2px 0 18px}
+.fis-metin{white-space:pre-wrap;font-size:14.5px;border-block:1px dashed rgba(22,16,15,.3);padding:16px 0;min-height:200px;word-break:break-word}
+.fis .btn{width:100%;margin-top:18px}
+.fis .btn.dolu{background:var(--gece);color:var(--kagit)}
+.fis .btn.dolu:hover{background:#7D3248}
+.fis small{display:block;text-align:center;color:#7B6A5F;font-size:12.5px;margin-top:12px}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,19vw,250px);gap:14px;margin-top:48px}
+.galeri button{overflow:hidden;border-radius:4px;position:relative;background:var(--gece2)}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform 1.3s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.04)}
+.galeri .g1{grid-column:span 5;grid-row:span 2}
+.galeri .g2{grid-column:span 4}
+.galeri .g3{grid-column:span 3}
+.galeri .g4{grid-column:span 3}
+.galeri .g5{grid-column:span 4}
+.galeri .g6{grid-column:span 4;grid-row:span 2}
+.galeri .g7{grid-column:span 4;grid-row:span 2}
+.galeri .g8{grid-column:span 4;grid-row:span 2}
+.kutu{position:fixed;inset:0;z-index:70;background:rgba(10,7,6,.95);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:88vh;width:auto;max-width:100%;border-radius:4px}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px;padding:8px 12px}
+/* öne çıkanlar + yer */
+.ig-liste{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;list-style:none}
+.ig-liste li{border:1px solid var(--cizgi);border-radius:999px;padding:8px 18px;font-size:14.5px}
+.yer{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;align-items:start}
+.yer dl{display:grid;gap:18px}
+.yer dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.yer dd{font-size:20px;font-family:Newsreader,serif}
+.yer dd a{text-decoration:none}
+.harita{display:flex;flex-direction:column;justify-content:center;gap:16px;border:1px solid var(--cizgi);border-radius:4px;padding:36px;background:var(--gece2);min-height:240px}
+.harita p{color:var(--soluk)}
+.yorum{margin-top:72px;border-top:1px solid var(--cizgi);padding-top:36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.yorum p{font-family:Newsreader,serif;font-weight:300;font-size:30px;line-height:1.2;max-width:26ch}
+footer{background:#0F0A09;color:var(--soluk);padding:40px 0 112px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(245,236,221,.28);border-radius:8px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.4)}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman figure{order:-1;aspect-ratio:4/3}
+  .kahraman .yazi{padding:40px 28px 52px}
+  .panel{grid-template-columns:1fr;gap:32px}
+  .panel figure{aspect-ratio:4/3}
+  .talep-izgara,.yer{grid-template-columns:1fr;gap:40px}
+  .fis{position:static}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .logo small{display:none}
+  .kahraman .yazi{padding:32px 18px 44px}
+  section{padding:72px 0}
+  .sekmeler{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-18px;padding-inline:18px}
+  .sekmeler::-webkit-scrollbar{display:none}
+  .sekmeler button{flex:none;padding:12px 14px}
+  .alan{grid-template-columns:1fr}
+  .galeri{grid-template-columns:1fr 1fr;grid-auto-rows:190px;gap:10px}
+  .galeri button{grid-column:span 1!important;grid-row:span 1!important}
+  .galeri .g1{grid-column:span 2!important}
+  .galeri .g8{display:none}
+  .harita{padding:26px}
+  .yorum p{font-size:25px}
+  .yuzen{display:block}
+}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman figure img{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="profesyonel" data-isletme="Masal Organizasyon">
+<div class="onay-serit">Örnek önizleme: Masal Organizasyon'un onayı yoktur, Boztaş Digital hazırladı. Fotoğraflar temsilîdir.</div>
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Masal<small>Organizasyon</small></a>
+    <nav><a href="#hizmetler">Hizmetler</a><a href="#talep">Talep</a><a href="#galeri">Galeri</a><a href="#yer">İletişim</a></nav>
+    <a class="btn dolu" href="#talep" style="padding:11px 22px">Talep oluştur</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yazi">
+      <div>
+        <span class="ufak">Düğün planlama · Event &amp; floral design</span>
+        <h1>Hayalinizi anlatın,<br>gerisi bir <em>masal.</em></h1>
+        <p>Etkinlik türünü, kişi sayısını ve tarihi seçin; hazır talep mesajınız WhatsApp'ta Masal Organizasyon'a ulaşsın.</p>
+        <div class="dugmeler">
+          <a class="btn dolu" href="#talep">Talep oluştur</a>
+          <a class="btn hat" href="#hizmetler">Hizmetlere bak</a>
+        </div>
+      </div>
+      <div class="bilgi">
+        <div><b>WhatsApp / GSM</b>0533 165 36 29</div>
+        <div><b>Instagram</b>@masalorganizasyon20</div>
+      </div>
+    </div>
+    <figure>
+      <img src="../img/gercek/giris-900.webp" srcset="../img/gercek/giris-900.webp 600w, ../img/gercek/giris.webp 1200w" sizes="(max-width:980px) 100vw, 45vw" alt="Beyaz çiçeklerle kaplı kemerli giriş yolu (temsilî fotoğraf)" width="1200" height="1800" fetchpriority="high" style="object-position:50% 62%">
+      <figcaption class="foto-not">Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="hizmetler">
+    <div class="sar">
+      <span class="ufak">Hizmetler</span>
+      <h2 data-belir>Her sahne için <em>bir başlık.</em></h2>
+      <p class="acik-yazi">Başlıklar Instagram profilinizdeki öne çıkanlardan ve biyografiden alındı; açıklamalar örnektir. Yayında her sekmede kendi çalışmalarınız ve sizin cümleleriniz durur.</p>
+      <div class="sekmeler" role="tablist" aria-label="Hizmetler" id="sekmeler"></div>
+      <div id="paneller"></div>
+    </div>
+  </section>
+
+  <section class="talep" id="talep">
+    <div class="sar">
+      <span class="ufak">Talep planlayıcı</span>
+      <h2 data-belir>Seçin, <em>mesajınız</em> yazılsın.</h2>
+      <p class="acik-yazi">Fiyat listesi yok: ihtiyacınızı ve bütçenizi WhatsApp'ta konuşursunuz. Sağdaki metin gönderilmeye hazır gelir.</p>
+      <div class="talep-izgara">
+        <form id="form" onsubmit="return false">
+          <div class="adim"><fieldset><legend>1 · Etkinlik türü</legend><div class="secenek" id="sTur"></div></fieldset></div>
+          <div class="adim"><fieldset><legend>2 · Neler için destek istiyorsunuz?</legend><div class="secenek" id="sIstek"></div></fieldset><p class="ipucu">Birden fazla seçebilirsiniz; emin değilseniz hiçbirini seçmeyin, birlikte netleştiririz.</p></div>
+          <div class="adim"><fieldset><legend>3 · Kişi sayısı</legend><div class="secenek" id="sKisi"></div></fieldset></div>
+          <div class="adim"><h3>4 · Tarih</h3>
+            <div class="alan"><input type="date" id="tarih" aria-label="Etkinlik tarihi"><div class="secenek"><label><input type="checkbox" id="tarihBelirsiz"><span>Tarih henüz belli değil</span></label></div></div></div>
+          <div class="adim"><h3><label for="mekan">5 · Mekân</label></h3><input type="text" id="mekan" placeholder="Biliyorsanız mekânın adı, bilmiyorsanız boş bırakın" style="width:100%;background:transparent;border:1px solid var(--cizgi);border-radius:8px;padding:11px 14px;font-size:15px;color:var(--kagit)"></div>
+          <div class="adim"><h3><label for="not">6 · Hayaliniz</label></h3><textarea id="not" placeholder="Ör. beyaz çiçekli, mumlu, sade ve sıcak bir atmosfer."></textarea></div>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>Masal Organizasyon</h3>
+          <div class="alt">Talep mesajı</div>
+          <div class="fis-metin" id="fisMetin"></div>
+          <a class="btn dolu" id="wa" href="https://wa.me/905331653629" target="_blank" rel="noopener">WhatsApp'ta gönder</a>
+          <small>Düğmeye bastığınızda WhatsApp açılır; mesajı orada gönderirsiniz. Bu önizlemede kimseye bir şey gitmez.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Kurulumdan <em>kareler.</em></h2>
+      <p class="acik-yazi">Temsilî fotoğraflar; yayında bu alan Instagram'daki kendi işlerinizle dolar. Fotoğrafa dokunarak büyütün.</p>
+      <div class="galeri" data-sirali="70" id="galeri-izgara">
+        <button class="g1" data-belir data-buyuk="../img/gercek/isik-kemer.webp"><img src="../img/gercek/isik-kemer-900.webp" alt="Gece, ışıklı kalp biçimli çiçek kemeri (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:50% 50%"></button>
+        <button class="g2" data-belir data-buyuk="../img/gercek/mum-masa.webp"><img src="../img/gercek/mum-masa-900.webp" alt="Mum ve çiçeklerle süslü uzun masa (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g3" data-belir data-buyuk="../img/gercek/koridor.webp"><img src="../img/gercek/koridor-900.webp" alt="Beyaz çiçek sıralı tören koridoru (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g4" data-belir data-buyuk="../img/gercek/mum-yol.webp"><img src="../img/gercek/mum-yol-900.webp" alt="Mumlarla aydınlanan masa örtüsü ve uzun masa (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g5" data-belir data-buyuk="../img/gercek/salon.webp"><img src="../img/gercek/salon-900.webp" alt="Avizeli geniş düğün salonu (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g6" data-belir data-buyuk="../img/gercek/uzun-masa.webp"><img src="../img/gercek/uzun-masa-900.webp" alt="Ahşap uzun masada tabaklar ve çiçek yolu (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button class="g7" data-belir data-buyuk="../img/gercek/gul.webp"><img src="../img/gercek/gul-900.webp" alt="Krem gül ve okaliptüs yaprakları (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button class="g8" data-belir data-buyuk="../img/gercek/beyaz-kemer.webp"><img src="../img/gercek/beyaz-kemer-900.webp" alt="Beyaz çiçek bulutu altında tören yolu (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="yer" style="padding-top:0">
+    <div class="sar">
+      <span class="ufak">İletişim</span>
+      <h2 data-belir>Denizli'de, <em>bir mesaj uzağınızda.</em></h2>
+      <p class="acik-yazi">Instagram'da öne çıkanlar: Kına, Düğün, Giriş yolu, Masa tasarımı, Themasflower, Collesia Otel, Villa Castelio, Ruma.</p>
+      <div class="yer">
+        <dl>
+          <div><dt>WhatsApp / GSM</dt><dd><a href="tel:+905331653629">0533 165 36 29</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/masalorganizasyon20/">@masalorganizasyon20</a></dd></div>
+          <div><dt>Adres ve çalışma saatleri</dt><dd>Sizden alınıp eklenecek</dd></div>
+        </dl>
+        <div class="harita">
+          <span class="ufak">Konum</span>
+          <p>Yayında burada Google Haritalar'da adresiniz ve yol tarifi düğmesi olur. Adres bilginizi bizimle paylaştığınızda eklenir.</p>
+          <div><a class="btn hat" href="https://www.google.com/maps/search/Masal+Organizasyon+Denizli">Haritada ara</a></div>
+        </div>
+      </div>
+      <div class="yorum">
+        <p>Beğendiyseniz, bir sonraki çifte de söyleyin.</p>
+        <a class="btn dolu" href="https://www.google.com/maps/search/Masal+Organizasyon+Denizli">Google'da yorum yazın</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Masal Organizasyon · Denizli · <a href="https://www.instagram.com/masalorganizasyon20/">@masalorganizasyon20</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Masal Organizasyon için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); açıklamalar örnektir. Başlıklar ve telefon Instagram profilinizden alındı. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905331653629" target="_blank" rel="noopener">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+addEventListener("scroll", () => $("#ust").classList.toggle("golge", scrollY > 10), { passive: true });
+
+/* hizmet sekmeleri */
+const HIZMET = [
+  { id: "dugun", ad: "Düğün planlama", bas: "Baştan sona, <em>tek elden.</em>", yazi: "Tarih ve mekândan gün akışına kadar düğünün düzenini birlikte kurarız. Bu yazı örnektir; yayında kendi cümleleriniz yer alır.", liste: ["Mekân ve gün akışı", "Tasarım konusu ve renkler", "Giriş, masa ve çiçek uyumu"], foto: "salon", alt: "Avizeli geniş düğün salonu (temsilî fotoğraf)", konum: "50% 50%", istek: "Tam planlama" },
+  { id: "kina", ad: "Kına", bas: "Kına gecesi, <em>sıcak</em> ve sade.", yazi: "Kına gecesi için sahne, oturma düzeni ve aydınlatma fikri. Yayında öne çıkanlardaki kına çalışmalarınız burada görünür.", liste: ["Kına sahnesi ve oturma düzeni", "Mum ve çiçekle sıcak ışık", "Gelin ve misafirler için düzen"], foto: "kina-el", alt: "Kınalı eller ve beyaz işlemeli elbise (temsilî fotoğraf)", konum: "50% 50%", istek: "Tam planlama" },
+  { id: "giris", ad: "Giriş yolu", bas: "İlk izlenim, <em>ilk sahne.</em>", yazi: "Misafirleri karşılayan giriş yolu ve kemer tasarımı. Örnek içeriktir; işlerinizin fotoğrafları yayında eklenir.", liste: ["Kemer ve giriş yolu", "Çiçek ve yeşillikle kaplama", "Tören alanına geçiş"], foto: "giris", alt: "Beyaz çiçeklerle kaplı kemerli giriş yolu (temsilî fotoğraf)", konum: "50% 60%", istek: "Giriş yolu" },
+  { id: "masa", ad: "Masa tasarımı", bas: "Sofrada <em>bir hikâye.</em>", yazi: "Masa düzeni, mum, tabak ve çiçek uyumu. Instagram'daki masa tasarımı çalışmalarınız yayında bu sekmede toplanır.", liste: ["Masa ve sofra düzeni", "Mum, çiçek ve örtü", "Davetli sayısına göre yerleşim"], foto: "uzun-masa", alt: "Ahşap uzun masada tabaklar ve çiçek yolu (temsilî fotoğraf)", konum: "50% 55%", istek: "Masa tasarımı" },
+  { id: "cicek", ad: "Çiçek tasarımı", bas: "Çiçekle <em>anlatılan</em> gün.", yazi: "Event ve floral design: kemer, masa ve buket çiçekleri aynı dilde. Örnek içeriktir; yayında kendi çalışmalarınız ve Themasflower bağlantısı yer alır.", liste: ["Kemer ve masa çiçekleri", "Renk ve mevsim uyumu", "Tek elden çiçek tasarımı"], foto: "ortanca", alt: "Beyaz ortancalar ve gül yaprakları (temsilî fotoğraf)", konum: "50% 50%", istek: "Çiçek tasarımı" },
+];
+const sek = $("#sekmeler"), pan = $("#paneller");
+sek.innerHTML = HIZMET.map((h, i) => `<button role="tab" type="button" id="t-${h.id}" aria-controls="p-${h.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">${h.ad}</button>`).join("");
+pan.innerHTML = HIZMET.map((h, i) => `<div class="panel" role="tabpanel" id="p-${h.id}" aria-labelledby="t-${h.id}"${i ? " hidden" : ""}>
+  <figure><img src="../img/gercek/${h.foto}-900.webp" alt="${h.alt}" width="900" height="600" loading="lazy" style="object-position:${h.konum}"></figure>
+  <div><span class="etiket">Örnek açıklama</span><h3>${h.bas}</h3><p>${h.yazi}</p><ul>${h.liste.map((x) => `<li>${x}</li>`).join("")}</ul><button class="btn dolu" type="button" data-sec="${h.istek}" data-tur="${h.id === "kina" ? "Kına" : h.id === "dugun" ? "Düğün" : ""}">${h.ad} için talep oluştur</button></div>
+</div>`).join("");
+function sekmeAc(id) {
+  sek.querySelectorAll("button").forEach((b) => { const a = b.id === "t-" + id; b.setAttribute("aria-selected", a); b.tabIndex = a ? 0 : -1; });
+  pan.querySelectorAll(".panel").forEach((p) => (p.hidden = p.id !== "p-" + id));
+}
+sek.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) sekmeAc(b.id.slice(2)); });
+sek.addEventListener("keydown", (e) => {
+  const b = [...sek.querySelectorAll("button")], i = b.indexOf(document.activeElement);
+  if (i < 0 || !["ArrowRight", "ArrowLeft"].includes(e.key)) return;
+  const n = b[(i + (e.key === "ArrowRight" ? 1 : b.length - 1)) % b.length]; n.focus(); sekmeAc(n.id.slice(2));
+});
+
+/* talep planlayıcı */
+const radyo = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+const kutucuk = (id, ad, liste) => ($(id).innerHTML = liste.map((x) => `<label><input type="checkbox" name="${ad}" value="${x}"><span>${x}</span></label>`).join(""));
+radyo("#sTur", "tur", ["Düğün", "Kına", "Başka bir organizasyon"]);
+kutucuk("#sIstek", "istek", ["Tam planlama", "Giriş yolu", "Masa tasarımı", "Çiçek tasarımı"]);
+radyo("#sKisi", "kisi", ["Henüz belli değil", "50'ye kadar", "50-100", "100-200", "200-400", "400 ve üzeri"]);
+$("#tarih").min = new Date().toISOString().slice(0, 10);
+pan.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-sec]"); if (!b) return;
+  const k = [...document.querySelectorAll("[name=istek]")].find((x) => x.value === b.dataset.sec); if (k) k.checked = true;
+  const t = b.dataset.tur && [...document.querySelectorAll("[name=tur]")].find((x) => x.value === b.dataset.tur); if (t) t.checked = true;
+  fis(); $("#talep").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+});
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+function fis() {
+  const tur = deger("tur"), kisi = deger("kisi");
+  const istek = [...document.querySelectorAll("[name=istek]:checked")].map((x) => x.value.toLowerCase());
+  const tv = $("#tarih").value, belirsiz = $("#tarihBelirsiz").checked;
+  $("#tarih").disabled = belirsiz;
+  const tarih = belirsiz || !tv ? "henüz belli değil" : new Date(tv + "T12:00").toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+  const mekan = $("#mekan").value.trim(), not = $("#not").value.trim();
+  const sat = [
+    `Merhaba, ${tur === "Başka bir organizasyon" ? "bir organizasyon" : tur.toLowerCase()} için destek almak istiyorum.`, "",
+    `Etkinlik: ${tur}`,
+    `İstediğim: ${istek.length ? istek.join(", ") : "henüz karar vermedim, önerinizi isterim"}`,
+    `Kişi sayısı: ${kisi === "Henüz belli değil" ? "henüz belli değil" : kisi === "50'ye kadar" ? "50 kişiye kadar" : kisi.replace("-", "–") + (kisi.includes("üzeri") ? "" : " kişi")}`,
+    `Tarih: ${tarih}`,
+    `Mekân: ${mekan || "henüz belli değil"}`,
+    `Hayalim: ${not || "görüşmede anlatırım"}`,
+  ];
+  const metin = sat.join("\n");
+  $("#fisMetin").textContent = metin;
+  $("#wa").href = "https://wa.me/905331653629?text=" + encodeURIComponent(metin);
+}
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis); fis();
+
+/* galeri büyütme */
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { kutu.querySelector("img").src = b.dataset.buyuk; kutu.querySelector("img").alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

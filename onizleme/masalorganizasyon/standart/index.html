@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Masal Organizasyon · Denizli · Standart örnek</title>
+<meta name="description" content="Masal Organizasyon Denizli: düğün planlama, kına, giriş yolu, masa ve çiçek tasarımı. Boztaş Digital örnek önizlemesi (Standart seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16100F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#16100F;--kagit:#F5ECDD;--krem:#FBF6EC;--mum:#D9A25A;--dut:#7D3248;--soluk:#7B6A5F;--cizgi:rgba(22,16,15,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--gece);font-family:Outfit,system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1120px,100% - 48px);margin-inline:auto}
+.onay-serit{background:#2A1D1A;color:#E9D9C0;text-align:center;font-size:12.5px;line-height:1.4;padding:6px 14px;font-weight:400}
+.ust{position:absolute;left:0;right:0;z-index:5;color:#fff}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:78px}
+.logo{font-family:Gloock,Georgia,serif;font-size:26px;text-decoration:none;letter-spacing:.01em}
+.logo small{font-family:Outfit,sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-left:10px;opacity:.8;font-weight:400}
+.ust nav{display:flex;gap:28px;font-size:15px;font-weight:400}
+.ust nav a{text-decoration:none;opacity:.92}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 28px;font-weight:500;font-size:15px;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn.dolu{background:var(--mum);color:var(--gece)}
+.btn.dolu:hover{background:#ecb870}
+.btn.hat{border:1px solid currentColor}
+.btn.hat:hover{background:rgba(255,255,255,.12)}
+.kahraman{position:relative;min-height:90vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--gece)}
+.kahraman img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;animation:yavas 22s ease-out both}
+@keyframes yavas{from{transform:scale(1.07)}to{transform:scale(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,16,15,.86) 0%,rgba(22,16,15,.55) 42%,rgba(22,16,15,0) 74%),linear-gradient(180deg,rgba(22,16,15,.5) 0%,rgba(22,16,15,0) 26%)}
+.kahraman .sar{position:relative;z-index:2;padding-bottom:76px}
+.ufak{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+h1{font-family:Gloock,Georgia,serif;font-weight:400;font-size:clamp(44px,6.4vw,88px);line-height:1.04;margin:16px 0 20px;max-width:12ch}
+h1 em{color:var(--mum);font-style:normal}
+.kahraman p{font-size:18px;max-width:44ch;opacity:.94}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.kahraman .btn.hat{color:#fff}
+.not-foto{position:absolute;right:18px;bottom:14px;z-index:2;font-size:12px;opacity:.75}
+section{padding:100px 0}
+h2{font-family:Gloock,Georgia,serif;font-weight:400;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:12px 0 16px}
+h2 em{color:var(--dut);font-style:normal}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.hizmet{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+.hizmet figure img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:200px 200px 6px 6px}
+.liste{list-style:none;margin-top:30px;border-top:1px solid var(--cizgi)}
+.liste li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px solid var(--cizgi)}
+.liste b{font-family:Gloock,serif;font-weight:400;font-size:24px}
+.liste span{font-size:14px;color:var(--soluk);text-align:right}
+.gece{background:var(--gece);color:var(--kagit)}
+.gece .acik-yazi{color:#C8B9A6}
+.gece h2 em{color:var(--mum)}
+.ig-liste{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;list-style:none}
+.ig-liste li{border:1px solid rgba(245,236,221,.3);border-radius:999px;padding:9px 20px;font-size:15px;font-weight:400}
+.sahne{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+.sahne figure img{aspect-ratio:3/4;object-fit:cover;width:100%;border-radius:4px}
+.sahne figcaption{font-family:Gloock,serif;font-size:23px;margin-top:14px}
+.sahne small{display:block;font-family:Outfit;font-size:14px;color:#C8B9A6;font-weight:300;margin-top:2px}
+.iletisim{text-align:center;background:var(--krem)}
+.iletisim .acik-yazi{margin:0 auto}
+.iletisim .dugmeler{justify-content:center}
+.iletisim .btn.hat{color:var(--gece);border-color:var(--cizgi)}
+.iletisim .btn.hat:hover{background:rgba(22,16,15,.06);border-color:var(--gece)}
+.adres{margin-top:28px;font-size:16px;color:var(--soluk)}
+.adres b{color:var(--gece);font-weight:500}
+footer{background:var(--gece);color:#C8B9A6;padding:38px 0 112px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(245,236,221,.3);border-radius:10px;padding:12px 14px;color:var(--kagit)}
+.ornek-not a{color:#fff;font-weight:500}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+@media (max-width:860px){
+  .ust nav{display:none}
+  .hizmet{grid-template-columns:1fr;gap:40px}
+  .hizmet figure{order:-1}
+  .hizmet figure img{aspect-ratio:4/3;border-radius:140px 140px 6px 6px}
+  .sahne{grid-template-columns:1fr;gap:30px}
+  .sahne figure img{aspect-ratio:4/3}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .logo small{display:none}
+  .kahraman{min-height:84vh}
+  .kahraman::after{background:linear-gradient(180deg,rgba(22,16,15,.5) 0%,rgba(22,16,15,.1) 26%,rgba(22,16,15,.9) 76%)}
+  .kahraman .sar{padding-bottom:50px}
+  .kahraman p{font-size:16.5px}
+  section{padding:68px 0}
+  .liste li{flex-direction:column;gap:2px}
+  .liste span{text-align:left}
+  .yuzen{display:block}
+}
+.kahraman .sar>*{animation:yuksel 1.1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>*:nth-child(2){animation-delay:.1s}.kahraman .sar>*:nth-child(3){animation-delay:.2s}.kahraman .sar>*:nth-child(4){animation-delay:.3s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kahraman img,.kahraman .sar>*{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Masal Organizasyon">
+<div class="onay-serit">Örnek önizleme: Masal Organizasyon'un onayı yoktur, Boztaş Digital hazırladı. Fotoğraflar temsilîdir.</div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">Masal<small>Organizasyon</small></a>
+    <nav><a href="#hizmetler">Hizmetler</a><a href="#ig">Çalışmalar</a><a href="#iletisim">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/toren.webp" srcset="../img/gercek/toren-900.webp 900w, ../img/gercek/toren.webp 1800w" sizes="100vw" alt="Işık ipleri altında kurulmuş açık hava tören alanı, çift ve misafirler (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+    <div class="sar">
+      <span class="ufak">Düğün planlama · Denizli</span>
+      <h1>Gününüz bir <em>masal</em> olsun.</h1>
+      <p>Düğün ve kına için planlama, giriş yolu, masa ve çiçek tasarımı. Hayalinizi anlatın, Denizli'de birlikte kuralım.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905331653629">WhatsApp'tan yazın</a>
+        <a class="btn hat" href="tel:+905331653629">0533 165 36 29</a>
+      </div>
+    </div>
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+  </div>
+
+  <section id="hizmetler">
+    <div class="sar hizmet">
+      <div>
+        <span class="ufak" style="color:var(--dut)">Hizmetler</span>
+        <h2 data-belir>Bir günün <em>bütün</em> sahneleri.</h2>
+        <p class="acik-yazi">Başlıklar Instagram profilinizden alındı: düğün planlama, event ve çiçek tasarımı. Yayında her başlığın altında kendi çalışmalarınız ve sizin cümleleriniz durur.</p>
+        <ul class="liste" data-sirali="60">
+          <li data-belir><b>Düğün planlama</b><span>baştan sona plan ve düzen (örnek)</span></li>
+          <li data-belir><b>Kına</b><span>kına gecesi kurulumu (örnek)</span></li>
+          <li data-belir><b>Giriş yolu</b><span>misafiri karşılayan ilk sahne (örnek)</span></li>
+          <li data-belir><b>Masa tasarımı</b><span>sofra düzeni, mum ve çiçek (örnek)</span></li>
+          <li data-belir><b>Çiçek tasarımı</b><span>event &amp; floral design (örnek)</span></li>
+        </ul>
+      </div>
+      <figure data-belir><img src="../img/gercek/giris-900.webp" alt="Beyaz çiçeklerle kaplı kemerli giriş yolu (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 60%"></figure>
+    </div>
+  </section>
+
+  <section class="gece" id="ig">
+    <div class="sar">
+      <span class="ufak" style="color:var(--mum)">Instagram'da öne çıkanlar</span>
+      <h2 data-belir>Sayfanızdaki <em>başlıklar,</em> sitede de.</h2>
+      <p class="acik-yazi">Profilinizdeki öne çıkan başlıklar sitede birer bölüm olur; yayında her birinin içinde kendi fotoğraflarınız açılır.</p>
+      <ul class="ig-liste" data-sirali="50">
+        <li data-belir>Kına</li><li data-belir>Düğün</li><li data-belir>Giriş yolu</li><li data-belir>Masa tasarımı</li><li data-belir>Themasflower</li><li data-belir>Collesia Otel</li><li data-belir>Villa Castelio</li><li data-belir>Ruma</li>
+      </ul>
+      <div class="sahne" data-sirali="120">
+        <figure data-belir><img src="../img/gercek/yesil-kemer-900.webp" alt="Yeşillik ve kuru otlarla örülmüş bahçe kemeri (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 55%"><figcaption>Giriş ve tören<small>kemer, yol, karşılama (örnek)</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/mum-masa-900.webp" alt="Mum ve çiçeklerle süslenmiş uzun düğün masası (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:50% 50%"><figcaption>Masa tasarımı<small>mum, çiçek, sofra (örnek)</small></figcaption></figure>
+        <figure data-belir><img src="../img/gercek/ortanca-900.webp" alt="Beyaz ortancalar ve gül yaprakları (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:50% 50%"><figcaption>Çiçek tasarımı<small>beyaz tonlu aranjman (örnek)</small></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <span class="ufak" style="color:var(--dut)">İletişim</span>
+      <h2 data-belir>Anlatın, <em>planlayalım.</em></h2>
+      <p class="acik-yazi">Ne zaman, kaç kişiyle, nasıl bir hava; bir mesajınız yeter.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905331653629">WhatsApp 0533 165 36 29</a>
+        <a class="btn hat" href="tel:+905331653629">Ara</a>
+        <a class="btn hat" href="https://www.instagram.com/masalorganizasyon20/">Instagram</a>
+      </div>
+      <p class="adres"><b>Denizli</b> · <a href="https://www.instagram.com/masalorganizasyon20/">@masalorganizasyon20</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Masal Organizasyon · Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Masal Organizasyon için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında kendi çalışmalarınızın fotoğrafları kullanılır. Başlıklar ve telefon Instagram profilinizden alındı; açıklamalar örnektir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905331653629">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez). Hepsi TEMSİLÎDİR, Ness Pilates'in fotoğrafı değildir.
+- studyo.webp: Lê Đức — https://www.pexels.com/photo/a-modern-fitness-studio-18499500/
+- sira.webp: Lê Đức — https://www.pexels.com/photo/a-modern-fitness-studio-18499504/
+- reformer.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-exercising-on-pilates-reformer-machine-25596677/
+- esneme.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-in-gray-top-stretching-on-pilates-reformer-25596676/
+- salon.webp: Ahmet Kurt — https://www.pexels.com/photo/white-room-with-pilates-towers-25596895/
+- kemer.webp: Paulina Vargas — https://www.pexels.com/photo/modern-pilates-studio-with-reformers-36833353/
+- tugla.webp: Karl Solano — https://www.pexels.com/photo/the-interior-of-a-pilates-studio-11036673/
+- mat-isik.webp: Cliff Booth — https://www.pexels.com/photo/photo-of-women-stretching-together-4056726/
+- mat-rulo.webp: cottonbro studio — https://www.pexels.com/photo/black-round-plastic-tool-on-brown-plastic-basket-4325462/
+- mat-nefes.webp: Miriam Alonso — https://www.pexels.com/photo/unrecognizable-flexible-woman-stretching-body-7592735/
+- Kullanılmayan (logo/marka içerdiği için ._kullanilmayan/ klasöründe): kule, pozisyon, mat-ust, mat-studyo, mat-yan (Reebok logosu)

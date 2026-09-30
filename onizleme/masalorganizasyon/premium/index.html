@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Masal Organizasyon · Denizli · Premium örnek</title>
+<meta name="description" content="Masal Organizasyon Denizli: etkinlik planlayıcı (tür, tarih, kişi sayısı, mekân tercihi), hizmetler, galeri. Boztaş Digital örnek önizlemesi (Premium seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16100F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#16100F;--gece2:#1E1614;--kagit:#F5ECDD;--mum:#D9A25A;--dut:#C77A8E;--kum:#D7C6B0;--soluk:#A8978A;--cizgi:rgba(245,236,221,.15)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--gece);color:var(--kagit);font-family:"Albert Sans",system-ui,sans-serif;font-size:17px;font-weight:300;line-height:1.7;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sar{width:min(1240px,100% - 64px);margin-inline:auto}
+.ufak{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--mum);font-weight:500}
+.serif{font-family:Cormorant,Georgia,serif}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:15px 30px;font-weight:500;font-size:14.5px;letter-spacing:.04em;text-decoration:none;white-space:nowrap;transition:background .35s,color .35s,border-color .35s}
+.btn.dolu{background:var(--kagit);color:var(--gece)}
+.btn.dolu:hover{background:#fff}
+.btn.hat{border:1px solid rgba(245,236,221,.38)}
+.btn.hat:hover{border-color:var(--kagit)}
+/* açılış perdesi (yalnız CSS) */
+.perde{position:fixed;inset:0;z-index:100;background:var(--gece);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:24px;text-align:center;animation:perde 3.2s cubic-bezier(.7,0,.2,1) both;pointer-events:none}
+.perde b{font-family:Cormorant,serif;font-weight:300;font-style:italic;font-size:clamp(38px,6.6vw,88px);line-height:1.05;animation:yazi 2.9s ease both}
+.perde span{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--mum);animation:yazi 2.9s .25s ease both}
+@keyframes yazi{0%{opacity:0;transform:translateY(14px)}34%{opacity:1;transform:none}72%{opacity:1}100%{opacity:0}}
+@keyframes perde{0%,66%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+/* üst */
+.ust{position:fixed;top:var(--cubuk,0px);left:0;right:0;z-index:20;transition:background .5s,top .3s}
+.ust.dolu{background:rgba(22,16,15,.97);top:0}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-family:Cormorant,serif;font-size:30px;font-weight:400;font-style:italic;text-decoration:none}
+.logo small{font-family:"Albert Sans",sans-serif;font-style:normal;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;margin-left:10px;color:var(--kum)}
+.ust nav{display:flex;gap:30px;font-size:14px;letter-spacing:.05em}
+.ust nav a{text-decoration:none;color:var(--kum);transition:color .3s}
+.ust nav a:hover{color:#fff}
+/* kahraman */
+.kahraman{position:relative;height:100svh;min-height:640px;overflow:hidden}
+.kahraman .foto{position:absolute;inset:0;transform:scale(calc(1.03 + var(--p,0) * .1));transform-origin:50% 60%;will-change:transform}
+.kahraman .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;animation:aydin 20s ease-out both}
+@keyframes aydin{from{filter:brightness(.8)}to{filter:brightness(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,16,15,.66) 0%,rgba(22,16,15,0) 26%,rgba(22,16,15,.3) 55%,rgba(22,16,15,.95) 100%),linear-gradient(90deg,rgba(22,16,15,.7) 0%,rgba(22,16,15,0) 62%)}
+.kahraman .icerik{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:68px}
+.kahraman .icerik .sar{display:flex;justify-content:space-between;align-items:end;gap:48px}
+h1{font-family:Cormorant,serif;font-weight:300;font-size:clamp(54px,8vw,128px);line-height:.94;letter-spacing:-.01em}
+h1 em{color:var(--mum)}
+.kahraman p{max-width:34ch;color:var(--kum);font-size:16.5px}
+.dugmeler{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.foto-not{position:absolute;right:22px;top:calc(var(--cubuk,0px) + 92px);z-index:2;font-size:11.5px;color:rgba(245,236,221,.92);text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:.05em}
+.acilis>*{animation:acil 1.9s 2.6s cubic-bezier(.2,.7,.2,1) both}
+.acilis>*:nth-child(2){animation-delay:2.85s}
+@keyframes acil{from{opacity:0;transform:translateY(18px)}}
+section{padding:150px 0}
+h2{font-family:Cormorant,serif;font-weight:300;font-size:clamp(40px,5.6vw,88px);line-height:1;letter-spacing:-.01em}
+h2 em{color:var(--mum)}
+.acik-yazi{color:var(--soluk);max-width:52ch}
+/* manifesto */
+.giris{display:grid;grid-template-columns:7fr 4fr;gap:90px;align-items:end}
+.giris blockquote{font-family:Cormorant,serif;font-weight:300;font-size:clamp(30px,3.7vw,56px);line-height:1.15}
+.giris blockquote em{color:var(--mum)}
+.giris p{margin-top:28px;color:var(--soluk);max-width:46ch}
+.giris figure img{aspect-ratio:2/3;object-fit:cover;width:100%}
+.giris figcaption{font-size:13px;color:var(--soluk);margin-top:10px}
+/* bölümler */
+.bolum{display:grid;grid-template-columns:1fr 1fr;min-height:92vh;background:var(--gece2)}
+.bolum:nth-of-type(even){background:var(--gece)}
+.bolum .gorsel{position:relative;overflow:hidden}
+.bolum .gorsel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bolum .metin{padding:110px clamp(32px,6vw,110px);display:flex;flex-direction:column;justify-content:center;gap:22px}
+.bolum .no{font-family:Cormorant,serif;font-style:italic;font-size:22px;color:var(--mum)}
+.bolum h3{font-family:Cormorant,serif;font-weight:300;font-size:clamp(38px,4.4vw,68px);line-height:1}
+.bolum h3 em{color:var(--mum)}
+.bolum p{color:var(--kum);max-width:42ch}
+.bolum ul{list-style:none;display:grid;gap:8px;font-size:15.5px;color:var(--kum)}
+.bolum li{padding-left:24px;position:relative}
+.bolum li::before{content:"";position:absolute;left:0;top:.85em;width:12px;height:1px;background:var(--mum)}
+.bolum.ters .gorsel{order:2}
+.bolum small{font-size:12.5px;color:var(--soluk)}
+/* ara foto */
+.ara-foto{position:relative;height:92vh;overflow:hidden}
+.ara-foto img{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;transform:translateY(calc((var(--p,.5) - .5) * -6%))}
+.ara-foto p{position:absolute;left:0;right:0;bottom:64px;z-index:2;font-family:Cormorant,serif;font-weight:300;font-style:italic;font-size:clamp(34px,4.8vw,72px);line-height:1.08;text-align:center;padding:0 24px;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.ara-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,16,15,0) 40%,rgba(22,16,15,.85))}
+/* planlayıcı */
+.plan{background:var(--gece2);border-block:1px solid var(--cizgi)}
+.plan-izgara{display:grid;grid-template-columns:1fr 430px;gap:80px;margin-top:60px;align-items:start}
+.adim{padding:26px 0;border-top:1px solid var(--cizgi)}
+.adim legend,.adim h3{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin-bottom:16px;padding:0;color:var(--kum)}
+.adim fieldset{border:0}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer}
+.secenek span{display:inline-block;border:1px solid var(--cizgi);border-radius:999px;padding:10px 20px;font-size:14.5px;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.secenek input:checked+span{background:var(--kagit);color:var(--gece);border-color:var(--kagit)}
+.secenek input:focus-visible+span{outline:2px solid var(--mum);outline-offset:2px}
+.alan{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+.adim input[type=date],.adim input[type=text],.adim textarea{width:100%;background:transparent;border:1px solid var(--cizgi);border-radius:8px;padding:12px 15px;font-size:15px;color:var(--kagit);color-scheme:dark}
+.adim textarea{min-height:92px;resize:vertical}
+.ipucu{font-size:13px;color:var(--soluk);margin-top:10px}
+/* kişi kaydırıcı */
+.kisi{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+.kisi output{font-family:Cormorant,serif;font-weight:300;font-size:64px;line-height:1;color:var(--mum);min-width:3ch}
+.kisi span{color:var(--soluk);font-size:15px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:1px;background:rgba(245,236,221,.35)}
+input[type=range]::-moz-range-track{height:1px;background:rgba(245,236,221,.35)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--mum);border:0;margin-top:-10px;box-shadow:0 0 0 6px rgba(217,162,90,.18)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--mum);border:0;box-shadow:0 0 0 6px rgba(217,162,90,.18)}
+input[type=range]:focus-visible{outline:2px solid var(--mum);outline-offset:4px;border-radius:4px}
+.olcek{display:flex;justify-content:space-between;font-size:12.5px;color:var(--soluk);margin-top:2px}
+/* mekan kartları */
+.mekanlar{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mekanlar label{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border-radius:6px;cursor:pointer;background:var(--gece)}
+.mekanlar input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;z-index:3}
+.mekanlar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6);transition:filter .5s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.mekanlar label::after{content:"";position:absolute;inset:0;border:1px solid var(--cizgi);border-radius:6px;transition:border-color .3s,box-shadow .3s;pointer-events:none}
+.mekanlar label::before{content:"";position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(180deg,rgba(22,16,15,0),rgba(22,16,15,.88));z-index:1;pointer-events:none}
+.mekanlar b{position:absolute;left:14px;bottom:10px;z-index:2;font-family:Cormorant,serif;font-weight:400;font-size:24px;line-height:1.1;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.mekanlar input:checked~img{filter:brightness(.95);transform:scale(1.04)}
+.mekanlar input:checked~b{color:#fff}
+.mekanlar label:has(input:checked)::after{border:2px solid var(--mum);box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
+.mekanlar label:has(input:focus-visible)::after{border:2px solid #fff}
+/* fiş */
+.fis{position:sticky;top:104px;background:var(--kagit);color:var(--gece);padding:36px 30px;border-radius:2px;box-shadow:0 40px 70px -34px rgba(0,0,0,.7)}
+.fis h3{font-family:Cormorant,serif;font-weight:400;font-style:italic;font-size:32px;text-align:center;line-height:1.1}
+.fis .alt{text-align:center;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:#7B6A5F;margin:4px 0 18px}
+.fis-ozet{display:grid;gap:6px;margin-bottom:16px;padding:12px 14px;border:1px solid rgba(22,16,15,.16);border-radius:6px;font-size:14px;background:#FBF6EC}
+.fis-ozet div{display:flex;justify-content:space-between;gap:12px}
+.fis-ozet span{color:#7B6A5F}
+.fis-ozet b{font-weight:500;text-align:right}
+.fis pre{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word;border-block:1px dashed rgba(22,16,15,.3);padding:16px 0;min-height:200px}
+.fis .btn{width:100%;margin-top:18px}
+.fis .btn.dolu{background:var(--gece);color:var(--kagit)}
+.fis .btn.dolu:hover{background:#7D3248}
+.fis .btn.hat{border-color:rgba(22,16,15,.28);margin-top:10px}
+.fis small{display:block;text-align:center;color:#7B6A5F;font-size:12.5px;margin-top:12px}
+/* galeri şeridi */
+.serit{display:flex;gap:18px;overflow-x:auto;padding:0 max(32px,calc((100vw - 1240px)/2)) 12px;scrollbar-width:thin;scrollbar-color:#3a2a26 transparent;margin-top:52px}
+.serit figure{flex:none}
+.serit button{display:block}
+.serit img{height:min(62vh,560px);width:auto;object-fit:cover}
+.serit figcaption{font-size:13px;color:var(--soluk);margin-top:10px}
+.kutu{position:fixed;inset:0;z-index:70;background:rgba(10,7,6,.96);display:none;align-items:center;justify-content:center;padding:28px}
+.kutu.acik{display:flex}
+.kutu img{max-height:88vh;width:auto;max-width:100%}
+.kutu button{position:absolute;top:16px;right:20px;color:#fff;font-size:15px;padding:8px 12px}
+/* iletişim */
+.iletisim-govde{display:grid;grid-template-columns:7fr 5fr;gap:64px;margin-top:48px;align-items:start}
+.iletisim-govde dl{display:grid;gap:22px}
+.iletisim-govde dt{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--soluk)}
+.iletisim-govde dd{font-family:Cormorant,serif;font-size:32px;font-weight:300;line-height:1.15}
+.iletisim-govde dd a{text-decoration:none}
+.ig-liste{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.ig-liste li{border:1px solid var(--cizgi);border-radius:999px;padding:7px 16px;font-size:14px}
+.harita{border:1px solid var(--cizgi);padding:36px;display:flex;flex-direction:column;gap:16px;background:var(--gece2);border-radius:4px}
+.harita p{color:var(--soluk)}
+.kapanis{text-align:center;padding-bottom:160px}
+.kapanis h2{max-width:14ch;margin:16px auto 0}
+.kapanis .dugmeler{justify-content:center;margin-top:38px}
+footer{border-top:1px solid var(--cizgi);color:var(--soluk);padding:40px 0 120px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(245,236,221,.28);border-radius:8px;padding:12px 14px;color:var(--kum)}
+.ornek-not a{color:var(--kagit);font-weight:500}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+[data-belir]{transition-duration:1.3s!important}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .giris{grid-template-columns:1fr;gap:48px}
+  .giris figure{width:70%;margin-left:auto}
+  .bolum{grid-template-columns:1fr;min-height:0}
+  .bolum .gorsel{aspect-ratio:4/5}
+  .bolum.ters .gorsel{order:0}
+  .bolum .metin{padding:64px 28px 84px}
+  .plan-izgara,.iletisim-govde{grid-template-columns:1fr;gap:48px}
+  .fis{position:relative;top:0}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 40px)}
+  .logo small{display:none}
+  .kahraman .icerik .sar{flex-direction:column;align-items:flex-start;gap:20px}
+  .kahraman .icerik{padding-bottom:84px}
+  .kahraman .foto img{object-position:50% 50%}
+  h1{font-size:clamp(52px,15vw,68px)}
+  section{padding:92px 0}
+  .giris figure{width:76%}
+  .alan{grid-template-columns:1fr}
+  .mekanlar b{font-size:20px}
+  .serit{padding:0 20px 10px;gap:12px}
+  .serit img{height:52vh}
+  .ara-foto{height:72vh}
+  .harita{padding:26px}
+  .iletisim-govde dd{font-size:28px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.kahraman .foto,.ara-foto img{transform:none!important}.perde{display:none}.acilis>*{animation:none}.kahraman .foto img{animation:none}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="premium" data-isletme="Masal Organizasyon">
+<div class="perde" aria-hidden="true"><b>Bir varmış, bir yokmuş…</b><span>Masal Organizasyon · Denizli</span></div>
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Masal<small>Organizasyon</small></a>
+    <nav><a href="#hikaye">Hikaye</a><a href="#hizmetler">Hizmetler</a><a href="#planla">Planlayıcı</a><a href="#galeri">Galeri</a><a href="#iletisim">İletişim</a></nav>
+    <a class="btn hat" href="#planla" style="padding:11px 22px">Planla</a>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman" id="kahraman">
+    <div class="foto"><img src="../img/gercek/isik-kemer.webp" srcset="../img/gercek/isik-kemer-900.webp 900w, ../img/gercek/isik-kemer.webp 1800w" sizes="100vw" alt="Gece, ışıklarla aydınlanan çiçekli kemerin altında yürüyen çift (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high"></div>
+    <span class="foto-not">Fotoğraf temsilîdir · Örnek önizleme, işletmenin onayı yoktur</span>
+    <div class="icerik">
+      <div class="sar">
+        <div class="acilis">
+          <span class="ufak">Denizli · Düğün ve etkinlik tasarımı</span>
+          <h1 style="margin-top:16px">Masalınızı<br>birlikte <em>yazalım.</em></h1>
+        </div>
+        <div class="acilis">
+          <p>Etkinliğin türünü, tarihini ve kişi sayısını seçin; ilk mesajınız kendiliğinden yazılsın ve WhatsApp'tan bize ulaşsın.</p>
+          <div class="dugmeler"><a class="btn dolu" href="#planla">Etkinliğimi planla</a><a class="btn hat" href="#hizmetler">Hizmetlere bak</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="hikaye">
+    <div class="sar giris">
+      <div>
+        <span class="ufak" data-belir>Masal Organizasyon</span>
+        <blockquote data-belir style="margin-top:22px">Bir düğün, <em>bir günlük</em> değil; <em>bir ömürlük</em> hatıradır. Biz o hatırayı ışıkla, çiçekle ve düzenle kurarız.</blockquote>
+        <p data-belir>Bu metin örnektir. Yayında burada işletmenin kendi hikayesi, kurucunun cümleleri ve sahneden kareler yer alır.</p>
+      </div>
+      <figure data-belir><img src="../img/gercek/kemer-demet-900.webp" alt="Ahşap kemere bağlı beyaz gül ve okaliptüs demeti (temsilî fotoğraf)" width="600" height="900" loading="lazy"><figcaption>Fotoğraf temsilîdir</figcaption></figure>
+    </div>
+  </section>
+
+  <div id="hizmetler">
+    <div class="bolum">
+      <div class="gorsel"><img src="../img/gercek/kina-buket-900.webp" srcset="../img/gercek/kina-buket-900.webp 900w, ../img/gercek/kina-buket.webp 1800w" sizes="(max-width:980px) 100vw, 50vw" alt="Kınalı eller ve kırmızı güllerden buket (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:40% 50%"></div>
+      <div class="metin">
+        <span class="no">01</span>
+        <h3 data-belir>Kına, <em>sıcak</em> bir başlangıç.</h3>
+        <p data-belir>Kına gecesi için sahne, oturma düzeni ve ışık. Instagram'daki kına çalışmalarınız yayında burada bir galeriyle durur.</p>
+        <ul data-belir><li>Sahne ve oturma düzeni</li><li>Mum ve çiçekle sıcak ışık</li></ul>
+        <small>Açıklamalar örnektir.</small>
+      </div>
+    </div>
+    <div class="bolum ters">
+      <div class="gorsel"><img src="../img/gercek/beyaz-kemer-900.webp" srcset="../img/gercek/beyaz-kemer-900.webp 900w, ../img/gercek/beyaz-kemer.webp 1800w" sizes="(max-width:980px) 100vw, 50vw" alt="Beyaz çiçek bulutu altında tören yolu (temsilî fotoğraf)" width="1800" height="1198" loading="lazy"></div>
+      <div class="metin">
+        <span class="no">02</span>
+        <h3 data-belir>Düğün ve <em>giriş yolu.</em></h3>
+        <p data-belir>Misafirleri karşılayan giriş yolundan tören alanına, tek bir dilde kurulan sahne. Yayında kendi giriş yolu tasarımlarınız yer alır.</p>
+        <ul data-belir><li>Giriş yolu ve kemer tasarımı</li><li>Tören ve davet alanının düzeni</li></ul>
+        <small>Açıklamalar örnektir.</small>
+      </div>
+    </div>
+    <div class="bolum">
+      <div class="gorsel"><img src="../img/gercek/pasta-masa-900.webp" srcset="../img/gercek/pasta-masa-900.webp 600w, ../img/gercek/pasta-masa.webp 1200w" sizes="(max-width:980px) 100vw, 50vw" alt="Çiçeklerle süslü uzun masa ve arkada pasta sehpası (temsilî fotoğraf)" width="1200" height="1800" loading="lazy" style="object-position:50% 60%"></div>
+      <div class="metin">
+        <span class="no">03</span>
+        <h3 data-belir>Masa <em>tasarımı.</em></h3>
+        <p data-belir>Masa düzeni, mum, tabak ve çiçeğin uyumu. Themasflower ile çiçek tasarımı aynı elden, aynı dilde.</p>
+        <ul data-belir><li>Masa ve sofra düzeni</li><li>Çiçek ve mumla tasarım</li></ul>
+        <small>Açıklamalar örnektir.</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="ara-foto" data-ilerle>
+    <img src="../img/gercek/gelin-cicek.webp" srcset="../img/gercek/gelin-cicek-900.webp 900w, ../img/gercek/gelin-cicek.webp 1800w" sizes="100vw" alt="Beyaz çiçek kemerinden geçen gelin (temsilî fotoğraf)" width="1800" height="1200" loading="lazy">
+    <p>Ve sonra, bir masal gibi<br>başlar her şey.</p>
+  </div>
+
+  <section class="plan" id="planla">
+    <div class="sar">
+      <span class="ufak" data-belir>Etkinlik planlayıcı</span>
+      <h2 data-belir style="margin-top:14px">Hayalinizi <em>seçin,</em><br>mesajınız yazılsın.</h2>
+      <p class="acik-yazi" data-belir style="margin-top:20px">Fiyat yok, form yok: seçtikleriniz sağdaki kâğıda dökülür ve WhatsApp'ta tek dokunuşla bize gelir.</p>
+      <div class="plan-izgara">
+        <form id="form" onsubmit="return false">
+          <div class="adim"><fieldset><legend>1 · Etkinlik türü</legend><div class="secenek" id="sTur"></div></fieldset></div>
+          <div class="adim"><h3>2 · Tarih</h3>
+            <div class="alan"><input type="date" id="tarih" aria-label="Etkinlik tarihi"><div class="secenek"><label><input type="checkbox" id="tarihBelirsiz"><span>Tarih henüz belli değil</span></label></div></div></div>
+          <div class="adim"><h3><label for="kisi">3 · Kişi sayısı</label></h3>
+            <div class="kisi"><output id="kisiYaz" for="kisi">150</output><span>kişi (yaklaşık)</span></div>
+            <input type="range" id="kisi" min="20" max="600" step="10" value="150">
+            <div class="olcek"><span>20</span><span>600</span></div></div>
+          <div class="adim"><fieldset><legend>4 · Mekân tercihi</legend>
+            <div class="mekanlar" id="sMekan"></div>
+            <p class="ipucu">Mekânınız belliyse aşağıda adını yazabilirsiniz.</p>
+            <input type="text" id="mekanAd" placeholder="Mekânın adı (isteğe bağlı)" aria-label="Mekânın adı" style="margin-top:12px"></fieldset></div>
+          <div class="adim"><fieldset><legend>5 · Neler için destek istiyorsunuz?</legend><div class="secenek" id="sIstek"></div></fieldset><p class="ipucu">Emin değilseniz boş bırakın; birlikte netleştiririz.</p></div>
+          <div class="adim"><h3><label for="not">6 · Hayaliniz</label></h3><textarea id="not" placeholder="Ör. beyaz çiçekli, mumlu, sade ve sıcak bir atmosfer."></textarea></div>
+        </form>
+        <aside class="fis" aria-live="polite">
+          <h3>Masal Organizasyon</h3>
+          <div class="alt">Etkinlik notu</div>
+          <div class="fis-ozet" id="ozet"></div>
+          <pre id="fisMetin"></pre>
+          <a class="btn dolu" id="wa" href="https://wa.me/905331653629" target="_blank" rel="noopener">WhatsApp'ta gönder</a>
+          <button class="btn hat" id="kopya" type="button">Mesajı kopyala</button>
+          <small>Düğmeye bastığınızda WhatsApp açılır; mesajı orada gönderirsiniz. Bu önizlemede kimseye bir şey gitmez. Masa sayısı yaklaşıktır; ayrıntı görüşmede netleşir.</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" style="padding-bottom:60px">
+    <div class="sar">
+      <span class="ufak" data-belir>Galeri</span>
+      <h2 data-belir style="margin-top:14px">Sahneden <em>kareler.</em></h2>
+      <p class="acik-yazi" data-belir style="margin-top:20px">Temsilî fotoğraflar; yayında bu şerit Instagram'daki kendi işlerinizle dolar. Büyütmek için dokunun.</p>
+    </div>
+    <div class="serit" id="serit">
+      <figure><button type="button" data-buyuk="../img/gercek/mum-masa.webp"><img src="../img/gercek/mum-masa-900.webp" alt="Mum ve çiçeklerle süslü uzun masa (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button><figcaption>Mum ve masa</figcaption></figure>
+      <figure><button type="button" data-buyuk="../img/gercek/koridor.webp"><img src="../img/gercek/koridor-900.webp" alt="Beyaz çiçek sıralı tören koridoru (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button><figcaption>Tören koridoru</figcaption></figure>
+      <figure><button type="button" data-buyuk="../img/gercek/salon2.webp"><img src="../img/gercek/salon2-900.webp" alt="Avizeli düğün salonu (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button><figcaption>Salon</figcaption></figure>
+      <figure><button type="button" data-buyuk="../img/gercek/bahce-masa.webp"><img src="../img/gercek/bahce-masa-900.webp" alt="Gün ışığında bahçede beyaz sandalyeli yuvarlak masalar (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button><figcaption>Bahçe</figcaption></figure>
+      <figure><button type="button" data-buyuk="../img/gercek/uzun-masa.webp"><img src="../img/gercek/uzun-masa-900.webp" alt="Ahşap uzun masada tabaklar ve çiçek yolu (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button><figcaption>Uzun masa</figcaption></figure>
+      <figure><button type="button" data-buyuk="../img/gercek/gul.webp"><img src="../img/gercek/gul-900.webp" alt="Krem gül ve okaliptüs yaprakları (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button><figcaption>Çiçek</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="sar">
+      <span class="ufak" data-belir>İletişim</span>
+      <h2 data-belir style="margin-top:14px">Denizli'de, <em>bir mesaj</em> uzağınızda.</h2>
+      <div class="iletisim-govde">
+        <dl data-belir>
+          <div><dt>WhatsApp / GSM</dt><dd><a href="tel:+905331653629">0533 165 36 29</a></dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/masalorganizasyon20/">@masalorganizasyon20</a></dd></div>
+          <div><dt>Instagram'da öne çıkanlar</dt><dd><ul class="ig-liste" style="font-family:'Albert Sans',sans-serif;font-size:14px"><li>Kına</li><li>Düğün</li><li>Giriş yolu</li><li>Masa tasarımı</li><li>Themasflower</li><li>Collesia Otel</li><li>Villa Castelio</li><li>Ruma</li></ul></dd></div>
+        </dl>
+        <div class="harita" data-belir>
+          <span class="ufak">Konum</span>
+          <p>Yayında burada Google Haritalar'da adresiniz, çalışma saatleriniz ve yol tarifi düğmesi olur. Bu bilgileri sizden alıp ekleriz.</p>
+          <div><a class="btn hat" href="https://www.google.com/maps/search/Masal+Organizasyon+Denizli">Haritada ara</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kapanis">
+    <div class="sar">
+      <span class="ufak" data-belir>Bir sonraki masal</span>
+      <h2 data-belir>Sizin hikayeniz <em>nasıl</em> başlasın?</h2>
+      <div class="dugmeler" data-belir>
+        <a class="btn dolu" href="#planla">Etkinliğimi planla</a>
+        <a class="btn hat" href="https://www.google.com/maps/search/Masal+Organizasyon+Denizli">Google'da yorum yazın</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Masal Organizasyon · Denizli · <a href="https://www.instagram.com/masalorganizasyon20/">@masalorganizasyon20</a></div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Masal Organizasyon için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); açıklamalar örnektir. Başlıklar ve telefon Instagram profilinizden alındı. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="kutu" id="kutu" role="dialog" aria-label="Büyük fotoğraf"><button type="button" id="kapat">Kapat ✕</button><img alt=""></div>
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905331653629" target="_blank" rel="noopener">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ust = $("#ust"), kc = document.querySelector(".kd-cubuk");
+const cubukH = () => (kc ? kc.offsetHeight : 0);
+document.documentElement.style.setProperty("--cubuk", cubukH() + "px");
+const kah = $("#kahraman"), ara = document.querySelector("[data-ilerle]");
+let bekliyor = false;
+function kaydir() {
+  bekliyor = false;
+  const y = scrollY;
+  ust.classList.toggle("dolu", y > cubukH() + 10);
+  if (az) return;
+  kah.style.setProperty("--p", Math.min(1, Math.max(0, y / kah.offsetHeight)).toFixed(3));
+  const r = ara.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) ara.style.setProperty("--p", ((innerHeight - r.top) / (innerHeight + r.height)).toFixed(3));
+}
+addEventListener("scroll", () => { if (!bekliyor) { bekliyor = true; requestAnimationFrame(kaydir); } }, { passive: true });
+addEventListener("resize", () => document.documentElement.style.setProperty("--cubuk", cubukH() + "px"));
+kaydir();
+
+/* planlayıcı */
+const radyo = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+radyo("#sTur", "tur", ["Düğün", "Kına", "Nişan", "Başka bir organizasyon"]);
+$("#sIstek").innerHTML = ["Tam planlama", "Giriş yolu", "Masa tasarımı", "Çiçek tasarımı"].map((x) => `<label><input type="checkbox" name="istek" value="${x}"><span>${x}</span></label>`).join("");
+const MEKAN = [
+  ["Salon", "salon2-900"],
+  ["Bahçe / açık hava", "bahce-masa-900"],
+  ["Otel veya villa", "aksam-salon-900"],
+  ["Henüz karar vermedim", "kemer-demet-900"],
+];
+$("#sMekan").innerHTML = MEKAN.map(([ad, f], i) => `<label><input type="radio" name="mekan" value="${ad}"${i === 3 ? " checked" : ""}><img src="../img/gercek/${f}.webp" alt="" width="900" height="600" loading="lazy"><b>${ad}</b></label>`).join("");
+$("#tarih").min = new Date().toISOString().slice(0, 10);
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+const ozetSatir = (a, b) => `<div><span>${a}</span><b>${b}</b></div>`;
+function fis() {
+  const tur = deger("tur"), mekan = deger("mekan"), kisi = +$("#kisi").value;
+  $("#kisiYaz").textContent = kisi;
+  const istek = [...document.querySelectorAll("[name=istek]:checked")].map((x) => x.value.toLowerCase());
+  const tv = $("#tarih").value, belirsiz = $("#tarihBelirsiz").checked;
+  $("#tarih").disabled = belirsiz;
+  let tarih = "henüz belli değil", kalan = "";
+  if (!belirsiz && tv) {
+    const d = new Date(tv + "T12:00");
+    tarih = d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+    const bugun = new Date(); bugun.setHours(12, 0, 0, 0);
+    const g = Math.round((d - bugun) / 864e5);
+    kalan = g < 0 ? "geçmiş bir tarih" : g === 0 ? "bugün" : g < 60 ? g + " gün" : "yaklaşık " + Math.round(g / 30.4) + " ay";
+  }
+  const masa = Math.max(1, Math.round(kisi / 10));
+  const ad = $("#mekanAd").value.trim(), not = $("#not").value.trim();
+  const mekanMetin = mekan === "Henüz karar vermedim" ? (ad ? ad : "henüz karar vermedim, önerinizi isterim") : mekan.toLowerCase() + (ad ? " (" + ad + ")" : "");
+  $("#ozet").innerHTML = ozetSatir("Etkinlik", tur) + ozetSatir("Tarih", belirsiz || !tv ? "belli değil" : tarih.replace(/ \S+$/, "")) + (kalan ? ozetSatir("Kalan süre", kalan) : "") + ozetSatir("Kişi", kisi) + ozetSatir("Masa (10 kişilik)", "yaklaşık " + masa);
+  const metin = [
+    `Merhaba, ${tur === "Başka bir organizasyon" ? "bir organizasyon" : tur.toLowerCase()} için destek almak istiyorum.`, "",
+    `Etkinlik: ${tur}`,
+    `Tarih: ${tarih}`,
+    `Kişi sayısı: yaklaşık ${kisi}`,
+    `Mekân: ${mekanMetin}`,
+    `İstediğim: ${istek.length ? istek.join(", ") : "henüz karar vermedim, önerinizi isterim"}`,
+    `Hayalim: ${not || "görüşmede anlatırım"}`,
+  ].join("\n");
+  $("#fisMetin").textContent = metin;
+  $("#wa").href = "https://wa.me/905331653629?text=" + encodeURIComponent(metin);
+}
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis); fis();
+$("#kopya").addEventListener("click", async () => {
+  const b = $("#kopya");
+  try { await navigator.clipboard.writeText($("#fisMetin").textContent); b.textContent = "Kopyalandı ✓"; }
+  catch { const r = document.createRange(); r.selectNodeContents($("#fisMetin")); getSelection().removeAllRanges(); getSelection().addRange(r); b.textContent = "Metin seçildi, kopyalayın"; }
+  setTimeout(() => (b.textContent = "Mesajı kopyala"), 2200);
+});
+
+/* galeri büyütme */
+const kutu = $("#kutu");
+document.querySelectorAll("[data-buyuk]").forEach((b) => b.addEventListener("click", () => { const i = kutu.querySelector("img"); i.src = b.dataset.buyuk; i.alt = b.querySelector("img").alt; kutu.classList.add("acik"); }));
+kutu.addEventListener("click", (e) => { if (e.target !== kutu.querySelector("img")) kutu.classList.remove("acik"); });
+addEventListener("keydown", (e) => { if (e.key === "Escape") kutu.classList.remove("acik"); });
+</script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

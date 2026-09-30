@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Ness Pilates · Pamukkale, Denizli · Standart örnek</title>
+<meta name="description" content="Ness Pilates, Ulus Cd. 119A, Pamukkale / Denizli: reformer pilates ve mat pilates. Boztaş Digital örnek önizlemesi (Standart seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#15223A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#15223A;--ink2:#1E2F4D;--kemik:#ECE8E1;--kagit:#F6F3EE;--pirinc:#E8C872;--pirinc-k:#77591A;--soluk:#5A6374;--cizgi:rgba(21,34,58,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kemik);color:var(--ink);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1160px,100% - 48px);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 26px;font-weight:600;font-size:15.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--pirinc);color:var(--ink)}
+.btn.dolu:hover{background:#F3DA98}
+.btn.koyu{background:var(--ink);color:var(--kemik)}
+.btn.koyu:hover{background:var(--ink2)}
+.btn.hat{border:1.5px solid currentColor}
+.btn.hat:hover{background:rgba(255,255,255,.08)}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--pirinc-k)}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+/* üst şerit + hero: sol lacivert panel, sağ tam boy fotoğraf */
+.ust{background:var(--ink);color:var(--kemik);position:relative;z-index:5}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:72px}
+.logo{font-weight:800;font-size:24px;letter-spacing:.34em;text-decoration:none;line-height:1}
+.logo small{display:inline-block;font-weight:500;font-size:11px;letter-spacing:.34em;margin-left:14px;padding-left:14px;border-left:1px solid var(--pirinc);color:var(--pirinc);vertical-align:3px}
+.ust nav{display:flex;gap:30px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.88}
+.ust nav a:hover{opacity:1;color:var(--pirinc)}
+.kahraman{background:var(--ink);color:var(--kemik);display:grid;grid-template-columns:5fr 7fr;min-height:calc(100vh - 140px)}
+.kahraman .metin{display:flex;flex-direction:column;justify-content:center;padding:56px max(24px,calc((100vw - 1160px)/2)) 56px max(24px,calc((100vw - 1160px)/2))}
+.kahraman .ufak{color:var(--pirinc)}
+h1{font-weight:800;font-size:clamp(46px,5.6vw,84px);line-height:.98;letter-spacing:-.035em;margin:20px 0 24px}
+h1 em{font-style:normal;color:var(--pirinc)}
+.kahraman p{font-size:18px;max-width:38ch;color:#C5CCD9}
+.kahraman .foto{position:relative;overflow:hidden;background:#243553}
+.kahraman .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;animation:yavas 20s ease-out both}
+@keyframes yavas{from{transform:scale(1.06)}to{transform:scale(1)}}
+.not-foto{position:absolute;right:16px;bottom:12px;z-index:2;font-size:12px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+
+section{padding:104px 0}
+h2{font-weight:800;font-size:clamp(34px,4.2vw,56px);line-height:1.02;letter-spacing:-.03em;margin:12px 0 14px}
+h2 em{font-style:normal;color:var(--pirinc-k)}
+.acik-yazi{color:var(--soluk);max-width:54ch}
+
+/* dersler: iki büyük satır */
+.dersler{margin-top:52px;border-top:1.5px solid var(--ink)}
+.ders{display:grid;grid-template-columns:90px minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:center;padding:38px 0;border-bottom:1px solid var(--cizgi)}
+.ders .no{font-weight:800;font-size:54px;line-height:1;letter-spacing:-.04em;color:var(--pirinc-k);font-variant-numeric:tabular-nums}
+.ders h3{font-weight:800;font-size:clamp(30px,3.4vw,44px);line-height:1.04;letter-spacing:-.025em}
+.ders p{color:var(--soluk);margin-top:12px;max-width:40ch}
+.ders img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#d8d3ca}
+
+/* stüdyo şeridi */
+.stdyo{background:var(--kagit);border-block:1px solid var(--cizgi)}
+.serit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,3fr) minmax(0,3fr);gap:16px;margin-top:44px}
+.serit img{width:100%;height:100%;object-fit:cover;background:#d8d3ca}
+.serit .genis{aspect-ratio:auto}
+.serit figure{min-height:340px;position:relative}
+.serit figure img{position:absolute;inset:0}
+.alt-yazi{margin-top:20px;font-size:14px;color:var(--soluk)}
+
+/* iletişim */
+.konum{background:var(--ink);color:var(--kemik)}
+.konum .ufak{color:var(--pirinc)}
+.konum h2 em{color:var(--pirinc)}
+.konum .acik-yazi{color:#B5BDCC}
+.konum-izgara{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.konum dl{display:grid;gap:20px;margin-top:28px}
+.konum dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#93A0B7}
+.konum dd{font-size:20px}
+.konum dd a{text-underline-offset:3px}
+.konum figure{position:relative}
+.konum img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 55%}
+footer{background:#0E1829;color:#93A0B7;padding:34px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(236,232,225,.3);padding:12px 14px;color:#DAD6CE}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .kahraman{grid-template-columns:1fr;min-height:0}
+  .kahraman .foto{order:-1;aspect-ratio:4/3}
+  .kahraman .metin{padding:40px 24px 56px}
+  .ders{grid-template-columns:64px minmax(0,1fr);gap:18px 20px}
+  .ders .no{font-size:40px}
+  .ders img{grid-column:1/-1}
+  .serit{grid-template-columns:1fr 1fr}
+  .serit .genis{grid-column:1/-1}
+  .konum-izgara{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .logo{font-size:20px}
+  .logo small{display:none}
+  section{padding:68px 0}
+  .kahraman .foto{aspect-ratio:1/1}
+  .kahraman .metin{padding:32px 18px 48px}
+  .ders{padding:30px 0}
+  .serit figure{min-height:220px}
+  .yuzen{display:block}
+}
+.kahraman .metin>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .metin>*:nth-child(2){animation-delay:.12s}.kahraman .metin>*:nth-child(3){animation-delay:.24s}.kahraman .metin>*:nth-child(4){animation-delay:.36s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){.kahraman .metin>*,.kahraman .foto img{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Ness Pilates">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">NESS<small lang="en">PILATES</small></a>
+    <nav><a href="#dersler">Dersler</a><a href="#studyo">Stüdyo</a><a href="#konum">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="metin">
+      <span class="ufak">Pilates stüdyosu · Pamukkale, Denizli</span>
+      <h1>Hareketin <em>ritmi,</em> sana göre.</h1>
+      <p>Reformer pilates ve mat pilates. Ulus Caddesi'nde, Pamukkale'de.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="https://wa.me/905011858685?text=Merhaba%2C%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." data-wa>WhatsApp'tan yazın</a>
+        <a class="btn hat" href="#dersler">Dersleri görün</a>
+      </div>
+    </div>
+    <div class="foto">
+      <img src="../img/gercek/reformer.webp" srcset="../img/gercek/reformer-900.webp 900w, ../img/gercek/reformer.webp 1800w" sizes="(max-width:980px) 100vw, 58vw" alt="Aydınlık bir stüdyoda reformer üzerinde çalışan kadın (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+      <span class="not-foto">Fotoğraf temsilîdir</span>
+    </div>
+  </div>
+
+  <section id="dersler">
+    <div class="sar">
+      <span class="ufak">Dersler</span>
+      <h2 data-belir>İki ders, <em>tek stüdyo.</em></h2>
+      <p class="acik-yazi">Yayında her dersin süresi, seviyesi ve kimler için uygun olduğu yazar; bu sayfada yalnızca ders türleri vardır.</p>
+      <div class="dersler" data-sirali="110">
+        <article class="ders" data-belir>
+          <span class="no">01</span>
+          <div>
+            <h3>Reformer pilates</h3>
+            <p>Yaylı reformer üzerinde kontrollü, akıcı hareketler; güç, denge ve esneklik bir arada.</p>
+          </div>
+          <img src="../img/gercek/esneme-900.webp" alt="Reformer üzerinde yan esneme hareketi yapan kadın (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:45% 50%">
+        </article>
+        <article class="ders" data-belir>
+          <span class="no">02</span>
+          <div>
+            <h3>Mat pilates</h3>
+            <p>Mat üzerinde, kendi vücut ağırlığınızla nefes ve merkez odaklı çalışma.</p>
+          </div>
+          <img src="../img/gercek/mat-isik-900.webp" alt="Gün ışığı alan salonda mat üzerinde öne esneme yapan iki kadın (temsilî fotoğraf)" width="900" height="601" loading="lazy" style="object-position:50% 60%">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="stdyo" id="studyo">
+    <div class="sar">
+      <span class="ufak">Stüdyo</span>
+      <h2 data-belir>Işık, ekipman, <em>sakinlik.</em></h2>
+      <p class="acik-yazi">Yayında bu alana Ness Pilates'in kendi stüdyo fotoğrafları gelir.</p>
+      <div class="serit" data-sirali="100">
+        <figure class="genis" data-belir><img src="../img/gercek/studyo-900.webp" srcset="../img/gercek/studyo-900.webp 900w, ../img/gercek/studyo.webp 1800w" sizes="(max-width:980px) 100vw, 45vw" alt="Işık alan geniş bir stüdyoda sıralanmış reformerlar (temsilî fotoğraf)" width="1800" height="1050" loading="lazy"></figure>
+        <figure data-belir><img src="../img/gercek/kemer-900.webp" alt="Kemerli pencereli aydınlık stüdyoda reformerlar (temsilî fotoğraf)" width="700" height="1050" loading="lazy" style="object-position:50% 60%"></figure>
+        <figure data-belir><img src="../img/gercek/tugla-900.webp" alt="Tuğla duvarlı, büyük pencereli stüdyo iç mekânı (temsilî fotoğraf)" width="700" height="1050" loading="lazy" style="object-position:50% 70%"></figure>
+      </div>
+      <p class="alt-yazi">Fotoğraflar temsilîdir (Pexels).</p>
+    </div>
+  </section>
+
+  <section class="konum" id="konum">
+    <div class="sar konum-izgara">
+      <div>
+        <span class="ufak">İletişim</span>
+        <h2 data-belir>Ulus Caddesi'nde, <em>yanınızda.</em></h2>
+        <dl>
+          <div><dt>Adres</dt><dd>Ulus Cd. 119A<br>Pamukkale / Denizli</dd></div>
+          <div><dt>Telefon / WhatsApp</dt><dd><a href="tel:+905011858685">0501 185 86 85</a></dd></div>
+        </dl>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://wa.me/905011858685?text=Merhaba%2C%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." data-wa>WhatsApp'tan yazın</a>
+          <a class="btn hat" href="https://www.google.com/maps/search/?api=1&amp;query=Ulus%20Cd.%20119A%20Pamukkale%20Denizli">Haritada açın</a>
+        </div>
+      </div>
+      <figure data-belir><img src="../img/gercek/sira-900.webp" alt="Sıralı reformerlar, yakın plan (temsilî fotoğraf)" width="900" height="600" loading="lazy"></figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Ness Pilates · Ulus Cd. 119A, Pamukkale / Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Ness Pilates için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels); yayında stüdyonuzun kendi fotoğrafları kullanılır. Ders türleri, adres ve telefon herkese açık kayıtlardan alındı; ders saatleri ve ayrıntılar sizinle birlikte eklenir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905011858685?text=Merhaba%2C%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

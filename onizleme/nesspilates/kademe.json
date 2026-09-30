@@ -1,0 +1,33 @@
+{
+  "ad": "Ness Pilates",
+  "renk": "#15223A",
+  "giris": "Reformer pilates ve mat pilates derslerinizle; WhatsApp'a hazır deneme dersi mesajı. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar temsilîdir.",
+  "ozellik": {
+    "standart": [
+      "Reformer ve mat pilates başlıkları, adres ve WhatsApp düğmesi"
+    ],
+    "profesyonel": [
+      "Ders, seviye ve gün seçince kendiliğinden yazılan WhatsApp deneme dersi mesajı",
+      "İlk ders adımları, galeri, harita ve yol tarifi"
+    ],
+    "premium": [
+      "Yavaş sinematik açılış ve kaydırmayla beliren bölümler",
+      "Etkileşimli program seçici: hedef, seviye ve gün seçince size uygun ders önerisi ile hazır mesaj"
+    ]
+  },
+  "ortak": {
+    "standart": [
+      "Tek sayfa, telefona tam uyumlu",
+      "Reformer ve mat pilates başlıkları, adres ve WhatsApp düğmesi",
+      "Sade tasarım, temsilî fotoğraf"
+    ],
+    "profesyonel": [
+      "Ders sekmeleri ve ilk ders adımları",
+      "Galeri, harita ve yol tarifi"
+    ],
+    "premium": [
+      "Editoryal tasarım, tam ekran temsilî fotoğraflar",
+      "Hikâye bölümleri, ders tanıtımları ve sıkça sorulan sorular"
+    ]
+  }
+}

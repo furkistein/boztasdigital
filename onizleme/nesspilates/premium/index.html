@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Ness Pilates · Pamukkale, Denizli · Premium örnek</title>
+<meta name="description" content="Ness Pilates, Ulus Cd. 119A, Pamukkale / Denizli: sinematik açılış, etkileşimli program seçici ve hazır WhatsApp mesajı. Boztaş Digital örnek önizlemesi (Premium seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F1A2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#0F1A2E;--gece2:#16243D;--kemik:#ECE8E1;--pirinc:#E8C872;--pirinc-k:#77591A;--soluk:#8E9BB3;--cizgi:rgba(236,232,225,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--gece);color:var(--kemik);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:16.5px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sar{width:min(1240px,100% - 64px);margin-inline:auto}
+.ufak{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--pirinc);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;font-weight:600;font-size:14.5px;letter-spacing:.03em;text-decoration:none;white-space:nowrap;transition:background .35s,color .35s,border-color .35s}
+.btn.dolu{background:var(--kemik);color:var(--gece)}
+.btn.dolu:hover{background:#fff}
+.btn.pirinc{background:var(--pirinc);color:#1A1406}
+.btn.pirinc:hover{background:#F3DA98}
+.btn.hat{border:1px solid rgba(236,232,225,.42)}
+.btn.hat:hover{border-color:var(--kemik)}
+h1,h2,h3{font-family:"Gilda Display",Georgia,serif;font-weight:400}
+h2{font-size:clamp(38px,5vw,68px);line-height:1.04;letter-spacing:-.005em;margin:14px 0 18px}
+h2 em,h1 em{font-style:normal;color:var(--pirinc)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+
+/* açılış perdesi */
+.perde{position:fixed;inset:0;z-index:100;background:var(--gece);display:flex;align-items:center;justify-content:center;text-align:center;pointer-events:none;animation:perde 1.1s ease 1.9s forwards}
+.perde b{display:block;font-family:"Gilda Display",serif;font-weight:400;font-size:clamp(54px,9vw,120px);line-height:1;letter-spacing:.28em;margin-right:-.28em;animation:perdeyazi 1.8s ease both}
+.perde i{display:block;height:1px;background:var(--pirinc);margin:22px auto 16px;width:0;animation:cizgi 1.4s cubic-bezier(.3,.7,.2,1) .5s forwards}
+.perde small{display:block;font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:var(--pirinc);opacity:0;animation:goster 1s ease 1s forwards}
+@keyframes perde{to{opacity:0;visibility:hidden}}
+@keyframes perdeyazi{0%{opacity:0;letter-spacing:.6em}55%{opacity:1}100%{opacity:1;letter-spacing:.28em}}
+@keyframes cizgi{to{width:min(220px,40vw)}}
+
+/* menü */
+.ust{position:fixed;left:0;right:0;top:0;z-index:30;transition:background .4s}
+.ust.dolu{background:rgba(15,26,46,.94)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-family:"Gilda Display",serif;font-size:26px;letter-spacing:.3em;text-decoration:none;line-height:1}
+.logo small{font-family:"Schibsted Grotesk",sans-serif;font-size:10px;letter-spacing:.34em;color:var(--pirinc);margin-left:12px}
+.ust nav{display:flex;gap:28px;font-size:14.5px;align-items:center}
+.ust nav a{text-decoration:none;opacity:.92}
+.ust nav .btn{padding:10px 20px}
+
+/* kahraman */
+.kahraman{position:relative;height:240vh}
+.kah-yapisik{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden}
+.foto{position:absolute;inset:0;transform:scale(calc(1 + var(--p,0) * .12));transform-origin:50% 55%;will-change:transform}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;animation:acilis 9s cubic-bezier(.2,.6,.2,1) both}
+@keyframes acilis{from{transform:scale(1.16)}to{transform:scale(1)}}
+.kah-yapisik::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,26,46,.72) 0%,rgba(15,26,46,.38) 42%,rgba(15,26,46,0) 72%),linear-gradient(0deg,rgba(15,26,46,.96) 0%,rgba(15,26,46,.7) 32%,rgba(15,26,46,.12) 62%),linear-gradient(180deg,rgba(15,26,46,.6) 0%,rgba(15,26,46,0) 22%)}
+.kah-yazi{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding-bottom:clamp(96px,14vh,140px)}
+.kah-yazi .sar{position:relative}
+.kah-yazi h1{font-size:clamp(52px,8vw,128px);line-height:.98;letter-spacing:-.015em}
+.satir{display:block;overflow:hidden;padding-bottom:.1em}
+.satir>span{display:block;transform:translateY(108%);animation:satir 1.3s cubic-bezier(.2,.7,.2,1) forwards}
+.satir:nth-child(1)>span{animation-delay:2.0s}.satir:nth-child(2)>span{animation-delay:2.25s}
+@keyframes satir{to{transform:none}}
+.kah-alt{margin-top:26px;max-width:42ch;color:#D3D8E2;opacity:0;animation:goster 1.2s ease 2.8s forwards}
+.kah-alt2{position:absolute;left:0;right:0;bottom:-70px;opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.kah-alt2.acik{opacity:1;transform:none}
+.kah-alt2 ul{list-style:none;display:flex;gap:10px;flex-wrap:wrap}
+.kah-alt2 li{border:1px solid rgba(236,232,225,.4);padding:6px 16px;font-size:14px;background:rgba(15,26,46,.55)}
+.kaydir{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--pirinc);opacity:0;animation:goster 1s ease 3.2s forwards;transition:opacity .4s}
+.kaydir.gizli{animation:none;opacity:0}
+@keyframes goster{to{opacity:1}}
+.not-foto{position:absolute;right:20px;top:88px;z-index:3;font-size:11.5px;color:rgba(255,255,255,.75)}
+
+/* manifesto */
+.manifesto{padding:150px 0 130px}
+.manifesto p.m{font-family:"Gilda Display",serif;font-size:clamp(30px,4.4vw,60px);line-height:1.2;max-width:26ch;letter-spacing:-.005em}
+.manifesto .k{opacity:.16;transition:opacity .5s}
+.manifesto .k.yan{opacity:1}
+.manifesto .alt{margin-top:34px}
+
+/* ders panelleri: tam genişlik sahne */
+.panel{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;border-top:1px solid var(--cizgi)}
+.panel .pg{position:absolute;inset:0;overflow:hidden}
+.panel .pg img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;transform:translateY(calc((var(--p,.5) - .5) * -7%))}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,26,46,.95) 0%,rgba(15,26,46,.72) 34%,rgba(15,26,46,.1) 66%)}
+.panel .ic{position:relative;z-index:2;width:min(1240px,100% - 64px);margin:0 auto;padding:0 0 76px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 44px;align-items:end}
+.panel .no{font-family:"Gilda Display",serif;font-size:clamp(90px,12vw,190px);line-height:.8;color:var(--pirinc);opacity:.92}
+.panel h2{margin:0 0 14px}
+.panel p{color:#D3D8E2;max-width:48ch}
+.panel ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.panel li{font-size:13.5px;border:1px solid rgba(236,232,225,.36);padding:5px 14px;color:#E4E6EA;background:rgba(15,26,46,.5)}
+.panel.sag .ic{justify-content:end}
+.panel .nt{position:absolute;right:20px;top:18px;z-index:3;font-size:11.5px;color:rgba(255,255,255,.75)}
+
+/* ara fotoğraf */
+.ara-foto{position:relative;height:84vh;overflow:hidden}
+.ara-foto img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;transform:translateY(calc((var(--p,.5) - .5) * -7%))}
+.ara-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,26,46,.35),rgba(15,26,46,.2) 40%,rgba(15,26,46,.92))}
+.ara-foto p{position:absolute;left:0;right:0;bottom:58px;z-index:2;font-family:"Gilda Display",serif;font-size:clamp(30px,4.4vw,64px);line-height:1.1;text-align:center;padding:0 24px}
+.ara-foto p em{font-style:normal;color:var(--pirinc)}
+.ara-foto small{position:absolute;left:0;right:0;bottom:24px;z-index:2;text-align:center;font-size:12.5px;color:#C9D0DC;letter-spacing:.04em}
+
+/* seçici */
+.secici{background:var(--kemik);color:var(--gece);padding:130px 0}
+.secici .ufak{color:var(--pirinc-k)}
+.secici h2 em{color:var(--pirinc-k)}
+.secici .acik-yazi{color:#4F5A70}
+.secici-izgara{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:72px;margin-top:48px;align-items:start}
+.soru{padding:22px 0;border-top:1px solid rgba(15,26,46,.18)}
+.soru legend,.soru .lg{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px;padding:0;display:block}
+.soru fieldset{border:0}
+.secenek{display:flex;gap:8px;flex-wrap:wrap}
+.secenek label{position:relative}
+.secenek input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer}
+.secenek span{display:inline-block;border:1px solid rgba(15,26,46,.3);padding:9px 18px;font-size:14.5px;cursor:pointer;transition:background .25s,color .25s}
+.secenek span:hover{border-color:var(--gece)}
+.secenek input:checked+span{background:var(--gece);color:var(--kemik);border-color:var(--gece)}
+.secenek input:focus-visible+span{outline:2px solid var(--pirinc-k);outline-offset:2px}
+.secenek.gunler span{min-width:58px;text-align:center;padding:9px 12px}
+.soru input[type=text],.soru textarea{width:100%;max-width:420px;font:inherit;font-size:15px;background:transparent;border:1px solid rgba(15,26,46,.3);padding:10px 12px;color:var(--gece)}
+.soru textarea{min-height:76px;resize:vertical;max-width:none}
+.hafta-seridi{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:16px}
+.hafta-seridi div{text-align:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:14px 0;border:1px dashed rgba(15,26,46,.3);color:#7B8498;transition:background .35s,color .35s,border-color .35s}
+.hafta-seridi div.on{background:var(--pirinc);color:#1A1406;border:1px solid var(--pirinc);font-weight:700}
+.hafta-not{font-size:12.5px;color:#66708A;margin-top:10px}
+.oneri{position:sticky;top:96px;background:#F8F5EF;box-shadow:0 30px 60px -30px rgba(15,26,46,.45);overflow:hidden}
+.oneri img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:opacity .45s}
+.oneri .ic{padding:26px 28px 30px}
+.oneri small{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--pirinc-k);font-weight:600}
+.oneri h3{font-size:36px;line-height:1.05;margin:6px 0 10px}
+.oneri p{color:#46516A;font-size:15.5px}
+.oneri pre{font-family:"Schibsted Grotesk",sans-serif;font-size:14.5px;line-height:1.65;white-space:pre-wrap;border-left:2px solid var(--pirinc-k);padding:2px 0 2px 14px;margin:18px 0 4px;color:var(--gece)}
+.oneri .btn{width:100%;margin-top:18px;background:var(--gece);color:var(--kemik)}
+.oneri .btn:hover{background:#243A61}
+.oneri .alt-not{display:block;font-size:12.5px;color:#66708A;margin-top:10px;text-align:center}
+
+/* şerit */
+.serit{padding:120px 0 40px}
+.serit-yol{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:36px max(32px,calc((100vw - 1240px)/2)) 20px;scrollbar-width:none}
+.serit-yol::-webkit-scrollbar{display:none}
+.serit-yol img{flex:none;height:min(64vh,520px);width:auto;scroll-snap-align:center;background:#1E2E4B}
+
+/* sss */
+.sss{max-width:860px;margin-top:40px}
+.sss details{border-top:1px solid var(--cizgi);padding:22px 0}
+.sss details:last-child{border-bottom:1px solid var(--cizgi)}
+.sss summary{cursor:pointer;font-family:"Gilda Display",serif;font-size:24px;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::after{content:"+";font-family:"Schibsted Grotesk";color:var(--pirinc)}
+.sss details[open] summary::after{content:"–"}
+.sss p{color:#B2BBCB;margin-top:12px;max-width:62ch}
+.sss-baslik{padding:110px 0 100px}
+
+/* iletişim */
+.iletisim{background:var(--gece2);border-top:1px solid var(--cizgi);padding:120px 0}
+.il-izgara{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
+.il-izgara dl{display:grid;gap:18px;margin-top:28px}
+.il-izgara dt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--soluk)}
+.il-izgara dd{font-size:19px}
+.il-izgara dd a{text-underline-offset:3px}
+.il-izgara iframe{width:100%;aspect-ratio:4/3;border:0;filter:grayscale(.6) contrast(.95) brightness(.9);background:#1E2E4B}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+footer{background:#0A1222;color:var(--soluk);padding:38px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(236,232,225,.3);padding:12px 14px;color:#DAD6CE}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:40;display:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.4)}
+
+@media (max-width:960px){
+  .ust nav a:not(.btn){display:none}
+  .il-izgara,.secici-izgara{grid-template-columns:1fr}
+  .secici-izgara{gap:36px}
+  .oneri{position:static}
+  .il-izgara{gap:44px}
+  .panel{min-height:78vh}
+  .panel .ic{grid-template-columns:1fr;gap:10px;padding-bottom:56px}
+  .panel .no{font-size:84px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .panel .ic{width:calc(100% - 36px)}
+  .ust .sar{height:64px}
+  .logo{font-size:22px}
+  .logo small{display:none}
+  .kahraman{height:210vh}
+  .foto img{object-position:46% 50%}
+  .kah-yazi{padding-bottom:132px}
+  .kah-alt{font-size:15.5px;margin-top:20px}
+  .kah-alt2{bottom:-100px}
+  .not-foto{top:74px;bottom:auto;right:18px}
+  .manifesto{padding:100px 0 90px}
+  .secici{padding:90px 0}
+  .serit{padding:90px 0 20px}
+  .serit-yol img{height:52vh}
+  .sss-baslik{padding:80px 0 70px}
+  .iletisim{padding:80px 0}
+  .ara-foto{height:68vh}
+  .ara-foto p{bottom:56px}
+  .hafta-seridi div{font-size:11px;letter-spacing:.06em;padding:12px 0}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  .perde{display:none}
+  .foto img{animation:none}
+  .satir>span,.kah-alt,.kaydir{animation:none;transform:none;opacity:1}
+  .foto{transform:none!important}
+  .ara-foto img,.panel .pg img{transform:none!important}
+}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="premium" data-isletme="Ness Pilates">
+<div class="perde" aria-hidden="true"><div><b>NESS</b><i></i><small lang="en">Pilates</small></div></div>
+
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">NESS<small lang="en">PILATES</small></a>
+    <nav><a href="#dersler">Dersler</a><a href="#secici">Program seçici</a><a href="#iletisim">İletişim</a><a class="btn hat" href="#secici">Deneme dersi</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman" id="kahraman">
+    <div class="kah-yapisik">
+      <div class="foto"><img src="../img/gercek/salon.webp" srcset="../img/gercek/salon-900.webp 900w, ../img/gercek/salon.webp 1800w" sizes="100vw" alt="Beyaz duvarlı, aydınlık salonda reformerlar ve cadillac kuleleri (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high"></div>
+      <div class="kah-yazi">
+        <div class="sar">
+          <span class="ufak">Pamukkale · Denizli</span>
+          <h1 style="margin-top:18px"><span class="satir"><span>Önce nefes,</span></span><span class="satir"><span>sonra <em>hareket.</em></span></span></h1>
+          <p class="kah-alt">Reformer pilates ve mat pilates. Ulus Caddesi'nde.</p>
+          <div class="kah-alt2" id="kahAlt2"><ul><li>Reformer pilates</li><li>Mat pilates</li><li>Ulus Cd. 119A</li></ul></div>
+        </div>
+      </div>
+      <span class="not-foto">Fotoğraf temsilîdir</span>
+      <div class="kaydir" id="kaydir">Kaydırın</div>
+    </div>
+  </div>
+
+  <section class="manifesto" id="manifesto">
+    <div class="sar">
+      <span class="ufak">Yaklaşım</span>
+      <p class="m" id="manifestoMetin" style="margin-top:26px">Yaylarla ya da kendi ağırlığınla; aynı kontrol, aynı sakinlik. Her hareket nefesle başlar.</p>
+      <p class="acik-yazi alt" data-belir>Bu cümle örnektir; yayında stüdyonun kendi anlatımı, kendi cümlelerinizle yazılır.</p>
+    </div>
+  </section>
+
+  <div id="dersler">
+    <section class="panel">
+      <div class="pg"><img src="../img/gercek/esneme.webp" srcset="../img/gercek/esneme-900.webp 900w, ../img/gercek/esneme.webp 1800w" sizes="100vw" alt="Reformer üzerinde yan esneme hareketi yapan kadın (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:40% 50%"></div>
+      <span class="nt">Fotoğraf temsilîdir</span>
+      <div class="ic">
+        <span class="no" data-belir>01</span>
+        <div>
+          <h2 data-belir>Reformer <em>pilates.</em></h2>
+          <p data-belir>Yaylı reformer üzerinde kontrollü, akıcı hareketler. Güç, denge ve esneklik bir arada çalışılır; yay direnci zorluğu ayarlar.</p>
+          <ul data-belir><li>Ayarlanabilir zorluk</li><li>Ekipman ilk derste tanıtılır</li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="panel sag">
+      <div class="pg"><img src="../img/gercek/mat-isik.webp" srcset="../img/gercek/mat-isik-900.webp 900w, ../img/gercek/mat-isik.webp 1800w" sizes="100vw" alt="Gün ışığı alan salonda mat üzerinde öne esneme yapan iki kadın (temsilî fotoğraf)" width="1800" height="1202" loading="lazy" style="object-position:50% 55%"></div>
+      <span class="nt">Fotoğraf temsilîdir</span>
+      <div class="ic">
+        <span class="no" data-belir>02</span>
+        <div>
+          <h2 data-belir>Mat <em>pilates.</em></h2>
+          <p data-belir>Mat üzerinde, kendi vücut ağırlığınızla nefes ve merkez odaklı çalışma; sade, sakin, ekipmansız.</p>
+          <ul data-belir><li>Nefes ve merkez</li><li>Yalnızca mat yeterli</li></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="ara-foto" id="araFoto">
+    <img src="../img/gercek/studyo.webp" srcset="../img/gercek/studyo-900.webp 900w, ../img/gercek/studyo.webp 1800w" sizes="100vw" alt="Işık alan geniş bir stüdyoda sıralanmış reformerlar (temsilî fotoğraf)" width="1800" height="1050" loading="lazy">
+    <p data-belir>Işık, ekipman, <em>sakinlik.</em></p>
+    <small>Fotoğraf temsilîdir; yayında stüdyonun kendi fotoğrafları gelir.</small>
+  </div>
+
+  <section class="secici" id="secici">
+    <div class="sar">
+      <span class="ufak">Program seçici</span>
+      <h2 data-belir>Size uygun dersi <em>birlikte</em> bulalım.</h2>
+      <p class="acik-yazi">Birkaç kısa soru; öneri ve hazır WhatsApp mesajı yanda güncellenir. Mesaj siz gönder'e basmadan kimseye gitmez.</p>
+      <div class="secici-izgara">
+        <form id="sorular" onsubmit="return false">
+          <div class="soru"><fieldset><legend>Hedefiniz</legend><div class="secenek" id="qHedef"></div></fieldset></div>
+          <div class="soru"><fieldset><legend>Pilates deneyiminiz</legend><div class="secenek" id="qSeviye"></div></fieldset></div>
+          <div class="soru"><fieldset><legend>Size uygun günler</legend><div class="secenek gunler" id="qGun"></div></fieldset>
+            <div class="hafta-seridi" id="hafta" aria-hidden="true"></div>
+            <p class="hafta-not">Bu sizin tercihinizdir; stüdyonun ders programı değildir.</p></div>
+          <div class="soru"><fieldset><legend>Günün hangi saati</legend><div class="secenek" id="qZaman"></div></fieldset></div>
+          <div class="soru"><label class="lg" for="qAd">Adınız (isteğe bağlı)</label><input type="text" id="qAd" autocomplete="given-name"></div>
+          <div class="soru"><label class="lg" for="qNot">Bilmemizi istediğiniz not (isteğe bağlı)</label><textarea id="qNot" placeholder="Örn. daha önce denediğiniz dersler, merak ettikleriniz"></textarea></div>
+        </form>
+        <aside class="oneri" aria-live="polite">
+          <img id="oFoto" src="../img/gercek/esneme-900.webp" alt="" width="900" height="600">
+          <div class="ic">
+            <small>Size önerimiz</small>
+            <h3 id="oAd"></h3>
+            <p id="oMetin"></p>
+            <pre id="oMesaj"></pre>
+            <a class="btn" id="oGonder" href="https://wa.me/905011858685" target="_blank" rel="noopener">Bu mesajla WhatsApp'ta aç</a>
+            <span class="alt-not">Öneri örnek bir eşleştirmedir; son karar stüdyoyla ilk konuşmada verilir.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="serit" id="galeri">
+    <div class="sar">
+      <span class="ufak">Galeri</span>
+      <h2 data-belir>Stüdyodan <em>kareler.</em></h2>
+      <p class="acik-yazi">Yayında buraya kendi stüdyonuzun ve derslerinizin fotoğrafları gelir. Fotoğraflar temsilîdir.</p>
+    </div>
+    <div class="serit-yol" tabindex="0" aria-label="Fotoğraf şeridi, yana kaydırın">
+      <img src="../img/gercek/kemer-900.webp" alt="Kemerli pencereli aydınlık stüdyoda reformerlar (temsilî fotoğraf)" width="700" height="1050" loading="lazy">
+      <img src="../img/gercek/sira-900.webp" alt="Sıralı reformerlar, yakın plan (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+      <img src="../img/gercek/mat-nefes-900.webp" alt="Mat üzerinde öne doğru esneyen kadın, gün ışığı (temsilî fotoğraf)" width="900" height="1350" loading="lazy">
+      <img src="../img/gercek/tugla-900.webp" alt="Tuğla duvarlı, büyük pencereli stüdyo (temsilî fotoğraf)" width="700" height="1050" loading="lazy">
+      <img src="../img/gercek/reformer-900.webp" alt="Reformer üzerinde kayışlarla çalışan kadın (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+      <img src="../img/gercek/mat-rulo-900.webp" alt="Sepette dikey duran rulo pilates matları (temsilî fotoğraf)" width="900" height="1350" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sss-baslik">
+    <div class="sar">
+      <span class="ufak">Sık sorulanlar · örnek</span>
+      <h2 data-belir>Aklınıza <em>takılan.</em></h2>
+      <div class="sss">
+        <details open><summary>Hiç pilates yapmadım, başlayabilir miyim?</summary><p>Örnek cevap: ilk derste kısa bir tanışma yapılır, hareketler seviyenize göre seçilir. Yayında bu cevap stüdyonun kendi sözleriyle yazılır.</p></details>
+        <details><summary>Reformer mı, mat mı?</summary><p>Örnek cevap: hangisinin size uygun olduğu hedefinize ve isteğinize göre stüdyoyla konuşularak belirlenir. Program seçici de bunun için hazır bir mesaj yazar.</p></details>
+        <details><summary>Ders saatleri ve süreleri nedir?</summary><p>Örnek cevap: ders saatleri ve süreleri stüdyoyla birlikte eklenir; bu önizlemede yazılı değildir.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar il-izgara">
+      <div>
+        <span class="ufak">İletişim</span>
+        <h2 data-belir>Ulus Caddesi'nde, <em>sizi bekliyor.</em></h2>
+        <dl>
+          <div><dt>Adres</dt><dd>Ulus Cd. 119A<br>Pamukkale / Denizli</dd></div>
+          <div><dt>Telefon / WhatsApp</dt><dd><a href="tel:+905011858685">0501 185 86 85</a></dd></div>
+        </dl>
+        <div class="dugmeler">
+          <a class="btn pirinc" href="https://wa.me/905011858685?text=Merhaba%2C%20deneme%20dersi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+          <a class="btn hat" href="https://www.google.com/maps/search/?api=1&amp;query=Ulus%20Cd.%20119A%20Pamukkale%20Denizli">Yol tarifi</a>
+        </div>
+      </div>
+      <iframe loading="lazy" title="Ness Pilates haritası" src="https://www.google.com/maps?q=Ulus+Cd.+119A+Pamukkale+Denizli&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Ness Pilates · Ulus Cd. 119A, Pamukkale / Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Ness Pilates için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels, gerçek fotoğrafçı çekimleri); yayında stüdyonuzun fotoğrafları kullanılır. Ders türleri, adres ve telefon herkese açık kayıtlardan alındı; sık sorulanlar ve öneri metinleri örnektir, saatler ve ayrıntılar sizinle birlikte yazılır. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn pirinc" id="yuzen" href="#secici">Program seçici</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const WA = "905011858685";
+const azHareket = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const kelimeye = (el) => { el.innerHTML = el.textContent.trim().split(/\s+/).map((w) => `<span class="k">${w}</span>`).join(" "); return [...el.querySelectorAll(".k")]; };
+const kel = kelimeye($("#manifestoMetin"));
+const ust = $("#ust"), kah = $("#kahraman"), alt2 = $("#kahAlt2"), kaydir = $("#kaydir"), ara = $("#araFoto"), man = $("#manifestoMetin"), yuzen = document.querySelector(".yuzen");
+const kdB = document.querySelector(".kd-cubuk"); let kdH = kdB ? kdB.offsetHeight : 0;
+addEventListener("resize", () => { kdH = kdB ? kdB.offsetHeight : 0; });
+const plx = [ara, ...document.querySelectorAll(".panel")];
+function kare() {
+  const vh = innerHeight;
+  const r = kah.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - vh)));
+  kah.style.setProperty("--p", azHareket ? 0 : p.toFixed(4));
+  alt2.classList.toggle("acik", p > .55);
+  kaydir.classList.toggle("gizli", p > .05);
+  ust.classList.toggle("dolu", scrollY > 40);
+  ust.style.top = Math.max(0, kdH - scrollY) + "px";
+  plx.forEach((el) => { const a = el.getBoundingClientRect(); el.style.setProperty("--p", Math.min(1, Math.max(0, (vh - a.top) / (vh + a.height))).toFixed(4)); });
+  const m = man.getBoundingClientRect();
+  const q = Math.min(1, Math.max(0, (vh * .85 - m.top) / (vh * .5 + m.height * .4)));
+  const n = Math.round(q * kel.length);
+  kel.forEach((k, i) => k.classList.toggle("yan", azHareket || i < n));
+  const sc = $("#secici").getBoundingClientRect(), il = $("#iletisim").getBoundingClientRect();
+  const icinde = (sc.top < vh * .6 && sc.bottom > vh * .4) || il.top < vh * .6;
+  yuzen && yuzen.classList.toggle("goster", scrollY > innerHeight * 1.6 && !icinde);
+}
+addEventListener("scroll", kare, { passive: true }); addEventListener("resize", kare); kare();
+
+/* program seçici */
+const DERS = {
+  reformer: { ad: "Reformer pilates", foto: "esneme", pos: "45% 50%", alt: "Reformer üzerinde yan esneme hareketi yapan kadın", metin: "Yaylı reformer üzerinde kontrollü hareketler; güç, denge ve esneklik bir arada." },
+  mat: { ad: "Mat pilates", foto: "mat-isik", pos: "60% 55%", alt: "Gün ışığı alan salonda mat üzerinde esneme yapan iki kadın", metin: "Mat üzerinde, kendi vücut ağırlığınızla nefes ve merkez odaklı çalışma." },
+  ikisi: { ad: "Reformer ve mat pilates", foto: "studyo", pos: "50% 55%", alt: "Işık alan geniş stüdyoda sıralı reformerlar", metin: "Emin değilseniz ikisini de tanımak iyi bir başlangıçtır; hangisinin size uyduğunu stüdyoyla birlikte belirlersiniz." },
+};
+const HEDEF = { "Güçlenmek ve kontrol": "reformer", "Esneklik ve hareket rahatlığı": "reformer", "Nefes ve sakinlik": "mat", "Yeni bir şey denemek": "ikisi" };
+const GUNLER = ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"];
+const GUN_TAM = { Pzt: "Pazartesi", Sal: "Salı", Çar: "Çarşamba", Per: "Perşembe", Cum: "Cuma", Cmt: "Cumartesi", Paz: "Pazar" };
+const secim = (id, ad, liste, ilk = 0) => ($(id).innerHTML = liste.map((x, i) => `<label><input type="radio" name="${ad}" value="${x}"${i === ilk ? " checked" : ""}><span>${x}</span></label>`).join(""));
+secim("#qHedef", "h", Object.keys(HEDEF));
+secim("#qSeviye", "s", ["Hiç yapmadım", "Biraz denedim", "Düzenli yapıyorum"]);
+secim("#qZaman", "z", ["Sabah", "Öğle", "Akşam", "Fark etmez"], 3);
+$("#qGun").innerHTML = GUNLER.map((g) => `<label><input type="checkbox" name="g" value="${g}"${g === "Sal" || g === "Per" ? " checked" : ""}><span>${g}</span></label>`).join("");
+$("#hafta").innerHTML = GUNLER.map((g) => `<div data-g="${g}">${g}</div>`).join("");
+const deger = (n) => document.querySelector(`[name=${n}]:checked`).value;
+let ilkOneri = true;
+function yaz() {
+  const h = deger("h"), s = deger("s"), z = deger("z");
+  const gunler = [...document.querySelectorAll("[name=g]:checked")].map((c) => c.value);
+  document.querySelectorAll("#hafta div").forEach((d) => d.classList.toggle("on", gunler.includes(d.dataset.g)));
+  const d = DERS[HEDEF[h]], ad = $("#qAd").value.trim(), not = $("#qNot").value.trim();
+  const foto = $("#oFoto");
+  if (foto.dataset.k !== d.foto) { foto.dataset.k = d.foto; foto.style.opacity = 0; setTimeout(() => { foto.src = `../img/gercek/${d.foto}-900.webp`; foto.alt = d.alt + " (temsilî fotoğraf)"; foto.style.objectPosition = d.pos; foto.style.opacity = 1; }, ilkOneri ? 0 : 200); }
+  ilkOneri = false;
+  $("#oAd").textContent = d.ad;
+  $("#oMetin").textContent = d.metin + (s === "Hiç yapmadım" ? " İlk derste temel hareketlerle başlanır." : "");
+  const gunMetin = gunler.length ? gunler.map((g) => GUN_TAM[g]).join(", ") : "esnek";
+  const zamanMetin = z === "Fark etmez" ? "saat fark etmez" : z.toLowerCase() + " saatleri";
+  const konu = HEDEF[h] === "ikisi" ? "Reformer ve mat pilates derslerini tanımak için deneme dersi almak istiyorum." : `${d.ad} dersi için deneme dersi almak istiyorum.`;
+  const metin = `Merhaba${ad ? ", ben " + ad : ""}. ${konu}\nHedefim: ${h.toLowerCase()}.\nPilates deneyimim: ${s.toLowerCase()}.\nBana uygun günler: ${gunMetin}; ${zamanMetin}.${not ? "\nNotum: " + not : ""}\nUygun saatleri öğrenebilir miyim?`;
+  $("#oMesaj").textContent = metin;
+  $("#oGonder").href = `https://wa.me/${WA}?text=${encodeURIComponent(metin)}`;
+}
+$("#sorular").addEventListener("input", yaz); $("#sorular").addEventListener("change", yaz); yaz();
+</script>
+</body>
+</html>
