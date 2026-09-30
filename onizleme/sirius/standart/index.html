@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Sirius Boutique Otel · Pamukkale · Standart örnek</title>
+<meta name="description" content="Sirius Boutique Otel, Pamukkale: arama, WhatsApp ve harita. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0C1224">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0C1224;--navy:#141C38;--altin:#C9A24B;--altin-a:#E7CB8A;--altin-k:#8A6A1F;--fildisi:#F4EEE1;--kum:#E8DFCB;--soluk:#5D6275;--cizgi:rgba(12,18,36,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--fildisi);color:var(--ink);font-family:Figtree,system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1140px,100% - 48px);margin-inline:auto}
+.serit{background:#B3261E;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-align:center;padding:5px 12px;line-height:1.35}
+.serit span{opacity:.92;font-weight:400}
+.yildiz{width:1em;height:1em;fill:currentColor;flex:none}
+.ust{background:var(--ink);color:#fff}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:78px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo .yildiz{font-size:26px;color:var(--altin)}
+.logo b{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:25px;letter-spacing:.2em}
+.logo small{display:block;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.75;margin-top:-3px}
+.ust nav{display:flex;gap:28px;font-size:15px}
+.ust nav a{text-decoration:none;opacity:.9}
+.ust nav a:hover{color:var(--altin-a);opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:4px;padding:14px 26px;font-weight:700;font-size:15px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--altin);color:var(--ink)}
+.btn.dolu:hover{background:var(--altin-a)}
+.btn.hat{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+.btn.hat:hover{border-color:var(--altin-a);color:var(--altin-a)}
+.kahraman{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:44px 0 92px}
+.kahraman::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 35%,rgba(201,162,75,.18),rgba(201,162,75,0) 70%);pointer-events:none}
+.kahraman .sar{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.ufak{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--altin)}
+h1{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(42px,5.6vw,76px);line-height:1.06;margin:16px 0 20px}
+h1 em{font-style:normal;color:var(--altin-a)}
+.kahraman p{font-size:18px;max-width:46ch;color:#D7DAE6}
+.slogan{margin-top:16px;font-style:italic;color:var(--altin-a);font-size:16px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.kemer{position:relative;border-radius:999px 999px 6px 6px;overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:0 0 0 1px rgba(231,203,138,.5),0 0 0 10px var(--ink),0 0 0 11px rgba(231,203,138,.25)}
+.kemer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;animation:yavas 24s ease-out both}
+@keyframes yavas{from{transform:scale(1.08)}to{transform:scale(1)}}
+.kemer-not{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.yildizlar i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--altin-a);opacity:.7;animation:parilti 4s ease-in-out infinite}
+@keyframes parilti{50%{opacity:.15}}
+section{padding:100px 0}
+h2{font-family:Marcellus,Georgia,serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.1;margin:10px 0 16px}
+h2 em{font-style:normal;color:var(--altin-k)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+.otel .sar{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.cift{position:relative;padding-bottom:70px}
+.cift .a{width:78%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+.cift .b{position:absolute;right:0;bottom:0;width:52%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;border:8px solid var(--fildisi)}
+.cift small{display:block;font-size:12.5px;color:var(--soluk);margin-top:8px}
+.ornek-kutu{margin-top:26px;border:1px dashed rgba(12,18,36,.35);border-radius:8px;padding:16px 18px;font-size:15px;color:var(--soluk)}
+.ornek-kutu b{color:var(--ink)}
+.yas{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--ink);color:var(--altin-a);border-radius:999px;padding:8px 18px 8px 14px;font-size:14.5px;font-weight:600}
+.yas .yildiz{font-size:14px}
+.neler{background:var(--navy);color:var(--fildisi)}
+.neler .acik-yazi{color:#B8BDD0}
+.neler h2 em{color:var(--altin-a)}
+.neler .ufak{color:var(--altin)}
+.satirlar{margin-top:46px;border-top:1px solid rgba(231,203,138,.25)}
+.satir{display:grid;grid-template-columns:70px 1fr 300px;gap:30px;align-items:center;padding:26px 0;border-bottom:1px solid rgba(231,203,138,.25)}
+.satir .no{font-family:Marcellus,serif;font-size:30px;color:var(--altin)}
+.satir h3{font-family:Marcellus,serif;font-weight:400;font-size:28px;line-height:1.2}
+.satir p{color:#B8BDD0;font-size:15.5px;margin-top:4px;max-width:46ch}
+.satir img{width:300px;height:170px;object-fit:cover;border-radius:4px}
+.iletisim .sar{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.iletisim iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:4px;background:var(--kum)}
+.tel-liste{list-style:none;margin:26px 0 0;border-top:1px solid var(--cizgi)}
+.tel-liste li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--cizgi);font-size:19px;flex-wrap:wrap}
+.tel-liste a{text-decoration:none;font-weight:700;color:var(--altin-k)}
+.tel-liste span{overflow-wrap:anywhere;min-width:0}
+.adres{margin-top:18px;font-size:15.5px;color:var(--soluk)}
+footer{background:var(--ink);color:#B8BDD0;padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(244,238,225,.35);border-radius:8px;padding:12px 14px;color:var(--fildisi)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+@media (max-width:900px){
+  .ust nav{display:none}
+  .kahraman .sar,.otel .sar,.iletisim .sar{grid-template-columns:1fr;gap:40px}
+  .kemer{max-width:440px;width:100%;margin-inline:auto}
+  .satir{grid-template-columns:54px 1fr;gap:16px}
+  .satir img{grid-column:1/-1;width:100%;height:auto;aspect-ratio:16/9}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .ust .sar{height:68px}
+  .logo b{font-size:21px}
+  .kahraman{padding:30px 0 70px}
+  section{padding:68px 0}
+  .kahraman .sar{display:flex;flex-direction:column-reverse}
+  .kemer{max-width:330px}
+  .cift .a{width:82%}
+  .yuzen{display:block}
+}
+.kahraman .sar>div>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kahraman .sar>div>*:nth-child(2){animation-delay:.1s}.kahraman .sar>div>*:nth-child(3){animation-delay:.2s}.kahraman .sar>div>*:nth-child(4){animation-delay:.3s}.kahraman .sar>div>*:nth-child(5){animation-delay:.4s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kemer img,.kahraman .sar>div>*,.yildizlar i{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="standart" data-isletme="Sirius Boutique Otel">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="y" viewBox="0 0 24 24"><path d="M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z"/></symbol></svg>
+<div class="serit">ÖRNEK ÖNİZLEME <span>· işletmenin onayı yoktur</span></div>
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#"><svg class="yildiz" aria-hidden="true"><use href="#y"/></svg><span><b>SİRİUS</b><small><span lang="en">Boutique Hotel</span> · Pamukkale</small></span></a>
+    <nav><a href="#otel">Otel</a><a href="#pamukkale">Pamukkale</a><a href="#iletisim">İletişim</a></nav>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <div class="yildizlar" aria-hidden="true"><i style="left:6%;top:18%"></i><i style="left:14%;top:70%;animation-delay:1s"></i><i style="left:44%;top:10%;animation-delay:2s"></i><i style="left:52%;top:84%;animation-delay:.6s"></i><i style="left:92%;top:14%;animation-delay:1.6s"></i><i style="left:30%;top:46%;animation-delay:2.6s"></i></div>
+    <div class="sar">
+      <div>
+        <span class="ufak"><span lang="en">Boutique</span> otel · Pamukkale</span>
+        <h1>Pamukkale'de, <em>evinizdeymiş</em> gibi.</h1>
+        <p>Sirius Boutique Otel, Pamukkale'de, Menderes Caddesi'nde. Oda için arayın ya da WhatsApp'tan yazın.</p>
+        <div class="slogan" lang="en">Feels just like home.</div>
+        <div class="dugmeler">
+          <a class="btn dolu" href="https://wa.me/905412723030">WhatsApp'tan yazın</a>
+          <a class="btn hat" href="tel:+905412723030">Ara: 0541 272 30 30</a>
+        </div>
+      </div>
+      <div class="kemer">
+        <img src="../img/gercek/hero-gunbatimi-900.webp" srcset="../img/gercek/hero-gunbatimi-900.webp 900w, ../img/gercek/hero-gunbatimi.webp 1800w" sizes="(max-width:900px) 90vw, 520px" alt="Pamukkale'de gün batımında beyaz travertenler ve servi ağaçları (temsilî fotoğraf)" width="900" height="596" fetchpriority="high">
+        <span class="kemer-not">Fotoğraf temsilîdir</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="otel" id="otel">
+    <div class="sar">
+      <div class="cift" data-belir>
+        <img class="a" src="../img/gercek/avlu-cicek-900.webp" alt="Çiçeklerle çevrili, akşam ışığında aydınlatılmış bir otel girişi (temsilî fotoğraf)" width="900" height="609" loading="lazy" style="height:auto;aspect-ratio:4/5;object-position:30% 50%">
+        <img class="b" src="../img/gercek/oda-sabah-900.webp" alt="Sabah ışığı alan, sade bir otel odası (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="height:auto;aspect-ratio:1/1">
+        <small>Fotoğraflar temsilîdir; yayında otelin kendi avlusu ve odaları görünür.</small>
+      </div>
+      <div>
+        <span class="ufak" style="color:var(--altin-k)">Otel</span>
+        <h2 data-belir>Gecenin en parlak yıldızı, <em>Sirius</em>.</h2>
+        <p class="acik-yazi" data-belir>Sirius, gece gökyüzünün en parlak yıldızının adı. Pamukkale'deki otelin ışığı da böyle olsun istiyoruz: misafir kapıdan girdiğinde hemen rahat etsin.</p>
+        <div class="yas" data-belir><svg class="yildiz" aria-hidden="true"><use href="#y"/></svg>10 yaş altı çocuk kabul edilememektedir</div>
+        <div class="ornek-kutu" data-belir><b>Odalar ve olanaklar (örnek yer).</b> Oda tipleri, kahvaltı ve benzeri olanaklar yayında sizden alınarak bu bölüme yazılır; burada bilmediğimiz hiçbir şeyi yazmıyoruz.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="neler" id="pamukkale">
+    <div class="sar">
+      <span class="ufak">Pamukkale'de ne var</span>
+      <h2 data-belir>Gün boyu <em>dört</em> durak.</h2>
+      <p class="acik-yazi">Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde. Konaklamanızı bu rotaya göre kurabilirsiniz.</p>
+      <div class="satirlar">
+        <div class="satir" data-belir><div class="no">01</div><div><h3>Travertenler</h3><p>Kalker teraslar ve içlerinde toplanan açık renkli havuzlar.</p></div><img src="../img/gercek/havuz-duvar-900.webp" alt="Pamukkale'de beyaz travertin duvar ve açık mavi su (temsilî fotoğraf)" width="900" height="601" loading="lazy"></div>
+        <div class="satir" data-belir><div class="no">02</div><div><h3>Hierapolis</h3><p>Antik tiyatro, sütunlu yollar ve geniş bir antik kent.</p></div><img src="../img/gercek/tiyatro-900.webp" alt="Hierapolis antik tiyatrosu (temsilî fotoğraf)" width="900" height="675" loading="lazy" style="object-position:50% 45%"></div>
+        <div class="satir" data-belir><div class="no">03</div><div><h3>Gün batımı</h3><p>Travertenler ve antik kent, ışığın en yumuşak olduğu saatte.</p></div><img src="../img/gercek/kalker-gunbatimi-900.webp" alt="Pamukkale travertenlerinde gün batımı (temsilî fotoğraf)" width="900" height="600" loading="lazy"></div>
+        <div class="satir" data-belir><div class="no">04</div><div><h3>Gökyüzü</h3><p>Pamukkale üzerinde sıcak hava balonu turları yapılır.</p></div><img src="../img/gercek/balon-tepe-900.webp" alt="Pamukkale üzerinde bir sıcak hava balonu (temsilî fotoğraf)" width="900" height="675" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <div>
+        <span class="ufak" style="color:var(--altin-k)">İletişim</span>
+        <h2 data-belir>Yazın, <em>yer</em> ayıralım.</h2>
+        <p class="acik-yazi">Hangi tarihlerde, kaç kişi; mesajınız yeter.</p>
+        <ul class="tel-liste">
+          <li><span>0541 272 30 30</span><a href="https://wa.me/905412723030">WhatsApp</a><a href="tel:+905412723030">Ara</a></li>
+          <li><span>0258 272 30 30</span><a href="tel:+902582723030">Ara</a></li>
+          <li><span>siriusotelpamukkale@gmail.com</span><a href="mailto:siriusotelpamukkale@gmail.com">E-posta</a></li>
+        </ul>
+        <p class="adres">Menderes Caddesi, Pamukkale/Denizli · <a href="https://www.instagram.com/siriusotelpamukkale/">@siriusotelpamukkale</a></p>
+      </div>
+      <iframe loading="lazy" title="Sirius Boutique Otel, Pamukkale haritası" src="https://www.google.com/maps?q=Sirius+Boutique+Otel+Menderes+Caddesi+Pamukkale&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Sirius Boutique Otel · Pamukkale</div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Sirius Boutique Otel için Boztaş Digital tarafından hazırlandı; telefon, adres ve e-posta işletmenin kendi sitesi ve Instagram profilinden alındı, oda ve olanak bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="https://wa.me/905412723030">WhatsApp'tan yazın</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

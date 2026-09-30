@@ -1,0 +1,10 @@
+{
+  "ad": "Sirius Boutique Otel",
+  "renk": "#8A6A1F",
+  "giris": "Pamukkale'deki Sirius Boutique Otel için üç seviye: arama ve WhatsApp düğmeleri, tarih ve kişi sayısıyla hazır gelen rezervasyon talebi fişi, ve sabahtan geceye akan üç dilli (TR / EN / DE) sinematik sayfa. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî).",
+  "ozellik": {
+    "standart": ["Kemer çerçeveli açılış, Sirius'un hikâyesi, Pamukkale'de dört durak, arama ve WhatsApp düğmeleri, harita"],
+    "profesyonel": ["Rezervasyon talebi fişi: giriş-çıkış tarihi, gece sayısı, yetişkin ve 10 yaş üstü çocuk, hazır WhatsApp mesajına dönüşür", "Pamukkale çevresi şeridi, galeri ve büyütme kutusu, Google'da işletme sayfasına yönlendirme"],
+    "premium": ["TR / EN / DE dil düğmesi: sayfa metni ve WhatsApp talep mesajı seçilen dilde yazılır (Pamukkale'ye gelen Alman ve Avrupalı misafir için)", "Sabahtan geceye kaydırmayla akan Pamukkale günü ve 'günümü kur' seçicisi: seçtikleriniz rezervasyon mesajına eklenir"]
+  }
+}

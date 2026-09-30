@@ -1,0 +1,22 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez; yine de kayıt)
+Fotoğraflar temsilîdir; işletmeye ait değildir.
+- hero-gunbatimi.webp: abdullah davulcu — https://www.pexels.com/photo/breathtaking-sunset-over-pamukkale-terraces-33261627/
+- teras-golge.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/dry-lake-on-plains-5319469/
+- pamuk-altin.webp: Zeynep Gül Ceylan — https://www.pexels.com/photo/landscape-with-mineral-rich-thermal-waters-in-mist-18980502/
+- havuz-duvar.webp: Ehtiram Mammadov — https://www.pexels.com/photo/liquid-water-by-snowy-cliff-23322325/
+- kalker-gunbatimi.webp: Shojol Islam — https://www.pexels.com/photo/stunning-view-of-pamukkale-travertines-at-sunset-39460181/
+- bank-gunbatimi.webp: Zeynep Gül Ceylan — https://www.pexels.com/photo/back-view-of-two-women-sitting-on-a-bench-on-a-hill-18956009/
+- balon-safak.webp: Mehmet Turgut  Kirkgoz — https://www.pexels.com/photo/hot-air-balloons-in-the-sky-11517397/
+- balon-tepe.webp: Ruslan Konev — https://www.pexels.com/photo/a-flying-hot-air-balloon-7011756/
+- hierapolis-kapi.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/stone-blocks-in-the-ruins-5319718/
+- hierapolis-sutun.webp: Çiğdem Bilgin — https://www.pexels.com/photo/ancient-ruins-of-hierapolis-at-sunset-38739511/
+- tiyatro.webp: Murat Halıcı — https://www.pexels.com/photo/ancient-roman-theater-at-hierapolis-pamukkale-turkiye-37898017/
+- oda-sabah.webp: Lukas Rychvalsky — https://www.pexels.com/photo/white-and-black-curtains-2889618/
+- oda-lamba.webp: cottonbro studio — https://www.pexels.com/photo/vintage-telephone-beside-the-bed-7609139/
+- oda-tugla.webp: Neron Photos — https://www.pexels.com/photo/interior-of-a-hotel-room-with-white-bed-4887696/
+- kahvalti-masa.webp: Cuneyt Palta — https://www.pexels.com/photo/traditional-turkish-breakfast-with-tea-and-pastries-36644363/
+- kahvalti-peynir.webp: Tahir Xəlfəquliyev — https://www.pexels.com/photo/traditional-turkish-breakfast-spread-with-tea-33672311/
+- avlu-cicek.webp: Igor Starkov — https://www.pexels.com/photo/white-mountain-bike-parks-near-white-concrete-poster-on-gray-bricks-pavement-1145257/
+- gece-yildiz.webp: Syed Qaarif Andrabi — https://www.pexels.com/photo/silhouette-of-mountains-under-the-starry-night-sky-14105168/
+- gece-daglar.webp: Selman Arif Golbasi — https://www.pexels.com/photo/starry-night-sky-above-mountains-13751185/
+- pamuk-gunbatimi2.webp: ROMAN ODINTSOV — https://www.pexels.com/photo/white-mineral-deposits-on-the-ground-5319706/

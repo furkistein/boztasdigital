@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Sirius Boutique Otel · Pamukkale · Premium örnek</title>
+<meta name="description" content="Sirius Boutique Otel, Pamukkale: sabahtan geceye bir Pamukkale günü, TR / EN / DE rezervasyon talebi. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070B18">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gece:#070B18;--lacivert:#0F1732;--altin:#D5AE5C;--altin-a:#F0D9A0;--sed:#EDE6D6;--soluk:#A9AEC2;--cizgi:rgba(237,230,214,.18);--tint:rgba(255,160,120,.22)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--gece);color:var(--sed);font-family:Jost,system-ui,sans-serif;font-weight:400;font-size:18px;line-height:1.65;overflow-x:clip}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,input,textarea{font:inherit;color:inherit}
+.sar{width:min(1180px,100% - 56px);margin-inline:auto}
+.serit{background:#B3261E;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-align:center;padding:5px 12px;line-height:1.35;text-transform:uppercase}
+.serit span{opacity:.92;font-weight:400}
+.yildiz{width:1em;height:1em;fill:currentColor;flex:none}
+/* giriş perdesi */
+.perde{position:fixed;inset:0;z-index:200;background:var(--gece);display:grid;place-items:center;animation:perde 2.2s ease both;pointer-events:none}
+.perde .yildiz{font-size:64px;color:var(--altin);animation:dogus 1.8s ease both}
+@keyframes dogus{0%{opacity:0;transform:scale(.4) rotate(-20deg)}45%{opacity:1;transform:scale(1) rotate(0)}100%{opacity:1;transform:scale(1.15)}}
+@keyframes perde{0%,65%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden}}
+/* üst çubuk */
+#ust{position:sticky;top:0;z-index:50;transition:background .4s,box-shadow .4s}
+#ust.golge{background:rgba(7,11,24,.94);box-shadow:0 1px 0 var(--cizgi)}
+#ust .sar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:"Bodoni Moda",serif;font-size:22px;letter-spacing:.22em}
+.logo .yildiz{color:var(--altin);font-size:20px}
+.sag{display:flex;align-items:center;gap:14px}
+.dil{display:flex;border:1px solid var(--cizgi);border-radius:999px;padding:3px;background:rgba(7,11,24,.55)}
+.dil button{border:0;background:transparent;cursor:pointer;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--soluk)}
+.dil button[aria-pressed="true"]{background:var(--altin);color:var(--gece)}
+.dil button:focus-visible,.btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,.chip:focus-visible{outline:2px solid var(--altin-a);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;border-radius:2px;padding:15px 28px;font-weight:600;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.btn.dolu{background:var(--altin);color:var(--gece)}
+.btn.dolu:hover{background:var(--altin-a)}
+.btn.hat{border:1px solid rgba(237,230,214,.5);background:transparent;color:var(--sed)}
+.btn.hat:hover{border-color:var(--altin-a);color:var(--altin-a)}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+#ust .btn{padding:10px 18px;font-size:12.5px}
+/* kahraman */
+.kahraman{position:relative;min-height:calc(100svh - 68px);margin-top:-68px;display:grid;align-items:end;overflow:hidden;background:var(--gece)}
+.kahraman>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:yavas 30s ease-out both}
+@keyframes yavas{from{transform:scale(1.1)}to{transform:scale(1)}}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,11,24,.94) 0%,rgba(7,11,24,.55) 38%,rgba(7,11,24,.2) 70%,rgba(7,11,24,.55) 100%)}
+.kahraman .sar{position:relative;z-index:2;padding:130px 0 70px}
+.k-uf{font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--altin);font-weight:500}
+.dev{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(50px,13.2vw,190px);line-height:1;letter-spacing:.1em;margin:14px 0 10px -.04em;color:var(--sed)}
+.dev i{font-style:normal;color:var(--altin-a)}
+.k-h{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(24px,3vw,40px);line-height:1.22;max-width:24ch}
+.k-h em{font-style:italic;color:var(--altin-a)}
+.k-p{margin-top:12px;color:#CFD2E0;max-width:44ch;font-size:17px}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.parilti{position:absolute;z-index:1;color:var(--altin-a);animation:parilti 5s ease-in-out infinite}
+@keyframes parilti{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+.not-foto{position:absolute;right:22px;bottom:14px;z-index:2;font-size:12px;opacity:.7}
+/* manifesto */
+.man{padding:150px 0 130px;background:var(--gece)}
+.man p{font-family:"Bodoni Moda",serif;font-size:clamp(28px,4.3vw,58px);line-height:1.22;max-width:26ch;margin-inline:auto;text-align:center}
+.man .k{display:block;text-align:center;margin-bottom:34px}
+.man .s{opacity:.2;transition:opacity .5s,color .5s}
+.man .s.ac{opacity:1}
+.man .s.ac.vur{color:var(--altin-a)}
+.az-hareket .man .s{opacity:1;transition:none}
+/* gün akışı */
+.gun{position:relative;height:520vh}
+.sahne{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--gece)}
+.faz{position:absolute;inset:0}
+.faz img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.faz:not(:first-child){opacity:0}
+.sahne::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(7,11,24,.82) 0%,rgba(7,11,24,.45) 42%,rgba(7,11,24,0) 75%),linear-gradient(0deg,rgba(7,11,24,.92) 0%,rgba(7,11,24,.3) 34%,rgba(7,11,24,0) 55%),radial-gradient(70% 60% at 85% 10%,var(--tint),rgba(0,0,0,0) 70%)}
+.gun-k{position:absolute;z-index:4;top:94px;left:max(28px,calc((100% - 1180px)/2));right:28px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;pointer-events:none}
+.metinler{position:absolute;z-index:4;left:max(28px,calc((100% - 1180px)/2));bottom:280px;width:min(520px,calc(100% - 56px))}
+.m{position:absolute;left:0;bottom:0;width:100%;opacity:0;transform:translateY(14px);transition:opacity .6s,transform .7s;pointer-events:none}
+.m.on{opacity:1;transform:none;pointer-events:auto}
+.m .k{margin-bottom:8px}
+.m h3{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(34px,4.6vw,62px);line-height:1.06}
+.m p{margin-top:12px;color:#D5D8E5;font-size:17px;max-width:42ch}
+.ekle{margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid rgba(237,230,214,.5);background:rgba(7,11,24,.45);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:500;letter-spacing:.04em;transition:background .3s,color .3s,border-color .3s}
+.chip:hover{border-color:var(--altin-a)}
+.chip[aria-pressed="true"]{background:var(--altin);border-color:var(--altin);color:var(--gece)}
+.chip .ar{font-size:15px;line-height:1}
+.hud{position:absolute;z-index:4;left:max(28px,calc((100% - 1180px)/2));right:max(28px,calc((100% - 1180px)/2));bottom:26px;display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:end}
+.hud{pointer-events:none}.hud button{pointer-events:auto}
+.saat b{display:block;font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(46px,5.2vw,72px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.saat small{display:block;margin-top:6px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--altin)}
+.yay{position:relative}
+.yay svg{display:block;width:100%;height:auto;overflow:visible}
+.yay .yol{fill:none;stroke:rgba(237,230,214,.32);stroke-width:1.4;stroke-dasharray:3 6}
+.yay .ilerle{fill:none;stroke:var(--altin);stroke-width:2}
+.yay .isaret{transition:none}
+.saatler{position:relative;height:40px;margin-top:6px}
+.saatler button{position:absolute;top:0;transform:translateX(-50%);border:0;background:transparent;cursor:pointer;padding:6px 10px;font-size:14px;letter-spacing:.1em;color:var(--soluk);font-variant-numeric:tabular-nums}
+.saatler button.on{color:var(--altin-a);font-weight:600}
+.saatler button:hover{color:#fff}
+.az-hareket .m{transition:none}
+/* mekan */
+.mekan{padding:130px 0;background:var(--lacivert)}
+.k{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--altin);font-weight:500}
+h2{font-family:"Bodoni Moda",serif;font-weight:400;font-size:clamp(34px,4.6vw,62px);line-height:1.08;margin:12px 0 16px}
+h2 em{font-style:italic;color:var(--altin-a)}
+.acik{color:var(--soluk);max-width:54ch}
+.tri{display:grid;grid-template-columns:1.1fr .9fr 1fr;gap:22px;margin-top:54px;align-items:start}
+.tri figure:nth-child(2){margin-top:70px}
+.tri figure:nth-child(3){margin-top:26px}
+.tri img{width:100%;object-fit:cover;border-radius:2px;height:auto;aspect-ratio:4/5}
+.tri figure:nth-child(2) img{aspect-ratio:3/4}
+.tri figcaption{font-family:"Bodoni Moda",serif;font-size:21px;margin-top:12px;font-style:italic}
+.tem{margin-top:26px;font-size:13.5px;color:var(--soluk)}
+/* masa */
+.masa{padding:130px 0;background:var(--gece);position:relative}
+.masa .sar{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
+.masa-sol{position:sticky;top:96px}
+.kural{margin-top:26px;border:1px solid var(--cizgi);border-radius:2px;padding:14px 18px;font-size:15.5px;color:var(--altin-a);display:flex;gap:12px;align-items:center}
+.kural .yildiz{font-size:14px}
+.fis{border:1px solid rgba(213,174,92,.55);background:var(--lacivert);padding:30px 28px 26px;position:relative}
+.fis::before{content:"";position:absolute;inset:6px;border:1px solid rgba(213,174,92,.18);pointer-events:none}
+.iki{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.alan{display:grid;gap:6px;margin-bottom:16px;min-width:0}
+.alan>span,.alan>label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--soluk);font-weight:500}
+input[type=date],input[type=text],textarea{width:100%;background:rgba(7,11,24,.6);border:1px solid var(--cizgi);border-radius:2px;padding:12px 14px;font-size:16px;min-height:48px;color-scheme:dark;color:var(--sed)}
+input::placeholder,textarea::placeholder{color:#6E748C}
+textarea{resize:vertical;min-height:70px}
+.adet{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--cizgi);background:rgba(7,11,24,.6);min-height:48px;padding:3px}
+.adet button{width:42px;height:42px;border:0;background:transparent;cursor:pointer;font-size:22px;color:var(--altin-a)}
+.adet button:hover{background:rgba(213,174,92,.16)}
+.adet output{font-family:"Bodoni Moda",serif;font-size:22px}
+.cipler{display:flex;flex-wrap:wrap;gap:8px}
+.ozet{display:flex;align-items:baseline;gap:14px;border-top:1px solid var(--cizgi);margin-top:6px;padding-top:18px}
+.ozet b{font-family:"Bodoni Moda",serif;font-weight:400;font-size:56px;line-height:1;color:var(--altin-a)}
+.ozet span{color:var(--soluk);font-size:16px}
+.uyari{color:#FF9C92;min-height:1.6em;font-size:15px;margin-top:4px}
+.fis-alt{display:grid;gap:12px;margin-top:10px}
+.fis-alt .btn{width:100%}
+details summary{cursor:pointer;color:var(--soluk);font-size:14.5px;padding:2px 0}
+.metin{display:none;margin-top:8px;border:1px solid var(--cizgi);padding:12px 14px;font-size:14px;white-space:pre-wrap;color:var(--soluk);background:rgba(7,11,24,.6)}
+details[open] .metin{display:block}
+/* iletisim */
+.iletisim{padding:120px 0;background:var(--lacivert)}
+.iletisim .sar{display:grid;grid-template-columns:5fr 7fr;gap:60px;align-items:center}
+.tel{list-style:none;margin-top:28px;border-top:1px solid var(--cizgi)}
+.tel li{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--cizgi);font-size:18px}
+.tel li>span:first-child{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--soluk);align-self:center}
+.tel a{color:var(--altin-a);text-decoration:none;font-weight:500;overflow-wrap:anywhere}
+.tel a:hover{text-decoration:underline}
+.iletisim iframe{width:100%;aspect-ratio:4/3;border:0;background:#1a2244;filter:grayscale(.3) contrast(.95)}
+footer{background:var(--gece);color:var(--soluk);padding:38px 0 110px;font-size:14px;border-top:1px solid var(--cizgi)}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(237,230,214,.3);padding:12px 14px;color:var(--sed)}
+.ornek-not a{color:#fff;font-weight:600}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:45;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.45)}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (max-width:980px){
+  .masa .sar,.iletisim .sar{grid-template-columns:1fr;gap:40px}
+  .masa-sol{position:static}
+  .tri{grid-template-columns:1fr 1fr}
+  .tri figure:nth-child(3){grid-column:span 2;margin-top:0}
+  .tri figure:nth-child(3) img{aspect-ratio:16/9}
+  .hud{grid-template-columns:1fr;gap:10px;left:22px;right:22px;bottom:16px}
+  .saat{display:flex;align-items:baseline;gap:14px}
+  .saat small{margin:0}
+  .metinler{bottom:222px;left:22px}
+  .gun-k{left:22px;top:84px}
+}
+@media (max-width:600px){
+  body{font-size:16.5px}
+  .sar{width:calc(100% - 36px)}
+  #ust .sar{height:60px}
+  .kahraman{margin-top:-60px;min-height:calc(100svh - 60px)}
+  .kahraman .sar{padding:110px 0 54px}
+  .logo{font-size:18px;letter-spacing:.16em}
+  .dil button{padding:5px 9px;font-size:12px}
+  #ust .btn.dolu{display:none}
+  .man{padding:100px 0 90px}
+  .gun{height:430vh}
+  .metinler{bottom:214px}
+  .m h3{font-size:32px}
+  .m p{font-size:15.5px}
+  .mekan,.masa,.iletisim{padding:76px 0}
+  .tri{gap:14px}
+  .tri figure:nth-child(2){margin-top:34px}
+  .tri figcaption{font-size:17px}
+  .iki{grid-template-columns:1fr 1fr;gap:12px}
+  .fis{padding:24px 18px 20px}
+  .tel li{grid-template-columns:1fr;gap:2px}
+  .yuzen{display:block}
+  .saatler button{padding:6px 6px;font-size:13px}
+}
+.kahraman .sar>*{animation:yuksel 1.2s cubic-bezier(.2,.7,.2,1) 1.8s both}
+.kahraman .sar>*:nth-child(2){animation-delay:1.95s}.kahraman .sar>*:nth-child(3){animation-delay:2.1s}.kahraman .sar>*:nth-child(4){animation-delay:2.25s}.kahraman .sar>*:nth-child(5){animation-delay:2.4s}
+@keyframes yuksel{from{opacity:0;transform:translateY(20px)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .perde{display:none}
+  .kahraman>img,.kahraman .sar>*,.parilti{animation:none}
+  .m{transition:none}
+}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="premium" data-isletme="Sirius Boutique Otel">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="y" viewBox="0 0 24 24"><path d="M12 0C12.6 7 17 11.4 24 12 17 12.6 12.6 17 12 24 11.4 17 7 12.6 0 12 7 11.4 11.4 7 12 0Z"/></symbol></svg>
+<div class="perde" aria-hidden="true"><svg class="yildiz"><use href="#y"/></svg></div>
+<div class="serit"><span data-t="serit" style="font-weight:600;opacity:1">Örnek önizleme</span> <span data-t="serit2">· işletmenin onayı yoktur</span></div>
+<header id="ust">
+  <div class="sar">
+    <a class="logo" href="#"><svg class="yildiz" aria-hidden="true"><use href="#y"/></svg>SİRİUS</a>
+    <div class="sag">
+      <div class="dil" role="group" aria-label="Dil / Language / Sprache"><button type="button" data-dil="tr" aria-pressed="true">TR</button><button type="button" data-dil="en" aria-pressed="false">EN</button><button type="button" data-dil="de" aria-pressed="false">DE</button></div>
+      <a class="btn dolu" href="#rezervasyon" data-t="nav_rez">Rezervasyon</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman">
+    <img src="../img/gercek/gece-yildiz-900.webp" srcset="../img/gercek/gece-yildiz-900.webp 900w, ../img/gercek/gece-yildiz.webp 1800w" sizes="100vw" alt="Dağ siluetinin üstünde yıldızlı gece gökyüzü (temsilî fotoğraf)" width="1800" height="1200" fetchpriority="high">
+    <svg class="yildiz parilti" style="left:44%;top:20%;font-size:22px" aria-hidden="true"><use href="#y"/></svg>
+    <svg class="yildiz parilti" style="left:78%;top:18%;font-size:34px;animation-delay:1.4s" aria-hidden="true"><use href="#y"/></svg>
+    <svg class="yildiz parilti" style="left:60%;top:44%;font-size:16px;animation-delay:2.6s" aria-hidden="true"><use href="#y"/></svg>
+    <div class="sar">
+      <span class="k-uf"><span lang="en">Boutique Hotel</span> · Pamukkale</span>
+      <h1 class="dev">SİRİUS</h1>
+      <p class="k-h" data-t="hero_h">Gün doğumundan yıldızlara, <em>Pamukkale'de</em> bir gün.</p>
+      <p class="k-p" data-t="hero_p">Sirius Boutique Otel, Pamukkale'de, Menderes Caddesi'nde.</p>
+      <div class="dugmeler"><a class="btn dolu" href="#rezervasyon" data-t="hero_b1">Rezervasyon talebi</a><a class="btn hat" href="#gun" data-t="hero_b2">Günü izleyin</a></div>
+    </div>
+    <span class="not-foto" data-t="temsili">Fotoğraf temsilîdir</span>
+  </div>
+
+  <section class="man" aria-label="Sirius">
+    <div class="sar">
+      <span class="k" data-t="man_k">Sirius</span>
+      <p id="man" data-t="man" data-kelime="1">Sirius, gece gökyüzünün en parlak yıldızıdır. Pamukkale'de geçireceğiniz bir günün sonunda, dönüp ışığını arayacağınız yer.</p>
+    </div>
+  </section>
+
+  <section class="gun" id="gun" aria-label="Pamukkale'de bir gün">
+    <div class="sahne" id="sahne">
+      <div class="faz"><img src="../img/gercek/balon-safak-900.webp" srcset="../img/gercek/balon-safak-900.webp 900w, ../img/gercek/balon-safak.webp 1800w" sizes="100vw" alt="Şafakta yükselen sıcak hava balonları (temsilî fotoğraf)" width="1800" height="1351" loading="lazy"></div>
+      <div class="faz"><img src="../img/gercek/havuz-duvar-900.webp" srcset="../img/gercek/havuz-duvar-900.webp 900w, ../img/gercek/havuz-duvar.webp 1800w" sizes="100vw" alt="Pamukkale'de gün ışığında beyaz travertin ve açık mavi su (temsilî fotoğraf)" width="1800" height="1201" loading="lazy" style="object-position:50% 60%"></div>
+      <div class="faz"><img src="../img/gercek/hierapolis-kapi-900.webp" srcset="../img/gercek/hierapolis-kapi-900.webp 900w, ../img/gercek/hierapolis-kapi.webp 1800w" sizes="100vw" alt="Hierapolis sütunları ve dağlar, gün batımı gökyüzü (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:40% 50%"></div>
+      <div class="faz"><img src="../img/gercek/gece-daglar-900.webp" srcset="../img/gercek/gece-daglar-900.webp 900w, ../img/gercek/gece-daglar.webp 1800w" sizes="100vw" alt="Dağların üstünde yıldız dolu gece gökyüzü (temsilî fotoğraf)" width="1800" height="1200" loading="lazy"></div>
+      <div class="gun-k"><span class="k" data-t="gun_k">Pamukkale'de bir gün</span><span class="k" data-t="gun_ip" style="color:var(--soluk)">Kaydırın, gün akar.</span></div>
+      <div class="metinler">
+        <div class="m on"><span class="k" data-t="f1_t">Şafak</span><h3 data-t="f1_h">Gökyüzü önce renklenir.</h3><p data-t="f1_p">Pamukkale'de gün doğarken sıcak hava balonu turları yapılır. Saat ve ayrıntılar rezervasyonda netleştirilir.</p><button type="button" class="chip ekle" data-plan="balon" aria-pressed="false"><span class="ar">+</span><span data-t="ekle">Günüme ekle</span></button></div>
+        <div class="m"><span class="k" data-t="f2_t">Gündüz</span><h3 data-t="f2_h">Beyaz teraslar, gün ışığında.</h3><p data-t="f2_p">Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde.</p><button type="button" class="chip ekle" data-plan="traverten" aria-pressed="false"><span class="ar">+</span><span data-t="ekle">Günüme ekle</span></button></div>
+        <div class="m"><span class="k" data-t="f3_t">Altın saat</span><h3 data-t="f3_h">Işık yumuşar.</h3><p data-t="f3_p">Travertenler ve antik kent, gün batımı ışığında bambaşka görünür.</p><button type="button" class="chip ekle" data-plan="gunbatimi" aria-pressed="false"><span class="ar">+</span><span data-t="ekle">Günüme ekle</span></button></div>
+        <div class="m"><span class="k" data-t="f4_t">Gece</span><h3 data-t="f4_h">Sirius'un saati.</h3><p data-t="f4_p">Gün biterken dinlenmeye dönülecek yer. Oda ve olanak bilgilerini otelin kendisi paylaşır.</p><button type="button" class="chip ekle" data-plan="yildiz" aria-pressed="false"><span class="ar">+</span><span data-t="ekle">Günüme ekle</span></button></div>
+      </div>
+      <div class="hud">
+        <div class="saat"><b id="saat">06:30</b><small>Pamukkale</small></div>
+        <div class="yay">
+          <svg viewBox="0 0 600 120" aria-hidden="true">
+            <path id="yol" class="yol" d="M50 112 Q300 -70 550 112"/>
+            <path id="ilerle" class="ilerle" d="M50 112 Q300 -70 550 112"/>
+            <g id="isaret" class="isaret"><circle id="gunes" r="10" fill="#F0D9A0"/><use id="yld" href="#y" x="-13" y="-13" width="26" height="26" fill="#fff" opacity="0"/></g>
+          </svg>
+          <div class="saatler" id="saatler"><button type="button" data-i="0">06:30</button><button type="button" data-i="1">11:00</button><button type="button" data-i="2">18:30</button><button type="button" data-i="3">22:00</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mekan">
+    <div class="sar">
+      <span class="k" data-t="m_k">Sirius'ta</span>
+      <h2 data-belir data-t="m_h">Sofra, oda, <em>avlu.</em></h2>
+      <p class="acik" data-belir data-t="m_p">Bu bölümde otelin kendi fotoğrafları görünecek. Şimdilik temsilî fotoğraflar var; oda ve olanak bilgilerini otel kendisi paylaşır.</p>
+      <div class="tri" data-sirali="160">
+        <figure data-belir><img src="../img/gercek/kahvalti-peynir-900.webp" alt="Çay ve peynirli Türk kahvaltı sofrası (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:55% 50%"><figcaption data-t="m_c1">Sabah sofrası</figcaption></figure>
+        <figure data-belir><img src="../img/gercek/oda-lamba-900.webp" alt="Abajurlu sıcak bir otel odası (temsilî fotoğraf)" width="900" height="600" loading="lazy" style="object-position:40% 50%"><figcaption data-t="m_c2">Oda</figcaption></figure>
+        <figure data-belir><img src="../img/gercek/avlu-cicek-900.webp" alt="Çiçeklerle çevrili, akşam ışıklı bir otel girişi (temsilî fotoğraf)" width="900" height="609" loading="lazy" style="object-position:50% 40%"><figcaption data-t="m_c3">Avlu</figcaption></figure>
+      </div>
+      <p class="tem" data-t="m_tem">Temsilî fotoğraflar</p>
+    </div>
+  </section>
+
+  <section class="masa" id="rezervasyon">
+    <div class="sar">
+      <div class="masa-sol">
+        <span class="k" data-t="d_k">Rezervasyon talebi</span>
+        <h2 data-t="d_h">Tarihi seçin, <em>mesajınız</em> hazır.</h2>
+        <p class="acik" data-t="d_p">Fiş tamamlanınca WhatsApp'ta hazır açılır; yalnızca göndermek kalır.</p>
+        <div class="kural"><svg class="yildiz" aria-hidden="true"><use href="#y"/></svg><span data-t="d_yas">10 yaş altı çocuk kabul edilememektedir.</span></div>
+      </div>
+      <div class="fis">
+        <form id="form" autocomplete="off" novalidate>
+          <div class="iki">
+            <div class="alan"><label for="giris" data-t="d_in">Giriş</label><input type="date" id="giris"></div>
+            <div class="alan"><label for="cikis" data-t="d_out">Çıkış</label><input type="date" id="cikis"></div>
+          </div>
+          <div class="iki">
+            <div class="alan"><span data-t="d_ya">Yetişkin</span><div class="adet"><button type="button" data-hedef="ya" data-d="-1" aria-label="−">−</button><output id="ya" aria-live="polite">2</output><button type="button" data-hedef="ya" data-d="1" aria-label="+">+</button></div></div>
+            <div class="alan"><span data-t="d_co">Çocuk (10 yaş ve üstü)</span><div class="adet"><button type="button" data-hedef="co" data-d="-1" aria-label="−">−</button><output id="co" aria-live="polite">0</output><button type="button" data-hedef="co" data-d="1" aria-label="+">+</button></div></div>
+          </div>
+          <div class="alan"><span data-t="d_plan">Günümü kur (isteğe bağlı)</span>
+            <div class="cipler">
+              <button type="button" class="chip" data-plan="balon" aria-pressed="false" data-t="p_balon">Sıcak hava balonu turu bilgisi</button>
+              <button type="button" class="chip" data-plan="traverten" aria-pressed="false" data-t="p_traverten">Travertenler ve Hierapolis</button>
+              <button type="button" class="chip" data-plan="gunbatimi" aria-pressed="false" data-t="p_gunbatimi">Gün batımı</button>
+              <button type="button" class="chip" data-plan="yildiz" aria-pressed="false" data-t="p_yildiz">Yıldızlı akşam</button>
+            </div>
+          </div>
+          <div class="alan"><label for="isim" data-t="d_isim">Adınız (isteğe bağlı)</label><input type="text" id="isim" maxlength="60" data-tp="ph_isim" placeholder="Ad Soyad"></div>
+          <div class="alan"><label for="not" data-t="d_not">Not (isteğe bağlı)</label><textarea id="not" maxlength="240" data-tp="ph_not" placeholder="Örn. geç varış"></textarea></div>
+        </form>
+        <div class="ozet"><b id="geceSayi">0</b><span id="geceYazi">gece, tarih seçin</span></div>
+        <div class="uyari" id="uyari" role="status"></div>
+        <div class="fis-alt">
+          <a class="btn dolu" id="wa" href="#" target="_blank" rel="noopener" data-t="d_wa">WhatsApp'ta gönder</a>
+          <details><summary data-t="d_goster">Gidecek mesajı göster</summary><div class="metin" id="fisMetin"></div></details>
+          <button class="btn hat" type="button" id="kopya" data-t="d_kopya">Mesajı kopyala</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="iletisim" id="iletisim">
+    <div class="sar">
+      <div>
+        <span class="k" data-t="k_k">İletişim</span>
+        <h2 data-t="k_h">Yazın, <em>yer</em> ayıralım.</h2>
+        <ul class="tel">
+          <li><span>WhatsApp</span><a href="https://wa.me/905412723030">0541 272 30 30</a></li>
+          <li><span data-t="k_tel">Telefon</span><a href="tel:+902582723030">0258 272 30 30</a></li>
+          <li><span data-t="k_mail">E-posta</span><a href="mailto:siriusotelpamukkale@gmail.com">siriusotelpamukkale@gmail.com</a></li>
+          <li><span data-t="k_adr">Adres</span><span>Menderes Caddesi, Pamukkale/Denizli</span></li>
+          <li><span>Instagram</span><a href="https://www.instagram.com/siriusotelpamukkale/">@siriusotelpamukkale</a></li>
+        </ul>
+      </div>
+      <iframe loading="lazy" title="Sirius Boutique Otel, Pamukkale" src="https://www.google.com/maps?q=Sirius+Boutique+Otel+Menderes+Caddesi+Pamukkale&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Sirius Boutique Otel · Pamukkale</div>
+    <div class="ornek-not"><span data-t="not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Sirius Boutique Otel için Boztaş Digital tarafından hazırlandı; telefon, adres ve e-posta işletmenin kendi sitesi ve Instagram profilinden alındı, oda ve olanak bilgileri sizinle doldurulur.</span> <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+<div class="yuzen"><a class="btn dolu" href="#rezervasyon" data-t="hero_b1">Rezervasyon talebi</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+"use strict";
+const $ = (s) => document.querySelector(s), $$ = (s) => [...document.querySelectorAll(s)];
+const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* ---------- çeviri ---------- */
+const T = {
+ tr: { serit:"Örnek önizleme", serit2:"· işletmenin onayı yoktur", nav_rez:"Rezervasyon", temsili:"Fotoğraf temsilîdir",
+  hero_h:"Gün doğumundan yıldızlara, <em>Pamukkale'de</em> bir gün.", hero_p:"Sirius Boutique Otel, Pamukkale'de, Menderes Caddesi'nde.", hero_b1:"Rezervasyon talebi", hero_b2:"Günü izleyin",
+  man_k:"Sirius", man:"Sirius, gece gökyüzünün en parlak yıldızıdır. Pamukkale'de geçireceğiniz bir günün sonunda, dönüp ışığını arayacağınız yer.",
+  gun_k:"Pamukkale'de bir gün", gun_ip:"Kaydırın, gün akar.", ekle:"Günüme ekle", eklendi:"Günümde",
+  f1_t:"Şafak", f1_h:"Gökyüzü önce renklenir.", f1_p:"Pamukkale'de gün doğarken sıcak hava balonu turları yapılır. Saat ve ayrıntılar rezervasyonda netleştirilir.",
+  f2_t:"Gündüz", f2_h:"Beyaz teraslar, gün ışığında.", f2_p:"Pamukkale travertenleri ve Hierapolis antik kenti birlikte UNESCO Dünya Mirası Listesi'nde.",
+  f3_t:"Altın saat", f3_h:"Işık yumuşar.", f3_p:"Travertenler ve antik kent, gün batımı ışığında bambaşka görünür.",
+  f4_t:"Gece", f4_h:"Sirius'un saati.", f4_p:"Gün biterken dinlenmeye dönülecek yer. Oda ve olanak bilgilerini otelin kendisi paylaşır.",
+  m_k:"Sirius'ta", m_h:"Sofra, oda, <em>avlu.</em>", m_p:"Bu bölümde otelin kendi fotoğrafları görünecek. Şimdilik temsilî fotoğraflar var; oda ve olanak bilgilerini otel kendisi paylaşır.", m_c1:"Sabah sofrası", m_c2:"Oda", m_c3:"Avlu", m_tem:"Temsilî fotoğraflar",
+  d_k:"Rezervasyon talebi", d_h:"Tarihi seçin, <em>mesajınız</em> hazır.", d_p:"Fiş tamamlanınca WhatsApp'ta hazır açılır; yalnızca göndermek kalır.", d_yas:"10 yaş altı çocuk kabul edilememektedir.",
+  d_in:"Giriş", d_out:"Çıkış", d_ya:"Yetişkin", d_co:"Çocuk (10 yaş ve üstü)", d_plan:"Günümü kur (isteğe bağlı)", d_isim:"Adınız (isteğe bağlı)", d_not:"Not (isteğe bağlı)", ph_isim:"Ad Soyad", ph_not:"Örn. geç varış",
+  p_balon:"Sıcak hava balonu turu bilgisi", p_traverten:"Travertenler ve Hierapolis", p_gunbatimi:"Gün batımı", p_yildiz:"Yıldızlı akşam",
+  d_wa:"WhatsApp'ta gönder", d_goster:"Gidecek mesajı göster", d_kopya:"Mesajı kopyala", d_kopya_ok:"Kopyalandı",
+  k_k:"İletişim", k_h:"Yazın, <em>yer</em> ayıralım.", k_tel:"Telefon", k_mail:"E-posta", k_adr:"Adres",
+  not:"Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Sirius Boutique Otel için Boztaş Digital tarafından hazırlandı; telefon, adres ve e-posta işletmenin kendi sitesi ve Instagram profilinden alındı, oda ve olanak bilgileri sizinle doldurulur." },
+ en: { serit:"Sample preview", serit2:"· not approved by the business", nav_rez:"Reserve", temsili:"Representative photo",
+  hero_h:"From sunrise to starlight, <em>one day</em> in Pamukkale.", hero_p:"Sirius Boutique Hotel, on Menderes Street in Pamukkale.", hero_b1:"Request a reservation", hero_b2:"Watch the day",
+  man_k:"Sirius", man:"Sirius is the brightest star in the night sky. After a day in Pamukkale, it is the light you will want to come back to.",
+  gun_k:"A day in Pamukkale", gun_ip:"Scroll, and the day moves.", ekle:"Add to my day", eklendi:"In my day",
+  f1_t:"Dawn", f1_h:"The sky colours first.", f1_p:"Hot-air balloon tours take place in Pamukkale at sunrise. Times and details are clarified when you book.",
+  f2_t:"Daytime", f2_h:"White terraces in full daylight.", f2_p:"The travertines of Pamukkale and the ancient city of Hierapolis are listed together as a UNESCO World Heritage Site.",
+  f3_t:"Golden hour", f3_h:"The light softens.", f3_p:"The terraces and the ancient city look entirely different in the sunset light.",
+  f4_t:"Night", f4_h:"Sirius time.", f4_p:"A place to come back to and rest when the day ends. Room and amenity details are shared by the hotel itself.",
+  m_k:"At Sirius", m_h:"Table, room, <em>courtyard.</em>", m_p:"This section will show the hotel's own photographs. For now these are representative photos; room and amenity details are shared by the hotel.", m_c1:"Morning table", m_c2:"Room", m_c3:"Courtyard", m_tem:"Representative photos",
+  d_k:"Reservation request", d_h:"Pick your dates, <em>your message</em> is ready.", d_p:"When the slip is complete, it opens in WhatsApp ready to send.", d_yas:"Children under 10 cannot be accepted.",
+  d_in:"Check-in", d_out:"Check-out", d_ya:"Adults", d_co:"Children (aged 10 and over)", d_plan:"Build my day (optional)", d_isim:"Your name (optional)", d_not:"Note (optional)", ph_isim:"Full name", ph_not:"e.g. late arrival",
+  p_balon:"Hot-air balloon tour information", p_traverten:"Terraces and Hierapolis", p_gunbatimi:"Sunset", p_yildiz:"Starry evening",
+  d_wa:"Send on WhatsApp", d_goster:"Show the message", d_kopya:"Copy message", d_kopya_ok:"Copied",
+  k_k:"Contact", k_h:"Write to us, <em>we'll save</em> you a room.", k_tel:"Phone", k_mail:"Email", k_adr:"Address",
+  not:"Sample preview, not approved by the business; photos are representative (Pexels). This page was prepared for Sirius Boutique Hotel by Boztaş Digital; phone, address and email come from the hotel's own website and Instagram profile; room and amenity details are filled in together with you." },
+ de: { serit:"Beispielvorschau", serit2:"· vom Betrieb nicht freigegeben", nav_rez:"Reservieren", temsili:"Beispielfoto",
+  hero_h:"Vom Sonnenaufgang bis zu den Sternen: <em>ein Tag</em> in Pamukkale.", hero_p:"Sirius Boutique Hotel, in der Menderes Caddesi in Pamukkale.", hero_b1:"Reservierung anfragen", hero_b2:"Den Tag erleben",
+  man_k:"Sirius", man:"Sirius ist der hellste Stern am Nachthimmel. Nach einem Tag in Pamukkale ist es das Licht, zu dem Sie zurückkehren möchten.",
+  gun_k:"Ein Tag in Pamukkale", gun_ip:"Scrollen Sie, der Tag vergeht.", ekle:"In meinen Tag aufnehmen", eklendi:"In meinem Tag",
+  f1_t:"Morgendämmerung", f1_h:"Zuerst färbt sich der Himmel.", f1_p:"In Pamukkale finden bei Sonnenaufgang Heißluftballonfahrten statt. Zeiten und Details klären wir bei der Buchung.",
+  f2_t:"Tagsüber", f2_h:"Weiße Terrassen im Tageslicht.", f2_p:"Die Travertine von Pamukkale und die antike Stadt Hierapolis stehen gemeinsam auf der UNESCO-Welterbeliste.",
+  f3_t:"Goldene Stunde", f3_h:"Das Licht wird weich.", f3_p:"Terrassen und antike Stadt wirken im Licht des Sonnenuntergangs ganz anders.",
+  f4_t:"Nacht", f4_h:"Die Stunde von Sirius.", f4_p:"Ein Ort zum Ausruhen, wenn der Tag zu Ende geht. Angaben zu Zimmern und Ausstattung gibt das Hotel selbst.",
+  m_k:"Im Sirius", m_h:"Frühstück, Zimmer, <em>Innenhof.</em>", m_p:"Hier erscheinen die eigenen Fotos des Hotels. Vorerst sind es Beispielfotos; Angaben zu Zimmern und Ausstattung gibt das Hotel selbst.", m_c1:"Frühstückstisch", m_c2:"Zimmer", m_c3:"Innenhof", m_tem:"Beispielfotos",
+  d_k:"Reservierungsanfrage", d_h:"Wählen Sie das Datum, <em>die Nachricht</em> ist fertig.", d_p:"Ist der Zettel ausgefüllt, öffnet sich WhatsApp mit fertigem Text.", d_yas:"Kinder unter 10 Jahren können leider nicht aufgenommen werden.",
+  d_in:"Anreise", d_out:"Abreise", d_ya:"Erwachsene", d_co:"Kinder (ab 10 Jahren)", d_plan:"Meinen Tag planen (optional)", d_isim:"Ihr Name (optional)", d_not:"Anmerkung (optional)", ph_isim:"Vor- und Nachname", ph_not:"z. B. späte Anreise",
+  p_balon:"Infos zur Heißluftballonfahrt", p_traverten:"Terrassen und Hierapolis", p_gunbatimi:"Sonnenuntergang", p_yildiz:"Sternenabend",
+  d_wa:"Per WhatsApp senden", d_goster:"Nachricht anzeigen", d_kopya:"Nachricht kopieren", d_kopya_ok:"Kopiert",
+  k_k:"Kontakt", k_h:"Schreiben Sie uns, <em>wir reservieren</em> für Sie.", k_tel:"Telefon", k_mail:"E-Mail", k_adr:"Adresse",
+  not:"Beispielvorschau, vom Betrieb nicht freigegeben; die Fotos sind Beispielfotos (Pexels). Diese Seite wurde von Boztaş Digital für das Sirius Boutique Hotel erstellt; Telefon, Adresse und E-Mail stammen von der eigenen Website und dem Instagram-Profil des Hotels; Angaben zu Zimmern und Ausstattung werden gemeinsam mit Ihnen ergänzt." }
+};
+/* mesaj: dile göre fiş metni */
+const M = {
+ tr: { loc:"tr-TR", selam:"Merhaba, rezervasyon talebi iletmek istiyorum.", ad:"Adım", gir:"Giriş", cik:"Çıkış", sec:"henüz seçmedim", gece:"Gece sayısı", misafir:"Misafir",
+  ya:(n)=>n+" yetişkin", co:(n)=>n+" çocuk (hepsi 10 yaş ve üstü)", plan:"İlgilendiğim başlıklar", not:"Not", son:"Müsaitlik ve uygun oda seçeneklerini paylaşabilir misiniz? Teşekkürler.",
+  gn:(n)=>n?(n+" gece konaklama"):"gece, tarih seçin", gecmis:"Giriş tarihi geçmişte görünüyor, lütfen kontrol edin.", sira:"Çıkış tarihi, giriş tarihinden sonra olmalı.", kontrol:"tarihleri kontrol edin" },
+ en: { loc:"en-GB", selam:"Hello, I would like to request a reservation.", ad:"Name", gir:"Check-in", cik:"Check-out", sec:"not chosen yet", gece:"Nights", misafir:"Guests",
+  ya:(n)=>n+(n===1?" adult":" adults"), co:(n)=>n+(n===1?" child":" children")+" (aged 10 or over)", plan:"I am interested in", not:"Note", son:"Could you please share availability and room options? Thank you.",
+  gn:(n)=>n?(n+(n===1?" night":" nights")):"nights, pick dates", gecmis:"The check-in date looks like it is in the past.", sira:"Check-out must be after check-in.", kontrol:"please check the dates" },
+ de: { loc:"de-DE", selam:"Guten Tag, ich möchte eine Reservierungsanfrage senden.", ad:"Name", gir:"Anreise", cik:"Abreise", sec:"noch nicht gewählt", gece:"Nächte", misafir:"Gäste",
+  ya:(n)=>n+(n===1?" Erwachsener":" Erwachsene"), co:(n)=>n+(n===1?" Kind":" Kinder")+" (ab 10 Jahren)", plan:"Ich interessiere mich für", not:"Anmerkung", son:"Könnten Sie mir bitte die Verfügbarkeit und die Zimmeroptionen mitteilen? Vielen Dank.",
+  gn:(n)=>n?(n+(n===1?" Nacht":" Nächte")):"Nächte, Daten wählen", gecmis:"Das Anreisedatum liegt in der Vergangenheit.", sira:"Die Abreise muss nach der Anreise liegen.", kontrol:"bitte Daten prüfen" }
+};
+let dil = "tr";
+const plan = new Set();
+const PLANLAR = ["balon", "traverten", "gunbatimi", "yildiz"];
+/* manifesto: kelimeleri parlat */
+let kelimeler = [];
+function manKur() {
+  const p = $("#man"); const metin = T[dil].man;
+  p.innerHTML = metin.split(" ").map((k, i) => `<span class="s">${k}</span>`).join(" ");
+  kelimeler = [...p.querySelectorAll(".s")];
+  kelimeler.forEach((k, i) => { if (/^(Sirius|en|hellste|brightest|parlak)/i.test(k.textContent)) k.classList.add("vur"); });
+  manGuncelle(true);
+}
+let manSon = -1;
+function manGuncelle(zorla) {
+  const p = $("#man"); if (!p) return;
+  const r = p.getBoundingClientRect(), vh = innerHeight;
+  const ilerleme = az ? 1 : Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (vh * 0.55 + r.height * 0.6)));
+  const n = Math.round(ilerleme * kelimeler.length * 1.02);
+  if (n === manSon && !zorla) return; manSon = n;
+  kelimeler.forEach((k, i) => k.classList.toggle("ac", i < n));
+}
+function dilUygula(d) {
+  dil = d; document.documentElement.lang = d;
+  $$("[data-t]").forEach((e) => { const v = T[d][e.dataset.t]; if (v == null) return; if (e.id === "man") return; if (e.classList.contains("chip") && !e.dataset.plan) return; e.innerHTML = v; });
+  $$("[data-tp]").forEach((e) => (e.placeholder = T[d][e.dataset.tp]));
+  $$(".dil button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.dil === d)));
+  manKur(); planYansit(); fis();
+}
+/* plan çipleri (hem gün akışındaki düğmeler hem fiş) */
+function planYansit() {
+  $$("[data-plan]").forEach((b) => {
+    const acik = plan.has(b.dataset.plan); b.setAttribute("aria-pressed", String(acik));
+    if (b.classList.contains("ekle")) { b.querySelector(".ar").textContent = acik ? "✓" : "+"; b.querySelector("[data-t]").textContent = T[dil][acik ? "eklendi" : "ekle"]; }
+  });
+}
+$$("[data-plan]").forEach((b) => b.addEventListener("click", () => { const k = b.dataset.plan; plan.has(k) ? plan.delete(k) : plan.add(k); planYansit(); fis(); }));
+$$(".dil button").forEach((b) => b.addEventListener("click", () => dilUygula(b.dataset.dil)));
+/* fiş */
+const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const gun = (s) => new Date(s + "T12:00");
+const bugun = iso(new Date());
+$("#giris").min = bugun; $("#cikis").min = bugun;
+const say = { ya: 2, co: 0 }, sinir = { ya: [1, 10], co: [0, 6] };
+$$(".adet button").forEach((b) => b.addEventListener("click", () => { const k = b.dataset.hedef, [a, z] = sinir[k]; say[k] = Math.min(z, Math.max(a, say[k] + +b.dataset.d)); $("#" + k).textContent = say[k]; fis(); }));
+function fis() {
+  const m = M[dil], g = $("#giris").value, c = $("#cikis").value;
+  const uzun = (s) => gun(s).toLocaleDateString(m.loc, { day: "numeric", month: "long", year: "numeric", weekday: "long" });
+  let uyari = "", gece = 0;
+  if (g && g < bugun) uyari = m.gecmis;
+  if (g) { const e = new Date(gun(g).getTime() + 864e5); $("#cikis").min = iso(e) > bugun ? iso(e) : bugun; }
+  if (g && c) { if (c <= g) uyari = m.sira; else gece = Math.round((gun(c) - gun(g)) / 864e5); }
+  $("#uyari").textContent = uyari;
+  $("#geceSayi").textContent = gece;
+  $("#geceYazi").textContent = uyari ? m.kontrol : m.gn(gece);
+  const isim = $("#isim").value.trim(), not = $("#not").value.trim();
+  const s = [m.selam, ""];
+  if (isim) s.push(`${m.ad}: ${isim}`);
+  s.push(`${m.gir}: ${g ? uzun(g) : m.sec}`, `${m.cik}: ${c ? uzun(c) : m.sec}`);
+  if (gece) s.push(`${m.gece}: ${gece}`);
+  s.push(`${m.misafir}: ${m.ya(say.ya)}${say.co ? ", " + m.co(say.co) : ""}`);
+  const pl = PLANLAR.filter((k) => plan.has(k)).map((k) => T[dil]["p_" + k]);
+  if (pl.length) s.push(`${m.plan}: ${pl.join(", ")}`);
+  if (not) s.push(`${m.not}: ${not}`);
+  s.push("", m.son);
+  const metin = s.join("\n");
+  $("#fisMetin").textContent = metin;
+  const wa = $("#wa");
+  wa.href = "https://wa.me/905412723030?text=" + encodeURIComponent(metin);
+  wa.setAttribute("aria-disabled", uyari ? "true" : "false");
+}
+$("#form").addEventListener("input", fis); $("#form").addEventListener("change", fis);
+$("#kopya").addEventListener("click", () => { navigator.clipboard && navigator.clipboard.writeText($("#fisMetin").textContent).catch(() => {}); const b = $("#kopya"); b.textContent = T[dil].d_kopya_ok; setTimeout(() => (b.textContent = T[dil].d_kopya), 1600); });
+/* gün akışı */
+const sec = $("#gun"), fazlar = $$(".faz"), metinler = $$(".m"), saatBtn = $$("#saatler button");
+const yol = $("#yol"), yolUz = yol.getTotalLength(), ilerle = $("#ilerle"), isaret = $("#isaret"), gunes = $("#gunes"), yld = $("#yld");
+const SAAT = [6.5, 11, 18.5, 22];
+ilerle.style.strokeDasharray = yolUz;
+saatBtn.forEach((b, i) => { const nk = yol.getPointAtLength(yolUz * (i / 3)); b.style.left = (nk.x / 600 * 100) + "%"; b.addEventListener("click", () => { const toplam = sec.offsetHeight - innerHeight; scrollTo({ top: sec.offsetTop + toplam * (i / 3) + (i === 0 ? 4 : i === 3 ? -4 : 0), behavior: az ? "auto" : "smooth" }); }); });
+const TINT = ["rgba(255,150,110,.30)", "rgba(140,210,235,.22)", "rgba(255,170,90,.30)", "rgba(110,100,220,.28)"];
+let aktif = -1, gunSon = -9;
+const smooth = (x) => x * x * (3 - 2 * x);
+function gunGuncelle() {
+  const toplam = sec.offsetHeight - innerHeight, r = sec.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / toplam)), t = p * 3;
+  if (Math.abs(p - gunSon) < 0.0006) return; gunSon = p;
+  fazlar.forEach((f, k) => {
+    if (k === 0) return;
+    const fr = Math.min(1, Math.max(0, t - (k - 1)));
+    f.style.opacity = az ? (t >= k - 0.5 ? 1 : 0) : smooth(Math.min(1, Math.max(0, (fr - 0.2) / 0.6)));
+  });
+  const a = Math.min(3, Math.round(t));
+  if (a !== aktif) {
+    aktif = a; metinler.forEach((m, i) => m.classList.toggle("on", i === a)); saatBtn.forEach((b, i) => b.classList.toggle("on", i === a));
+    $(".sahne").style.setProperty("--tint", TINT[a]);
+  }
+  const i0 = Math.min(2, Math.floor(t)), fr = t - i0, sa = SAAT[i0] + (SAAT[i0 + 1] - SAAT[i0]) * smooth(Math.min(1, Math.max(0, fr)));
+  const hh = Math.floor(sa), mm = Math.round((sa - hh) * 60 / 5) * 5;
+  $("#saat").textContent = String(mm === 60 ? hh + 1 : hh).padStart(2, "0") + ":" + String(mm === 60 ? 0 : mm).padStart(2, "0");
+  const nk = yol.getPointAtLength(yolUz * p);
+  isaret.setAttribute("transform", `translate(${nk.x.toFixed(1)} ${nk.y.toFixed(1)})`);
+  ilerle.style.strokeDashoffset = yolUz * (1 - p);
+  const gece = Math.min(1, Math.max(0, (t - 2.1) / 0.8));
+  gunes.setAttribute("opacity", 1 - gece); yld.setAttribute("opacity", gece);
+}
+/* kaydırma döngüsü */
+let bekle = false;
+function kare() { bekle = false; const ust = $("#ust"); ust.classList.toggle("golge", scrollY > 10); manGuncelle(); gunGuncelle(); const y = $(".yuzen"); if (y) y.classList.toggle("goster", sec.getBoundingClientRect().bottom < innerHeight * .4 && $("#rezervasyon").getBoundingClientRect().top > innerHeight * .9); }
+addEventListener("scroll", () => { if (!bekle) { bekle = true; requestAnimationFrame(kare); } }, { passive: true });
+addEventListener("resize", () => { gunSon = -9; kare(); });
+/* başlangıç: ?dil=de ile doğrudan Almanca açılır */
+const q = new URLSearchParams(location.search).get("dil");
+dilUygula(q && T[q] ? q : "tr");
+kare();
+</script>
+</body>
+</html>
