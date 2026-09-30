@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Giyim Markası İçin Mağaza Kurulum Paketi (Örnek) | Boztaş Digital</title>
+<meta name="description" content="Kurgusal bir giyim markası için hazırlanmış mağaza kurulum örneği: ana sayfa taslağı, banner seti, kategori ve SEO planı, kurulum adımları ve teslim listesi.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#16233f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2316233f%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%225%22 fill=%22%23e8a06a%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zemin:#f6f1e6;--yazi:#16233f;--soluk:#5b6376;--kart:#fffdf8;--cizgi:#ddd3be;--cizgi2:#e9e1cf;
+  --lacivert:#16233f;--lacivert2:#1d2e52;--krem:#efe6d2;--vurgu:#b4531e;--vurguAcik:#ec9b66;
+  --serif:"Instrument Serif",Georgia,serif;--sans:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--zemin);color:var(--yazi);font:16px/1.6 var(--sans);overflow-x:hidden}
+.kap{max-width:1120px;margin:0 auto;padding:0 20px}
+a{color:var(--vurgu)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--vurgu);outline-offset:2px;border-radius:4px}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+code{font:600 .86em/1 ui-monospace,Consolas,monospace;background:#efe8d6;border-radius:5px;padding:2px 6px;color:#3b3f55;white-space:nowrap}
+
+/* --- sayfa başı --- */
+.ust{padding:56px 0 8px}
+.etiket{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vurgu);font-weight:800}
+h1{font:400 clamp(36px,5.6vw,62px)/1.04 var(--serif);margin:12px 0 16px;max-width:880px;letter-spacing:-.005em}
+h1 em{font-style:italic;color:var(--vurgu)}
+.giris{color:var(--soluk);max-width:720px;font-size:17.5px}
+.ozet{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:28px 0 0}
+.ozet div{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--soluk);line-height:1.35}
+.ozet b{display:block;font:400 36px/1.05 var(--serif);color:var(--lacivert);margin-bottom:4px}
+.ozet b span{color:var(--vurgu)}
+
+section{margin:64px 0 0}
+.bas{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.bas .n{font:400 18px/1 var(--serif);color:var(--vurgu);font-style:italic;min-width:26px}
+h2{font:400 clamp(28px,3.6vw,38px)/1.1 var(--serif)}
+p.alt{color:var(--soluk);max-width:780px;margin:0 0 20px 40px}
+h3{font:400 24px/1.15 var(--serif)}
+
+/* --- tablolar --- */
+.tablo{overflow-x:auto;border-radius:14px;border:1px solid var(--cizgi);background:var(--kart)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--cizgi2);vertical-align:top}
+th{background:var(--lacivert);color:#ece6d6;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;font-weight:700}
+tr:last-child td{border-bottom:0}
+td b{font-weight:700}
+td .no{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--lacivert);color:#fff;font-size:12px;font-weight:700;margin-right:9px;vertical-align:1px}
+td.sure{white-space:nowrap;font-weight:700}
+td.sure::after{content:""}
+tr.grup td{background:#f1e9d6;padding:9px 14px;font-size:13.5px}
+tr.grup code{margin-left:6px}
+p.alt code{white-space:normal;line-height:1.8}
+.sayi{display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:#7a5a2c;background:#f1e7cf;border-radius:99px;padding:1px 8px;white-space:nowrap}
+tfoot td{background:#f1e9d6;font-weight:700}
+.tab-adim table{min-width:1000px}
+.tab-adim td:nth-child(1){min-width:170px}
+.tab-seo table{min-width:940px}
+.tab-seo td:nth-child(2){white-space:nowrap}
+.ipucu{color:var(--soluk);font-size:13.5px;margin-top:12px;max-width:820px}
+
+/* --- 2. ana sayfa taslağı --- */
+.cerceve{border:1px solid var(--cizgi);border-radius:16px;background:#fff;overflow:hidden;box-shadow:0 24px 50px -28px rgba(22,35,63,.4)}
+.cubuk{display:flex;align-items:center;gap:7px;background:#e9e2d0;padding:10px 14px;border-bottom:1px solid var(--cizgi)}
+.cubuk i{width:10px;height:10px;border-radius:50%;background:#cbbf9f}
+.cubuk span{margin:0 auto;background:#f7f2e5;border-radius:99px;font-size:12px;color:#6d6550;padding:4px 18px;max-width:320px;width:70%;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vitrin{container-type:inline-size;container-name:vt;background:#fbf8f0;font-family:var(--sans)}
+.serit{background:var(--lacivert);color:#e9e2d0;font-size:12px;text-align:center;padding:8px 14px;letter-spacing:.02em}
+.serit b{color:var(--vurguAcik);font-weight:700}
+.vh{display:flex;align-items:center;gap:28px;padding:16px 28px;background:#fbf8f0;border-bottom:1px solid var(--cizgi2)}
+.logo{font:400 27px/1 var(--serif);color:var(--lacivert);text-decoration:none;white-space:nowrap;letter-spacing:-.005em}
+.logo i{color:var(--vurgu);font-style:italic;padding:0 1px}
+.vmenu{display:flex;gap:26px;margin-right:auto}
+.vmenu a{color:var(--lacivert);text-decoration:none;font-size:13.5px;font-weight:600;padding:6px 0;border-bottom:2px solid transparent}
+.vmenu a:hover,.vmenu a:focus-visible{border-color:var(--vurgu)}
+.vmenu a.ind{color:var(--vurgu)}
+.vik{display:flex;align-items:center;gap:6px;margin-left:auto}
+.vik .ikon{position:relative;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--lacivert);transition:background .15s}
+.vik .ikon:hover{background:#efe8d6}
+.vik .say{position:absolute;top:2px;right:0;min-width:17px;height:17px;border-radius:9px;background:var(--vurgu);color:#fff;font-size:10.5px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.vh .hb{display:none;width:38px;height:38px;border-radius:50%;place-items:center;color:var(--lacivert);flex:none}
+.vh .hb:hover{background:#efe8d6}
+
+.hero{position:relative;background:var(--lacivert)}
+.sld{display:none;animation:solgel .5s ease}
+.sld.on{display:block}
+@keyframes solgel{from{opacity:.35}to{opacity:1}}
+.sld .mo{display:none}
+.okl{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(255,253,248,.92);color:var(--lacivert);display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:transform .15s,background .15s;z-index:2}
+.okl:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.okl.g{left:16px}.okl.i{right:16px}
+.noktalar{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:2}
+.noktalar button{width:9px;height:9px;border-radius:99px;background:rgba(255,253,248,.5);transition:width .2s,background .2s;padding:0}
+.noktalar button[aria-current=true]{width:26px;background:#fffdf8}
+.noktalar button.kr{background:rgba(22,35,63,.35)}
+
+.vbol{padding:38px 28px 0}
+.vbas{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:16px}
+.vbas h4{font:400 30px/1.1 var(--serif);color:var(--lacivert)}
+.vbas a{font-size:13px;font-weight:700;color:var(--lacivert);text-decoration:none;border-bottom:1.5px solid var(--vurgu);padding-bottom:1px;white-space:nowrap}
+.vbas a:hover{color:var(--vurgu)}
+.ktg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kt{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:4/3.3;text-decoration:none;color:var(--lacivert);background:var(--krem);transition:transform .25s,box-shadow .25s}
+.kt:hover,.kt:focus-visible{transform:translateY(-3px);box-shadow:0 14px 26px -16px rgba(22,35,63,.55)}
+.kt .sil{position:absolute;right:6%;top:10%;width:38%;height:auto;transition:transform .35s}
+.kt:hover .sil{transform:scale(1.06) rotate(-2deg)}
+.kt span{position:absolute;left:16px;bottom:14px;right:16px}
+.kt b{display:block;font:400 28px/1.05 var(--serif)}
+.kt small{font-size:12.5px;font-weight:700;color:var(--vurgu)}
+.kt.k1{background:#e5dcc5}.kt.k2{background:#d9dfe9}.kt.k3{background:#ecdcc0}.kt.k4{background:var(--lacivert);color:#f3ecda}
+.kt.k4 small{color:var(--vurguAcik)}
+
+.izgara{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 16px}
+.urun{min-width:0}
+.gor{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5;transition:box-shadow .25s,transform .25s}
+.urun:hover .gor,.urun:focus-within .gor{transform:translateY(-3px);box-shadow:0 16px 28px -18px rgba(22,35,63,.6)}
+.gorLink{position:absolute;inset:0;display:grid;place-items:center}
+.gorLink .sil{width:58%;height:auto;filter:drop-shadow(0 10px 10px rgba(22,35,63,.14));transition:transform .4s}
+.urun:hover .gorLink .sil{transform:scale(1.05)}
+.rozet{position:absolute;left:10px;top:10px;background:var(--lacivert);color:#f3ecda;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:3px 10px;pointer-events:none}
+.rozet.ind{background:var(--vurgu);color:#fff;letter-spacing:.02em}
+.fav{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;background:rgba(255,253,248,.9);display:grid;place-items:center;color:var(--lacivert);transition:color .15s,background .15s}
+.fav:hover{color:var(--vurgu);background:#fff}
+.fav.acik{color:var(--vurgu)}.fav.acik svg{fill:currentColor}
+.hizli{position:absolute;left:10px;right:10px;bottom:10px;background:var(--lacivert);color:#f6efdc;border-radius:9px;padding:10px;font-size:13px;font-weight:700;transform:translateY(130%);transition:transform .25s,background .15s}
+.urun:hover .hizli,.urun:focus-within .hizli{transform:none}
+.hizli:hover{background:var(--vurgu)}
+@media(hover:none){.hizli{transform:none;padding:8px;font-size:12.5px}}
+.bilgi{padding:11px 2px 0}
+.kat{font-size:11.5px;color:var(--soluk);font-weight:600;letter-spacing:.02em}
+.bilgi h4{font:700 14.5px/1.3 var(--sans);margin:2px 0 4px}
+.bilgi h4 a{color:var(--lacivert);text-decoration:none}
+.bilgi h4 a:hover{color:var(--vurgu)}
+.fiyat{font-size:14.5px;display:flex;gap:8px;align-items:baseline}
+.fiyat b{font-weight:800}
+.fiyat s{color:#8b8f9b;font-size:12.5px}
+.renk{display:flex;gap:5px;margin-top:8px}
+.renk i{width:13px;height:13px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(22,35,63,.2)}
+
+.guven{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:44px 28px 0;border:1px solid var(--cizgi2);border-radius:14px;background:#fff}
+.guven div{display:flex;gap:14px;align-items:center;padding:20px 22px}
+.guven div+div{border-left:1px solid var(--cizgi2)}
+.guven svg{flex:none;color:var(--vurgu)}
+.guven b{display:block;font-size:14.5px;line-height:1.25}
+.guven span{font-size:12.5px;color:var(--soluk);line-height:1.35;display:block;margin-top:2px}
+.vay{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:38px;background:var(--lacivert);color:#c9c6bb;font-size:12.5px;padding:20px 28px}
+.vay .logo{color:#f3ecda;font-size:22px}
+.vay .logo i{color:var(--vurguAcik)}
+
+@container vt (max-width:820px){
+  .vmenu{display:none}.vh .hb{display:grid}.vh{gap:10px;padding:12px 16px}.vik .ara,.vik .kul{display:none}.vh .vik{margin-left:auto}
+  .izgara{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ktg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vbol{padding:30px 16px 0}.vbas h4{font-size:26px}
+  .guven{margin:32px 16px 0;grid-template-columns:1fr}.guven div+div{border-left:0;border-top:1px solid var(--cizgi2)}
+  .vay{padding:18px 16px}
+  .sld .d{display:none}.sld .mo{display:block}
+  .okl{width:34px;height:34px;top:auto;bottom:8px;transform:none}.okl:hover{transform:scale(1.06)}.okl.g{left:12px}.okl.i{right:12px}
+  .noktalar{bottom:17px}
+  .kt{aspect-ratio:4/3.7}.kt .sil{width:30%;right:9%;top:9%}.kt b{font-size:24px}.kt span{left:14px;right:10px;bottom:12px}
+}
+
+/* --- 3. banner'lar (cqw: 1cqw = kapsayıcının %1'i; 1920 px genişlikte birebir ölçeklenir) --- */
+.bn{container-type:inline-size;position:relative;overflow:hidden;width:100%;aspect-ratio:1920/640;font-family:var(--sans)}
+.bn.m{aspect-ratio:750/900}
+.bn .tx{position:absolute;left:6.5cqw;top:0;bottom:0;width:54cqw;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.bn .et{font-size:.95cqw;letter-spacing:.22em;text-transform:uppercase;font-weight:800;margin-bottom:1.8cqw}
+.bn h3{font:400 6.5cqw/1.02 var(--serif);letter-spacing:-.01em}
+.bn h3 em{font-style:italic}
+.bn p{font-size:1.35cqw;line-height:1.5;max-width:36cqw;margin-top:1.9cqw;font-weight:500}
+.bn .cta{display:inline-block;margin-top:2.6cqw;font-size:1.15cqw;font-weight:800;border-radius:99px;padding:1.1cqw 2.3cqw;letter-spacing:.01em}
+.bn .art{position:absolute;pointer-events:none}
+.bn.m .tx{left:8.5cqw;right:8.5cqw;top:9cqw;bottom:auto;width:auto;justify-content:flex-start}
+.bn.m .et{font-size:2.3cqw;margin-bottom:4.2cqw}
+.bn.m h3{font-size:13.2cqw;line-height:1}
+.bn.m p{font-size:3.7cqw;max-width:72cqw;margin-top:4.2cqw}
+.bn.m .cta{font-size:3.5cqw;padding:2.7cqw 5.8cqw;margin-top:6cqw}
+/* 1: lacivert */
+.b1{background:var(--lacivert);color:#f3ecda}
+.b1 .et{color:var(--vurguAcik)}.b1 h3 em{color:var(--vurguAcik)}.b1 p{color:#c7cbd6}
+.b1 .cta{background:#f3ecda;color:var(--lacivert)}
+.b1 .art{right:7cqw;top:50%;width:29cqw;height:29cqw;margin-top:-14.5cqw}
+.b1 .daire{position:absolute;inset:0;border-radius:50%;background:#22396b}
+.b1 .art .sil{position:absolute;width:17cqw;height:auto;left:50%;top:52%;transform:translate(-50%,-50%)}
+.b1.m .art{right:-8cqw;top:auto;bottom:-6cqw;width:58cqw;height:58cqw;margin-top:0}
+.b1.m .art .sil{width:34cqw}
+/* 2: krem, yalnız yazı */
+.b2{background:var(--krem);color:var(--lacivert)}
+.b2 .et{color:var(--vurgu)}.b2 h3 em{color:var(--vurgu)}.b2 p{color:#4d5570}
+.b2 .cta{background:var(--lacivert);color:#f3ecda}
+.b2 .art{right:7cqw;top:0;bottom:0;display:flex;align-items:center}
+.b2 .yuz{font:400 28cqw/.85 var(--serif);color:var(--vurgu);letter-spacing:-.04em;margin-top:-1cqw}
+.b2.m .art{right:7cqw;top:auto;bottom:-2cqw;height:auto}
+.b2.m .yuz{font-size:47cqw;margin-top:0}
+.b2.m .tx{z-index:1}
+/* 3: sıcak vurgu */
+.b3{background:var(--vurgu);color:#fbf4e4}
+.b3 .et{color:#f4d6b0}.b3 h3 em{color:#f4d6b0}.b3 p{color:#fbe8d0}
+.b3 .cta{background:#fbf4e4;color:#8f3f12}
+.b3 .art{right:8cqw;top:50%;width:30cqw;margin-top:-10cqw;color:#fbf4e4}
+.b3 .kargo{display:block;width:100%;height:auto}
+.b3.m .art{right:auto;left:8.5cqw;top:auto;bottom:13cqw;width:66cqw;margin-top:0}
+
+/* 3. bölüm yerleşimi */
+.bset{display:grid;grid-template-columns:minmax(0,1fr) 250px;grid-template-areas:"d m" "t m";gap:14px 26px;padding:24px 0;border-top:1px solid var(--cizgi)}
+p.alt+.bset{border-top:0;padding-top:0}
+.bset .bkolon:first-child{grid-area:d}
+.bset .bmob{grid-area:m}
+.bset .bmetin{grid-area:t;align-self:start}
+.bkolon .bn{border-radius:12px;box-shadow:0 14px 28px -20px rgba(22,35,63,.55)}
+.bcap{font-size:12.5px;color:var(--soluk);margin-top:9px}
+.bcap a{word-break:break-all}
+.bmetin p{color:var(--soluk);max-width:560px;margin-top:4px;font-size:15px}
+
+/* 6-7. kontrol listeleri */
+.iki{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.kutu{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:22px 24px}
+.kutu h3{margin-bottom:12px}
+.kutu.koyu{background:var(--lacivert);border-color:var(--lacivert);color:#e7e2d3}
+.kutu.koyu h3{color:#fbf4e4}
+.kontrol{list-style:none;display:grid;gap:10px}
+.kontrol label{display:flex;gap:11px;align-items:flex-start;cursor:pointer;font-size:15px;line-height:1.5}
+.kontrol input{flex:none;appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1.6px solid #b8ab8d;border-radius:6px;background:#fff;margin-top:2px;display:grid;place-items:center;cursor:pointer;transition:background .15s,border-color .15s}
+.kontrol input:checked{background:var(--vurgu);border-color:var(--vurgu)}
+.kontrol input:checked::after{content:"";width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.kontrol input:hover{border-color:var(--vurgu)}
+.kontrol.iki-sut{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
+.anahtar{margin-top:14px;padding:12px 14px;background:#f8ecd9;border-left:3px solid var(--vurgu);border-radius:0 10px 10px 0;font-size:14.5px}
+.tab-test{margin-top:16px}
+.tab-test table{min-width:760px}
+.adimlar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;counter-reset:a}
+.adimlar div{background:#fff1;border:1px solid rgba(243,236,218,.22);border-radius:12px;padding:16px 16px 18px;font-size:14px;line-height:1.5;color:#d6d3c6}
+.adimlar div::before{counter-increment:a;content:"0" counter(a);display:block;font:italic 400 26px/1 var(--serif);color:var(--vurguAcik);margin-bottom:8px}
+.adimlar b{display:block;color:#fbf4e4;font-size:15px;margin-bottom:4px}
+.nasil{margin-top:16px}
+.nasil h3{margin-bottom:14px}
+
+/* 8. dürüst not */
+.durust{margin-left:40px;display:flex;gap:16px;align-items:flex-start;background:#f8ecd9;border:1px solid #e4c9a3;border-radius:16px;padding:22px 26px;max-width:860px}
+.durust svg{flex:none;color:var(--vurgu);margin-top:3px}
+.durust b{display:block;font:400 24px/1.2 var(--serif);margin-bottom:4px}
+.durust p{font-size:15px;color:#4a4233}
+footer{padding:48px 0 56px;color:var(--soluk);font-size:13px}
+
+@media(max-width:900px){
+  .ozet{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .iki{grid-template-columns:1fr}
+  .adimlar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kontrol.iki-sut{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .ust{padding-top:36px}
+  section{margin-top:52px}
+  p.alt{margin-left:0}
+  .bas{gap:10px}
+  .bset{grid-template-columns:1fr;grid-template-areas:"d" "m" "t";gap:14px}
+  .bset .bmob{max-width:300px}
+  .tab-seo table,.tab-adim table,.tab-test table{min-width:0}
+  .tab-seo,.tab-adim,.tab-test{overflow:visible;border:0;background:none}
+  .tab-seo table,.tab-seo thead,.tab-seo tbody,.tab-seo tr,.tab-seo td,
+  .tab-adim table,.tab-adim thead,.tab-adim tbody,.tab-adim tfoot,.tab-adim tr,.tab-adim td,
+  .tab-test table,.tab-test thead,.tab-test tbody,.tab-test tr,.tab-test td{display:block}
+  .tab-seo thead,.tab-adim thead,.tab-test thead{display:none}
+  .tab-seo tr:not(.grup),.tab-adim tr,.tab-test tr{background:var(--kart);border:1px solid var(--cizgi);border-radius:12px;margin-bottom:10px;padding:6px 0}
+  .tab-seo tr.grup{background:none;margin:18px 0 8px}
+  .tab-seo tr.grup td{background:none;padding:0;font-size:16px}
+  .tab-seo td,.tab-adim td,.tab-test td{border:0;padding:5px 14px;min-width:0!important;white-space:normal!important}
+  .tab-seo td::before,.tab-adim td::before,.tab-test td::before{content:attr(data-label);display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--soluk);font-weight:800}
+  .tab-adim td:first-child::before{display:none}
+  .tab-adim tfoot tr{background:#f1e9d6}
+  .tab-adim tfoot td::before{display:none}
+  .tab-adim tfoot td:empty{display:none}
+  .durust{margin-left:0;flex-direction:column;gap:10px;padding:20px}
+  .vay{font-size:12px}
+}
+@media(max-width:480px){
+  .ozet b{font-size:32px}
+  .adimlar{grid-template-columns:1fr}
+  .kutu{padding:18px}
+  .kutu.koyu,.nasil{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<defs>
+<symbol id="g-tisort" viewBox="0 0 100 120"><path fill="currentColor" d="M31 13 44 8Q50 18 56 8L69 13 93 34 81 50 70 43V108H30V43L19 50 7 34Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M44 8Q50 18 56 8M30 104H70"/></symbol>
+<symbol id="g-gomlek" viewBox="0 0 100 120"><path fill="currentColor" d="M32 12 43 7 50 17 57 7 68 12 92 74 81 79 70 47V109H30V47L19 79 8 74Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M43 7 50 17 57 7M50 17V109M30 104H70"/><g style="fill:var(--det)"><circle cx="50" cy="34" r="1.5"/><circle cx="50" cy="52" r="1.5"/><circle cx="50" cy="70" r="1.5"/><circle cx="50" cy="88" r="1.5"/></g></symbol>
+<symbol id="g-ceket" viewBox="0 0 100 120"><path fill="currentColor" d="M31 11 43 6 50 34 57 6 69 11 92 40 88 102 76 102 72 50V110H28V50L24 102 12 102 8 40Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M43 6 50 34 57 6M50 34V110M28 88H40M60 88H72"/><g style="fill:var(--det)"><circle cx="47" cy="56" r="1.5"/><circle cx="47" cy="74" r="1.5"/></g></symbol>
+<symbol id="g-pantolon" viewBox="0 0 100 120"><path fill="currentColor" d="M27 6H73L79 113H56L50 44 44 113H21Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M27 14H73M50 14V44M35 22 41 22"/></symbol>
+<symbol id="g-elbise" viewBox="0 0 100 120"><path fill="currentColor" d="M37 6H44Q50 17 56 6H63L68 38 86 113H14L32 38Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M44 6Q50 17 56 6M32 38Q50 44 68 38"/></symbol>
+<symbol id="g-triko" viewBox="0 0 100 120"><path fill="currentColor" d="M33 12 44 8Q50 15 56 8L67 12 93 82 82 88 71 54V108H29V54L18 88 7 82Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M44 8Q50 15 56 8M29 100H71M40 100V108M50 100V108M60 100V108"/></symbol>
+<symbol id="g-canta" viewBox="0 0 100 120"><path fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" d="M33 48V36Q33 20 50 20T67 36V48"/><path fill="currentColor" d="M18 46H82L89 106H11Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M20 60H80"/></symbol>
+<symbol id="g-sapka" viewBox="0 0 100 120"><path fill="currentColor" d="M27 76 31 34Q50 24 69 34L73 76Z"/><path fill="currentColor" d="M8 80Q50 62 92 80Q50 98 8 80Z"/><path fill="none" style="stroke:var(--det)" stroke-width="1.6" stroke-linecap="round" d="M28 66Q50 72 72 66"/></symbol>
+</defs></svg>
+
+<div class="kap">
+
+<header class="ust">
+<div class="etiket">Örnek çalışma · Kurgusal marka · Boztaş Digital</div>
+<h1>Giyim markası için <em>mağaza kurulum paketi</em> (örnek)</h1>
+<p class="giris">Kurgusal bir giyim markası için hazırlanmış örnek: ana sayfa taslağı, banner'lar, kategori ve SEO planı, kurulum adımları ve teslim listesi. Ticimax, ikas ya da WooCommerce'te mağazayı nasıl kuracağımızı ve neyi teslim edeceğimizi gösterir.</p>
+<div class="ozet">
+<div><b>7</b>iş günü<br>kurulumdan teslime</div>
+<div><b>1</b>tema uyarlaması<br>renk, logo, ana sayfa blokları</div>
+<div><b>3</b>banner seti<br>masaüstü ve mobil ölçü</div>
+<div><b>2</b>revizyon hakkı<br>tasarım ve metin için</div>
+</div>
+</header>
+
+<section id="taslak">
+<div class="bas"><span class="n">02</span><h2>Mağaza ana sayfa taslağı</h2></div>
+<p class="alt">Gerçekçi bir ana sayfa maketi: üst şerit, menü, slider, kategori kutuları, 8 ürün ve güven şeridi. Fotoğraf yok; ürünler SVG silüetleri. Slider, sepet ve favori düğmeleri çalışır; pencereyi daraltınca telefon düzenine geçer.</p>
+<div class="cerceve">
+<div class="cubuk" aria-hidden="true"><i></i><i></i><i></i><span>lacivertnohut.example</span></div>
+<div class="vitrin">
+<div class="serit"><b>750 ₺</b> ve üzeri siparişlerde ücretsiz kargo · 14 gün ücretsiz iade</div>
+<div class="vh">
+<button class="hb" type="button" aria-label="Menüyü aç"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<a class="logo" href="#taslak">Lacivert <i>&amp;</i> Nohut</a>
+<nav class="vmenu" aria-label="Mağaza menüsü"><a href="#taslak">Kadın</a><a href="#taslak">Erkek</a><a href="#taslak">Aksesuar</a><a href="#taslak">Yeni Sezon</a><a class="ind" href="#taslak">İndirim</a></nav>
+<div class="vik">
+<button class="ikon ara" type="button" aria-label="Ara"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
+<button class="ikon kul" type="button" aria-label="Hesabım"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.8-3.6 3.6-5.4 7-5.4s6.2 1.8 7 5.4"/></svg></button>
+<button class="ikon" type="button" aria-label="Sepet"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 11H6.2Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="say" id="sepetSay">2</span></button>
+</div>
+</div>
+
+<div class="hero" id="hero" aria-roledescription="slider" aria-label="Kampanya banner'ları">
+<div class="sld on"><div class="d"><div class="bn b1" role="img" aria-label="Banner 1: Sonbahar koleksiyonu"><div class="tx"><span class="et">Sonbahar 26</span><h3>Yeni sezon,<br>yeni <em>dolap.</em></h3><p>Yün karışımlı ceketler, keten gömlekler ve sade tonlar.</p><span class="cta">Koleksiyonu keşfet</span></div><div class="art"><span class="daire"></span><svg class="sil" viewBox="0 0 100 120" style="color:#efe6d2;--det:rgba(22,35,63,.32)" aria-hidden="true" focusable="false"><use href="#g-ceket"/></svg></div></div></div><div class="mo"><div class="bn b1 m" role="img" aria-label="Banner 1: Sonbahar koleksiyonu"><div class="tx"><span class="et">Sonbahar 26</span><h3>Yeni sezon,<br>yeni <em>dolap.</em></h3><p>Yün karışımlı ceketler, keten gömlekler ve sade tonlar.</p><span class="cta">Koleksiyonu keşfet</span></div><div class="art"><span class="daire"></span><svg class="sil" viewBox="0 0 100 120" style="color:#efe6d2;--det:rgba(22,35,63,.32)" aria-hidden="true" focusable="false"><use href="#g-ceket"/></svg></div></div></div></div>
+<div class="sld"><div class="d"><div class="bn b2" role="img" aria-label="Banner 2: Basic parçalarda yüzde 20 indirim"><div class="tx"><span class="et">Haftanın fırsatı</span><h3>Basic parçalarda<br><em>sezon indirimi.</em></h3><p>Tişört, triko ve pantolonlarda seçili renkler.</p><span class="cta">İndirimi gör</span></div><div class="art"><span class="yuz">%20</span></div></div></div><div class="mo"><div class="bn b2 m" role="img" aria-label="Banner 2: Basic parçalarda yüzde 20 indirim"><div class="tx"><span class="et">Haftanın fırsatı</span><h3>Basic parçalarda<br><em>sezon indirimi.</em></h3><p>Tişört, triko ve pantolonlarda seçili renkler.</p><span class="cta">İndirimi gör</span></div><div class="art"><span class="yuz">%20</span></div></div></div></div>
+<div class="sld"><div class="d"><div class="bn b3" role="img" aria-label="Banner 3: Ücretsiz kargo ve 14 gün iade"><div class="tx"><span class="et">Alışverişte güven</span><h3>Ücretsiz kargo,<br><em>14 gün iade.</em></h3><p>750 ₺ ve üzeri siparişlerde kargo bizden.</p><span class="cta">Alışverişe başla</span></div><div class="art">
+<svg class="kargo" viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30H118V86H14Z"/><path d="M118 46H156L184 70V86H118Z"/><circle cx="52" cy="92" r="11" fill="#b4531e"/><circle cx="150" cy="92" r="11" fill="#b4531e"/><path d="M30 48H64M30 62H52" opacity=".55"/></svg></div></div></div><div class="mo"><div class="bn b3 m" role="img" aria-label="Banner 3: Ücretsiz kargo ve 14 gün iade"><div class="tx"><span class="et">Alışverişte güven</span><h3>Ücretsiz kargo,<br><em>14 gün iade.</em></h3><p>750 ₺ ve üzeri siparişlerde kargo bizden.</p><span class="cta">Alışverişe başla</span></div><div class="art">
+<svg class="kargo" viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30H118V86H14Z"/><path d="M118 46H156L184 70V86H118Z"/><circle cx="52" cy="92" r="11" fill="#b4531e"/><circle cx="150" cy="92" r="11" fill="#b4531e"/><path d="M30 48H64M30 62H52" opacity=".55"/></svg></div></div></div></div>
+<button class="okl g" type="button" aria-label="Önceki banner"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 6-6 6 6 6"/></svg></button>
+<button class="okl i" type="button" aria-label="Sonraki banner"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9.5 6 6 6-6 6"/></svg></button>
+<div class="noktalar"><button type="button" aria-label="Banner 1" aria-current="true"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div>
+</div>
+
+<div class="vbol">
+<div class="vbas"><h4>Kategoriler</h4><a href="#taslak">Tümünü gör</a></div>
+<div class="ktg">
+<a class="kt k1" href="#taslak"><svg class="sil" viewBox="0 0 100 120" style="color:#b4531e;--det:rgba(255,255,255,.4)" aria-hidden="true"><use href="#g-elbise"/></svg><span><b>Kadın</b><small>Keşfet →</small></span></a>
+<a class="kt k2" href="#taslak"><svg class="sil" viewBox="0 0 100 120" style="color:#1d2e52;--det:rgba(255,255,255,.42)" aria-hidden="true"><use href="#g-gomlek"/></svg><span><b>Erkek</b><small>Keşfet →</small></span></a>
+<a class="kt k3" href="#taslak"><svg class="sil" viewBox="0 0 100 120" style="color:#1d2e52;--det:rgba(255,255,255,.42)" aria-hidden="true"><use href="#g-canta"/></svg><span><b>Aksesuar</b><small>Keşfet →</small></span></a>
+<a class="kt k4" href="#taslak"><svg class="sil" viewBox="0 0 100 120" style="color:#d6b072;--det:rgba(22,35,63,.4)" aria-hidden="true"><use href="#g-triko"/></svg><span><b>Sezon sonu</b><small>%20'ye varan →</small></span></a>
+</div>
+</div>
+
+<div class="vbol">
+<div class="vbas"><h4>Çok satanlar</h4><a href="#taslak">Tüm ürünler</a></div>
+<div class="izgara">
+<article class="urun">
+<div class="gor" style="background:#ece4d1">
+<a class="gorLink" href="#urun" aria-label="Keten Gömlek ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#d6b072;--det:rgba(22,35,63,.38)" aria-hidden="true" focusable="false"><use href="#g-gomlek"/></svg></a><span class="rozet">Yeni</span>
+<button class="fav" type="button" aria-label="Keten Gömlek favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Kadın · Gömlek</span><h4><a href="#urun">Keten Gömlek</a></h4><div class="fiyat"><b>1.290 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#d6b072"></i><i style="background:#1d2e52"></i><i style="background:#e9e3d6"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#e9e2d0">
+<a class="gorLink" href="#urun" aria-label="Basic Pamuk Tişört ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#1d2e52;--det:rgba(255,255,255,.42)" aria-hidden="true" focusable="false"><use href="#g-tisort"/></svg></a><span class="rozet ind">%20</span>
+<button class="fav" type="button" aria-label="Basic Pamuk Tişört favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Erkek · Tişört</span><h4><a href="#urun">Basic Pamuk Tişört</a></h4><div class="fiyat"><b>490 ₺</b><s>610 ₺</s></div><div class="renk" aria-hidden="true"><i style="background:#1d2e52"></i><i style="background:#e9e3d6"></i><i style="background:#b4531e"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#e6dfcc">
+<a class="gorLink" href="#urun" aria-label="Yün Karışımlı Ceket ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#1d2e52;--det:rgba(255,255,255,.42)" aria-hidden="true" focusable="false"><use href="#g-ceket"/></svg></a><span class="rozet">Yeni</span>
+<button class="fav" type="button" aria-label="Yün Karışımlı Ceket favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Erkek · Ceket</span><h4><a href="#urun">Yün Karışımlı Ceket</a></h4><div class="fiyat"><b>3.190 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#1d2e52"></i><i style="background:#b5ad9d"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#eee7d6">
+<a class="gorLink" href="#urun" aria-label="Kargo Pantolon ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#b5ad9d;--det:rgba(22,35,63,.38)" aria-hidden="true" focusable="false"><use href="#g-pantolon"/></svg></a>
+<button class="fav" type="button" aria-label="Kargo Pantolon favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Erkek · Pantolon</span><h4><a href="#urun">Kargo Pantolon</a></h4><div class="fiyat"><b>1.150 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#b5ad9d"></i><i style="background:#1d2e52"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#ebe3d0">
+<a class="gorLink" href="#urun" aria-label="Midi Elbise ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#b4531e;--det:rgba(255,255,255,.4)" aria-hidden="true" focusable="false"><use href="#g-elbise"/></svg></a><span class="rozet ind">%15</span>
+<button class="fav" type="button" aria-label="Midi Elbise favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Kadın · Elbise</span><h4><a href="#urun">Midi Elbise</a></h4><div class="fiyat"><b>1.690 ₺</b><s>1.990 ₺</s></div><div class="renk" aria-hidden="true"><i style="background:#b4531e"></i><i style="background:#1d2e52"></i><i style="background:#d6b072"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#e8e1ce">
+<a class="gorLink" href="#urun" aria-label="Triko Kazak ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#8e9bb3;--det:rgba(22,35,63,.38)" aria-hidden="true" focusable="false"><use href="#g-triko"/></svg></a>
+<button class="fav" type="button" aria-label="Triko Kazak favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Kadın · Triko</span><h4><a href="#urun">Triko Kazak</a></h4><div class="fiyat"><b>990 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#8e9bb3"></i><i style="background:#d6b072"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#ede5d2">
+<a class="gorLink" href="#urun" aria-label="Tote Çanta ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#1d2e52;--det:rgba(255,255,255,.42)" aria-hidden="true" focusable="false"><use href="#g-canta"/></svg></a><span class="rozet">Yeni</span>
+<button class="fav" type="button" aria-label="Tote Çanta favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Aksesuar · Çanta</span><h4><a href="#urun">Tote Çanta</a></h4><div class="fiyat"><b>850 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#1d2e52"></i><i style="background:#d6b072"></i></div></div>
+</article>
+<article class="urun">
+<div class="gor" style="background:#e9e1cd">
+<a class="gorLink" href="#urun" aria-label="Bucket Şapka ürün sayfası"><svg class="sil" viewBox="0 0 100 120" style="color:#d6b072;--det:rgba(22,35,63,.38)" aria-hidden="true" focusable="false"><use href="#g-sapka"/></svg></a>
+<button class="fav" type="button" aria-label="Bucket Şapka favorilere ekle"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
+<button class="hizli" type="button">Sepete ekle</button>
+</div>
+<div class="bilgi"><span class="kat">Aksesuar · Şapka</span><h4><a href="#urun">Bucket Şapka</a></h4><div class="fiyat"><b>390 ₺</b></div><div class="renk" aria-hidden="true"><i style="background:#d6b072"></i><i style="background:#1d2e52"></i><i style="background:#b4531e"></i></div></div>
+</article>
+</div>
+</div>
+
+<div class="guven">
+<div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></svg><p style="margin:0"><b>Ücretsiz kargo</b><span>750 ₺ ve üzeri siparişlerde</span></p></div>
+<div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9L4 8.5"/><path d="M4 4v4.5h4.5"/></svg><p style="margin:0"><b>14 gün ücretsiz iade</b><span>Kullanılmamış ürünlerde</span></p></div>
+<div><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3 8 7.5 9.5 4.5-1.5 7.5-5.1 7.5-9.5V6Z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg><p style="margin:0"><b>Güvenli ödeme</b><span>3D Secure ile kart ödemesi</span></p></div>
+</div>
+<div class="vay"><a class="logo" href="#taslak">Lacivert <i>&amp;</i> Nohut</a><span>Kurgusal marka · Ürünler, fiyatlar ve kampanyalar örnektir</span></div>
+</div>
+</div>
+</section>
+
+<section id="banner">
+<div class="bas"><span class="n">03</span><h2>Banner seti</h2></div>
+<p class="alt">Yazı ağırlıklı, sade üç banner. Her birinin masaüstü (1920 × 640) ve mobil (750 × 900) karşılığı var; PNG olarak teslim edilir ve yukarıdaki slider'da aynen kullanılır.</p>
+<div class="bset">
+<div class="bkolon"><div class="bn b1" role="img" aria-label="Banner 1: Sonbahar koleksiyonu"><div class="tx"><span class="et">Sonbahar 26</span><h3>Yeni sezon,<br>yeni <em>dolap.</em></h3><p>Yün karışımlı ceketler, keten gömlekler ve sade tonlar.</p><span class="cta">Koleksiyonu keşfet</span></div><div class="art"><span class="daire"></span><svg class="sil" viewBox="0 0 100 120" style="color:#efe6d2;--det:rgba(22,35,63,.32)" aria-hidden="true" focusable="false"><use href="#g-ceket"/></svg></div></div><p class="bcap"><b>Masaüstü</b> · 1920 × 640 px · <a href="banner-1-masaustu.png" download>banner-1-masaustu.png</a></p></div>
+<div class="bkolon bmob"><div class="bn b1 m" role="img" aria-label="Banner 1: Sonbahar koleksiyonu"><div class="tx"><span class="et">Sonbahar 26</span><h3>Yeni sezon,<br>yeni <em>dolap.</em></h3><p>Yün karışımlı ceketler, keten gömlekler ve sade tonlar.</p><span class="cta">Koleksiyonu keşfet</span></div><div class="art"><span class="daire"></span><svg class="sil" viewBox="0 0 100 120" style="color:#efe6d2;--det:rgba(22,35,63,.32)" aria-hidden="true" focusable="false"><use href="#g-ceket"/></svg></div></div><p class="bcap"><b>Mobil</b> · 750 × 900 px · <a href="banner-1-mobil.png" download>banner-1-mobil.png</a></p></div>
+<div class="bmetin"><h3>Banner 1 · Yeni sezon</h3><p>Koyu lacivert zemin, tek ceket silüeti. Ana sayfada ilk görünen banner; koleksiyon sayfasına gider.</p></div>
+</div>
+<div class="bset">
+<div class="bkolon"><div class="bn b2" role="img" aria-label="Banner 2: Basic parçalarda yüzde 20 indirim"><div class="tx"><span class="et">Haftanın fırsatı</span><h3>Basic parçalarda<br><em>sezon indirimi.</em></h3><p>Tişört, triko ve pantolonlarda seçili renkler.</p><span class="cta">İndirimi gör</span></div><div class="art"><span class="yuz">%20</span></div></div><p class="bcap"><b>Masaüstü</b> · 1920 × 640 px · <a href="banner-2-masaustu.png" download>banner-2-masaustu.png</a></p></div>
+<div class="bkolon bmob"><div class="bn b2 m" role="img" aria-label="Banner 2: Basic parçalarda yüzde 20 indirim"><div class="tx"><span class="et">Haftanın fırsatı</span><h3>Basic parçalarda<br><em>sezon indirimi.</em></h3><p>Tişört, triko ve pantolonlarda seçili renkler.</p><span class="cta">İndirimi gör</span></div><div class="art"><span class="yuz">%20</span></div></div><p class="bcap"><b>Mobil</b> · 750 × 900 px · <a href="banner-2-mobil.png" download>banner-2-mobil.png</a></p></div>
+<div class="bmetin"><h3>Banner 2 · Basic parçalarda indirim</h3><p>Krem zemin, yalnızca yazı. Kampanya bitince metin ve oran değiştirilerek yeniden kullanılır.</p></div>
+</div>
+<div class="bset">
+<div class="bkolon"><div class="bn b3" role="img" aria-label="Banner 3: Ücretsiz kargo ve 14 gün iade"><div class="tx"><span class="et">Alışverişte güven</span><h3>Ücretsiz kargo,<br><em>14 gün iade.</em></h3><p>750 ₺ ve üzeri siparişlerde kargo bizden.</p><span class="cta">Alışverişe başla</span></div><div class="art">
+<svg class="kargo" viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30H118V86H14Z"/><path d="M118 46H156L184 70V86H118Z"/><circle cx="52" cy="92" r="11" fill="#b4531e"/><circle cx="150" cy="92" r="11" fill="#b4531e"/><path d="M30 48H64M30 62H52" opacity=".55"/></svg></div></div><p class="bcap"><b>Masaüstü</b> · 1920 × 640 px · <a href="banner-3-masaustu.png" download>banner-3-masaustu.png</a></p></div>
+<div class="bkolon bmob"><div class="bn b3 m" role="img" aria-label="Banner 3: Ücretsiz kargo ve 14 gün iade"><div class="tx"><span class="et">Alışverişte güven</span><h3>Ücretsiz kargo,<br><em>14 gün iade.</em></h3><p>750 ₺ ve üzeri siparişlerde kargo bizden.</p><span class="cta">Alışverişe başla</span></div><div class="art">
+<svg class="kargo" viewBox="0 0 200 120" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 30H118V86H14Z"/><path d="M118 46H156L184 70V86H118Z"/><circle cx="52" cy="92" r="11" fill="#b4531e"/><circle cx="150" cy="92" r="11" fill="#b4531e"/><path d="M30 48H64M30 62H52" opacity=".55"/></svg></div></div><p class="bcap"><b>Mobil</b> · 750 × 900 px · <a href="banner-3-mobil.png" download>banner-3-mobil.png</a></p></div>
+<div class="bmetin"><h3>Banner 3 · Ücretsiz kargo ve iade</h3><p>Sıcak vurgu zemin. Kargo eşiği ve iade süresi müşterinin gerçek şartlarına göre yazılır.</p></div>
+</div>
+</section>
+
+<section id="seo">
+<div class="bas"><span class="n">04</span><h2>Kategori ağacı, URL ve SEO</h2></div>
+<p class="alt">Üç ana kategori, altında 2. seviye kategoriler. Başlık şablonu: <code>{Ana kategori} {Alt kategori} Modelleri | Lacivert &amp; Nohut</code> (aksesuarda ana kategori yazılmaz). Başlıklar 60, açıklamalar 155 karakteri aşmaz; sayılar satır sonunda.</p>
+<div class="tablo tab-seo"><table>
+<thead><tr><th>Kategori</th><th>URL (slug)</th><th>SEO başlık</th><th>Meta açıklama (örnek)</th></tr></thead>
+<tbody>
+<tr class="grup"><td colspan="4"><b>Kadın</b> <code>/kadin</code></td></tr>
+<tr><td data-label="Kategori">Elbise</td><td data-label="URL"><code>/kadin/elbise</code></td><td data-label="SEO başlık">Kadın Elbise Modelleri | Lacivert &amp; Nohut <span class="sayi">41/60</span></td><td data-label="Meta açıklama">Günlük ve davetlik kadın elbise modelleri. Midi, gömlek ve keten elbiseler; 750 ₺ üzeri siparişlerde ücretsiz kargo, 14 gün iade. <span class="sayi">129/155</span></td></tr>
+<tr><td data-label="Kategori">Gömlek ve Bluz</td><td data-label="URL"><code>/kadin/gomlek-bluz</code></td><td data-label="SEO başlık">Kadın Gömlek ve Bluz Modelleri | Lacivert &amp; Nohut <span class="sayi">49/60</span></td><td data-label="Meta açıklama">Keten ve pamuklu kadın gömlek ve bluz modelleri. Ofis ve günlük kombinler için sade kesimler; 14 gün içinde ücretsiz iade. <span class="sayi">122/155</span></td></tr>
+<tr><td data-label="Kategori">Pantolon</td><td data-label="URL"><code>/kadin/pantolon</code></td><td data-label="SEO başlık">Kadın Pantolon Modelleri | Lacivert &amp; Nohut <span class="sayi">43/60</span></td><td data-label="Meta açıklama">Yüksek bel, kargo ve kumaş kadın pantolon modelleri. Beden ve boy seçenekleriyle Lacivert &amp; Nohut&#x27;ta; 750 ₺ üzeri kargo ücretsiz. <span class="sayi">129/155</span></td></tr>
+<tr><td data-label="Kategori">Dış Giyim</td><td data-label="URL"><code>/kadin/dis-giyim</code></td><td data-label="SEO başlık">Kadın Dış Giyim Modelleri | Lacivert &amp; Nohut <span class="sayi">44/60</span></td><td data-label="Meta açıklama">Kadın ceket, trençkot ve mont modelleri. Mevsim geçişi için hafif ve sıcak tutan parçalar; güvenli ödeme ve 14 gün iade. <span class="sayi">120/155</span></td></tr>
+<tr><td data-label="Kategori">Triko</td><td data-label="URL"><code>/kadin/triko</code></td><td data-label="SEO başlık">Kadın Triko Modelleri | Lacivert &amp; Nohut <span class="sayi">40/60</span></td><td data-label="Meta açıklama">Kadın triko kazak ve hırka modelleri. Yumuşak dokulu, sade renkli parçalar; 750 ₺ üzeri siparişlerde ücretsiz kargo. <span class="sayi">116/155</span></td></tr>
+<tr class="grup"><td colspan="4"><b>Erkek</b> <code>/erkek</code></td></tr>
+<tr><td data-label="Kategori">Tişört</td><td data-label="URL"><code>/erkek/tisort</code></td><td data-label="SEO başlık">Erkek Tişört Modelleri | Lacivert &amp; Nohut <span class="sayi">41/60</span></td><td data-label="Meta açıklama">Erkek basic ve baskısız tişört modelleri. Pamuklu, rahat kalıplı ve çok renkli seçenekler; 750 ₺ üzeri ücretsiz kargo, 14 gün iade. <span class="sayi">131/155</span></td></tr>
+<tr><td data-label="Kategori">Gömlek</td><td data-label="URL"><code>/erkek/gomlek</code></td><td data-label="SEO başlık">Erkek Gömlek Modelleri | Lacivert &amp; Nohut <span class="sayi">41/60</span></td><td data-label="Meta açıklama">Keten ve pamuklu erkek gömlek modelleri. Günlük ve ofis stiline uygun sade kesimler; güvenli ödeme ve 14 gün içinde iade. <span class="sayi">121/155</span></td></tr>
+<tr><td data-label="Kategori">Pantolon</td><td data-label="URL"><code>/erkek/pantolon</code></td><td data-label="SEO başlık">Erkek Pantolon Modelleri | Lacivert &amp; Nohut <span class="sayi">43/60</span></td><td data-label="Meta açıklama">Kargo, chino ve kumaş erkek pantolon modelleri. Farklı beden ve kalıp seçenekleri; 750 ₺ üzeri siparişlerde kargo ücretsiz. <span class="sayi">123/155</span></td></tr>
+<tr><td data-label="Kategori">Ceket ve Mont</td><td data-label="URL"><code>/erkek/ceket-mont</code></td><td data-label="SEO başlık">Erkek Ceket ve Mont Modelleri | Lacivert &amp; Nohut <span class="sayi">48/60</span></td><td data-label="Meta açıklama">Erkek ceket ve mont modelleri. Yün karışımlı, su itici ve hafif parçalar; güvenli ödeme, ücretsiz kargo ve 14 gün iade. <span class="sayi">119/155</span></td></tr>
+<tr><td data-label="Kategori">Triko ve Kazak</td><td data-label="URL"><code>/erkek/triko-kazak</code></td><td data-label="SEO başlık">Erkek Triko ve Kazak Modelleri | Lacivert &amp; Nohut <span class="sayi">49/60</span></td><td data-label="Meta açıklama">Erkek triko, kazak ve hırka modelleri. Sade renkler ve yumuşak dokular; 750 ₺ üzeri siparişlerde ücretsiz kargo. <span class="sayi">112/155</span></td></tr>
+<tr class="grup"><td colspan="4"><b>Aksesuar</b> <code>/aksesuar</code></td></tr>
+<tr><td data-label="Kategori">Çanta</td><td data-label="URL"><code>/aksesuar/canta</code></td><td data-label="SEO başlık">Çanta Modelleri | Lacivert &amp; Nohut <span class="sayi">34/60</span></td><td data-label="Meta açıklama">Tote, omuz ve sırt çantası modelleri. Günlük kullanıma uygun sade aksesuarlar; 750 ₺ üzeri ücretsiz kargo ve 14 gün iade. <span class="sayi">121/155</span></td></tr>
+<tr><td data-label="Kategori">Şapka ve Bere</td><td data-label="URL"><code>/aksesuar/sapka-bere</code></td><td data-label="SEO başlık">Şapka ve Bere Modelleri | Lacivert &amp; Nohut <span class="sayi">42/60</span></td><td data-label="Meta açıklama">Bucket şapka, kasket ve bere modelleri. Kombini tamamlayan sade aksesuarlar; güvenli ödeme ve 14 gün içinde iade. <span class="sayi">113/155</span></td></tr>
+<tr><td data-label="Kategori">Kemer</td><td data-label="URL"><code>/aksesuar/kemer</code></td><td data-label="SEO başlık">Kemer Modelleri | Lacivert &amp; Nohut <span class="sayi">34/60</span></td><td data-label="Meta açıklama">Kadın ve erkek kemer modelleri. Klasik ve günlük kullanıma uygun sade tokalar; 750 ₺ üzeri siparişlerde ücretsiz kargo. <span class="sayi">119/155</span></td></tr>
+<tr><td data-label="Kategori">Atkı ve Şal</td><td data-label="URL"><code>/aksesuar/atki-sal</code></td><td data-label="SEO başlık">Atkı ve Şal Modelleri | Lacivert &amp; Nohut <span class="sayi">40/60</span></td><td data-label="Meta açıklama">Atkı, şal ve fular modelleri. Yumuşak dokulu, sade renkli aksesuarlar; güvenli ödeme, ücretsiz kargo ve 14 gün iade. <span class="sayi">116/155</span></td></tr>
+</tbody></table></div>
+<p class="ipucu">Slug'lar küçük harf, Türkçe karaktersiz ve tire ile yazılır. URL öneki ve hiyerarşi, seçilen platformun izin verdiği biçime göre uyarlanır; kategori adı ve slug aynı kalır.</p>
+</section>
+
+<section id="adimlar">
+<div class="bas"><span class="n">05</span><h2>Kurulum adımları</h2></div>
+<p class="alt">7 adım, toplam 7 iş günü. Platform sütunlarında panel bölüm adlarını emin olduğumuz yerde yazdık; diğerleri genel bırakıldı. Ticimax ve ikas panel yolları, hesap açıldığında ekran görüntüsüyle birlikte doğrulanır.</p>
+<div class="tablo tab-adim"><table>
+<thead><tr><th>Adım</th><th>Ne yapılır</th><th>Ticimax</th><th>ikas</th><th>WooCommerce</th><th>Süre</th></tr></thead>
+<tbody>
+<tr><td data-label="Adım"><span class="no">1</span><b>Alan adı ve hesap erişimi</b></td><td data-label="Ne yapılır">Alan adının DNS yönlendirmesi yapılır. Mağaza paneline ve alan adı/hosting hesabına şifre paylaşımı yerine yetkili kullanıcı daveti ile erişilir.</td><td data-label="Ticimax">Yönetim paneline yetkili kullanıcı erişimi; DNS kaydı alan adı kayıt firmasında.</td><td data-label="ikas">Hesaba yetkili kullanıcı erişimi; DNS kaydı alan adı kayıt firmasında.</td><td data-label="WooCommerce">Hosting paneli ve WordPress yönetici kullanıcısı; DNS kaydı alan adı kayıt firmasında.</td><td data-label="Süre" class="sure">0,5 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">2</span><b>Genel ayarlar</b></td><td data-label="Ne yapılır">Mağaza adı, para birimi (TL), KDV oranları, bildirim e-postalarının gönderici adı ve yasal sayfa bağlantıları girilir.</td><td data-label="Ticimax">Panelin genel mağaza ayarları bölümü.</td><td data-label="ikas">Panelin mağaza ayarları bölümü.</td><td data-label="WooCommerce">WooCommerce > Ayarlar > Genel ve WordPress Ayarlar > Genel.</td><td data-label="Süre" class="sure">0,5 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">3</span><b>Tema, renk ve logo uyarlaması</b></td><td data-label="Ne yapılır">Tema seçilir, logo ve favicon yüklenir; lacivert-krem renk düzeni, yazı tipleri, menü ve ana sayfa blokları (slider, kategori kutuları, ürün vitrini) uyarlanır.</td><td data-label="Ticimax">Tema ve tasarım ayarları; kod düzenleme imkânı pakete göre değişir.</td><td data-label="ikas">Tema seçimi ve tema düzenleme ekranı.</td><td data-label="WooCommerce">Görünüm > Temalar ve Özelleştir (ya da kullanılan sayfa oluşturucu).</td><td data-label="Süre" class="sure">1,5 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">4</span><b>Kategori ve Excel'den toplu ürün girişi</b></td><td data-label="Ne yapılır">Kategori ağacı (bölüm 4) kurulur. Ürünler hazır Excel/CSV şablonuyla toplu girilir; ilk 5 ürün tek tek kontrol edilir (varyantlar, stok, görseller).</td><td data-label="Ticimax">Ürün ve kategori bölümü; Excel ile toplu aktarım, sürüme göre biçim farkıyla.</td><td data-label="ikas">Ürün bölümünde toplu içe aktarma (Excel/CSV).</td><td data-label="WooCommerce">Ürünler > İçe Aktar (CSV).</td><td data-label="Süre" class="sure">2 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">5</span><b>Ödeme ve kargo</b></td><td data-label="Ne yapılır">Ödeme sağlayıcısı (iyzico ya da PayTR) ve kargo seçenekleri bağlanır; ücret tablosu ile ücretsiz kargo eşiği tanımlanır. Anahtarları müşteri girer (bölüm 6).</td><td data-label="Ticimax">Ödeme ve kargo ayarları; desteklenen sağlayıcılar pakete göre değişir.</td><td data-label="ikas">Ödeme ve kargo ayarları bölümü.</td><td data-label="WooCommerce">WooCommerce > Ayarlar içindeki Ödemeler ve Gönderim sekmeleri.</td><td data-label="Süre" class="sure">1 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">6</span><b>SEO ayarları</b></td><td data-label="Ne yapılır">Başlık ve meta şablonları, slug'lar (bölüm 4), site haritası ve varsa eski adreslerden yönlendirmeler ayarlanır. Arama konsolu sahipliği müşterinin hesabında kurulur.</td><td data-label="Ticimax">Kategori ve ürün SEO alanları ile genel SEO ayarları.</td><td data-label="ikas">Kategori ve ürün SEO alanları.</td><td data-label="WooCommerce">Ayarlar > Kalıcı bağlantılar ve bir SEO eklentisi (ör. Yoast SEO ya da Rank Math).</td><td data-label="Süre" class="sure">0,5 gün</td></tr>
+<tr><td data-label="Adım"><span class="no">7</span><b>Test siparişi ve teslim</b></td><td data-label="Ne yapılır">Bölüm 6'daki senaryolar telefon ve bilgisayardan denenir. Teslim kontrol listesi (bölüm 7) işaretlenir, yazılı kullanım notu verilir, erişimler müşteriye devredilir.</td><td data-label="Ticimax">Sipariş ekranı ve bildirim e-postaları.</td><td data-label="ikas">Sipariş ekranı ve bildirim e-postaları.</td><td data-label="WooCommerce">WooCommerce > Siparişler ve bildirim e-postaları.</td><td data-label="Süre" class="sure">1 gün</td></tr>
+</tbody>
+<tfoot><tr><td>Toplam</td><td></td><td></td><td></td><td></td><td class="sure">7 iş günü</td></tr></tfoot>
+</table></div>
+</section>
+
+<section id="odeme">
+<div class="bas"><span class="n">06</span><h2>Ödeme ve kargo kontrol listesi</h2></div>
+<p class="alt">Para ve sözleşme konularında mağaza sahibi kontrolde kalır. Biz kurulumu ve denemeyi yaparız; hesabın kendisi ve anahtarlar müşteridedir.</p>
+<div class="iki">
+<div class="kutu"><h3>Ödeme (iyzico / PayTR)</h3>
+<ul class="kontrol">
+<li><label><input type="checkbox"><span>Sağlayıcı başvurusu ve sözleşme müşterinin adına yapılır. Onay süresi sağlayıcıya bağlıdır, 7 günlük takvime dahil değildir.</span></label></li>
+<li><label><input type="checkbox"><span>API anahtarları müşteride kalır; müşteri kendisi ödeme ayarı ekranına girer.</span></label></li>
+<li><label><input type="checkbox"><span>3D Secure açık; taksit seçenekleri müşterinin kararına göre.</span></label></li>
+<li><label><input type="checkbox"><span>Sağlayıcı test modu ve test kartlarıyla deneme yapılır; canlıya geçerken test modu kapatılır.</span></label></li>
+</ul>
+<div class="anahtar"><b>Anahtar kuralı:</b> Biz anahtarı görmeyiz, mesajla ya da dosyayla istemeyiz, saklamayız. Girişi müşteri yapar, biz ekran görüntüsüyle adım adım yönlendiririz.</div>
+</div>
+<div class="kutu"><h3>Kargo</h3>
+<ul class="kontrol">
+<li><label><input type="checkbox"><span>Kargo sözleşmesi müşterinin firmasıyla (ör. Yurtiçi, Aras, MNG) yapılır; fiyat listesi müşteriden alınır.</span></label></li>
+<li><label><input type="checkbox"><span>Kargo ücreti ve ücretsiz kargo eşiği (örnekte 750 ₺) mağazada tanımlanır.</span></label></li>
+<li><label><input type="checkbox"><span>Takip numarası girişi belirlenir: platformun kargo bağlantısı ya da elle giriş.</span></label></li>
+<li><label><input type="checkbox"><span>Hazırlama ve teslim süresi ile iade adresi ürün ve iade sayfalarında yazılır.</span></label></li>
+</ul></div>
+</div>
+<div class="tablo tab-test"><table>
+<thead><tr><th>Test senaryosu</th><th>Nasıl denenir</th><th>Beklenen sonuç</th></tr></thead>
+<tbody>
+<tr><td data-label="Senaryo"><b>Başarılı ödeme</b></td><td data-label="Nasıl denenir">Sepete 2 ürün eklenir, test kartıyla ödeme yapılır, 3D Secure adımı geçilir.</td><td data-label="Beklenen sonuç">Sipariş "ödendi" durumuyla görünür, stok azalır, müşteriye sipariş e-postası gider.</td></tr>
+<tr><td data-label="Senaryo"><b>Reddedilen kart</b></td><td data-label="Nasıl denenir">Sağlayıcının reddedilen test kartı girilir; bir de 3D Secure ekranı yarıda kapatılır.</td><td data-label="Beklenen sonuç">Müşteri anlaşılır bir hata görür, sepet korunur, stok düşmez, ödenmiş sipariş oluşmaz.</td></tr>
+<tr><td data-label="Senaryo"><b>İade</b></td><td data-label="Nasıl denenir">Ödenmiş test siparişi panelden iade edilir.</td><td data-label="Beklenen sonuç">İade sağlayıcı panelinde de görünür, sipariş durumu güncellenir, stok bilinçli olarak geri eklenir.</td></tr>
+<tr><td data-label="Senaryo"><b>Kargo eşiği</b></td><td data-label="Nasıl denenir">750 ₺ altı ve üstü iki ayrı sepetle ödemeye gidilir.</td><td data-label="Beklenen sonuç">Altında kargo ücreti eklenir, üstünde sıfırlanır; toplam ödeme ekranında doğru görünür.</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="teslim">
+<div class="bas"><span class="n">07</span><h2>Teslim kontrol listesi ve çalışma biçimi</h2></div>
+<p class="alt">Teslimden önce 12 maddenin hepsi işaretlenir; işaretlenmeyen madde varsa nedeni yazılı olarak bildirilir.</p>
+<div class="kutu">
+<ul class="kontrol iki-sut">
+<li><label><input type="checkbox"><span>Alan adı yönlendirmesi çalışıyor, https (SSL) aktif.</span></label></li>
+<li><label><input type="checkbox"><span>Logo, favicon ve marka renkleri uygulandı.</span></label></li>
+<li><label><input type="checkbox"><span>Slider ve 3 banner seti (masaüstü ve mobil) yüklendi.</span></label></li>
+<li><label><input type="checkbox"><span>Kategori ağacı ve slug'lar onaylı listeyle aynı.</span></label></li>
+<li><label><input type="checkbox"><span>Ürünler toplu girildi; her üründe görsel, beden/renk varyantı, stok ve fiyat dolu.</span></label></li>
+<li><label><input type="checkbox"><span>Ödeme yöntemi bağlı (anahtarları müşteri girdi) ve test edildi.</span></label></li>
+<li><label><input type="checkbox"><span>Kargo firması, ücret ve ücretsiz kargo eşiği tanımlı.</span></label></li>
+<li><label><input type="checkbox"><span>Mesafeli satış, iade ve gizlilik metinleri bağlı (metinleri müşteri sağlar).</span></label></li>
+<li><label><input type="checkbox"><span>Sipariş onayı ve kargo bildirimi e-postaları denendi.</span></label></li>
+<li><label><input type="checkbox"><span>SEO başlık ve meta alanları, site haritası tanımlı; arama konsolu müşterinin hesabında.</span></label></li>
+<li><label><input type="checkbox"><span>Telefonda ana sayfa, kategori, ürün, sepet ve ödeme akışı gezildi.</span></label></li>
+<li><label><input type="checkbox"><span>Yazılı kullanım notu teslim edildi; yönetici erişimi müşteriye verildi, bizim geçici erişimimiz kapatıldı.</span></label></li>
+</ul>
+</div>
+<div class="kutu koyu nasil">
+<h3>Nasıl çalışırız</h3>
+<div class="adimlar">
+<div><b>Tasarım onayı</b>Ana sayfa taslağı ve banner'lar sizin onayınızdan önce ürün girişine geçilmez.</div>
+<div><b>2 revizyon hakkı</b>Tasarım ve metin için iki tur düzeltme dahildir. Yeni özellik isteği ayrıca konuşulur.</div>
+<div><b>Her aşamada ekran görüntüsü</b>Yedi adımın her biri bitince yaptığımız işin ekran görüntüsünü göndeririz.</div>
+<div><b>Yazılı kullanım notu</b>Teslimde video yerine adım adım yazılı not verilir: ürün ekleme, sipariş ve kargo işleme, iade.</div>
+</div>
+</div>
+</section>
+
+<section id="not">
+<div class="bas"><span class="n">08</span><h2>Dürüst not</h2></div>
+<div class="durust">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg>
+<div><b>Bu sayfa kurgusal bir marka için hazırlanmış örnektir.</b><p>Gerçek mağaza verisi içermez. "Lacivert &amp; Nohut" adlı marka, ürünler, fiyatlar ve kampanyalar uydurulmuştur; bu sayfa bir Ticimax, ikas ya da WooCommerce referansı değildir, yalnızca iş akışımızı ve çıktı kalitemizi gösterir.</p></div>
+</div>
+</section>
+
+<footer>Boztaş Digital · örnek çalışma</footer>
+</div>
+
+<script>
+(function(){
+  // slider
+  var hero=document.getElementById('hero');
+  var sl=[].slice.call(hero.querySelectorAll('.sld'));
+  var nk=[].slice.call(hero.querySelectorAll('.noktalar button'));
+  var i=0,zm=null,dur=false;
+  function git(n){
+    i=(n+sl.length)%sl.length;
+    sl.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    nk.forEach(function(b,k){
+      if(k===i){b.setAttribute('aria-current','true')}else{b.removeAttribute('aria-current')}
+      b.classList.toggle('kr',i===1);
+    });
+  }
+  hero.querySelector('.okl.g').addEventListener('click',function(){git(i-1)});
+  hero.querySelector('.okl.i').addEventListener('click',function(){git(i+1)});
+  nk.forEach(function(b,k){b.addEventListener('click',function(){git(k)})});
+  var azHareket=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function baslat(){if(azHareket||zm)return;zm=setInterval(function(){if(!dur)git(i+1)},6000)}
+  hero.addEventListener('mouseenter',function(){dur=true});
+  hero.addEventListener('mouseleave',function(){dur=false});
+  hero.addEventListener('focusin',function(){dur=true});
+  hero.addEventListener('focusout',function(){dur=false});
+  baslat();
+  // taslaktaki bağlantılar yerinde kalsın
+  document.querySelectorAll('.vitrin a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault()});
+  });
+  // sepet ve favori
+  var say=document.getElementById('sepetSay');
+  document.querySelectorAll('.hizli').forEach(function(b){
+    b.addEventListener('click',function(){
+      say.textContent=(+say.textContent)+1;
+      var o=b.textContent;b.textContent='Eklendi';
+      setTimeout(function(){b.textContent=o},1200);
+    });
+  });
+  document.querySelectorAll('.fav').forEach(function(b){
+    b.addEventListener('click',function(){b.classList.toggle('acik')});
+  });
+})();
+</script>
+</body>
+</html>
