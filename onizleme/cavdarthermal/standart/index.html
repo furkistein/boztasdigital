@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Çavdar Thermal · Karahayıt · Standart örnek</title>
+<meta name="description" content="Çavdar Thermal, Karahayıt (Pamukkale): kırmızı suyun yakınında küçük bir konaklama. Arama, WhatsApp, harita ve yol tarifi. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F8F4EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--kizil:#9C2F1B;--kiremit:#C65A34;--kan:#3A120B;--tebesir:#F8F4EE;--kil:#EADFD1;--duman:#6B605A;--cizgi:rgba(58,18,11,.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--tebesir);color:#2A100A;font-family:"Hanken Grotesk",system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.sar{width:min(1160px,100% - 56px);margin-inline:auto}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.ufak{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--kizil)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:15px 28px;font-weight:700;font-size:15.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--kizil);color:#fff}
+.btn.dolu:hover{background:var(--kan)}
+.btn.hat{border:1.5px solid currentColor}
+.btn.hat:hover{background:var(--kan);color:var(--tebesir);border-color:var(--kan)}
+/* üst */
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:84px;gap:16px}
+.logo{font-family:"Instrument Serif",serif;font-size:30px;text-decoration:none;letter-spacing:.005em;line-height:1}
+.logo em{color:var(--kizil)}
+.ust nav{display:flex;gap:30px;font-size:15px;font-weight:500}
+.ust nav a{text-decoration:none}
+.ust nav a:hover{color:var(--kizil)}
+/* kahraman: sol yazı, sağ boy fotoğraf */
+.kah{display:grid;grid-template-columns:7fr 5fr;min-height:calc(100svh - 150px);border-top:1px solid var(--cizgi)}
+.kah .yazi{display:flex;flex-direction:column;justify-content:center;padding:56px max(28px,calc((100vw - 1160px)/2)) 56px max(28px,calc((100vw - 1160px)/2));gap:22px}
+h1{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(54px,7.4vw,112px);line-height:.94;letter-spacing:-.015em;max-width:11ch}
+h1 em{color:var(--kizil)}
+.kah p.alt{font-size:19px;max-width:44ch;color:#4A3A34}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap}
+.adres{font-size:14.5px;color:var(--duman)}
+.kah figure{position:relative;overflow:hidden;background:var(--kil)}
+.kah figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%;animation:yavas 24s ease-out both}
+@keyframes yavas{from{transform:scale(1.08)}to{transform:scale(1)}}
+.kah figcaption,.foto-not{position:absolute;left:16px;bottom:14px;font-size:12.5px;color:#fff;background:rgba(58,18,11,.62);padding:5px 12px;border-radius:999px}
+/* bölümler */
+section{padding:110px 0}
+h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.01em;margin:12px 0 18px}
+h2 em{color:var(--kizil)}
+.acik{color:#5A4A43;max-width:54ch}
+.hak{display:grid;grid-template-columns:6fr 5fr;gap:80px;align-items:start}
+.hak .buyuk{font-family:"Instrument Serif",serif;font-size:clamp(26px,3vw,40px);line-height:1.2;margin-top:24px}
+.liste{list-style:none;border-top:1px solid var(--cizgi);margin-top:6px}
+.liste li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--cizgi)}
+.liste b{font-family:"Instrument Serif",serif;font-weight:400;font-size:26px;color:var(--kizil);line-height:1.1}
+.liste span{color:#4A3A34}
+.ornek{margin-top:26px;border:1px dashed rgba(58,18,11,.4);border-radius:12px;padding:16px 18px;font-size:15px;color:var(--duman)}
+.ornek b{color:#2A100A}
+.koyu{background:var(--kan);color:var(--tebesir)}
+.koyu .ufak{color:#E9A98F}
+.koyu h2 em{color:#EF8A63}
+.koyu .acik{color:#D8C4BA}
+.koyu .ornek{border-color:rgba(248,244,238,.4);color:#D8C4BA}
+.koyu .ornek b{color:#fff}
+.sofra{display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:center}
+.sofra figure{position:relative}
+.sofra figure img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:2px}
+.su-izgara{display:grid;grid-template-columns:7fr 5fr;gap:20px;margin-top:44px;align-items:end}
+.su-izgara figure{position:relative}
+.su-izgara img{width:100%;object-fit:cover;border-radius:2px}
+.su-izgara .b img{aspect-ratio:4/3}
+.su-izgara .k img{aspect-ratio:4/5}
+.su-izgara figcaption{font-family:"Instrument Serif",serif;font-size:24px;margin-top:10px;line-height:1.15}
+.su-izgara small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:14px;color:var(--duman);margin-top:3px}
+.yol .sar{display:grid;grid-template-columns:5fr 7fr;gap:60px;align-items:center}
+.yol iframe{width:100%;aspect-ratio:4/3;border:0;background:var(--kil);border-radius:2px}
+.tel-liste{list-style:none;margin-top:26px;border-top:1px solid var(--cizgi)}
+.tel-liste li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--cizgi);font-size:19px;flex-wrap:wrap}
+.tel-liste .dg{display:flex;gap:8px;flex-wrap:wrap}
+.tel-liste .btn{padding:10px 20px;font-size:14.5px}
+footer{background:var(--kan);color:#D8C4BA;padding:38px 0 120px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(248,244,238,.35);border-radius:10px;padding:12px 14px;color:var(--tebesir)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:none;gap:8px}
+.yuzen .btn{flex:1;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+.yuzen .btn.hat{background:var(--tebesir);color:var(--kan);border-color:var(--tebesir)}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .hak,.sofra,.yol .sar{grid-template-columns:1fr;gap:40px}
+  .su-izgara{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .ust .sar{height:68px}
+  .logo{font-size:26px}
+  .kah{grid-template-columns:1fr;min-height:0;border-top:0}
+  .kah figure{order:-1;height:52svh;min-height:300px}
+  .kah figure img{animation:none}
+  .kah .yazi{padding:34px 18px 56px}
+  h1{max-width:9ch}
+  .kah p.alt{font-size:17px}
+  .dugmeler .btn{flex:1 1 100%}
+  section{padding:72px 0}
+  .liste li{grid-template-columns:1fr;gap:4px}
+  .sofra figure img{aspect-ratio:4/3}
+  .yuzen{display:flex}
+}
+.kah .yazi>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.kah .yazi>*:nth-child(2){animation-delay:.1s}.kah .yazi>*:nth-child(3){animation-delay:.2s}.kah .yazi>*:nth-child(4){animation-delay:.3s}.kah .yazi>*:nth-child(5){animation-delay:.4s}
+@keyframes yuksel{from{opacity:0;transform:translateY(18px)}}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (prefers-reduced-motion:reduce){.kah figure img,.kah .yazi>*{animation:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+<script id="bd-sayac">(function(){try{var L=localStorage;if(/[?&]ben=1/.test(location.search))L.setItem("bd_ben","1");if(location.hostname!=="furkistein.github.io"||L.getItem("bd_ben"))return;var a="bd_s_cavdarthermal-standart",t=+L.getItem(a),n=Date.now();if(t&&n-t<432e5)return;L.setItem(a,n);fetch("https://abacus.jasoncameron.dev/hit/boztasdigital/cavdarthermal-standart",{mode:"no-cors",keepalive:true}).catch(function(){})}catch(e){}})()</script>
+</head>
+<body data-kademe="standart" data-isletme="Çavdar Thermal">
+<header class="ust">
+  <div class="sar">
+    <a class="logo" href="#">Çavdar <em lang="en">Thermal</em></a>
+    <nav><a href="#hakkinda">Hakkında</a><a href="#kahvalti">Kahvaltı</a><a href="#termal">Termal su</a><a href="#yol">Yol tarifi</a></nav>
+    <a class="btn dolu" href="tel:+905325593936">Ara</a>
+  </div>
+</header>
+
+<main>
+  <div class="kah">
+    <div class="yazi">
+      <span class="ufak">Karahayıt · Pamukkale</span>
+      <h1>Kırmızı suyun <em>başında</em>, sakin bir ev.</h1>
+      <p class="alt">Çavdar Thermal, Karahayıt'ta küçük bir konaklama. Sabah sofrası, termal suyun sakinliği ve Pamukkale'ye yakınlık. Oda için arayın ya da WhatsApp'tan yazın.</p>
+      <div class="dugmeler">
+        <a class="btn dolu" href="tel:+905325593936">Ara: 0532 559 39 36</a>
+        <a class="btn hat" href="https://wa.me/905325593936?text=Merhaba%2C%20%C3%87avdar%20Thermal%20i%C3%A7in%20oda%20m%C3%BCsaitli%C4%9Fi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan talep</a>
+      </div>
+      <p class="adres">Belediye Cd. No:19, Karahayıt, Pamukkale / Denizli</p>
+    </div>
+    <figure>
+      <img src="../img/gercek/kirmizi-akinti.webp" srcset="../img/gercek/kirmizi-akinti-900.webp 900w, ../img/gercek/kirmizi-akinti.webp 1500w" sizes="(max-width:700px) 100vw, 42vw" alt="Demir oksitli kırmızı termal suyun kayalık zeminde aktığı bir dere (temsilî fotoğraf)" width="1500" height="2000" fetchpriority="high">
+      <figcaption>Fotoğraf temsilîdir</figcaption>
+    </figure>
+  </div>
+
+  <section id="hakkinda">
+    <div class="sar hak">
+      <div>
+        <span class="ufak">Hakkında</span>
+        <h2 data-belir>Büyük otel gürültüsü <em>yok</em>.</h2>
+        <p class="acik" data-belir>Çavdar Thermal, Karahayıt'ta Belediye Caddesi üzerinde küçük ölçekli bir konaklama. Misafir notlarında en sık öne çıkan iki şey: sabah kahvaltısı ve işletme sahibinin ilgisi.</p>
+        <p class="buyuk" data-belir>Kızıl su, beyaz teraslar, ve geceyi sessiz geçirebileceğiniz bir oda.</p>
+        <div class="ornek" data-belir><b>Odalar ve olanaklar (örnek yer).</b> Oda sayısı, oda tipleri ve olanaklar yayında sizden alınarak bu bölüme yazılır; bilmediğimiz hiçbir şeyi şimdiden yazmıyoruz.</div>
+      </div>
+      <ul class="liste" data-belir>
+        <li><b>Konum</b><span>Karahayıt, Pamukkale. Kırmızı su ile bilinen mahalle; Pamukkale travertenleri de aynı bölgede.</span></li>
+        <li><b>Sofra</b><span>Kahvaltı, misafirlerin en sık andığı şeylerden biri. Menü ve saatler sizden alınıp eklenir.</span></li>
+        <li><b>Su</b><span>Karahayıt termal suyu ile tanınır; otelin kendi olanakları sizinle netleştirilip yazılır.</span></li>
+        <li><b>İletişim</b><span>Aracı olmadan, doğrudan telefon ya da WhatsApp ile otele ulaşın.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="koyu" id="kahvalti">
+    <div class="sar sofra">
+      <figure data-belir>
+        <img src="../img/gercek/kahvalti-sofra-900.webp" alt="Beyaz örtülü bir köy kahvaltısı sofrası, çay ve çeşit çeşit tabak (temsilî fotoğraf)" width="900" height="1200" loading="lazy">
+        <span class="foto-not">Fotoğraf temsilîdir</span>
+      </figure>
+      <div>
+        <span class="ufak">Kahvaltı</span>
+        <h2 data-belir>Güne <em>sofradan</em> başlanır.</h2>
+        <p class="acik" data-belir>Karahayıt'ta bir sabah, uzun bir kahvaltı ve demli çayla açılır. Misafirler kahvaltıyı övüyor; sizin sofranızı ise kendi fotoğraflarınızla ve kendi sözlerinizle göstereceğiz.</p>
+        <div class="ornek" data-belir><b>Kahvaltı menüsü (örnek yer).</b> Neler çıktığı, saati ve ücret durumu sizden alınır. Bu önizlemedeki fotoğraf temsilî bir sofradır, otele ait değildir.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="termal">
+    <div class="sar">
+      <span class="ufak">Termal su</span>
+      <h2 data-belir>Karahayıt'ın <em>kırmızı</em> suyu.</h2>
+      <p class="acik" data-belir>Karahayıt, kaynaklardan çıkan demir oksitli suyun yer yer kırmızı-turuncu bıraktığı terasları ile bilinir. Pamukkale'nin beyaz travertenleri ise aynı bölgede, tam tersi bir manzara sunar. Genel coğrafi bilgidir; ziyaret koşullarını gitmeden teyit etmenizi öneririz.</p>
+      <div class="su-izgara" data-sirali="120">
+        <figure class="b" data-belir><img src="../img/gercek/kirmizi-su-yakin-900.webp" alt="Kayaların arasında kızıl-turuncu mineralli su (temsilî fotoğraf)" width="900" height="1350" loading="lazy" style="object-position:50% 60%"><figcaption>Kızıl su<small>Demir oksit, suya ve taşa bu rengi verir.</small></figcaption></figure>
+        <figure class="k" data-belir><img src="../img/gercek/travertin-mavi-900.webp" alt="Beyaz travertenin kenarında açık mavi termal havuz (temsilî fotoğraf)" width="900" height="1350" loading="lazy"><figcaption>Beyaz teraslar<small>Pamukkale travertenleri.</small></figcaption></figure>
+      </div>
+      <div class="ornek" style="margin-top:36px;max-width:68ch" data-belir><b>Otelin termal olanağı (örnek yer).</b> Havuz, termal su ya da spa gibi bir olanak varsa nasıl çalıştığı, saatleri ve kuralları sizden alınarak buraya yazılır.</div>
+    </div>
+  </section>
+
+  <section class="yol" id="yol" style="background:var(--kil)">
+    <div class="sar">
+      <div>
+        <span class="ufak">Yol tarifi</span>
+        <h2 data-belir>Karahayıt'ta <em>buluşalım</em>.</h2>
+        <p class="acik" data-belir>Belediye Cd. No:19, Karahayıt, Pamukkale / Denizli. Yolu bulamazsanız arayın; tarif telefonda verilir.</p>
+        <ul class="tel-liste">
+          <li><span>0532 559 39 36</span><span class="dg"><a class="btn dolu" href="tel:+905325593936">Ara</a><a class="btn hat" href="https://wa.me/905325593936?text=Merhaba%2C%20%C3%87avdar%20Thermal%20i%C3%A7in%20oda%20m%C3%BCsaitli%C4%9Fi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp</a></span></li>
+          <li><span>Harita</span><span class="dg"><a class="btn hat" href="https://www.google.com/maps/dir/?api=1&amp;destination=%C3%87avdar+Thermal%2C+Belediye+Cd.+No%3A19%2C+Karahay%C4%B1t%2C+Pamukkale%2FDenizli" target="_blank" rel="noopener">Yol tarifi al</a></span></li>
+        </ul>
+      </div>
+      <iframe loading="lazy" title="Çavdar Thermal, Karahayıt haritası" src="https://www.google.com/maps?q=%C3%87avdar+Thermal+Belediye+Cd.+No%3A19+Karahay%C4%B1t+Pamukkale+Denizli&amp;output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Çavdar <span lang="en">Thermal</span> · Karahayıt, Pamukkale</div>
+    <div class="ornek-not">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels), otele ait değildir. Bu sayfa Çavdar Thermal için Boztaş Digital tarafından hazırlandı. Adres ve telefon herkese açık kayıtlardan alındı; WhatsApp hattının açık olup olmadığı teyit edilmedi, önce arayabilirsiniz. Oda, olanak ve saat bilgileri sizinle doldurulur. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen"><a class="btn dolu" href="tel:+905325593936">Ara</a><a class="btn hat" href="https://wa.me/905325593936?text=Merhaba%2C%20%C3%87avdar%20Thermal%20i%C3%A7in%20oda%20m%C3%BCsaitli%C4%9Fi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>(()=>{const y=document.querySelector(".yuzen");if(!y)return;const f=()=>y.classList.toggle("goster",scrollY>innerHeight*.7);addEventListener("scroll",f,{passive:true});f()})();</script>
+</body>
+</html>

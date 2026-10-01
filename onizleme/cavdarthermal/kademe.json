@@ -1,0 +1,10 @@
+{
+  "ad": "Çavdar Thermal",
+  "renk": "#9C2F1B",
+  "giris": "Karahayıt'taki Çavdar Thermal için üç seviye: kırmızı su, kahvaltı ve sakin bir konaklama anlatan tek sayfa ile arama ve WhatsApp düğmeleri; tarih, kişi ve gece seçince hazır gelen talep mesajı; ve üç dilli (TR / EN / DE) sinematik sayfa ile bilet biçimli rezervasyon talebi. Yabancı misafir aracı platform olmadan doğrudan otele yazabilir. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî); oda ve olanak metinleri örnektir.",
+  "ozellik": {
+    "standart": ["Kırmızı su ve kahvaltı öne çıkan tek sayfa: hakkında, kahvaltı, termal su, harita ve yol tarifi, arama ve WhatsApp düğmeleri"],
+    "profesyonel": ["Örnek oda tipi kartları ve kısa soru formu: tarih, kişi ve gece seçince hazır WhatsApp mesajı", "Galeri ve büyütme kutusu, Google Haritalar, Google'a yorum yönlendirmesi"],
+    "premium": ["TR / EN / DE dil düğmesi: sayfa ve WhatsApp talep mesajı seçilen dilde; yabancı misafir doğrudan otele yazar", "Sinematik giriş, kırmızı suyun yükseldiği kahraman, \"Karahayıt'ta bir gün\" kaydırma sahnesi ve bilet biçimli rezervasyon talebi fişi"]
+  }
+}
