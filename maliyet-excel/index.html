@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Makine Maliyetlendirme ve Malzeme Reçetesi: Çalışan Örnek | Boztaş Digital</title>
+<meta name="description" content="Üç bağlantılı dosyadan oluşan makine maliyet sisteminin çalışan Excel örneği: ortak katalog, güncel fiyat, tek tıkla maliyet.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--zemin:#f4f5f2;--yazi:#1b1d1a;--soluk:#61665e;--vurgu:#0f766e;--kart:#fff;--cizgi:#dfe2db;--koyu:#1f2a37;--uyari:#9b1c1c;--sari:#fff8e1}
+*{box-sizing:border-box;margin:0}
+body{background:var(--zemin);color:var(--yazi);font:16px/1.6 Manrope,system-ui,sans-serif}
+.kap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{padding:52px 0 12px}
+.etiket{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--vurgu);font-weight:700}
+h1{font:400 clamp(32px,5.2vw,54px)/1.06 "Instrument Serif",serif;margin:10px 0 14px;max-width:860px}
+.giris{color:var(--soluk);max-width:760px;font-size:17px}
+.ozet{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:26px 0 0}
+.ozet div{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:14px 16px;font-size:14px;color:var(--soluk)}
+.ozet b{display:block;font:400 30px/1.1 "Instrument Serif",serif;color:var(--vurgu)}
+section{margin:44px 0}
+h2{font:400 31px/1.1 "Instrument Serif",serif;margin-bottom:8px}
+p.alt{color:var(--soluk);max-width:780px;margin-bottom:16px}
+.akis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.akis div{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:16px 18px;font-size:14.5px}
+.akis b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--vurgu);margin-bottom:4px}
+.akis small{display:block;margin-top:8px;color:var(--soluk)}
+.tablo{overflow-x:auto;border-radius:14px;border:1px solid var(--cizgi)}
+table{width:100%;min-width:640px;border-collapse:collapse;background:var(--kart);font-size:14px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--cizgi)}
+th{background:var(--koyu);color:#e8eef4;font-size:12px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+td.s{text-align:right;font-variant-numeric:tabular-nums}
+td.gir{background:var(--sari)}
+tr.top td{font-weight:700;background:#e6f2f0}
+.uy{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;background:#fde8e8;color:var(--uyari);white-space:nowrap}
+.ok{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;background:#dcefe4;color:#1f5d43}
+.iki>*,.akis>*,.paket>*{min-width:0}
+.iki table{min-width:0}
+.iki{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
+.not{background:var(--kart);border:1px solid var(--cizgi);border-radius:14px;padding:18px 20px}
+.not li{margin:6px 0 6px 18px}
+.indir{display:inline-block;margin-top:14px;background:var(--vurgu);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:99px}
+.paket{background:var(--koyu);color:#e8eef4;border-radius:20px;padding:30px;display:grid;grid-template-columns:1.1fr 1fr;gap:26px}
+.paket ul{padding-left:18px}.paket li{margin:6px 0}.paket p{color:#c3cfd8}
+footer{padding:0 0 56px;color:var(--soluk);font-size:13px}
+@media(max-width:820px){.ozet{grid-template-columns:1fr 1fr}.akis,.iki,.paket{grid-template-columns:1fr}}
+@media(max-width:560px){.elk th:nth-child(4),.elk td:nth-child(4){display:none}.elk tr.top td:first-child{width:auto}.tablo table,.iki table{min-width:0}th,td{padding:10px 7px;font-size:13px}td:first-child{white-space:nowrap}h2{font-size:27px}table{min-width:560px}}
+</style>
+</head>
+<body>
+<div class="kap">
+<header><div class="etiket">Çalışan örnek · Boztaş Digital</div>
+<h1>Makine maliyeti, her an güncel fiyatla</h1>
+<p class="giris">Teklifle birlikte gelen örnek: malzeme girişi, ortak katalog ve fiyat dosyası birbirine bağlı. Kodu seçersiniz, tanım ve birim gelir; fiyat değişince maliyet kendiliğinden yenilenir. Fiyatı girilmemiş malzeme toplamı sessizce düşürmez, kırmızı uyarıyla görünür. Aşağıdaki sayılar indirilebilir dosyadaki gerçek hesaplardır.</p>
+<div class="ozet"><div><b>3</b>bağlantılı katman: giriş, katalog, fiyat</div><div><b>4</b>malzeme türü, ayrı sekmeler</div><div><b>16</b>örnek kalem, 1'i bilerek fiyatsız</div><div><b>1</b>ortak kodlu malzeme listesi</div></div></header>
+
+<section><h2>Üç dosya birbirine nasıl bağlanıyor</h2>
+<p class="alt">Mantık, istediğiniz yapıyla aynı. Örnekte tek dosyada sekmeler olarak gösterildi ki bağlantı gözle görülsün; teslimde aynı formüller ayrı dosyalara dağıtılır.</p>
+<div class="akis">
+<div><b>Dosya 1 · Makine girişi</b>Üretim ekibi malzeme kodunu listeden seçer, miktarı yazar. Tanım ve birim katalogdan, birim fiyat Fiyat dosyasından gelir. Son sekme Maliyet.<small>Sarı hücreler açık, hesaplı hücreler kilitli.</small></div>
+<div><b>Dosya 2 · Ortak ana malzeme</b>Tek kodlu katalog. Yeni malzeme alta eklenir, aynı kod iki kez girilirse hücre kırmızıya döner. Ekleyen ve tarih her satırda.<small>Güncelleme tüm dosyalara yansır.</small></div>
+<div><b>Dosya 3 · Fiyat ve maliyet</b>Yönetici fiyatı, para birimini ve tarihi girer. USD/EUR fiyat güncel kurla TL'ye çevrilir. Fiyatı eksik satır kırmızı işaretlenir; giriş sekmesi de fiyatı olmayan kodu anında uyarır.<small>Fiyatı yalnız yönetici girer (yetki sunucudan verilir).</small></div>
+</div></section>
+
+<section><h2>Giriş sekmesi: Elektrik</h2>
+<p class="alt">Sarı hücreler kullanıcının yazdığı iki şey: kod ve miktar. Gerisi hesaplanır.</p>
+<div class="tablo"><table class="elk"><thead><tr><th>Kod</th><th>Tanım</th><th>Miktar</th><th>Birim fiyat (TL)</th><th>Tutar (TL)</th></tr></thead><tbody>
+<tr><td class="gir">ELK-PLC1</td><td>PLC CPU 14 G/Ç Röle Çıkışlı</td><td class="s gir">1 adet</td><td class="s">5.850,40</td><td class="s">5.850,40</td></tr>
+<tr><td class="gir">ELK-HMI7</td><td>HMI Dokunmatik Panel 7"</td><td class="s gir">1 adet</td><td class="s">7.745,60</td><td class="s">7.745,60</td></tr>
+<tr><td class="gir">ELK-KBL3</td><td>Kablo 3x1,5 mm² Esnek</td><td class="s gir">35 mt</td><td class="s">21,50</td><td class="s">752,50</td></tr>
+<tr><td class="gir">ELK-SNS</td><td>Endüktif Sensör M12 PNP</td><td class="s gir">6 adet</td><td class="s">263,68</td><td class="s">1.582,08</td></tr>
+<tr><td class="gir">ELK-RLE</td><td>Röle 24 V DC 8 pin + Soket</td><td class="s gir">8 adet</td><td class="s">127,72</td><td class="s">1.021,76</td></tr>
+<tr class="top"><td>Sekme toplamı</td><td></td><td></td><td></td><td class="s">16.952,34</td></tr>
+</tbody></table></div>
+<p class="alt" style="margin-top:12px">PLC ve sensör fiyatları euro olarak girilmiş (142 EUR, 6,40 EUR); tabloda kur çarpılmış TL hali görünür.</p></section>
+
+<section><div class="iki"><div>
+<h2>Maliyet sekmesi</h2>
+<p class="alt">Fiyat dosyası değişince bu sayfa yenilenir. Kâr marjı ve KDV makine sayfasından gelir.</p>
+<div class="tablo"><table><thead><tr><th>Malzeme türü</th><th>Kalem</th><th>Tutar (TL)</th><th>Eksik</th></tr></thead><tbody>
+<tr><td>Sac &amp; Profil</td><td class="s">4</td><td class="s">18.595,12</td><td class="s">0</td></tr>
+<tr><td>Motor &amp; Redüktör</td><td class="s">3</td><td class="s">24.956,00</td><td class="s">0</td></tr>
+<tr><td>Elektrik</td><td class="s">5</td><td class="s">16.952,34</td><td class="s">0</td></tr>
+<tr><td>Bağlantı Elemanı</td><td class="s">4</td><td class="s">912,00</td><td class="s"><span class="uy">1</span></td></tr>
+<tr class="top"><td colspan="2">Malzeme toplamı</td><td class="s">61.415,46</td><td></td></tr>
+<tr><td colspan="2">Kâr marjı %22</td><td class="s">13.511,40</td><td></td></tr>
+<tr><td colspan="2">KDV %20</td><td class="s">14.985,37</td><td></td></tr>
+<tr class="top"><td colspan="2">Genel toplam</td><td class="s">89.912,23</td><td></td></tr>
+</tbody></table></div></div>
+<div class="not"><b>Sessiz hata yok</b>
+<ul><li>BGL-RLM (rulman) katalogda var ama fiyatı girilmemiş. Satır <span class="uy">Fiyat girilmemiş</span> olur.</li>
+<li>Maliyet sayfası şunu yazar: <i>"Eksik veri: toplam olması gerekenden düşük"</i>; makine sayfasında da uyarı çıkar.</li>
+<li>Rulman fiyatı girilince uyarı kendiliğinden kalkar ve toplam artar.</li>
+<li>Katalogda olmayan kod girilemez; listede olmayan kod hata kutusuyla reddedilir.</li></ul>
+<a class="indir" href="maliyet-sistemi-ornek.xlsx" download>Örnek Excel dosyasını indir</a></div></div></section>
+
+<section><h2>Ortak kullanım: kim, ne zaman, ne değiştirdi</h2>
+<p class="alt">Dosyaların ortak sunucuda durması için iki yol var; kurulum ve yetkilendirme çalışmaya dahil.</p>
+<div class="akis">
+<div><b>Yol 1 · Microsoft 365 / SharePoint</b>Dosyalar ortak klasörde. Aynı anda düzenleme, yetki (yalnız yönetici fiyat dosyasını düzenler) ve sürüm geçmişi hazır gelir; kim neyi ne zaman değiştirdi görülür.<small>Mevcut lisansınız varsa ek maliyet yok.</small></div>
+<div><b>Yol 2 · Google E-Tablolar</b>Aynı yapı, bağlantılar IMPORTRANGE ile. Düzenleme geçmişi ve izinler yerleşik.<small>Lisans gerekmez.</small></div>
+<div><b>Değişiklik günlüğü</b>Örnek dosyada "Degisiklik_Gunlugu" sekmesi var: tarih, kullanıcı, kod, eski ve yeni değer. Canlı sistemde sunucu geçmişiyle birlikte çalışır.<small>Hangi yolu seçeceğinizi birlikte karar veririz.</small></div>
+</div></section>
+
+<section><div class="paket"><div><h2>Tam çalışmada ne teslim edilir</h2><ul><li>Üç bağlantılı dosya, mevcut malzeme listeniz ve kodlarınızla doldurulmuş</li><li>Tür sayısı ve sekme yapısı sizin düzeninize göre</li><li>"Maliyet Oluştur" düğmesi: o anki tutarları arşiv sekmesine kilitler, sonra fiyat değişse de eski teklif bozulmaz</li><li>Kısa kullanım kılavuzu (1 sayfa) ve bir tur canlı gösterim</li><li>Teslim sonrası 7 gün hata düzeltme</li></ul></div>
+<div><p>Düğme, masaüstü Excel'de makroyla (.xlsm), Google E-Tablolar'da Apps Script ile kurulur. Excel Online makro çalıştırmaz; orada aynı iş formülle yapılan bir arşiv kopyasıyla çözülür. Hangisinin size uyduğunu başta birlikte seçeriz.</p><p style="margin-top:12px">Önce mevcut malzeme listelerinizi ve ihtiyaç dosyalarınızı görmem gerekiyor. Tür sayısı, hangi alanın hangi kullanıcıya açık olacağı ve Maliyet Oluştur'un çıktısı net olunca fiyat ve süre kesinleşir. Bu sayfa, mantığın çalıştığını göstermek için hazırlandı; verileriniz değil, örnek makine verisidir.</p></div></div></section>
+<footer>Bu sayfa örnek amaçlıdır. Makine, malzeme ve fiyatlar kurgusaldır.</footer>
+</div>
+</body>
+</html>
