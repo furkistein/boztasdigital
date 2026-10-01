@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Tikir House · Pamukkale · Premium örnek</title>
+<meta name="description" content="Tikir House, Pamukkale Daşlı Sokak No 9: kapı açılan sinematik açılış, sokaktan odaya hikâye, TR / EN / DE talep masası. Boztaş Digital örnek önizlemesi.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2A1E16">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--ceviz:#2A1E16;--ceviz2:#3B2B1F;--ceviz3:#4A3526;--tas:#ECE6DA;--kum:#DDD3C0;--ada:#6B7D5B;--adak:#4D5F40;--adaa:#B7C6A3;--soluk:#6E6558;--acik:#BDB09C;--cizgi:rgba(42,30,22,.16);--cubuk:0px;--sar:min(1200px,100% - 48px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ceviz);color:var(--tas);font-family:"Albert Sans",system-ui,sans-serif;font-size:17px;line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;cursor:pointer}
+.sar{width:var(--sar);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:6px;padding:14px 26px;font-weight:700;font-size:15px;text-decoration:none;white-space:nowrap;border:0;transition:background .25s,color .25s,transform .25s}
+.btn.dolu{background:var(--adaa);color:var(--ceviz)}
+.btn.dolu:hover{background:#fff;transform:translateY(-1px)}
+.btn.yesil{background:var(--adak);color:#fff}
+.btn.yesil:hover{background:var(--ceviz);transform:translateY(-1px)}
+.btn.hat{border:1.5px solid currentColor;background:transparent}
+.btn.hat:hover{background:var(--tas);color:var(--ceviz);border-color:var(--tas)}
+.ufak{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--adaa)}
+/* üst çubuk */
+.ust{position:fixed;left:0;right:0;top:var(--ust-top,0);z-index:50;transition:background .35s,box-shadow .35s}
+.ust.dolu{background:var(--ceviz);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.ust .sar{display:flex;justify-content:space-between;align-items:center;height:68px;gap:16px}
+.logo{font-family:"Young Serif",Georgia,serif;font-size:24px;text-decoration:none;line-height:1;white-space:nowrap}
+.ust nav{display:flex;gap:26px;font-size:15px;font-weight:500;align-items:center}
+.ust nav a:not(.btn){text-decoration:none;opacity:.88}
+.ust nav a:not(.btn):hover{opacity:1}
+.ust .btn{padding:9px 18px;font-size:14px}
+.dilsec{display:inline-flex;border:1.5px solid rgba(236,230,218,.35);border-radius:999px;padding:2px}
+.dilsec button{background:none;border:0;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:700;letter-spacing:.08em;color:inherit;opacity:.8;transition:background .2s,color .2s}
+.dilsec button[aria-pressed="true"]{background:var(--adaa);color:var(--ceviz);opacity:1}
+.dilsec button:focus-visible{outline:2px solid var(--adaa);outline-offset:2px}
+/* kapı sahnesi */
+.sahne{height:270vh;position:relative}
+.sahne-ic{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;perspective:1500px;background:var(--ceviz)}
+.sahne-foto{position:absolute;inset:0}
+.sahne-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transform:scale(var(--olcek,1.16))}
+.sahne-foto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,15,9,.75) 0%,rgba(24,15,9,.35) 45%,rgba(24,15,9,0) 72%),linear-gradient(0deg,rgba(24,15,9,.55) 0%,rgba(24,15,9,0) 40%)}
+.acilis{position:absolute;left:max(24px,calc((100vw - 1200px)/2));bottom:12vh;z-index:3;max-width:640px;opacity:var(--ac,0);transform:translateY(calc((1 - var(--ac,0)) * 28px))}
+.acilis h1{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,88px);line-height:1.03;margin:14px 0 18px}
+.acilis h1 i{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:300;color:var(--adaa)}
+.acilis p{font-size:18.5px;max-width:42ch;color:#E3DACA}
+.acilis .dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.not-foto{position:absolute;right:16px;bottom:12px;z-index:3;font-size:12px;color:#fff;opacity:calc(var(--ac,0) * .8);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.kapi{position:absolute;top:0;bottom:0;width:50%;z-index:4;background:repeating-linear-gradient(90deg,rgba(0,0,0,.1) 0 2px,transparent 2px 11px),linear-gradient(180deg,#4B3627 0%,#35261B 100%);will-change:transform}
+.kapi.sol{left:0;transform-origin:0 50%;transform:translateX(calc(var(--q,0) * -106%)) rotateY(calc(var(--q,0) * 38deg));box-shadow:inset -28px 0 40px rgba(0,0,0,.35)}
+.kapi.sag{right:0;transform-origin:100% 50%;transform:translateX(calc(var(--q,0) * 106%)) rotateY(calc(var(--q,0) * -38deg));box-shadow:inset 28px 0 40px rgba(0,0,0,.35)}
+.kapi::before,.kapi::after{content:"";position:absolute;left:12%;right:12%;border:2px solid rgba(236,230,218,.14);border-radius:3px;box-shadow:inset 0 0 40px rgba(0,0,0,.18)}
+.kapi::before{top:9%;height:38%}
+.kapi::after{top:53%;height:38%}
+.kapi .tutac{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--adaa);box-shadow:0 0 0 5px rgba(183,198,163,.2);transform:translateY(-50%);z-index:2}
+.kapi.sol .tutac{right:24px}.kapi.sag .tutac{left:24px}
+.kapi-golge{position:absolute;inset:0;z-index:4;background:#000;opacity:calc(var(--q,0) * .0);pointer-events:none}
+.baslik-kapi{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;opacity:var(--bk,1)}
+.baslik-kapi .plaka{background:var(--ceviz);border:2px solid var(--adaa);color:var(--tas);border-radius:8px;padding:12px 24px;display:flex;align-items:center;gap:16px;box-shadow:0 18px 40px rgba(0,0,0,.4);margin-bottom:26px}
+.baslik-kapi .plaka b{font-family:"Young Serif",serif;font-weight:400;font-size:52px;line-height:1;color:var(--adaa)}
+.baslik-kapi .plaka span{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;line-height:1.5;text-align:left}
+.baslik-kapi .ad{font-family:"Young Serif",Georgia,serif;font-size:clamp(46px,8vw,120px);line-height:1;letter-spacing:-.01em;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.baslik-kapi .cue{margin-top:30px;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--adaa);animation:nabiz 2.4s ease-in-out infinite}
+.baslik-kapi .cue::after{content:"";display:block;width:1px;height:38px;background:var(--adaa);margin:12px auto 0}
+@keyframes nabiz{50%{opacity:.45}}
+/* manifesto */
+.mani{background:var(--tas);color:var(--ceviz);padding:140px 0}
+.mani p{font-family:Newsreader,Georgia,serif;font-weight:300;font-size:clamp(30px,4.6vw,66px);line-height:1.14;max-width:22em;margin-inline:auto;width:var(--sar);letter-spacing:-.01em}
+.mani p span{opacity:.18;transition:opacity .35s}
+.mani p span.on{opacity:1}
+.mani p.az span,.az-hareket .mani p span{opacity:1}
+.mani .imza{width:var(--sar);margin:36px auto 0;max-width:22em;font-size:14px;color:var(--soluk)}
+/* hikâye */
+.hikaye{height:520vh;position:relative;background:var(--ceviz)}
+.hikaye-ic{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.asama{position:absolute;left:0;right:0;top:68px;bottom:84px;display:grid;grid-template-columns:5fr 7fr;opacity:0;visibility:hidden;transition:opacity .8s,visibility .8s}
+.asama.aktif{opacity:1;visibility:visible}
+.asama .m{display:flex;flex-direction:column;justify-content:center;padding:0 40px 0 max(24px,calc((100vw - 1200px)/2))}
+.asama .no{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(80px,11vw,170px);line-height:.9;color:var(--adaa)}
+.asama h3{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:clamp(32px,3.6vw,52px);line-height:1.08;margin:12px 0 14px}
+.asama p{color:#CFC4B2;max-width:38ch;font-size:18px}
+.asama figure{position:relative;overflow:hidden;background:var(--ceviz2)}
+.asama img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform 6s cubic-bezier(.2,.6,.2,1)}
+.asama.aktif img{transform:scale(1)}
+.asama figcaption{position:absolute;right:14px;bottom:10px;font-size:12px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.ray{position:absolute;left:0;right:0;bottom:0;height:84px;border-top:1px solid rgba(236,230,218,.18)}
+.ray .sar{display:flex;height:100%;align-items:center;gap:8px;position:relative}
+.ray button{flex:1;background:none;border:0;text-align:left;color:#8C7F6C;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:8px 0;transition:color .3s}
+.ray button b{display:block;font-family:Newsreader,serif;font-style:italic;font-weight:300;font-size:22px;letter-spacing:0;text-transform:none;margin-bottom:2px}
+.ray button.aktif{color:var(--adaa)}
+.ray .cizgi{position:absolute;left:0;top:-1px;height:2px;background:var(--adaa);width:calc(var(--hp,0) * 100%)}
+.hikaye-not{position:absolute;left:0;right:0;top:78px;z-index:2;text-align:center;font-size:12.5px;color:#8C7F6C;pointer-events:none}
+/* şerit */
+.serit{background:var(--tas);color:var(--ceviz);padding:110px 0 100px;overflow:hidden}
+.serit-ust{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.serit h2,.masa h2,.konum h2{font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,52px);line-height:1.1;margin:12px 0 14px}
+.serit .ufak,.konum .ufak{color:var(--adak)}
+.serit p.acik{color:var(--soluk);max-width:52ch}
+.oklar{display:flex;gap:10px}
+.oklar button{width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(42,30,22,.3);background:transparent;font-size:22px;font-weight:700;color:var(--ceviz);transition:background .2s,color .2s}
+.oklar button:hover{background:var(--ceviz);color:var(--tas)}
+.yatay{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:40px;padding:0 max(24px,calc((100vw - 1200px)/2)) 18px;scrollbar-width:thin;scrollbar-color:var(--ada) transparent;-webkit-overflow-scrolling:touch}
+.yatay figure{flex:none;height:clamp(260px,56vh,500px);scroll-snap-align:start;border-radius:4px;overflow:hidden;background:var(--kum)}
+.yatay img{height:100%;width:auto;max-width:none}
+/* masa */
+.masa{background:var(--ceviz);padding:110px 0}
+.masa .sar{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:start}
+.masa .acik{color:var(--acik);max-width:50ch}
+.masa .ufak{color:var(--adaa)}
+.kontrol{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px;margin-top:30px}
+.kontrol .tam{grid-column:1/-1}
+.kontrol label,.kontrol .bas{display:block;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acik);margin-bottom:7px}
+.kontrol input[type=date],.kontrol textarea{font:inherit;font-size:16px;color:var(--tas);background:var(--ceviz2);border:1.5px solid rgba(236,230,218,.2);border-radius:6px;padding:11px 13px;width:100%;color-scheme:dark}
+.kontrol textarea{resize:vertical;min-height:80px}
+.kontrol input:focus,.kontrol textarea:focus{outline:2px solid var(--adaa);outline-offset:1px}
+.sayac{display:flex;align-items:center;justify-content:space-between;background:var(--ceviz2);border:1.5px solid rgba(236,230,218,.2);border-radius:6px;padding:4px}
+.sayac button{width:42px;height:42px;border-radius:5px;border:0;background:rgba(236,230,218,.08);font-size:22px;font-weight:700;transition:background .2s}
+.sayac button:hover{background:var(--adaa);color:var(--ceviz)}
+.sayac output{font-family:"Young Serif",serif;font-size:24px}
+.cip{display:flex;flex-wrap:wrap;gap:9px}
+.cip button{border:1.5px solid rgba(236,230,218,.3);background:transparent;border-radius:999px;padding:8px 17px;font-size:15px;font-weight:600;transition:all .2s}
+.cip button[aria-pressed="true"]{background:var(--adaa);border-color:var(--adaa);color:var(--ceviz)}
+.cip button:hover{border-color:var(--adaa)}
+.uyari{color:#E9A184;font-size:14px;min-height:20px;grid-column:1/-1;margin-top:-8px}
+.yan{position:sticky;top:96px}
+.etiket-kart{position:relative;background:var(--tas);color:var(--ceviz);border-radius:22px;padding:84px 28px 26px;transform:rotate(-1.6deg);transform-origin:50% 0;transition:transform .5s;box-shadow:0 26px 50px rgba(0,0,0,.4);max-width:420px;margin-inline:auto}
+.etiket-kart:hover{transform:none}
+.etiket-kart::before{content:"";position:absolute;left:50%;top:22px;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:var(--ceviz);box-shadow:inset 0 0 0 5px var(--adaa)}
+.etiket-kart::after{content:"";position:absolute;left:50%;top:-70px;width:2px;height:96px;margin-left:-1px;background:var(--adaa)}
+.etiket-kart .ek{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:2px dashed rgba(42,30,22,.25);padding-bottom:14px}
+.etiket-kart .ek b{font-family:"Young Serif",serif;font-weight:400;font-size:34px;line-height:1}
+.etiket-kart .ek span{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--soluk);text-align:right}
+.etiket-kart .tarih{font-family:"Young Serif",serif;font-size:26px;line-height:1.2;margin:18px 0 4px}
+.etiket-kart .gece{font-family:Newsreader,serif;font-style:italic;font-size:22px;color:var(--adak)}
+.etiket-kart ul{list-style:none;margin:16px 0 0;border-top:2px dashed rgba(42,30,22,.25)}
+.etiket-kart li{padding:10px 0;border-bottom:1px solid var(--cizgi);font-size:15.5px;display:flex;justify-content:space-between;gap:14px}
+.etiket-kart li span:first-child{color:var(--soluk);flex:none}
+.etiket-kart li span:last-child{text-align:right;font-weight:600}
+.gonder{max-width:420px;margin:26px auto 0;text-align:center}
+.gonder .btn{width:100%}
+.gonder .btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+.kopya{background:none;border:0;margin-top:12px;font-size:14px;color:var(--acik);text-decoration:underline}
+.mesaj-onizle{margin-top:18px;background:var(--ceviz2);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.55;color:#CFC4B2;white-space:pre-wrap;text-align:left;max-height:170px;overflow:auto}
+/* konum */
+.konum{background:var(--tas);color:var(--ceviz);padding:100px 0}
+.konum .sar{display:grid;grid-template-columns:7fr 5fr;gap:56px;align-items:center}
+.konum iframe{width:100%;aspect-ratio:4/3;border:0;border-radius:4px;background:var(--kum)}
+.konum .adres{font-family:"Young Serif",serif;font-size:24px;line-height:1.3}
+.konum .dugmeler{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.konum .btn.hat:hover{background:var(--ceviz);color:var(--tas);border-color:var(--ceviz)}
+footer{background:var(--ceviz);color:var(--acik);padding:36px 0 110px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(236,230,218,.35);border-radius:8px;padding:12px 14px;color:var(--tas)}
+.ornek-not a{color:#fff;font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.yuzen{opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+@media (max-width:980px){
+  .ust nav a:not(.btn){display:none}
+  .masa .sar,.konum .sar{grid-template-columns:1fr;gap:50px}
+  .yan{position:static}
+}
+@media (max-width:899px){
+  .hikaye{height:auto;padding:90px 0 40px}
+  .hikaye-ic{position:static;height:auto;overflow:visible}
+  .asama{position:static;display:block;opacity:1;visibility:visible;margin-bottom:64px}
+  .asama .m{padding:0 0 22px}
+  .asama{width:var(--sar);margin-inline:auto}
+  .asama figure{aspect-ratio:4/5;border-radius:4px}
+  .asama img{transform:none;transition:none}
+  .asama .no{font-size:70px}
+  .ray{display:none}
+  .hikaye-not{position:static;width:var(--sar);margin:0 auto 40px;text-align:left}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  :root{--sar:calc(100% - 36px)}
+  .sahne{height:220vh}
+  .ust .sar{height:60px}
+  .logo{font-size:21px}
+  .ust .btn{display:none}
+  .dilsec button{padding:5px 10px}
+  .acilis{left:18px;right:18px;bottom:9vh;max-width:none}
+  .acilis p{font-size:16.5px}
+  .sahne-foto::after{background:linear-gradient(0deg,rgba(24,15,9,.88) 0%,rgba(24,15,9,.55) 42%,rgba(24,15,9,.1) 100%)}
+  .kapi::before{left:10%;right:10%}.kapi::after{left:10%;right:10%}
+  .kapi.sol .tutac{right:14px}.kapi.sag .tutac{left:14px}
+  .mani{padding:90px 0}
+  .serit,.masa,.konum{padding:72px 0}
+  .kontrol{grid-template-columns:1fr}
+  .yatay{margin-top:30px}
+  .oklar button{width:44px;height:44px}
+  .etiket-kart{padding:80px 20px 22px}
+  .etiket-kart .tarih{font-size:23px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.baslik-kapi .cue{animation:none}.asama,.asama img{transition:none}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+</head>
+<body data-kademe="premium" data-isletme="Tikir House">
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">Tikir House</a>
+    <nav>
+      <a href="#hikaye" data-t="nHikaye">Hikâye</a><a href="#masa" data-t="nMasa">Talep masası</a><a href="#konum" data-t="nKonum">Konum</a>
+      <span class="dilsec" role="group" aria-label="Dil"><button type="button" data-d="tr" aria-pressed="true">TR</button><button type="button" data-d="en" lang="en" aria-pressed="false">EN</button><button type="button" data-d="de" lang="de" aria-pressed="false">DE</button></span>
+      <a class="btn dolu" href="#masa" data-t="nTalep">Talep</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="sahne" id="sahne">
+    <div class="sahne-ic">
+      <div class="sahne-foto"><img src="../img/gercek/tas-ev.webp" srcset="../img/gercek/tas-ev-900.webp 900w, ../img/gercek/tas-ev.webp 1686w" sizes="100vw" alt="Kırmızı panjurlu taş duvarlı küçük bir ev (temsilî fotoğraf)" width="1686" height="1300" fetchpriority="high"></div>
+      <div class="acilis">
+        <span class="ufak" data-t="aKick">Yeni pansiyon · 2025</span>
+        <h1><span data-t="aH1">Daşlı Sokak'ta yeni bir kapı.</span></h1>
+        <p data-t="aP">Pamukkale'de küçük bir pansiyon. Tarihleri yazın, talebiniz hazır bir WhatsApp mesajı olarak doğrudan bize ulaşsın.</p>
+        <div class="dugmeler"><a class="btn dolu" href="#masa" data-t="aBtn1">Talep masasına git</a><a class="btn hat" href="tel:+905418221614"><span data-t="aBtn2">Ara</span>: 0541 822 16 14</a></div>
+      </div>
+      <span class="not-foto" data-t="temsili">Fotoğraf temsilîdir</span>
+      <div class="kapi sol"><i class="tutac"></i></div>
+      <div class="kapi sag"><i class="tutac"></i></div>
+      <div class="baslik-kapi">
+        <div class="plaka"><b>9</b><span>Daşlı Sokak<br>No 9</span></div>
+        <div class="ad">Tikir House</div>
+        <div class="cue" data-t="cue">Kapıyı açmak için kaydırın</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="mani">
+    <p id="mani" data-t="mani">Büyük bir otel değil; Daşlı Sokak'ta dokuz numaralı küçük bir kapı. Tarihleri yazın, cevabı doğrudan bizden alın.</p>
+  </section>
+
+  <section class="hikaye" id="hikaye">
+    <div class="hikaye-ic">
+      <p class="hikaye-not" data-t="hNot">Anlatım örnektir; oda ve olanak bilgileri sizinle doldurulur.</p>
+      <article class="asama aktif">
+        <div class="m"><span class="no">01</span><h3 data-t="a1h">Daşlı Sokak, dokuz numara.</h3><p data-t="a1p">Adres, tanıtımın tamamı: Daşlı Sokak No 9, Pamukkale.</p></div>
+        <figure><img src="../img/gercek/sokak-tas.webp" alt="Taş evler arasında kaldırım taşlı dar sokak (temsilî fotoğraf)" width="867" height="1300" loading="lazy"><figcaption data-t="temsili">Fotoğraf temsilîdir</figcaption></figure>
+      </article>
+      <article class="asama">
+        <div class="m"><span class="no">02</span><h3 data-t="a2h">Küçük bir pansiyon.</h3><p data-t="a2p">2025'te açıldı. Büyük bir otel yerine küçük bir yer.</p></div>
+        <figure><img src="../img/gercek/kapi-ahsap.webp" alt="Taş ve kerpiç duvarda eski çift kanatlı ahşap kapı (temsilî fotoğraf)" width="1800" height="1200" loading="lazy"><figcaption data-t="temsili">Fotoğraf temsilîdir</figcaption></figure>
+      </article>
+      <article class="asama">
+        <div class="m"><span class="no">03</span><h3 data-t="a3h">Dinlenmek için bir oda.</h3><p data-t="a3p">Oda tipleri ve yatak düzeni sizinle doldurulur (örnek metin).</p></div>
+        <figure><img src="../img/gercek/oda-beyaz.webp" alt="Açık renk duvarlı, ahşap komodinli yatak odası (temsilî fotoğraf)" width="867" height="1300" loading="lazy"><figcaption data-t="temsili">Fotoğraf temsilîdir</figcaption></figure>
+      </article>
+      <article class="asama">
+        <div class="m"><span class="no">04</span><h3 data-t="a4h">Güne başlarken.</h3><p data-t="a4p">Çay, sofra, sakin bir sabah; bu sahne örnektir, kahvaltı bilgisi sizinle doldurulur.</p></div>
+        <figure><img src="../img/gercek/cay-dikey.webp" alt="Ahşap masada ince belli bardakta çay (temsilî fotoğraf)" width="867" height="1300" loading="lazy"><figcaption data-t="temsili">Fotoğraf temsilîdir</figcaption></figure>
+      </article>
+      <article class="asama">
+        <div class="m"><span class="no">05</span><h3 data-t="a5h">Pamukkale.</h3><p data-t="a5p">Travertenler, Hierapolis ve beyaz terasların üzerinde gün batımı: konaklamanızı bu rotaya göre kurun.</p></div>
+        <figure><img src="../img/gercek/pamuk-gunbatimi.webp" alt="Pamukkale travertenlerinde gün batımı (temsilî fotoğraf)" width="1800" height="1192" loading="lazy"><figcaption data-t="temsili">Fotoğraf temsilîdir</figcaption></figure>
+      </article>
+      <div class="ray"><div class="sar"><span class="cizgi"></span>
+        <button type="button" class="aktif"><b>01</b><span data-t="r1">Sokak</span></button>
+        <button type="button"><b>02</b><span data-t="r2">Kapı</span></button>
+        <button type="button"><b>03</b><span data-t="r3">Oda</span></button>
+        <button type="button"><b>04</b><span data-t="r4">Sabah</span></button>
+        <button type="button"><b>05</b><span data-t="r5">Pamukkale</span></button>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="serit" id="galeri">
+    <div class="sar serit-ust">
+      <div>
+        <span class="ufak" data-t="sKick">Galeri</span>
+        <h2 data-t="sH">Temsilî kareler</h2>
+        <p class="acik" data-t="sP">Kaydırın ya da oklara basın. Yayında pansiyonun kendi fotoğrafları yer alır.</p>
+      </div>
+      <div class="oklar"><button type="button" id="geri" aria-label="Önceki">‹</button><button type="button" id="ileri" aria-label="Sonraki">›</button></div>
+    </div>
+    <div class="yatay" id="yatay" tabindex="0" aria-label="Fotoğraf şeridi">
+      <figure><img src="../img/gercek/avlu-genis-900.webp" alt="Taş duvarlı avlu ve bahçe oturma alanı (temsilî fotoğraf)" width="900" height="600" loading="lazy"></figure>
+      <figure><img src="../img/gercek/oda-panel-900.webp" alt="Ahşap panelli duvarı olan geniş yatak odası (temsilî fotoğraf)" width="900" height="601" loading="lazy"></figure>
+      <figure><img src="../img/gercek/kapi-kemer-900.webp" alt="Sarmaşıklı taş duvarda kemerli ahşap kapı (temsilî fotoğraf)" width="507" height="900" loading="lazy"></figure>
+      <figure><img src="../img/gercek/kahvalti-900.webp" alt="Çay bardaklarıyla donatılmış geniş bir sofra (temsilî fotoğraf)" width="900" height="505" loading="lazy"></figure>
+      <figure><img src="../img/gercek/cumba-900.webp" alt="Taş duvarlı evde ahşap cumba (temsilî fotoğraf)" width="687" height="900" loading="lazy"></figure>
+      <figure><img src="../img/gercek/pamuk-teras-900.webp" alt="Pamukkale'de turkuaz havuzlu beyaz teraslar (temsilî fotoğraf)" width="900" height="600" loading="lazy"></figure>
+      <figure><img src="../img/gercek/sokak-yesil-900.webp" alt="Taş evler arasında kaldırım taşlı dar sokak (temsilî fotoğraf)" width="600" height="900" loading="lazy"></figure>
+      <figure><img src="../img/gercek/tiyatro-900.webp" alt="Hierapolis antik tiyatrosu (temsilî fotoğraf)" width="900" height="600" loading="lazy"></figure>
+      <figure><img src="../img/gercek/oda-ahsap-900.webp" alt="Ahşap kaplamalı sade bir yatak odası (temsilî fotoğraf)" width="600" height="900" loading="lazy"></figure>
+      <figure><img src="../img/gercek/balon-hava-900.webp" alt="Pamukkale üzerinde sıcak hava balonları (temsilî fotoğraf)" width="900" height="675" loading="lazy"></figure>
+      <figure><img src="../img/gercek/cay-ahsap-900.webp" alt="Eskimiş ahşap masada demli çay (temsilî fotoğraf)" width="900" height="600" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="masa" id="masa">
+    <div class="sar">
+      <div>
+        <span class="ufak" data-t="mKick">Talep masası</span>
+        <h2 data-t="mH">Yer ayıralım.</h2>
+        <p class="acik" data-t="mP">Seçimlerinizi yapın; sağdaki anahtar etiketi ve mesaj kendiliğinden hazırlanır.</p>
+        <form id="form" class="kontrol" autocomplete="off">
+          <div class="tam"><span class="bas" data-t="lDil">Mesaj dili</span><span class="dilsec" role="group" aria-label="Dil"><button type="button" data-d="tr" aria-pressed="true">TR</button><button type="button" data-d="en" lang="en" aria-pressed="false">EN</button><button type="button" data-d="de" lang="de" aria-pressed="false">DE</button></span></div>
+          <div><label for="giris" data-t="lGiris">Giriş</label><input id="giris" type="date"></div>
+          <div><label for="cikis" data-t="lCikis">Çıkış</label><input id="cikis" type="date"></div>
+          <p class="uyari" id="uyari" role="status"></p>
+          <div><span class="bas" data-t="lYet">Yetişkin</span><div class="sayac"><button type="button" data-s="yet" data-y="-1" aria-label="-">−</button><output id="yet">2</output><button type="button" data-s="yet" data-y="1" aria-label="+">+</button></div></div>
+          <div><span class="bas" data-t="lCoc">Çocuk</span><div class="sayac"><button type="button" data-s="coc" data-y="-1" aria-label="-">−</button><output id="coc">0</output><button type="button" data-s="coc" data-y="1" aria-label="+">+</button></div></div>
+          <div class="tam"><span class="bas" data-t="lGelis">Nasıl geliyorsunuz?</span><div class="cip" id="gelis"><button type="button" data-k="g1" aria-pressed="false" data-t="g1">Otobüs / otogar</button><button type="button" data-k="g2" aria-pressed="false" data-t="g2">Araçla</button><button type="button" data-k="g3" aria-pressed="false" data-t="g3">Havalimanından</button></div></div>
+          <div class="tam"><span class="bas" data-t="lIlgi">İlgi alanları</span><div class="cip" id="ilgi"><button type="button" data-k="i1" aria-pressed="false" data-t="i1">Travertenler</button><button type="button" data-k="i2" aria-pressed="false" data-t="i2">Hierapolis</button><button type="button" data-k="i3" aria-pressed="false" data-t="i3">Balon turu</button><button type="button" data-k="i4" aria-pressed="false" data-t="i4">Fotoğraf</button><button type="button" data-k="i5" aria-pressed="false" data-t="i5">Sakin dinlenme</button></div></div>
+          <div class="tam"><label for="not" data-t="lNot">Notunuz</label><textarea id="not" data-tp="pNot" placeholder="Eklemek istediğiniz bir şey var mı?"></textarea></div>
+        </form>
+      </div>
+      <aside class="yan" aria-label="Talep özeti">
+        <div class="etiket-kart">
+          <div class="ek"><b>No 9</b><span data-t="tEtiket">Talep özeti</span></div>
+          <div class="tarih" id="tTarih">—</div>
+          <div class="gece" id="tGece">—</div>
+          <ul>
+            <li><span id="tMisL">Misafir</span><span id="tMis">2</span></li>
+            <li><span id="tGelL">Geliş</span><span id="tGel">—</span></li>
+            <li><span id="tIlgL">İlgi</span><span id="tIlg">—</span></li>
+          </ul>
+        </div>
+        <div class="gonder">
+          <a class="btn dolu" id="wa" href="#" target="_blank" rel="noopener" data-t="send">WhatsApp'ta gönder</a>
+          <button type="button" class="kopya" id="kopya" data-t="kopya">Mesajı kopyala</button>
+          <div class="mesaj-onizle" id="onizle"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="konum" id="konum">
+    <div class="sar">
+      <iframe loading="lazy" title="Tikir House, Pamukkale haritası" src="https://www.google.com/maps?q=Tikir+House+Pamukkale&amp;output=embed"></iframe>
+      <div>
+        <span class="ufak" data-t="kKick">Konum</span>
+        <h2>Daşlı Sokak No 9</h2>
+        <p class="adres">Pamukkale</p>
+        <div class="dugmeler">
+          <a class="btn yesil" href="https://www.google.com/maps/dir/?api=1&amp;destination=Tikir+House+Pamukkale" target="_blank" rel="noopener" data-t="kYol">Yol tarifi al</a>
+          <a class="btn hat" href="tel:+905418221614">0541 822 16 14</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© Tikir House · Daşlı Sokak No 9, Pamukkale</div>
+    <div class="ornek-not"><span data-t="fNot">Örnek önizleme, işletmenin onayı yoktur; fotoğraflar temsilîdir (Pexels). Bu sayfa Tikir House için Boztaş Digital tarafından hazırlandı. Oda ve olanak bilgileri sizinle doldurulur. Dil metinleri örnektir.</span> <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+<div class="yuzen"><a class="btn dolu" href="#masa" data-t="yuzen">Talep masası</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => [...document.querySelectorAll(s)];
+const az = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const kc = document.querySelector(".kd-cubuk");
+const cubukH = () => (kc ? kc.offsetHeight : 0);
+const clamp = (v) => Math.min(1, Math.max(0, v));
+const yum = (t) => t * t * (3 - 2 * t);
+
+/* ---------- kaydırma: kapı, hikâye, manifesto ---------- */
+const sahne = $("#sahne"), sic = sahne.querySelector(".sahne-ic");
+const hik = $("#hikaye"), asamalar = $$(".asama"), rayB = $$(".ray button");
+const mani = $("#mani");
+let kelimeler = [];
+function bol() {
+  mani.innerHTML = mani.textContent.trim().split(/\s+/).map((k) => `<span>${k}</span>`).join(" ");
+  kelimeler = [...mani.children];
+}
+bol();
+let bekliyor = false, aktifAsama = 0;
+function kaydir() {
+  bekliyor = false;
+  const y = scrollY, vh = innerHeight;
+  $("#ust").style.setProperty("--ust-top", Math.max(0, cubukH() - y) + "px");
+  $("#ust").classList.toggle("dolu", y > cubukH() + 24);
+  /* kapı */
+  const r = sahne.getBoundingClientRect();
+  const p = az ? 1 : clamp(-r.top / (sahne.offsetHeight - vh));
+  const q = yum(clamp((p - 0.06) / 0.55));
+  sic.style.setProperty("--q", q.toFixed(4));
+  sic.style.setProperty("--bk", (1 - clamp(q * 3.2)).toFixed(3));
+  sic.style.setProperty("--ac", clamp((p - 0.5) / 0.22).toFixed(3));
+  sic.style.setProperty("--olcek", (1.16 - 0.16 * clamp(p / 0.9)).toFixed(4));
+  /* manifesto */
+  const mr = mani.getBoundingClientRect();
+  const mp = az ? 1 : clamp((vh * 0.88 - mr.top) / (vh * 0.55 + mr.height * 0.6));
+  const n = Math.round(mp * kelimeler.length);
+  kelimeler.forEach((s, i) => s.classList.toggle("on", i < n));
+  /* hikâye (yalnız geniş ekranda sabitlenir) */
+  if (innerWidth >= 900) {
+    const h = hik.getBoundingClientRect();
+    const hp = clamp(-h.top / (hik.offsetHeight - vh));
+    const i = Math.min(asamalar.length - 1, Math.floor(hp * asamalar.length));
+    if (i !== aktifAsama || !asamalar.some((a) => a.classList.contains("aktif"))) {
+      aktifAsama = i;
+      asamalar.forEach((a, k) => a.classList.toggle("aktif", k === i));
+      rayB.forEach((b, k) => b.classList.toggle("aktif", k === i));
+    }
+    hik.style.setProperty("--hp", hp.toFixed(3));
+    $(".ray .cizgi").style.setProperty("--hp", hp.toFixed(3));
+  }
+  /* yüzen düğme */
+  const m = $("#masa").getBoundingClientRect();
+  $(".yuzen").classList.toggle("goster", y > vh * 1.2 && !(m.top < vh && m.bottom > 0));
+}
+addEventListener("scroll", () => { if (!bekliyor) { bekliyor = true; requestAnimationFrame(kaydir); } }, { passive: true });
+addEventListener("resize", kaydir);
+rayB.forEach((b, i) => b.addEventListener("click", () => {
+  const top = hik.getBoundingClientRect().top + scrollY;
+  const span = hik.offsetHeight - innerHeight;
+  scrollTo({ top: top + span * (i + 0.5) / asamalar.length, behavior: az ? "auto" : "smooth" });
+}));
+document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+  const id = a.getAttribute("href"); if (id.length < 2) return;
+  const h = $(id); if (!h) return; e.preventDefault();
+  scrollTo({ top: h.getBoundingClientRect().top + scrollY - (id === "#masa" || id === "#konum" ? 60 : 0), behavior: az ? "auto" : "smooth" });
+}));
+
+/* fotoğraf şeridi */
+const yat = $("#yatay");
+const adim = () => Math.max(260, yat.clientWidth * 0.6);
+$("#geri").addEventListener("click", () => yat.scrollBy({ left: -adim(), behavior: "smooth" }));
+$("#ileri").addEventListener("click", () => yat.scrollBy({ left: adim(), behavior: "smooth" }));
+
+/* ---------- diller ---------- */
+const DICT = { tr: {}, en: {}, de: {} };
+Object.assign(DICT.en, {
+  nHikaye: "Story", nMasa: "Request desk", nKonum: "Location", nTalep: "Request",
+  aKick: "New guesthouse · 2025", aH1: "A new door on Daşlı Sokak.",
+  aP: "A small guesthouse in Pamukkale. Pick your dates and your request reaches us directly as a ready-made WhatsApp message.",
+  aBtn1: "Go to request desk", aBtn2: "Call", temsili: "Photo is representative", cue: "Scroll to open the door",
+  mani: "Not a big hotel; a small door at number nine on Daşlı Sokak. Write your dates and get the answer straight from us.",
+  hNot: "Text is a sample; room and amenity details are filled in with you.",
+  r1: "Street", r2: "Door", r3: "Room", r4: "Morning", r5: "Pamukkale",
+  a1h: "Daşlı Sokak, number nine.", a1p: "The address is the whole introduction: Daşlı Sokak No 9, Pamukkale.",
+  a2h: "A small guesthouse.", a2p: "Opened in 2025. A small place instead of a big hotel.",
+  a3h: "A room to rest in.", a3p: "Room types and bed layouts are filled in with you (sample text).",
+  a4h: "Starting the day.", a4p: "Tea, a table, a calm morning; this scene is a sample, breakfast details are filled in with you.",
+  a5h: "Pamukkale.", a5p: "The travertines, Hierapolis and sunset over the white terraces: plan your stay around this route.",
+  sKick: "Gallery", sH: "Representative photographs", sP: "Scroll or use the arrows. In the live version, the guesthouse's own photos appear here.",
+  mKick: "Request desk", mH: "Let's reserve a place.", mP: "Make your choices; the key tag and the message on the right are prepared automatically.",
+  lDil: "Message language", lGiris: "Check-in", lCikis: "Check-out", lYet: "Adults", lCoc: "Children", lGelis: "How are you arriving?",
+  g1: "Bus / bus station", g2: "By car", g3: "From the airport", lIlgi: "Interests",
+  i1: "Travertines", i2: "Hierapolis", i3: "Balloon tour", i4: "Photography", i5: "Quiet rest",
+  lNot: "Your note", pNot: "Anything you'd like to add?", tEtiket: "Request summary", send: "Send on WhatsApp", kopya: "Copy message",
+  kKick: "Location", kYol: "Get directions", yuzen: "Request desk",
+  fNot: "Sample preview, not approved by the business; photographs are representative (Pexels). This page was prepared for Tikir House by Boztaş Digital. Room and amenity details are filled in with you. Language texts are samples.",
+  /* JS metinleri */
+  kopyalandi: "Copied", misL: "Guests", gelL: "Arrival", ilgL: "Interests", tarihYok: "Choose your dates", geceYok: "nights: choose dates",
+  uyGecmis: "Check-in date looks like it is in the past, please check.", uyCikis: "Check-out must be after check-in.",
+});
+Object.assign(DICT.de, {
+  nHikaye: "Geschichte", nMasa: "Anfrage", nKonum: "Lage", nTalep: "Anfrage",
+  aKick: "Neue Pension · 2025", aH1: "Eine neue Tür in der Daşlı Sokak.",
+  aP: "Eine kleine Pension in Pamukkale. Wählen Sie Ihre Reisedaten, und Ihre Anfrage erreicht uns direkt als fertige WhatsApp-Nachricht.",
+  aBtn1: "Zur Anfrage", aBtn2: "Anrufen", temsili: "Symbolbild", cue: "Scrollen, um die Tür zu öffnen",
+  mani: "Kein großes Hotel, sondern eine kleine Tür an der Nummer neun der Daşlı Sokak. Schreiben Sie Ihre Reisedaten und erhalten Sie die Antwort direkt von uns.",
+  hNot: "Der Text ist ein Beispiel; Angaben zu Zimmern und Ausstattung werden gemeinsam mit Ihnen ergänzt.",
+  r1: "Straße", r2: "Tür", r3: "Zimmer", r4: "Morgen", r5: "Pamukkale",
+  a1h: "Daşlı Sokak, Nummer neun.", a1p: "Die Adresse sagt alles: Daşlı Sokak Nr. 9, Pamukkale.",
+  a2h: "Eine kleine Pension.", a2p: "2025 eröffnet. Ein kleines Haus statt eines großen Hotels.",
+  a3h: "Ein Zimmer zum Ausruhen.", a3p: "Zimmertypen und Betten werden gemeinsam mit Ihnen ergänzt (Beispieltext).",
+  a4h: "Der Tagesbeginn.", a4p: "Tee, ein gedeckter Tisch, ein ruhiger Morgen; diese Szene ist ein Beispiel, Angaben zum Frühstück werden gemeinsam ergänzt.",
+  a5h: "Pamukkale.", a5p: "Die Travertine, Hierapolis und der Sonnenuntergang über den weißen Terrassen: Planen Sie Ihren Aufenthalt entlang dieser Route.",
+  sKick: "Galerie", sH: "Symbolbilder", sP: "Scrollen oder die Pfeile nutzen. In der Live-Version erscheinen hier die eigenen Fotos der Pension.",
+  mKick: "Anfrage", mH: "Reservieren wir einen Platz.", mP: "Treffen Sie Ihre Auswahl; Schlüsselanhänger und Nachricht rechts entstehen automatisch.",
+  lDil: "Sprache der Nachricht", lGiris: "Anreise", lCikis: "Abreise", lYet: "Erwachsene", lCoc: "Kinder", lGelis: "Wie reisen Sie an?",
+  g1: "Bus / Busbahnhof", g2: "Mit dem Auto", g3: "Vom Flughafen", lIlgi: "Interessen",
+  i1: "Travertine", i2: "Hierapolis", i3: "Ballonfahrt", i4: "Fotografie", i5: "Ruhige Erholung",
+  lNot: "Ihre Anmerkung", pNot: "Möchten Sie etwas hinzufügen?", tEtiket: "Zusammenfassung", send: "Per WhatsApp senden", kopya: "Nachricht kopieren",
+  kKick: "Lage", kYol: "Route planen", yuzen: "Anfrage",
+  fNot: "Beispielvorschau, ohne Zustimmung des Betriebs; Fotos sind Symbolbilder (Pexels). Diese Seite wurde von Boztaş Digital für Tikir House erstellt. Angaben zu Zimmern und Ausstattung werden gemeinsam mit Ihnen ergänzt. Die Sprachtexte sind Beispiele.",
+  kopyalandi: "Kopiert", misL: "Gäste", gelL: "Anreise", ilgL: "Interessen", tarihYok: "Reisedaten wählen", geceYok: "Nächte: Daten wählen",
+  uyGecmis: "Das Anreisedatum liegt in der Vergangenheit, bitte prüfen.", uyCikis: "Die Abreise muss nach der Anreise liegen.",
+});
+/* Türkçe: sayfadaki metinden okunur */
+$$("[data-t]").forEach((e) => { if (!(e.dataset.t in DICT.tr)) DICT.tr[e.dataset.t] = e.textContent.trim(); });
+DICT.tr.pNot = $("#not").placeholder;
+Object.assign(DICT.tr, {
+  kopyalandi: "Kopyalandı", misL: "Misafir", gelL: "Geliş", ilgL: "İlgi", tarihYok: "Tarihleri seçin", geceYok: "gece: tarih seçin",
+  uyGecmis: "Giriş tarihi geçmişte görünüyor, lütfen kontrol edin.", uyCikis: "Çıkış tarihi, giriş tarihinden sonra olmalı.",
+});
+let dil = "tr";
+const t = (k) => DICT[dil][k] ?? DICT.tr[k] ?? k;
+
+const gelisKey = new Set(), ilgiKey = new Set(); // gelis: tek seçim
+let yet = 2, coc = 0;
+const LOC = { tr: "tr-TR", en: "en-GB", de: "de-DE" };
+const iso = (d) => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const gun = (s) => new Date(s + "T12:00");
+const bugun = iso(new Date());
+$("#giris").min = bugun; $("#cikis").min = bugun;
+const uzun = (s) => gun(s).toLocaleDateString(LOC[dil], { day: "numeric", month: "long", year: "numeric" });
+const kisa = (s) => gun(s).toLocaleDateString(LOC[dil], { day: "numeric", month: "short" });
+const geceYaz = (n) => dil === "tr" ? `${n} gece` : dil === "en" ? `${n} night${n === 1 ? "" : "s"}` : `${n} ${n === 1 ? "Nacht" : "Nächte"}`;
+const misYaz = () => {
+  if (dil === "tr") return `${yet} yetişkin` + (coc ? `, ${coc} çocuk` : "");
+  if (dil === "en") return `${yet} adult${yet === 1 ? "" : "s"}` + (coc ? `, ${coc} ${coc === 1 ? "child" : "children"}` : "");
+  return `${yet} ${yet === 1 ? "Erwachsener" : "Erwachsene"}` + (coc ? `, ${coc} ${coc === 1 ? "Kind" : "Kinder"}` : "");
+};
+const MESAJ = {
+  tr: { bas: "Merhaba, Tikir House için rezervasyon talebi iletmek istiyorum.", g: "Giriş", c: "Çıkış", n: "Gece sayısı", m: "Misafir", gl: "Geliş", i: "İlgi alanları", not: "Not", son: "Müsaitlik ve uygun oda seçeneklerini paylaşabilir misiniz? Teşekkürler.", yok: "henüz seçmedim" },
+  en: { bas: "Hello, I would like to send a booking request for Tikir House.", g: "Check-in", c: "Check-out", n: "Nights", m: "Guests", gl: "Arrival", i: "Interests", not: "Note", son: "Could you please share availability and suitable room options? Thank you.", yok: "not chosen yet" },
+  de: { bas: "Guten Tag, ich möchte eine Buchungsanfrage für Tikir House senden.", g: "Anreise", c: "Abreise", n: "Nächte", m: "Gäste", gl: "Anreise per", i: "Interessen", not: "Anmerkung", son: "Können Sie mir bitte die Verfügbarkeit und passende Zimmer mitteilen? Vielen Dank.", yok: "noch nicht gewählt" },
+};
+function guncelle() {
+  const g = $("#giris").value, c = $("#cikis").value;
+  let uyari = "", gece = 0;
+  if (g && g < bugun) uyari = t("uyGecmis");
+  if (g) { const e = new Date(gun(g).getTime() + 864e5); $("#cikis").min = iso(e) > bugun ? iso(e) : bugun; }
+  if (g && c) { if (c <= g) uyari = t("uyCikis"); else gece = Math.round((gun(c) - gun(g)) / 864e5); }
+  $("#uyari").textContent = uyari;
+  $("#yet").textContent = yet; $("#coc").textContent = coc;
+  const ilgiYaz = [...ilgiKey].map(t), gelYaz = [...gelisKey].map(t).join("");
+  /* anahtar etiketi */
+  $("#tTarih").textContent = g && c && !uyari ? `${kisa(g)} → ${kisa(c)}` : t("tarihYok");
+  $("#tGece").textContent = gece && !uyari ? geceYaz(gece) : "—";
+  $("#tMisL").textContent = t("misL"); $("#tMis").textContent = misYaz();
+  $("#tGelL").textContent = t("gelL"); $("#tGel").textContent = gelYaz || "—";
+  $("#tIlgL").textContent = t("ilgL"); $("#tIlg").textContent = ilgiYaz.join(", ") || "—";
+  /* mesaj */
+  const M = MESAJ[dil], not = $("#not").value.trim();
+  const sat = [M.bas, "", `${M.g}: ${g ? uzun(g) : M.yok}`, `${M.c}: ${c ? uzun(c) : M.yok}`];
+  if (gece && !uyari) sat.push(`${M.n}: ${gece}`);
+  sat.push(`${M.m}: ${misYaz()}`);
+  if (gelYaz) sat.push(`${M.gl}: ${gelYaz}`);
+  if (ilgiYaz.length) sat.push(`${M.i}: ${ilgiYaz.join(", ")}`);
+  if (not) sat.push(`${M.not}: ${not}`);
+  sat.push("", M.son);
+  const metin = sat.join("\n");
+  $("#onizle").textContent = metin;
+  $("#wa").href = "https://wa.me/905418221614?text=" + encodeURIComponent(metin);
+  $("#wa").setAttribute("aria-disabled", uyari ? "true" : "false");
+}
+function dilDegis(d) {
+  dil = d;
+  document.documentElement.lang = d;
+  $$("[data-t]").forEach((e) => { if (e.id !== "mani") e.textContent = t(e.dataset.t); });
+  mani.textContent = t("mani"); bol(); kaydir();
+  $$("[data-tp]").forEach((e) => (e.placeholder = t(e.dataset.tp)));
+  $$(".dilsec button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.d === d ? "true" : "false"));
+  guncelle();
+}
+$$(".dilsec button").forEach((b) => b.addEventListener("click", () => dilDegis(b.dataset.d)));
+$$(".sayac button").forEach((b) => b.addEventListener("click", () => {
+  const dy = +b.dataset.y;
+  if (b.dataset.s === "yet") yet = Math.min(8, Math.max(1, yet + dy)); else coc = Math.min(5, Math.max(0, coc + dy));
+  guncelle();
+}));
+$("#gelis").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  const var_ = gelisKey.has(b.dataset.k); gelisKey.clear(); if (!var_) gelisKey.add(b.dataset.k);
+  $$("#gelis button").forEach((x) => x.setAttribute("aria-pressed", gelisKey.has(x.dataset.k)));
+  guncelle();
+});
+$("#ilgi").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  ilgiKey.has(b.dataset.k) ? ilgiKey.delete(b.dataset.k) : ilgiKey.add(b.dataset.k);
+  b.setAttribute("aria-pressed", ilgiKey.has(b.dataset.k)); guncelle();
+});
+$("#form").addEventListener("input", guncelle); $("#form").addEventListener("change", guncelle);
+$("#form").addEventListener("submit", (e) => e.preventDefault());
+$("#kopya").addEventListener("click", () => {
+  navigator.clipboard && navigator.clipboard.writeText($("#onizle").textContent).catch(() => {});
+  $("#kopya").textContent = t("kopyalandi"); setTimeout(() => ($("#kopya").textContent = t("kopya")), 1600);
+});
+guncelle();
+kaydir();
+</script>
+</body>
+</html>

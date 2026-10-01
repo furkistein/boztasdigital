@@ -1,0 +1,10 @@
+{
+  "ad": "Tikir House",
+  "renk": "#4D5F40",
+  "giris": "Pamukkale, Daşlı Sokak'taki yeni pansiyonunuzun üç seviyesi: arama ve WhatsApp düğmeleri, kısa soru ve talep formu, ve kapısı kaydırdıkça açılan, üç dilli (TR / EN / DE) talep masalı sayfa. Booking'e komisyon vermeden doğrudan talep alın. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî); oda ve olanak metinleri örnektir.",
+  "ozellik": {
+    "standart": ["Taş ev fotoğraflı açılış, Daşlı Sokak 9 numaranın kısa hikâyesi, Pamukkale'de üç durak, arama ve WhatsApp düğmeleri, harita"],
+    "profesyonel": ["Kısa soru formu: konu seçin (müsaitlik, ulaşım, çocuk, evcil hayvan...), tarih ve not ekleyin, hazır WhatsApp mesajına dönüşsün", "Örnek oda kartları (sizinle doldurulur), galeri ve büyütme kutusu, Google'da yorum yönlendirmesi, harita"],
+    "premium": ["Kapı kaydırdıkça açılır: sokaktan odaya akan hikâye ve fotoğraf şeridi", "Talep masası: TR / EN / DE dil düğmesi, kişi ve ilgi alanı seçimi, anahtar etiketi biçiminde hazır WhatsApp talebi (seçilen dilde)"]
+  }
+}
