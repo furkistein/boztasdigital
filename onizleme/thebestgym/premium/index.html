@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>The Best Gym Denizli · Merkezefendi · Premium örnek</title>
+<meta name="description" content="The Best Gym Denizli: sinematik tam ekran açılış, bir antrenman günü hikâyesi, branş seçici ve hazır WhatsApp talep masası. Boztaş Digital örnek önizlemesi (Premium seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#080808">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;500;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--siyah:#080808;--kor:#121212;--kor2:#1B1B1B;--kemik:#F0ECE4;--soluk:#9A968E;--vurgu:#FF5A1F;--cizgi:rgba(240,236,228,.14);--acik:#33D17A;--kapali:#E5484D}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--siyah);color:var(--kemik);font-family:"DM Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--vurgu);outline-offset:3px}
+.sar{width:min(1240px,100% - 56px);margin-inline:auto}
+.bsd{font-family:"Big Shoulders Display",Impact,sans-serif}
+h1,h2,h3{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;line-height:.9;letter-spacing:.005em}
+h1 em,h2 em{font-style:normal;color:var(--vurgu)}
+h2{font-size:clamp(52px,8vw,128px)}
+.ufak{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:700;font-size:15px;letter-spacing:.3em;color:var(--vurgu)}
+.acik-yazi{color:var(--soluk);max-width:56ch;margin-top:18px}
+section{position:relative}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:16px 28px;font-weight:700;font-size:15.5px;letter-spacing:.02em;text-decoration:none;white-space:nowrap;border:2px solid transparent;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--vurgu);color:#160A04}
+.btn.dolu:hover{background:#FF7A47}
+.btn.hat{border-color:rgba(240,236,228,.5)}
+.btn.hat:hover{border-color:var(--kemik);background:rgba(240,236,228,.08)}
+.btn.beyaz{background:var(--kemik);color:var(--siyah)}
+.btn.beyaz:hover{background:#fff}
+.btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+.dugmeler{display:flex;gap:12px;flex-wrap:wrap}
+
+/* üst çubuk: yükseklik 0, hero üstüne biner */
+.ust{position:sticky;top:0;height:0;z-index:50}
+.ust .sar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:76px;position:relative}
+.ust .sar::before{content:"";position:fixed;left:0;right:0;top:0;height:76px;background:rgba(8,8,8,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--cizgi);opacity:0;transition:opacity .35s;z-index:-1}
+.ust.solid .sar::before{opacity:1}
+.logo{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;font-size:30px;letter-spacing:.05em;text-decoration:none;line-height:.9;white-space:nowrap}
+.logo small{display:block;font-family:"DM Sans";font-weight:700;font-size:10px;letter-spacing:.38em;color:var(--vurgu);margin-top:5px}
+.ust nav{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+.ust nav a:not(.btn){text-decoration:none;opacity:.9}
+.ust nav a:not(.btn):hover{color:var(--vurgu);opacity:1}
+.ust .btn{padding:10px 20px;font-size:14.5px}
+.hap{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid rgba(240,236,228,.28);border-radius:999px;font-size:13.5px;font-weight:700;white-space:nowrap;background:rgba(8,8,8,.35)}
+.nokta{width:9px;height:9px;border-radius:50%;background:var(--soluk);flex:none}
+[data-d="acik"] .nokta{background:var(--acik);animation:nab 2s infinite}
+[data-d="kapali"] .nokta{background:var(--kapali)}
+[data-d="bilgi"] .nokta{background:#E8B04B}
+@keyframes nab{0%{box-shadow:0 0 0 0 rgba(51,209,122,.6)}70%{box-shadow:0 0 0 9px rgba(51,209,122,0)}100%{box-shadow:0 0 0 0 rgba(51,209,122,0)}}
+
+/* 1 · sahne (Ken Burns, kaydırmayla) */
+.sahne{height:190vh}
+.sahne-ic{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0d0705}
+.sahne-ic>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;transform-origin:62% 40%;will-change:transform;transform:scale(var(--olcek,1.06)) translate3d(0,var(--kay,0%),0)}
+.sahne-ic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,8,.88) 0%,rgba(8,8,8,.45) 45%,rgba(8,8,8,0) 75%),linear-gradient(180deg,rgba(8,8,8,.5) 0%,rgba(8,8,8,0) 26%,rgba(8,8,8,0) 58%,rgba(8,8,8,.92) 100%);opacity:var(--karart,1)}
+.sahne-ic::before{content:"";position:absolute;inset:0;background:#080808;opacity:var(--ek,0);z-index:2;pointer-events:none}
+.sahne-yazi{position:absolute;z-index:3;left:0;right:0;bottom:0;padding-bottom:clamp(42px,9vh,96px);transform:translate3d(0,var(--yy,0px),0);opacity:var(--yo,1)}
+.sahne-yazi h1{font-size:clamp(76px,min(15.4vw,18.5vh),236px);line-height:.84;margin:16px 0 22px}
+.sahne-yazi p{max-width:40ch;font-size:19px;color:#E2DDD4}
+.sahne-yazi>.sar>*{animation:yuksel 1.1s cubic-bezier(.2,.7,.2,1) both}
+.sahne-yazi>.sar>*:nth-child(2){animation-delay:.12s}.sahne-yazi>.sar>*:nth-child(3){animation-delay:.26s}.sahne-yazi>.sar>*:nth-child(4){animation-delay:.4s}
+@keyframes yuksel{from{opacity:0;transform:translateY(24px)}}
+.sahne-yazi .dugmeler{margin-top:28px}
+.imlec{position:absolute;z-index:3;right:28px;bottom:34px;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;color:rgba(240,236,228,.7)}
+.imlec::after{content:"";width:1px;height:56px;background:linear-gradient(var(--vurgu),transparent);writing-mode:horizontal-tb;animation:in 2s ease-in-out infinite}
+@keyframes in{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.not-foto{position:absolute;z-index:3;left:28px;top:96px;font-size:12px;color:rgba(255,255,255,.65)}
+
+/* 2 · manifesto */
+.manifesto{padding:150px 0 130px}
+.manifesto p{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:800;font-size:clamp(38px,6.4vw,100px);line-height:.98;text-transform:none;max-width:18ch}
+.manifesto .k{color:rgba(240,236,228,.2);transition:color .35s}
+.manifesto .k.yan{color:var(--kemik)}
+.manifesto .k.yan.vv{color:var(--vurgu)}
+.manifesto small{display:block;margin-top:36px;color:var(--soluk);font-size:15px;max-width:52ch}
+
+/* 3 · branş seçici */
+.secici{padding:100px 0 120px;background:var(--kor);border-block:1px solid var(--cizgi)}
+.sec-izgara{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;margin-top:56px;align-items:start}
+.liste{border-top:1px solid var(--cizgi)}
+.satir{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:6px;width:100%;text-align:left;padding:14px 4px;border-bottom:1px solid var(--cizgi);transition:background .3s,padding .3s;position:relative}
+.satir .n{font-family:"Big Shoulders Display";font-weight:700;font-size:20px;color:var(--soluk);letter-spacing:.1em}
+.satir .ad{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;font-size:clamp(54px,7.4vw,112px);line-height:.92;transition:color .3s,transform .4s cubic-bezier(.2,.7,.2,1);text-transform:none}
+.satir .tik{font-size:13px;font-weight:700;letter-spacing:.14em;color:#160A04;background:var(--vurgu);padding:7px 12px;opacity:0;transform:scale(.9);transition:opacity .3s,transform .3s}
+.satir:hover .ad,.satir:focus-visible .ad{color:var(--vurgu);transform:translateX(12px)}
+.satir[aria-pressed="true"]{background:rgba(255,90,31,.1)}
+.satir[aria-pressed="true"] .ad{color:var(--vurgu)}
+.satir[aria-pressed="true"] .tik{opacity:1;transform:none}
+.sec-ipucu{margin-top:22px;color:var(--soluk);font-size:15px}
+.onizle{position:sticky;top:96px;aspect-ratio:4/5;overflow:hidden;background:#000}
+.onizle img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s,transform 1.4s cubic-bezier(.2,.7,.2,1);filter:brightness(.92)}
+.onizle img.on{opacity:1;transform:scale(1)}
+.onizle figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:60px 22px 20px;background:linear-gradient(transparent,rgba(8,8,8,.9));font-size:15px;color:#E2DDD4}
+.onizle figcaption b{display:block;font-family:"Big Shoulders Display";font-size:34px;font-weight:900;color:var(--kemik);line-height:1}
+
+/* 4 · bir antrenman günü */
+.gun{height:460vh;background:var(--siyah)}
+.gun-ic{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;padding-top:92px}
+.gun-ust{width:min(1240px,100% - 56px);margin:0 auto 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.gun-ust h2{font-size:clamp(46px,6.4vw,100px)}
+.gun-not{font-size:13px;color:var(--soluk);max-width:34ch;text-align:right}
+.gun-sahne{width:min(1240px,100% - 56px);margin:0 auto;display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;height:calc(100svh - 92px - 140px);min-height:340px}
+.bolumler{position:relative;display:flex;flex-direction:column;justify-content:center}
+.bolum{position:absolute;left:0;right:0;top:50%;transform:translateY(calc(-50% + 26px));opacity:0;transition:opacity .6s,transform .8s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.bolum.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.bolum .no{font-family:"Big Shoulders Display";font-weight:900;font-size:clamp(100px,17vw,230px);line-height:.8;color:transparent;-webkit-text-stroke:2px var(--vurgu);letter-spacing:.01em}
+.bolum h3{font-size:clamp(46px,6vw,92px);margin:12px 0 14px}
+.bolum p{font-size:19px;color:#CFCAC1;max-width:36ch}
+.kareler{position:relative;overflow:hidden;background:#111}
+.kareler img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.14);transition:opacity .9s,transform 2.2s cubic-bezier(.2,.7,.2,1);filter:brightness(.9)}
+.kareler img.on{opacity:1;transform:scale(1)}
+.ilerle{position:absolute;z-index:3;left:18px;bottom:16px;right:18px;display:flex;gap:6px}
+.ilerle i{flex:1;height:3px;background:rgba(240,236,228,.3);position:relative;overflow:hidden}
+.ilerle i::after{content:"";position:absolute;inset:0;background:var(--vurgu);transform:scaleX(var(--d,0));transform-origin:left}
+
+/* 5 · yatay vitrin */
+.vitrin{padding:110px 0 120px;background:var(--kor);border-block:1px solid var(--cizgi)}
+.vit-ust{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.oklar{display:flex;gap:8px;flex:none}
+.oklar button{width:52px;height:52px;border:1px solid rgba(240,236,228,.35);font-size:24px;display:grid;place-items:center;transition:background .25s,border-color .25s,color .25s}
+.oklar button:hover{background:var(--vurgu);border-color:var(--vurgu);color:#160A04}
+.serit{display:flex;gap:14px;margin-top:44px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px max(28px,calc((100% - 1240px)/2 + 28px)) 8px;scroll-padding-inline:max(28px,calc((100% - 1240px)/2 + 28px))}
+.serit::-webkit-scrollbar{display:none}
+.kart{flex:none;position:relative;height:min(62vh,520px);aspect-ratio:3/4;scroll-snap-align:start;overflow:hidden;background:#000;transition:opacity .5s,filter .5s,outline-color .3s;outline:3px solid transparent;outline-offset:-3px}
+.kart.yatay{aspect-ratio:4/3}
+.kart img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88);transition:transform 1.4s cubic-bezier(.2,.7,.2,1),filter .5s}
+.kart:hover img{transform:scale(1.05);filter:brightness(1)}
+.kart::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(8,8,8,.9));pointer-events:none}
+.kart span{position:absolute;z-index:2;left:18px;bottom:16px;font-family:"Big Shoulders Display";font-weight:800;font-size:28px;letter-spacing:.04em;line-height:1}
+.kart span small{display:block;font-family:"DM Sans";font-size:11.5px;letter-spacing:.24em;color:var(--vurgu);font-weight:700;margin-bottom:5px}
+.serit.secimli .kart{opacity:.38;filter:saturate(.4)}
+.serit.secimli .kart.vurgulu{opacity:1;filter:none;outline-color:var(--vurgu)}
+.vit-not{margin-top:18px;font-size:13.5px;color:var(--soluk)}
+.vit-not.sar{display:block}
+
+/* 6 · talep masası */
+.masa{padding:120px 0 130px;background:radial-gradient(900px 520px at 90% 0%,rgba(255,90,31,.14),transparent 70%),var(--siyah)}
+.masa-izgara{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;margin-top:56px;align-items:start}
+.adimlar{display:grid;gap:34px}
+.adim h3{font-size:30px;letter-spacing:.06em;font-weight:800;display:flex;align-items:baseline;gap:14px;margin-bottom:14px;line-height:1}
+.adim h3 i{font-style:normal;font-size:15px;color:var(--vurgu);letter-spacing:.2em}
+.adim h3 small{font-family:"DM Sans";font-size:13px;font-weight:500;letter-spacing:0;color:var(--soluk)}
+.cipler{display:flex;flex-wrap:wrap;gap:8px}
+.cip{padding:13px 20px;border:1px solid rgba(240,236,228,.3);font-weight:700;font-size:16px;transition:background .2s,border-color .2s,color .2s}
+.cip:hover{border-color:var(--kemik)}
+.cip[aria-pressed="true"]{background:var(--vurgu);border-color:var(--vurgu);color:#160A04}
+.karolar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.karo{padding:18px 14px 16px;border:1px solid rgba(240,236,228,.3);text-align:left;transition:background .2s,border-color .2s,color .2s}
+.karo b{display:block;font-family:"Big Shoulders Display";font-weight:900;font-size:34px;line-height:.95}
+.karo span{font-size:13.5px;color:var(--soluk)}
+.karo:hover{border-color:var(--kemik)}
+.karo[aria-pressed="true"]{background:var(--vurgu);border-color:var(--vurgu);color:#160A04}
+.karo[aria-pressed="true"] span{color:#4a1f0b}
+.gunler{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.gbtn{padding:14px 4px 12px;border:1px solid rgba(240,236,228,.3);text-align:center;transition:background .2s,border-color .2s,color .2s;position:relative}
+.gbtn b{display:block;font-family:"Big Shoulders Display";font-weight:900;font-size:30px;line-height:1}
+.gbtn span{display:block;font-size:11.5px;color:var(--soluk);margin-top:3px;white-space:nowrap}
+.gbtn:hover{border-color:var(--kemik)}
+.gbtn[aria-pressed="true"]{background:var(--vurgu);border-color:var(--vurgu);color:#160A04}
+.gbtn[aria-pressed="true"] span{color:#4a1f0b}
+.gbtn.bugun::after{content:"BUGÜN";position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:9.5px;font-weight:700;letter-spacing:.14em;background:var(--kemik);color:var(--siyah);padding:2px 6px}
+.saatbos{color:var(--soluk);font-size:15px;padding:6px 0}
+.alan-ad{width:100%;max-width:420px;padding:15px 16px;background:transparent;border:1px solid rgba(240,236,228,.3);font-size:18px;border-radius:0}
+.alan-ad:focus{border-color:var(--vurgu);outline:0}
+.alan-ad::placeholder{color:#6f6b64}
+.bilet{position:sticky;top:96px}
+.bilet-ic{background:var(--kemik);color:#171310;position:relative;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));-webkit-mask:radial-gradient(circle 12px at 0 var(--kes,62%),transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% var(--kes,62%),transparent 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 12px at 0 var(--kes,62%),transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% var(--kes,62%),transparent 98%,#000) right/51% 100% no-repeat}
+.bilet-ust{background:var(--vurgu);color:#160A04;padding:22px 26px 18px}
+.bilet-ust small{font-weight:700;letter-spacing:.24em;font-size:11.5px}
+.bilet-ust b{display:block;font-family:"Big Shoulders Display";font-size:40px;font-weight:900;line-height:.95;margin-top:6px}
+.bilet-govde{padding:22px 26px 18px;display:grid;gap:14px}
+.bilet-govde div{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:baseline}
+.bilet-govde dt{font-size:11.5px;font-weight:700;letter-spacing:.2em;color:#6c645a}
+.bilet-govde dd{font-family:"Big Shoulders Display";font-weight:800;font-size:27px;line-height:1.05}
+.bilet-govde dd.bos{color:#b9b1a5;font-weight:500}
+.delik{border-top:2px dashed #c9c1b4;margin:2px 14px 0}
+.bilet-alt{padding:18px 26px 24px}
+.bilet-alt .ilerleme{display:flex;gap:5px;margin-bottom:14px}
+.bilet-alt .ilerleme i{flex:1;height:5px;background:#d6cec1}
+.bilet-alt .ilerleme i.d{background:#171310}
+.bilet-alt p{font-size:13.5px;color:#5c554c;margin-bottom:14px}
+.bilet-alt .btn{width:100%;background:#25D366;color:#06210F}
+.bilet-alt .btn:hover{background:#3BE27A}
+.bilet-alt .ipucu{margin:12px 0 0;font-size:13px;color:#6c645a;min-height:1.3em}
+.msj{margin-top:16px;font-size:13px;color:var(--soluk)}
+
+/* 7 · iletişim */
+.konum{padding:120px 0}
+.konum-izgara{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.konum h2{font-size:clamp(50px,7.2vw,116px)}
+.konum dl{display:grid;gap:22px;margin-top:34px}
+.konum dt{font-size:12px;letter-spacing:.26em;color:var(--vurgu);font-weight:700}
+.konum dd{font-size:21px}
+.konum dd a{text-underline-offset:3px}
+.cetvel{border-top:1px solid var(--cizgi);margin-top:6px}
+.cetvel div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--cizgi);font-size:17px}
+.cetvel b{font-family:"Big Shoulders Display";font-weight:800;font-size:24px;letter-spacing:.03em}
+.cetvel .bil span,.cetvel .bil b{color:var(--soluk)}
+.konum .dugmeler{margin-top:34px}
+.konum .gorsel img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.92);object-position:50% 40%}
+.konum .gorsel{position:relative}
+.konum .gorsel::before{content:"";position:absolute;left:-14px;top:-14px;width:44%;height:40%;border-top:3px solid var(--vurgu);border-left:3px solid var(--vurgu);z-index:1;pointer-events:none}
+footer{background:#050505;color:var(--soluk);padding:36px 0 120px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(240,236,228,.3);padding:12px 14px;color:#DAD5CC}
+.ornek-not a{color:#fff;font-weight:700}
+
+/* yüzen çubuk */
+.yuzen{position:fixed;z-index:45;left:50%;bottom:22px;transform:translate(-50%,24px);display:flex;align-items:center;gap:12px;padding:8px 8px 8px 20px;background:rgba(18,18,18,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(240,236,228,.22);opacity:0;pointer-events:none;transition:opacity .4s,transform .4s;max-width:calc(100vw - 24px)}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
+.yuzen span{font-size:14.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.yuzen span b{color:var(--vurgu)}
+.yuzen .btn{padding:11px 20px;font-size:14.5px}
+
+@media (max-width:1000px){
+  .sec-izgara,.masa-izgara,.konum-izgara{grid-template-columns:1fr;gap:44px}
+  .onizle{position:relative;top:0;aspect-ratio:16/10;order:-1}
+  .bilet{position:static}
+  .gun-sahne{grid-template-columns:1fr;gap:18px;grid-template-rows:46% 1fr}
+  .kareler{order:-1}
+  .gun-not{display:none}
+  .ust nav a:not(.btn){display:none}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar{width:calc(100% - 36px)}
+  .gun-ust,.gun-sahne{width:calc(100% - 36px)}
+  .ust .sar{height:64px}
+  .ust .sar::before{height:64px}
+  .logo{font-size:25px}
+  .logo small{font-size:8.5px;letter-spacing:.3em}
+  .ust .btn{padding:9px 16px}
+  .hap{padding:6px 10px;font-size:12.5px}
+  .hap .l{display:none}
+  .sahne-ic>img{object-position:76% 50%;transform-origin:76% 50%}
+  .sahne-ic::after{background:linear-gradient(180deg,rgba(8,8,8,.55) 0%,rgba(8,8,8,0) 22%,rgba(8,8,8,.1) 42%,rgba(8,8,8,.94) 82%);opacity:var(--karart,1)}
+  .sahne-yazi h1{font-size:clamp(60px,17vw,92px)}
+  .sahne-yazi p{font-size:17px}
+  .imlec,.not-foto{display:none}
+  .manifesto{padding:96px 0 84px}
+  .secici,.vitrin,.masa,.konum{padding:76px 0}
+  .satir{grid-template-columns:34px 1fr auto}
+  .satir .n{font-size:16px}
+  .satir .tik{font-size:11px;padding:6px 9px}
+  .gun-ic{padding-top:72px}
+  .gun-ust{margin-bottom:12px}
+  .bolum .no{font-size:84px}
+  .bolumler{justify-content:flex-start}
+  .bolum{top:0;transform:translateY(26px)}
+  .bolum.on{transform:none}
+  .bolum p{font-size:16.5px}
+  .gun-sahne{height:calc(100svh - 72px - 78px)}
+  .vit-ust{align-items:flex-start;flex-direction:column}
+  .oklar{display:none}
+  .serit{margin-top:30px;padding-inline:18px;scroll-padding-inline:18px}
+  .kart{height:50vh}
+  .karolar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gunler{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .masa-izgara{margin-top:40px}
+  .bilet-govde div{grid-template-columns:78px 1fr}
+  .bilet-govde dd{font-size:24px}
+  .bilet-ust b{font-size:34px}
+  .yuzen{left:12px;right:12px;bottom:12px;transform:translateY(24px);padding:0;gap:8px;background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none;max-width:none}
+  .yuzen.goster{transform:none}
+  .yuzen span{display:none}
+  .yuzen .btn{flex:1;padding:14px 10px;box-shadow:0 10px 26px rgba(0,0,0,.45)}
+  .konum .gorsel img{aspect-ratio:16/11}
+}
+@media (max-width:380px){.logo small{display:none}}
+@media (prefers-reduced-motion:reduce){.sahne-yazi>.sar>*,.nokta,.imlec::after{animation:none!important}.kareler img,.onizle img,.bolum{transition-duration:.01ms!important}}
+.az-hareket .sahne-yazi>.sar>*,.az-hareket .imlec::after{animation:none}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+<script id="bd-sayac">(function(){try{var L=localStorage;if(/[?&]ben=1/.test(location.search))L.setItem("bd_ben","1");if(location.hostname!=="furkistein.github.io"||L.getItem("bd_ben"))return;var a="bd_s_thebestgym-premium",t=+L.getItem(a),n=Date.now();if(t&&n-t<432e5)return;L.setItem(a,n);fetch("https://abacus.jasoncameron.dev/hit/boztasdigital/thebestgym-premium",{mode:"no-cors",keepalive:true}).catch(function(){})}catch(e){}})()</script>
+</head>
+<body data-kademe="premium" data-isletme="The Best Gym Denizli">
+
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="logo" href="#">THE BEST GYM<small>DENİZLİ</small></a>
+    <nav>
+      <a href="#sec">Branşlar</a><a href="#gun">Bir gün</a><a href="#vitrin">Kareler</a><a href="#talep">Talep masası</a>
+      <span class="hap" data-hap data-d="bilgi" aria-live="polite"><i class="nokta"></i><span data-hap-yazi>Saat</span></span>
+      <a class="btn dolu" href="tel:+905357123933">Ara</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="sahne" id="sahne">
+    <div class="sahne-ic">
+      <img src="../img/gercek/kick-isik-xl.webp" alt="Turuncu spot ışığında torbaya tekme atan sporcu (temsilî fotoğraf)" width="2000" height="2500" fetchpriority="high">
+      <span class="not-foto">Fotoğraf temsilîdir</span>
+      <div class="sahne-yazi">
+        <div class="sar">
+          <span class="ufak">MERKEZEFENDİ · DENİZLİ</span>
+          <h1>BEŞ BRANŞ.<br>BİR SALON.<br><em>SIFIR BAHANE.</em></h1>
+          <p>Fitness, kick boks, pilates, crossfit ve boks. Cinkaya Bulvarı'nda, hafta içi 23.00'e kadar.</p>
+          <div class="dugmeler"><a class="btn dolu" href="#talep">Deneme talebi hazırla</a><a class="btn hat" href="tel:+905357123933">Ara</a></div>
+        </div>
+      </div>
+      <span class="imlec" aria-hidden="true">KAYDIR</span>
+    </div>
+  </div>
+
+  <section class="manifesto" id="manifesto">
+    <div class="sar">
+      <p id="manifesto-yazi">MÜKEMMEL BİR GÜN BEKLEMEYİN. KAPIDAN GİRİN, <span data-vurgu>GERİSİ GELİR.</span></p>
+      <small>Bu, bir söz ya da vaat değil; salona ilk adımı atmak için bir çağrı. Ders programı ve üyelik bilgisi için salonu arayın.</small>
+    </div>
+  </section>
+
+  <section class="secici" id="sec">
+    <div class="sar">
+      <span class="ufak">01 · BRANŞ SEÇİCİ</span>
+      <h2>BUGÜN <em>NEYİ</em> ÇALIŞIYORSUNUZ?</h2>
+      <p class="acik-yazi">Bir ya da birkaç branşa dokunun. Seçtikleriniz aşağıdaki karelerde öne çıkar ve talep masasına kendiliğinden geçer.</p>
+      <div class="sec-izgara">
+        <div>
+          <div class="liste" role="group" aria-label="Branş seçimi">
+            <button class="satir" data-b="Fitness" aria-pressed="false" data-i="0"><span class="n">01</span><span class="ad">FITNESS</span><span class="tik">SEÇİLDİ</span></button>
+            <button class="satir" data-b="Kick boks" aria-pressed="false" data-i="1"><span class="n">02</span><span class="ad">KICK BOKS</span><span class="tik">SEÇİLDİ</span></button>
+            <button class="satir" data-b="Pilates" aria-pressed="false" data-i="2"><span class="n">03</span><span class="ad">PILATES</span><span class="tik">SEÇİLDİ</span></button>
+            <button class="satir" data-b="Crossfit" aria-pressed="false" data-i="3"><span class="n">04</span><span class="ad">CROSSFIT</span><span class="tik">SEÇİLDİ</span></button>
+            <button class="satir" data-b="Boks" aria-pressed="false" data-i="4"><span class="n">05</span><span class="ad">BOKS</span><span class="tik">SEÇİLDİ</span></button>
+          </div>
+          <p class="sec-ipucu" id="sec-ipucu">Henüz seçim yok.</p>
+        </div>
+        <figure class="onizle" aria-hidden="true">
+          <img class="on" src="../img/gercek/fit-bench-900.webp" alt="" width="900" height="1350" loading="lazy" style="object-position:50% 45%">
+          <img src="../img/gercek/kick-egitmen-900.webp" alt="" width="900" height="1350" loading="lazy" style="object-position:50% 40%">
+          <img src="../img/gercek/pil-koyu-900.webp" alt="" width="900" height="1350" loading="lazy" style="object-position:50% 45%">
+          <img src="../img/gercek/cf-tirmanis-900.webp" alt="" width="900" height="1354" loading="lazy" style="object-position:50% 40%">
+          <img src="../img/gercek/boks-ring-900.webp" alt="" width="900" height="1350" loading="lazy" style="object-position:50% 40%">
+          <figcaption><b id="on-ad">FITNESS</b><span id="on-yazi">Kendi programınızla, kendi temponuzda antrenman.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="gun" id="gun">
+    <div class="gun-ic">
+      <div class="gun-ust">
+        <div><span class="ufak">02 · KAYDIRIN</span><h2>BİR ANTRENMAN <em>GÜNÜ</em></h2></div>
+        <p class="gun-not">Örnek bir akış; salonun ders programı değildir. Gerçek gün ve saatler için salona sorun.</p>
+      </div>
+      <div class="gun-sahne">
+        <div class="bolumler">
+          <article class="bolum on"><div class="no">01</div><h3>ISINMA</h3><p>Gün hazırlıkla başlar: esneme ve hafif tempolu hareketlerle vücut açılır.</p></article>
+          <article class="bolum"><div class="no">02</div><h3>AĞIRLIK</h3><p>Barlar, dambıllar, seri seri tekrar. Kendi programınızla kendi temponuzda.</p></article>
+          <article class="bolum"><div class="no">03</div><h3>RİNG VE MAT</h3><p>Yumruk, tekme, ayak oyunu; ya da mat üzerinde kontrollü hareket.</p></article>
+          <article class="bolum"><div class="no">04</div><h3>SOĞUMA</h3><p>Tempo yavaşlar, esneme ile gün kapanır. Yarın yine kapıdasınız.</p></article>
+        </div>
+        <div class="kareler" aria-hidden="true">
+          <img class="on" src="../img/gercek/isinma.webp" alt="" width="1800" height="1202" style="object-position:50% 50%">
+          <img src="../img/gercek/fit-bench.webp" alt="" width="1200" height="1800" style="object-position:50% 45%" loading="lazy">
+          <img src="../img/gercek/kick-cift.webp" alt="" width="1800" height="1200" style="object-position:50% 50%" loading="lazy">
+          <img src="../img/gercek/soguma.webp" alt="" width="1800" height="1202" style="object-position:50% 50%" loading="lazy">
+          <div class="ilerle"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vitrin" id="vitrin">
+    <div class="sar vit-ust">
+      <div>
+        <span class="ufak">03 · VİTRİN</span>
+        <h2>SALONDAN <em>KARELER</em></h2>
+        <p class="acik-yazi">Yana kaydırın. Seçtiğiniz branşın kareleri öne çıkar; kalanlar geri çekilir.</p>
+      </div>
+      <div class="oklar"><button id="geri" aria-label="Geri">‹</button><button id="ileri" aria-label="İleri">›</button></div>
+    </div>
+    <div class="serit" id="serit" tabindex="0" aria-label="Fotoğraf vitrini, yatay kaydırılır">
+      <figure class="kart yatay" data-b="Fitness"><img src="../img/gercek/fit-plaka-900.webp" alt="Yerde duran halter plakası (temsilî)" loading="lazy" width="900" height="600"><span><small>FITNESS</small>PLAKA</span></figure>
+      <figure class="kart yatay" data-b="Kick boks"><img src="../img/gercek/kick-pati-900.webp" alt="Pati üzerine tekme çalışması (temsilî)" loading="lazy" width="900" height="600"><span><small>KICK BOKS</small>PATİ ÇALIŞMASI</span></figure>
+      <figure class="kart yatay" data-b="Pilates"><img src="../img/gercek/pil-loft-900.webp" alt="Geniş camlı pilates stüdyosu (temsilî)" loading="lazy" width="900" height="600"><span><small>PILATES</small>STÜDYO</span></figure>
+      <figure class="kart yatay" data-b="Crossfit"><img src="../img/gercek/cf-halat-900.webp" alt="Savaş halatıyla çalışan iki sporcu (temsilî)" loading="lazy" width="900" height="506"><span><small>CROSSFIT</small>HALAT</span></figure>
+      <figure class="kart yatay" data-b="Boks"><img src="../img/gercek/boks-eldiven-900.webp" alt="Yeşil eldivenli boksör kadın (temsilî)" loading="lazy" width="900" height="600"><span><small>BOKS</small>ELDİVEN</span></figure>
+      <figure class="kart" data-b="Fitness"><img src="../img/gercek/fit-sira-900.webp" alt="Karanlık salonda sıralı dambıllar (temsilî)" loading="lazy" width="900" height="1350"><span><small>FITNESS</small>DAMBIL SIRASI</span></figure>
+      <figure class="kart yatay" data-b="Kick boks"><img src="../img/gercek/kick-torba-900.webp" alt="Ağır torbaya tekme atan sporcunun silueti (temsilî)" loading="lazy" width="900" height="600"><span><small>KICK BOKS</small>TORBA</span></figure>
+      <figure class="kart yatay" data-b="Pilates"><img src="../img/gercek/pil-aksiyon-900.webp" alt="Reformer üzerinde esneme hareketi (temsilî)" loading="lazy" width="900" height="600"><span><small>PILATES</small>REFORMER</span></figure>
+      <figure class="kart" data-b="Crossfit"><img src="../img/gercek/cf-kutu-900.webp" alt="Kutuya sıçrayan sporcu (temsilî)" loading="lazy" width="900" height="1354"><span><small>CROSSFIT</small>KUTU SIÇRAMA</span></figure>
+      <figure class="kart yatay" data-b="Boks"><img src="../img/gercek/boks-sari-900.webp" alt="Sarı torba karşısında boksör kadın (temsilî)" loading="lazy" width="900" height="600"><span><small>BOKS</small>TORBA BAŞI</span></figure>
+    </div>
+    <p class="vit-not sar">Fotoğraflar temsilîdir (Pexels, gerçek fotoğrafçı çekimleri); salonun kendisini göstermez.</p>
+  </section>
+
+  <section class="masa" id="talep">
+    <div class="sar">
+      <span class="ufak">04 · TALEP MASASI</span>
+      <h2>DENEME <em>ANTRENMANI</em> TALEBİ</h2>
+      <p class="acik-yazi">Adımları doldurun; sağdaki bilet hazır mesajınıza dönüşür. WhatsApp'ta açılır, siz gönderirsiniz. Deneme antrenmanının olup olmadığını ve koşullarını salon yanıtlar.</p>
+      <div class="masa-izgara">
+        <div class="adimlar">
+          <div class="adim"><h3><i>01</i>BRANŞ<small>birden fazla seçebilirsiniz</small></h3>
+            <div class="cipler" id="m-brans">
+              <button class="cip" data-b="Fitness" aria-pressed="false">Fitness</button>
+              <button class="cip" data-b="Kick boks" aria-pressed="false">Kick boks</button>
+              <button class="cip" data-b="Pilates" aria-pressed="false">Pilates</button>
+              <button class="cip" data-b="Crossfit" aria-pressed="false">Crossfit</button>
+              <button class="cip" data-b="Boks" aria-pressed="false">Boks</button>
+            </div>
+          </div>
+          <div class="adim"><h3><i>02</i>HEDEF</h3>
+            <div class="karolar" id="m-hedef">
+              <button class="karo" data-h="kilo vermek" aria-pressed="false"><b>KİLO</b><span>kilo vermek</span></button>
+              <button class="karo" data-h="kas kazanmak" aria-pressed="false"><b>KAS</b><span>kas kazanmak</span></button>
+              <button class="karo" data-h="kondisyon" aria-pressed="false"><b>KONDİSYON</b><span>kondisyon</span></button>
+              <button class="karo" data-h="dövüş" aria-pressed="false"><b>DÖVÜŞ</b><span>dövüş sporları</span></button>
+            </div>
+          </div>
+          <div class="adim"><h3><i>03</i>GÜN<small>Pazar saatleri bilinmiyor, listede yok</small></h3>
+            <div class="gunler" id="m-gun">
+              <button class="gbtn" data-g="1" aria-pressed="false"><b>PZT</b><span>09–23</span></button>
+              <button class="gbtn" data-g="2" aria-pressed="false"><b>SAL</b><span>09–23</span></button>
+              <button class="gbtn" data-g="3" aria-pressed="false"><b>ÇAR</b><span>09–23</span></button>
+              <button class="gbtn" data-g="4" aria-pressed="false"><b>PER</b><span>09–23</span></button>
+              <button class="gbtn" data-g="5" aria-pressed="false"><b>CUM</b><span>09–23</span></button>
+              <button class="gbtn" data-g="6" aria-pressed="false"><b>CMT</b><span>11–21</span></button>
+            </div>
+          </div>
+          <div class="adim"><h3><i>04</i>SAAT</h3>
+            <div class="cipler" id="m-saat"><p class="saatbos">Önce bir gün seçin.</p></div>
+          </div>
+          <div class="adim"><h3><i>05</i>ADINIZ</h3>
+            <input class="alan-ad" id="m-ad" type="text" placeholder="Adınız" maxlength="40" autocomplete="given-name" aria-label="Adınız">
+          </div>
+        </div>
+        <aside class="bilet" aria-live="polite">
+          <div class="bilet-ic">
+            <div class="bilet-ust"><small>DENEME ANTRENMANI TALEBİ</small><b>THE BEST GYM DENİZLİ</b></div>
+            <dl class="bilet-govde">
+              <div><dt>AD</dt><dd id="b-ad" class="bos">—</dd></div>
+              <div><dt>BRANŞ</dt><dd id="b-brans" class="bos">—</dd></div>
+              <div><dt>HEDEF</dt><dd id="b-hedef" class="bos">—</dd></div>
+              <div><dt>ZAMAN</dt><dd id="b-zaman" class="bos">—</dd></div>
+            </dl>
+            <div class="delik"></div>
+            <div class="bilet-alt">
+              <div class="ilerleme" id="b-ilerleme"><i></i><i></i><i></i><i></i><i></i></div>
+              <p id="b-durum">0 / 5 adım tamam.</p>
+              <a class="btn" id="gonder" href="#" target="_blank" rel="noopener" aria-disabled="true">WhatsApp'ta aç ve gönder</a>
+              <p class="ipucu" id="b-ipucu">Açmak için adınızı yazın ve en az bir branş seçin.</p>
+            </div>
+          </div>
+          <p class="msj">Bu sayfa hiçbir bilgiyi sunucuya göndermez; mesaj yalnızca telefonunuzdaki WhatsApp'ta açılır.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="konum" id="iletisim">
+    <div class="sar konum-izgara">
+      <div>
+        <span class="ufak">05 · İLETİŞİM</span>
+        <h2>CİNKAYA BULVARI'NDA, <em>KAPIDAYIZ.</em></h2>
+        <dl>
+          <div><dt>ADRES</dt><dd>Cinkaya Bulvarı 99B<br>Merkezefendi / Denizli</dd></div>
+          <div><dt>ÇALIŞMA SAATLERİ</dt><dd><div class="cetvel"><div><span>Pazartesi – Cuma</span><b>09.00 – 23.00</b></div><div><span>Cumartesi</span><b>11.00 – 21.00</b></div><div class="bil"><span>Pazar</span><b>Bilgi için arayın</b></div></div></dd></div>
+          <div><dt>TELEFON / WHATSAPP</dt><dd><a href="tel:+905357123933">0535 712 39 33</a></dd></div>
+          <div><dt>INSTAGRAM</dt><dd><a href="https://www.instagram.com/thebestgymm/">@thebestgymm</a></dd></div>
+        </dl>
+        <div class="dugmeler">
+          <a class="btn dolu" href="tel:+905357123933">Ara</a>
+          <a class="btn beyaz" href="https://wa.me/905357123933?text=Merhaba%2C%20bilgi%20almak%20istiyorum.">WhatsApp</a>
+          <a class="btn hat" href="https://www.google.com/maps/search/?api=1&amp;query=The%20Best%20Gym%20Denizli%20Cinkaya%20Bulvar%C4%B1%2099B%20Merkezefendi%20Denizli">Yol tarifi</a>
+        </div>
+      </div>
+      <div class="gorsel" data-belir><img src="../img/gercek/fit-salon-900.webp" alt="Üstten görünen geniş spor salonu, ağırlık sıraları (temsilî fotoğraf)" width="900" height="1200" loading="lazy"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sar">
+    <div>© The Best Gym Denizli · Cinkaya Bulvarı 99B, Merkezefendi / Denizli · @thebestgymm</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: The Best Gym Denizli için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels, gerçek fotoğrafçı çekimleri); yayında salonunuzun kendi fotoğrafları kullanılır. Branşlar, adres, telefon ve saatler herkese açık profilinizden alındı; ders programı ve üyelik bilgisi sizinle birlikte eklenir. "Bir antrenman günü" bölümü örnek bir akıştır, salonun programı değildir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+
+<div class="yuzen" id="yuzen"><span id="y-yazi">Deneme antrenmanı için talep masası</span><a class="btn dolu" href="tel:+905357123933" id="y-ara">Ara</a><a class="btn beyaz" href="#talep">Talep masası</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+(()=>{
+  const TEL="905357123933";
+  const SAAT={0:null,1:[9,23],2:[9,23],3:[9,23],4:[9,23],5:[9,23],6:[11,21]};
+  const GUN=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+  const BRANS=["Fitness","Kick boks","Pilates","Crossfit","Boks"];
+  const ACIKLAMA=[
+    "Kendi programınızla, kendi temponuzda antrenman.",
+    "Yumruk, tekme ve ayak oyunu; torba ve pati çalışması.",
+    "Kontrollü hareket, nefes ve duruş çalışması.",
+    "Tempolu, karışık ve işlevsel antrenman.",
+    "Yumruk teknikleri, ayak hareketi ve kondisyon."
+  ];
+  const f2=n=>String(n).padStart(2,"0")+".00";
+  const q=(s,k=document)=>k.querySelector(s), qa=(s,k=document)=>[...k.querySelectorAll(s)];
+  const az=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+
+  /* ---- şu an açık mı (Türkiye saati) ---- */
+  function simdi(){
+    const p=new Intl.DateTimeFormat("en-US",{timeZone:"Europe/Istanbul",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+    const o={};p.forEach(x=>o[x.type]=x.value);
+    return {g:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[o.weekday],d:(+o.hour%24)*60+(+o.minute)};
+  }
+  function hap(){
+    const {g,d}=simdi(), s=SAAT[g]; let r;
+    if(!s) r=["bilgi","Pazar: arayın"];
+    else if(d>=s[0]*60&&d<s[1]*60) r=["acik","Açık · "+f2(s[1])+"'e kadar"];
+    else if(d<s[0]*60) r=["kapali","Kapalı · "+f2(s[0])+"'da açılır"];
+    else r=["kapali","Kapalı"];
+    const e=q("[data-hap]"); e.dataset.d=r[0]; const [k,...u]=r[1].split(" · "); q("[data-hap-yazi]",e).innerHTML=k+(u.length?'<span class="l"> · '+u.join(" · ")+'</span>':"");
+  }
+  hap(); setInterval(hap,30000);
+
+  /* ---- seçim durumu (branş seçici + vitrin + talep masası ortak) ---- */
+  const secim=new Set(); let hedef="", gun=0, saat="";
+  const satirlar=qa(".satir"), cipler=qa("#m-brans .cip"), kartlar=qa(".kart"), serit=q("#serit");
+  function bransRender(){
+    satirlar.forEach(s=>s.setAttribute("aria-pressed",secim.has(s.dataset.b)));
+    cipler.forEach(s=>s.setAttribute("aria-pressed",secim.has(s.dataset.b)));
+    kartlar.forEach(k=>k.classList.toggle("vurgulu",secim.has(k.dataset.b)));
+    serit.classList.toggle("secimli",secim.size>0);
+    const liste=BRANS.filter(b=>secim.has(b));
+    q("#sec-ipucu").textContent=liste.length?"Seçtiniz: "+liste.join(", ")+". Vitrinde öne çıktı, talep masasına geçti.":"Henüz seçim yok.";
+    const yz=q("#y-yazi");
+    yz.innerHTML=liste.length?"Seçiminiz: <b>"+liste.join(", ")+"</b>":"Deneme antrenmanı için talep masası";
+    bilet();
+  }
+  function bransDegis(b){secim.has(b)?secim.delete(b):secim.add(b);bransRender()}
+
+  /* branş seçici önizleme */
+  const onImgs=qa(".onizle img");
+  function onizle(i){
+    onImgs.forEach((im,j)=>im.classList.toggle("on",j===i));
+    q("#on-ad").textContent=BRANS[i].toUpperCase().replace("PILATES","PILATES");
+    q("#on-yazi").textContent=ACIKLAMA[i];
+  }
+  satirlar.forEach(s=>{
+    const i=+s.dataset.i;
+    s.addEventListener("mouseenter",()=>onizle(i));
+    s.addEventListener("focus",()=>onizle(i));
+    s.addEventListener("click",()=>{onizle(i);bransDegis(s.dataset.b)});
+  });
+  cipler.forEach(c=>c.addEventListener("click",()=>bransDegis(c.dataset.b)));
+
+  /* vitrin okları */
+  const kaydir=y=>serit.scrollBy({left:y*Math.min(innerWidth*.7,520),behavior:az?"auto":"smooth"});
+  q("#geri").addEventListener("click",()=>kaydir(-1));
+  q("#ileri").addEventListener("click",()=>kaydir(1));
+  serit.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();kaydir(1)}if(e.key==="ArrowLeft"){e.preventDefault();kaydir(-1)}});
+
+  /* ---- talep masası ---- */
+  const hedefler=qa("#m-hedef .karo"), gunler=qa("#m-gun .gbtn"), saatKutu=q("#m-saat"), adIn=q("#m-ad"), gonder=q("#gonder");
+  hedefler.forEach(b=>b.addEventListener("click",()=>{
+    hedef=hedef===b.dataset.h?"":b.dataset.h;
+    hedefler.forEach(x=>x.setAttribute("aria-pressed",x.dataset.h===hedef));
+    bilet();
+  }));
+  const bugun=simdi().g; const bg=gunler.find(b=>+b.dataset.g===bugun); if(bg) bg.classList.add("bugun");
+  gunler.forEach(b=>b.addEventListener("click",()=>{
+    const g=+b.dataset.g; gun=gun===g?0:g; saat="";
+    gunler.forEach(x=>x.setAttribute("aria-pressed",+x.dataset.g===gun));
+    saatCiz(); bilet();
+  }));
+  function saatCiz(){
+    saatKutu.innerHTML="";
+    if(!gun){saatKutu.innerHTML='<p class="saatbos">Önce bir gün seçin.</p>';return}
+    const s=SAAT[gun];
+    for(let h=s[0];h<s[1];h++){
+      const b=document.createElement("button");
+      b.className="cip"; b.type="button"; b.textContent=f2(h); b.setAttribute("aria-pressed","false");
+      b.addEventListener("click",()=>{
+        saat=saat===f2(h)?"":f2(h);
+        qa(".cip",saatKutu).forEach(x=>x.setAttribute("aria-pressed",x.textContent===saat));
+        bilet();
+      });
+      saatKutu.appendChild(b);
+    }
+  }
+  adIn.addEventListener("input",bilet);
+  function yaz(id,v,bos){const e=q(id);e.textContent=v||"—";e.classList.toggle("bos",!v)}
+  function bilet(){
+    const ad=adIn.value.trim(), liste=BRANS.filter(b=>secim.has(b));
+    const zaman=gun?(GUN[gun]+(saat?" "+saat:"")):"";
+    yaz("#b-ad",ad); yaz("#b-brans",liste.join(", ")); yaz("#b-hedef",hedef); yaz("#b-zaman",zaman);
+    const dolu=[!!liste.length,!!hedef,!!gun,!!saat,!!ad];
+    const n=dolu.filter(Boolean).length;
+    qa("#b-ilerleme i").forEach((i,k)=>i.classList.toggle("d",dolu[k]));
+    q("#b-durum").textContent=n+" / 5 adım tamam"+(n===5?". Talebiniz hazır.":".");
+    const hazir=ad&&liste.length;
+    const duz=[
+      "Merhaba, The Best Gym Denizli için deneme antrenmanı talep etmek istiyorum.",
+      "Adım: "+(ad||"…"),
+      "Branş: "+(liste.length?liste.join(", "):"…"),
+      "Hedefim: "+(hedef||"…"),
+      "Uygun olduğum zaman: "+(zaman||"…"),
+      "Müsaitlik ve koşullar hakkında bilgi verir misiniz? Teşekkürler."
+    ].join("\n");
+    gonder.setAttribute("aria-disabled",hazir?"false":"true");
+    gonder.href=hazir?`https://wa.me/${TEL}?text=`+encodeURIComponent(duz):"#";
+    q("#b-ipucu").textContent=hazir?(n<5?"Eksik adımları boş bırakırsanız “…” olarak gider.":""):"Açmak için adınızı yazın ve en az bir branş seçin.";
+  }
+  gonder.addEventListener("click",e=>{if(gonder.getAttribute("aria-disabled")==="true")e.preventDefault()});
+  bransRender();
+
+  /* ---- manifesto: kelime kelime ---- */
+  const mp=q("#manifesto-yazi");
+  (function(){
+    const out=[];
+    mp.childNodes.forEach(n=>{
+      const v=n.nodeType===3?false:n.hasAttribute&&n.hasAttribute("data-vurgu");
+      const metin=n.textContent;
+      metin.split(/(\s+)/).forEach(t=>{
+        if(!t)return;
+        if(/^\s+$/.test(t)){out.push(document.createTextNode(" "));return}
+        const s=document.createElement("span"); s.className="k"+(v?" vv":""); s.textContent=t; out.push(s);
+      });
+    });
+    mp.textContent=""; out.forEach(o=>mp.appendChild(o));
+  })();
+  const kelimeler=qa(".k",mp);
+
+  /* ---- kaydırma motoru ---- */
+  const sahne=q("#sahne"), sahneImg=q(".sahne-ic>img"), sahneIc=q(".sahne-ic"), yazi=q(".sahne-yazi");
+  const gunEl=q("#gun"), bolumler=qa(".bolum"), kareImgs=qa(".kareler img"), ilerleDiv=qa(".ilerle i");
+  const ust=q("#ust"), yuzen=q("#yuzen"), talepEl=q("#talep");
+  let aktifBolum=0;
+  function ilerleme(el){const r=el.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))}
+  function ciz(){
+    const y=scrollY;
+    ust.classList.toggle("solid",y>innerHeight*.6);
+    // sahne
+    const p=ilerleme(sahne);
+    if(!az){
+      sahneIc.style.setProperty("--olcek",(1.06+p*.34).toFixed(3));
+      sahneIc.style.setProperty("--kay",(p*-3).toFixed(2)+"%");
+      yazi.style.setProperty("--yy",(-p*90).toFixed(1)+"px");
+      yazi.style.setProperty("--yo",clamp(1-p*1.5).toFixed(3));
+      sahneIc.style.setProperty("--ek",clamp((p-.7)/.3*.7).toFixed(3));
+    }else{sahneIc.style.setProperty("--olcek",1.08)}
+    // manifesto
+    const mr=mp.getBoundingClientRect();
+    const mpg=clamp((innerHeight*.88-mr.top)/(mr.height+innerHeight*.3));
+    const nk=Math.floor(mpg*(kelimeler.length+1));
+    kelimeler.forEach((k,i)=>k.classList.toggle("yan",i<nk));
+    // bir antrenman günü
+    const gp=ilerleme(gunEl);
+    const idx=Math.min(3,Math.floor(gp*4));
+    if(idx!==aktifBolum){
+      aktifBolum=idx;
+      bolumler.forEach((b,i)=>b.classList.toggle("on",i===idx));
+      kareImgs.forEach((im,i)=>im.classList.toggle("on",i===idx));
+    }
+    ilerleDiv.forEach((d,i)=>d.style.setProperty("--d",clamp(gp*4-i).toFixed(3)));
+    // yüzen çubuk: ilk ekrandan sonra, talep masasında gizli
+    const tr=talepEl.getBoundingClientRect();
+    const masadayiz=tr.top<innerHeight*.5&&tr.bottom>innerHeight*.3;
+    const dipte=document.documentElement.scrollHeight-y-innerHeight<260;
+    yuzen.classList.toggle("goster",y>innerHeight*1.1&&!masadayiz&&!dipte);
+  }
+  let bekle=false;
+  addEventListener("scroll",()=>{if(!bekle){bekle=true;requestAnimationFrame(()=>{bekle=false;ciz()})}},{passive:true});
+  addEventListener("resize",ciz);
+  ciz();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez)
+- fit-bench.webp: Marius Aholou — https://www.pexels.com/photo/a-man-using-barbell-11433060/
+- fit-sira.webp: Wolrider YURTSEVEN — https://www.pexels.com/photo/close-up-of-rows-of-dumbbells-at-the-gym-19801353/
+- fit-plaka.webp: Victor Freitas — https://www.pexels.com/photo/black-barbel-2261481/
+- fit-salon.webp: foad shariyati — https://www.pexels.com/photo/modern-well-equipped-gym-with-diverse-fitness-equipment-29526371/
+- cf-halat.webp: Vitaly Gariev — https://www.pexels.com/photo/dynamic-gym-training-with-battle-ropes-39219681/
+- cf-tirmanis.webp: Leon Mart — https://www.pexels.com/photo/man-climbing-on-rope-2468339/
+- cf-kutu.webp: Leon Mart — https://www.pexels.com/photo/photo-of-man-jumping-on-box-1552248/
+- cf-yerden.webp: Amar  Preciado — https://www.pexels.com/photo/barbells-inside-a-gym-9958669/
+- kick-torba.webp: Ketut Subiyanto — https://www.pexels.com/photo/a-man-strongly-kicking-a-punching-bag-4804092/
+- kick-cift.webp: Annushka  Ahuja — https://www.pexels.com/photo/woman-training-with-personal-coach-on-boxing-ring-7992151/
+- kick-pati.webp: Duren Williams — https://www.pexels.com/photo/a-boxer-kicking-a-trainer-in-a-ring-11391876/
+- kick-isik.webp: Daniel Lee — https://www.pexels.com/photo/dynamic-kickboxing-workout-in-a-gym-34990410/
+- kick-egitmen.webp: Annushka  Ahuja — https://www.pexels.com/photo/latin-american-trainer-helping-female-kickboxer-7991634/
+- boks-eldiven.webp: Web Daytona — https://www.pexels.com/photo/woman-in-green-tank-top-wearing-boxing-gloves-5128198/
+- boks-ring.webp: Ron Lach — https://www.pexels.com/photo/grayscale-photo-of-a-male-trainer-in-a-boxing-ring-8745178/
+- boks-ip.webp: KoolShooters — https://www.pexels.com/photo/a-pair-of-white-and-gold-boxing-gloves-in-a-boxing-ring-9944239/
+- boks-sari.webp: Annushka  Ahuja — https://www.pexels.com/photo/serious-young-female-athlete-hitting-punching-bag-in-sports-club-7991665/
+- pil-loft.webp: Karl Solano — https://www.pexels.com/photo/an-empty-gym-equipments-11036670/
+- pil-koyu.webp: khezez  | خزاز — https://www.pexels.com/photo/woman-practicing-pilates-on-reformer-machine-35553893/
+- pil-aksiyon.webp: Ahmet Kurt — https://www.pexels.com/photo/woman-practicing-reformer-pilates-indoors-33360222/
+- isinma.webp: Pavel Danilyuk — https://www.pexels.com/photo/men-working-out-in-the-gym-6295720/
+- soguma.webp: Pavel Danilyuk — https://www.pexels.com/photo/a-group-of-people-sitting-on-mats-stretching-6339398/
+- kick-isik-xl.webp: kick-isik.webp ile aynı fotoğraf (yüksek çözünürlük)

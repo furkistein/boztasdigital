@@ -1,0 +1,19 @@
+{
+  "ad": "The Best Gym Denizli",
+  "renk": "#E8500F",
+  "giris": "Cinkaya Bulvarı'ndaki The Best Gym için üç seviye: fitness, kick boks, pilates, crossfit ve boksu tek sayfada anlatan, arama + WhatsApp + yol tarifi düğmeli sayfa; salonun \"şu an açık mı?\" durumunu Türkiye saatine göre gösteren ve deneme antrenmanı talebini WhatsApp'a hazır yazan sayfa; ve tam ekran sinematik, \"bir antrenman günü\" kaydırma hikâyeli, branş seçince sayfayı vurgulayan sayfa. Fotoğraflar gerçek fotoğrafçı çekimleridir (temsilî); ders programı ve üyelik bilgisi sizinle birlikte eklenir.",
+  "ozellik": {
+    "standart": [
+      "Beş branş kartı (fitness, kick boks, pilates, crossfit, boks), hafta içi ve Cumartesi saatleri, arama, WhatsApp ve Google Haritalar yol tarifi düğmeleri"
+    ],
+    "profesyonel": [
+      "\"Şu an açık mı?\" işareti (Türkiye saatine göre) ve gün çubuğu; Pazar için \"bilgi için arayın\"",
+      "Branş sekmeleri, \"ders saatleri için salona sorun\" bölümü ve Deneme Antrenmanı Talebi: ad, branş, hedef, gün ve saat seçince hazır WhatsApp mesajı",
+      "Galeri + büyütme kutusu ve sık sorulan sorular"
+    ],
+    "premium": [
+      "Tam ekran sinematik fotoğraf kahramanı (kaydırınca yavaşça yaklaşır) ve \"bir antrenman günü\" kaydırma hikâyesi: ısınma, ağırlık, ring/mat, soğuma",
+      "Branş seçici: seçtiğiniz branş sayfada vurgulanır ve talep masasına geçer; hedef, gün ve saat seçince hazır çıkan tam talep masası, yatay vitrin"
+    ]
+  }
+}

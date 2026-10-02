@@ -1,0 +1,37 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez; yine de kayıt)
+Fotoğraflar temsilîdir; işletmenin kendi çalışmaları DEĞİLDİR, Yasin & Merve Aysan Fotoğrafçılık'a ait değildir. Fotoğraflardaki kişiler işletmenin müşterisi değildir; kendi çalışması gibi sunulmaz.
+- cift-kapi.webp (1800x1800): Yusuf Rendecioglu art — https://www.pexels.com/photo/bride-and-bridegroom-standing-together-19950472/
+- cift-palmiye.webp (1600x2400): Oğuzhan Özdemir — https://www.pexels.com/photo/elegant-outdoor-wedding-portrait-of-a-happy-couple-37380420/
+- cift-rustik.webp (1600x2400): Mahmoud Elbakstani — https://www.pexels.com/photo/elegant-outdoor-wedding-portrait-at-sunset-31629944/
+- cift-sarilma.webp (1600x2400): Enes  Cihanger — https://www.pexels.com/photo/smiling-groom-embracing-his-bride-19681533/
+- cift-ucgen.webp (1599x2400): ömer aliko — https://www.pexels.com/photo/a-bride-and-groom-pose-in-front-of-a-wedding-chapel-27552558/
+- cift-isik.webp (1600x2400): Jonathan Borba — https://www.pexels.com/photo/happy-newlywed-couple-13617315/
+- cift-buket-opucuk.webp (1800x1200): Jonathan Borba — https://www.pexels.com/photo/happy-newlywed-ethnic-couple-embracing-in-wedding-hall-6525305/
+- cift-pampas.webp (1601x2400): Dilara Doğar — https://www.pexels.com/photo/elegant-outdoor-wedding-couple-portrait-outdoors-34489065/
+- siyah-beyaz-duvak.webp (1350x2400): UMUT   🆁🅰🆆 — https://www.pexels.com/photo/elegant-wedding-couple-first-dance-in-black-and-white-39699945/
+- cift-sutun.webp (1800x1200): Samet Tecimen — https://www.pexels.com/photo/elegant-wedding-portrait-in-antalya-turkiye-34206662/
+- nisan-yuzuk-el.webp (1600x2400): Dulce Panebra — https://www.pexels.com/photo/engagement-ring-on-couple-holding-hands-39919260/
+- nisan-el-ele.webp (1800x1200): Jasmine Carter — https://www.pexels.com/photo/man-in-black-long-sleeved-shirt-and-woman-in-black-dress-888899/
+- nisan-koyu-yesil.webp (1600x2400): Gülşah Aydoğan — https://www.pexels.com/photo/a-hand-wearing-a-diamond-ring-14424032/
+- nisan-el-opucuk.webp (1600x2400): Vitor Diniz — https://www.pexels.com/photo/romantic-couple-holding-hands-with-engagement-ring-30652177/
+- yuzuk-eller-duvak.webp (1800x1201): Western Sydney Wedding Photo and Video — https://www.pexels.com/photo/a-person-with-pink-nails-wearing-diamond-wedding-ring-13456843/
+- yuzuk-kutu-dantel.webp (1600x2400): Taylor Thompson — https://www.pexels.com/photo/elegant-engagement-and-wedding-rings-in-box-28714161/
+- dis-alin-alina.webp (1600x2400): Владимир  Высоцкий — https://www.pexels.com/photo/bride-and-groom-hugging-on-wedding-celebration-18004224/
+- dis-salincak.webp (1600x2400): Yulia Goncharuk — https://www.pexels.com/photo/photoshoot-of-a-bride-and-groom-kissing-10110637/
+- dis-merdiven.webp (1600x2400): Alexander Mass — https://www.pexels.com/photo/elegant-bride-and-groom-in-lush-garden-setting-33815172/
+- dis-kutuk.webp (1800x1200): Ünal  Aslan — https://www.pexels.com/photo/groom-in-a-tuxedo-holding-the-hand-of-the-bride-sitting-on-a-fallen-tree-in-the-forest-18741316/
+- dis-sazlik.webp (1600x2400): Kalistro — https://www.pexels.com/photo/romantic-outdoor-couple-photoshoot-with-flowers-31107093/
+- dis-gunisigi.webp (1600x2400): Gustavo Fring — https://www.pexels.com/photo/portrait-of-a-couple-embracing-each-other-5163532/
+- hazirlik-elbise.webp (1600x2400): Masood Aslami — https://www.pexels.com/photo/bride-admiring-her-wedding-dress-by-window-29624006/
+- hazirlik-korse.webp (1600x2400): Jonathan Borba — https://www.pexels.com/photo/elegant-bridal-dress-being-fastened-28919269/
+- hazirlik-sabah.webp (1601x2400): Voltaccess — https://www.pexels.com/photo/bride-text-on-woman-shirt-back-7556730/
+- hazirlik-ayna.webp (1800x1200): The Visionary Vows — https://www.pexels.com/photo/bride-preparing-for-wedding-day-in-hotel-room-33661438/
+- toren-gecit.webp (1800x1200): Qodak. stx — https://www.pexels.com/photo/elegant-outdoor-wedding-ceremony-setup-with-floral-arch-35629338/
+- toren-kilise.webp (1698x2400): 🇻🇳🇻🇳Nguyễn Tiến Thịnh 🇻🇳🇻🇳 — https://www.pexels.com/photo/beautiful-church-wedding-ceremony-with-flowers-31496318/
+- buket-beyaz.webp (1600x2400): Grish Petrosyan — https://www.pexels.com/photo/bouquet-in-bride-hands-16572354/
+- toren-yuzuk.webp (1600x2400): Şule Çabuk — https://www.pexels.com/photo/elegant-wedding-ceremony-ring-exchange-29600954/
+- gece-duvak.webp (1600x2400): Alexander Mass — https://www.pexels.com/photo/romantic-nighttime-wedding-couple-embrace-30273656/
+- gece-fener.webp (1800x1215): Jonathan Borba — https://www.pexels.com/photo/loving-ethnic-newlyweds-hugging-in-dark-studio-6525306/
+- gece-havai.webp (1800x1200): Yulia Goncharuk — https://www.pexels.com/photo/a-bride-and-groom-dancing-together-10110640/
+- gece-ampul.webp (1602x2400): Chris F — https://www.pexels.com/photo/hanging-light-bulbs-10149105/
+- gece-isik-cift.webp (1600x2400): Jonathan Borba — https://www.pexels.com/photo/photo-of-bride-and-groom-12031350/

@@ -1,0 +1,10 @@
+{
+  "ad": "Yasin & Merve Aysan Fotoğrafçılık",
+  "renk": "#8F6342",
+  "giris": "Merkezefendi, Denizli'deki düğün ve nişan fotoğrafçısı için üç seviye: çekimin nasıl işlediğini anlatan tek sayfa ve WhatsApp, Instagram düğmeleri; kategorili portfolyo galerisi ile çiftin adını, tarihini ve mekân türünü seçince hazır gelen \"tarihiniz müsait mi?\" mesajı; sinematik fotoğraf kahramanı, \"bir düğün günü\" hikâyesi, albüm gibi sayfa çeviren galeri ve takvimli tarih sorma masası. Portfolyoyu bugün yalnız Instagram'dan görebilen çift, tarihini doğrudan sorabilir. Fotoğraflar temsilîdir, işletmenin kendi çalışmaları değildir.",
+  "ozellik": {
+    "standart": ["Çekim nasıl işliyor (görüşme, çekim, teslim) ve paketler başlığı; kapsam ve fiyat görüşmede, sayfada yok", "WhatsApp ve Instagram düğmeleri, telefonda alta sabit yazın düğmesi"],
+    "profesyonel": ["Düğün / Nişan / Dış çekim sekmeli portfolyo galerisi ve büyütme kutusu (ok tuşlarıyla gezilir)", "\"Tarihiniz müsait mi?\" kutusu: çiftin adı, düğün tarihi, mekân türü ve çekim türü seçilince WhatsApp'a hazır mesaj; sık sorulan sorular tek dokunuşla WhatsApp'tan sorulur"],
+    "premium": ["Tam ekran sinematik fotoğraf kahramanı ve \"bir düğün günü\" hikâyesi: hazırlık, tören, dış çekim, gece akışı kaydırmaya bağlı bölümler", "Albüm gibi sayfa çeviren yatay galeri ve ay seçicili takvim ızgarasıyla tam tarih sorma masası: çift boş tarihlerini seçer, talep mesajı hazırlanır"]
+  }
+}
