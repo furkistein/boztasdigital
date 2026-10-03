@@ -1,0 +1,26 @@
+{
+  "ad": "u'two coffee & sandwich",
+  "renk": "#C62F27",
+  "giris": "Çamlık'taki focaccia ve sandviç kafeniz için üç seviyede örnek sayfa. Aracı platformların yanına, siparişin ve sorunun doğrudan WhatsApp'a geldiği kendi sayfanız.",
+  "ozellik": {
+    "standart": [
+      "Tek sayfa: çalışma saatleri (pazartesi kapalı), adres, menü başlıkları",
+      "WhatsApp, telefon ve yol tarifi düğmeleri",
+      "Telefondan rahat okunur, hızlı açılır"
+    ],
+    "profesyonel": [
+      "Standart'taki her şey",
+      "Türkiye saatine göre \"şu an açık mı\" göstergesi ve haftalık saat çubuğu",
+      "Menü sekmeleri ve fotoğraf galerisi",
+      "Kalem, adet, gün ve saat seçilen WhatsApp sipariş notu (fiyatsız)",
+      "Haritalı iletişim bölümü ve tek dokunuşla WhatsApp soruları"
+    ],
+    "premium": [
+      "Profesyonel'deki her şey",
+      "Elle yazılmış logo ile sinematik açılış ve tam ekran fotoğraf sahnesi",
+      "Kaydırdıkça katman katman kurulan sandviç çizimi",
+      "Yatay fotoğraf şeridi ve görselli menü seçici",
+      "Sipariş fişi: toplu sipariş seçeneği ve hızlı soru düğmeleri"
+    ]
+  }
+}

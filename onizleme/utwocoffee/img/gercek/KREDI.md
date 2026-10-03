@@ -1,0 +1,21 @@
+# Görsel kaynakları (Pexels lisansı: ticari kullanım serbest, atıf gerekmez). Fotoğraflar temsilîdir; u'two coffee & sandwich'in kendi fotoğrafı değildir.
+- sandvic-tabak.webp: Martin.que — https://www.pexels.com/photo/veg-sanwich-14410236/
+- sandvic-zeytin.webp: Esra Afşar — https://www.pexels.com/photo/delicious-focaccia-sandwich-with-fresh-vegetables-34604553/
+- focaccia-masa.webp: Esra Afşar — https://www.pexels.com/photo/gourmet-focaccia-sandwich-with-coffee-and-book-indoors-34604554/
+- focaccia-kesim.webp: David Disponett — https://www.pexels.com/photo/person-slicing-sandwich-bread-2160296/
+- sandvic-kahve.webp: Mel Audelo — https://www.pexels.com/photo/gourmet-burger-with-prosciutto-and-brie-cheese-26936699/
+- focaccia-krema.webp: Valeria Boltneva — https://www.pexels.com/photo/close-up-of-freshly-baked-focaccia-with-cream-29653173/
+- focaccia-domates.webp: cole yap — https://www.pexels.com/photo/fresh-rosemary-and-tomato-focaccia-bread-33657315/
+- focaccia-doku.webp: Lucie Liz — https://www.pexels.com/photo/delicious-focaccia-on-paper-18453903/
+- focaccia-somun.webp: Lucie Liz — https://www.pexels.com/photo/close-up-of-bread-18453900/
+- sandvic-latte.webp: Kunal Lakhotia — https://www.pexels.com/photo/delicious-grilled-sandwiches-and-cappuccino-on-wooden-table-35054704/
+- sandvic-ust.webp: Olena Bohovyk — https://www.pexels.com/photo/overhead-shot-of-cups-of-coffee-and-plates-with-sandwiches-12900914/
+- burger-yan.webp: Engin Akyurt — https://www.pexels.com/photo/burger-sliced-in-half-5374420/
+- burger-kule.webp: mehmetography — https://www.pexels.com/photo/delicious-juicy-cheeseburgers-with-lettuce-and-tomato-33502810/
+- kahvalti-masa.webp: Burst — https://www.pexels.com/photo/bread-delicious-dish-flowers-374636/
+- kahvalti-beyaz.webp: pedro furtado — https://www.pexels.com/photo/elegant-breakfast-setting-with-fresh-juice-33674448/
+- latte.webp: Vladimir Srajber — https://www.pexels.com/photo/cup-of-coffee-19252265/
+- latte-ust.webp: Ms Özkurt — https://www.pexels.com/photo/aesthetic-flat-lay-of-coffee-latte-art-35549066/
+- mekan.webp: Arda Kaykısız — https://www.pexels.com/photo/plants-near-chairs-in-restaurant-18721982/
+- sandvic-domates.webp: Karolina Grabowska www.kaboompics.com — https://www.pexels.com/photo/sandwiches-with-cheese-lettuce-and-tomato-on-a-plate-6467/
+- sandvic-eller.webp: Alex Green — https://www.pexels.com/photo/crop-woman-cooking-healthy-sandwich-on-wooden-board-5693050/

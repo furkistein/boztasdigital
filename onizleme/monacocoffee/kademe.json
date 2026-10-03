@@ -1,0 +1,20 @@
+{
+  "ad": "Monaco Coffee & Bakery",
+  "renk": "#B7683A",
+  "giris": "Çamlık'taki kahve ve fırın mekânınız için: günlük 08.00-00.00 saatiniz, Instagram'dan yazdıran düğmeler ve etkinlik talebi. Üç seviye, özellik ve içerik bakımından ayrılır; fotoğraflar gerçek fotoğrafçı çekimidir (temsilî).",
+  "ozellik": {
+    "standart": [
+      "Tek sayfa: saat, adres, Event / Drinks / Mekân başlıkları, Instagram'dan yaz ve haritada aç"
+    ],
+    "profesyonel": [
+      "Şu an açık mı göstergesi (Türkiye saati) ve gün çubuğu",
+      "Etkinlik talep formu: tarih, saat, kişi sayısı; hazır Instagram mesajı panoya kopyalanır",
+      "İçecek kategorileri, galeri, harita, Google yorum yönlendirmesi"
+    ],
+    "premium": [
+      "Sinematik açılış ve sabahtan geceye kaydırmayla akan gün hikâyesi (ışık ve renk değişir)",
+      "Etkinlik talep masası: tür, tarih, saat, kişi, ek istek; canlı mesaj fişi",
+      "Bölüm hikâyeleri, fotoğraf şeridi, Google yorum yönlendirmesi"
+    ]
+  }
+}

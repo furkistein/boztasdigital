@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="../../../ortak/favicon.svg" type="image/svg+xml">
+<title>Monaco Coffee &amp; Bakery · Çamlık, Pamukkale · Profesyonel örnek</title>
+<meta name="description" content="Monaco Coffee &amp; Bakery Denizli: şu an açık mı göstergesi, etkinlik ve özel gün talep formu (hazır Instagram mesajı), içecek kategorileri, galeri ve harita. Boztaş Digital örnek önizlemesi (Profesyonel seviye).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#121110">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--kara:#121110;--kara2:#1d1b19;--krem:#F3EBDD;--kagit:#FAF5EA;--bakir:#B7683A;--bakir-a:#E0985F;--soluk:#6d665b;--soluk-k:#b3a999;--cizgi:rgba(18,17,16,.14);--cizgi-k:rgba(243,235,221,.16);--acik:#4CC58A;--kapali:#E5614F}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--kagit);color:var(--kara);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button,select,input,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.onay-serit{background:#C62828;color:#fff;text-align:center;font:600 13px/1.4 "Bricolage Grotesque",system-ui,sans-serif;padding:9px 14px}
+.sar{width:min(1160px,100% - 56px);margin-inline:auto}
+.ser{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:400}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:999px;padding:12px 26px;font-weight:600;font-size:15.5px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
+.btn.dolu{background:var(--bakir);color:#fff}
+.btn.dolu:hover{background:#9c5429}
+.btn.kara{background:var(--kara);color:var(--krem)}
+.btn.kara:hover{background:#000}
+.btn.hat{border:1.5px solid currentColor}
+.btn.hat:hover{background:rgba(127,127,127,.14)}
+.ufak{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--bakir)}
+/* üst çubuk */
+.ust{position:sticky;top:0;z-index:40;background:var(--kara);color:var(--krem);transition:transform .35s}
+.ust.gizli{transform:translateY(-110%)}
+.ust .sar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.marka{font-weight:800;font-size:19px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:10px;min-height:48px}
+.marka i{font-style:normal;font-weight:600;font-size:12px;letter-spacing:.2em;color:var(--soluk-k)}
+.ust nav{display:flex;gap:4px;font-size:15px}
+.ust nav a{text-decoration:none;padding:12px 14px;color:var(--soluk-k)}
+.ust nav a:hover{color:var(--krem)}
+.hap{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--cizgi-k);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600;white-space:nowrap}
+.nokta{width:9px;height:9px;border-radius:50%;background:var(--soluk-k)}
+[data-d=acik] .nokta{background:var(--acik);animation:nab 2.2s infinite}
+[data-d=kapali] .nokta{background:var(--kapali)}
+@keyframes nab{0%{box-shadow:0 0 0 0 rgba(76,197,138,.55)}70%{box-shadow:0 0 0 9px rgba(76,197,138,0)}100%{box-shadow:0 0 0 0 rgba(76,197,138,0)}}
+/* kahraman */
+.kahraman{position:relative;background:var(--kara);color:var(--krem);overflow:hidden;min-height:calc(88vh - 64px);display:flex;align-items:flex-end}
+.kahraman>img{position:absolute;inset:-4% 0;width:100%;height:108%;object-fit:cover;object-position:50% 45%;transform:translateY(var(--ky,0px))}
+.kahraman::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,12,10,.94) 0%,rgba(14,12,10,.55) 38%,rgba(14,12,10,.12) 70%),linear-gradient(90deg,rgba(14,12,10,.55),rgba(14,12,10,0) 60%)}
+.kahraman .sar{position:relative;z-index:2;padding-bottom:64px;display:grid;grid-template-columns:7fr 4fr;gap:48px;align-items:end;width:min(1160px,100% - 56px)}
+h1{font-weight:800;font-size:clamp(46px,7.2vw,104px);line-height:.95;letter-spacing:-.025em}
+h1 .ser{color:var(--bakir-a);letter-spacing:-.01em;font-weight:400}
+.durum-kutu{border:1px solid var(--cizgi-k);padding:22px 24px;background:rgba(18,17,16,.82)}
+.durum-kutu b{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700}
+.durum-kutu p{color:var(--soluk-k);font-size:15px;margin-top:6px}
+.durum-kutu .btn{margin-top:18px;width:100%}
+.not-foto{position:absolute;right:18px;top:14px;z-index:2;font-size:12px;opacity:.8}
+.k-acilis>*{animation:yuksel 1s cubic-bezier(.2,.7,.2,1) both}
+.k-acilis>*:nth-child(2){animation-delay:.12s}.k-acilis>*:nth-child(3){animation-delay:.24s}
+@keyframes yuksel{from{opacity:0;transform:translateY(20px)}}
+section{padding:110px 0}
+h2{font-weight:800;font-size:clamp(34px,4.6vw,62px);line-height:1.02;letter-spacing:-.02em;margin:10px 0 16px}
+h2 .ser{color:var(--bakir)}
+.acik-yazi{color:var(--soluk);max-width:56ch}
+/* saat çubuğu */
+.saat-bant{background:var(--kara2);color:var(--krem);padding:56px 0}
+.saat-bant .sar{display:grid;grid-template-columns:4fr 8fr;gap:56px;align-items:center}
+.saat-bant h2{font-size:clamp(30px,3.4vw,44px);margin:6px 0 8px}
+.cizelge{position:relative;height:64px;border:1px solid var(--cizgi-k);background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100%/24 - 1px),rgba(243,235,221,.09) calc(100%/24 - 1px),rgba(243,235,221,.09) calc(100%/24))}
+.cizelge .acik-aralik{position:absolute;top:0;bottom:0;left:calc(8/24*100%);right:0;background:linear-gradient(90deg,#8d5129,var(--bakir))}
+.cizelge .simdi{position:absolute;top:-10px;bottom:-10px;width:2px;background:var(--krem);left:0}
+.cizelge .simdi::after{content:"şimdi";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--krem)}
+.cizelge-et{display:flex;justify-content:space-between;font-size:12px;color:var(--soluk-k);margin-top:10px;letter-spacing:.06em}
+.cizelge-not{font-size:14px;color:var(--soluk-k);margin-top:14px}
+/* içecekler */
+.sekmeler{display:flex;gap:6px;flex-wrap:wrap;margin-top:34px;border-bottom:1px solid var(--cizgi)}
+.sekme{min-height:48px;padding:10px 20px;font-weight:600;color:var(--soluk);border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .25s,border-color .25s}
+.sekme[aria-selected=true]{color:var(--kara);border-color:var(--bakir)}
+.panel{display:grid;grid-template-columns:5fr 6fr;gap:56px;align-items:center;margin-top:44px}
+.panel[hidden]{display:none}
+.panel img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.panel h3{font-size:32px;font-weight:800;letter-spacing:-.015em;line-height:1.1}
+.panel p{color:var(--soluk);margin-top:12px;max-width:46ch}
+.panel .ornek{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.panel .ornek span{border:1px dashed var(--cizgi);padding:8px 14px;font-size:14px;color:var(--soluk)}
+/* talep */
+.talep{background:var(--kara);color:var(--krem)}
+.talep .acik-yazi{color:var(--soluk-k)}
+.talep h2 .ser{color:var(--bakir-a)}
+.talep .ufak{color:var(--bakir-a)}
+.talep-izgara{display:grid;grid-template-columns:1fr 440px;gap:64px;margin-top:48px;align-items:start}
+.adim{padding:22px 0;border-top:1px solid var(--cizgi-k)}
+.adim:first-child{border-top:0;padding-top:0}
+.adim legend,.adim>label,.adim>h3{display:block;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--soluk-k);margin-bottom:12px}
+.adim fieldset{border:0}
+.sec{display:flex;gap:8px;flex-wrap:wrap}
+.sec label{position:relative}
+.sec input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.sec span{display:inline-flex;align-items:center;min-height:48px;border:1px solid var(--cizgi-k);border-radius:999px;padding:8px 20px;font-size:15px;cursor:pointer;transition:background .25s,color .25s}
+.sec input:checked+span{background:var(--krem);color:var(--kara);border-color:var(--krem)}
+.sec input:focus-visible+span{outline:2px solid var(--bakir-a);outline-offset:2px}
+.alanlar{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.alan label{display:block;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--soluk-k);margin-bottom:10px}
+.alan input,.alan select,.talep textarea{width:100%;min-height:48px;background:transparent;border:1px solid var(--cizgi-k);border-radius:6px;padding:10px 14px;color:var(--krem);color-scheme:dark}
+.alan select option{background:#1d1b19}
+.talep textarea{min-height:92px;resize:vertical}
+.adetli{display:flex;align-items:center;gap:6px;border:1px solid var(--cizgi-k);border-radius:6px;width:max-content}
+.adetli button{width:48px;height:48px;font-size:22px;color:var(--krem)}
+.adetli button:hover{background:rgba(243,235,221,.1)}
+.adetli output{min-width:54px;text-align:center;font-size:20px;font-weight:700}
+.mesaj{position:sticky;top:96px;background:var(--krem);color:var(--kara);padding:30px 28px}
+.mesaj h3{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--bakir);margin-bottom:12px}
+.mesaj pre{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-word;border-block:1px dashed rgba(18,17,16,.3);padding:16px 0;min-height:200px}
+.mesaj .btn{width:100%;margin-top:14px}
+.mesaj .btn.hat{border-color:rgba(18,17,16,.3)}
+.mesaj small{display:block;color:var(--soluk);font-size:13px;margin-top:12px}
+/* öğrenci + bant */
+.bant{position:relative;height:72vh;min-height:420px;overflow:hidden;background:var(--kara)}
+.bant img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;transform:translateY(var(--by,0px))}
+.bant::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,12,10,.78),rgba(14,12,10,.08) 55%)}
+.bant p{position:absolute;left:0;right:0;bottom:48px;z-index:2;color:var(--krem);font-size:clamp(28px,3.8vw,52px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.bant p .ser{color:var(--bakir-a)}
+.iki{display:grid;grid-template-columns:5fr 6fr;gap:72px;align-items:center}
+.iki img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.iki ul{list-style:none;margin-top:24px;border-top:1px solid var(--cizgi)}
+.iki li{padding:14px 0;border-bottom:1px solid var(--cizgi);display:flex;justify-content:space-between;gap:16px}
+.iki li span{color:var(--soluk);font-size:15px;text-align:right}
+/* galeri */
+.galeri{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.galeri button{position:relative;display:block;overflow:hidden;aspect-ratio:1;background:var(--kara);padding:0}
+.galeri button:nth-child(1),.galeri button:nth-child(6){grid-column:span 2;aspect-ratio:2/1}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.galeri button:hover img{transform:scale(1.05)}
+.galeri button:focus-visible{outline:3px solid var(--bakir);outline-offset:2px}
+.kutu{position:fixed;inset:0;z-index:100;background:rgba(10,9,8,.95);display:none;align-items:center;justify-content:center;padding:20px}
+.kutu.acik{display:flex}
+.kutu img{max-height:84vh;width:auto;max-width:100%;object-fit:contain}
+.kutu .kapat,.kutu .on,.kutu .sn{position:absolute;color:#fff;width:52px;height:52px;font-size:28px;border:1px solid rgba(255,255,255,.3);border-radius:50%}
+.kutu .kapat{top:16px;right:16px}.kutu .on{left:12px;top:50%}.kutu .sn{right:12px;top:50%}
+.kutu .alt{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#bbb;font-size:13px}
+/* konum */
+.konum{display:grid;grid-template-columns:7fr 5fr;gap:56px;margin-top:44px;align-items:start}
+.konum iframe{width:100%;aspect-ratio:16/11;border:0;background:#e9e1d2}
+.konum dl{display:grid;gap:18px}
+.konum dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--bakir);font-weight:600}
+.konum dd{font-size:21px;line-height:1.35}
+.konum .dugmeler{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.yorum{background:var(--krem);text-align:center}
+.yorum .acik-yazi{margin:0 auto}
+.yorum .dugmeler{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+footer{background:#0b0a09;color:#b7ae9f;padding:36px 0 120px;font-size:14px}
+footer .sar{display:grid;gap:14px}
+.ornek-not{border:1px dashed rgba(224,152,95,.6);border-radius:10px;padding:12px 14px;color:var(--krem)}
+.ornek-not a{color:var(--bakir-a);font-weight:700}
+.yuzen{position:fixed;left:14px;right:14px;bottom:14px;z-index:30;display:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .4s,transform .4s}
+.yuzen.goster{opacity:1;pointer-events:auto;transform:none}
+.yuzen .btn{width:100%;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+@media (max-width:980px){
+  .ust nav{display:none}
+  .kahraman .sar,.saat-bant .sar,.talep-izgara,.konum,.iki,.panel{grid-template-columns:1fr;gap:36px}
+  .mesaj{position:static}
+  .galeri{grid-template-columns:repeat(2,1fr)}
+  .galeri button:nth-child(1),.galeri button:nth-child(6){grid-column:span 2}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .sar,.kahraman .sar{width:calc(100% - 36px)}
+  .marka i{display:none}
+  .hap{padding:6px 12px;font-size:13px}
+  .kahraman{min-height:90vh}
+  .kahraman .sar{padding-bottom:40px}
+  .kahraman::after{background:linear-gradient(0deg,rgba(14,12,10,.95) 0%,rgba(14,12,10,.6) 55%,rgba(14,12,10,.2) 100%)}
+  .not-foto{top:auto;bottom:auto;right:auto;left:18px;top:14px}
+  section{padding:72px 0}
+  .alanlar{grid-template-columns:1fr}
+  .bant{height:60vh}
+  .iki{gap:36px}
+  .sekme{padding:10px 14px;font-size:15px}
+  .yuzen{display:block}
+}
+@media (prefers-reduced-motion:reduce){.k-acilis>*{animation:none}.kahraman>img,.bant img{transform:none!important}.nokta{animation:none!important}}
+</style>
+<link rel="stylesheet" href="../../_kademe/kademe.css">
+<script id="bd-sayac">(function(){try{var L=localStorage;if(/[?&]ben=1/.test(location.search))L.setItem("bd_ben","1");if(location.hostname!=="furkistein.github.io"||L.getItem("bd_ben"))return;var a="bd_s_monacocoffee-profesyonel",t=+L.getItem(a),n=Date.now();if(t&&n-t<432e5)return;L.setItem(a,n);fetch("https://abacus.jasoncameron.dev/hit/boztasdigital/monacocoffee-profesyonel",{mode:"no-cors",keepalive:true}).catch(function(){})}catch(e){}})()</script>
+</head>
+<body data-kademe="profesyonel" data-isletme="Monaco Coffee &amp; Bakery">
+<div class="onay-serit" role="note">Örnek önizleme: Boztaş Digital hazırladı, işletmenin onayı yoktur.</div>
+
+<header class="ust" id="ust">
+  <div class="sar">
+    <a class="marka" href="#">MONACO<i>COFFEE &amp; BAKERY</i></a>
+    <nav aria-label="Bölümler"><a href="#icecek">İçecekler</a><a href="#talep">Etkinlik talebi</a><a href="#galeri">Galeri</a><a href="#konum">Konum</a></nav>
+    <span class="hap" data-durum-hap data-d="bilgi"><span class="nokta"></span><span data-hap-yazi>Saat kontrol ediliyor</span></span>
+  </div>
+</header>
+
+<main>
+  <div class="kahraman" id="kahraman">
+    <img src="../img/gercek/gece-bitki.webp" srcset="../img/gercek/gece-bitki-900.webp 675w, ../img/gercek/gece-bitki.webp 1350w" sizes="100vw" alt="Akşam ışığında, bitkilerin yanında sohbet eden iki kişi (temsilî fotoğraf)" width="1350" height="1800" fetchpriority="high">
+    <span class="not-foto">Fotoğraf temsilîdir</span>
+    <div class="sar">
+      <div class="k-acilis">
+        <span class="ufak" style="color:var(--bakir-a)">Çamlık · Pamukkale · Denizli</span>
+        <h1 style="margin-top:14px">Kahvenin ve fırının <span class="ser">gece yarısına</span> kadar adresi.</h1>
+      </div>
+      <div class="durum-kutu k-acilis" data-durum data-d="bilgi" aria-live="polite">
+        <b><span class="nokta" style="width:11px;height:11px"></span><span data-durum-baslik>Saat kontrol ediliyor</span></b>
+        <p data-durum-alt>Günlük 08.00-00.00 (Instagram profilindeki bilgi).</p>
+        <a class="btn dolu" href="#talep">Etkinlik talebi yaz</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="saat-bant">
+    <div class="sar">
+      <div>
+        <span class="ufak" style="color:var(--bakir-a)">Çalışma saati</span>
+        <h2 data-belir>Günlük <span class="ser">08.00 - 00.00</span></h2>
+        <p class="cizelge-not" style="margin-top:0">Türkiye saatine göre canlı. Bayram ve özel günlerde değişebilir; emin olmak için Instagram'dan sorun.</p>
+      </div>
+      <div data-belir>
+        <div class="cizelge" role="img" aria-label="Gün çubuğu: 08.00 ile 24.00 arası açık"><div class="acik-aralik"></div><div class="simdi" id="simdi"></div></div>
+        <div class="cizelge-et"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="icecek">
+    <div class="sar">
+      <span class="ufak">Drinks</span>
+      <h2 data-belir>İçecekler, <span class="ser">kategori kategori.</span></h2>
+      <p class="acik-yazi" data-belir>Instagram'daki DRINKS başlığınıza karşılık gelen bölüm. Ürün adı ve fiyat uydurmuyoruz; kategori başlıkları örnektir, listeyi sizden alıp ekleriz.</p>
+      <div class="sekmeler" role="tablist" aria-label="İçecek kategorileri">
+        <button class="sekme" role="tab" id="t0" aria-controls="p0" aria-selected="true">Kahveler</button>
+        <button class="sekme" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1">Soğuk içecekler</button>
+        <button class="sekme" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">Fırın eşliği</button>
+      </div>
+      <div class="panel" id="p0" role="tabpanel" aria-labelledby="t0">
+        <img src="../img/gercek/latte-900.webp" alt="Beyaz fincanda yaprak desenli latte (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+        <div><h3>Kahveler</h3><p>Sıcak kahve listeniz bu sekmede, ürün ürün ve fiyatıyla durur. Şimdilik başlık örnektir.</p><div class="ornek"><span>Ürün adı — örnek</span><span>Ürün adı — örnek</span><span>— ₺</span></div></div>
+      </div>
+      <div class="panel" id="p1" role="tabpanel" aria-labelledby="t1" hidden>
+        <img src="../img/gercek/buzlu-900.webp" alt="Buzlu süt kahve, bulanık gri fonda (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+        <div><h3>Soğuk içecekler</h3><p>Buzlu kahveler ve soğuk içecekler için ayrı sekme: sıcak havada ziyaretçi doğrudan buraya bakar.</p><div class="ornek"><span>Ürün adı — örnek</span><span>Ürün adı — örnek</span><span>— ₺</span></div></div>
+      </div>
+      <div class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+        <img src="../img/gercek/kruvasan-sepet-900.webp" alt="Sepette taze kruvasanlar (temsilî fotoğraf)" width="900" height="600" loading="lazy">
+        <div><h3>Fırın eşliği</h3><p>Monaco bir "bakery" de; içeceğin yanına gelen fırın ürünleri burada anlatılır. Ürün listesi sizden alınır.</p><div class="ornek"><span>Ürün adı — örnek</span><span>Ürün adı — örnek</span><span>— ₺</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bant" data-bant>
+    <img src="../img/gercek/kruvasan-vitrin.webp" srcset="../img/gercek/kruvasan-vitrin-900.webp 900w, ../img/gercek/kruvasan-vitrin.webp 1800w" sizes="100vw" alt="Cam vitrinde kruvasanlar (temsilî fotoğraf)" width="1800" height="1200" loading="lazy" style="object-position:50% 55%">
+    <div class="sar"><p data-belir>Vitrin bir <span class="ser">cümledir:</span><br>gerçek fotoğrafla başlar.</p></div>
+  </div>
+
+  <section class="talep" id="talep">
+    <div class="sar">
+      <span class="ufak">Event</span>
+      <h2 data-belir>Etkinlik ve özel gün <span class="ser">talebi.</span></h2>
+      <p class="acik-yazi" data-belir>Tarihinizi, kişi sayınızı ve türü seçin; Instagram mesajı yanda hazır yazılsın. Kopyalayıp Instagram'da yapıştırın. Rezervasyonu Monaco onaylar; bu form yer ayırmaz.</p>
+      <div class="talep-izgara">
+        <form id="talepForm" onsubmit="return false">
+          <div class="adim"><fieldset><legend>1 · Ne için?</legend><div class="sec" id="sTur"></div></fieldset></div>
+          <div class="adim"><div class="alanlar">
+            <div class="alan"><label for="fTarih">2 · Tarih</label><input type="date" id="fTarih"></div>
+            <div class="alan"><label for="fSaat">3 · Saat</label><select id="fSaat"></select></div>
+          </div></div>
+          <div class="adim"><h3 id="kisiEt">4 · Kaç kişi?</h3><div class="adetli" role="group" aria-labelledby="kisiEt"><button type="button" id="kisiAz" aria-label="Kişi sayısını azalt">−</button><output id="kisi" aria-live="polite">6</output><button type="button" id="kisiCok" aria-label="Kişi sayısını artır">+</button></div></div>
+          <div class="adim"><label for="fNot">5 · Not (isteğe bağlı)</label><textarea id="fNot" placeholder="Ör. pasta getireceğiz, süsleme yapabilir miyiz?"></textarea></div>
+        </form>
+        <aside class="mesaj" aria-live="polite">
+          <h3>Instagram mesajı</h3>
+          <pre id="mesaj"></pre>
+          <button class="btn dolu" id="kopyaAc" type="button">Kopyala ve Instagram'ı aç</button>
+          <button class="btn hat" id="kopya" type="button">Yalnız kopyala</button>
+          <small id="kopyaDurum">Mesaj panoya kopyalanır; Instagram'da kutuya yapıştırıp gönderin. @monaco.coffeebakery</small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sar iki">
+      <img data-belir src="../img/gercek/calisma-900.webp" alt="Ahşap bankta dizüstü bilgisayarla çalışan genç (temsilî fotoğraf)" width="900" height="678" loading="lazy" style="aspect-ratio:4/5;object-position:72% 50%">
+      <div>
+        <span class="ufak">Kınıklı çevresi</span>
+        <h2 data-belir>Ders çıkışı, <span class="ser">akşam sohbeti.</span></h2>
+        <p class="acik-yazi" data-belir>Çevrede üniversite olduğu için, ders çalışmaya ya da arkadaşıyla oturmaya gelen biri için en önemli bilgi saat: günlük 00.00'a kadar. Wi-Fi, priz, oturma düzeni gibi bilgileri siz söyleyince ekleriz; doğrulamadığımız hiçbir şeyi yazmayız.</p>
+        <ul data-sirali="90">
+          <li data-belir><b>Açılış</b><span>08.00</span></li>
+          <li data-belir><b>Kapanış</b><span>00.00</span></li>
+          <li data-belir><b>Wi-Fi, priz, sessiz alan</b><span>sizden alınır</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" style="padding-top:20px">
+    <div class="sar">
+      <span class="ufak">MEKAN</span>
+      <h2 data-belir>Kareler, <span class="ser">temsilî.</span></h2>
+      <p class="acik-yazi">Fotoğrafa dokunun, büyüsün. Hepsi gerçek fotoğrafçı çekimidir ama sizin mekânınız değildir; yayında kendi karelerinizi koyarız.</p>
+      <div class="galeri" id="galeri-liste" data-sirali="70">
+        <button type="button" data-belir data-b="kruvasan-tel" data-t="Tel ızgarada taze kruvasanlar" aria-label="Büyüt: tel ızgarada kruvasanlar"><img src="../img/gercek/kruvasan-tel-900.webp" alt="Tel ızgarada taze kruvasanlar (temsilî fotoğraf)" width="900" height="601" loading="lazy"></button>
+        <button type="button" data-belir data-b="espresso" data-t="Beyaz fincanda kahve" aria-label="Büyüt: beyaz fincanda kahve"><img src="../img/gercek/espresso-900.webp" alt="Beyaz fincanda kahve (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button type="button" data-belir data-b="gece-espresso" data-t="Gece espresso tabelası" aria-label="Büyüt: gece espresso tabelası"><img src="../img/gercek/gece-espresso-900.webp" alt="Karanlıkta kırmızı espresso tabelası (temsilî fotoğraf)" width="600" height="900" loading="lazy"></button>
+        <button type="button" data-belir data-b="firin-raf" data-t="Fırın vitrini" aria-label="Büyüt: fırın vitrini"><img src="../img/gercek/firin-raf-900.webp" alt="Cam vitrinde fırın ürünleri (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button type="button" data-belir data-b="calisma-kadin" data-t="Masada çalışan misafir" aria-label="Büyüt: masada çalışan misafir"><img src="../img/gercek/calisma-kadin-900.webp" alt="Pencere kenarında defterine yazan misafir (temsilî fotoğraf)" width="900" height="600" loading="lazy"></button>
+        <button type="button" data-belir data-b="buzlu-isik" data-t="Buzlu kahve" aria-label="Büyüt: buzlu kahve"><img src="../img/gercek/buzlu-isik-900.webp" alt="Işıklı fonda buzlu kahve (temsilî fotoğraf)" width="600" height="900" loading="lazy" style="object-position:50% 40%"></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="konum" style="padding-top:20px">
+    <div class="sar">
+      <span class="ufak">Konum</span>
+      <h2 data-belir>Çamlık'ta, <span class="ser">6015. Sokak.</span></h2>
+      <div class="konum">
+        <iframe loading="lazy" title="Monaco Coffee &amp; Bakery haritası" src="https://www.google.com/maps?q=Monaco+Coffee+%26+Bakery+%C3%87aml%C4%B1k+K%C4%B1n%C4%B1kl%C4%B1+Mah.+6015+Sk.+No:5+Pamukkale+Denizli&amp;output=embed"></iframe>
+        <div>
+          <dl>
+            <div><dt>Adres</dt><dd>Çamlık, Kınıklı Mah. 6015 Sk. No:5, Pamukkale / Denizli</dd></div>
+            <div><dt>Çalışma saatleri</dt><dd>Günlük 08.00 - 00.00</dd></div>
+            <div><dt>İletişim</dt><dd><a href="https://ig.me/m/monaco.coffeebakery" rel="noopener">Instagram DM · @monaco.coffeebakery</a></dd></div>
+          </dl>
+          <div class="dugmeler"><a class="btn dolu" href="https://ig.me/m/monaco.coffeebakery" rel="noopener">Instagram'dan yaz</a><a class="btn hat" href="https://www.google.com/maps/search/Monaco+Coffee+%26+Bakery+%C3%87aml%C4%B1k+K%C4%B1n%C4%B1kl%C4%B1+Mah.+6015+Sk.+No:5+Pamukkale+Denizli" rel="noopener">Haritada aç</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="yorum">
+    <div class="sar">
+      <span class="ufak">Beğendiyseniz</span>
+      <h2 data-belir>Bir sonraki misafir <span class="ser">sizi okur.</span></h2>
+      <p class="acik-yazi">Sayfada uydurma puan ya da yorum göstermeyiz; memnun misafiri doğrudan Google sayfanıza yorum yazmaya yönlendiririz.</p>
+      <div class="dugmeler"><a class="btn kara" href="https://www.google.com/maps/search/Monaco+Coffee+%26+Bakery+%C3%87aml%C4%B1k+Pamukkale+Denizli" rel="noopener">Google'da yorum yazın</a><a class="btn hat" href="https://www.instagram.com/monaco.coffeebakery/" rel="noopener">Instagram profili</a></div>
+    </div>
+  </section>
+</main>
+
+<div class="kutu" id="kutu" role="dialog" aria-modal="true" aria-label="Fotoğraf büyütme">
+  <button class="kapat" type="button" aria-label="Kapat">×</button>
+  <button class="on" type="button" aria-label="Önceki">‹</button>
+  <img alt="" width="1800" height="1200">
+  <button class="sn" type="button" aria-label="Sonraki">›</button>
+  <div class="alt"></div>
+</div>
+
+<footer>
+  <div class="sar">
+    <div>© Monaco Coffee &amp; Bakery · Çamlık, Pamukkale / Denizli</div>
+    <div class="ornek-not">Bu sayfa <b>örnek önizlemedir</b>: Monaco Coffee &amp; Bakery için Boztaş Digital tarafından hazırlandı, işletmenin onayı yoktur. Fotoğraflar temsilîdir (Pexels, gerçek fotoğrafçı çekimleri); yayında sizin mekânınızda çekilen fotoğraflar kullanılır. Adres, saat ve başlıklar Instagram profilinizden alındı; ürün, fiyat ve yorum bilgisi eklenmedi, kategori adları örnektir. Bilgi: <a href="https://furkistein.github.io/boztasdigital/">Boztaş Digital</a></div>
+  </div>
+</footer>
+<div data-kademe-alt></div>
+<div class="yuzen"><a class="btn dolu" href="#talep">Etkinlik talebi yaz</a></div>
+
+<script src="../../_kademe/temel.js"></script>
+<script>
+(()=>{
+  const q=(s,k=document)=>k.querySelector(s), qa=(s,k=document)=>[...k.querySelectorAll(s)];
+  const az=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const IG="https://ig.me/m/monaco.coffeebakery";
+  const f2=n=>String(n).padStart(2,"0")+".00";
+
+  /* ---- şu an açık mı (Türkiye saati, günlük 08.00-00.00) ---- */
+  const AC=8*60, KP=24*60;
+  function simdi(){
+    const p=new Intl.DateTimeFormat("en-US",{timeZone:"Europe/Istanbul",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+    const o={};p.forEach(x=>o[x.type]=x.value);
+    return (+o.hour%24)*60+(+o.minute);
+  }
+  function durum(){
+    const d=simdi(); let r;
+    if(d>=AC&&d<KP){const k=KP-d,sa=Math.floor(k/60),dk=k%60;r={d:"acik",hap:"Şu an açık",b:"Şu an açık",a:`00.00'a kadar · kapanışa ${[sa?sa+" sa":"",dk?dk+" dk":""].filter(Boolean).join(" ")} var.`};}
+    else {const k=AC-d,sa=Math.floor(k/60),dk=k%60;r={d:"kapali",hap:"Şu an kapalı",b:"Şu an kapalı",a:`08.00'de açılır${k>0?` · ${[sa?sa+" sa":"",dk?dk+" dk":""].filter(Boolean).join(" ")} sonra`:""}.`};}
+    qa("[data-durum],[data-durum-hap]").forEach(e=>e.dataset.d=r.d);
+    q("[data-hap-yazi]").textContent=r.hap;
+    q("[data-durum-baslik]").textContent=r.b;
+    q("[data-durum-alt]").textContent=r.a;
+    q("#simdi").style.left=(d/1440*100).toFixed(2)+"%";
+  }
+  durum(); setInterval(durum,30000);
+
+  /* ---- üst çubuk gizlen/görün + yavaş paralaks ---- */
+  const ust=q("#ust"), kah=q(".kahraman>img"), bant=q("[data-bant]"), bimg=q("[data-bant] img");
+  let son=scrollY, bek=false;
+  function kay(){
+    bek=false; const y=scrollY;
+    ust.classList.toggle("gizli", y>son && y>400);
+    son=y;
+    if(az) return;
+    kah.style.setProperty("--ky",(Math.min(y,innerHeight)*.12).toFixed(1)+"px");
+    const r=bant.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight) bimg.style.setProperty("--by",(((innerHeight-r.top)/(innerHeight+r.height)-.5)*-70).toFixed(1)+"px");
+  }
+  addEventListener("scroll",()=>{if(!bek){bek=true;requestAnimationFrame(kay)}},{passive:true}); kay();
+
+  /* ---- içecek sekmeleri ---- */
+  const sekmeler=qa(".sekme"), paneller=qa(".panel");
+  function sec(i,odak){
+    sekmeler.forEach((s,j)=>{s.setAttribute("aria-selected",j===i);s.tabIndex=j===i?0:-1});
+    paneller.forEach((p,j)=>p.hidden=j!==i);
+    if(odak) sekmeler[i].focus();
+  }
+  sekmeler.forEach((s,i)=>{
+    s.addEventListener("click",()=>sec(i));
+    s.addEventListener("keydown",e=>{
+      if(e.key==="ArrowRight") {e.preventDefault();sec((i+1)%sekmeler.length,true)}
+      if(e.key==="ArrowLeft") {e.preventDefault();sec((i+sekmeler.length-1)%sekmeler.length,true)}
+    });
+  });
+
+  /* ---- etkinlik talep formu -> hazır Instagram mesajı ---- */
+  const TUR=["Doğum günü","Mezuniyet / kutlama","Arkadaş buluşması","Çalışma grubu / toplantı","Diğer"];
+  q("#sTur").innerHTML=TUR.map((t,i)=>`<label><input type="radio" name="tur" value="${t}"${i===0?" checked":""}><span>${t}</span></label>`).join("");
+  const saatler=[]; for(let m=AC;m<KP;m+=30) saatler.push(`${String(Math.floor(m/60)).padStart(2,"0")}.${String(m%60).padStart(2,"0")}`);
+  q("#fSaat").innerHTML=saatler.map(s=>`<option${s==="19.00"?" selected":""}>${s}</option>`).join("");
+  // tarih: bugünden itibaren (Türkiye)
+  const bugun=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Istanbul"}).format(new Date());
+  const t=q("#fTarih"); t.min=bugun;
+  const yarin=new Date(Date.now()+864e5); t.value=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Istanbul"}).format(yarin);
+  let kisi=6; const kisiEl=q("#kisi");
+  q("#kisiAz").addEventListener("click",()=>{kisi=Math.max(1,kisi-1);mesaj()});
+  q("#kisiCok").addEventListener("click",()=>{kisi=Math.min(60,kisi+1);mesaj()});
+  function tarihYazi(){
+    if(!t.value) return "belirlenecek";
+    const [y,m,g]=t.value.split("-").map(Number);
+    return new Date(Date.UTC(y,m-1,g,12)).toLocaleDateString("tr-TR",{timeZone:"UTC",day:"numeric",month:"long",year:"numeric",weekday:"long"});
+  }
+  function metin(){
+    const tur=q("[name=tur]:checked").value, not=q("#fNot").value.trim();
+    return `Merhaba Monaco Coffee & Bakery, etkinlik/özel gün için rezervasyon talebi iletmek istiyorum.\n\nTür: ${tur}\nTarih: ${tarihYazi()}\nSaat: ${q("#fSaat").value}\nKişi sayısı: ${kisi}${not?"\nNot: "+not:""}\n\nUygunsa dönüş yapar mısınız? Teşekkürler.`;
+  }
+  function mesaj(){kisiEl.textContent=kisi;q("#mesaj").textContent=metin()}
+  q("#talepForm").addEventListener("input",mesaj); q("#talepForm").addEventListener("change",mesaj); mesaj();
+  async function kopyala(){
+    const m=metin();
+    try{await navigator.clipboard.writeText(m)}
+    catch(e){const a=document.createElement("textarea");a.value=m;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(_){}a.remove()}
+    q("#kopyaDurum").textContent="Kopyalandı. Instagram'da mesaj kutusuna yapıştırın.";
+  }
+  q("#kopya").addEventListener("click",kopyala);
+  q("#kopyaAc").addEventListener("click",async()=>{await kopyala();window.open(IG,"_blank","noopener")});
+
+  /* ---- galeri büyütme ---- */
+  const dugmeler=qa("#galeri-liste button"), kutu=q("#kutu"), kimg=q("img",kutu), kalt=q(".alt",kutu);
+  let acik=-1, geri=null;
+  function goster(i){
+    acik=(i+dugmeler.length)%dugmeler.length;
+    const b=dugmeler[acik];
+    kimg.src=`../img/gercek/${b.dataset.b}.webp`; kimg.alt=b.dataset.t+" (temsilî fotoğraf)";
+    kalt.textContent=`${acik+1} / ${dugmeler.length} · ${b.dataset.t} · fotoğraf temsilîdir`;
+  }
+  function ac(i){geri=document.activeElement;goster(i);kutu.classList.add("acik");q(".kapat",kutu).focus()}
+  function kapat(){kutu.classList.remove("acik");acik=-1;if(geri)geri.focus()}
+  dugmeler.forEach((b,i)=>b.addEventListener("click",()=>ac(i)));
+  q(".kapat",kutu).addEventListener("click",kapat);
+  q(".on",kutu).addEventListener("click",()=>goster(acik-1));
+  q(".sn",kutu).addEventListener("click",()=>goster(acik+1));
+  kutu.addEventListener("click",e=>{if(e.target===kutu)kapat()});
+  addEventListener("keydown",e=>{
+    if(acik<0) return;
+    if(e.key==="Escape")kapat();
+    if(e.key==="ArrowRight")goster(acik+1);
+    if(e.key==="ArrowLeft")goster(acik-1);
+  });
+
+  /* ---- yüzen düğme ---- */
+  const y=q(".yuzen"); const hf=q("#talep"); const fy=()=>{const r=hf.getBoundingClientRect();y.classList.toggle("goster",scrollY>innerHeight*.7&&!(r.top<innerHeight&&r.bottom>0))};
+  addEventListener("scroll",fy,{passive:true}); fy();
+})();
+</script>
+</body>
+</html>
