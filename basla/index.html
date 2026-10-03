@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark light">
+<title>Başlangıç formu · Boztaş Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#080F28;--ink2:#101a3d;--gold:#E8B220;--paper:#F7F8FA;--mut:#9fb0cf;--line:rgba(255,255,255,.12);color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:radial-gradient(1200px 600px at 80% -10%,#16245a 0%,transparent 60%),var(--ink);color:#fff;font:400 16px/1.55 Sora,"Segoe UI",system-ui,sans-serif;min-height:100dvh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 90px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.brand i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:block}
+h1{font:600 clamp(30px,7vw,46px)/1.1 Fraunces,Georgia,serif;margin:22px 0 10px;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{color:#cbd5ea;max-width:52ch}
+.steps{display:flex;gap:6px;margin:26px 0 6px}
+.steps b{flex:1;height:4px;border-radius:2px;background:var(--line);transition:background .3s}
+.steps b.on{background:var(--gold)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px;padding:22px 20px;margin-top:18px}
+.card h2{font:600 20px/1.25 Fraunces,Georgia,serif;margin-bottom:4px}
+.card p.s{color:var(--mut);font-size:14px;margin-bottom:14px}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;touch-action:manipulation;transition:border-color .2s,background .2s}
+.chips input:checked+label{border-color:var(--gold);background:rgba(232,178,32,.12)}
+.chips input:focus-visible+label{outline:2px solid var(--gold);outline-offset:2px}
+.f{display:grid;gap:12px}
+.f label{display:grid;gap:5px;font-size:13px;color:var(--mut)}
+.f input[type=text],.f input[type=tel],.f textarea{width:100%;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:10px;color:#fff;padding:12px 13px;font:inherit;font-size:16px}
+.f textarea{min-height:84px;resize:vertical}
+.f input:focus,.f textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.check{display:grid;gap:8px}
+.check label{display:flex;gap:11px;align-items:flex-start;padding:11px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;color:#e6ecf8;font-size:15px;touch-action:manipulation}
+.check input{margin-top:4px;accent-color:var(--gold);width:18px;height:18px;flex:none}
+.check small{display:block;color:var(--mut);font-size:13px}
+.note{border-left:3px solid var(--gold);padding:8px 12px;margin-top:12px;color:#d6dff0;font-size:14px;background:rgba(232,178,32,.07);border-radius:0 8px 8px 0}
+.out{background:#050a1c;border:1px solid var(--line);border-radius:12px;padding:14px;white-space:pre-wrap;font:13.5px/1.55 ui-monospace,Consolas,monospace;color:#dbe4f5;max-height:340px;overflow:auto}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{appearance:none;border:0;border-radius:999px;padding:14px 22px;font:600 15px Sora,system-ui,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:48px;touch-action:manipulation}
+.btn.g{background:var(--gold);color:var(--ink)}
+.btn.o{background:transparent;color:#fff;border:1px solid var(--line)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.foot{color:var(--mut);font-size:13px;margin-top:28px}
+.hide{display:none}
+@media (prefers-reduced-motion:no-preference){.card{animation:in .5s both}@keyframes in{from{opacity:0;transform:translateY(10px)}}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="brand"><i></i>Boztaş Digital · Denizli</div>
+  <h1>İşe <em>başlamak</em> için üç dakikalık form</h1>
+  <p class="lead">Aşağıdakini doldurun, çıkan notu bana WhatsApp'tan ya da Instagram'dan gönderin. Elinizde olmayan bir şey varsa boş bırakın, birlikte tamamlarız. Hiçbir bilgi bu sayfada saklanmaz, her şey yalnız telefonunuzda kalır.</p>
+  <div class="steps" aria-hidden="true"><b class="on"></b><b></b><b></b><b></b></div>
+
+  <section class="card" id="c1">
+    <h2>1. Ne iş yapıyorsunuz?</h2>
+    <p class="s">Sektöre göre ihtiyaç listesi değişir.</p>
+    <div class="chips" id="sek">
+      <input type="radio" name="sek" id="s1" value="kafe"><label for="s1">Kafe / restoran</label>
+      <input type="radio" name="sek" id="s2" value="guzellik"><label for="s2">Güzellik / kuaför</label>
+      <input type="radio" name="sek" id="s3" value="saglik"><label for="s3">Diş / sağlık</label>
+      <input type="radio" name="sek" id="s4" value="emlak"><label for="s4">Emlak</label>
+      <input type="radio" name="sek" id="s5" value="spor"><label for="s5">Spor / pilates</label>
+      <input type="radio" name="sek" id="s6" value="konaklama"><label for="s6">Otel / pansiyon</label>
+      <input type="radio" name="sek" id="s7" value="diger"><label for="s7">Diğer</label>
+    </div>
+  </section>
+
+  <section class="card hide" id="c2">
+    <h2>2. Temel bilgiler</h2>
+    <p class="s">Sitede ve Google profilinizde bu yazım kullanılır.</p>
+    <div class="f">
+      <label>İşletme adı<input type="text" id="ad" autocomplete="organization"></label>
+      <label>Yetkili adı<input type="text" id="yet" autocomplete="name"></label>
+      <label>Telefon / WhatsApp<input type="tel" id="tel" inputmode="tel" autocomplete="tel"></label>
+      <label>Instagram kullanıcı adı<input type="text" id="ig" autocapitalize="none" autocomplete="off"></label>
+      <label>Adres (mahalle, cadde, no)<input type="text" id="adr" autocomplete="street-address"></label>
+      <label>Çalışma saatleri (ör. her gün 09-22, pazar kapalı)<input type="text" id="saat"></label>
+      <label>Alan adı tercihi, en çok 3 (ör. isletmeadi.com)<input type="text" id="alan" autocapitalize="none"></label>
+    </div>
+    <p class="note" id="alannot">Alan adı sizin adınıza alınır ve yıllık ücreti size aittir (.com yaklaşık 400-600 TL/yıl). Hesap bilgileri size teslim edilir.</p>
+  </section>
+
+  <section class="card hide" id="c3">
+    <h2>3. Elinizde neler var?</h2>
+    <p class="s">İşaretlediklerinizi hazır sayarım, işaretlemediklerinizi nasıl toparlayacağımızı konuşuruz.</p>
+    <div class="check" id="liste"></div>
+    <div class="note hide" id="sektnot"></div>
+    <div class="f" style="margin-top:14px"><label>Eklemek istediğiniz not<textarea id="not"></textarea></label></div>
+  </section>
+
+  <section class="card hide" id="c4">
+    <h2>4. Notunuz hazır</h2>
+    <p class="s">Kopyalayıp yapıştırın ya da doğrudan Instagram'dan gönderin. Ödeme bilgisini ben ayrıca ileteceğim, sayfaya hiçbir ödeme bilgisi girmeyin.</p>
+    <div class="out" id="out" role="textbox" aria-readonly="true" tabindex="0"></div>
+    <div class="btns">
+      <button class="btn g" id="kop" type="button">Notu kopyala</button>
+      <a class="btn o" id="igb" href="https://ig.me/m/boztasdigital" target="_blank" rel="noopener">Instagram'dan gönder</a>
+    </div>
+    <p class="foot" id="kopsonuc" role="status" aria-live="polite"></p>
+  </section>
+
+  <p class="foot">Boztaş Digital · Furkan Boztaş · Denizli · @boztasdigital. Kişisel veriler yalnız işin yapılması için kullanılır, üçüncü kişilerle paylaşılmaz.</p>
+</main>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var ORTAK=[
+    ["logo","Logom var","yüksek çözünürlüklü dosya ya da en iyisi SVG/PNG"],
+    ["foto","8-15 fotoğrafım var","mekân, ekip, ürün ya da hizmet; telefon çekimi olur, ben düzenlerim"],
+    ["hak","Kısa bir tanıtım yazım var","yoksa taslağı ben yazarım, siz onaylarsınız"],
+    ["renk","Tercih ettiğim renkler var","yoksa logonuzdan çıkarırım"]
+  ];
+  var SEK={
+    kafe:{ad:"Kafe / restoran",ek:[["menu","Menüm hazır","ürün adı ve içerik listesi; fiyatlar isteğe bağlı"],["alerjen","Alerjen bilgisini ben onaylarım","14 alerjen işaretlemesini siz beyan eder ve onaylarsınız"]],not:"Alerjen bilgisini işletme beyan eder ve onaylar, ben yalnız düzenli gösteririm."},
+    guzellik:{ad:"Güzellik / kuaför",ek:[["hizmet","Hizmet listem hazır","her hizmet için kısa açıklama; fiyatlar isteğe bağlı"],["rand","Randevuyu WhatsApp'tan alıyorum","sitedeki düğme doğrudan sizin numaranıza gider"]],not:""},
+    saglik:{ad:"Diş / sağlık",ek:[["hek","Sorumlu hekim adı ve kurum bilgisi var","Sağlık Bakanlığı mevzuatı gereği site içeriğinde bulunur"],["tedavi","Tedavi başlıkları listem hazır","açıklayıcı, bilgilendirme dilinde"]],not:"Sağlık kuruluşlarında sitede fiyat, kampanya, hasta yorumu ve öncesi-sonrası görsel yer almaz (Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, RG 12.11.2025). İçeriğin uygunluğundan sorumlu hekim de sorumludur."},
+    emlak:{ad:"Emlak",ek:[["yetki","Taşınmaz ticareti yetki belge numaram var","sitede görünmesi gerekir"],["ilan","Öne çıkarmak istediğim ilanlar var","bağlantı ya da kısa liste yeter"]],not:"Emlak sitelerinde taşınmaz ticareti yetki belge numarası bulunur."},
+    spor:{ad:"Spor / pilates",ek:[["ders","Ders programım hazır","gün, saat, ders türü"],["deneme","Deneme dersi sunuyorum","sitedeki talep düğmesine eklerim"]],not:""},
+    konaklama:{ad:"Otel / pansiyon",ek:[["oda","Oda tipleri ve kapasiteler hazır","kaç kişilik, hangi olanaklar"],["dil","Yabancı misafir için dil seçeneği istiyorum","TR / EN / DE"]],not:""},
+    diger:{ad:"Diğer",ek:[["hiz","Hizmet ya da ürün listem hazır","kısa açıklamalarla"]],not:""}
+  };
+  var secili=null,adim=1;
+  var secs=["c1","c2","c3","c4"];
+  var bars=document.querySelectorAll(".steps b");
+  function goster(n){
+    adim=Math.max(adim,n);
+    for(var i=0;i<4;i++){bars[i].className=i<adim?"on":"";}
+    for(var j=1;j<n;j++){$("c"+(j+1)).classList.remove("hide")}
+    $("c"+n).classList.remove("hide");
+  }
+  function liste(){
+    var s=SEK[secili],h="";
+    ORTAK.concat(s.ek).forEach(function(x){
+      h+='<label><input type="checkbox" value="'+x[0]+'" data-t="'+x[1]+'"><span>'+x[1]+'<small>'+x[2]+'</small></span></label>';
+    });
+    $("liste").innerHTML=h;
+    var nn=$("sektnot");
+    if(s.not){nn.textContent=s.not;nn.classList.remove("hide")}else{nn.classList.add("hide")}
+  }
+  function topla(){
+    var s=SEK[secili],v=function(i){return $(i).value.trim()||"-"};
+    var var_=[],yok=[];
+    document.querySelectorAll("#liste input").forEach(function(c){(c.checked?var_:yok).push(c.getAttribute("data-t"))});
+    var t="Merhaba Furkan, işe başlamak için bilgilerim:\n\n";
+    t+="Sektör: "+s.ad+"\nİşletme: "+v("ad")+"\nYetkili: "+v("yet")+"\nTelefon: "+v("tel")+"\nInstagram: "+v("ig")+"\nAdres: "+v("adr")+"\nSaatler: "+v("saat")+"\nAlan adı tercihi: "+v("alan")+"\n\n";
+    t+="Hazır olanlar:\n"+(var_.length?var_.map(function(x){return "- "+x}).join("\n"):"- henüz yok")+"\n\n";
+    t+="Birlikte toparlayacaklarımız:\n"+(yok.length?yok.map(function(x){return "- "+x.replace(/ var$| hazır$/,"")}).join("\n"):"- yok")+"\n";
+    var n=$("not").value.trim();
+    if(n)t+="\nNot: "+n+"\n";
+    return t;
+  }
+  function yenile(){
+    if(!secili)return;
+    $("out").textContent=topla();
+  }
+  document.querySelectorAll('#sek input').forEach(function(r){
+    r.addEventListener("change",function(){
+      secili=r.value;liste();goster(3);yenile();
+      $("c4").classList.remove("hide");
+      bars[3].className="on";
+      setTimeout(function(){$("c2").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"})},60);
+    });
+  });
+  ["ad","yet","tel","ig","adr","saat","alan","not"].forEach(function(i){$(i).addEventListener("input",yenile)});
+  $("liste").addEventListener("change",yenile);
+  $("kop").addEventListener("click",function(){
+    var t=$("out").textContent;
+    var ok=function(){$("kopsonuc").textContent="Kopyalandı. Şimdi WhatsApp ya da Instagram'a yapıştırabilirsiniz."};
+    var no=function(){var r=document.createRange();r.selectNodeContents($("out"));var sl=getSelection();sl.removeAllRanges();sl.addRange(r);$("kopsonuc").textContent="Metin seçildi, uzun basıp kopyalayın."};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,no)}else{no()}
+  });
+})();
+</script>
+</body>
+</html>
