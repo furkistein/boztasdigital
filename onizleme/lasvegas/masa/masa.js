@@ -1,8 +1,24 @@
 (function () {
   "use strict";
-  var KEY = "lv_masa_takip_v1";
-  var TURLER = { bilardo: "Bilardo", okey: "Okey", tenis: "Masa tenisi" };
-  var VARSAYILAN = {
+  var Q = new URLSearchParams(location.search);
+  var PS = Q.get("tur") === "ps";
+  var MEKAN = (Q.get("mekan") || "").replace(/[<>]/g, "").slice(0, 40).trim() || (PS ? "PlayStation salonu" : "Las Vegas Bilardo");
+  var KEY = PS ? "masa_takip_ps_v1" : "lv_masa_takip_v1";
+  var TURLER = PS ? { ps: "PlayStation" } : { bilardo: "Bilardo", okey: "Okey", tenis: "Masa tenisi" };
+  var VARSAYILAN = PS ? {
+    masalar: [
+      { id: "p1", ad: "PS5 1", tur: "ps" }, { id: "p2", ad: "PS5 2", tur: "ps" }, { id: "p3", ad: "PS5 3", tur: "ps" },
+      { id: "p4", ad: "PS5 4", tur: "ps" }, { id: "p5", ad: "PS5 5", tur: "ps" }, { id: "p6", ad: "PS5 6", tur: "ps" }
+    ],
+    tarife: { ps: 90 },
+    minDk: 15,
+    urunler: [
+      { id: "u1", ad: "Çay", fiyat: 20 }, { id: "u2", ad: "Nescafe", fiyat: 50 },
+      { id: "u3", ad: "Kola", fiyat: 50 }, { id: "u4", ad: "Soğuk çay", fiyat: 50 },
+      { id: "u5", ad: "Su", fiyat: 15 }, { id: "u6", ad: "Tost", fiyat: 90 },
+      { id: "u7", ad: "Cips", fiyat: 40 }
+    ]
+  } : {
     masalar: [
       { id: "b1", ad: "Bilardo 1", tur: "bilardo" }, { id: "b2", ad: "Bilardo 2", tur: "bilardo" },
       { id: "b3", ad: "Bilardo 3", tur: "bilardo" }, { id: "b4", ad: "Bilardo 4", tur: "bilardo" },
@@ -249,7 +265,12 @@
 
   function ornekGun() {
     var ben = Date.now();
-    var O = [
+    var O = PS ? [
+      ["PS5 1", "ps", 10, 90, { u1: 2, u3: 2 }], ["PS5 2", "ps", 22, 150, { u3: 3, u7: 2, u6: 1 }],
+      ["PS5 3", "ps", 35, 60, { u5: 2 }], ["PS5 4", "ps", 50, 120, { u3: 2, u7: 1 }],
+      ["PS5 1", "ps", 75, 105, { u4: 2, u6: 1 }], ["PS5 5", "ps", 95, 45, {}],
+      ["PS5 6", "ps", 130, 180, { u3: 4, u6: 2, u7: 2 }], ["PS5 2", "ps", 160, 75, { u1: 2 }]
+    ] : [
       ["Bilardo 1", "bilardo", 12, 75, { u1: 3, u3: 1 }], ["Bilardo 2", "bilardo", 25, 130, { u2: 2, u6: 1 }],
       ["Bilardo 3", "bilardo", 41, 60, { u1: 2 }], ["Tenis 1", "tenis", 58, 40, { u5: 2 }],
       ["Okey 1", "okey", 80, 150, { u1: 8, u6: 2, u7: 2 }], ["Bilardo 1", "bilardo", 105, 95, { u3: 2, u7: 1 }],
@@ -261,7 +282,7 @@
       var m = { tur: o[1] }, sn = o[3] * 60, u = masaUcret(m, sn), kt = kalemToplam(o[4]);
       S.gecmis.push({ tarih: bugun(), masa: o[0], tur: o[1], baslangic: b, bitis: bit, sureSn: sn, masaUcret: u, kalemler: o[4], kalemTop: kt, toplam: u + kt, ornek: true });
     });
-    ["b1", "o1"].forEach(function (id, i) { if (!S.acik[id]) S.acik[id] = { baslangic: ben - (i ? 38 : 22) * 60000 - 17000, kalemler: i ? { u1: 4, u7: 1 } : { u1: 1, u3: 1 } }; });
+    (PS ? ["p3", "p5"] : ["b1", "o1"]).forEach(function (id, i) { if (!S.acik[id]) S.acik[id] = { baslangic: ben - (i ? 38 : 22) * 60000 - 17000, kalemler: i ? { u1: 4, u7: 1 } : { u1: 1, u3: 1 } }; });
     kaydet(); guncelle(); ozetCiz(); sekmeAc("masalar");
   }
 
@@ -277,6 +298,12 @@
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !$("sayfa").hidden) sayfaKapat(); });
 
   yukle();
+  if (PS || Q.get("mekan")) {
+    document.title = "Masa Takip | " + MEKAN + " örnek uygulama";
+    var mk = document.querySelector(".marka");
+    mk.removeAttribute("href"); mk.removeAttribute("aria-label"); mk.querySelector("img").hidden = true;
+    mk.querySelector("b").textContent = MEKAN;
+  }
   var gl = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"], dn = new Date();
   $("gunEtiket").textContent = dn.getDate() + "." + p2(dn.getMonth() + 1) + "." + dn.getFullYear() + " · " + gl[dn.getDay()];
   Array.prototype.forEach.call(document.querySelectorAll(".sekmeler button"), function (b) { b.addEventListener("click", function () { sekmeAc(b.getAttribute("data-sekme")); }); });
