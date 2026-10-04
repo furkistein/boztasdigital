@@ -1,0 +1,11 @@
+# Görsel kredileri (Pexels lisansı)
+- loom.webp: https://kaboompics.com/ / Pexels, https://www.pexels.com/photo/close-up-of-a-weaving-loom-6634602/
+- towels.webp: ROMAN ODINTSOV / Pexels, https://www.pexels.com/photo/white-towels-on-white-table-7691101/
+- roll.webp: Rachel Claire / Pexels, https://www.pexels.com/photo/close-up-shot-of-bath-towels-6127451/
+- hands.webp: https://kaboompics.com/ / Pexels, https://www.pexels.com/photo/woman-working-on-a-loom-6634703/
+- loom2.webp: ROMAN ODINTSOV / Pexels, https://www.pexels.com/photo/traditional-weaving-machine-6332015/
+- robe.webp: Nadin Sh / Pexels, https://www.pexels.com/photo/luxurious-white-bathrobe-beside-spa-bath-36845215/
+- shelf.webp: 𝗛&𝗖𝗢 　 / Pexels, https://www.pexels.com/photo/photo-of-folded-towels-7466531/
+- teal.webp: Théo Cold / Pexels, https://www.pexels.com/photo/stack-of-blue-towels-on-wooden-shelf-34006035/
+- hotel.webp: cottonbro studio / Pexels, https://www.pexels.com/photo/woman-holding-a-stack-of-white-towels-on-bed-6466235/
+- terry.webp: Steve A Johnson / Pexels, https://www.pexels.com/photo/close-up-of-a-navy-blue-fabric-18190568/
