@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masa Takip | Las Vegas Bilardo örnek uygulama</title>
+<meta name="description" content="Bilardo salonları için masa süresi ve adisyon takibi: örnek çalışan uygulama. Veriler yalnız bu cihazda saklanır.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070C0A">
+<link rel="icon" type="image/png" href="../img/logo-360.png">
+<link rel="stylesheet" href="masa.css">
+</head>
+<body>
+<div class="serit" role="note">ÖRNEK UYGULAMA · Boztaş Digital · masa sayısı ve fiyatlar örnektir, salonunuza göre ayarlanır</div>
+
+<header class="ust">
+  <div class="sar ust-ic">
+    <a class="marka" href="../" aria-label="Önizleme sayfasına dön">
+      <img src="../img/amblem.png" alt="" width="600" height="283">
+      <b>Masa Takip</b>
+    </a>
+    <div class="gun" id="gunEtiket" aria-live="polite"></div>
+  </div>
+  <nav class="sekmeler sar" role="tablist" aria-label="Bölümler">
+    <button role="tab" aria-selected="true" data-sekme="masalar" id="t-masalar">Masalar</button>
+    <button role="tab" aria-selected="false" data-sekme="ozet" id="t-ozet">Gün özeti</button>
+    <button role="tab" aria-selected="false" data-sekme="ayar" id="t-ayar">Ayarlar</button>
+  </nav>
+</header>
+
+<main class="sar">
+  <section id="s-masalar" role="tabpanel" aria-labelledby="t-masalar">
+    <div class="sayim" id="sayim"></div>
+    <div class="izgara" id="izgara"></div>
+  </section>
+
+  <section id="s-ozet" role="tabpanel" aria-labelledby="t-ozet" hidden>
+    <div class="kutular" id="ozetKutular"></div>
+    <h2>Masa masa</h2>
+    <div class="tablo" id="ozetMasa"></div>
+    <h2>Kapanan hesaplar</h2>
+    <div class="liste" id="ozetListe"></div>
+    <div class="islem">
+      <button class="btn btn-ana" id="waOzet">Gün sonu özetini WhatsApp'a gönder</button>
+    </div>
+  </section>
+
+  <section id="s-ayar" role="tabpanel" aria-labelledby="t-ayar" hidden>
+    <h2>Saatlik tarife (TL)</h2>
+    <div class="form" id="tarifeForm"></div>
+    <h2>Ürünler</h2>
+    <div class="form" id="urunForm"></div>
+    <div class="islem sira">
+      <button class="btn btn-ince" id="urunEkle">Ürün ekle</button>
+    </div>
+    <h2>Demo ve veri</h2>
+    <p class="not">Veriler yalnız bu telefonda/tarayıcıda saklanır, hiçbir yere gönderilmez. Gerçek kurulumda salonun kendi alan adında, istenirse birden fazla cihazdan ortak çalışır.</p>
+    <div class="islem sira">
+      <button class="btn btn-ana" id="ornekGun">Örnek gün yükle</button>
+      <button class="btn btn-ince" id="gunSifirla">Günü sıfırla</button>
+    </div>
+  </section>
+</main>
+
+<div class="ortu" id="ortu" hidden></div>
+<aside class="sayfa" id="sayfa" role="dialog" aria-modal="true" aria-labelledby="sayfaBaslik" hidden>
+  <div class="sayfa-ic" id="sayfaIc"></div>
+</aside>
+
+<script src="masa.js"></script>
+</body>
+</html>
