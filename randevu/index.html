@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sade Kuaför · Online Randevu</title>
+<meta name="description" content="Sade Kuaför online randevu sayfası: hizmet, uzman, gün ve saat seçimi, WhatsApp onayı, takvime ekleme. Örnek çalışma — Boztaş Digital.">
+<meta name="theme-color" content="#1F2A24">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--koyu:#1F2A24;--yesil:#2F4A3C;--krem:#F6F1E9;--kum:#E8DFD0;--seftali:#E58B63;--soluk:#7B8579;--cizgi:rgba(31,42,36,.13);--dolu:#B9B3A6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--krem);color:var(--koyu);font-family:"Inter Tight",system-ui,sans-serif;font-size:16px;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer}
+.sarmal{width:min(720px,100% - 32px);margin-inline:auto}
+.ust{background:var(--koyu);color:var(--krem);padding:26px 0 20px}
+.ust .satir{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.marka{font-family:Fraunces,serif;font-weight:700;font-size:30px;letter-spacing:-.02em;line-height:1}
+.marka small{display:block;font-family:"Inter Tight";font-weight:500;font-size:12px;letter-spacing:.16em;color:var(--seftali);margin-top:8px;text-transform:uppercase}
+.yon{font-size:13px;font-weight:600;color:var(--kum);border:1px solid rgba(246,241,233,.3);border-radius:99px;padding:6px 12px;text-decoration:none;white-space:nowrap}
+.adimlar{display:flex;gap:6px;margin-top:20px}
+.adimlar i{flex:1;height:4px;border-radius:2px;background:rgba(246,241,233,.2)}
+.adimlar i.bitti{background:var(--seftali)}
+main{padding:24px 0 120px}
+h2{font-family:Fraunces,serif;font-size:24px;letter-spacing:-.01em;margin-bottom:4px}
+.alt{color:var(--soluk);font-size:14px;margin-bottom:16px}
+.blok{margin-bottom:28px}
+.liste{display:grid;gap:10px}
+.kart{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--cizgi);border-radius:14px;padding:14px 16px}
+.kart:hover{border-color:var(--yesil)}
+.kart.secili{border-color:var(--seftali);box-shadow:0 0 0 3px rgba(229,139,99,.22)}
+.kart b{display:block;font-weight:600}
+.kart span.s{display:block;color:var(--soluk);font-size:13px}
+.kart .f{font-weight:700;white-space:nowrap}
+.uzmanlar{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:9px 16px;border-radius:99px;background:#fff;border:1.5px solid var(--cizgi);font-weight:600;font-size:14px}
+.chip.secili{background:var(--koyu);color:var(--krem);border-color:var(--koyu)}
+.gunler{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:none}
+.gunler::-webkit-scrollbar{display:none}
+.gun{flex:0 0 62px;text-align:center;background:#fff;border:1.5px solid var(--cizgi);border-radius:14px;padding:10px 0}
+.gun small{display:block;font-size:12px;color:var(--soluk);text-transform:uppercase;letter-spacing:.06em}
+.gun b{display:block;font-family:Fraunces,serif;font-size:22px;line-height:1.2}
+.gun.secili{background:var(--koyu);color:var(--krem);border-color:var(--koyu)}
+.gun.secili small{color:var(--seftali)}
+.gun:disabled{opacity:.4;cursor:not-allowed}
+.saatler{display:grid;grid-template-columns:repeat(auto-fill,minmax(82px,1fr));gap:8px}
+.saat{padding:10px 0;border-radius:10px;background:#fff;border:1.5px solid var(--cizgi);font-weight:600;text-align:center}
+.saat.secili{background:var(--seftali);border-color:var(--seftali);color:var(--koyu)}
+.saat:disabled{background:transparent;color:var(--dolu);text-decoration:line-through;cursor:not-allowed;border-style:dashed}
+.bos{padding:18px;border:1.5px dashed var(--cizgi);border-radius:14px;color:var(--soluk);text-align:center;font-size:14px}
+label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
+input[type=text],input[type=tel]{width:100%;padding:13px 14px;border:1.5px solid var(--cizgi);border-radius:12px;background:#fff;font-size:16px}
+input:focus{outline:none;border-color:var(--yesil)}
+.hata{color:#B4432F;font-size:13px;margin-top:5px;min-height:18px}
+.altbar{position:fixed;left:0;right:0;bottom:0;background:var(--krem);border-top:1px solid var(--cizgi);padding:12px 0 calc(12px + env(safe-area-inset-bottom));z-index:5}
+.altbar .sarmal{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ozet{font-size:13px;color:var(--soluk);line-height:1.35}
+.ozet b{color:var(--koyu);font-size:15px}
+.dugme{background:var(--koyu);color:var(--krem);font-weight:700;padding:13px 22px;border-radius:99px;white-space:nowrap}
+.dugme:disabled{background:var(--dolu);cursor:not-allowed}
+.dugme.ikincil{background:#fff;color:var(--koyu);border:1.5px solid var(--cizgi)}
+.onay{background:#fff;border:1.5px solid var(--cizgi);border-radius:18px;padding:22px}
+.onay .tik{width:46px;height:46px;border-radius:50%;background:var(--yesil);color:var(--krem);display:grid;place-items:center;font-size:24px;margin-bottom:12px}
+.onay dl{display:grid;grid-template-columns:96px 1fr;gap:8px 12px;margin:16px 0 20px;font-size:15px}
+.onay dt{color:var(--soluk)}
+.onay dd{font-weight:600}
+.eylemler{display:grid;gap:10px}
+.wa{background:#1FA855;color:#fff}
+.yonetim table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden}
+.yonetim th,.yonetim td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--cizgi)}
+.yonetim th{background:var(--kum);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.yonetim td button{color:#B4432F;font-weight:600;font-size:13px}
+.not{margin-top:28px;padding:14px 16px;background:var(--kum);border-radius:12px;font-size:13px;color:var(--yesil)}
+.gizli{display:none!important}
+footer{padding:0 0 30px;font-size:12px;color:var(--soluk)}
+</style>
+</head>
+<body>
+<header class="ust">
+  <div class="sarmal">
+    <div class="satir">
+      <div class="marka">Sade Kuaför<small>Online randevu</small></div>
+      <a class="yon" id="yonLink" href="#yonetim">İşletme paneli</a>
+    </div>
+    <div class="adimlar" id="adimlar"><i></i><i></i><i></i><i></i></div>
+  </div>
+</header>
+
+<main class="sarmal" id="musteri">
+  <section class="blok" id="b1">
+    <h2>1. Hizmet</h2>
+    <p class="alt">Süre ve fiyat işletmenin kendi listesinden gelir.</p>
+    <div class="liste" id="hizmetler"></div>
+  </section>
+
+  <section class="blok" id="b2">
+    <h2>2. Uzman</h2>
+    <p class="alt">Fark etmez derseniz en erken boş olan uzman atanır.</p>
+    <div class="uzmanlar" id="uzmanlar"></div>
+  </section>
+
+  <section class="blok" id="b3">
+    <h2>3. Gün ve saat</h2>
+    <p class="alt" id="gunAlt">Önce bir hizmet seçin.</p>
+    <div class="gunler" id="gunler"></div>
+    <div class="saatler" id="saatler" style="margin-top:10px"></div>
+  </section>
+
+  <section class="blok" id="b4">
+    <h2>4. Bilgileriniz</h2>
+    <label for="ad">Adınız soyadınız</label>
+    <input type="text" id="ad" autocomplete="name" placeholder="Örn. Ayşe Yılmaz">
+    <div class="hata" id="adHata"></div>
+    <label for="tel">Telefon</label>
+    <input type="tel" id="tel" autocomplete="tel" inputmode="tel" placeholder="05XX XXX XX XX">
+    <div class="hata" id="telHata"></div>
+  </section>
+
+  <p class="not">Bu sayfa bir örnek çalışmadır; kuaför, işletme ve randevular kurgusaldır. Girdiğiniz bilgiler yalnız bu cihazın tarayıcısında kalır, hiçbir yere gönderilmez.</p>
+</main>
+
+<main class="sarmal gizli" id="onaySayfa">
+  <div class="onay" id="onayKutu"></div>
+</main>
+
+<main class="sarmal yonetim gizli" id="yonetimSayfa">
+  <h2>Bugünden itibaren randevular</h2>
+  <p class="alt">Bu cihazda alınan randevular listelenir. Gerçek kurulumda liste sizin Excel/Google Sayfaları dosyanıza yazılır.</p>
+  <div id="yonTablo"></div>
+  <div class="eylemler" style="margin-top:16px;grid-template-columns:1fr 1fr">
+    <button class="dugme ikincil" id="csvBtn">Excel için CSV indir</button>
+    <a class="dugme ikincil" href="#" id="geriMusteri" style="text-align:center;text-decoration:none">Müşteri sayfasına dön</a>
+  </div>
+</main>
+
+<div class="altbar" id="altbar">
+  <div class="sarmal">
+    <div class="ozet" id="ozet">Hizmet seçin</div>
+    <button class="dugme" id="devam" disabled>Randevuyu onayla</button>
+  </div>
+</div>
+
+<footer class="sarmal">Örnek çalışma · Boztaş Digital</footer>
+
+<script>
+/* ===== İŞLETME AYARLARI: kurulumda yalnız bu bölüm değişir ===== */
+const AYAR = {
+  isletme: "Sade Kuaför",
+  whatsapp: "905000000000",
+  adim: 30,
+  saatler: {1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[10,17]},
+  gunSayisi: 14,
+  hizmetler: [
+    {id:"sac",   ad:"Saç kesimi",           dk:45, fiyat:450},
+    {id:"fon",   ad:"Fön",                  dk:30, fiyat:250},
+    {id:"boya",  ad:"Kök boya",             dk:90, fiyat:900},
+    {id:"bakim", ad:"Keratin bakım",        dk:120,fiyat:1800},
+    {id:"gelin", ad:"Gelin saçı (prova)",   dk:90, fiyat:1500}
+  ],
+  uzmanlar: [
+    {id:"selin", ad:"Selin"},
+    {id:"derya", ad:"Derya"},
+    {id:"emre",  ad:"Emre"}
+  ]
+};
+/* ================================================================ */
+const AYLAR=["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+const GUNLER=["Paz","Pzt","Sal","Çar","Per","Cum","Cmt"];
+const UZUN=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+const KEY="randevu-demo-v1";
+const $=s=>document.querySelector(s);
+const durum={hizmet:null,uzman:"fark",gun:null,saat:null};
+
+function oku(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+function yaz(l){try{localStorage.setItem(KEY,JSON.stringify(l))}catch(e){}}
+const pad=n=>String(n).padStart(2,"0");
+const tarihKod=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const dkSaat=dk=>pad(Math.floor(dk/60))+":"+pad(dk%60);
+const tl=n=>n.toLocaleString("tr-TR")+" TL";
+
+/* Örnek doluluk: tarih+uzman+saatten türeyen sabit sahte dolu bloklar */
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function sahteDolu(kod,uzman,baslangicDk){return hash(kod+uzman+baslangicDk)%100<28}
+
+function bloklar(kod,uzmanId){
+  const b=[];
+  const [a,k]=gunSaat(new Date(kod+"T12:00:00"));
+  if(a==null)return b;
+  for(let dk=a*60;dk<k*60;dk+=AYAR.adim){if(sahteDolu(kod,uzmanId,dk))b.push([dk,dk+AYAR.adim])}
+  oku().filter(r=>r.tarih===kod&&r.uzman===uzmanId).forEach(r=>b.push([r.bas,r.bas+r.dk]));
+  return b;
+}
+function gunSaat(d){const x=AYAR.saatler[d.getDay()];return x?x:[null,null]}
+function cakisir(b,bas,bit){return b.some(([s,e])=>bas<e&&bit>s)}
+
+function uygunUzmanlar(kod,bas,dk){
+  const ids=durum.uzman==="fark"?AYAR.uzmanlar.map(u=>u.id):[durum.uzman];
+  return ids.filter(id=>!cakisir(bloklar(kod,id),bas,bas+dk));
+}
+
+function slotlar(kod){
+  const d=new Date(kod+"T12:00:00");const [a,k]=gunSaat(d);
+  if(a==null||!durum.hizmet)return[];
+  const dk=durum.hizmet.dk;const simdi=new Date();const bugun=tarihKod(simdi)===kod;
+  const sonuc=[];
+  for(let bas=a*60;bas+dk<=k*60;bas+=AYAR.adim){
+    const gecmis=bugun&&bas<=simdi.getHours()*60+simdi.getMinutes();
+    sonuc.push({bas,bos:!gecmis&&uygunUzmanlar(kod,bas,dk).length>0});
+  }
+  return sonuc;
+}
+
+function gunListesi(){
+  const l=[];const t=new Date();t.setHours(12,0,0,0);
+  for(let i=0;i<AYAR.gunSayisi;i++){const d=new Date(t);d.setDate(t.getDate()+i);l.push(d)}
+  return l;
+}
+
+function ciz(){
+  $("#hizmetler").innerHTML=AYAR.hizmetler.map(h=>`<button class="kart ${durum.hizmet&&durum.hizmet.id===h.id?"secili":""}" data-h="${h.id}"><span><b>${h.ad}</b><span class="s">${h.dk} dk</span></span><span class="f">${tl(h.fiyat)}</span></button>`).join("");
+  $("#uzmanlar").innerHTML=[{id:"fark",ad:"Fark etmez"},...AYAR.uzmanlar].map(u=>`<button class="chip ${durum.uzman===u.id?"secili":""}" data-u="${u.id}">${u.ad}</button>`).join("");
+  $("#gunler").innerHTML=gunListesi().map(d=>{
+    const kod=tarihKod(d);const kapali=gunSaat(d)[0]==null;
+    let hepsiDolu=false;
+    if(!kapali&&durum.hizmet){const s=slotlar(kod);hepsiDolu=!s.some(x=>x.bos)}
+    const dis=kapali||hepsiDolu;
+    return `<button class="gun ${durum.gun===kod?"secili":""}" data-g="${kod}" ${dis?"disabled":""} title="${kapali?"Kapalı":hepsiDolu?"Dolu":""}"><small>${GUNLER[d.getDay()]}</small><b>${d.getDate()}</b><small>${AYLAR[d.getMonth()]}</small></button>`;
+  }).join("");
+  $("#gunAlt").textContent=durum.hizmet?"Üstü çizili saatler dolu. Pazar günleri kapalıyız.":"Önce bir hizmet seçin.";
+  const sa=$("#saatler");
+  if(!durum.hizmet||!durum.gun){sa.innerHTML=durum.hizmet?`<div class="bos" style="grid-column:1/-1">Bir gün seçin</div>`:""}
+  else{
+    const s=slotlar(durum.gun);
+    sa.innerHTML=s.length?s.map(x=>`<button class="saat ${durum.saat===x.bas?"secili":""}" data-s="${x.bas}" ${x.bos?"":"disabled"}>${dkSaat(x.bas)}</button>`).join(""):`<div class="bos" style="grid-column:1/-1">Bu gün kapalı</div>`;
+  }
+  const ad=$("#ad").value.trim(),tel=$("#tel").value.replace(/\D/g,"");
+  const tamam=durum.hizmet&&durum.gun&&durum.saat!=null&&ad.length>=3&&tel.length>=10;
+  $("#devam").disabled=!tamam;
+  $("#ozet").innerHTML=durum.hizmet?`<b>${durum.hizmet.ad} · ${tl(durum.hizmet.fiyat)}</b><br>${durum.gun&&durum.saat!=null?gunMetin(durum.gun)+" "+dkSaat(durum.saat):"Gün ve saat seçin"}`:"Hizmet seçin";
+  const adim=[!!durum.hizmet,true,durum.gun&&durum.saat!=null,ad.length>=3&&tel.length>=10];
+  document.querySelectorAll("#adimlar i").forEach((el,i)=>el.classList.toggle("bitti",!!adim[i]&&(i<2?!!durum.hizmet:true)));
+}
+function gunMetin(kod){const d=new Date(kod+"T12:00:00");return d.getDate()+" "+AYLAR[d.getMonth()]+" "+UZUN[d.getDay()]}
+
+document.addEventListener("click",e=>{
+  const h=e.target.closest("[data-h]"),u=e.target.closest("[data-u]"),g=e.target.closest("[data-g]"),s=e.target.closest("[data-s]");
+  if(h){durum.hizmet=AYAR.hizmetler.find(x=>x.id===h.dataset.h);durum.saat=null;if(durum.gun&&!slotlar(durum.gun).some(x=>x.bos))durum.gun=null;ciz();if(!durum.gun)$("#b3").scrollIntoView({behavior:"smooth",block:"start"})}
+  else if(u){durum.uzman=u.dataset.u;durum.saat=null;ciz()}
+  else if(g){durum.gun=g.dataset.g;durum.saat=null;ciz()}
+  else if(s){durum.saat=+s.dataset.s;ciz()}
+});
+$("#ad").addEventListener("input",ciz);
+$("#tel").addEventListener("input",ciz);
+
+$("#devam").addEventListener("click",()=>{
+  const ad=$("#ad").value.trim(),telHam=$("#tel").value.replace(/\D/g,"");
+  $("#adHata").textContent=ad.length<3?"Adınızı yazın":"";
+  $("#telHata").textContent=telHam.length<10?"Geçerli bir telefon yazın":"";
+  if(!durum.hizmet||!durum.gun||durum.saat==null||ad.length<3||telHam.length<10)return;
+  const uz=uygunUzmanlar(durum.gun,durum.saat,durum.hizmet.dk);
+  if(!uz.length){alert("Bu saat az önce doldu, lütfen başka bir saat seçin.");durum.saat=null;ciz();return}
+  const r={id:Date.now().toString(36),tarih:durum.gun,bas:durum.saat,dk:durum.hizmet.dk,hizmet:durum.hizmet.ad,fiyat:durum.hizmet.fiyat,uzman:uz[0],ad,tel:telHam};
+  const l=oku();l.push(r);yaz(l);
+  onayGoster(r);
+});
+
+function uzmanAd(id){return AYAR.uzmanlar.find(u=>u.id===id).ad}
+function onayGoster(r){
+  const mesaj=`Merhaba ${AYAR.isletme}, randevumu onaylıyorum:\n${r.hizmet} (${r.dk} dk)\n${gunMetin(r.tarih)} ${dkSaat(r.bas)}\nUzman: ${uzmanAd(r.uzman)}\nAd: ${r.ad}\nTel: ${r.tel}`;
+  $("#onayKutu").innerHTML=`<div class="tik">✓</div><h2>Randevunuz alındı</h2><p class="alt">Aşağıdaki düğmeyle WhatsApp'ta işletmeye de iletebilirsiniz.</p>
+  <dl><dt>Hizmet</dt><dd>${r.hizmet}</dd><dt>Tarih</dt><dd>${gunMetin(r.tarih)}</dd><dt>Saat</dt><dd>${dkSaat(r.bas)} – ${dkSaat(r.bas+r.dk)}</dd><dt>Uzman</dt><dd>${uzmanAd(r.uzman)}</dd><dt>Ücret</dt><dd>${tl(r.fiyat)} (yerinde ödenir)</dd></dl>
+  <div class="eylemler"><a class="dugme wa" id="waBtn" style="text-align:center;text-decoration:none" target="_blank" rel="noopener" href="https://wa.me/${AYAR.whatsapp}?text=${encodeURIComponent(mesaj)}">WhatsApp'ta işletmeye ilet</a>
+  <button class="dugme ikincil" id="icsBtn">Telefon takvimime ekle (.ics)</button>
+  <button class="dugme ikincil" id="yeniBtn">Yeni randevu al</button></div>`;
+  $("#musteri").classList.add("gizli");$("#altbar").classList.add("gizli");$("#onaySayfa").classList.remove("gizli");
+  window.scrollTo(0,0);
+  $("#icsBtn").onclick=()=>ics(r);
+  $("#yeniBtn").onclick=()=>{durum.saat=null;durum.gun=null;$("#onaySayfa").classList.add("gizli");$("#musteri").classList.remove("gizli");$("#altbar").classList.remove("gizli");ciz()};
+}
+function ics(r){
+  const d=r.tarih.replace(/-/g,"");const f=dk=>d+"T"+pad(Math.floor(dk/60))+pad(dk%60)+"00";
+  const metin=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Boztas Digital//Randevu//TR","BEGIN:VEVENT","UID:"+r.id+"@randevu-demo","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z","DTSTART:"+f(r.bas),"DTEND:"+f(r.bas+r.dk),"SUMMARY:"+AYAR.isletme+" - "+r.hizmet,"DESCRIPTION:Uzman: "+uzmanAd(r.uzman),"BEGIN:VALARM","TRIGGER:-PT2H","ACTION:DISPLAY","DESCRIPTION:Randevunuza 2 saat kaldı","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([metin],{type:"text/calendar"}));a.download="randevu.ics";document.body.appendChild(a);a.click();a.remove();
+}
+
+/* İşletme paneli */
+function panel(){
+  const bugun=tarihKod(new Date());
+  const l=oku().filter(r=>r.tarih>=bugun).sort((a,b)=>(a.tarih+pad(a.bas)).localeCompare(b.tarih+pad(b.bas)));
+  $("#yonTablo").innerHTML=l.length?`<table><thead><tr><th>Tarih</th><th>Saat</th><th>Müşteri</th><th>Hizmet</th><th>Uzman</th><th></th></tr></thead><tbody>${l.map(r=>`<tr><td>${gunMetin(r.tarih)}</td><td>${dkSaat(r.bas)}</td><td>${r.ad}<br><small>${r.tel}</small></td><td>${r.hizmet}</td><td>${uzmanAd(r.uzman)}</td><td><button data-iptal="${r.id}">İptal</button></td></tr>`).join("")}</tbody></table>`:`<div class="bos">Henüz randevu yok. Müşteri sayfasından bir randevu alın, burada görünür.</div>`;
+}
+document.addEventListener("click",e=>{
+  const i=e.target.closest("[data-iptal]");
+  if(i){yaz(oku().filter(r=>r.id!==i.dataset.iptal));panel()}
+});
+$("#csvBtn").addEventListener("click",()=>{
+  const satir=[["Tarih","Saat","Bitiş","Müşteri","Telefon","Hizmet","Uzman","Ücret"]].concat(oku().sort((a,b)=>(a.tarih+pad(a.bas)).localeCompare(b.tarih+pad(b.bas))).map(r=>[r.tarih,dkSaat(r.bas),dkSaat(r.bas+r.dk),r.ad,r.tel,r.hizmet,uzmanAd(r.uzman),r.fiyat]));
+  const csv="﻿"+satir.map(s=>s.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(";")).join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="randevular.csv";document.body.appendChild(a);a.click();a.remove();
+});
+
+function yonlendir(){
+  const y=location.hash==="#yonetim";
+  $("#yonetimSayfa").classList.toggle("gizli",!y);
+  $("#musteri").classList.toggle("gizli",y);
+  $("#altbar").classList.toggle("gizli",y);
+  $("#onaySayfa").classList.add("gizli");
+  $("#yonLink").style.display=y?"none":"";
+  if(y)panel();else ciz();
+}
+window.addEventListener("hashchange",yonlendir);
+yonlendir();
+</script>
+</body>
+</html>
