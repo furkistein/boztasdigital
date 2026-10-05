@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kamera Soru Çözüm | IP kamera + Gemini çalışan örnek</title>
+<meta name="description" content="IP kameranın gördüğü soruyu Gemini ile çözüp cevabı ekranda gösteren Python otomasyonu: akış simülasyonu ve indirilebilir çalışan kod.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3eee4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2314130f%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%226%22 fill=%22none%22 stroke=%22%23f3eee4%22 stroke-width=%223%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%222.4%22 fill=%22%23ff6a2b%22/%3E%3C/svg%3E">
+<style>
+:root{
+  --kagit:#f3eee4;--kagit2:#ebe5d8;--murekkep:#1d1b17;--soluk:#625d52;--cizgi:#d8d1c1;
+  --cam:#14130f;--cam2:#23211b;--turuncu:#d9480f;--turuncu-a:#ff6a2b;--yesil:#1f7a4d;--yesil-a:#6fdc9c;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:"Avenir Next","Segoe UI Variable Text","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"Cascadia Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--kagit);color:var(--murekkep);line-height:1.6;font-size:16px;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.kap{max-width:1180px;margin:0 auto;padding:0 22px}
+.ust{border-bottom:1px solid var(--cizgi)}
+.ust .kap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.marka{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:-.01em;text-decoration:none}
+.marka i{width:26px;height:26px;border-radius:8px;background:var(--cam);display:grid;place-items:center}
+.marka i::before{content:"";width:12px;height:12px;border-radius:50%;border:2.5px solid var(--kagit);box-shadow:inset 0 0 0 2px var(--cam),inset 0 0 0 6px var(--turuncu-a)}
+.ust nav{display:flex;gap:20px;font-size:14px;color:var(--soluk)}
+.ust nav a{text-decoration:none;padding:6px 0}
+.ust nav a:hover{color:var(--murekkep)}
+
+/* kahraman */
+.kahraman{padding:56px 0 40px}
+.etiket{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--turuncu);display:inline-flex;align-items:center;gap:8px}
+.etiket::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--turuncu-a);animation:nabiz 1.6s infinite}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(32px,6.2vw,62px);line-height:1.04;letter-spacing:-.025em;margin:16px 0 18px;max-width:15em}
+h1 em{font-style:italic;color:var(--turuncu)}
+.ozet{font-size:clamp(16px,2vw,19px);color:var(--soluk);max-width:40em}
+.dugmeler{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.dugme{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--murekkep);transition:transform .15s,background .15s}
+.dugme:hover{transform:translateY(-1px)}
+.dugme.ana{background:var(--murekkep);color:var(--kagit)}
+.dugme.ana:hover{background:#000}
+.dugme:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--turuncu-a);outline-offset:3px}
+
+/* demo */
+.demo{padding:12px 0 56px}
+.demo-izgara{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;align-items:start}
+.cam{position:relative;border-radius:18px;background:radial-gradient(120% 90% at 50% 40%,#2e2b23 0%,var(--cam) 70%);aspect-ratio:4/3;overflow:hidden;box-shadow:0 18px 40px -18px rgba(20,19,15,.55)}
+.hud{position:absolute;inset:0;pointer-events:none;font-family:var(--mono);font-size:11px;color:#d9d3c4;z-index:3}
+.hud .koseler span{position:absolute;width:22px;height:22px;border:2px solid rgba(243,238,228,.7)}
+.hud .koseler span:nth-child(1){top:12px;left:12px;border-right:0;border-bottom:0}
+.hud .koseler span:nth-child(2){top:12px;right:12px;border-left:0;border-bottom:0}
+.hud .koseler span:nth-child(3){bottom:12px;left:12px;border-right:0;border-top:0}
+.hud .koseler span:nth-child(4){bottom:12px;right:12px;border-left:0;border-top:0}
+.hud .sol{position:absolute;top:20px;left:44px;display:flex;align-items:center;gap:7px}
+.hud .sag{position:absolute;top:20px;right:44px}
+.rec{width:8px;height:8px;border-radius:50%;background:#ff4a3d;animation:nabiz 1.2s infinite}
+.kagit-yaprak{position:absolute;left:11%;right:11%;top:15%;height:56%;background:#faf6ec;border-radius:3px;transform:rotate(-1.4deg);padding:clamp(10px,2.6vw,22px) clamp(12px,3vw,26px);color:#26231d;box-shadow:0 14px 26px -8px rgba(0,0,0,.6),inset 0 0 40px rgba(180,160,120,.18);font-family:var(--serif);transition:opacity .35s,transform .45s}
+.kagit-yaprak.gizli{opacity:0;transform:rotate(-1.4deg) translateY(14px)}
+.kagit-yaprak .no{font-family:var(--mono);font-size:clamp(9px,1.5vw,11px);color:#8b8372;letter-spacing:.08em}
+.kagit-yaprak .soru{font-size:clamp(13px,2.5vw,19px);line-height:1.35;margin:6px 0 10px;font-weight:600}
+.kagit-yaprak ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:clamp(12px,2.1vw,16px)}
+.kagit-yaprak ol li{display:flex;gap:7px}
+.kagit-yaprak ol b{font-family:var(--mono);font-weight:700;color:var(--turuncu)}
+.flas{position:absolute;inset:0;background:#fff;opacity:0;z-index:2;pointer-events:none}
+.flas.vur{animation:flas .45s ease-out}
+.tarama{position:absolute;left:0;right:0;height:3px;top:0;background:linear-gradient(90deg,transparent,var(--turuncu-a),transparent);box-shadow:0 0 18px var(--turuncu-a);opacity:0;z-index:2}
+.tarama.git{animation:tara 1.2s ease-in-out}
+.bindirme{position:absolute;left:0;right:0;bottom:0;z-index:3;background:rgba(20,17,13,.84);color:#f0ede6;padding:10px 16px 12px;font-family:var(--mono);font-size:clamp(11px,1.9vw,14px);line-height:1.5;transform:translateY(101%);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.bindirme.acik{transform:none}
+.bindirme b{color:var(--yesil-a)}
+.durum-seridi{display:flex;gap:6px;margin-top:12px;font-family:var(--mono);font-size:12px}
+.adim-etiket{flex:1;padding:8px 10px;border-radius:10px;background:var(--kagit2);border:1px solid var(--cizgi);color:var(--soluk);text-align:center;transition:all .25s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adim-etiket.aktif{background:var(--murekkep);border-color:var(--murekkep);color:var(--kagit)}
+.adim-etiket.bitti{background:#e1eee5;border-color:#b8d6c3;color:var(--yesil)}
+
+.sag-sutun{display:flex;flex-direction:column;gap:16px;min-width:0}
+.cevap-karti{background:#fffdf7;border:1.5px solid var(--murekkep);border-radius:18px;padding:20px 22px;position:relative;min-height:200px;box-shadow:6px 6px 0 var(--murekkep)}
+.cevap-karti .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--soluk)}
+.cevap-govde{display:flex;align-items:center;gap:18px;margin-top:12px}
+.harf{flex:none;width:76px;height:76px;border-radius:18px;background:var(--cam);color:var(--yesil-a);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:44px;transition:transform .3s}
+.harf.bekle{color:#5b574c}
+.harf.pop{animation:pop .45s cubic-bezier(.2,1.6,.4,1)}
+.cevap-metin{font-size:17px;line-height:1.45;min-width:0}
+.cevap-metin small{display:block;font-family:var(--mono);color:var(--soluk);font-size:12.5px;margin-top:6px}
+.gunluk{background:var(--cam);color:#cfc9ba;border-radius:16px;padding:14px 16px;font-family:var(--mono);font-size:12.5px;line-height:1.7;height:178px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.gunluk div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:gir .3s}
+.gunluk .z{color:#7d7767}
+.gunluk .ok{color:var(--yesil-a)}
+.gunluk .atla{color:#ffb454}
+.demo-alt{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.denetim{display:flex;gap:8px}
+.denetim button{padding:9px 16px;border-radius:999px;border:1.5px solid var(--murekkep);background:transparent;font-size:14px;font-weight:600}
+.denetim button:hover{background:var(--murekkep);color:var(--kagit)}
+.not{font-size:13px;color:var(--soluk);max-width:36em}
+
+/* bolumler */
+section.blok{padding:56px 0;border-top:1px solid var(--cizgi)}
+h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 28px;max-width:20em}
+.akis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:a}
+.akis li{list-style:none;counter-increment:a;background:var(--kagit2);border-radius:16px;padding:20px 18px;position:relative}
+.akis li::before{content:counter(a,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--turuncu);letter-spacing:.06em}
+.akis h3{font-family:var(--serif);font-size:20px;margin:6px 0 6px;letter-spacing:-.01em}
+.akis p{font-size:14.5px;color:var(--soluk)}
+.ozellikler{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+.ozellik{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--cizgi)}
+.ozellik .nokta{flex:none;width:10px;height:10px;border-radius:50%;background:var(--turuncu-a);margin-top:9px}
+.ozellik h3{font-size:16.5px;margin-bottom:2px}
+.ozellik p{font-size:14.5px;color:var(--soluk)}
+.dosyalar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.dosya{display:block;text-decoration:none;background:#fffdf7;border:1.5px solid var(--murekkep);border-radius:16px;padding:18px 18px 16px;transition:transform .15s,box-shadow .15s}
+.dosya:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--murekkep)}
+.dosya code{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--turuncu);word-break:break-all}
+.dosya p{font-size:14.5px;color:var(--soluk);margin-top:6px}
+pre{margin-top:22px;background:var(--cam);color:#e9e4d6;border-radius:16px;padding:18px 20px;font-family:var(--mono);font-size:13.5px;line-height:1.7;overflow-x:auto;max-width:100%}
+pre .y{color:#7d7767}
+pre .a{color:var(--turuncu-a)}
+footer{border-top:1px solid var(--cizgi);padding:26px 0 40px;font-size:13.5px;color:var(--soluk)}
+
+@keyframes nabiz{50%{opacity:.35}}
+@keyframes flas{0%{opacity:.85}100%{opacity:0}}
+@keyframes tara{0%{top:0;opacity:1}100%{top:100%;opacity:1}}
+@keyframes pop{0%{transform:scale(.6)}100%{transform:scale(1)}}
+@keyframes gir{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+@media (max-width:900px){
+  .demo-izgara{grid-template-columns:minmax(0,1fr)}
+  .akis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dosyalar{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:620px){
+  .kap{padding:0 16px}
+  .ust nav a:nth-child(n+3){display:none}
+  .kahraman{padding:36px 0 28px}
+  .ozellikler{grid-template-columns:minmax(0,1fr)}
+  .akis{grid-template-columns:minmax(0,1fr)}
+  .harf{width:60px;height:60px;font-size:34px;border-radius:14px}
+  .cevap-metin{font-size:15.5px}
+  .cevap-karti{padding:16px;box-shadow:4px 4px 0 var(--murekkep)}
+  .hud .sag{display:none}
+  .kagit-yaprak{left:7%;right:7%;top:17%;height:58%}
+  .durum-seridi{font-size:11px}
+  section.blok{padding:40px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="ust">
+  <div class="kap">
+    <a class="marka" href="#"><i aria-hidden="true"></i>Kamera Soru Çözüm</a>
+    <nav aria-label="Sayfa bölümleri">
+      <a href="#demo">Simülasyon</a>
+      <a href="#akis">Akış</a>
+      <a href="#ozellik">Güvenilirlik</a>
+      <a href="#kod">Kod</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="kahraman">
+  <div class="kap">
+    <span class="etiket">Çalışan örnek · Python + Gemini</span>
+    <h1>Kameranın gördüğü soruyu okur, <em>çözer</em>, ekrana yazar.</h1>
+    <p class="ozet">IP kameranız (RTSP/HTTP) ya da webcam kareyi verir; betik belirli aralıkla kareyi Gemini'ye gönderir, kısa cevabı görüntünün üstüne bindirir ve her cevabı bir günlük dosyasına kaydeder. Aşağıda akışın simülasyonu, daha aşağıda indirilebilir gerçek kod var.</p>
+    <div class="dugmeler">
+      <a class="dugme ana" href="#demo">Akışı izle</a>
+      <a class="dugme" href="kod/soru_cozucu.py">Kodu aç</a>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo" aria-labelledby="demo-baslik">
+  <div class="kap">
+    <h2 id="demo-baslik" style="margin-top:0">Kare, Gemini, cevap kutusu</h2>
+    <div class="demo-izgara">
+      <div>
+        <div class="cam" id="cam" role="img" aria-label="Kamera görüntüsü simülasyonu: kâğıt üzerinde çoktan seçmeli bir soru">
+          <div class="kagit-yaprak gizli" id="yaprak">
+            <div class="no" id="soruNo">SORU 1</div>
+            <div class="soru" id="soruMetin"></div>
+            <ol id="siklar"></ol>
+          </div>
+          <div class="tarama" id="tarama"></div>
+          <div class="flas" id="flas"></div>
+          <div class="bindirme" id="bindirme"><b>Gemini:</b> <span id="bindirmeMetin"></span></div>
+          <div class="hud" aria-hidden="true">
+            <div class="koseler"><span></span><span></span><span></span><span></span></div>
+            <div class="sol"><i class="rec"></i>CAM-01 · 1280×720</div>
+            <div class="sag" id="saat">--:--:--</div>
+          </div>
+        </div>
+        <div class="durum-seridi" aria-hidden="true">
+          <div class="adim-etiket" id="e1">1 · Kare al</div>
+          <div class="adim-etiket" id="e2">2 · Gemini</div>
+          <div class="adim-etiket" id="e3">3 · Cevap</div>
+        </div>
+      </div>
+
+      <div class="sag-sutun">
+        <div class="cevap-karti">
+          <div class="kicker">Cevap kutusu</div>
+          <div class="cevap-govde">
+            <div class="harf bekle" id="harf">?</div>
+            <div class="cevap-metin" id="cevapMetin" aria-live="polite">Kamera bir soru bekliyor…</div>
+          </div>
+        </div>
+        <div class="gunluk" id="gunluk" aria-label="Betik günlüğü (simülasyon)"></div>
+      </div>
+    </div>
+    <div class="demo-alt">
+      <p class="not">Bu bir simülasyondur: tarayıcıda çalışır, gerçek kamera ya da Gemini çağrısı yapmaz. Gerçek akışı aşağıdaki Python betiği çalıştırır.</p>
+      <div class="denetim">
+        <button type="button" id="duraklat">Duraklat</button>
+        <button type="button" id="sonraki">Sıradaki soru</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blok" id="akis">
+  <div class="kap">
+    <span class="etiket">Nasıl çalışır</span>
+    <h2>Dört adım, tek betik</h2>
+    <ol class="akis">
+      <li><h3>Kareyi oku</h3><p>OpenCV, kamera adresini ya da webcam numarasını açar ve görüntüyü sürekli okur.</p></li>
+      <li><h3>Yenisi mi, bak</h3><p>Kare önceki sorulanla karşılaştırılır; aynıysa Gemini'ye tekrar gitmez, kota ve para harcanmaz.</p></li>
+      <li><h3>Gemini'ye sor</h3><p>Kare küçültülüp gönderilir: "görüntüdeki soruyu çöz, kısa cevap ver". Anahtar ortam değişkeninden gelir.</p></li>
+      <li><h3>Göster ve kaydet</h3><p>Cevap karenin altına bindirilir, zaman damgasıyla <code>cevaplar.log</code> dosyasına eklenir.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="blok" id="ozellik">
+  <div class="kap">
+    <span class="etiket">Güvenilirlik</span>
+    <h2>Gün boyu açık kalacak şekilde yazıldı</h2>
+    <div class="ozellikler">
+      <div class="ozellik"><span class="nokta"></span><div><h3>Bağlantı kopsa da devam eder</h3><p>Akış kesilirse betik kapanmaz; üstel bekleyerek kameraya yeniden bağlanır.</p></div></div>
+      <div class="ozellik"><span class="nokta"></span><div><h3>Aynı kareyi iki kez sormaz</h3><p>Küçük bir parmak izi karşılaştırması, hafif görüntü gürültüsünü aynı kare sayar.</p></div></div>
+      <div class="ozellik"><span class="nokta"></span><div><h3>Pencere takılmaz</h3><p>Gemini isteği ayrı bir iş parçacığında çalışır; cevap beklenirken görüntü akmaya devam eder.</p></div></div>
+      <div class="ozellik"><span class="nokta"></span><div><h3>Hatalar yönetilir</h3><p>Kota (429) ve sunucu hatalarında yeniden dener; yetki hatası gibi durumlarda net mesaj verir.</p></div></div>
+      <div class="ozellik"><span class="nokta"></span><div><h3>Otomatik ya da tuşla</h3><p>Her N saniyede bir sorabilir ya da yalnız boşluk tuşuna basınca; çıkış için q.</p></div></div>
+      <div class="ozellik"><span class="nokta"></span><div><h3>Testli</h3><p>Yineleme filtresi, yeniden bağlanma ve cevap bindirme sahte Gemini ile pytest'ten geçer.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="blok" id="kod">
+  <div class="kap">
+    <span class="etiket">İndirilebilir kod</span>
+    <h2>Üç dosya, kurulum bir dakika</h2>
+    <div class="dosyalar">
+      <a class="dosya" href="kod/soru_cozucu.py"><code>kod/soru_cozucu.py</code><p>Ana betik: kamera okuma, yineleme filtresi, Gemini çağrısı, bindirme, günlük.</p></a>
+      <a class="dosya" href="kod/test_soru_cozucu.py"><code>kod/test_soru_cozucu.py</code><p>Gemini ve kamerası sahte pytest testleri; ağ ya da kamera gerektirmez.</p></a>
+      <a class="dosya" href="kod/README.md"><code>kod/README.md</code><p>Kurulum ve çalıştırma: pip, ortam değişkeni, örnek komutlar.</p></a>
+    </div>
+<pre><span class="y"># kurulum</span>
+pip install opencv-python requests pytest
+<span class="y"># anahtar koda gömülmez, ortam değişkeninden okunur</span>
+set GEMINI_API_KEY=<span class="a">anahtarınız</span>      <span class="y"># PowerShell: $env:GEMINI_API_KEY="..."</span>
+<span class="y"># çalıştırma</span>
+python soru_cozucu.py rtsp://kullanici:sifre@192.168.1.20/stream1 --aralik 8
+python soru_cozucu.py 0 --elle      <span class="y"># webcam, boşluk tuşuyla sor</span></pre>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="kap">Bu sayfadaki akış bir simülasyondur; örnek sorular uydurmadır ve sayfada hiçbir API anahtarı bulunmaz.</div>
+</footer>
+
+<script>
+(function(){
+  var SORULAR=[
+    {q:"Kısa kenarı 6 cm, uzun kenarı 9 cm olan dikdörtgenin çevresi kaç cm'dir?",s:["54","30","24","36"],h:"B",c:"Çevre = 2 × (6 + 9) = 30 cm."},
+    {q:"3x + 7 = 25 ise x kaçtır?",s:["4","5","6","7"],h:"C",c:"3x = 18, dolayısıyla x = 6."},
+    {q:"Aşağıdakilerden hangisi oda sıcaklığında gaz hâlinde bulunan bir elementtir?",s:["Demir","Oksijen","Cıva","Altın"],h:"B",c:"Oksijen (O₂) oda sıcaklığında gazdır."}
+  ];
+  var $=function(i){return document.getElementById(i)};
+  var yaprak=$("yaprak"),soruNo=$("soruNo"),soruMetin=$("soruMetin"),siklar=$("siklar"),
+      flas=$("flas"),tarama=$("tarama"),bind=$("bindirme"),bindMetin=$("bindirmeMetin"),
+      harf=$("harf"),cevapMetin=$("cevapMetin"),gunluk=$("gunluk"),saat=$("saat"),
+      e=[$("e1"),$("e2"),$("e3")];
+  var HARFLER=["A","B","C","D"];
+  var sira=0,durdu=false,belirteç=0,hizli=false;
+
+  function sn(){return new Date().toTimeString().slice(0,8)}
+  setInterval(function(){saat.textContent=sn()},1000);saat.textContent=sn();
+
+  function bekle(ms,b){return new Promise(function(r){
+    var t=setTimeout(r,ms);
+    // iptal edilirse bekleme hemen biter
+    iptalDinleyici.push(function(){clearTimeout(t);r()});
+  })}
+  var iptalDinleyici=[];
+  function iptalEt(){belirteç++;var l=iptalDinleyici;iptalDinleyici=[];l.forEach(function(f){f()})}
+  async function bekleDuraklat(){while(durdu){await bekle(200)}}
+
+  function satir(metin,sinif){
+    var d=document.createElement("div");
+    d.innerHTML='<span class="z">['+sn()+']</span> <span class="'+(sinif||"")+'"></span>';
+    d.lastChild.textContent=metin;
+    gunluk.appendChild(d);
+    while(gunluk.children.length>8)gunluk.removeChild(gunluk.firstChild);
+  }
+  function adimlar(n){e.forEach(function(el,i){el.className="adim-etiket"+(i<n?" bitti":"")+(i===n?" aktif":"")})}
+
+  function soruyuGoster(s,i){
+    soruNo.textContent="SORU "+(i+1);
+    soruMetin.textContent=s.q;
+    siklar.innerHTML="";
+    s.s.forEach(function(x,k){var li=document.createElement("li");li.innerHTML="<b>"+HARFLER[k]+")</b><span></span>";li.lastChild.textContent=x;siklar.appendChild(li)});
+    yaprak.classList.remove("gizli");
+  }
+
+  async function tur(){
+    var b=belirteç,s=SORULAR[sira%SORULAR.length],i=sira%SORULAR.length;
+    function iptalMi(){return b!==belirteç}
+    // temizle
+    bind.classList.remove("acik");adimlar(-1);
+    harf.textContent="?";harf.className="harf bekle";cevapMetin.textContent="Kamera bir soru bekliyor…";
+    yaprak.classList.add("gizli");
+    await bekle(700);if(iptalMi())return;await bekleDuraklat();
+    soruyuGoster(s,i);
+    await bekle(1400);if(iptalMi())return;await bekleDuraklat();
+    // 1: kare al
+    adimlar(0);satir("kare alındı (1280×720)");
+    flas.classList.remove("vur");tarama.classList.remove("git");void flas.offsetWidth;
+    flas.classList.add("vur");tarama.classList.add("git");
+    await bekle(1000);if(iptalMi())return;
+    satir("benzerlik: yeni kare, sorulacak","ok");
+    // 2: Gemini
+    adimlar(1);satir("Gemini'ye gönderildi…");
+    cevapMetin.textContent="Gemini düşünüyor…";
+    await bekle(1500);if(iptalMi())return;await bekleDuraklat();
+    // 3: cevap
+    adimlar(2);
+    var tam=s.h+" — "+s.c;
+    harf.textContent=s.h;harf.className="harf pop";
+    cevapMetin.innerHTML="";
+    var ana=document.createElement("span");ana.textContent=s.c;
+    var kucuk=document.createElement("small");kucuk.textContent="Doğru şık: "+s.h+") "+s.s[HARFLER.indexOf(s.h)];
+    cevapMetin.appendChild(ana);cevapMetin.appendChild(kucuk);
+    bindMetin.textContent=tam;bind.classList.add("acik");
+    satir("cevap: "+tam,"ok");
+    satir("cevaplar.log dosyasına yazıldı");
+    await bekle(2200);if(iptalMi())return;await bekleDuraklat();
+    // aynı kare gelince: tekrar sorma
+    satir("kare alındı (1280×720)");
+    satir("benzerlik: aynı kare, atlandı","atla");
+    await bekle(2400);if(iptalMi())return;await bekleDuraklat();
+    sira++;
+  }
+
+  var calisiyor=false;
+  async function dongu(){
+    if(calisiyor)return;calisiyor=true;
+    for(;;){
+      var once=belirteç;
+      await tur();
+      if(once!==belirteç){/* sıradaki soruya atlandı, yeni tur hemen başlar */}
+    }
+  }
+
+  $("duraklat").addEventListener("click",function(){
+    durdu=!durdu;this.textContent=durdu?"Devam et":"Duraklat";
+  });
+  $("sonraki").addEventListener("click",function(){
+    sira++;durdu=false;$("duraklat").textContent="Duraklat";iptalEt();
+  });
+  dongu();
+})();
+</script>
+</body>
+</html>
