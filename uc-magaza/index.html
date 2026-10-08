@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCDepo | Oyun parası (UC) mağazası - örnek çalışma</title>
+<meta name="description" content="UCDepo örnek mağaza: paket seç, oyuncu ID gir, ödeme yap. Demo çalışmadır.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f13;--panel:#151922;--panel2:#1b212c;--line:#262d3a;--text:#e9ecf2;--mute:#8f99ab;--acc:#f2b632;--acc-ink:#1a1305;--ok:#4cc38a;--err:#ef6a6a;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.brand{font-family:'Bricolage Grotesque',Inter,sans-serif;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(13,15,19,.92);backdrop-filter:blur(8px);z-index:20}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:800;font-size:22px;text-decoration:none}.brand b{color:var(--acc)}
+nav a{color:var(--mute);text-decoration:none;font-size:14px;margin-left:18px}nav a:hover{color:var(--text)}
+.hero{padding:56px 0 28px}
+.hero .tag{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);border:1px solid #4a3a12;border-radius:99px;padding:4px 12px;margin-bottom:18px}
+.hero h1{font-size:clamp(34px,6.4vw,60px);line-height:1.04;font-weight:800;max-width:14ch}
+.hero p{color:var(--mute);margin-top:16px;max-width:52ch}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 8px}
+.trust div{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--panel);font-size:14px;color:var(--mute)}
+.trust strong{display:block;color:var(--text);font-weight:600;margin-bottom:2px}
+.steps{display:flex;gap:8px;margin:36px 0 18px;list-style:none;padding:0}
+.steps li{flex:1;font-size:13px;color:var(--mute);border-top:3px solid var(--line);padding-top:8px}
+.steps li.on{color:var(--text);border-color:var(--acc)}.steps li.done{border-color:var(--ok);color:var(--text)}
+.steps span{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.steps{scroll-margin-top:72px}
+section.step{display:none}section.step.on{display:block}
+h2{font-size:26px;font-weight:700;margin-bottom:6px}
+.sub{color:var(--mute);margin-bottom:20px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pack{text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;color:inherit;font:inherit;cursor:pointer;position:relative;transition:border-color .15s,transform .15s}
+.pack:hover{border-color:#3b4558;transform:translateY(-2px)}
+.pack.sel{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset;background:var(--panel2)}
+.pack .uc{font-family:'Bricolage Grotesque';font-size:34px;font-weight:800;line-height:1}
+.pack .uc small{font-size:15px;color:var(--acc);margin-left:6px;font-weight:700}
+.pack .pr{margin-top:14px;font-size:20px;font-weight:600}
+.pack .per{color:var(--mute);font-size:13px}
+.pack .badge{position:absolute;top:-10px;right:10px;font-size:11px;background:var(--acc);color:var(--acc-ink);border-radius:99px;padding:2px 9px;font-weight:700}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+label{display:block;font-size:14px;font-weight:500;margin:0 0 6px}
+input[type=text],input[type=file]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:13px 14px;font:inherit}
+input:focus{outline:2px solid var(--acc);outline-offset:1px}
+.field{margin-bottom:18px}
+.hint{font-size:13px;color:var(--mute);margin-top:6px}
+.err{color:var(--err);font-size:13px;margin-top:6px}
+details{margin-top:8px;font-size:14px;color:var(--mute)}summary{cursor:pointer;color:var(--acc)}
+.actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:14px 22px;font:600 15px Inter,sans-serif;cursor:pointer;background:var(--acc);color:var(--acc-ink)}
+.btn:hover{filter:brightness(1.07)}.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.sum{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.sum:last-child{border:0}.sum span:first-child{color:var(--mute)}.sum span:last-child{text-align:right;word-break:break-word}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.pay button{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px;color:var(--text);font:600 15px Inter,sans-serif;cursor:pointer}
+.pay button.sel{border-color:var(--acc);color:var(--acc)}
+.bank{background:var(--bg);border:1px dashed #3b4558;border-radius:10px;padding:16px;margin-bottom:18px;font-size:14px}
+.bank div{display:flex;justify-content:space-between;gap:10px;padding:4px 0}.bank span:first-child{color:var(--mute)}.bank b{font-weight:600;word-break:break-all;text-align:right}
+.done-no{font-family:'Bricolage Grotesque';font-size:44px;font-weight:800;color:var(--acc);margin:6px 0 14px}
+.faq{margin:56px 0 0}.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 10px;color:var(--mute)}
+.faq summary{color:var(--text);font-weight:600}.faq details p{margin-top:10px}
+footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 90px;font-size:13px;color:var(--mute)}
+footer p+p{margin-top:6px}
+.wa{position:fixed;right:16px;bottom:16px;z-index:30;box-shadow:0 8px 24px rgba(0,0,0,.45);background:var(--panel2);color:var(--text);border:1px solid #3b4558}
+#toast{position:fixed;left:50%;bottom:76px;transform:translate(-50%,20px);background:#fff;color:#111;padding:12px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:40;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}.trust{grid-template-columns:1fr}}
+@media(max-width:420px){.grid{gap:10px}.pack{padding:16px}.pack .uc{font-size:28px}.pack .pr{margin-top:18px}.steps span{display:none}nav a{margin-left:12px}.hero{padding-top:36px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">UC<b>Depo</b></a>
+  <nav><a href="#siparis">Sipariş ver</a><a href="#sss">SSS</a><a href="admin.html">Yönetim</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="tag">Örnek mağaza</span>
+    <h1>Oyun parasını kolayca sipariş et.</h1>
+    <p>Paketini seç, oyuncu ID'ni gir, Papara ya da havale ile öde. Siparişin sırayla, manuel olarak teslim edilir.</p>
+    <div class="trust">
+      <div><strong>Manuel teslim</strong>Siparişler sipariş sırasına göre elle işlenir.</div>
+      <div><strong>Şifre istemeyiz</strong>Yalnızca oyuncu ID'n gerekir, hesap şifreni asla paylaşma.</div>
+      <div><strong>Sipariş takibi</strong>Her siparişe UC-xxxx numarası verilir.</div>
+    </div>
+  </div>
+
+  <ol class="steps" id="steps" aria-label="Sipariş adımları">
+    <li class="on"><span>Adım 1</span>Paket</li><li><span>Adım 2</span>Oyuncu</li><li><span>Adım 3</span>Ödeme</li>
+  </ol>
+
+  <div id="siparis">
+  <section class="step on" id="s1">
+    <h2>Paketini seç</h2><p class="sub">Fiyatlar örnektir.</p>
+    <div class="grid" id="packs"></div>
+    <div class="actions"><button class="btn" id="to2" disabled>Devam et</button></div>
+  </section>
+
+  <section class="step" id="s2">
+    <h2>Oyuncu bilgileri</h2><p class="sub">UC bu ID'ye yüklenecek. Yanlış ID'den doğan hatalar iade edilemez.</p>
+    <div class="card">
+      <div class="field"><label for="pid">Oyuncu ID</label>
+        <input type="text" id="pid" inputmode="numeric" autocomplete="off" placeholder="Örn. 5123456789" maxlength="12">
+        <div class="err" id="pidErr"></div>
+        <details><summary>ID nerede bulunur?</summary><p style="margin-top:8px">Oyunu aç, sağ üstteki profil resmine dokun. Kullanıcı adının altındaki 8-12 haneli sayı oyuncu ID'ndir.</p></details>
+      </div>
+      <div class="field"><label for="pname">Oyuncu kullanıcı adı</label>
+        <input type="text" id="pname" autocomplete="off" placeholder="Oyundaki adın" maxlength="30">
+        <div class="err" id="pnameErr"></div>
+        <div class="hint">Doğru hesaba yüklediğimizi kontrol etmek için kullanılır.</div></div>
+    </div>
+    <div class="actions"><button class="btn ghost" data-back="s1">Geri</button><button class="btn" id="to3">Devam et</button></div>
+  </section>
+
+  <section class="step" id="s3">
+    <h2>Ödeme yöntemi</h2><p class="sub">Ödemeyi yaptıktan sonra siparişi tamamla.</p>
+    <div class="card">
+      <div class="pay"><button type="button" data-m="Papara" class="sel">Papara</button><button type="button" data-m="Havale/EFT">Havale / EFT</button></div>
+      <div class="bank" id="bank"></div>
+      <div class="hint" style="margin:-6px 0 18px">Açıklama kısmına sipariş numaranı yazmayı unutma. Numara, siparişi tamamlayınca verilir.</div>
+      <div class="field"><label for="dekont">Dekont yükle (isteğe bağlı)</label>
+        <input type="file" id="dekont" accept="image/*,.pdf"><div class="hint">Örnek çalışmada dosya sunucuya gitmez, yalnızca dosya adı kaydedilir.</div></div>
+      <div id="miniSum"></div>
+    </div>
+    <div class="actions"><button class="btn ghost" data-back="s2">Geri</button><button class="btn" id="finish">Siparişi tamamla</button></div>
+  </section>
+
+  <section class="step" id="s4">
+    <h2>Siparişin alındı</h2><p class="sub">Sipariş numaran:</p>
+    <div class="done-no" id="doneNo"></div>
+    <div class="card" id="doneSum"></div>
+    <p class="sub" style="margin-top:16px">Ödemen kontrol edildikten sonra sipariş sırasına göre manuel olarak teslim edilir. Durumu yönetim panelinden izleyebilirsin.</p>
+    <div class="actions"><button class="btn" id="waBtn2">WhatsApp destek (örnek)</button><button class="btn ghost" id="again">Yeni sipariş</button></div>
+  </section>
+  </div>
+
+  <div class="faq" id="sss">
+    <h2 style="margin-bottom:16px">Sık sorulanlar</h2>
+    <details><summary>Teslimat nasıl yapılıyor?</summary><p>Siparişler manuel işlenir ve sipariş sırasına göre teslim edilir. Ödeme onaylandıktan sonra UC ID'ne yüklenir.</p></details>
+    <details><summary>Hesap şifremi vermem gerekiyor mu?</summary><p>Hayır. Yalnızca oyuncu ID'n ve kullanıcı adın yeterlidir. Şifreni kimseyle paylaşma.</p></details>
+    <details><summary>Yanlış ID girersem ne olur?</summary><p>Yüklemeden önce kullanıcı adınla ID'yi karşılaştırırız. Yine de teslim sonrası yanlış ID'ye yapılan yüklemeler geri alınamaz.</p></details>
+    <details><summary>Ödeme sonrası ne yapmalıyım?</summary><p>Açıklamaya sipariş numaranı yazdığından emin ol, dekontu yükle ve destek hattından bize haber ver.</p></details>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>UCDepo kurgusal bir markadır. Resmî değildir, örnek çalışmadır. Herhangi bir oyun yapımcısı veya yayıncısıyla bağlantısı yoktur.</p>
+  <p>Demo notu: Bu sürümde sunucu yoktur, siparişler tarayıcıda (localStorage) saklanır; teslimde PHP + SQLite'a çevrilecektir.</p>
+</div></footer>
+
+<button class="btn wa" id="waBtn">WhatsApp destek (örnek)</button>
+<div id="toast" role="status"></div>
+
+<script>
+const KEY='ucdepo_siparisler';
+const PACKS=[{uc:60,t:34.99},{uc:325,t:174.99},{uc:660,t:349.99,b:'Popüler'},{uc:1800,t:869.99},{uc:3850,t:1749.99},{uc:8100,t:3499.99,b:'En avantajlı'}];
+const HESAP={'Papara':[['Papara no','1234567890'],['Ad soyad','UCDepo Örnek Hesap']],
+ 'Havale/EFT':[['Banka','Örnek Banka A.Ş.'],['IBAN','TR00 0000 0000 0000 0000 0000 00'],['Alıcı','UCDepo Örnek Hesap']]};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const tl=n=>n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' TL';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let st={pack:null,method:'Papara'};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2600)}
+function go(id){$$('section.step').forEach(s=>s.classList.toggle('on',s.id===id));
+ const n=+id.slice(1);$$('#steps li').forEach((li,i)=>{li.classList.toggle('on',i+1===n);li.classList.toggle('done',i+1<n||n===4)});
+ $('#steps').scrollIntoView({behavior:'smooth',block:'start'})}
+$('#packs').innerHTML=PACKS.map((p,i)=>`<button class="pack" data-i="${i}">${p.b?`<span class="badge">${p.b}</span>`:''}<div class="uc">${p.uc.toLocaleString('tr-TR')}<small>UC</small></div><div class="pr">${tl(p.t)}</div><div class="per">UC başına ${(p.t/p.uc).toFixed(2).replace('.',',')} TL</div></button>`).join('');
+$$('.pack').forEach(b=>b.onclick=()=>{st.pack=PACKS[+b.dataset.i];$$('.pack').forEach(x=>x.classList.toggle('sel',x===b));$('#to2').disabled=false});
+$('#to2').onclick=()=>go('s2');
+$$('[data-back]').forEach(b=>b.onclick=()=>go(b.dataset.back));
+$('#pid').oninput=e=>{e.target.value=e.target.value.replace(/\D/g,'');$('#pidErr').textContent=''};
+$('#to3').onclick=()=>{let ok=true;const id=$('#pid').value,nm=$('#pname').value.trim();
+ if(!/^\d{8,12}$/.test(id)){$('#pidErr').textContent='Oyuncu ID 8-12 haneli bir sayı olmalı.';ok=false}
+ if(nm.length<2){$('#pnameErr').textContent='Kullanıcı adını yaz.';ok=false}else $('#pnameErr').textContent='';
+ if(ok){renderPay();go('s3')}};
+function sumRows(o){return `<div class="sum"><span>Paket</span><span>${o.pack.uc.toLocaleString('tr-TR')} UC</span></div><div class="sum"><span>Oyuncu ID</span><span>${esc(o.id)}</span></div><div class="sum"><span>Kullanıcı adı</span><span>${esc(o.name)}</span></div><div class="sum"><span>Yöntem</span><span>${o.method}</span></div><div class="sum"><span>Tutar</span><span><b>${tl(o.pack.t)}</b></span></div>`}
+function renderPay(){
+ $$('.pay button').forEach(b=>b.classList.toggle('sel',b.dataset.m===st.method));
+ $('#bank').innerHTML=HESAP[st.method].map(r=>`<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join('')+'<div><span>Açıklama</span><b>Sipariş no (UC-xxxx)</b></div>';
+ $('#miniSum').innerHTML=sumRows({pack:st.pack,id:$('#pid').value,name:$('#pname').value.trim(),method:st.method})}
+$$('.pay button').forEach(b=>b.onclick=()=>{st.method=b.dataset.m;renderPay()});
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+$('#finish').onclick=()=>{
+ const list=load();let n=1000+list.length+1;const used=new Set(list.map(o=>o.no));while(used.has('UC-'+n))n++;
+ const f=$('#dekont').files[0];
+ const o={no:'UC-'+n,tarih:new Date().toISOString(),id:$('#pid').value,ad:$('#pname').value.trim(),uc:st.pack.uc,tutar:st.pack.t,yontem:st.method,durum:'Ödeme bekliyor',dekont:f?f.name:''};
+ list.push(o);localStorage.setItem(KEY,JSON.stringify(list));
+ $('#doneNo').textContent=o.no;
+ $('#doneSum').innerHTML=sumRows({pack:st.pack,id:o.id,name:o.ad,method:o.yontem})+(o.dekont?`<div class="sum"><span>Dekont</span><span>${esc(o.dekont)}</span></div>`:'')+'<div class="sum"><span>Durum</span><span>Ödeme bekliyor</span></div>';
+ go('s4')};
+$('#again').onclick=()=>{st={pack:null,method:'Papara'};$('#pid').value='';$('#pname').value='';$('#dekont').value='';$$('.pack').forEach(x=>x.classList.remove('sel'));$('#to2').disabled=true;go('s1')};
+$('#waBtn').onclick=$('#waBtn2').onclick=()=>toast('Örnek çalışma: gerçek WhatsApp hattı bağlı değil.');
+</script>
+</body>
+</html>

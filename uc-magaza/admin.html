@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UCDepo Yönetim - örnek çalışma</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f13;--panel:#151922;--panel2:#1b212c;--line:#262d3a;--text:#e9ecf2;--mute:#8f99ab;--acc:#f2b632;--acc-ink:#1a1305;--ok:#4cc38a;--err:#ef6a6a;--r:14px}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:400 15px/1.5 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,.brand{font-family:'Bricolage Grotesque',Inter,sans-serif;letter-spacing:-.02em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-weight:800;font-size:22px;text-decoration:none;color:inherit}.brand b{color:var(--acc)}
+.top a.l{color:var(--mute);text-decoration:none;font-size:14px}
+h1{font-size:30px;margin:32px 0 6px}
+.mute{color:var(--mute);font-size:14px}
+.login{max-width:380px;margin:60px auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+input,select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 13px;font:inherit}
+input:focus,select:focus{outline:2px solid var(--acc);outline-offset:1px}
+.btn{border:0;border-radius:10px;padding:11px 18px;font:600 14px Inter,sans-serif;cursor:pointer;background:var(--acc);color:var(--acc-ink);white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}.btn.danger{color:var(--err);border-color:#4a2a2a;background:transparent}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.kpi small{color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.07em}
+.kpi div{font:800 24px 'Bricolage Grotesque';margin-top:4px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.bar .grow{flex:1;min-width:180px}.bar select{width:auto;min-width:160px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+table{width:100%;border-collapse:collapse;min-width:820px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;white-space:nowrap}
+th{color:var(--mute);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+tr:last-child td{border:0}
+td select{padding:7px 9px;font-size:13px;min-width:150px}
+.pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:600}
+.s0{background:#3a2f10;color:var(--acc)}.s1{background:#17303f;color:#6cb8e6}.s2{background:#143426;color:var(--ok)}.s3{background:#3a1d1d;color:var(--err)}
+.empty{padding:40px;text-align:center;color:var(--mute)}
+.note{font-size:13px;color:var(--mute);margin:18px 0 60px}
+.demo{background:var(--panel2);border:1px dashed #3b4558;border-radius:10px;padding:10px 14px;font-size:13px;margin-top:14px}
+code{background:var(--bg);padding:2px 7px;border-radius:6px;color:var(--acc)}
+#toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,20px);background:#fff;color:#111;padding:12px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="index.html">UC<b>Depo</b> <span class="mute" style="font-weight:500;font-size:14px">yönetim</span></a><a class="l" href="index.html">Mağazaya dön</a></div></header>
+
+<div class="wrap" id="loginBox">
+  <div class="login card">
+    <h1 style="margin-top:0;font-size:24px">Yönetici girişi</h1>
+    <p class="mute" style="margin-bottom:14px">Örnek çalışma: giriş parolası <code>demo123</code></p>
+    <form id="lf"><input type="password" id="pw" placeholder="Parola" autocomplete="off" aria-label="Parola">
+    <div id="lerr" style="color:var(--err);font-size:13px;min-height:20px;margin-top:6px"></div>
+    <button class="btn" style="width:100%;margin-top:6px" type="submit">Giriş yap</button></form>
+  </div>
+</div>
+
+<main class="wrap" id="panel" hidden>
+  <h1>Siparişler</h1>
+  <p class="mute">Siparişler bu tarayıcının localStorage'ında tutulur. Demo parola: <code>demo123</code></p>
+  <div class="kpis">
+    <div class="kpi"><small>Bugünkü ciro</small><div id="kToday">0,00 TL</div></div>
+    <div class="kpi"><small>Toplam ciro</small><div id="kTotal">0,00 TL</div></div>
+    <div class="kpi"><small>Ödeme bekleyen</small><div id="kWait">0</div></div>
+    <div class="kpi"><small>Teslim edilen</small><div id="kDone">0</div></div>
+  </div>
+  <div class="bar">
+    <input class="grow" id="q" placeholder="Ara: sipariş no, ID, kullanıcı adı" aria-label="Ara">
+    <select id="f" aria-label="Durum filtresi"><option value="">Tüm durumlar</option></select>
+    <button class="btn ghost" id="csv">CSV indir</button>
+    <button class="btn ghost" id="seed">Örnek siparişleri yükle</button>
+    <button class="btn danger" id="clear">Siparişleri temizle</button>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>No</th><th>Tarih</th><th>Oyuncu ID</th><th>Paket</th><th>Tutar</th><th>Yöntem</th><th>Durum</th></tr></thead>
+    <tbody id="rows"></tbody></table><div class="empty" id="empty" hidden>Sipariş yok. Mağazadan sipariş ver ya da örnek siparişleri yükle.</div></div>
+  <p class="note">Ciro: iptal edilenler hariç, ödenmiş ve teslim edilmiş siparişler. Teslimde bu panel PHP + SQLite ile sunucuya taşınacaktır.</p>
+</main>
+<div id="toast" role="status"></div>
+
+<script>
+const KEY='ucdepo_siparisler',AUTH='ucdepo_admin';
+const DURUM=['Ödeme bekliyor','Ödendi','Teslim edildi','İptal'];
+const $=s=>document.querySelector(s);
+const tl=n=>n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' TL';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const load=()=>{try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}};
+const save=l=>localStorage.setItem(KEY,JSON.stringify(l));
+const fmt=iso=>new Date(iso).toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2400)}
+$('#f').innerHTML+=DURUM.map(d=>`<option>${d}</option>`).join('');
+function open(){$('#loginBox').hidden=true;$('#panel').hidden=false;render()}
+$('#lf').onsubmit=e=>{e.preventDefault();if($('#pw').value==='demo123'){sessionStorage.setItem(AUTH,'1');open()}else $('#lerr').textContent='Parola hatalı.'};
+if(sessionStorage.getItem(AUTH))open();
+
+function render(){
+ const all=load(),q=$('#q').value.trim().toLowerCase(),f=$('#f').value;
+ const list=all.filter(o=>(!f||o.durum===f)&&(!q||[o.no,o.id,o.ad].join(' ').toLowerCase().includes(q))).sort((a,b)=>b.tarih.localeCompare(a.tarih));
+ $('#rows').innerHTML=list.map(o=>`<tr><td><b>${esc(o.no)}</b></td><td>${fmt(o.tarih)}</td><td>${esc(o.id)}<div class="mute">${esc(o.ad)}</div></td><td>${o.uc.toLocaleString('tr-TR')} UC</td><td>${tl(o.tutar)}</td><td>${esc(o.yontem)}</td>
+ <td><select data-no="${esc(o.no)}" aria-label="Durum ${esc(o.no)}">${DURUM.map(d=>`<option${d===o.durum?' selected':''}>${d}</option>`).join('')}</select></td></tr>`).join('');
+ $('#empty').hidden=list.length>0;
+ const sayilan=all.filter(o=>o.durum==='Ödendi'||o.durum==='Teslim edildi'),today=new Date().toDateString();
+ $('#kToday').textContent=tl(sayilan.filter(o=>new Date(o.tarih).toDateString()===today).reduce((s,o)=>s+o.tutar,0));
+ $('#kTotal').textContent=tl(sayilan.reduce((s,o)=>s+o.tutar,0));
+ $('#kWait').textContent=all.filter(o=>o.durum==='Ödeme bekliyor').length;
+ $('#kDone').textContent=all.filter(o=>o.durum==='Teslim edildi').length}
+$('#rows').onchange=e=>{const s=e.target.closest('select[data-no]');if(!s)return;const l=load(),o=l.find(x=>x.no===s.dataset.no);if(o){o.durum=s.value;save(l);render();toast(o.no+': '+o.durum)}};
+$('#q').oninput=render;$('#f').onchange=render;
+$('#seed').onclick=()=>{
+ const adlar=['KaanTR','ShadowFox','MertGamer','ZeynepX','AlpSniper','NehirPlay'],paket=[[60,34.99],[325,174.99],[660,349.99],[1800,869.99],[3850,1749.99],[660,349.99]],
+ yon=['Papara','Havale/EFT','Papara','Papara','Havale/EFT','Papara'],dr=[2,1,2,0,3,0],gun=[0,0,1,1,2,0];
+ const l=load(),used=new Set(l.map(o=>o.no));let n=1000;
+ adlar.forEach((a,i)=>{do{n++}while(used.has('UC-'+n));used.add('UC-'+n);
+  const d=new Date(Date.now()-gun[i]*864e5-i*47*6e4);
+  l.push({no:'UC-'+n,tarih:d.toISOString(),id:String(5100000000+i*7391733+1234),ad:a,uc:paket[i][0],tutar:paket[i][1],yontem:yon[i],durum:DURUM[dr[i]],dekont:''})});
+ save(l);render();toast('6 örnek sipariş yüklendi')};
+$('#clear').onclick=()=>{if(confirm('Tüm siparişler silinsin mi?')){save([]);render();toast('Siparişler temizlendi')}};
+$('#csv').onclick=()=>{
+ const l=load();if(!l.length){toast('İndirilecek sipariş yok');return}
+ const c=v=>{v=String(v);if(/^[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
+ const rows=[['Sipariş no','Tarih','Oyuncu ID','Kullanıcı adı','Paket (UC)','Tutar (TL)','Yöntem','Durum','Dekont']].concat(l.map(o=>[o.no,fmt(o.tarih),o.id,o.ad,o.uc,o.tutar.toFixed(2),o.yontem,o.durum,o.dekont||'']));
+ const blob=new Blob(['﻿'+rows.map(r=>r.map(c).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ucdepo-siparisler-'+new Date().toISOString().slice(0,10)+'.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+</script>
+</body>
+</html>
