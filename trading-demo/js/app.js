@@ -1,4 +1,4 @@
-/* Vertex Markets (Demo) — UI, paper account and order handling. */
+/* Demo Exchange — UI, paper account and order handling. */
 (function () {
   'use strict';
   var E = window.VXEngine, D = window.VXData, P = window.VXPredict;
@@ -264,8 +264,11 @@
       $('symChg').textContent = (ch >= 0 ? '+' : '') + px(a, t.price - t.open24) + '  ' + pct(ch);
       $('symChg').className = 'mono ' + (ch >= 0 ? 'up' : 'down');
       $('symHigh').textContent = px(a, t.high); $('symLow').textContent = px(a, t.low);
-      $('symVolK').textContent = a.feed === 'binance' && a.state === 'live' ? '24h volume (USDT)' : 'Sim volume';
-      $('symVol').textContent = a.feed === 'binance' && a.state === 'live' ? compact(t.qvol) : compact(t.vol);
+      var bnLive = a.feed === 'binance' && a.state === 'live', spotLive = a.state === 'live' && !bnLive;
+      $('symHighK').textContent = bnLive ? '24h high' : spotLive ? 'Session high' : 'Sim. high';
+      $('symLowK').textContent = bnLive ? '24h low' : spotLive ? 'Session low' : 'Sim. low';
+      $('symVolK').textContent = bnLive ? '24h volume (USDT)' : spotLive ? 'Volume' : 'Sim. volume';
+      $('symVol').textContent = bnLive ? compact(t.qvol) : spotLive ? 'n/a (spot)' : compact(t.vol);
       $('symChgK').textContent = a.state === 'daily' ? 'Chg vs prev. day' : (a.feed === 'binance' && a.state === 'live' ? '24h change' : 'Chg vs ref. close');
     }
     var spread = a.spread ? px(a, a.spread) : 'market (order book)';
@@ -284,6 +287,7 @@
   function chartOptions() {
     return {
       autoSize: true,
+      localization: { locale: 'en-US' },
       layout: { background: { type: 'solid', color: 'transparent' }, textColor: '#8a93a6', fontFamily: "'Geist Mono', ui-monospace, monospace", fontSize: 11 },
       grid: { vertLines: { color: 'rgba(140,150,170,0.06)' }, horzLines: { color: 'rgba(140,150,170,0.06)' } },
       rightPriceScale: { borderColor: 'rgba(140,150,170,0.14)' },
@@ -308,7 +312,7 @@
   }
   function loadChart() {
     var a = D.BY_ID[S.ui.asset], tf = S.ui.tf, req = ++chartReq;
-    $('chartNote').textContent = D.historyNote(a, tf);
+    $('chartNote').textContent = D.historyNote(a, tf) + ' · times in UTC';
     if (!chart) return;
     $('chartMsg').hidden = false; $('chartMsg').textContent = 'Loading ' + a.sym + ' · ' + tf + '…';
     cSeries.applyOptions({ priceFormat: { type: 'price', precision: a.dp, minMove: Math.pow(10, -a.dp) } });
@@ -454,6 +458,8 @@
   var submitLock = false;
   function submitTicket() {
     if (submitLock) return;
+    updTicket();
+    if ($('btnSubmit').disabled) return;   // invalid input: the error is already shown
     submitLock = true; $('btnSubmit').disabled = true;
     setTimeout(function () { submitLock = false; updTicket(); }, 400);
     var o = ticketInput(), a = D.BY_ID[o.asset];
@@ -599,7 +605,7 @@
       ['Forex (incl. USD/TRY)', st('fx'), 'Frankfurter (central-bank reference rates, daily), fallback open.er-api.com (daily); intraday ticks simulated', 'OANDA, Twelve Data, Polygon.io FX or the liquidity provider’s streaming quotes'],
       ['Indices', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Twelve Data / Polygon.io indices (paid, exchange licences); CFD prices from the LP'],
       ['US stocks', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Alpaca (free IEX feed), Finnhub (free tier), Polygon.io (paid, full SIP)'],
-      ['Prediction markets', '<span class="badge b-sample">Sample</span>', 'Sample markets priced by a local LMSR market maker; background flow simulated', 'Own matching engine + resolution oracle; read-only reference data from the Polymarket and Kalshi public APIs']
+      ['Prediction markets', '<span class="badge b-sample">Sample</span>', 'Sample markets priced by a local LMSR market maker; background flow simulated. 15-minute BTC Up/Down rounds take their start and end price from Binance (sample price if Binance is unreachable)', 'Own matching engine + resolution oracle; read-only reference data from the Polymarket and Kalshi public APIs']
     ];
     modal('<div class="pt"><div class="pt-q" id="modalTitle">Data sources</div><p class="fine">What drives each asset class in this demo right now, and what the full build would connect. Badges update live; if a source fails, its assets switch to sample data automatically.</p>' +
       '<div class="table-scroll"><table class="tbl ds"><thead><tr><th>Asset class</th><th>Status</th><th>In this demo</th><th>Full build options</th></tr></thead><tbody>' +
@@ -619,14 +625,28 @@
       '<span>' + dot(fx.state === 'daily' ? true : fx.state === 'fallback' ? false : null) + fTxt + '</span>';
   }
 
+  /* ---------------- pointer guard ----------------
+     Tables and chips are re-rendered several times a second. If that happens between a
+     button's pointerdown and pointerup, the browser drops the click. While a pointer is
+     pressed, background re-renders wait (user actions still render immediately). */
+  var ptrDown = false, ptrAt = 0;
+  document.addEventListener('pointerdown', function () { ptrDown = true; ptrAt = Date.now(); }, true);
+  function ptrUp() { setTimeout(function () { ptrDown = false; }, 0); }
+  document.addEventListener('pointerup', ptrUp, true);
+  document.addEventListener('pointercancel', ptrUp, true);
+  window.addEventListener('blur', ptrUp);
+  function pointerBusy() { return ptrDown && Date.now() - ptrAt < 8000; }
+  window.VXPointerBusy = pointerBusy;
+
   /* ---------------- render loop ---------------- */
   var dirty = { rows: {}, head: false, act: false, movers: false };
   function frame() {
     Object.keys(dirty.rows).forEach(function (id) { updRow(D.BY_ID[id]); });
     dirty.rows = {};
     if (dirty.head) { renderHead(); updTicket(); dirty.head = false; }
-    if (dirty.movers) { renderMovers(); dirty.movers = false; }
-    if (dirty.act || (S.ui.act || 'pos') === 'pos' && S.positions.length) renderActivity();
+    var busy = pointerBusy();
+    if (dirty.movers && !busy) { renderMovers(); dirty.movers = false; }
+    if (!busy && (dirty.act || (S.ui.act || 'pos') === 'pos' && S.positions.length)) renderActivity();
     renderAccount();
   }
   setInterval(frame, 400);
@@ -739,7 +759,7 @@
   }
   D.on('source', function (a) {
     dirty.rows[a.id] = true; renderFeedStatus(); renderNetNotice();
-    if (a.id === S.ui.asset) { dirty.head = true; $('chartNote').textContent = D.historyNote(a, S.ui.tf); }
+    if (a.id === S.ui.asset) { dirty.head = true; $('chartNote').textContent = D.historyNote(a, S.ui.tf) + ' · times in UTC'; }
     if (a.state === 'fallback' && !srcWarned[a.feed]) {
       srcWarned[a.feed] = true;
       toast({ binance: 'Binance is unreachable', goldapi: 'Metals price source is unreachable', fx: 'FX rate source is unreachable' }[a.feed] || 'Data source unreachable',

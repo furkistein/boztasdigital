@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vertex Markets (Demo)</title>
-<meta name="description" content="Vertex Markets demo: paper trading for commodities, crypto, forex, indices and stocks with leverage, plus prediction markets. No real money.">
+<title>Demo Exchange</title>
+<meta name="description" content="Demo Exchange: paper trading for commodities, crypto, forex, indices and stocks with leverage, plus prediction markets. No real money.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0a0c10">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c10'/%3E%3Cpath d='M7 9l9 15 9-15' fill='none' stroke='%23d4ff4f' stroke-width='3.2' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c10'/%3E%3Cpath d='M9 7v18M16 5v22M23 9v14' stroke='%23d4ff4f' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='6.5' y='11' width='5' height='9' rx='1.2' fill='%23d4ff4f'/%3E%3Crect x='13.5' y='8' width='5' height='11' rx='1.2' fill='%23d4ff4f'/%3E%3Crect x='20.5' y='13' width='5' height='7' rx='1.2' fill='%23d4ff4f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
 
   <header class="topbar">
     <div class="brand">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 8l10 17L26 8" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="16" cy="25" r="2.2" fill="currentColor"/></svg>
-      <span class="brand-name">Vertex<span class="brand-sub">Markets</span></span>
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 7v18M16 5v22M23 9v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="6.5" y="11" width="5" height="9" rx="1.2" fill="currentColor"/><rect x="13.5" y="8" width="5" height="11" rx="1.2" fill="currentColor"/><rect x="20.5" y="13" width="5" height="7" rx="1.2" fill="currentColor"/></svg>
+      <span class="brand-name">Demo<span class="brand-sub">Exchange</span></span>
     </div>
 
     <nav class="mainnav" role="tablist" aria-label="Product">
@@ -34,7 +34,7 @@
 
     <div class="acct" aria-label="Paper account">
       <div class="acct-item"><span class="acct-k">Equity</span><span class="acct-v mono" id="acEquity">—</span></div>
-      <div class="acct-item hide-sm"><span class="acct-k">Available</span><span class="acct-v mono" id="acFree">—</span></div>
+      <div class="acct-item"><span class="acct-k">Available</span><span class="acct-v mono" id="acFree">—</span></div>
       <div class="acct-item hide-sm"><span class="acct-k">Unrealized</span><span class="acct-v mono" id="acUpnl">—</span></div>
       <div class="acct-item hide-md"><span class="acct-k">Realized</span><span class="acct-v mono" id="acReal">—</span></div>
     </div>
@@ -96,8 +96,8 @@
           </div>
           <dl class="sym-stats">
             <div><dt>Data source</dt><dd id="symSrc">—</dd></div>
-            <div><dt>High</dt><dd class="mono" id="symHigh">—</dd></div>
-            <div><dt>Low</dt><dd class="mono" id="symLow">—</dd></div>
+            <div><dt id="symHighK">High</dt><dd class="mono" id="symHigh">—</dd></div>
+            <div><dt id="symLowK">Low</dt><dd class="mono" id="symLow">—</dd></div>
             <div class="hide-sm"><dt id="symVolK">Volume</dt><dd class="mono" id="symVol">—</dd></div>
           </dl>
         </div>
@@ -194,9 +194,9 @@
     <div class="pm-intro">
       <div>
         <h1>Prediction markets</h1>
-        <p>Trade YES / NO shares on sample events. A share pays <b>$1.00</b> if its outcome happens and <b>$0</b> if not, so the price reads as the market-implied probability. Yes/No, multi-outcome and range markets; market and limit orders; prices from an automated market maker (LMSR).</p>
+        <p>Trade YES / NO shares on sample events. A share pays <b>$1.00</b> if its outcome happens and <b>$0</b> if not, so the price reads as the market-implied probability. Yes/No, multi-outcome, range and 15-minute BTC Up/Down markets; market and limit orders; prices from an automated market maker (LMSR).</p>
       </div>
-      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Questions and odds are illustrative only, not forecasts, and are not linked to real exchanges or real results. Other traders’ flow is simulated. Use “Resolve (demo)” to settle a market yourself.</div>
+      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Questions and odds are illustrative only, not forecasts, and are not linked to real exchanges or real results. Other traders’ flow is simulated. Use “Resolve (demo)” to settle a market yourself. BTC Up/Down rounds settle automatically from the Binance BTC/USDT price.</div>
     </div>
     <div class="pm-layout">
       <div class="pm-main">
@@ -220,7 +220,7 @@
   </main>
 
   <footer class="foot">
-    <span>Vertex Markets is a product demo. Paper balance only — no deposits, withdrawals, wallets or real orders.</span>
+    <span>Demo Exchange is a product demo. Paper balance only — no deposits, withdrawals, wallets or real orders.</span>
     <span class="foot-r"><a href="#" id="lnkSources">Data sources</a> · Charts by <a href="https://www.tradingview.com/lightweight-charts/" target="_blank" rel="noopener">TradingView Lightweight Charts™</a></span>
   </footer>
 </div>

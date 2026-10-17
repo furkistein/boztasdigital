@@ -1,4 +1,4 @@
-/* Vertex Markets (Demo) — pure calculation engine. No DOM, no network.
+/* Demo Exchange — pure calculation engine. No DOM, no network.
  * Used by the UI and by the self-test (tests.js).
  *
  * LEVERAGED POSITIONS — isolated margin, USD settlement.

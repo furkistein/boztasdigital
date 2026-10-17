@@ -1,4 +1,4 @@
-/* Vertex Markets (Demo) */
+/* Demo Exchange */
 :root {
   --bg: #0a0c10;
   --bg-2: #0e1117;
@@ -222,7 +222,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
 .tpsl summary::-webkit-details-marker { display: none; }
 .tpsl summary::before { content: '+'; width: 16px; height: 16px; border-radius: 4px; border: 1px solid var(--line-2); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; }
 .tpsl[open] summary::before { content: '–'; }
-.tpsl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
+.tpsl-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; margin-top: 8px; }
 .summary { margin: 12px 0 0; padding: 10px 0 0; border-top: 1px dashed var(--line-2); }
 .summary > div { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; font-size: 12px; }
 .summary dt { color: var(--text-3); }
@@ -379,7 +379,7 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
 
 /* ---------- toasts ---------- */
 .toasts { position: fixed; right: 16px; bottom: 16px; z-index: 70; display: flex; flex-direction: column; gap: 8px; width: min(360px, calc(100vw - 32px)); pointer-events: none; }
-.toast { pointer-events: auto; display: flex; flex-direction: column; gap: 2px; padding: 11px 14px; border-radius: 10px; background: #1a1f29; border: 1px solid var(--line-2); box-shadow: 0 14px 40px rgba(0, 0, 0, .45); font-size: 12px; color: var(--text-2); animation: tin .25s ease-out; border-left: 3px solid var(--info); }
+.toast { pointer-events: none; display: flex; flex-direction: column; gap: 2px; padding: 11px 14px; border-radius: 10px; background: #1a1f29; border: 1px solid var(--line-2); box-shadow: 0 14px 40px rgba(0, 0, 0, .45); font-size: 12px; color: var(--text-2); animation: tin .25s ease-out; border-left: 3px solid var(--info); }
 .toast b { color: var(--text); font-size: 13px; font-weight: 600; }
 .toast.ok { border-left-color: var(--up); } .toast.bad { border-left-color: var(--down); } .toast.warn { border-left-color: var(--warn); }
 .toast.out { opacity: 0; transform: translateY(6px); transition: .3s; }
@@ -394,7 +394,8 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
 }
 @media (max-width: 1100px) {
   .trade-grid { grid-template-columns: minmax(0, 1fr) 300px; grid-template-areas: "watch watch" "chart ticket" "act book"; }
-  .watch { position: static; max-height: 340px; }
+  .watch { position: static; max-height: none; }
+  .watch-list { flex: none; min-height: 0; max-height: 400px; }
   .acct { gap: 14px; }
   .pd { grid-template-columns: minmax(0, 1fr); }
   .pm-layout { grid-template-columns: minmax(0, 1fr); }
@@ -403,7 +404,7 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
 @media (max-width: 900px) {
   .topbar { position: relative; flex-wrap: wrap; height: auto; padding: 8px 12px; gap: 8px 10px; }
   .net-notice { white-space: normal; }
-  .brand-sub { display: none; }
+  .brand-name { font-size: 14.5px; }
   .acct { order: 5; width: 100%; justify-content: flex-start; gap: 22px; margin: 0; }
   .top-actions { margin-left: auto; }
   .hide-sm { display: none; }
@@ -412,7 +413,7 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
   .movers { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .trade-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "watch" "chart" "ticket" "act" "book"; }
   .ticket { position: static; }
-  .watch { max-height: 460px; }
+  .watch-list { max-height: 380px; }
   .watch-head { gap: 6px; }
   .chart { height: 330px; }
   .sym-head { gap: 10px 16px; padding: 12px; }
@@ -424,6 +425,11 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
   .pm-grid { grid-template-columns: minmax(0, 1fr); }
   .pd-q { font-size: 18px; }
   .pd-chart { height: 230px; }
+  /* larger touch targets on phones and tablets */
+  .seg-btn, .seg-sm .seg-btn { min-height: 34px; }
+  .mode button { min-height: 32px; }
+  .chips button { height: 32px; }
+  .po-yes, .pm-btn.sm { min-height: 30px; }
 }
 @media (max-width: 480px) {
   .hide-xs { display: none; }
@@ -435,3 +441,9 @@ b.yes { color: var(--up); } b.no { color: var(--down); }
   .lf-btns .btn-submit, .lf-btns .btn-ghost { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+
+/* ---------- 15-min BTC Up/Down rounds ---------- */
+.pm-card .pm-auto { margin: 8px 0 0; padding: 8px 10px; gap: 6px 18px; border-radius: 8px; background: var(--bg-2); border: 1px solid var(--line); }
+.pm-card .pm-auto dd { font-size: 12.5px; }
+.pm-top .badge { margin-left: auto; }
+.pm-top .badge + .pill { margin-left: 0; }

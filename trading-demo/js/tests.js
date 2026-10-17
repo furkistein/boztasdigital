@@ -1,4 +1,4 @@
-/* Vertex Markets (Demo) — engine self-test.
+/* Demo Exchange — engine self-test.
  * Browser: open the page with ?selftest, or run VXRunTests() in the console.
  * Node:    node js/tests.js
  * Expected values are worked out by hand (formula in the comment), not taken from the engine.

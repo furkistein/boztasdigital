@@ -1,4 +1,4 @@
-/* Vertex Markets (Demo) — market data layer.
+/* Demo Exchange — market data layer.
  *
  * Real, keyless, browser-accessible (CORS) sources used by the demo:
  *   Binance public API  — crypto + PAXG: REST api.binance.com (fallback data-api.binance.vision),
@@ -354,6 +354,10 @@
         var p = +j.price; if (!(p > 0)) throw new Error('bad price');
         var was = a.state;
         if (!tick[a.id]) seedTicker(a, p, a.ref);
+        if (was !== 'live') {
+          // live spot: high/low are tracked from observed prices only (no simulated history)
+          var t0 = tick[a.id]; t0.price = p; t0.high = p; t0.low = p; t0.vol = 0; t0.qvol = 0;
+        }
         a.anchor = p;
         setState(a, 'live', 'gold-api');
         setPrice(a, p, 0);
@@ -441,6 +445,17 @@
     return 'Sample data · simulated';
   }
 
+  /* price of a Binance-fed asset at a past/current moment: open of the 1-minute candle starting at ms */
+  function priceAt(id, ms) {
+    var a = BY_ID[id];
+    if (!a || a.feed !== 'binance' || a.state !== 'live') return Promise.reject(new Error('not live'));
+    return bnFetch('/api/v3/klines?symbol=' + a.key + '&interval=1m&startTime=' + Math.floor(ms) + '&limit=1').then(function (rows) {
+      var r = rows && rows[0];
+      if (!r || Math.abs(r[0] - ms) > 60000 || !(+r[1] > 0)) throw new Error('no candle');
+      return +r[1];
+    });
+  }
+
   function select(id, tf) { sel.id = id; sel.tf = tf; delete curCandle[id]; resubscribe(); }
 
   var started = false;
@@ -452,7 +467,14 @@
     connectWs();
     // if Binance gives nothing at all within 9 s, switch its assets to sample data
     setTimeout(function () { if (binAssets.some(function (a) { return a.state === 'pending'; })) { pollOnce(); setTimeout(function () { if (binAssets.some(function (a) { return a.state === 'pending'; })) bnFallback(); }, 4000); } }, 9000);
-    setInterval(function () { if (ws && ws.readyState === 1 && Date.now() - lastMsg > 15000) { try { ws.close(); } catch (e) {} } }, 5000);
+    // a silent socket (network cut) may never fire onclose: drop it ourselves and fall back to REST / sample data
+    setInterval(function () {
+      if (ws && ws.readyState === 1 && Date.now() - lastMsg > 15000) {
+        var dead = ws; ws = null; dead.onclose = null; dead.onmessage = null;
+        try { dead.close(); } catch (e) {}
+        onWsFail();
+      }
+    }, 5000);
     pollGold(); setInterval(pollGold, 12000);
     loadFx();
   }
@@ -460,7 +482,7 @@
   root.VXData = {
     ASSETS: ASSETS, BY_ID: BY_ID, CLASS: CLASS, SUB: SUB, TF_SEC: TF_SEC, REF_DATE: REF_DATE,
     tick: tick, binance: bnStatus, on: on, start: start, select: select, getCandles: getCandles,
-    badge: badge, bidAsk: bidAsk, historyNote: historyNote, simulated: simulated,
+    badge: badge, bidAsk: bidAsk, historyNote: historyNote, simulated: simulated, priceAt: priceAt,
     restHost: function () { return REST[restIdx]; }
   };
 })(window);
