@@ -21,6 +21,22 @@
   /* strict number parsing: '1,000' -> 1000, '12abc' / '' -> NaN */
   function pnum(v) { var t = String(v == null ? '' : v).replace(/[,\s]/g, ''); return t === '' ? NaN : Number(t); }
   function cents(p) { var c = p * 100; return (c >= 99.95 ? '99.9' : c < 0.05 ? '0.1' : c.toFixed(1)) + '¢'; }
+  /* share amounts shown in the ticket are rounded DOWN, so a prefilled amount never exceeds the holding */
+  function floorSh(x) { if (!(x > 0)) return 0; var f = Math.floor(x * 100 + 1e-9) / 100; return f > 0 ? f : Math.floor(x * 1e6) / 1e6; }
+  function shTxt(x) { var f = floorSh(x); return f >= 0.01 || f === 0 ? f.toFixed(2) : String(f); }
+  /* a ticket amount within this many shares of the holding sells the whole holding (no dust left behind) */
+  var SELL_SNAP = 0.01;   // the 2-decimal amount shown in the ticket (rounded down) is within 0.01 of the holding
+  /* markets on the same underlying cannot be combined (their outcomes are not independent, some
+     combinations can never win) */
+  var UNDERLYING = { 'btc-above': 'BTC', 'btc-range': 'BTC', 'brent-range': 'crude oil', 'wti-100': 'crude oil' };
+  /* the app tells us whether this tab may change the shared state (another tab can be the writer) */
+  function canWrite() { return !H || !H.canWrite || H.canWrite(); }
+  function claim() { if (H && H.claim) H.claim(); }
+  /* every change to the account is written at once (another tab can take over at any moment) */
+  function persist() { if (H && H.persist) H.persist(); }
+  /* after claim() the state may have been replaced by the latest saved copy: use that copy's market */
+  function liveM(m) { return m && S && S.pm ? (mk(m.id) || m) : m; }
+  function hidden() { return typeof document !== 'undefined' && document.hidden; }
 
   /* ---------------- market catalogue (sample) ---------------- */
   function catalogue(px) {
@@ -77,7 +93,7 @@
         q: 'Will ETH close 2026 above ' + usd0(eStrike) + '?',
         rule: 'Resolves YES if the ETH/USDT daily candle of Dec 31, 2026 closes above ' + usd0(eStrike) + '.',
         source: 'Binance ETH/USDT spot market.' },
-      { id: 'gold-month', cat: 'Commodities', type: 'binary', b: 5000, close: monthEnd, p0: [0.33],
+      { id: 'gold-month', cat: 'Commodities', type: 'binary', b: 5000, close: monthEnd, p0: [0.33], ends: Date.UTC(lastDay.getUTCFullYear(), lastDay.getUTCMonth(), lastDay.getUTCDate(), 21),
         q: 'Will gold settle above ' + usd0(gStrike) + ' at the end of ' + monthName + '?',
         rule: 'Resolves YES if spot gold (XAU/USD) is above ' + usd0(gStrike) + ' per troy oz at the last fixing of ' + monthName + '.',
         source: 'LBMA Gold Price PM (reference), spot XAU/USD.' },
@@ -138,6 +154,7 @@
       var m = { id: d.id, cat: d.cat, type: d.type, q: d.q, outcomes: d.outcomes, p0: d.p0, b: d.b,
                 close: d.close, rule: d.rule, source: d.source, qv: E.lmsrInit(d.p0, d.b),
                 status: 'open', winner: null, vol: 0, trades: 0, hist: [] };
+      if (d.ends) m.ends = d.ends;
       // simulated warm-up history (sample) ending at the starting odds
       var seed = 0; for (var i = 0; i < d.id.length; i++) seed = (seed * 31 + d.id.charCodeAt(i)) >>> 0;
       function rnd() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
@@ -158,7 +175,11 @@
   function side(m, i, s) { return E.sidePrice(m.qv, m.b, i, s); }
   function mk(id) { for (var i = 0; i < S.pm.markets.length; i++) if (S.pm.markets[i].id === id) return S.pm.markets[i]; return null; }
   function hk(i, s) { return i + ':' + s; }
-  function hold(m) { return S.pm.pos[m.id] || (S.pm.pos[m.id] = {}); }
+  /* read-only view of the holdings in a market (does not create an empty record) */
+  var NONE = {};
+  function hold(m) { return S.pm.pos[m.id] || NONE; }
+  function holdW(m) { return S.pm.pos[m.id] || (S.pm.pos[m.id] = {}); }   // for writes only
+  function dropEmpty(m) { var h = S.pm.pos[m.id]; if (h && !Object.keys(h).length) delete S.pm.pos[m.id]; }
   function label(m, i, s) { if (m.auto) return s === 'yes' ? 'UP' : 'DOWN'; return m.type === 'binary' ? s.toUpperCase() : (s === 'yes' ? 'YES' : 'NO') + ' · ' + m.outcomes[i]; }
   function sideName(m, s) { return m.auto ? (s === 'yes' ? 'Up' : 'Down') : (s === 'yes' ? 'Yes' : 'No'); }
   function statusText(m) {
@@ -168,9 +189,11 @@
   }
   function closedMsg(m) { return m.status === 'closing' ? 'This round has ended and is settling.' : m.status === 'void' ? 'This round was voided.' : 'This market is resolved.'; }
 
+  /* probability history: 4 decimals are plenty for the chart and keep the saved state small */
+  function rounded(pr) { return pr.map(function (x) { return Math.round(x * 1e4) / 1e4; }); }
   function pushHist(m) {
     var t = Math.floor(Date.now() / 1000), last = m.hist[m.hist.length - 1];
-    if (last && last[0] >= t) last[1] = prices(m); else m.hist.push([t, prices(m)]);
+    if (last && last[0] >= t) last[1] = rounded(prices(m)); else m.hist.push([t, rounded(prices(m))]);
     if (m.hist.length > 400) m.hist.splice(0, m.hist.length - 400);
   }
 
@@ -178,7 +201,7 @@
     var x = E.lmsrSharesForSpend(m.qv, m.b, i, s, usd);
     m.qv = E.addVec(m.qv, i, s, x);
     m.vol += usd; m.trades++;
-    if (who !== 'flow') { var h = hold(m), key = hk(i, s); h[key] = h[key] || { sh: 0, cost: 0 }; h[key].sh += x; h[key].cost += usd; }
+    if (who !== 'flow') { var h = holdW(m), key = hk(i, s); h[key] = h[key] || { sh: 0, cost: 0 }; h[key].sh += x; h[key].cost += usd; }
     pushHist(m);
     return x;
   }
@@ -191,10 +214,25 @@
   }
 
   function validNum(v) { return typeof v === 'number' && isFinite(v) && v > 0; }
+  function validIdx(m, i) { return typeof i === 'number' && Math.floor(i) === i && i >= 0 && i < (m.type === 'binary' ? 1 : m.outcomes.length); }
+  function validSide(s) { return s === 'yes' || s === 'no'; }
+  /* a sample market whose closing date has passed: trading stops, it waits for "Resolve (demo)" */
+  function expired(m) { return !m.auto && m.status === 'open' && endsOf(m) < Date.now(); }
+  var EXPIRED_MSG = 'Trading has closed for this market (closing date passed). It is awaiting resolution.';
+  function strikeMsg(m) { return btcLive() ? 'Setting the price to beat… try again in a moment.' : 'Waiting for live Binance data to set the price to beat. This round opens for trading once Binance answers.'; }
+  /* common checks before an order on market m */
+  function tradeErr(m, i, s) {
+    if (!m) return 'Unknown market.';
+    if (m.status !== 'open') return closedMsg(m);
+    if (expired(m)) return EXPIRED_MSG;
+    if (!validIdx(m, i) || !validSide(s)) return 'Unknown outcome.';
+    if (m.auto && !(m.round.strike > 0)) return strikeMsg(m);
+    return '';
+  }
 
   function buy(m, i, s, usd) {
-    if (m.status !== 'open') return closedMsg(m);
-    if (m.auto && !(m.round.strike > 0)) return 'Setting the price to beat… try again in a moment.';
+    claim(); m = liveM(m);
+    var e0 = tradeErr(m, i, s); if (e0) return e0;
     if (!validNum(usd)) return 'Enter an amount greater than 0.';
     if (usd < 1) return 'Minimum order is $1.';
     if (usd > S.balance + 1e-9) return 'Insufficient paper balance (' + H.usd(S.balance) + ' available).';
@@ -202,32 +240,37 @@
     var x = execBuy(m, i, s, usd);
     log('Buy', m, i, s, x, usd, null);
     checkOrders(m);
+    persist();
     return { shares: x, avg: usd / x };
   }
 
   function sell(m, i, s, x) {
-    if (m.status !== 'open') return closedMsg(m);
-    if (m.auto && !(m.round.strike > 0)) return 'Setting the price to beat… try again in a moment.';
+    claim(); m = liveM(m);
+    var e0 = tradeErr(m, i, s); if (e0) return e0;
     var h = hold(m), key = hk(i, s), cur = h[key];
     var have = cur ? cur.sh : 0;
     if (!validNum(x)) return 'Enter shares greater than 0.';
-    if (x > have + 1e-6) return 'You hold only ' + have.toFixed(2) + ' shares.';
+    // checked before any tolerance: with no shares even a tiny amount is refused (used to throw a TypeError)
+    if (!cur || !(have > 0)) return 'You have no ' + label(m, i, s) + ' shares to sell.';
+    if (x > have + 1e-6) return 'You hold only ' + shTxt(have) + ' shares.';
     x = Math.min(x, have);
     var basis = cur.cost * (x / have);
     var usd = execSell(m, i, s, x);
     cur.sh -= x; cur.cost -= basis;
-    if (cur.sh < 1e-6) delete h[key];
+    if (cur.sh < 1e-6) { delete h[key]; dropEmpty(m); }
     S.balance += usd;
     S.pmRealized = (S.pmRealized || 0) + (usd - basis);
     log('Sell', m, i, s, x, usd, usd - basis);
     checkOrders(m);
+    persist();
     return { usd: usd, avg: usd / x, pnl: usd - basis };
   }
 
   /* ---- limit orders (rest against the AMM, can fill partially) ---- */
   function placeLimit(m, i, s, dir, limit, amount) {
-    if (m.status !== 'open') return closedMsg(m);
-    if (m.auto && !(m.round.strike > 0)) return 'Setting the price to beat… try again in a moment.';
+    claim(); m = liveM(m);
+    var e0 = tradeErr(m, i, s); if (e0) return e0;
+    if (dir !== 'buy' && dir !== 'sell') return 'Choose buy or sell.';
     if (!validNum(limit) || limit >= 1) return 'Limit price must be between 1¢ and 99¢.';
     if (limit < 0.01 || limit > 0.99) return 'Limit price must be between 1¢ and 99¢.';
     if (!validNum(amount)) return dir === 'buy' ? 'Enter an amount greater than 0.' : 'Enter shares greater than 0.';
@@ -238,27 +281,31 @@
       S.balance -= amount;
     } else {
       var h = hold(m), key = hk(i, s), cur = h[key], have = cur ? cur.sh : 0;
-      if (amount > have + 1e-6) return 'You hold only ' + have.toFixed(2) + ' shares.';
+      if (!cur || !(have > 0)) return 'You have no ' + label(m, i, s) + ' shares to sell.';
+      if (amount > have + 1e-6) return 'You hold only ' + shTxt(have) + ' shares.';
       amount = Math.min(amount, have); o.rem = amount;
       o.basis = cur.cost * (amount / have);
       cur.sh -= amount; cur.cost -= o.basis;
-      if (cur.sh < 1e-6) delete h[key];
+      if (cur.sh < 1e-6) { delete h[key]; dropEmpty(m); }
     }
     S.pm.orders.push(o);
     log('Limit ' + dir, m, i, s, dir === 'sell' ? amount : null, dir === 'buy' ? amount : null, null, o.limit);
     checkOrders(m);
+    persist();
     return o;
   }
 
   function cancelOrder(id, quiet) {
+    if (!quiet) claim();
     var idx = -1;
     S.pm.orders.forEach(function (o, j) { if (o.id === id) idx = j; });
     if (idx < 0) return;
     var o = S.pm.orders[idx], m = mk(o.mid);
     S.pm.orders.splice(idx, 1);
     if (o.dir === 'buy') S.balance += o.rem;
-    else { var h = hold(m), key = hk(o.i, o.s); h[key] = h[key] || { sh: 0, cost: 0 }; h[key].sh += o.rem; h[key].cost += o.basis; }
-    if (!quiet) log('Cancel', m, o.i, o.s, o.dir === 'sell' ? o.rem : null, o.dir === 'buy' ? o.rem : null, null, o.limit);
+    else if (m) { var h = holdW(m), key = hk(o.i, o.s); h[key] = h[key] || { sh: 0, cost: 0 }; h[key].sh += o.rem; h[key].cost += o.basis; }
+    if (!quiet && m) log('Cancel', m, o.i, o.s, o.dir === 'sell' ? o.rem : null, o.dir === 'buy' ? o.rem : null, null, o.limit);
+    if (!quiet) persist();
   }
 
   function checkOrders(m) {
@@ -299,8 +346,13 @@
   function legLabel(l) { var m = mk(l.mid); return m ? label(m, l.i, l.s) : ''; }
   function slipPrice() { return S.pm.slip.reduce(function (a, l) { return a * legPrice(l); }, 1); }
   function addLeg(m, i, s) {
-    if (!m || m.status !== 'open') return 'Only open markets can go into a combo.';
+    claim(); m = liveM(m);
+    if (!m || m.status !== 'open' || expired(m)) return 'Only open markets can go into a combo.';
     if (m.auto) return '15-minute rounds cannot be combined.';
+    if (!validIdx(m, i) || !validSide(s)) return 'Unknown outcome.';
+    var u = UNDERLYING[m.id];
+    var clash = u && S.pm.slip.filter(function (l) { return l.mid !== m.id && UNDERLYING[l.mid] === u; })[0];
+    if (clash) return 'These markets depend on the same underlying (' + u + '), so their outcomes are not independent. Combine markets on different events.';
     var have = S.pm.slip.filter(function (l) { return l.mid === m.id; })[0];
     if (have) { have.i = i; have.s = s; return { replaced: true }; }
     if (S.pm.slip.length >= COMBO_MAX) return 'A combo has at most ' + COMBO_MAX + ' legs.';
@@ -309,9 +361,12 @@
   }
   function removeLeg(mid) { S.pm.slip = S.pm.slip.filter(function (l) { return l.mid !== mid; }); }
   function placeCombo(stake) {
+    claim();
     var legs = S.pm.slip;
     if (legs.length < COMBO_MIN) return 'Add at least ' + COMBO_MIN + ' legs from different markets.';
-    if (!legs.every(function (l) { var m = mk(l.mid); return m && m.status === 'open'; })) return 'One of the legs is no longer open.';
+    if (!legs.every(function (l) { var m = mk(l.mid); return m && m.status === 'open' && !expired(m); })) return 'One of the legs is no longer open.';
+    var seenU = {};
+    for (var li = 0; li < legs.length; li++) { var uu = UNDERLYING[legs[li].mid]; if (uu && seenU[uu]) return 'Two legs depend on the same underlying (' + uu + '). Combine markets on different events.'; if (uu) seenU[uu] = 1; }
     if (!validNum(stake)) return 'Enter a stake greater than 0.';
     if (stake < 1) return 'Minimum stake is $1.';
     if (stake > S.balance + 1e-9) return 'Insufficient paper balance (' + H.usd(S.balance) + ' available).';
@@ -323,6 +378,7 @@
     S.pm.combos.unshift(c);
     S.pm.slip = [];
     S.pm.hist.unshift({ t: Date.now(), kind: 'Combo', mid: c.legs[0].mid, q: c.legs.length + '-leg combo', what: c.legs.map(function (l) { return l.what; }).join(' + '), sh: null, usd: stake, pnl: null });
+    persist();
     return c;
   }
   function comboValue(c) { return c.status !== 'open' ? 0 : c.payout * c.legs.reduce(function (a, l) { return a * (l.res === 'won' ? 1 : legPrice(l)); }, 1); }
@@ -350,6 +406,7 @@
 
   /* ---- operator-created markets (admin console) ---- */
   function createMarket(d) {
+    claim();
     var title = String(d.q || '').trim(), type = d.type, outs;
     if (title.length < 10) return 'Title needs at least 10 characters.';
     if (title.length > 160) return 'Title is limited to 160 characters.';
@@ -366,7 +423,9 @@
     if (ends < Date.now() + 3600000) return 'The closing date must be in the future.';
     var rule = String(d.rule || '').trim();
     if (rule.length < 20) return 'Resolution rules need at least 20 characters.';
-    var b = +d.b || 3000;
+    // empty field -> default 3000; anything else must be a real number (no silent fallback for "abc")
+    var b = d.b == null || String(d.b).trim() === '' ? 3000 : Number(String(d.b).replace(/,/g, '').trim());
+    if (!isFinite(b)) return 'Liquidity (b) must be a number between 500 and 20,000.';
     if (!(b >= 500 && b <= 20000)) return 'Liquidity (b) must be between 500 and 20,000.';
     var p0 = outs.map(function () { return 1 / outs.length; });
     var dt = new Date(ends);
@@ -375,6 +434,7 @@
               rule: 'Operator market (demo). ' + rule, source: String(d.source || '').trim() || 'Set by the operator.', qv: E.lmsrInit(p0, b),
               status: 'open', winner: null, vol: 0, trades: 0, hist: [[Math.floor(Date.now() / 1000), p0.slice()]], custom: true, createdAt: Date.now() };
     S.pm.markets.push(m);
+    persist();
     return m;
   }
 
@@ -404,6 +464,9 @@
   var BOARD = (function () { var r = rng('leaderboard'), list = []; for (var k = 0; k < 9; k++) list.push({ who: 'trader_' + (100 + Math.floor(r() * 899)), pnl: Math.round((4200 - k * 430) * (0.7 + r() * 0.5) * 100) / 100, vol: Math.round(20000 + r() * 160000), win: 0.45 + r() * 0.25 }); return list; })();
 
   function resolve(m, w) {
+    if (!m || (m.status !== 'open' && m.status !== 'closing')) return null;
+    if (typeof w !== 'number' || Math.floor(w) !== w || w < 0 || w >= m.outcomes.length) return null;   // no such outcome
+    claim(); m = liveM(m);
     if (m.status !== 'open' && m.status !== 'closing') return null;
     S.pm.orders.filter(function (o) { return o.mid === m.id; }).forEach(function (o) { cancelOrder(o.id, true); });
     var h = hold(m), payout = 0, basis = 0;
@@ -421,6 +484,7 @@
     if (last && last[0] >= t) last[1] = fin; else m.hist.push([t, fin]);
     log('Resolved', m, w, 'yes', null, payout, payout - basis);
     settleCombos(m, w);
+    persist();
     return m.settled;
   }
 
@@ -431,8 +495,8 @@
 
   /* simulated order flow from other paper traders */
   function flow() {
-    if (!S || !S.pm) return;
-    var open = S.pm.markets.filter(function (m) { return m.status === 'open' && !m.auto; });
+    if (!S || !S.pm || !canWrite() || hidden()) return;   // background tab: no simulated flow (and no saves)
+    var open = S.pm.markets.filter(function (m) { return m.status === 'open' && !m.auto && !expired(m); });
     if (!open.length) return;
     var m = open[Math.floor(Math.random() * open.length)];
     var n = m.type === 'binary' ? 1 : m.outcomes.length;
@@ -478,7 +542,12 @@
     if (m.auto) return m.round.end;
     if (m.ends) return m.ends;
     if (ENDS[m.id]) return Date.parse(ENDS[m.id] + 'T23:59:00Z');
-    if (m.id === 'gold-month') { var n = new Date(); return Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 0, 21); }
+    if (m.id === 'gold-month') {   // saved before "ends" was stored: read the month from its closing date text
+      var mm = /^([A-Z][a-z]{2}) (\d{1,2}), (\d{4})$/.exec(String(m.close || ''));
+      var mi = mm ? MONTHS.map(function (x) { return x.slice(0, 3); }).indexOf(mm[1]) : -1;
+      if (mi >= 0) return Date.UTC(+mm[3], mi, +mm[2], 21);
+      var n = new Date(); return Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 0, 21);
+    }
     return 9e15;
   }
 
@@ -503,14 +572,14 @@
   }
 
   function cardHtml(m) {
-    var pr = prices(m), res = m.status !== 'open';
-    var top = '<div class="pm-top"><span class="pm-cat">' + m.cat + '</span><span class="pm-type">' + typeTag(m) + '</span>' + autoBadge(m) + '<span class="pill pill-sim">' + (m.auto ? 'Sample odds' : 'Sample') + '</span></div>' +
+    var pr = prices(m), res = m.status !== 'open' || expired(m);
+    var top = '<div class="pm-top"><span class="pm-cat">' + esc(m.cat) + '</span><span class="pm-type">' + typeTag(m) + '</span>' + autoBadge(m) + '<span class="pill pill-sim">' + (m.auto ? 'Sample odds' : 'Sample') + '</span></div>' +
       '<h3 class="pm-q"><button class="pm-open" data-pm="open" data-m="' + m.id + '">' + esc(m.q) + '</button></h3>';
     var body;
     if (m.type === 'binary') {
       var ch = pr[0] - m.hist[Math.max(0, m.hist.length - 30)][1][0];
       body = '<div class="pm-prob"><div class="pm-prob-v mono">' + (res ? (m.status === 'resolved' ? esc(label(m, 0, m.winner === 0 ? 'yes' : 'no')) : '—') : Math.round(pr[0] * 100) + '<small>%</small>') + '</div>' +
-        '<div class="pm-prob-k">' + (res ? (m.auto ? (m.status === 'resolved' ? 'Settled automatically' : esc(statusText(m))) : 'Resolved (demo)') : (m.auto ? 'chance of Up' : 'chance') + ' · <span class="mono ' + (ch >= 0 ? 'up' : 'down') + '">' + (ch >= 0 ? '+' : '') + (ch * 100).toFixed(1) + 'pt</span>') + '</div></div>' +
+        '<div class="pm-prob-k">' + (res ? (m.auto ? (m.status === 'resolved' ? 'Settled automatically' : esc(statusText(m))) : m.status === 'open' ? 'Awaiting resolution' : 'Resolved (demo)') : (m.auto ? 'chance of Up' : 'chance') + ' · <span class="mono ' + (ch >= 0 ? 'up' : 'down') + '">' + (ch >= 0 ? '+' : '') + (ch * 100).toFixed(1) + 'pt</span>') + '</div></div>' +
         '<div class="pm-chart">' + spark(m) + '</div>' +
         (res ? '' : '<div class="pm-btns"><button class="pm-btn yes" data-pm="trade" data-m="' + m.id + '" data-i="0" data-s="yes">' + sideName(m, 'yes') + ' <span class="mono">' + cents(pr[0]) + '</span></button>' +
           '<button class="pm-btn no" data-pm="trade" data-m="' + m.id + '" data-i="0" data-s="no">' + sideName(m, 'no') + ' <span class="mono">' + cents(1 - pr[0]) + '</span></button></div>');
@@ -519,13 +588,13 @@
       if (m.type === 'multi') order.sort(function (a, b) { return pr[b] - pr[a]; });
       var shown = order.slice(0, 4);
       body = '<ul class="pm-outs">' + shown.map(function (j) {
-        var win = res && m.winner === j;
-        return '<li class="' + (res && !win ? 'lost' : '') + '"><span class="po-l">' + (win ? '✓ ' : '') + esc(m.outcomes[j]) + '</span>' +
+        var win = res && m.winner != null && m.winner === j;
+        return '<li class="' + (res && m.winner != null && !win ? 'lost' : '') + '"><span class="po-l">' + (win ? '✓ ' : '') + esc(m.outcomes[j]) + '</span>' +
           '<span class="po-bar"><i style="width:' + (pr[j] * 100).toFixed(1) + '%"></i></span><span class="po-p mono">' + Math.round(pr[j] * 100) + '%</span>' +
           (res ? '' : '<button class="po-yes mono" data-pm="trade" data-m="' + m.id + '" data-i="' + j + '" data-s="yes" title="Buy YES on ' + esc(m.outcomes[j]) + '">' + cents(pr[j]) + '</button>') + '</li>';
       }).join('') + '</ul>' + (pr.length > 4 ? '<button class="linkbtn more" data-pm="open" data-m="' + m.id + '">+' + (pr.length - 4) + ' more outcomes</button>' : '');
     }
-    var foot = autoInfo(m) + (res ? '<div class="pm-resolved">' + (m.status === 'resolved' ? 'Settled: ' : '') + '<b>' + esc(statusText(m)) + '</b>' + (m.settled && m.settled.had ? ' · you received ' + H.usd(m.settled.payout) + ' (' + H.signed(m.settled.pnl) + ')' : '') + '</div>' : '') +
+    var foot = autoInfo(m) + (res ? '<div class="pm-resolved">' + (m.status === 'resolved' ? 'Settled: ' : '') + '<b>' + esc(m.status === 'open' ? 'Awaiting resolution' : statusText(m)) + '</b>' + (m.settled && m.settled.had ? ' · you received ' + H.usd(m.settled.payout) + ' (' + H.signed(m.settled.pnl) + ')' : '') + '</div>' : '') +
       '<div class="pm-meta"><span>Vol ' + usd0(m.vol) + '</span><span>Liq. b=' + m.b.toLocaleString('en-US') + '</span><span>Closes ' + esc(m.close) + '</span>' + heldBadge(m) + '</div>';
     return top + body + foot;
   }
@@ -535,7 +604,7 @@
     var list = S.pm.markets.filter(function (m) { return filter === 'All' || m.cat === filter; });
     if (sortBy === 'new') list = list.slice().sort(function (a, b) { return endsOf(a) - endsOf(b); });
     else list = list.slice().sort(function (a, b) { return (b.auto ? 1e12 : b.vol) - (a.auto ? 1e12 : a.vol); });
-    el.grid.innerHTML = list.map(function (m) { return '<article class="panel pm-card' + (m.status !== 'open' ? ' is-resolved' : '') + '" data-card="' + m.id + '">' + cardHtml(m) + '</article>'; }).join('') ||
+    el.grid.innerHTML = list.map(function (m) { return '<article class="panel pm-card' + (m.status !== 'open' || expired(m) ? ' is-resolved' : '') + '" data-card="' + m.id + '">' + cardHtml(m) + '</article>'; }).join('') ||
       '<div class="empty">No markets in this category.</div>';
     el.cats.querySelectorAll('.seg-btn').forEach(function (b) { b.classList.toggle('is-active', b.dataset.cat === filter); });
   }
@@ -545,7 +614,7 @@
     var c = el.grid.querySelector('[data-card="' + m.id + '"]');
     if (!c) return;
     c.innerHTML = cardHtml(m);
-    c.classList.toggle('is-resolved', m.status !== 'open');
+    c.classList.toggle('is-resolved', m.status !== 'open' || expired(m));
     if (flash) { c.classList.remove('tick'); void c.offsetWidth; c.classList.add('tick'); }
   }
 
@@ -557,7 +626,7 @@
       Object.keys(h).forEach(function (key) {
         var p = key.split(':'), i = +p[0], s = p[1], c = h[key], pr = side(m, i, s), val = c.sh * pr, pnl = val - c.cost;
         rows.push('<div class="pmp"><button class="pmp-q" data-pm="open" data-m="' + m.id + '">' + esc(m.q) + '</button>' +
-          '<div class="pmp-row"><b class="' + s + '">' + c.sh.toFixed(2) + ' ' + esc(label(m, i, s)) + '</b><span class="mono ' + (pnl >= 0 ? 'up' : 'down') + '">' + H.signed(pnl) + '</span></div>' +
+          '<div class="pmp-row"><b class="' + s + '">' + shTxt(c.sh) + ' ' + esc(label(m, i, s)) + '</b><span class="mono ' + (pnl >= 0 ? 'up' : 'down') + '">' + H.signed(pnl) + '</span></div>' +
           '<div class="pmp-row sub"><span class="mono">avg ' + cents(c.cost / c.sh) + ' → ' + cents(pr) + ' · value ' + H.usd(val) + '</span>' +
           '<button class="linkbtn" data-pm="trade" data-m="' + m.id + '" data-i="' + i + '" data-s="' + s + '" data-dir="sell">Sell</button></div></div>');
       });
@@ -635,7 +704,7 @@
 
   function relatedHtml(m) {
     var words = m.q.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3; });
-    var scored = S.pm.markets.filter(function (x) { return x.id !== m.id && x.status === 'open' && !x.auto; }).map(function (x) {
+    var scored = S.pm.markets.filter(function (x) { return x.id !== m.id && x.status === 'open' && !x.auto && !expired(x); }).map(function (x) {
       var q = x.q.toLowerCase(), sc = (x.cat === m.cat ? 3 : 0);
       words.forEach(function (w) { if (q.indexOf(w) >= 0) sc += 1; });
       return { x: x, sc: sc };
@@ -657,12 +726,15 @@
   /* ---------------- rendering: market detail ---------------- */
   function openDetail(m, i, s, dir) {
     var keep = detail && detail.m === m ? detail : null;
-    detail = { m: m, i: i != null ? i : (keep ? keep.i : 0), s: s || (keep ? keep.s : 'yes'), dir: dir || 'buy', type: 'market', amt: '100', lim: '' };
+    detail = { m: m, i: i != null ? i : (keep ? keep.i : 0), s: s || (keep ? keep.s : 'yes'), dir: dir === 'sell' ? 'sell' : 'buy', type: 'market', amt: '100', lim: '' };
     if (m.type === 'binary') detail.i = 0;
+    // "Sell" from the positions panel: prefill with what is actually held (rounded down), never 100
+    if (detail.dir === 'sell') detail.amt = sellAmt(m, detail.i, detail.s);
     el.list.hidden = true; el.detail.hidden = false;
     renderDetail(false);
     try { el.detail.scrollIntoView({ block: 'start' }); window.scrollBy(0, -70); } catch (e) {}
   }
+  function sellAmt(m, i, s) { var hv = hold(m)[hk(i, s)]; return hv && hv.sh > 0 ? shTxt(hv.sh) : ''; }
   function closeDetail() {
     if (dchart) { try { dchart.remove(); } catch (e) {} dchart = null; dseries = []; }
     detail = null; el.detail.hidden = true; el.list.hidden = false; renderGrid();
@@ -702,6 +774,8 @@
   function quoteHtml(m) {
     var d = detail, i = d.i, s = d.s, p = side(m, i, s), h = hold(m)[hk(i, s)], have = h ? h.sh : 0;
     var v = pnum(d.amt), out = '', err = '';
+    if (expired(m)) return { html: '', err: EXPIRED_MSG };
+    if (m.auto && !(m.round.strike > 0)) return { html: '', err: strikeMsg(m) };
     if (d.type === 'limit') {
       var L = pnum(d.lim) / 100;
       if (!(L > 0)) return { html: '', err: d.lim === '' ? '' : 'Enter a limit price between 1 and 99¢.' };
@@ -713,7 +787,8 @@
         '<div><dt>Status</dt><dd>' + (now ? 'Fills now (partly or fully)' : 'Rests until price reaches it') + '</dd></div>';
       if (d.dir === 'buy' && v > S.balance) err = 'Insufficient paper balance.';
       if (d.dir === 'buy' && v > 0 && v < 1) err = 'Minimum order is $1.';
-      if (d.dir === 'sell' && v > have + 1e-6) err = 'You hold only ' + have.toFixed(2) + ' shares.';
+      if (d.dir === 'sell' && !(have > 0)) err = 'You have no ' + label(m, i, s) + ' shares to sell.';
+      else if (d.dir === 'sell' && v > have + SELL_SNAP) err = 'You hold only ' + shTxt(have) + ' shares.';
       return { html: out, err: err };
     }
     if (!(v > 0)) return { html: '', err: d.amt === '' ? '' : (d.dir === 'buy' ? 'Enter an amount greater than 0.' : 'Enter shares greater than 0.') };
@@ -728,11 +803,13 @@
       if (v > S.balance + 1e-9) err = 'Insufficient paper balance (' + H.usd(S.balance) + ' available).';
       else if (v < 1) err = 'Minimum order is $1.';
     } else {
-      var xs = Math.min(v, have), usd = xs > 0 ? E.lmsrSellProceeds(m.qv, m.b, i, s, xs) : 0;
+      var xs = Math.abs(v - have) < SELL_SNAP ? have : Math.min(v, have), usd = xs > 0 ? E.lmsrSellProceeds(m.qv, m.b, i, s, xs) : 0;
       out = '<div><dt>You receive</dt><dd class="mono">' + H.usd(usd) + '</dd></div>' +
         '<div><dt>Avg price</dt><dd class="mono">' + (xs > 0 ? cents(usd / xs) : '—') + '</dd></div>' +
         '<div><dt>Realized PnL</dt><dd class="mono">' + (xs > 0 && h ? H.signed(usd - h.cost * xs / have) : '—') + '</dd></div>';
-      if (v > have + 1e-6) err = have > 0 ? 'You hold only ' + have.toFixed(2) + ' shares.' : 'You have no ' + label(m, i, s) + ' shares to sell.';
+      // no shares: always an error (even 0.0000001), so the button stays disabled
+      if (!(have > 0)) err = 'You have no ' + label(m, i, s) + ' shares to sell.';
+      else if (v > have + SELL_SNAP) err = 'You hold only ' + shTxt(have) + ' shares.';
     }
     return { html: out, err: err };
   }
@@ -752,7 +829,7 @@
       '<button class="btn-ghost sm back" data-pm="back">← All markets</button>' +
       '<div class="pd">' +
         '<section class="panel pd-main">' +
-          '<div class="pm-top"><span class="pm-cat">' + m.cat + '</span><span class="pm-type">' + typeTag(m) + '</span>' + autoBadge(m) + '<span class="pill pill-sim">' + (m.auto ? 'Sample odds' : 'Sample market') + '</span></div>' +
+          '<div class="pm-top"><span class="pm-cat">' + esc(m.cat) + '</span><span class="pm-type">' + typeTag(m) + '</span>' + autoBadge(m) + '<span class="pill pill-sim">' + (m.auto ? 'Sample odds' : 'Sample market') + '</span></div>' +
           '<h2 class="pd-q">' + esc(m.q) + '</h2>' +
           '<div id="pdInfo">' + infoHtml(m) + '</div>' +
           '<div class="pd-chart" id="pdChart"></div>' +
@@ -782,8 +859,8 @@
   function infoHtml(m) {
     var res = m.status !== 'open';
     return '<dl class="pd-stats"><div><dt>Volume</dt><dd class="mono">' + usd0(m.vol) + '</dd></div><div><dt>Trades</dt><dd class="mono">' + m.trades + '</dd></div>' +
-      '<div><dt>Liquidity (b)</dt><dd class="mono">' + m.b.toLocaleString('en-US') + '</dd></div><div><dt>Max MM loss</dt><dd class="mono">' + H.usd(E.lmsrMaxLoss(m.b, m.outcomes.length)) + '</dd></div>' +
-      '<div><dt>Closes</dt><dd>' + esc(m.close) + '</dd></div><div><dt>Status</dt><dd>' + (res ? (m.status === 'resolved' ? 'Resolved: ' : '') + '<b>' + esc(statusText(m)) + '</b>' : '<span class="up">Open</span>') + '</dd></div></dl>' + autoInfo(m, true);
+      '<div><dt>Liquidity (b)</dt><dd class="mono">' + m.b.toLocaleString('en-US') + '</dd></div><div><dt>Max MM loss</dt><dd class="mono" title="Worst case for the market maker: b · ln(1 / lowest starting probability)">' + H.usd(E.lmsrMaxLoss(m.b, m.auto ? [0.5, 0.5] : m.p0)) + '</dd></div>' +
+      '<div><dt>Closes</dt><dd>' + esc(m.close) + '</dd></div><div><dt>Status</dt><dd>' + (res ? (m.status === 'resolved' ? 'Resolved: ' : '') + '<b>' + esc(statusText(m)) + '</b>' : expired(m) ? '<span class="warn">Awaiting resolution</span>' : '<span class="up">Open</span>') + '</dd></div></dl>' + autoInfo(m, true);
   }
 
   function outcomesHtml(m) {
@@ -803,7 +880,7 @@
     var h = S.pm.pos[m.id], rows = '';
     if (h) Object.keys(h).forEach(function (key) {
       var p = key.split(':'), i = +p[0], s = p[1], c = h[key], v = c.sh * side(m, i, s), pnl = v - c.cost;
-      rows += '<tr><td><b class="' + s + '">' + esc(label(m, i, s)) + '</b></td><td class="mono">' + c.sh.toFixed(2) + '</td><td class="mono">' + cents(c.cost / c.sh) + '</td><td class="mono">' + H.usd(v) + '</td><td class="mono ' + (pnl >= 0 ? 'up' : 'down') + '">' + H.signed(pnl) + '</td></tr>';
+      rows += '<tr><td><b class="' + s + '">' + esc(label(m, i, s)) + '</b></td><td class="mono">' + shTxt(c.sh) + '</td><td class="mono">' + cents(c.cost / c.sh) + '</td><td class="mono">' + H.usd(v) + '</td><td class="mono ' + (pnl >= 0 ? 'up' : 'down') + '">' + H.signed(pnl) + '</td></tr>';
     });
     var ords = S.pm.orders.filter(function (o) { return o.mid === m.id; }).map(function (o) {
       return '<tr><td><b class="' + o.s + '">' + (o.dir === 'buy' ? 'Buy ' : 'Sell ') + esc(label(m, o.i, o.s)) + '</b></td><td class="mono">' + (o.dir === 'buy' ? '≤' : '≥') + (o.limit * 100).toFixed(1) + '¢</td><td class="mono" colspan="2">' + (o.dir === 'buy' ? H.usd(o.rem) + ' left' : o.rem.toFixed(2) + ' sh left') + (o.filled ? ' · filled ' + o.filled.toFixed(2) + ' sh' : '') + '</td><td><button class="linkbtn" data-pm="cancel" data-o="' + o.id + '">Cancel</button></td></tr>';
@@ -851,7 +928,7 @@
     var chips = document.getElementById('ptChips');
     var have = (hold(m)[hk(detail.i, detail.s)] || { sh: 0 }).sh;
     var want = detail.dir === 'buy' ? '<button data-q="10">$10</button><button data-q="100">$100</button><button data-q="1000">$1k</button><button data-q="max">Max</button>'
-      : '<button data-f="0.25"' + (have ? '' : ' disabled') + '>25%</button><button data-f="0.5"' + (have ? '' : ' disabled') + '>50%</button><button data-f="1"' + (have ? '' : ' disabled') + '>All</button>';
+      : '<button data-f="0.25"' + (have ? '' : ' disabled') + '>25%</button><button data-f="0.5"' + (have ? '' : ' disabled') + '>50%</button><button data-f="1"' + (have ? '' : ' disabled') + ' title="Sell the whole holding">Max</button>';
     if (chips.dataset.k !== detail.dir + have.toFixed(4)) { chips.innerHTML = want; chips.dataset.k = detail.dir + have.toFixed(4); }
     updTicketPrices(m);
   }
@@ -862,14 +939,14 @@
     var amt = document.getElementById('ptAmt'), lim = document.getElementById('ptLim'), out = document.getElementById('ptOut');
     amt.addEventListener('input', function () { detail.amt = amt.value.trim(); updQuote(); });
     lim.addEventListener('input', function () { detail.lim = lim.value.trim(); updQuote(); });
-    if (out) out.addEventListener('change', function () { detail.i = +out.value; renderDetail(false); });
+    if (out) out.addEventListener('change', function () { detail.i = +out.value; if (detail.dir === 'sell') detail.amt = sellAmt(m, detail.i, detail.s); renderDetail(false); });
     t.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b || b.disabled) return;
-      if (b.dataset.s) { detail.s = b.dataset.s; renderDetail(false); return; }
-      if (b.dataset.dir) { detail.dir = b.dataset.dir; if (detail.dir === 'sell') { var hv = hold(m)[hk(detail.i, detail.s)]; detail.amt = hv ? String(+hv.sh.toFixed(2)) : ''; } else detail.amt = '100'; renderDetail(false); return; }
+      if (b.dataset.s) { detail.s = b.dataset.s; if (detail.dir === 'sell') detail.amt = sellAmt(m, detail.i, detail.s); renderDetail(false); return; }
+      if (b.dataset.dir) { detail.dir = b.dataset.dir; detail.amt = detail.dir === 'sell' ? sellAmt(m, detail.i, detail.s) : '100'; renderDetail(false); return; }
       if (b.dataset.type) { detail.type = b.dataset.type; if (detail.type === 'limit' && !detail.lim) detail.lim = String(Math.max(1, Math.min(99, Math.round(side(m, detail.i, detail.s) * 100) + (detail.dir === 'buy' ? -2 : 2)))); renderDetail(false); return; }
       if (b.dataset.q) { amt.value = b.dataset.q === 'max' ? String(Math.floor(S.balance * 100) / 100) : b.dataset.q; detail.amt = amt.value; updQuote(); return; }
-      if (b.dataset.f) { var h = hold(m)[hk(detail.i, detail.s)]; var hv2 = h ? h.sh : 0; amt.value = b.dataset.f === '1' ? String(hv2) : (Math.floor(hv2 * +b.dataset.f * 100) / 100).toFixed(2); detail.amt = amt.value; updQuote(); return; }
+      if (b.dataset.f) { var h = hold(m)[hk(detail.i, detail.s)]; var hv2 = h ? h.sh : 0; amt.value = shTxt(hv2 * +b.dataset.f); detail.amt = amt.value; updQuote(); return; }
       if (b.id === 'ptGo') submit(m);
       if (b.id === 'ptCombo') {
         var r = addLeg(m, detail.i, detail.s);
@@ -883,6 +960,7 @@
 
   function postComment(m) {
     var inp = document.getElementById('cmIn'); if (!inp) return;
+    claim();
     var t = inp.value.trim();
     if (t.length < 2) { inp.classList.add('bad'); return; }
     inp.classList.remove('bad');
@@ -897,6 +975,10 @@
     if (busy) return;                  // guards against double clicks
     busy = true; setTimeout(function () { busy = false; }, 350);
     var d = detail, v = pnum(d.amt), r;
+    if (d.dir === 'sell') {   // "sell 10.00" of 10.006 held sells everything (no 0.006 left behind)
+      var hh = hold(m)[hk(d.i, d.s)];
+      if (hh && v > 0 && Math.abs(v - hh.sh) < SELL_SNAP) v = hh.sh;
+    }
     if (d.type === 'limit') {
       r = placeLimit(m, d.i, d.s, d.dir, pnum(d.lim) / 100, v);
       if (typeof r === 'string') { document.getElementById('ptErr').textContent = r; return; }
@@ -908,8 +990,8 @@
     } else {
       r = sell(m, d.i, d.s, v);
       if (typeof r === 'string') { document.getElementById('ptErr').textContent = r; return; }
-      H.toast('Sold ' + v.toFixed(2) + ' ' + label(m, d.i, d.s) + ' for ' + H.usd(r.usd), 'PnL ' + H.signed(r.pnl), r.pnl >= 0 ? 'ok' : 'bad');
-      var left = hold(m)[hk(d.i, d.s)]; d.amt = left ? String(+left.sh.toFixed(2)) : '';
+      H.toast('Sold ' + shTxt(v) + ' ' + label(m, d.i, d.s) + ' for ' + H.usd(r.usd), 'PnL ' + H.signed(r.pnl), r.pnl >= 0 ? 'ok' : 'bad');
+      d.amt = sellAmt(m, d.i, d.s);
     }
     H.changed(true);
     renderDetail(false);
@@ -944,7 +1026,7 @@
   function openResolve(m) {
     H.modal('<div class="pt"><div class="pt-q" id="modalTitle">Resolve (demo)</div><p class="muted">' + esc(m.q) + '</p>' +
       '<p class="fine">Sample market: you choose the outcome. Winning shares pay $1.00 each, losing shares expire at $0, and open limit orders on this market are canceled and refunded.</p>' +
-      '<div class="rs-list">' + m.outcomes.map(function (o, j) { return '<button class="pm-btn ' + (m.type === 'binary' ? (j === 0 ? 'yes' : 'no') : 'yes') + '" data-w="' + j + '">' + (m.type === 'binary' ? 'Resolve ' + o.toUpperCase() : esc(o)) + '</button>'; }).join('') + '</div></div>');
+      '<div class="rs-list">' + m.outcomes.map(function (o, j) { return '<button class="pm-btn ' + (m.type === 'binary' ? (j === 0 ? 'yes' : 'no') : 'yes') + '" data-w="' + j + '">' + (m.type === 'binary' ? 'Resolve ' + esc(o.toUpperCase()) : esc(o)) + '</button>'; }).join('') + '</div></div>');
     document.querySelectorAll('#modalBody [data-w]').forEach(function (b) {
       b.onclick = function () {
         var r = resolve(m, +b.dataset.w);
@@ -961,10 +1043,10 @@
    * Like the short-term crypto markets on Polymarket / Kalshi. A new round opens every 15 minutes
    * (aligned to UTC quarter hours). "Price to beat" = BTC/USDT at the round start, settlement =
    * BTC/USDT at the round end (open of the Binance 1-minute candle at each moment). UP wins when
-   * end >= start. Odds come from the local market maker (simulated flow); the price data is real
-   * when Binance is live and is labelled sample when it is not. A round whose end price cannot be
-   * read (page closed and Binance unreachable) is voided and every stake is refunded: no outcome
-   * is ever guessed. */
+   * end >= start. Odds come from the local market maker (simulated flow). Both prices come from the
+   * same source, live Binance data: while Binance is unreachable the price to beat is not set and the
+   * round cannot be traded, and a round whose end price cannot be read from Binance (network down,
+   * page closed) is voided and every stake is refunded. A round is never settled on a sample price. */
   var ROUND_MS = 15 * 60000, AUTO_B = 3000, SIG_S = 0.55 / Math.sqrt(365 * 86400);
   function DD() { return root.VXData; }
   function btcNow() { var d = DD(), t = d && d.tick.BTC; return t ? t.price : 0; }
@@ -1002,13 +1084,14 @@
       delete autoBusy[m.id];
       if (!(m.round.strike > 0) && p > 0 && m.status === 'open') { m.round.strike = p; m.round.strikeSrc = src; refreshAuto(true, true); }
     };
+    // only a live Binance price can be the price to beat (the end price must come from the same source)
     var fallback = function () {
       var p = btcNow();
-      if (!(p > 0)) { delete autoBusy[m.id]; return; }
-      if (!btcLive()) ok(p, 'sample price (Binance unreachable)');
-      else ok(p, Date.now() - m.round.start < 90000 ? 'Binance last price' : 'Binance price when this round was first opened in this browser');
+      if (!(p > 0) || !btcLive()) { delete autoBusy[m.id]; return; }   // try again on the next tick
+      ok(p, Date.now() - m.round.start < 90000 ? 'Binance last price' : 'Binance price when this round was first opened in this browser');
     };
-    if (d && d.priceAt && btcLive()) d.priceAt('BTC', m.round.start).then(function (p) { ok(p, 'Binance 1-minute candle open'); }, fallback);
+    if (!btcLive()) { delete autoBusy[m.id]; return; }
+    if (d && d.priceAt) d.priceAt('BTC', m.round.start).then(function (p) { ok(p, 'Binance 1-minute candle open'); }, fallback);
     else fallback();
   }
   function settleAuto(m) {
@@ -1020,15 +1103,16 @@
     var done = function (p, src) {
       delete autoBusy[m.id + ':end'];
       if (m.status !== 'closing') return;
-      if (!(m.round.strike > 0) || !(p > 0)) { voidAuto(m); return; }
+      if (!(m.round.strike > 0) || !(p > 0) || /sample/i.test(m.round.strikeSrc || '')) { voidAuto(m); return; }   // never mix sources
       m.round.close = p; m.round.closeSrc = src;
       var w = p >= m.round.strike ? 0 : 1, r = resolve(m, w);
       if (r && r.had) H.toast('BTC round settled: ' + m.outcomes[w], 'Start ' + money(m.round.strike) + ' → end ' + money(p) + ' · payout ' + H.usd(r.payout) + ' (' + H.signed(r.pnl) + ')', r.pnl >= 0 ? 'ok' : 'bad');
       refreshAuto(true, true);
     };
-    // the latest tick is used only if it was taken within seconds of the round end
+    // the live tick is used only if Binance is live and it was taken within seconds of the round end;
+    // with Binance unreachable the round is voided (stakes refunded), never settled on a sample price
     var fallback = function () {
-      if (late < 20000 && btcNow() > 0) done(btcNow(), btcLive() ? 'Binance last price' : 'sample price (Binance unreachable)');
+      if (btcLive() && late < 20000 && btcNow() > 0) done(btcNow(), 'Binance last price');
       else done(0, '');
     };
     if (d && d.priceAt && btcLive()) d.priceAt('BTC', m.round.end).then(function (p) { done(p, 'Binance 1-minute candle open'); }, fallback);
@@ -1041,13 +1125,14 @@
     S.balance += refund;
     delete S.pm.pos[m.id];
     m.status = 'void'; m.winner = null; m.settled = { payout: refund, pnl: 0, had: refund > 0 };
-    if (refund > 0) { log('Voided', m, 0, 'yes', null, refund, 0); H.toast('BTC round voided', 'The end price could not be read. Stakes refunded: ' + H.usd(refund), 'warn'); }
+    if (refund > 0) { log('Voided', m, 0, 'yes', null, refund, 0); H.toast('BTC round voided', (m.round.strike > 0 ? 'The end price could not be read from Binance' : 'Binance did not answer during the round') + '. Stakes refunded: ' + H.usd(refund), 'warn'); }
     refreshAuto(true, true);
   }
   function currentRound() { var r = null; S.pm.markets.forEach(function (m) { if (m.auto && (!r || m.round.start > r.round.start)) r = m; }); return r; }
   function autoTick() {
     if (!S || !S.pm || !S.pm.markets) return;
     var now = Date.now(), start = Math.floor(now / ROUND_MS) * ROUND_MS, added = false, waiting = btcState() === 'pending';
+    if (!canWrite()) { liveText(now); return; }   // another tab is the writer: it opens and settles rounds
     S.pm.markets.forEach(function (m) {
       if (!m.auto || waiting) return;   // wait until the BTC source has answered (live or offline)
       if (m.status === 'open' && now >= m.round.end + 2000) settleAuto(m);
@@ -1064,7 +1149,11 @@
       if (drop.length) S.pm.markets = S.pm.markets.filter(function (m) { return drop.indexOf(m.id) < 0; });
     }
     if (added && el.grid) refreshAuto(true, true);
-    // live text (countdown, BTC price): text only, buttons are not re-rendered
+    liveText(now);
+  }
+  /* live text (countdown, BTC price): text only, buttons are not re-rendered */
+  function liveText(now) {
+    if (typeof document === 'undefined') return;
     document.querySelectorAll('[data-cd]').forEach(function (x) { x.textContent = mmss(+x.dataset.cd - now); });
     var bn = btcNow();
     document.querySelectorAll('[data-btcnow]').forEach(function (x) {
@@ -1074,7 +1163,7 @@
     });
   }
   function autoFlow() {
-    if (!S || !S.pm) return;
+    if (!S || !S.pm || !canWrite() || hidden()) return;
     S.pm.markets.forEach(function (m) {
       if (!m.auto || m.status !== 'open' || !(m.round.strike > 0)) return;
       var f = fairUp(m), p = prices(m)[0], diff = f - p;
@@ -1102,12 +1191,12 @@
   function autoInfo(m, wide) {
     if (!m.auto) return '';
     var r = m.round, res = m.status !== 'open';
-    var a = '<div><dt>Price to beat</dt><dd class="mono">' + (r.strike > 0 ? money(r.strike) : 'loading…') + '</dd></div>';
+    var a = '<div><dt>Price to beat</dt><dd class="mono">' + (r.strike > 0 ? money(r.strike) : res ? '—' : btcLive() ? 'loading…' : 'waiting for Binance') + '</dd></div>';
     var b = res ? '<div><dt>End price</dt><dd class="mono">' + (r.close ? money(r.close) : '—') + '</dd></div>'
                 : '<div><dt>BTC now</dt><dd class="mono" data-btcnow="' + m.id + '">' + money(btcNow()) + '</dd></div>';
     var c = res ? '<div><dt>Round</dt><dd class="mono">' + utc(r.start) + '-' + utc(r.end) + '</dd></div>'
                 : '<div><dt>Ends in</dt><dd class="mono" data-cd="' + r.end + '">' + mmss(r.end - Date.now()) + '</dd></div>';
-    var src = wide ? '<p class="fine">Start price: ' + esc(r.strikeSrc || 'loading…') + (r.closeSrc ? ' · end price: ' + esc(r.closeSrc) : '') + '. Odds come from the demo market maker with simulated flow.</p>' : '';
+    var src = wide ? '<p class="fine">Start price: ' + esc(r.strikeSrc || (res ? 'not available' : btcLive() ? 'loading…' : 'waiting for live Binance data (trading opens when it arrives)')) + (r.closeSrc ? ' · end price: ' + esc(r.closeSrc) : '') + '. Odds come from the demo market maker with simulated flow.</p>' : '';
     return '<dl class="pd-stats pm-auto">' + a + b + c + '</dl>' + src;
   }
 
@@ -1124,12 +1213,48 @@
 
   /* ---------------- init ---------------- */
   var flowTimer = null;
+  function finite(x) { return typeof x === 'number' && isFinite(x); }
+  function validMarket(m) {
+    if (!m || typeof m !== 'object' || typeof m.id !== 'string' || !Array.isArray(m.outcomes) || m.outcomes.length < 2) return false;
+    if (!Array.isArray(m.qv) || m.qv.length !== m.outcomes.length || !m.qv.every(finite)) return false;
+    if (!(finite(m.b) && m.b > 0) || !Array.isArray(m.hist) || !Array.isArray(m.p0) || typeof m.q !== 'string') return false;
+    if (m.auto && (!m.round || !finite(m.round.start) || !finite(m.round.end))) return false;
+    return true;
+  }
+  /* money tied up in a prediction state that cannot be used any more (old version or broken record):
+     open buy orders and the cost of held shares and open combos go back to the balance */
+  function refundOf(pm) {
+    var r = 0;
+    try {
+      Object.keys(pm.pos || {}).forEach(function (mid) { var h = pm.pos[mid] || {}; Object.keys(h).forEach(function (k) { if (h[k] && finite(h[k].cost) && h[k].cost > 0) r += h[k].cost; }); });
+      (pm.orders || []).forEach(function (o) { if (!o) return; if (o.dir === 'buy' && finite(o.rem) && o.rem > 0) r += o.rem; else if (o.dir === 'sell' && finite(o.basis) && o.basis > 0) r += o.basis; });
+      (pm.combos || []).forEach(function (c) { if (c && c.status === 'open' && finite(c.stake) && c.stake > 0) r += c.stake; });
+    } catch (e) {}
+    return r;
+  }
+  function pmUsable(pm) {
+    return pm && typeof pm === 'object' && pm.v === 2 && Array.isArray(pm.markets) && pm.markets.length && pm.markets.every(validMarket) &&
+      (pm.pos == null || typeof pm.pos === 'object') && (pm.orders == null || Array.isArray(pm.orders)) && (pm.combos == null || Array.isArray(pm.combos));
+  }
   function ensure(px) {
-    if (!S.pm || !S.pm.markets || !S.pm.markets.length || S.pm.v !== 2) S.pm = { v: 2, markets: build(px), pos: {}, orders: [], hist: [] };
-    if (!S.pm.orders) S.pm.orders = [];
-    if (!S.pm.combos) S.pm.combos = [];
-    if (!S.pm.slip) S.pm.slip = [];
-    if (!S.pm.comments) S.pm.comments = {};
+    if (!canWrite() && !S.pm) return;   // the writer tab builds the markets; this tab mirrors them
+    if (!pmUsable(S.pm)) {
+      var refund = S.pm && typeof S.pm === 'object' ? refundOf(S.pm) : 0;
+      S.pm = { v: 2, markets: build(px), pos: {}, orders: [], hist: [] };
+      if (refund > 0) {
+        S.balance += refund;
+        S.pm.hist.unshift({ t: Date.now(), kind: 'Refund', mid: '', q: 'Prediction markets were re-created', what: 'Open orders and shares refunded at cost', sh: null, usd: refund, pnl: null });
+        if (H && H.toast) H.toast('Prediction markets re-created', 'Saved prediction data could not be used. Open orders and shares were refunded at cost: ' + H.usd(refund), 'warn');
+      }
+    }
+    if (!S.pm.pos || typeof S.pm.pos !== 'object') S.pm.pos = {};
+    Object.keys(S.pm.pos).forEach(function (mid) { if (!S.pm.pos[mid] || typeof S.pm.pos[mid] !== 'object' || !Object.keys(S.pm.pos[mid]).length) delete S.pm.pos[mid]; });
+    if (!Array.isArray(S.pm.orders)) S.pm.orders = [];
+    if (!Array.isArray(S.pm.combos)) S.pm.combos = [];
+    if (!Array.isArray(S.pm.slip)) S.pm.slip = [];
+    if (!Array.isArray(S.pm.hist)) S.pm.hist = [];
+    if (!S.pm.comments || typeof S.pm.comments !== 'object') S.pm.comments = {};
+    if (!canWrite()) return;
     // markets added to the catalogue after this browser saved its state
     var have = {}; S.pm.markets.forEach(function (m) { have[m.id] = true; });
     var missing = catalogue(px).filter(function (d) { return !have[d.id]; });
@@ -1171,10 +1296,16 @@
   }
 
   function setState(state) { S = state; if (detail) closeDetail(); }
+  /* the shared state was replaced by the writer tab's copy: keep the open market page, refresh it */
+  function resync() {
+    if (!S || !S.pm) return;
+    if (detail) { var m = mk(detail.m.id); if (m) { detail.m = m; renderDetail(true); renderSide(); } else closeDetail(); }
+    else { renderGrid(); renderSide(); }
+  }
   function render() { if (detail) renderDetail(true); else renderGrid(); renderSide(); }
   function renderAll() { if (detail) { var m = mk(detail.m.id); if (m) { detail.m = m; renderDetail(false); } else closeDetail(); } else renderGrid(); renderSide(); }
 
-  root.VXPredict = { init: init, ensure: ensure, render: render, renderAll: renderAll, renderSide: renderSide, setState: setState,
+  root.VXPredict = { init: init, ensure: ensure, render: render, renderAll: renderAll, renderSide: renderSide, setState: setState, resync: resync, expired: expired,
                      value: holdingsValue, unrealized: unrealized, prices: prices, buy: buy, sell: sell, placeLimit: placeLimit,
                      cancelOrder: cancelOrder, resolve: resolve, flow: flow, market: mk, openDetail: openDetail, closeDetail: closeDetail,
                      createMarket: createMarket, addLeg: addLeg, removeLeg: removeLeg, placeCombo: placeCombo, comboValue: comboValue, slipPrice: slipPrice,

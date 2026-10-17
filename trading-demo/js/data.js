@@ -8,7 +8,12 @@
  * Everything else (energy, agriculture, indices, stocks) is SAMPLE data: a seeded random walk
  * around a reference close (Yahoo Finance close of 16 Oct 2026, typed in by hand).
  * FX trades on simulated intraday ticks around the real daily rate.
- * When a source cannot be reached, its assets fall back to sample data and are re-labelled.
+ * When a source cannot be reached, its assets fall back to sample data and are re-labelled
+ * ("Sample · offline"). An asset that already had a real price stays frozen at that last real price
+ * while its source is down (no simulated walk, so positions and 15-minute rounds do not move on fake
+ * data); an asset that never received a real price walks slowly (real volatility, no boost).
+ * The simulator state (last prices, session high/low) is saved by the app and restored on reload, so a
+ * page reload continues where it stopped instead of jumping back to the reference close.
  */
 (function (root) {
   'use strict';
@@ -122,6 +127,12 @@
 
   /* is the asset currently driven by the simulator? */
   function simulated(a) { return a.state === 'sample' || a.state === 'fallback' || a.state === 'daily'; }
+  function utcDay(ms) { return Math.floor(ms / 86400000); }
+  /* saved simulator state from the previous page load (see snapshot / restore) */
+  var saved = {};
+  function savedPrice(a) { var x = saved[a.id]; return x && x.p > 0 && isFinite(x.p) ? x : null; }
+  /* follower tab: another tab of this demo is the writer and broadcasts its simulated prices */
+  var follower = false, followerFeedAt = 0;
 
   function badge(a) {
     switch (a.state) {
@@ -181,8 +192,11 @@
   }
 
   function setPrice(a, p, dv) {
-    var t = tick[a.id];
-    if (!t) t = tick[a.id] = { price: p, open24: a.ref, high: p, low: p, vol: 0, qvol: 0, ts: 0 };
+    var t = tick[a.id], day = utcDay(Date.now());
+    if (!t) t = tick[a.id] = { price: p, open24: a.ref, high: p, low: p, vol: 0, qvol: 0, ts: 0, day: day };
+    // new UTC day: the previous close becomes the reference and high / low / volume start again
+    if (t.day != null && t.day !== day) { t.open24 = t.price; t.high = t.price; t.low = t.price; t.vol = 0; t.qvol = 0; }
+    t.day = day;
     t.price = p; t.high = Math.max(t.high, p); t.low = Math.min(t.low, p);
     t.vol += dv || 0; t.qvol += (dv || 0) * p; t.ts = Date.now();
     var prevP = t.lastP; t.lastP = p;
@@ -202,18 +216,41 @@
     var h = simHistory(a, '1h', 24, price);
     var hi = price, lo = price, v = 0;
     h.forEach(function (c) { hi = Math.max(hi, c.high); lo = Math.min(lo, c.low); v += c.volume; });
-    tick[a.id] = { price: price, open24: prev, high: hi, low: lo, vol: v, qvol: v * price, ts: Date.now() };
+    tick[a.id] = { price: price, open24: prev, high: hi, low: lo, vol: v, qvol: v * price, ts: Date.now(), day: utcDay(Date.now()) };
     emit('tick', a.id, tick[a.id]);
+  }
+  /* continue from the price saved before the reload (same UTC day: keep high / low / volume too) */
+  function seedFromSaved(a, sv) {
+    var day = utcDay(Date.now()), same = sv.day === day;
+    tick[a.id] = { price: sv.p, open24: same && sv.o > 0 ? sv.o : sv.p, high: same && sv.hi > 0 ? Math.max(sv.hi, sv.p) : sv.p, low: same && sv.lo > 0 ? Math.min(sv.lo, sv.p) : sv.p,
+                   vol: same && sv.v > 0 ? sv.v : 0, qvol: same && sv.v > 0 ? sv.v * sv.p : 0, ts: Date.now(), day: day };
+    if (sv.real) a.realAt = sv.real;
+    emit('tick', a.id, tick[a.id]);
+  }
+  /* price for an asset whose source is down: its last real (or saved) price, else the reference close */
+  function seedFallback(a) {
+    if (tick[a.id]) { a.anchor = tick[a.id].price; return; }
+    var sv = savedPrice(a);
+    if (sv) { seedFromSaved(a, sv); a.anchor = sv.p; } else seedTicker(a, a.ref, a.ref);
   }
 
   function stepSim() {
     var sa = BY_ID[sel.id];
     if (sa && sa.feed === 'goldapi' && sa.state === 'live' && tick[sa.id]) emit('book', sa.id, synthBook(sa, tick[sa.id].price));
+    // follower tab: the writer tab's simulated prices arrive by message; simulate only if they stop coming
+    var fed = follower && Date.now() - followerFeedAt < 5000;
     ASSETS.forEach(function (a) {
       if (!simulated(a) || !tick[a.id]) return;
       if (!isOpen(a)) return;   // closed session: the price stands still until the market reopens
       var t = tick[a.id];
+      if (fed) { if (sel.id === a.id) emit('book', a.id, synthBook(a, t.price)); return; }
       var sig = a.vol * Math.sqrt(1 / YEAR) * SIM_BOOST * 6;
+      if (a.state === 'fallback') {
+        // source down: never invent moves on a market that had a real price (it stays at the last real
+        // price); a market that never had one walks slowly at its real volatility
+        if (a.realAt) { if (sel.id === a.id) emit('book', a.id, synthBook(a, t.price)); return; }
+        sig = a.vol * Math.sqrt(1 / YEAR);
+      }
       var rev = -0.002 * Math.log(t.price / a.anchor);
       var p = t.price * Math.exp(sig * gauss(liveRnd) + rev);
       setPrice(a, p, Math.abs(gauss(liveRnd)) * 3);
@@ -249,10 +286,16 @@
     });
   }
 
+  /* a source came back. If the asset was running on sample prices that were never real, flag the
+     switch: the app warns once and marks positions that were opened on those sample prices. */
+  function goLive(a, srcName) {
+    if (a.state === 'fallback' && !a.realAt) a.sourceJump = true;
+    setState(a, 'live', srcName);
+  }
   function bnLive() {
     binAssets.forEach(function (a) {
       if (a.state !== 'live') {
-        setState(a, 'live', 'Binance');
+        goLive(a, 'Binance');
         if (sel.id === a.id) emit('reload', a.id);
       }
     });
@@ -260,7 +303,7 @@
   function bnFallback() {
     binAssets.forEach(function (a) {
       if (a.state === 'live' || a.state === 'pending') {
-        if (!tick[a.id]) seedTicker(a, a.ref, a.ref); else a.anchor = tick[a.id].price;
+        seedFallback(a);
         setState(a, 'fallback', 'Binance');
         if (sel.id === a.id) emit('reload', a.id);
       }
@@ -268,21 +311,23 @@
   }
 
   function applyTicker(sym, c, o, h, l, v, q) {
-    var a = BY_BIN[sym]; if (!a) return;
-    tick[a.id] = { price: +c, open24: +o, high: +h, low: +l, vol: +v, qvol: +q, ts: Date.now() };
+    var a = BY_BIN[sym]; if (!a || !(+c > 0)) return;
+    tick[a.id] = { price: +c, open24: +o, high: +h, low: +l, vol: +v, qvol: +q, ts: Date.now(), day: utcDay(Date.now()) };
+    a.realAt = Date.now();
     emit('tick', a.id, tick[a.id]);
   }
 
   function bnTickersRest() {
     var syms = encodeURIComponent(JSON.stringify(binAssets.map(function (a) { return a.key; })));
     return bnFetch('/api/v3/ticker/24hr?symbols=' + syms).then(function (arr) {
+      if (!Array.isArray(arr) || !arr.length) throw new Error('bad ticker response');   // checked before calling it live
       bnLive();
-      arr.forEach(function (t) { applyTicker(t.symbol, t.lastPrice, t.openPrice, t.highPrice, t.lowPrice, t.volume, t.quoteVolume); });
+      arr.forEach(function (t) { if (t) applyTicker(t.symbol, t.lastPrice, t.openPrice, t.highPrice, t.lowPrice, t.volume, t.quoteVolume); });
     });
   }
 
   var lastRestTrade = 0;
-  var ws = null, wsFails = 0, lastMsg = 0, reqId = 1, wsSubs = [], pollTimer = null;
+  var ws = null, wsFails = 0, lastMsg = 0, reqId = 1, wsSubs = [], pollTimer = null, polling = false;
   function selStreams() {
     var a = BY_ID[sel.id];
     if (!a || a.feed !== 'binance') return [];
@@ -300,6 +345,9 @@
     sock.onopen = function () {
       clearTimeout(openTimer); wsFails = 0; lastMsg = Date.now();
       stopPolling(); bnLive(); bnSetStatus('live', WSS[wsIdx].replace('wss://', ''));
+      // the market may have changed while the socket was connecting: the URL still carries the streams
+      // of the market selected at connect time, so swap them for the current selection now
+      resubscribe();
     };
     sock.onmessage = function (ev) {
       lastMsg = Date.now();
@@ -311,13 +359,13 @@
         var a = BY_BIN[d.s]; if (!a || a.id !== sel.id || d.k.i !== sel.tf) return;
         var k = d.k;
         emit('candle', a.id, { time: Math.floor(k.t / 1000), open: +k.o, high: +k.h, low: +k.l, close: +k.c, volume: +k.v });
-        if (tick[a.id]) { tick[a.id].price = +k.c; tick[a.id].ts = Date.now(); emit('tick', a.id, tick[a.id]); }
+        if (tick[a.id] && +k.c > 0) { tick[a.id].price = +k.c; tick[a.id].ts = Date.now(); a.realAt = Date.now(); emit('tick', a.id, tick[a.id]); }
       } else if (st.indexOf('@aggTrade') > 0) {
         var a3 = BY_BIN[d.s]; if (!a3 || a3.id !== sel.id) return;
         emit('trade', a3.id, { p: +d.p, q: +d.q, side: d.m ? 'sell' : 'buy', t: d.T, kind: 'live' });
       } else if (st.indexOf('@depth') > 0) {
         var a2 = BY_BIN[st.split('@')[0].toUpperCase()];
-        if (!a2 || a2.id !== sel.id || !d.bids) return;
+        if (!a2 || a2.id !== sel.id || !Array.isArray(d.bids) || !Array.isArray(d.asks)) return;
         emit('book', a2.id, { bids: d.bids.map(function (x) { return [+x[0], +x[1]]; }), asks: d.asks.map(function (x) { return [+x[0], +x[1]]; }), synthetic: false });
       }
     };
@@ -331,6 +379,7 @@
     if (bnStatus.mode === 'live') bnSetStatus('reconnecting');
     setTimeout(connectWs, Math.min(20000, 1000 * Math.pow(1.7, wsFails)));
   }
+  /* while the socket is still connecting, wsSubs keeps the streams of its URL; onopen calls this again */
   function resubscribe() {
     if (!ws || ws.readyState !== 1) return;
     var want = selStreams();
@@ -342,56 +391,78 @@
     } catch (e) {}
     wsSubs = want;
   }
+  function ignore() {}
+  /* one REST round (ticker, then candle / trades / depth of the selected market). It resolves when all of
+     it has finished, so a new round never starts while this one is still waiting on a slow network. */
   function pollOnce() {
-    bnTickersRest().then(function () {
+    return bnTickersRest().then(function () {
       if (bnStatus.mode !== 'live') bnSetStatus('rest', REST[restIdx].replace('https://', ''));
       var a = BY_ID[sel.id];
-      if (a && a.feed === 'binance') {
+      if (!a || a.feed !== 'binance') return;
+      return Promise.all([
         bnFetch('/api/v3/klines?symbol=' + a.key + '&interval=' + sel.tf + '&limit=2').then(function (rows) {
-          var r = rows[rows.length - 1];
+          var r = Array.isArray(rows) ? rows[rows.length - 1] : null;
           if (a.id === sel.id && r) emit('candle', a.id, { time: Math.floor(r[0] / 1000), open: +r[1], high: +r[2], low: +r[3], close: +r[4], volume: +r[5] });
-        }, function () {});
+        }).catch(ignore),
         bnFetch('/api/v3/trades?symbol=' + a.key + '&limit=12').then(function (rows) {
           if (a.id !== sel.id || !Array.isArray(rows)) return;
           rows.forEach(function (r) { if (r.time > lastRestTrade) { lastRestTrade = r.time; emit('trade', a.id, { p: +r.price, q: +r.qty, side: r.isBuyerMaker ? 'sell' : 'buy', t: r.time, kind: 'live' }); } });
-        }, function () {});
+        }).catch(ignore),
         bnFetch('/api/v3/depth?symbol=' + a.key + '&limit=10').then(function (d) {
-          if (a.id === sel.id) emit('book', a.id, { bids: d.bids.map(function (x) { return [+x[0], +x[1]]; }), asks: d.asks.map(function (x) { return [+x[0], +x[1]]; }), synthetic: false });
-        }, function () {});
-      }
-    }, function () { bnSetStatus('offline'); bnFallback(); });
+          if (a.id === sel.id && d && Array.isArray(d.bids) && Array.isArray(d.asks)) emit('book', a.id, { bids: d.bids.map(function (x) { return [+x[0], +x[1]]; }), asks: d.asks.map(function (x) { return [+x[0], +x[1]]; }), synthetic: false });
+        }).catch(ignore)
+      ]);
+    }).catch(function () { bnSetStatus('offline'); bnFallback(); });
   }
-  function startPolling() { if (!pollTimer) { pollTimer = setInterval(pollOnce, 4000); } }
-  function stopPolling() { if (pollTimer) { clearInterval(pollTimer); pollTimer = null; } }
+  /* REST polling while the WebSocket is down: the next round starts 4 s after the previous one ended */
+  function pollLoop() {
+    pollTimer = null;
+    if (!polling) return;
+    pollOnce().then(function () { if (polling && !pollTimer) pollTimer = setTimeout(pollLoop, 4000); });
+  }
+  function startPolling() { if (polling) return; polling = true; pollTimer = setTimeout(pollLoop, 4000); }
+  function stopPolling() { polling = false; if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; } }
 
   /* ================= gold-api.com (metals) ================= */
   var goldAssets = ASSETS.filter(function (a) { return a.feed === 'goldapi'; });
-  var goldFails = 0;
+  var goldFails = 0, GOLD_MISS = 3;   // one metal failing alone falls back after 3 failed polls in a row; all failing at once falls back at once
   function pollGold() {
     if (typeof document !== 'undefined' && document.hidden && goldFails === 0 && goldAssets[0].state === 'live') return;
     Promise.all(goldAssets.map(function (a) {
       return getJson('https://api.gold-api.com/price/' + a.key, 8000).then(function (j) {
-        var p = +j.price; if (!(p > 0)) throw new Error('bad price');
+        var p = +(j && j.price); if (!(p > 0) || !isFinite(p)) throw new Error('bad price');
         var was = a.state;
+        a.miss = 0;
         if (!tick[a.id]) seedTicker(a, p, a.ref);
         if (was !== 'live') {
           // live spot: high/low are tracked from observed prices only (no simulated history)
           var t0 = tick[a.id]; t0.price = p; t0.high = p; t0.low = p; t0.vol = 0; t0.qvol = 0;
         }
         a.anchor = p;
-        setState(a, 'live', 'gold-api');
+        if (was !== 'live') goLive(a, 'gold-api');
+        a.realAt = Date.now();
         setPrice(a, p, 0);
         if (was !== 'live' && sel.id === a.id) emit('reload', a.id);
         return true;
       }, function () {
-        if (a.state === 'pending' || a.state === 'live') {
-          if (!tick[a.id]) seedTicker(a, a.ref, a.ref);
+        a.miss = (a.miss || 0) + 1;
+        // one failed request does not flip a live metal to sample data (the badge and chart would flicker)
+        if (a.state === 'pending' || (a.state === 'live' && a.miss >= GOLD_MISS)) {
+          seedFallback(a);
           setState(a, 'fallback', 'gold-api');
           if (sel.id === a.id) emit('reload', a.id);
         }
         return false;
       });
-    })).then(function (r) { goldFails = r.indexOf(true) >= 0 ? 0 : goldFails + 1; });
+    })).then(function (r) {
+      goldFails = r.indexOf(true) >= 0 ? 0 : goldFails + 1;
+      // every metal failed at once: the source (or the network) is down, not one flaky answer -> sample now
+      if (r.indexOf(true) < 0) goldAssets.forEach(function (a) {
+        if (a.state !== 'live') return;
+        seedFallback(a); setState(a, 'fallback', 'gold-api');
+        if (sel.id === a.id) emit('reload', a.id);
+      });
+    });
   }
 
   /* ================= FX: Frankfurter v2 (daily) -> open.er-api.com -> sample ================= */
@@ -402,32 +473,51 @@
   function loadFx() {
     var from = isoDay(new Date(Date.now() - 430 * 86400000));
     var codes = fxAssets.map(function (a) { return a.key; }).join(',');
+    /* seed from the daily rate; continue from the saved intraday price if it was built on the same rate */
+    function seedFx(a, last, prev) {
+      var sv = savedPrice(a);
+      if (sv && sv.anchor != null && Math.abs(sv.anchor - last) < 1e-12) seedFromSaved(a, sv); else seedTicker(a, last, prev);
+    }
     return getJson('https://api.frankfurter.dev/v2/rates?base=USD&quotes=' + codes + '&from=' + from, 10000).then(function (rows) {
       if (!Array.isArray(rows) || !rows.length) throw new Error('empty');
       var per = {};
-      rows.forEach(function (r) { (per[r.quote] = per[r.quote] || []).push({ date: r.date, v: +r.rate }); });
+      rows.forEach(function (r) {
+        var v = +(r && r.rate), d = r ? String(r.date || '') : '';
+        if (!(v > 0) || !isFinite(v) || !/^\d{4}-\d{2}-\d{2}$/.test(d)) return;   // broken row: skip it
+        var wd = new Date(d + 'T00:00:00Z').getUTCDay();
+        if (wd === 0 || wd === 6) return;   // reference rates are business-day rates; weekend rows repeat Friday
+        (per[r.quote] = per[r.quote] || []).push({ date: d, v: v });
+      });
+      // validate every currency first, then apply: a missing one must not leave the others half switched
+      var series = {};
       fxAssets.forEach(function (a) {
         var s = (per[a.key] || []).sort(function (x, y) { return x.date < y.date ? -1 : 1; });
         if (s.length < 2) throw new Error('missing ' + a.key);
+        series[a.id] = s;
+      });
+      fxAssets.forEach(function (a) {
+        var s = series[a.id];
         fxDaily[a.id] = s.map(function (x) { return { time: Math.floor(Date.parse(x.date + 'T00:00:00Z') / 1000), close: fxRate(a, x.v) }; });
         var last = fxDaily[a.id][s.length - 1].close, prev = fxDaily[a.id][s.length - 2].close;
         a.anchor = last; a.prev = prev; a.asOf = s[s.length - 1].date;
-        seedTicker(a, last, prev);
+        seedFx(a, last, prev);
         setState(a, 'daily', 'Frankfurter');
       });
     }).catch(function () {
+      fxDaily = {};   // the daily history belongs to Frankfurter; the fallback source has none
       return getJson('https://open.er-api.com/v6/latest/USD', 10000).then(function (j) {
         if (!j || j.result !== 'success' || !j.rates) throw new Error('bad');
+        var rate = {};
+        fxAssets.forEach(function (a) { var r = +j.rates[a.key]; if (!(r > 0) || !isFinite(r)) throw new Error('missing'); rate[a.id] = r; });
         fxAssets.forEach(function (a) {
-          var r = +j.rates[a.key]; if (!(r > 0)) throw new Error('missing');
-          var p = fxRate(a, r);
+          var p = fxRate(a, rate[a.id]);
           a.anchor = p; a.asOf = (j.time_last_update_utc || '').slice(5, 16);
-          seedTicker(a, p, a.ref);
+          seedFx(a, p, a.ref);
           setState(a, 'daily', 'ER-API');
         });
       });
     }).catch(function () {
-      fxAssets.forEach(function (a) { if (!tick[a.id]) seedTicker(a, a.ref, a.ref); setState(a, 'fallback', 'FX'); });
+      fxAssets.forEach(function (a) { seedFallback(a); setState(a, 'fallback', 'FX'); });
     }).then(function () { if (BY_ID[sel.id].feed === 'fx') emit('reload', sel.id); });
   }
 
@@ -478,10 +568,42 @@
 
   function select(id, tf) { sel.id = id; sel.tf = tf; delete curCandle[id]; resubscribe(); }
 
+  /* simulator state for the app to save (and for the writer tab to share with follower tabs) */
+  function snapshot(onlySim) {
+    var out = {};
+    ASSETS.forEach(function (a) {
+      var t = tick[a.id]; if (!t || !(t.price > 0)) return;
+      if (onlySim && !simulated(a)) return;
+      out[a.id] = { p: t.price, o: t.open24, hi: t.high, lo: t.low, v: t.vol, day: t.day, anchor: a.state === 'daily' ? a.anchor : null, real: a.realAt || 0 };
+    });
+    return { v: 1, at: Date.now(), t: out };
+  }
+  /* before start(): remember the saved prices (used for sample markets and for sources that are down) */
+  function restore(snap) {
+    saved = {};
+    if (!snap || snap.v !== 1 || !snap.t || typeof snap.t !== 'object') return;
+    Object.keys(snap.t).forEach(function (id) { var x = snap.t[id]; if (BY_ID[id] && x && x.p > 0 && isFinite(x.p)) saved[id] = x; });
+  }
+  /* follower tab: apply the writer tab's simulated prices */
+  function applySim(snap) {
+    if (!snap || !snap.t) return;
+    followerFeedAt = Date.now();
+    Object.keys(snap.t).forEach(function (id) {
+      var a = BY_ID[id], x = snap.t[id], t = tick[id];
+      if (!a || !simulated(a) || !t || !(x.p > 0) || !isFinite(x.p) || t.price === x.p) return;
+      setPrice(a, x.p, 0);
+    });
+  }
+  function setFollower(on) { follower = !!on; if (!on) followerFeedAt = 0; }
+
   var started = false;
   function start() {
     if (started) return; started = true;
-    ASSETS.forEach(function (a) { if (a.feed === 'sample') seedTicker(a, a.ref, a.prev); });
+    ASSETS.forEach(function (a) {
+      if (a.feed !== 'sample') return;
+      var sv = savedPrice(a);
+      if (sv) seedFromSaved(a, sv); else seedTicker(a, a.ref, a.prev);
+    });
     setInterval(stepSim, 1000);
     bnTickersRest().catch(function () {});
     connectWs();
@@ -503,6 +625,7 @@
     ASSETS: ASSETS, BY_ID: BY_ID, CLASS: CLASS, SUB: SUB, TF_SEC: TF_SEC, REF_DATE: REF_DATE,
     tick: tick, binance: bnStatus, on: on, start: start, select: select, getCandles: getCandles,
     badge: badge, bidAsk: bidAsk, historyNote: historyNote, simulated: simulated, priceAt: priceAt,
+    snapshot: snapshot, restore: restore, applySim: applySim, setFollower: setFollower,
     restHost: function () { return REST[restIdx]; }, isOpen: isOpen
   };
 })(window);

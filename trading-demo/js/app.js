@@ -5,6 +5,10 @@
   'use strict';
   var E = window.VXEngine, D = window.VXData, P = window.VXPredict, HR = window.VXHours;
   var STORE_KEY = 'vx-demo-v2', PREF_KEY = 'vx-prefs';
+  var SIM_KEY = 'vx-sim-v1';               // simulator prices, restored on reload (no jump back to the reference close)
+  var LOCK_KEY = 'vx-writer';              // which open tab writes the account (see "several tabs" below)
+  var BACKUP_KEY = STORE_KEY + '-backup';  // a saved record that could not be read is kept here, never thrown away
+  var SCHEMA = 3;                          // v2 -> v3: positions and orders keep the fee / spread terms they were opened with
   var START_BALANCE = 100000;
 
   /* ---------------- preferences (survive "Reset demo") ---------------- */
@@ -17,37 +21,247 @@
 
   /* ---------------- state ---------------- */
   function fresh() {
-    return { v: 2, balance: START_BALANCE, realized: 0, pmRealized: 0, positions: [], orders: [], history: [],
+    return { v: SCHEMA, rev: 0, balance: START_BALANCE, realized: 0, pmRealized: 0, positions: [], orders: [], history: [],
              pm: null, favs: ['XAUUSD', 'WTI', 'BRENT', 'BTC', 'EURUSD'], alerts: [], notifs: [], notes: {}, admin: null,
              ui: { asset: 'XAUUSD', tf: '1m', cat: 'cmd', sub: 'all', lev: {}, ct: 'candle', vol: true } };
   }
-  var storageOk = true;
+  /* Loading the saved account.
+     - The browser refusing storage is a storage error: the demo runs without saving (notice shown).
+     - A record that cannot be read (broken JSON, wrong field types, unknown version) is NOT a storage
+       error: it is copied to BACKUP_KEY, the demo starts with a clean account and keeps saving normally.
+     - Older versions are migrated, their data is kept (v2 -> v3). */
+  var storageOk = true, loadNote = '';
+  function isObj(x) { return !!x && typeof x === 'object' && !Array.isArray(x); }
+  function fin(x) { return typeof x === 'number' && isFinite(x); }
+  function backupRecord(raw, why) {
+    try { window.localStorage.setItem(BACKUP_KEY, JSON.stringify({ at: new Date().toISOString(), reason: String(why).slice(0, 200), raw: raw })); } catch (e) {}
+  }
+  function clsTerms(s, a) {   // fee / spread of an asset under the record's own admin settings
+    var cfg = isObj(s.admin) && isObj(s.admin.cfg) && isObj(s.admin.cfg[a.id]) ? s.admin.cfg[a.id] : {}, c = D.CLASS[a.cat];
+    return { taker: fin(cfg.taker) ? cfg.taker : c.taker, maker: fin(cfg.maker) ? cfg.maker : c.maker, spread: fin(cfg.spread) ? cfg.spread : a.spread0 };
+  }
+  function migrate(s) {
+    if (!isObj(s)) throw new Error('saved record is not an object');
+    if (s.v === 2) {
+      // v2 positions closed with the current taker fee and marked with the current spread; v3 stores them
+      // per position. The terms in force when the record is migrated are the best available value.
+      (Array.isArray(s.positions) ? s.positions : []).forEach(function (p) {
+        var a = isObj(p) && D.BY_ID[p.asset]; if (!a) return; var t = clsTerms(s, a);
+        if (!fin(p.taker)) p.taker = t.taker;
+        if (!fin(p.spread)) p.spread = t.spread;
+      });
+      (Array.isArray(s.orders) ? s.orders : []).forEach(function (o) {
+        var a = isObj(o) && D.BY_ID[o.asset]; if (!a) return; var t = clsTerms(s, a);
+        if (!fin(o.feeRate)) o.feeRate = fin(o.fee) && o.margin * o.lev > 0 ? o.fee / (o.margin * o.lev) : t.maker;
+        if (!fin(o.taker)) o.taker = t.taker;
+      });
+      s.v = 3;
+    }
+    if (s.v !== SCHEMA) throw new Error('unknown version ' + s.v);
+    if (!fin(s.rev)) s.rev = 0;
+    return s;
+  }
+  /* type checks. Money lists of the wrong type make the record unreadable; display state is repaired. */
+  function validate(s) {
+    var f = fresh(), fixed = [];
+    if (!fin(s.balance)) throw new Error('balance is not a number');
+    ['positions', 'orders'].forEach(function (k) { if (s[k] == null) s[k] = []; else if (!Array.isArray(s[k])) throw new Error(k + ' is not a list'); });
+    ['history', 'alerts', 'notifs', 'favs'].forEach(function (k) { if (!Array.isArray(s[k])) { if (s[k] != null) fixed.push(k); s[k] = f[k]; } });
+    ['realized', 'pmRealized'].forEach(function (k) { if (!fin(s[k])) { if (s[k] != null) fixed.push(k); s[k] = 0; } });
+    if (!isObj(s.notes)) { if (s.notes != null) fixed.push('notes'); s.notes = {}; }
+    if (s.admin != null && !isObj(s.admin)) { fixed.push('admin'); s.admin = null; }
+    if (s.admin && !isObj(s.admin.cfg)) s.admin.cfg = {};
+    if (!isObj(s.ui)) { if (s.ui != null) fixed.push('ui'); s.ui = f.ui; }
+    Object.keys(f.ui).forEach(function (k) { if (s.ui[k] == null) s.ui[k] = f.ui[k]; });
+    if (!isObj(s.ui.lev)) s.ui.lev = {};
+    if (!D.BY_ID[s.ui.asset]) s.ui.asset = 'XAUUSD';
+    if (!D.TF_SEC[s.ui.tf]) s.ui.tf = '1m';
+    var n0 = s.positions.length + s.orders.length;
+    s.positions = s.positions.filter(function (p) { return isObj(p) && D.BY_ID[p.asset] && (p.side === 'long' || p.side === 'short') && [p.qty, p.entry, p.margin, p.lev, p.liq].every(fin); });
+    s.orders = s.orders.filter(function (o) { return isObj(o) && D.BY_ID[o.asset] && (o.side === 'long' || o.side === 'short') && [o.price, o.margin, o.lev, o.reserved].every(fin); });
+    if (s.positions.length + s.orders.length !== n0) fixed.push('positions/orders');
+    s.favs = s.favs.filter(function (id) { return D.BY_ID[id]; });
+    s.alerts = s.alerts.filter(function (al) { return isObj(al) && D.BY_ID[al.asset] && fin(al.price); });
+    s.history = s.history.filter(isObj);
+    s.notifs = s.notifs.filter(isObj);
+    if (s.pm != null && !isObj(s.pm)) { fixed.push('pm'); s.pm = null; }   // prediction state is checked (and refunded) by predict.js
+    return fixed;
+  }
+  function parseRecord(raw) { var s = migrate(JSON.parse(raw)); var fixed = validate(s); return { s: s, fixed: fixed }; }
   function load() {
+    var raw;
+    try { raw = window.localStorage.getItem(STORE_KEY); } catch (e) { storageOk = false; return fresh(); }   // storage blocked
+    if (!raw) return fresh();
     try {
-      var raw = window.localStorage.getItem(STORE_KEY);
-      if (!raw) return fresh();
-      var s = JSON.parse(raw);
-      if (!s || s.v !== 2 || typeof s.balance !== 'number' || !isFinite(s.balance)) return fresh();
-      var f = fresh();
-      Object.keys(f).forEach(function (k) { if (s[k] == null) s[k] = f[k]; });
-      Object.keys(f.ui).forEach(function (k) { if (s.ui[k] == null) s.ui[k] = f.ui[k]; });
-      if (!D.BY_ID[s.ui.asset]) s.ui.asset = 'XAUUSD';
-      if (!D.TF_SEC[s.ui.tf]) s.ui.tf = '1m';
-      s.positions = s.positions.filter(function (p) { return D.BY_ID[p.asset]; });
-      s.orders = s.orders.filter(function (o) { return D.BY_ID[o.asset]; });
-      s.favs = s.favs.filter(function (id) { return D.BY_ID[id]; });
-      return s;
-    } catch (e) { storageOk = false; return fresh(); }
+      var r = parseRecord(raw);
+      if (r.fixed.length) { backupRecord(raw, 'repaired: ' + r.fixed.join(', ')); loadNote = 'repaired'; }
+      return r.s;
+    } catch (e) {
+      backupRecord(raw, e && e.message); loadNote = 'corrupt';
+      return fresh();
+    }
   }
   var S = load();
-  var saveTimer = null;
+
+  /* Saving. User actions save at once (save(true)); background changes (simulated flow, chart settings)
+     are written at most every BG_SAVE_MS. Only the writer tab writes. */
+  var saveTimer = null, lastWrite = 0, BG_SAVE_MS = 5000;
+  function writeNow() {
+    clearTimeout(saveTimer); saveTimer = null;
+    if (!storageOk || !tab.leader || !tabVerify()) return;
+    try {
+      S.rev = (S.rev || 0) + 1; S.writer = TAB_ID; S.epoch = myEpoch;
+      window.localStorage.setItem(STORE_KEY, JSON.stringify(S));
+      lastWrite = Date.now();
+    } catch (e) { storageOk = false; storageNotice(); return; }
+    saveSim();
+  }
+  function saveSim() { if (!storageOk || !tab.leader) return; try { window.localStorage.setItem(SIM_KEY, JSON.stringify(D.snapshot())); } catch (e) {} }
   function save(now) {
     if (!storageOk) return;
-    clearTimeout(saveTimer);
-    var go = function () { try { window.localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) { storageOk = false; storageNotice(); } };
-    if (now) go(); else saveTimer = setTimeout(go, 600);
+    if (now) { writeNow(); return; }
+    if (saveTimer) return;
+    saveTimer = setTimeout(writeNow, Math.max(600, BG_SAVE_MS - (Date.now() - lastWrite)));
   }
   function storageNotice() { toast('Browser storage is unavailable', 'The demo works normally, but your paper account resets when the page reloads.', 'warn'); }
+
+  /* ---------------- several tabs / windows of the demo ----------------
+     Every tab keeps its own copy of the account, so two tabs writing in turn would erase each other's
+     trades (the last writer wins). Exactly one tab is the WRITER: it runs the risk engine and the
+     simulated flow and saves. The other tabs are FOLLOWERS: they never write, they take every saved copy
+     over at once (storage event) and show the writer's simulated prices (BroadcastChannel).
+     Using a tab (pointer, key, focus, or an order through the API) makes it the writer: it first loads the
+     latest saved copy, then acts, so nothing done in another tab is lost.
+     The writer lock (LOCK_KEY) carries an epoch that grows with every takeover, and every saved record
+     carries the epoch of the tab that wrote it. A higher epoch always wins: a tab that still believes it
+     is the writer (its storage view was a few ms behind) is outvoted, and if it managed to write once
+     more, the real writer sees the older epoch on top of its record and writes its own copy again. */
+  var TAB_ID = 't' + Date.now().toString(36) + Math.floor(Math.random() * 1e9).toString(36);
+  var LOCK_STALE = 75000;   // a hidden writer is throttled to one timer per minute: only a silent lock is stale
+  var tab = { leader: true }, myEpoch = 0, seenEpoch = 0;
+  var bc = null; try { if (window.BroadcastChannel) bc = new BroadcastChannel('vx-demo-tabs'); } catch (e) { bc = null; }
+  function readLock() { try { var l = JSON.parse(window.localStorage.getItem(LOCK_KEY) || 'null'); return isObj(l) ? l : null; } catch (e) { return null; } }
+  function writeLock(release) { try { window.localStorage.setItem(LOCK_KEY, JSON.stringify({ id: release ? null : TAB_ID, epoch: myEpoch, ts: release ? 0 : Date.now() })); } catch (e) {} }
+  function ep(x) { return x && fin(x.epoch) ? x.epoch : 0; }
+  /* does writer a outrank writer b? (higher epoch; same epoch: larger id) */
+  function outranks(a, b) { if (ep(a) !== ep(b)) return ep(a) > ep(b); return String(a.id || a.writer || '') > String(b.id || b.writer || ''); }
+  function me() { return { id: TAB_ID, epoch: myEpoch }; }
+  function newEpoch() { return Math.max(seenEpoch, ep(readLock()), ep(S)) + 1; }
+  /* called right before every write: still the writer? */
+  function tabVerify() {
+    if (!storageOk) return true;
+    var l = readLock();
+    if (l) seenEpoch = Math.max(seenEpoch, ep(l));
+    if (l && l.id !== TAB_ID && outranks(l, me())) {   // a newer writer (or a newer released lock)
+      becomeFollower();
+      if (!l.id) setTimeout(claim, 0);
+      return false;
+    }
+    if (!l || l.id !== TAB_ID || ep(l) !== myEpoch) writeLock();   // missing or an outdated writer's lock: ours again
+    return true;
+  }
+  function becomeFollower() {
+    if (!tab.leader) return;
+    tab.leader = false; clearTimeout(saveTimer); saveTimer = null;
+    D.setFollower(!!bc);
+    renderFeedStatus();
+  }
+  /* take over a saved copy of the account (keeps this tab's own view: market, chart, page).
+     A copy written by an outdated writer (epoch below minEpoch) is ignored. */
+  function adoptRaw(raw, minEpoch) {
+    if (!raw) return false;
+    var r; try { r = parseRecord(raw); } catch (e) { return false; }
+    var n = r.s;
+    if (minEpoch != null && ep(n) < minEpoch) return false;
+    if ((n.rev || 0) === (S.rev || 0) && n.writer === S.writer && ep(n) === ep(S)) return false;   // already this copy
+    var ui = S.ui;
+    Object.keys(S).forEach(function (k) { delete S[k]; });
+    Object.keys(n).forEach(function (k) { S[k] = n[k]; });
+    S.ui = ui;
+    applyAdminCfg(); sessCache = {};
+    return true;
+  }
+  function adoptLatest(minEpoch) { var raw = null; try { raw = window.localStorage.getItem(STORE_KEY); } catch (e) {} return adoptRaw(raw, minEpoch); }
+  var refreshPending = false;
+  function refreshAll() {
+    if (pointerBusy()) { refreshPending = true; return; }
+    refreshPending = false;
+    buildWatch(); renderHead(); renderStar(); drawPriceLines(); renderActivity(); renderAccount(); renderBell(); updTicket();
+    if (S.pm) P.resync();
+    if (S.ui.view && S.ui.view !== 'trade' && S.ui.view !== 'predict' && views[S.ui.view] && views[S.ui.view].render) views[S.ui.view].render();
+  }
+  /* make this tab the writer (before a user action in it) */
+  function claim() {
+    if (!storageOk) return;
+    if (tab.leader) {
+      var l = readLock();
+      if (l && l.id === TAB_ID && ep(l) === myEpoch) return;            // still the writer
+      if (!l || (l.id && !outranks(l, me()))) { writeLock(); return; }   // an outdated writer's lock
+    }
+    var prevSeen = seenEpoch;
+    myEpoch = newEpoch(); seenEpoch = myEpoch;
+    writeLock();
+    var changed = adoptLatest(prevSeen);
+    tab.leader = true;
+    D.setFollower(false);
+    if (S.pm || pmReady()) P.ensure(pmPx);
+    if (changed) refreshAll();
+    renderFeedStatus();
+  }
+  function onStorage(e) {
+    if (!e || !storageOk) return;
+    if (e.key === LOCK_KEY) {
+      var l = null; try { l = JSON.parse(e.newValue || 'null'); } catch (x) {}
+      if (isObj(l)) seenEpoch = Math.max(seenEpoch, ep(l));
+      if (!isObj(l) || !l.id) {   // the writer closed: one follower takes over (the epoch decides a tie)
+        if (!tab.leader) setTimeout(function () { var cur = readLock(); if (!cur || !cur.id) claim(); }, 30 + Math.random() * 150);
+        return;
+      }
+      if (l.id !== TAB_ID && tab.leader) { if (outranks(l, me())) becomeFollower(); else writeLock(); }
+      return;
+    }
+    if (e.key === STORE_KEY) {
+      if (!tab.leader) { if (adoptRaw(e.newValue, seenEpoch)) refreshAll(); return; }
+      var w = null; try { var o = JSON.parse(e.newValue || 'null'); w = isObj(o) ? { writer: o.writer, epoch: o.epoch } : null; } catch (x) {}
+      if (!w || w.writer === TAB_ID) return;
+      if (outranks({ id: w.writer, epoch: w.epoch }, me())) { becomeFollower(); if (adoptRaw(e.newValue)) refreshAll(); }
+      else save(true);   // an outdated writer wrote over our newer copy: write ours again
+      return;
+    }
+    if (e.key === PREF_KEY) {
+      var pr = null; try { pr = JSON.parse(e.newValue || 'null'); } catch (x) {}
+      if (!isObj(pr)) return;
+      Object.keys(prefs).forEach(function (k) { if (pr[k] != null) prefs[k] = pr[k]; });
+      HR.setMode(prefs.hours); sessCache = {}; document.body.classList.toggle('no-flash', !prefs.flash);
+      buildWatch(); renderHead(); updTicket(); renderBook();
+    }
+  }
+  function tabsStart() {
+    if (!storageOk) return;
+    // the tab opened last is the one being used: it writes (it loaded the latest copy above)
+    myEpoch = newEpoch(); seenEpoch = myEpoch; writeLock();
+    window.addEventListener('storage', onStorage);
+    ['pointerdown', 'keydown', 'click', 'focusin'].forEach(function (ev) { document.addEventListener(ev, claim, true); });
+    window.addEventListener('focus', claim);
+    // writer: refresh the lock and share the simulated prices; follower: take over a silent lock
+    setInterval(function () {
+      if (tab.leader) {
+        if (tabVerify()) writeLock();
+        if (bc) try { bc.postMessage({ t: 'sim', from: TAB_ID, snap: D.snapshot(true) }); } catch (e) {}
+      } else {
+        var l = readLock();
+        if (!l || !l.id || Date.now() - (+l.ts || 0) > LOCK_STALE) claim();
+      }
+    }, 2000);
+    if (bc) bc.onmessage = function (ev) { var m = ev && ev.data; if (m && m.t === 'sim' && m.from !== TAB_ID && !tab.leader) D.applySim(m.snap); };
+    window.addEventListener('pagehide', function () {
+      if (!tab.leader) return;
+      if (saveTimer) writeNow();
+      saveSim();
+      var l = readLock(); if (l && l.id === TAB_ID) writeLock(true);   // release (keeps the epoch)
+    });
+    document.addEventListener('visibilitychange', function () { if (document.hidden && tab.leader && saveTimer) writeNow(); });
+  }
 
   /* ---------------- formatting ---------------- */
   var $ = function (id) { return document.getElementById(id); };
@@ -74,6 +288,11 @@
   function mid(a) { var t = D.tick[a.id]; return t ? t.price : a.anchor; }
   function quote(a) { return D.bidAsk(a, mid(a)); }
   function markFor(a, side) { var q = quote(a); return side === 'long' ? q.bid : q.ask; }
+  /* an open position is marked with the spread it was opened with (admin changes do not reach back) */
+  function markPos(p) {
+    var a = D.BY_ID[p.asset], h = (fin(p.spread) ? p.spread : (a.spread || 0)) / 2, m = mid(a);
+    return p.side === 'long' ? m - h : m + h;
+  }
   function hasPrice(a) { return !!D.tick[a.id] && a.state !== 'pending'; }
 
   /* ---------------- instrument config (class defaults + admin overrides + region profile) ---------------- */
@@ -93,7 +312,7 @@
     var b = D.CLASS[a.cat], o = (S.admin && S.admin.cfg && S.admin.cfg[a.id]) || {};
     var cap = o.maxLev || b.maxLev, pc = profileCap(a);
     if (pc) cap = Math.min(cap, pc);
-    return { label: b.label, maxLev: cap, taker: o.taker != null ? o.taker : b.taker, maker: o.maker != null ? o.maker : b.maker, profile: pc ? 'ESMA retail' : '' };
+    return { label: b.label, maxLev: cap, taker: o.taker != null ? o.taker : b.taker, maker: o.maker != null ? o.maker : b.maker, profile: pc ? 'ESMA retail caps' : '' };
   }
   function applyAdminCfg() {
     var cfg = (S.admin && S.admin.cfg) || {};
@@ -104,7 +323,9 @@
   var sessCache = {};
   function sess(a) {
     var c = sessCache[a.id], now = Date.now();
-    if (c && now - c.at < 5000 && c.mode === HR.getMode()) return c.s;
+    // cached for 5 s, but never past the next open / close (the countdown must not linger at 0m)
+    var edge = c && (c.s.next || (c.s.real && c.s.real.next));
+    if (c && now - c.at < 5000 && c.mode === HR.getMode() && !(edge && now >= edge)) return c.s;
     var s = HR.status(a.id, a.cat);
     sessCache[a.id] = { at: now, s: s, mode: HR.getMode() };
     return s;
@@ -116,14 +337,15 @@
   }
 
   /* ---------------- account ---------------- */
-  function upnlAll() { var u = 0; S.positions.forEach(function (p) { u += E.unrealizedPnl(p, markFor(D.BY_ID[p.asset], p.side)); }); return u; }
+  function upnlAll() { var u = 0; S.positions.forEach(function (p) { u += E.unrealizedPnl(p, markPos(p)); }); return u; }
   function marginAll() { var m = 0; S.positions.forEach(function (p) { m += p.margin; }); return m; }
   function reservedAll() { var r = 0; S.orders.forEach(function (o) { r += o.reserved; }); return r; }
   function equity() { return S.balance + reservedAll() + marginAll() + upnlAll() + P.value(); }
-  /* maintenance margin / position equity. Liquidation happens at 100% */
+  /* maintenance margin / position equity. Liquidation happens at 100%. The maintenance margin is taken
+     on the entry value, the same base as the liquidation price, so the ratio is exactly 100% there. */
   function marginRatio(p) {
-    var a = D.BY_ID[p.asset], m = markFor(a, p.side), u = E.unrealizedPnl(p, m);
-    var mm = E.notionalOf(p.kind, p.qty, p.kind === 'inverse' ? m : m) * E.MMR;
+    var m = markPos(p), u = E.unrealizedPnl(p, m);
+    var mm = E.notionalOf(p.kind, p.qty, p.entry) * E.MMR;
     var eq = p.margin + u;
     return eq <= 0 ? 9.99 : mm / eq;
   }
@@ -165,20 +387,39 @@
   function addHist(h) { h.t = Date.now(); h.id = uid('h'); S.history.unshift(h); if (S.history.length > 300) S.history.length = 300; }
 
   /* ---------------- trading actions ---------------- */
-  function openPosition(a, side, entry, margin, lev, feeRate, tp, sl, via) {
+  /* terms: { fee, taker } from a limit order (the fee reserved at placement is the fee booked at the fill) */
+  function openPosition(a, side, entry, margin, lev, feeRate, tp, sl, via, terms) {
     var pv = E.previewOrder({ side: side, price: entry, margin: margin, leverage: lev, kind: a.kind, feeRate: feeRate });
+    var fee = terms && fin(terms.fee) ? terms.fee : pv.fee;
     var pos = { id: uid('p'), asset: a.id, side: side, kind: a.kind, qty: pv.qty, entry: entry, lev: lev, margin: margin,
-                liq: pv.liq, tp: tp || null, sl: sl || null, openedAt: Date.now(), fees: pv.fee };
+                liq: pv.liq, tp: tp || null, sl: sl || null, openedAt: Date.now(), fees: fee,
+                taker: terms && fin(terms.taker) ? terms.taker : cls(a).taker, spread: a.spread || 0 };
+    if (a.state === 'fallback') pos.offline = true;   // opened while the price source was down
     S.positions.push(pos);
-    S.realized -= pv.fee;
-    addHist({ asset: a.id, kind: via === 'limit' ? 'Limit filled' : 'Open', side: side, price: entry, qty: pv.qty, lev: lev, pnl: -pv.fee, fee: pv.fee, inv: a.kind === 'inverse', pid: pos.id });
+    S.realized -= fee;
+    addHist({ asset: a.id, kind: via === 'limit' ? 'Limit filled' : 'Open', side: side, price: entry, qty: pv.qty, lev: lev, pnl: -fee, fee: fee, inv: a.kind === 'inverse', pid: pos.id });
     return pos;
+  }
+  /* a new position must not start beyond its own liquidation price (wide spread + high leverage) */
+  function instantLiqErr(side, liq, markAtOpen, lev) {
+    if (!E.isLiquidated({ side: side, liq: liq }, markAtOpen)) return '';
+    return 'At ' + lev + 'x the spread is wider than the distance to liquidation: the position would be liquidated at once. Lower the leverage.';
   }
 
   function placeOrder(o) {
     // o: { asset, side, type, margin, lev, limit, tp, sl }
+    claim();
+    if (!isObj(o)) return 'Unknown order.';
     var a = D.BY_ID[o.asset];
     if (!a) return 'Unknown market.';
+    if (o.side !== 'long' && o.side !== 'short') return 'Choose long or short.';
+    if (o.type != null && o.type !== 'market' && o.type !== 'limit') return 'Unknown order type.';
+    // numbers only: a text "500" must not reach the arithmetic ('500' + fee would join strings)
+    if (typeof o.lev !== 'number') return 'Leverage must be a whole number from 1x.';
+    if (typeof o.margin !== 'number') return 'Margin must be a number.';
+    if (o.type === 'limit' && typeof o.limit !== 'number') return 'Enter a limit price greater than 0.';
+    if (o.tp != null && typeof o.tp !== 'number') return 'Take profit must be a positive price.';
+    if (o.sl != null && typeof o.sl !== 'number') return 'Stop loss must be a positive price.';
     if (!hasPrice(a)) return 'Waiting for a price for ' + a.sym + '.';
     var c = cls(a), ss = sess(a);
     var ml = marginLevel();
@@ -200,45 +441,57 @@
     if (pv.cost > S.balance + 1e-9) return 'Insufficient paper balance: needs ' + usd(pv.cost) + ' (margin + fee), available ' + usd(S.balance) + '.';
     var err = E.validateTpSl(o.side, entry, pv.liq, o.tp, o.sl);
     if (err) return err;
+    var spr = a.spread || 0;
+    err = instantLiqErr(o.side, pv.liq, o.type === 'limit' ? (o.side === 'long' ? o.limit - spr : o.limit + spr) : (o.side === 'long' ? q.bid : q.ask), o.lev);
+    if (err) return err;
     S.balance -= pv.cost;
     if (o.type === 'limit') {
-      var ord = { id: uid('o'), asset: a.id, side: o.side, price: o.limit, margin: o.margin, lev: o.lev, tp: o.tp || null, sl: o.sl || null, reserved: pv.cost, fee: pv.fee, createdAt: Date.now(), queued: !ss.open };
+      // the order keeps its terms: fee rate and fee reserved now are the ones booked at the fill
+      var ord = { id: uid('o'), asset: a.id, side: o.side, price: o.limit, margin: o.margin, lev: o.lev, tp: o.tp || null, sl: o.sl || null, reserved: pv.cost, fee: pv.fee, feeRate: feeRate, taker: c.taker, createdAt: Date.now(), queued: !ss.open };
       S.orders.push(ord);
       addHist({ asset: a.id, kind: 'Limit placed', side: o.side, price: o.limit, qty: pv.qty, lev: o.lev, inv: a.kind === 'inverse' });
+      save(true);   // account changes are written at once (another tab may take over at any moment)
       return { order: ord };
     }
-    return { position: openPosition(a, o.side, entry, o.margin, o.lev, feeRate, o.tp, o.sl, 'market') };
+    var newPos = openPosition(a, o.side, entry, o.margin, o.lev, feeRate, o.tp, o.sl, 'market');
+    save(true);
+    return { position: newPos };
   }
 
   function closePosition(id, reason, atPrice) {
+    if (reason === 'manual' || reason == null) claim();
     var idx = -1; S.positions.forEach(function (p, i) { if (p.id === id) idx = i; });
     if (idx < 0) return null;
     var p = S.positions[idx], a = D.BY_ID[p.asset], c = cls(a);
-    var exit = atPrice != null ? atPrice : markFor(a, p.side);
+    var exit = atPrice != null ? atPrice : markPos(p);
     var st;
     if (reason === 'liquidated') st = { pnl: -p.margin, fee: 0, credit: 0, realized: -p.margin };
-    else st = E.closeSettlement(p, exit, c.taker);
+    else st = E.closeSettlement(p, exit, fin(p.taker) ? p.taker : c.taker);   // the taker fee the position was opened with
     S.positions.splice(idx, 1);
     S.balance += st.credit;
     S.realized += st.realized;
     addHist({ asset: a.id, kind: { manual: 'Close', tp: 'Take profit', sl: 'Stop loss', liquidated: 'Liquidated' }[reason] || 'Close',
               side: p.side, price: exit, qty: p.qty, lev: p.lev, pnl: st.realized, fee: st.fee, inv: p.kind === 'inverse',
               entry: p.entry, opened: p.openedAt, margin: p.margin, openFee: p.fees || 0, pid: p.id, closed: true });
+    if (reason === 'manual' || reason == null) save(true);   // the risk engine saves once after all its events
     return { pos: p, st: st, exit: exit };
   }
 
   function cancelOrder(id) {
+    claim();
     var o = null; S.orders = S.orders.filter(function (x) { if (x.id === id) { o = x; return false; } return true; });
     if (!o) return;
     S.balance += o.reserved;
     addHist({ asset: o.asset, kind: 'Cancelled', side: o.side, price: o.price, qty: null, lev: o.lev });
+    save(true);
   }
 
   /* isolated margin top-up: lowers the effective leverage and moves the liquidation price away */
   function addMargin(id, amt) {
+    claim();
     var p = S.positions.filter(function (x) { return x.id === id; })[0];
     if (!p) return 'Position not found.';
-    if (!(amt > 0) || !isFinite(amt)) return 'Enter an amount greater than 0.';
+    if (typeof amt !== 'number' || !(amt > 0) || !isFinite(amt)) return 'Enter an amount greater than 0.';
     if (amt > S.balance + 1e-9) return 'Insufficient paper balance (' + usd(S.balance) + ' available).';
     var notional = E.notionalOf(p.kind, p.qty, p.entry);
     var L = notional / (p.margin + amt);
@@ -246,34 +499,58 @@
     S.balance -= amt; p.margin += amt;
     p.lev = Math.round(L * 100) / 100;
     p.liq = E.liquidationPrice(p.side, p.entry, L, p.kind);
+    save(true);
     return { pos: p };
   }
 
-  /* risk engine: liquidation, TP/SL and limit fills on every price update (only while the market is open) */
+  /* one position against the current mark.
+     TP / SL fill at the market price when triggered: if the price jumped over the level (gap, reconnect,
+     session open) a stop fills at the worse gap price and a take profit at the better one, never at a
+     price that did not trade. A stop that is crossed in the same move as the liquidation price is
+     handled as the stop (at the market price; isolated margin caps the loss at the margin). */
+  function riskCheck(p, a, events) {
+    var m = markPos(p), hit = E.tpslHit(p, m);
+    if (hit) {
+      var lvl = hit === 'tp' ? p.tp : p.sl, r = closePosition(p.id, hit, m);
+      if (r) events.push([r.st.realized >= 0 ? 'ok' : 'bad', (hit === 'tp' ? 'Take profit' : 'Stop loss') + ' hit · ' + a.sym,
+        'Closed at ' + px(a, r.exit) + (Math.abs(r.exit - lvl) >= Math.pow(10, -a.dp) ? ' (trigger ' + px(a, lvl) + ', price gapped)' : '') + ' · ' + signed(r.st.realized)]);
+      return;
+    }
+    if (E.isLiquidated(p, m)) {
+      var r1 = closePosition(p.id, 'liquidated', p.liq);
+      if (r1) events.push(['bad', 'Liquidated: ' + a.sym + ' ' + p.side + ' ' + p.lev + 'x', 'Mark reached ' + px(a, p.liq) + '. Margin lost: ' + usd(p.margin)]);
+    }
+  }
+  /* risk engine: liquidation, TP/SL and limit fills on every price update (only while the market is open,
+     and only in the writer tab) */
   function onPrice(id) {
     var a = D.BY_ID[id]; if (!a || !hasPrice(a)) return;
+    if (!tab.leader) return;
     if (!sess(a).open) return;
     var events = [];
-    S.positions.slice().forEach(function (p) {
-      if (p.asset !== id) return;
-      var m = markFor(a, p.side);
-      if (E.isLiquidated(p, m)) { var r = closePosition(p.id, 'liquidated', p.liq); if (r) events.push(['bad', 'Liquidated: ' + a.sym + ' ' + p.side + ' ' + p.lev + 'x', 'Mark reached ' + px(a, p.liq) + '. Margin lost: ' + usd(p.margin)]); return; }
-      var hit = E.tpslHit(p, m);
-      if (hit) { var r2 = closePosition(p.id, hit, hit === 'tp' ? p.tp : p.sl); if (r2) events.push([r2.st.realized >= 0 ? 'ok' : 'bad', (hit === 'tp' ? 'Take profit' : 'Stop loss') + ' hit · ' + a.sym, 'Closed at ' + px(a, r2.exit) + ' · ' + signed(r2.st.realized)]); }
-    });
+    if (a.sourceJump) {   // live data replaced sample prices that were never real
+      a.sourceJump = false;
+      var off = S.positions.filter(function (p) { return p.asset === id && p.offline; }).length;
+      if (off) events.push(['warn', 'Live data is back · ' + a.sym, 'The price jumped from sample data to the real ' + (a.srcName || 'live') + ' price. ' + off + ' position' + (off > 1 ? 's were' : ' was') + ' opened on sample prices (marked "offline").']);
+    }
+    S.positions.slice().forEach(function (p) { if (p.asset === id) riskCheck(p, a, events); });
     var q = quote(a);
     S.orders.slice().forEach(function (o) {
       if (o.asset !== id || !E.limitTriggered(o, q.bid, q.ask)) return;
       S.orders = S.orders.filter(function (x) { return x.id !== o.id; });
-      var pos = openPosition(a, o.side, o.price, o.margin, o.lev, cls(a).maker, o.tp, o.sl, 'limit');
-      events.push(['ok', 'Limit order filled · ' + a.sym, o.side.toUpperCase() + ' ' + o.lev + 'x at ' + px(a, o.price) + ' · liq. ' + px(a, pos.liq)]);
+      // fills at the limit or better (gap through the limit: the better market price)
+      var fill = E.limitFillPrice(o, q.bid, q.ask);
+      var fee = o.reserved - o.margin;   // exactly the fee reserved when the order was placed
+      var pos = openPosition(a, o.side, fill, o.margin, o.lev, fin(o.feeRate) ? o.feeRate : cls(a).maker, o.tp, o.sl, 'limit', { fee: fee, taker: o.taker });
+      events.push(['ok', 'Limit order filled · ' + a.sym, o.side.toUpperCase() + ' ' + o.lev + 'x at ' + px(a, fill) + (fill !== o.price ? ' (limit ' + px(a, o.price) + ', better price)' : '') + ' · liq. ' + px(a, pos.liq)]);
+      riskCheck(pos, a, events);   // same price update: never leave a new position beyond its liquidation / TP / SL
     });
     if (events.length) { events.forEach(function (e) { toast(e[1], e[2], e[0]); }); save(true); dirty.act = true; }
   }
 
   /* ---------------- price alerts ---------------- */
   function checkAlerts(id) {
-    if (!S.alerts.length) return;
+    if (!S.alerts.length || !tab.leader) return;
     var a = D.BY_ID[id], t = D.tick[id]; if (!t || !hasPrice(a)) return;
     var p = t.price, hit = false;
     S.alerts.forEach(function (al) {
@@ -286,7 +563,10 @@
     if (hit) { save(true); dirty.act = true; }
   }
   function addAlert(id, price) {
+    claim();
     var a = D.BY_ID[id];
+    if (!a) return 'Unknown market.';
+    if (typeof price !== 'number') return 'Enter a price greater than 0.';
     if (!(price > 0) || !isFinite(price)) return 'Enter a price greater than 0.';
     var cur = mid(a);
     if (Math.abs(price - cur) < Math.pow(10, -a.dp)) return 'The alert price equals the current price.';
@@ -546,7 +826,7 @@
   }
 
   /* session banner above the trade screen: closed market, daily break or 24/7 practice */
-  var TZ_ABBR = { 'America/New_York': 'ET', 'America/Chicago': 'CT' };
+  var TZ_ABBR = { 'America/New_York': 'ET', 'America/Chicago': 'CT', 'Europe/London': 'London', 'Europe/Berlin': 'Frankfurt' };
   var localTz = ''; try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
   function whenText(ms, tz) {
     var o = { weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' };
@@ -802,6 +1082,7 @@
       $('sumLiq').textContent = px(a, pv.liq);
       if (!err && pv.cost > S.balance + 1e-9) err = 'Insufficient paper balance: needs ' + usd(pv.cost) + ', available ' + usd(S.balance) + '.';
       if (!err) err = E.validateTpSl(o.side, entry, pv.liq, o.tp, o.sl);
+      if (!err) { var spr = a.spread || 0; err = instantLiqErr(o.side, pv.liq, o.type === 'limit' ? (o.side === 'long' ? entry - spr : entry + spr) : (o.side === 'long' ? q.bid : q.ask), o.lev); }
       if (!err && o.type === 'limit') {
         if (o.side === 'long' && o.limit >= q.ask) err = 'A buy limit at or above the ask fills immediately. Use Market.';
         if (o.side === 'short' && o.limit <= q.bid) err = 'A sell limit at or below the bid fills immediately. Use Market.';
@@ -878,8 +1159,8 @@
     if (k === 'pos') {
       html = S.positions.length ? '<table class="tbl tbl-pos"><thead><tr><th>Market</th><th class="r">Size</th><th class="r">Entry / Mark</th><th class="r">Liq. price</th><th class="r">Margin</th><th class="r">PnL / ROE</th><th class="r">Margin ratio</th><th class="r">TP / SL</th><th></th></tr></thead><tbody>' +
         S.positions.map(function (p) {
-          var a = D.BY_ID[p.asset], m = markFor(a, p.side), u = E.unrealizedPnl(p, m), r = E.roe(p, m), mr = marginRatio(p);
-          return '<tr><td><button class="linkbtn sym" data-go="' + a.id + '">' + esc(a.sym) + '</button><div class="sub">' + sideTag(p.side, p.lev) + '</div></td><td class="mono r">' + qtyFmt(a, p.qty) + '</td>' +
+          var a = D.BY_ID[p.asset], m = markPos(p), u = E.unrealizedPnl(p, m), r = E.roe(p, m), mr = marginRatio(p);
+          return '<tr><td><button class="linkbtn sym" data-go="' + a.id + '">' + esc(a.sym) + '</button><div class="sub">' + sideTag(p.side, p.lev) + (p.offline ? ' <span class="muted" title="Opened while the price source was unreachable (sample price)">offline</span>' : '') + '</div></td><td class="mono r">' + qtyFmt(a, p.qty) + '</td>' +
             '<td class="mono r">' + px(a, p.entry) + '<div class="sub">' + px(a, m) + '</div></td><td class="mono r warn">' + px(a, p.liq) + '</td><td class="mono r">' + usd(p.margin) + '<div class="sub"><button class="linkbtn" data-addm="' + p.id + '">Add</button></div></td>' +
             '<td class="mono r ' + (u >= 0 ? 'up' : 'down') + '">' + signed(u) + '<div class="sub">' + pct(r) + '</div></td>' +
             '<td class="mono r ' + (mr >= 0.8 ? 'down' : mr >= 0.5 ? 'warn' : '') + '">' + nf(Math.min(mr, 9.99) * 100, 1) + '%</td>' +
@@ -923,7 +1204,7 @@
   }
   function exportCsv(kind) {
     var day = new Date().toISOString().slice(0, 10), out;
-    if (kind === 'pos') out = csv(['market', 'side', 'leverage', 'quantity', 'entry', 'mark', 'liquidation', 'margin_usd', 'unrealized_usd', 'tp', 'sl', 'opened_utc'], S.positions.map(function (p) { var a = D.BY_ID[p.asset], m = markFor(a, p.side); return [a.sym, p.side, p.lev, p.qty, p.entry, m, p.liq, p.margin.toFixed(2), E.unrealizedPnl(p, m).toFixed(2), p.tp, p.sl, iso(p.openedAt)]; }));
+    if (kind === 'pos') out = csv(['market', 'side', 'leverage', 'quantity', 'entry', 'mark', 'liquidation', 'margin_usd', 'unrealized_usd', 'tp', 'sl', 'opened_utc'], S.positions.map(function (p) { var a = D.BY_ID[p.asset], m = markPos(p); return [a.sym, p.side, p.lev, p.qty, p.entry, m, p.liq, p.margin.toFixed(2), E.unrealizedPnl(p, m).toFixed(2), p.tp, p.sl, iso(p.openedAt)]; }));
     else if (kind === 'ord') out = csv(['market', 'side', 'leverage', 'limit_price', 'margin_usd', 'reserved_usd', 'tp', 'sl', 'placed_utc'], S.orders.map(function (o) { return [D.BY_ID[o.asset].sym, o.side, o.lev, o.price, o.margin, o.reserved.toFixed(2), o.tp, o.sl, iso(o.createdAt)]; }));
     else if (kind === 'alerts') out = csv(['market', 'condition', 'level', 'created_utc', 'triggered_utc'], S.alerts.map(function (al) { return [D.BY_ID[al.asset].sym, 'price ' + al.dir, al.price, iso(al.created), iso(al.hitAt)]; }));
     else if (kind === 'journal') out = csv(['closed_utc', 'opened_utc', 'market', 'side', 'leverage', 'entry', 'exit', 'quantity', 'margin_usd', 'realized_usd', 'fees_usd', 'event', 'note'], journal().map(function (h) { return [iso(h.t), iso(h.opened), D.BY_ID[h.asset].sym, h.side, h.lev, h.entry, h.price, h.qty, h.margin, (h.pnl - (h.openFee || 0)).toFixed(2), ((h.fee || 0) + (h.openFee || 0)).toFixed(2), h.kind, S.notes[h.id] || '']; }));
@@ -938,13 +1219,13 @@
     var p = S.positions.filter(function (x) { return x.id === id; })[0]; if (!p) return;
     var a = D.BY_ID[p.asset];
     modal('<div class="pt"><div class="pt-q" id="modalTitle">TP / SL · ' + esc(a.sym) + ' ' + p.side + ' ' + p.lev + 'x</div>' +
-      '<p class="fine">Entry ' + px(a, p.entry) + ' · mark ' + px(a, markFor(a, p.side)) + ' · liquidation ' + px(a, p.liq) + '. Leave empty to remove.</p>' +
+      '<p class="fine">Entry ' + px(a, p.entry) + ' · mark ' + px(a, markPos(p)) + ' · liquidation ' + px(a, p.liq) + '. Leave empty to remove.</p>' +
       '<div class="tpsl-grid"><div class="input"><span class="pre">TP</span><input id="mTp" class="mono" inputmode="decimal" value="' + (p.tp ? px(a, p.tp).replace(/,/g, '') : '') + '"></div>' +
       '<div class="input"><span class="pre">SL</span><input id="mSl" class="mono" inputmode="decimal" value="' + (p.sl ? px(a, p.sl).replace(/,/g, '') : '') + '"></div></div>' +
       '<div class="ticket-err" id="mErr"></div><button class="btn-submit ' + p.side + '" id="mSave">Save TP / SL</button></div>');
     $('mSave').onclick = function () {
       var tp = num('mTp'), sl = num('mSl');
-      var m = markFor(a, p.side);
+      var m = markPos(p);
       var err = E.validateTpSl(p.side, p.entry, p.liq, tp, sl);
       if (!err && tp && (p.side === 'long' ? tp <= m : tp >= m)) err = 'Take profit would trigger immediately at the current mark.';
       if (!err && sl && (p.side === 'long' ? sl >= m : sl <= m)) err = 'Stop loss would trigger immediately at the current mark.';
@@ -1057,8 +1338,8 @@
       ['Forex (incl. USD/TRY)', st('fx'), 'Frankfurter (central-bank reference rates, daily), fallback open.er-api.com (daily); intraday ticks simulated', 'OANDA, Twelve Data, Polygon.io FX or the liquidity provider’s streaming quotes'],
       ['Indices', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Twelve Data / Polygon.io indices (paid, exchange licenses); CFD prices from the LP'],
       ['US stocks', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Alpaca (free IEX feed), Finnhub (free tier), Polygon.io (paid, full SIP)'],
-      ['Prediction markets', '<span class="badge b-sample">Sample</span>', 'Sample markets priced by a local LMSR market maker; background flow simulated. 15-minute BTC Up/Down rounds take their start and end price from Binance (sample price if Binance is unreachable)', 'Own matching engine + resolution oracle; read-only reference data from the Polymarket and Kalshi public APIs'],
-      ['Trading sessions', '<span class="badge b-daily">Rules</span>', 'Weekly exchange hours per market, evaluated in New York / Chicago time; holidays not modeled', 'Exchange calendars (CME, ICE, NYSE) including holidays and early closes']
+      ['Prediction markets', '<span class="badge b-sample">Sample</span>', 'Sample markets priced by a local LMSR market maker; background flow simulated. 15-minute BTC Up/Down rounds take their start and end price from live Binance data only; a round without a Binance end price is voided and refunded', 'Own matching engine + resolution oracle; read-only reference data from the Polymarket and Kalshi public APIs'],
+      ['Trading sessions', '<span class="badge b-daily">Rules</span>', 'Weekly exchange hours per market, evaluated in New York / Chicago / London / Frankfurt time (daylight-saving changes included); holidays not modeled', 'Exchange calendars (CME, ICE, NYSE) including holidays and early closes']
     ];
     modal('<div class="pt"><div class="pt-q" id="modalTitle">Data sources</div><p class="fine">What drives each asset class in this demo right now, and what the full build would connect. Badges update live; if a source fails, its assets switch to sample data automatically.</p>' +
       '<div class="table-scroll"><table class="tbl ds"><thead><tr><th>Asset class</th><th>Status</th><th>In this demo</th><th>Full build options</th></tr></thead><tbody>' +
@@ -1075,7 +1356,8 @@
     function dot(ok) { return '<span class="dot ' + (ok === true ? 'ok' : ok === false ? 'bad' : '') + '"></span>'; }
     $('feedStatus').innerHTML = '<span>' + dot(bn.mode === 'live' || bn.mode === 'rest' ? true : bn.mode === 'offline' ? false : null) + bnTxt + '</span>' +
       '<span>' + dot(gold.state === 'live' ? true : gold.state === 'fallback' ? false : null) + gTxt + '</span>' +
-      '<span>' + dot(fx.state === 'daily' ? true : fx.state === 'fallback' ? false : null) + fTxt + '</span>';
+      '<span>' + dot(fx.state === 'daily' ? true : fx.state === 'fallback' ? false : null) + fTxt + '</span>' +
+      (tab.leader ? '' : '<span id="tabNote" title="This demo is also open in another tab or window. That tab saves the account; this one mirrors it and takes over as soon as you use it.">' + dot(null) + 'Synced with another open tab</span>');
   }
 
   /* ---------------- clock ---------------- */
@@ -1105,6 +1387,8 @@
   var frameN = 0;
   function frame() {
     frameN++;
+    if (refreshPending && !pointerBusy()) refreshAll();
+    if (!S.pm && tab.leader && frameN % 5 === 0 && pmReady()) { P.ensure(pmPx); P.renderAll(); save(); }
     if (S.ui.view === 'trade' || !S.ui.view) {
       Object.keys(dirty.rows).forEach(function (id) { updRow(D.BY_ID[id]); });
       dirty.rows = {};
@@ -1131,7 +1415,7 @@
     closePop();
     document.querySelectorAll('.nav-btn').forEach(function (b) { var on = b.dataset.view === v; b.classList.toggle('is-active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
     Object.keys(VIEW_EL).forEach(function (k) { $(VIEW_EL[k]).classList.toggle('is-active', k === v); });
-    if (v === 'predict') { P.ensure(function (id) { return D.tick[id] ? D.tick[id].price : 0; }); P.renderAll(); }
+    if (v === 'predict') { if (S.pm || pmReady()) P.ensure(pmPx); P.renderAll(); }
     if (v === 'trade' && was && was !== 'trade') { buildWatch(); renderHead(); renderActivity(); updTicket(); setTimeout(function () { if (chart) fitChart(); }, 30); }
     if (views[v] && views[v].render) views[v].render();
     var nb = document.querySelector('.nav-btn[data-view="' + v + '"]');
@@ -1144,12 +1428,13 @@
       '<div class="lf-btns"><button class="btn-ghost" id="rsNo">Cancel</button><button class="btn-submit short" id="rsYes">Reset demo</button></div></div>');
     $('rsNo').onclick = closeModal;
     $('rsYes').onclick = function () {
+      claim();
       var ui = S.ui; var keep = { asset: ui.asset, tf: ui.tf, cat: ui.cat, sub: ui.sub, view: ui.view, ct: ui.ct, vol: ui.vol };
       var n = fresh(); Object.keys(n).forEach(function (k) { S[k] = n[k]; });
       Object.keys(keep).forEach(function (k) { if (keep[k] != null) S.ui[k] = keep[k]; });
       applyAdminCfg();
       P.setState(S);
-      P.ensure(function (id) { return D.tick[id] ? D.tick[id].price : 0; });
+      if (pmReady()) P.ensure(pmPx);
       closeModal(); save(true);
       buildWatch(); setupTicketForAsset(); renderHead(); renderStar(); drawPriceLines(); renderActivity(); renderAccount(); P.renderAll(); updTicket(); renderBell();
       if (views[S.ui.view] && views[S.ui.view].render) views[S.ui.view].render();
@@ -1316,7 +1601,7 @@
   }
   D.on('source', function (a) {
     dirty.rows[a.id] = true; renderFeedStatus(); renderNetNotice();
-    if (a.id === S.ui.asset) { dirty.head = true; $('chartNote').textContent = D.historyNote(a, S.ui.tf) + ' · UTC'; }
+    if (a.id === S.ui.asset) { renderHead(); $('chartNote').textContent = D.historyNote(a, S.ui.tf) + ' · UTC'; }   // badge right away, on any page
     if (a.state === 'fallback' && !srcWarned[a.feed]) {
       srcWarned[a.feed] = true;
       toast({ binance: 'Binance is unreachable', goldapi: 'Metals price source is unreachable', fx: 'FX rate source is unreachable' }[a.feed] || 'Data source unreachable',
@@ -1327,12 +1612,21 @@
   D.on('reload', function (id) { if (id === S.ui.asset) { loadChart(); setupTicketForAsset(); updTicket(); } });
 
   /* ---------------- boot ---------------- */
+  /* prediction strikes (BTC / ETH / gold) need real prices: wait until the sources answered (live or
+     offline), at most 20 s after the start */
+  var bootAt = Date.now();
+  function pmPx(id) { return D.tick[id] ? D.tick[id].price : 0; }
+  function pmReady() {
+    return ['BTC', 'ETH', 'XAUUSD'].every(function (id) { return D.tick[id] && D.BY_ID[id].state !== 'pending'; }) || Date.now() - bootAt > 20000;
+  }
   function boot() {
     applyAdminCfg();
     document.body.classList.toggle('no-flash', !prefs.flash);
     bind();
+    tabsStart();
     P.init(S, {
       usd: usd, signed: signed, toast: toast, modal: modal, closeModal: closeModal,
+      canWrite: function () { return tab.leader; }, claim: claim, persist: function () { save(true); },
       chartOptions: function () { var o = chartOptions(); o.timeScale.secondsVisible = false; return o; },
       changed: function (important) { save(!!important); renderAccount(); P.renderSide(); }
     });
@@ -1340,6 +1634,7 @@
     document.querySelectorAll('#ctTabs .seg-btn').forEach(function (x) { x.classList.toggle('is-active', x.dataset.ct === S.ui.ct); });
     $('btnVol').classList.toggle('is-on', S.ui.vol !== false); $('btnVol').setAttribute('aria-pressed', S.ui.vol !== false ? 'true' : 'false');
     D.select(S.ui.asset, S.ui.tf);
+    if (storageOk) { try { D.restore(JSON.parse(window.localStorage.getItem(SIM_KEY) || 'null')); } catch (e) {} }
     D.start();
     document.querySelectorAll('#tfTabs .seg-btn').forEach(function (x) { x.classList.toggle('is-active', x.dataset.tf === S.ui.tf); });
     buildWatch(); renderMovers(); renderFeedStatus(); renderClock(); renderBell();
@@ -1348,17 +1643,17 @@
     Object.keys(views).forEach(function (k) { if (views[k].init) views[k].init(); });
     setView(VIEW_EL[S.ui.view] ? S.ui.view : 'trade');
     // prediction markets need live BTC/ETH/gold prices for their strikes: build them once prices arrive
-    var tries = 0, pmTimer = setInterval(function () {
-      tries++;
-      var have = ['BTC', 'ETH', 'XAUUSD'].every(function (id) { return D.tick[id] && D.BY_ID[id].state !== 'pending'; });
-      if (have || tries > 12 || (S.pm && S.pm.v === 2)) {
+    var pmTimer = setInterval(function () {
+      if (pmReady() || S.pm) {
         clearInterval(pmTimer);
-        P.ensure(function (id) { return D.tick[id] ? D.tick[id].price : 0; });
+        P.ensure(pmPx);
         P.renderAll(); save();
       }
     }, 500);
     renderAccount();
     if (!storageOk) storageNotice();
+    if (loadNote === 'corrupt') toast('Saved demo data could not be read', 'It was kept as a backup copy in this browser and a fresh paper account was started. Saving works normally.', 'warn');
+    else if (loadNote === 'repaired') toast('Saved demo data was repaired', 'Some saved entries could not be read and were reset; a copy of the original was kept in this browser.', 'warn');
     try { window.localStorage.setItem('vx-probe', '1'); window.localStorage.removeItem('vx-probe'); } catch (e) { if (storageOk) { storageOk = false; storageNotice(); } }
     if (/[?&]selftest\b/.test(location.search)) showSelfTest();
   }
@@ -1374,7 +1669,7 @@
   window.VXApp = {
     S: function () { return S; }, D: D, E: E, P: P, HR: HR,
     nf: nf, usd: usd, signed: signed, px: px, pct: pct, esc: esc, compact: compact, timeFmt: timeFmt, hms: hms, qtyFmt: qtyFmt,
-    mid: mid, quote: quote, markFor: markFor, cls: cls, sess: sess, sessText: sessText, profileCap: profileCap, adm: adm, applyAdminCfg: applyAdminCfg,
+    mid: mid, quote: quote, markFor: markFor, markPos: markPos, cls: cls, sess: sess, sessText: sessText, profileCap: profileCap, adm: adm, applyAdminCfg: applyAdminCfg, claim: claim,
     equity: equity, upnlAll: upnlAll, marginAll: marginAll, reservedAll: reservedAll, marginLevel: marginLevel, marginRatio: marginRatio, journal: journal,
     toast: toast, notify: notify, modal: modal, closeModal: closeModal, save: save, pointerBusy: pointerBusy, emptySt: emptySt,
     selectAsset: selectAsset, setView: setView, exportCsv: exportCsv, download: download, csv: csv,
@@ -1388,7 +1683,9 @@
                 addAlert: addAlert, checkAlerts: checkAlerts, addMargin: addMargin, exportCsv: exportCsv, cls: function (id) { return cls(D.BY_ID[id]); },
                 marginLevel: marginLevel, marginRatio: marginRatio, setHoursMode: setHoursMode, hours: HR, prefs: function () { return prefs; },
                 setClock: function (ms) { HR.setClock(ms); sessCache = {}; buildWatch(); renderHead(); updTicket(); renderBook(); renderActivity(); },
-                setPrefs: function (o) { Object.keys(o).forEach(function (k) { prefs[k] = o[k]; }); savePrefs(); }, setView: setView, journal: journal };
+                setPrefs: function (o) { Object.keys(o).forEach(function (k) { prefs[k] = o[k]; }); savePrefs(); }, setView: setView, journal: journal,
+                markPos: function (id) { var p = S.positions.filter(function (x) { return x.id === id; })[0]; return p ? markPos(p) : null; },
+                tab: function () { return { id: TAB_ID, leader: tab.leader, storageOk: storageOk, loadNote: loadNote }; }, claim: claim };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();

@@ -89,6 +89,9 @@
 
   /* long (buy) limit fills when the ask reaches the limit, short (sell) limit when the bid does */
   function limitTriggered(order, bid, ask) { return order.side === 'long' ? ask <= order.price : bid >= order.price; }
+  /* fill price of a triggered limit order: the limit or better. If the market gapped through the limit
+     (e.g. the ask opens below a buy limit), the order fills at the better market price. */
+  function limitFillPrice(order, bid, ask) { return order.side === 'long' ? Math.min(order.price, ask) : Math.max(order.price, bid); }
 
   /* ---------------- LMSR (n outcomes) ---------------- */
   function lmsrCost(q, b) {
@@ -134,7 +137,17 @@
     for (var k = 0; k < 60; k++) { var mid = (lo + hi) / 2; if (ok(mid)) lo = mid; else hi = mid; }
     return lo;
   }
-  function lmsrMaxLoss(b, n) { return b * Math.log(n || 2); }
+  /* worst-case market-maker loss. With n equally likely outcomes this is b*ln(n); a market that starts at
+     unequal odds p0 can lose b*ln(1 / min p0_i) (traders pile into the outcome the maker priced lowest).
+     Pass the starting probabilities (array) or n (number). The 1e-4 floor of lmsrInit is applied. */
+  function lmsrMaxLoss(b, p0) {
+    if (Array.isArray(p0) && p0.length) {
+      var pr = lmsrPrices(lmsrInit(p0, b), b), lo = 1;
+      for (var i = 0; i < pr.length; i++) lo = Math.min(lo, pr[i]);
+      return b * Math.log(1 / lo);
+    }
+    return b * Math.log(p0 || 2);
+  }
   /* payout of a holding when outcome w wins */
   function payout(i, side, shares, w) { return (side === 'yes' ? i === w : i !== w) ? shares : 0; }
 
@@ -142,7 +155,7 @@
     MMR: MMR,
     liquidationPrice: liquidationPrice, notionalOf: notionalOf, previewOrder: previewOrder,
     unrealizedPnl: unrealizedPnl, roe: roe, closeSettlement: closeSettlement, isLiquidated: isLiquidated,
-    tpslHit: tpslHit, validateTpSl: validateTpSl, limitTriggered: limitTriggered,
+    tpslHit: tpslHit, validateTpSl: validateTpSl, limitTriggered: limitTriggered, limitFillPrice: limitFillPrice,
     lmsrCost: lmsrCost, lmsrPrices: lmsrPrices, lmsrInit: lmsrInit, addVec: addVec, sidePrice: sidePrice,
     lmsrBuyCost: lmsrBuyCost, lmsrSellProceeds: lmsrSellProceeds, lmsrSharesForSpend: lmsrSharesForSpend,
     lmsrSharesToLimit: lmsrSharesToLimit, lmsrMaxLoss: lmsrMaxLoss, payout: payout

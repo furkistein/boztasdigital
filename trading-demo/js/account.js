@@ -16,7 +16,7 @@
     var by = {};
     Object.keys(D.CLASS).forEach(function (k) { by[k] = { k: k, label: D.CLASS[k].label, long: 0, short: 0, margin: 0, upnl: 0, n: 0 }; });
     S().positions.forEach(function (p) {
-      var a = D.BY_ID[p.asset], m = A.markFor(a, p.side), n = E.notionalOf(p.kind, p.qty, m), r = by[a.cat];
+      var a = D.BY_ID[p.asset], m = A.markPos(p), n = E.notionalOf(p.kind, p.qty, m), r = by[a.cat];
       if (p.side === 'long') r.long += n; else r.short += n;
       r.margin += p.margin; r.upnl += E.unrealizedPnl(p, m); r.n++;
     });
@@ -26,7 +26,7 @@
   function stress(pct) {
     var pnl = 0, liq = [];
     S().positions.forEach(function (p) {
-      var a = D.BY_ID[p.asset], m = A.markFor(a, p.side), m2 = m * (1 + pct);
+      var a = D.BY_ID[p.asset], m = A.markPos(p), m2 = m * (1 + pct);
       var hit = p.side === 'long' ? m2 <= p.liq : m2 >= p.liq;
       if (hit) { pnl += -p.margin - E.unrealizedPnl(p, m); liq.push(a.sym + ' ' + p.side); }
       else pnl += E.unrealizedPnl(p, m2) - E.unrealizedPnl(p, m);
@@ -57,7 +57,7 @@
       '<div style="position:relative;height:14px;font-size:10.5px;color:var(--text-3);margin-top:4px" class="mono"><span style="position:absolute;left:0">0%</span><span style="position:absolute;left:20%;transform:translateX(-50%);white-space:nowrap">100% call</span><span style="position:absolute;right:0">500%+</span></div>' +
       '<dl class="summary" style="margin-top:12px"><div><dt>Margin call</dt><dd>Below 100%: a warning shows in the top bar and new positions are blocked</dd></div>' +
       '<div><dt>Stop-out</dt><dd>Isolated margin: each position is closed when its margin ratio reaches 100%</dd></div>' +
-      '<div><dt>Margin ratio</dt><dd>maintenance margin (0.5% of position value) / (margin + PnL)</dd></div>' +
+      '<div><dt>Margin ratio</dt><dd>maintenance margin (0.5% of the position value at entry, the base of the liquidation price) / (margin + PnL)</dd></div>' +
       '<div><dt>Warning level</dt><dd>' + nf(WARN * 100, 0) + '% margin ratio on any position</dd></div></dl></div></section>';
     // stress test
     var sc = [-0.1, -0.05, -0.02, 0.02, 0.05, 0.1];
@@ -77,7 +77,7 @@
       ex.map(function (r) { var net = r.long - r.short; return '<tr><td>' + esc(r.label) + '</td><td class="mono r">' + usd(r.long) + '</td><td class="mono r">' + usd(r.short) + '</td><td class="mono r ' + (net >= 0 ? 'up' : 'down') + '">' + signed(net) + '</td><td class="mono r">' + usd(r.margin) + '</td><td class="mono r ' + (r.upnl >= 0 ? 'up' : 'down') + '">' + signed(r.upnl) + '</td><td class="mono r">' + (eq > 0 ? nf((r.long + r.short) / eq * 100, 1) + '%' : '—') + '</td></tr>'; }).join('') +
       '</tbody></table></div></section></div>';
     // positions closest to liquidation
-    var pos = s.positions.map(function (p) { var a = D.BY_ID[p.asset], m = A.markFor(a, p.side); return { p: p, a: a, m: m, mr: A.marginRatio(p), dist: Math.abs(m - p.liq) / m }; }).sort(function (x, y) { return y.mr - x.mr; });
+    var pos = s.positions.map(function (p) { var a = D.BY_ID[p.asset], m = A.markPos(p); return { p: p, a: a, m: m, mr: A.marginRatio(p), dist: Math.abs(m - p.liq) / m }; }).sort(function (x, y) { return y.mr - x.mr; });
     h += '<div class="pg-grid" style="margin-top:16px"><section class="sec"><div class="sec-h"><h2>Positions by liquidation risk</h2></div>' +
       (pos.length ? '<div class="table-scroll"><table class="tbl"><thead><tr><th>Market</th><th class="r">Leverage</th><th class="r">Mark</th><th class="r">Liq. price</th><th class="r">Distance</th><th class="r">Margin ratio</th><th></th></tr></thead><tbody>' +
       pos.map(function (r) { return '<tr><td><button class="linkbtn sym" data-trade="' + r.a.id + '">' + esc(r.a.sym) + '</button> <span class="side ' + r.p.side + '">' + r.p.side + '</span></td><td class="mono r">' + r.p.lev + 'x</td><td class="mono r">' + A.px(r.a, r.m) + '</td><td class="mono r warn">' + A.px(r.a, r.p.liq) + '</td><td class="mono r">' + nf(r.dist * 100, 2) + '%</td>' +
@@ -89,8 +89,16 @@
   /* ---------- performance ---------- */
   function trades() { return A.journal().slice().reverse(); }   // oldest first
   function net(h) { return h.pnl - (h.openFee || 0); }
+  /* The history keeps the latest 300 events only. The curve therefore starts from the equity before the
+     oldest closed trade still listed, worked back from the account's realized PnL (which counts every
+     trade), so "Total PnL" always equals the realized PnL of all closed trades. */
   function perfStats() {
-    var list = trades(), eq = 100000, curve = [{ t: list.length ? (list[0].opened || list[0].t) : Date.now(), v: eq }], peak = eq, mdd = 0, mddAbs = 0;
+    var list = trades(), s = S(), shown = 0, openFees = 0;
+    list.forEach(function (h) { shown += net(h); });
+    s.positions.forEach(function (p) { openFees += p.fees || 0; });
+    var base = 100000 + (s.realized + openFees) - shown;
+    if (Math.abs(base - 100000) < 0.005) base = 100000;
+    var eq = base, curve = [{ t: list.length ? (list[0].opened || list[0].t) : Date.now(), v: eq }], peak = eq, mdd = 0, mddAbs = 0;
     var wins = 0, gw = 0, gl = 0, fees = 0, best = null, worst = null;
     list.forEach(function (h) {
       var n = net(h); eq += n; curve.push({ t: h.t, v: eq });
@@ -100,7 +108,7 @@
       fees += (h.fee || 0) + (h.openFee || 0);
       if (!best || n > net(best)) best = h; if (!worst || n < net(worst)) worst = h;
     });
-    return { list: list, curve: curve, n: list.length, wins: wins, gw: gw, gl: gl, fees: fees, total: eq - 100000, mdd: mdd, mddAbs: mddAbs, best: best, worst: worst };
+    return { list: list, curve: curve, n: list.length, wins: wins, gw: gw, gl: gl, fees: fees, total: eq - 100000, mdd: mdd, mddAbs: mddAbs, best: best, worst: worst, base: base };
   }
   function curveSvg(c) {
     var W = 800, H = 200, n = c.length, min = Infinity, max = -Infinity;
@@ -127,7 +135,7 @@
       kpi('Profit factor', pf == null ? '∞' : nf(pf, 2), 'gross win / gross loss') +
       kpi('Avg win / loss', (st.wins ? usd(st.gw / st.wins) : '—') + ' / ' + (st.n - st.wins ? usd(st.gl / (st.n - st.wins)) : '—'), 'per closed trade') +
       '</div>';
-    h += '<div class="pg"><div class="pg-grid"><section class="sec"><div class="sec-h"><h2>Equity curve</h2><span class="sec-r muted">closed trades only · start $100,000 · red = drawdown</span></div><div class="sec-b">' + curveSvg(st.curve) + '</div></section></div>';
+    h += '<div class="pg"><div class="pg-grid"><section class="sec"><div class="sec-h"><h2>Equity curve</h2><span class="sec-r muted">' + (st.base === 100000 ? 'closed trades only · start $100,000' : 'latest ' + st.n + ' closed trades · earlier trades are included in the start value ' + usd(st.base)) + ' · red = drawdown</span></div><div class="sec-b">' + curveSvg(st.curve) + '</div></section></div>';
     var by = {};
     st.list.forEach(function (h0) { var r = by[h0.asset] = by[h0.asset] || { n: 0, w: 0, pnl: 0 }; r.n++; if (net(h0) > 0) r.w++; r.pnl += net(h0); });
     h += '<div class="pg-grid" style="margin-top:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)"><section class="sec"><div class="sec-h"><h2>By market</h2></div><div class="table-scroll"><table class="tbl"><thead><tr><th>Market</th><th class="r">Trades</th><th class="r">Win rate</th><th class="r">PnL</th></tr></thead><tbody>' +

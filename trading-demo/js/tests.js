@@ -109,6 +109,14 @@
     var ini = E.lmsrInit([0.1, 0.2, 0.3, 0.4], 5000);
     t('init reproduces 30%', E.lmsrPrices(ini, 5000)[2], 0.3, 1e-9);
     t('max market-maker loss b ln n (n=4, b=100)', E.lmsrMaxLoss(100, 4), 138.629436, 1e-5);
+    // unequal start: worst case is the outcome priced lowest. 6000*ln(1/0.03) = 6000*3.5065579 = 21,039.347
+    t('max MM loss, unequal start (b=6000, 48/49/3)', E.lmsrMaxLoss(6000, [0.48, 0.49, 0.03]), 21039.3474, 1e-3);
+    // equal start (0.5/0.5) gives b ln 2 = 3000*0.693147 = 2,079.44
+    t('max MM loss, equal start = b ln n', E.lmsrMaxLoss(3000, [0.5, 0.5]), 2079.441542, 1e-5);
+    /* ---- limit fill price (gap through the limit fills at the better market price) ---- */
+    t('buy limit 95, ask gapped to 85 -> fills at 85', E.limitFillPrice({ side: 'long', price: 95 }, 84.98, 85), 85);
+    t('buy limit 95, ask exactly 95 -> fills at 95', E.limitFillPrice({ side: 'long', price: 95 }, 94.98, 95), 95);
+    t('sell limit 105, bid gapped to 110 -> fills at 110', E.limitFillPrice({ side: 'short', price: 105 }, 110, 110.02), 110);
     // limit: buying YES to a 73.1059¢ cap from 50/50 allows ~100 shares
     t('shares up to limit price', E.lmsrSharesToLimit(q2, 100, 0, 'yes', 'buy', 0.7310586, 1000), 100, 1e-3);
 

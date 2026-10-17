@@ -81,11 +81,11 @@
       var a = D.BY_ID[b.id], m = A.mid(a); if (!(m > 0)) return;
       var entry = m * (1 - b.off), kind = a.kind, notional = b.margin * b.lev, qty = kind === 'inverse' ? notional : notional / entry;
       var p = { side: b.side, qty: qty, entry: entry, kind: kind };
-      rows.push({ acct: b.acct, cash: b.cash, a: a, side: b.side, notional: E.notionalOf(kind, qty, m), margin: b.margin, upnl: E.unrealizedPnl(p, m), lev: b.lev, liq: E.liquidationPrice(b.side, entry, b.lev, kind), mark: m, you: false });
+      rows.push({ acct: b.acct, cash: b.cash, a: a, side: b.side, notional: E.notionalOf(kind, qty, m), mm: E.notionalOf(kind, qty, entry) * E.MMR, margin: b.margin, upnl: E.unrealizedPnl(p, m), lev: b.lev, liq: E.liquidationPrice(b.side, entry, b.lev, kind), mark: m, you: false });
     });
     S().positions.forEach(function (p) {
-      var a = D.BY_ID[p.asset], m = A.markFor(a, p.side);
-      rows.push({ acct: 'D-100248 (you)', cash: S().balance, a: a, side: p.side, notional: E.notionalOf(p.kind, p.qty, m), margin: p.margin, upnl: E.unrealizedPnl(p, m), lev: p.lev, liq: p.liq, mark: m, you: true });
+      var a = D.BY_ID[p.asset], m = A.markPos(p);
+      rows.push({ acct: 'D-100248 (you)', cash: S().balance, a: a, side: p.side, notional: E.notionalOf(p.kind, p.qty, m), mm: E.notionalOf(p.kind, p.qty, p.entry) * E.MMR, margin: p.margin, upnl: E.unrealizedPnl(p, m), lev: p.lev, liq: p.liq, mark: m, you: true });
     });
     return rows;
   }
@@ -97,7 +97,7 @@
       x.n++; x.pnl += r.upnl; cpnl += r.upnl;
       var ac = acct[r.acct] = acct[r.acct] || { name: r.acct, margin: 0, upnl: 0, cash: 0, n: 0, worst: 0, you: r.you };
       ac.margin += r.margin; ac.upnl += r.upnl; ac.n++; ac.cash = r.you ? r.cash : ac.cash + r.cash;
-      var mr = r.notional * E.MMR / Math.max(1e-9, r.margin + r.upnl); ac.worst = Math.max(ac.worst, mr);
+      var eqp = r.margin + r.upnl, mr = eqp > 0 ? r.mm / eqp : 9.99; ac.worst = Math.max(ac.worst, mr);   // same base as the liquidation price
     });
     var assets = Object.keys(by).map(function (k) { return by[k]; }).sort(function (x, y) { return Math.abs(y.l - y.s) - Math.abs(x.l - x.s); });
     var accts = Object.keys(acct).map(function (k) { var a = acct[k]; a.eq = a.cash + a.margin + a.upnl; a.ml = a.margin > 0 ? a.eq / a.margin : null; return a; }).sort(function (x, y) { return y.worst - x.worst; });
@@ -118,8 +118,8 @@
   function instHtml() {
     var a0 = A.adm(), cfg = a0.cfg, prof = a0.profile || 'default';
     var h = '<div class="pg"><div class="pg-grid"><section class="sec"><div class="sec-h"><h2>Leverage profile</h2></div><div class="sec-b" style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">' +
-      '<div class="tabs tabs-tight" id="admProf"><button class="seg-btn' + (prof !== 'esma' ? ' is-active' : '') + '" data-prof="default">Demo default</button><button class="seg-btn' + (prof === 'esma' ? ' is-active' : '') + '" data-prof="esma">EU retail (ESMA caps)</button></div>' +
-      '<p class="fine" style="margin:0;max-width:72ch">ESMA retail CFD limits: 30:1 major FX pairs, 20:1 other FX, gold and major indices, 10:1 other commodities, 5:1 single stocks, 2:1 crypto. The lower of the profile cap and the instrument cap applies on the Trade page. US retail clients cannot be offered CFDs; a US launch would use listed futures or spot FX within NFA limits (50:1 majors, 20:1 others).</p></div></section></div>';
+      '<div class="tabs tabs-tight" id="admProf"><button class="seg-btn' + (prof !== 'esma' ? ' is-active' : '') + '" data-prof="default">Demo default</button><button class="seg-btn' + (prof === 'esma' ? ' is-active' : '') + '" data-prof="esma">EU retail (ESMA leverage caps)</button></div>' +
+      '<p class="fine" style="margin:0;max-width:72ch">ESMA retail CFD limits: 30:1 major FX pairs, 20:1 other FX, gold and major indices, 10:1 other commodities, 5:1 single stocks, 2:1 crypto. The lower of the profile cap and the instrument cap applies on the Trade page. This profile sets the leverage caps only: the ESMA 50% margin close-out and the other retail rules are not modelled here (positions are still closed at the 0.5% maintenance margin). US retail clients cannot be offered CFDs; a US launch would use listed futures or spot FX within NFA limits (50:1 majors, 20:1 others).</p></div></section></div>';
     h += '<div class="pg-grid" style="margin-top:16px"><section class="sec"><div class="sec-h"><h2>Instrument settings</h2><span class="sec-r"><span class="muted" id="instMsg"></span><button class="btn-ghost sm" id="instReset">Restore defaults</button><button class="btn-primary sm" id="instSave">Save changes</button></span></div>' +
       '<div class="table-scroll"><table class="tbl" id="instTbl"><thead><tr><th>Market</th><th>Class</th><th class="r">Spread</th><th class="r">Taker fee %</th><th class="r">Maker fee %</th><th class="r">Max leverage</th><th class="r">Effective cap</th></tr></thead><tbody>' +
       D.ASSETS.map(function (a) {
@@ -132,7 +132,7 @@
           cell('maker', +((o.maker != null ? o.maker : c.maker) * 100).toFixed(4), nf(c.maker * 100, 3)) +
           cell('maxLev', o.maxLev || c.maxLev, c.maxLev + 'x') +
           '<td class="mono r">' + eff.maxLev + 'x' + (eff.profile ? '<div class="sub">' + eff.profile + '</div>' : '') + '</td></tr>';
-      }).join('') + '</tbody></table></div><div class="sec-note">Changes apply to new orders right away (ticket, fees, liquidation preview, spread in the book). Open positions keep the terms they were opened with. Limits: spread below 2% of price, fees 0 to 0.5%, leverage 1 to 100x.</div></section></div></div>';
+      }).join('') + '</tbody></table></div><div class="sec-note">Changes apply to new orders right away (ticket, fees, liquidation preview, spread in the book). Open positions keep the terms they were opened with: their closing fee and the spread their mark price uses do not change. Pending limit orders keep the fee reserved when they were placed. Limits: spread below 2% of price and narrower than the liquidation distance at the maximum leverage, fees 0 to 0.5%, leverage 1 to 100x.</div></section></div></div>';
     return h;
   }
   function saveInst() {
@@ -147,6 +147,20 @@
       if (bad) { inp.classList.add('bad'); if (!err) err = a.sym + ': ' + { spread: 'spread must be 0 to 2% of price', taker: 'taker fee must be 0 to 0.5%', maker: 'maker fee must be 0 to 0.5%', maxLev: 'leverage must be a whole number 1 to 100' }[k]; return; }
       var def = k === 'spread' ? a.spread0 : k === 'maxLev' ? c.maxLev : c[k] * 100;
       if (Math.abs(v - def) > 1e-12) { (next[id] = next[id] || {})[k] = k === 'taker' || k === 'maker' ? v / 100 : v; n++; }
+    });
+    // a spread at least as wide as the liquidation distance at the maximum leverage would liquidate a new
+    // position at once (it opens at the ask and is marked at the bid)
+    if (!err) D.ASSETS.some(function (a) {
+      var o = next[a.id] || {}, spr = o.spread != null ? o.spread : a.spread0, lev = o.maxLev || D.CLASS[a.cat].maxLev, pc = A.profileCap(a);
+      if (pc) lev = Math.min(lev, pc);
+      if (!(spr > 0)) return false;
+      var room = A.mid(a) * (1 / lev - E.MMR);
+      if (spr >= room) {
+        err = a.sym + ': spread ' + nf(spr, a.dp) + ' is not below the liquidation distance at ' + lev + 'x (' + nf(room, a.dp) + '). Lower the spread or the max leverage.';
+        var inp = document.querySelector('#instTbl .cell-in[data-a="' + a.id + '"][data-k="spread"]'); if (inp) inp.classList.add('bad');
+        return true;
+      }
+      return false;
     });
     if (err) { $('instMsg').textContent = err; $('instMsg').className = 'down'; return; }
     var before = JSON.stringify(a0.cfg);
@@ -190,7 +204,7 @@
   }
   function createMk() {
     readDraft();
-    var r = P.createMarket(Object.assign({}, mkDraft, { b: Number(String(mkDraft.b).replace(/,/g, '')) }));
+    var r = P.createMarket(Object.assign({}, mkDraft));   // b as typed: empty -> 3000, text -> error
     if (typeof r === 'string') { $('mkErr').textContent = r; return; }
     audit('Market created: ' + r.q);
     A.save(true); A.toast('Market created', r.q + ' · ' + r.outcomes.length + ' outcomes, closes ' + r.close, 'ok');
