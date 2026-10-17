@@ -8,7 +8,7 @@
   var START_BALANCE = 100000;
 
   /* ---------------- preferences (survive "Reset demo") ---------------- */
-  var prefs = { confirm: false, hours: 'exchange', flash: true };
+  var prefs = { confirm: true, hours: 'exchange', flash: true };
   try { var pr = JSON.parse(window.localStorage.getItem(PREF_KEY) || 'null'); if (pr && typeof pr === 'object') Object.keys(prefs).forEach(function (k) { if (pr[k] != null) prefs[k] = pr[k]; }); } catch (e) {}
   // test hook: the automated browser checks set this before the page loads (works even when storage is blocked)
   if (window.__VX_TEST_PREFS && typeof window.__VX_TEST_PREFS === 'object') Object.keys(prefs).forEach(function (k) { if (window.__VX_TEST_PREFS[k] != null) prefs[k] = window.__VX_TEST_PREFS[k]; });
@@ -67,7 +67,7 @@
     return nf(v, 0);
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function timeFmt(t) { return new Date(t).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
+  function timeFmt(t) { return new Date(t).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }); }
   function hms(t) { return new Date(t).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
 
   /* ---------------- prices ---------------- */
@@ -462,7 +462,8 @@
       var r = document.createElement('button');
       r.className = 'wrow' + (a.id === S.ui.asset ? ' is-active' : '');
       r.dataset.id = a.id;
-      r.innerHTML = '<span class="w-name"><b>' + esc(a.sym) + '</b><small>' + esc(a.name) + '</small></span>' +
+      r.title = a.name;
+      r.innerHTML = '<span class="w-name"><b>' + esc(a.sym) + '</b>' + (a.sym.length > 8 ? '' : '<small>' + esc(a.name.replace(/ \(.*\)$/, '').replace(/ crude oil$/, '').replace(/ No\. \d+$/, '')) + '</small>') + '</span>' +
         '<span class="w-px mono"></span><span class="w-chg mono"></span><span class="w-src"></span>';
       line.appendChild(st); line.appendChild(r); list.appendChild(line);
       rows[a.id] = { el: r, px: r.querySelector('.w-px'), chg: r.querySelector('.w-chg'), src: r.querySelector('.w-src'), last: null };
@@ -480,7 +481,7 @@
     var t = D.tick[a.id], b = D.badge(a), ss = sess(a);
     var k = b.text + (ss.open ? '' : '|c');
     if (r.src.dataset.k !== k) {
-      r.src.innerHTML = '<span class="badge ' + b.cls + '" title="' + esc(b.title) + '">' + esc(b.text) + '</span>' + (ss.open ? '' : '<span class="w-closed" title="' + esc(ss.label + ' · opens in ' + HR.untilText(ss.next)) + '">Closed</span>');
+      r.src.innerHTML = '<span class="badge ' + b.cls + '" title="' + esc(b.text + ': ' + b.title) + '">' + esc(b.text.split(' · ')[0]) + '</span>' + (ss.open ? '' : '<span class="w-closed" title="' + esc(ss.label + ' · opens in ' + HR.untilText(ss.next)) + '"><i class="ph ph-moon" aria-hidden="true"></i>' + (ss.state === 'break' ? 'Break' : 'Closed') + '</span>');
       r.src.dataset.k = k;
     }
     if (!t) { if (!r.px.firstChild || r.px.textContent) r.px.innerHTML = '<span class="sk sk-px"></span>'; r.chg.innerHTML = '<span class="sk sk-chg"></span>'; return; }
@@ -538,9 +539,42 @@
       '<div><dt>Max leverage</dt><dd class="mono">' + c.maxLev + 'x' + (c.profile ? ' <span class="muted">' + c.profile + '</span>' : '') + '</dd></div>' +
       '<div><dt>Spread</dt><dd class="mono">' + spread + '</dd></div>' +
       '<div><dt>Fee taker / maker</dt><dd class="mono">' + nf(c.taker * 100, 3) + '% / ' + nf(c.maker * 100, 3) + '%</dd></div>' +
-      '<div><dt>Bid / Ask</dt><dd class="mono">' + (t ? px(a, q.bid) + ' / ' + px(a, q.ask) : '—') + '</dd></div>' +
-      '<div><dt>Contract</dt><dd>' + (a.kind === 'inverse' ? 'Size in USD, PnL converted at mark' : 'Linear, USD-settled') + '</dd></div>';
+      '<div class="hide-xs"><dt>Bid / Ask</dt><dd class="mono">' + (t ? px(a, q.bid) + ' / ' + px(a, q.ask) : '—') + '</dd></div>' +
+      '<div class="hide-xs"><dt>Contract</dt><dd>' + (a.kind === 'inverse' ? 'Size in USD, PnL converted at mark' : 'Linear, USD-settled') + '</dd></div>';
     if ($('specs').innerHTML !== specs) $('specs').innerHTML = specs;
+    renderSessBanner(a, ss);
+  }
+
+  /* session banner above the trade screen: closed market, daily break or 24/7 practice */
+  var TZ_ABBR = { 'America/New_York': 'ET', 'America/Chicago': 'CT' };
+  var localTz = ''; try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  function whenText(ms, tz) {
+    var o = { weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' };
+    if (tz) o.timeZone = tz;
+    try { return new Date(ms).toLocaleString('en-US', o).replace(',', ''); } catch (e) { return ''; }
+  }
+  function opensAt(ms, tz) {
+    var ex = whenText(ms, tz) + ' ' + (TZ_ABBR[tz] || 'UTC');
+    if (!tz || tz === localTz) return ex;
+    return ex + ' <span class="sb-local">(' + whenText(ms) + ' your time)</span>';
+  }
+  function renderSessBanner(a, ss) {
+    var el = $('sessBanner'), sc = HR.schedFor(a.id, a.cat), html = '', kind = '';
+    var real = ss.practice ? ss.real : ss;
+    if (!ss.open && real.next) {
+      kind = real.state === 'break' ? 'break' : 'closed';
+      html = '<i class="ph ph-moon" aria-hidden="true"></i><span class="sb-t"><b>' + esc(a.sym) + (kind === 'break' ? ' daily break' : ' market closed') + '</b>' +
+        ' Opens ' + opensAt(real.next, sc.tz) + ' · in <span class="mono">' + esc(HR.untilText(real.next)) + '</span>. Limit orders can be queued now.</span>' +
+        '<span class="sb-act"><button class="btn-primary sm" data-sb="practice">Practice 24/7</button></span>';
+    } else if (ss.practice && real && real.next) {
+      kind = 'practice';
+      html = '<i class="ph ph-clock-countdown" aria-hidden="true"></i><span class="sb-t"><b>24/7 practice</b> Real ' + esc(a.sym) + ' session ' + (real.state === 'break' ? 'is on its daily break' : 'is closed') + ', opens ' + opensAt(real.next, sc.tz) + '. Orders fill at the last price.</span>' +
+        '<span class="sb-act"><button class="btn-ghost sm" data-sb="exchange">Use exchange hours</button></span>';
+    }
+    var key = kind + '|' + html;
+    if (!html) { if (!el.hidden) el.hidden = true; el.dataset.k = ''; return; }
+    if (el.dataset.k !== key) { el.className = 'sess-banner ' + kind; el.innerHTML = html; el.dataset.k = key; }
+    if (el.hidden) el.hidden = false;
   }
 
   /* ---------------- chart ---------------- */
@@ -747,7 +781,7 @@
     else sn.hidden = true;
     var err = '';
     if (!ready) err = 'Waiting for a price…';
-    else if (closedMkt) err = 'Market closed. Switch to Limit to queue an order for the open.';
+    else if (closedMkt) err = '';   // the session note above and the button label already say it
     else if (!isFinite(o.lev) || o.lev < 1 || Math.floor(o.lev) !== o.lev) err = 'Leverage must be a whole number from 1x.';
     else if (o.lev > c.maxLev) err = 'Max leverage for ' + c.label + ' is ' + c.maxLev + 'x.';
     else if (o.margin == null) err = '';
@@ -778,7 +812,7 @@
       if (ready && o.type === 'limit' && o.limit == null && !err) err = '';
     }
     $('ticketErr').textContent = err;
-    $('btnSubmit').disabled = !!err || !ok;
+    $('btnSubmit').disabled = !!err || !ok || closedMkt;
   }
   var submitLock = false;
   function submitTicket() {
@@ -812,12 +846,15 @@
       '<dl class="summary"><div><dt>' + (o.type === 'limit' ? 'Limit price' : 'Est. entry') + '</dt><dd class="mono">' + px(a, entry) + '</dd></div><div><dt>Position size</dt><dd class="mono">' + usd(pv.notional) + '</dd></div><div><dt>Quantity</dt><dd class="mono">' + qtyFmt(a, pv.qty) + '</dd></div>' +
       '<div><dt>Margin</dt><dd class="mono">' + usd(pv.margin) + '</dd></div><div><dt>Fee</dt><dd class="mono">' + usd(pv.fee) + '</dd></div><div class="liqrow"><dt>Liquidation price</dt><dd class="mono">' + px(a, pv.liq) + '</dd></div>' +
       (o.tp || o.sl ? '<div><dt>TP / SL</dt><dd class="mono">' + (o.tp ? px(a, o.tp) : '—') + ' / ' + (o.sl ? px(a, o.sl) : '—') + '</dd></div>' : '') + '</dl>' +
-      '<p class="fine">Market orders fill at the current bid or ask, which can differ from this estimate. Turn this dialog off in Settings.</p>' +
+      '<p class="fine">Market orders fill at the current bid or ask, which can differ from this estimate.</p>' +
+      '<label class="cf-skip"><input type="checkbox" id="cfSkip"> Don’t ask again <span class="muted">(change in Settings)</span></label>' +
       '<div class="ticket-err" id="cfErr"></div><div class="lf-btns"><button class="btn-ghost" id="cfNo">Cancel</button><button class="btn-submit ' + o.side + '" id="cfGo">Confirm ' + (o.side === 'long' ? 'buy' : 'sell') + '</button></div></div>');
     $('cfNo').onclick = closeModal;
+    setTimeout(function () { try { $('cfGo').focus(); } catch (e) {} }, 40);
     var sent = false;
     $('cfGo').onclick = function () {
       if (sent) return; sent = true;
+      if ($('cfSkip') && $('cfSkip').checked) { prefs.confirm = false; savePrefs(); }
       var r = sendOrder(o);
       if (typeof r === 'string') { sent = false; $('cfErr').textContent = r; return; }
       closeModal();
@@ -941,6 +978,12 @@
   }
 
   /* ---------------- select asset ---------------- */
+  /* scroll an element to just below the sticky top bar (phones and tablets) */
+  function scrollUnderBar(el) {
+    var bar = document.querySelector('.topbar'), h = bar ? bar.getBoundingClientRect().height : 0;
+    var y = el.getBoundingClientRect().top + window.scrollY - h;
+    try { window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' }); } catch (e) { window.scrollTo(0, y); }
+  }
   function selectAsset(id) {
     if (!D.BY_ID[id]) return;
     S.ui.asset = id;
@@ -1009,13 +1052,13 @@
     }
     var rws = [
       ['Crypto', st('binance'), 'Binance public REST + WebSocket (keyless): last price, 24h stats, candles, order book, trades', 'Binance / Coinbase / Kraken WebSocket feeds (free); Kaiko or CoinAPI for consolidated, licensed data (paid)'],
-      ['Metals (gold, silver, platinum, palladium, copper)', st('goldapi'), 'gold-api.com spot prices (keyless), refreshed every 12 s; chart history is sample', 'Metals-API, Twelve Data or Polygon.io (paid); LBMA / CME data licences for production'],
+      ['Metals (gold, silver, platinum, palladium, copper)', st('goldapi'), 'gold-api.com spot prices (keyless), refreshed every 12 s; chart history is sample', 'Metals-API, Twelve Data or Polygon.io (paid); LBMA / CME data licenses for production'],
       ['Energy & agriculture', st('sample'), 'Sample data around the ' + D.REF_DATE + ' reference close', 'CME Group DataMine, Barchart OnDemand, Twelve Data commodities (paid); broker/LP price feed for CFDs'],
       ['Forex (incl. USD/TRY)', st('fx'), 'Frankfurter (central-bank reference rates, daily), fallback open.er-api.com (daily); intraday ticks simulated', 'OANDA, Twelve Data, Polygon.io FX or the liquidity provider’s streaming quotes'],
-      ['Indices', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Twelve Data / Polygon.io indices (paid, exchange licences); CFD prices from the LP'],
+      ['Indices', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Twelve Data / Polygon.io indices (paid, exchange licenses); CFD prices from the LP'],
       ['US stocks', '<span class="badge b-sample">Sample</span>', 'Sample data around the ' + D.REF_DATE + ' reference close', 'Alpaca (free IEX feed), Finnhub (free tier), Polygon.io (paid, full SIP)'],
       ['Prediction markets', '<span class="badge b-sample">Sample</span>', 'Sample markets priced by a local LMSR market maker; background flow simulated. 15-minute BTC Up/Down rounds take their start and end price from Binance (sample price if Binance is unreachable)', 'Own matching engine + resolution oracle; read-only reference data from the Polymarket and Kalshi public APIs'],
-      ['Trading sessions', '<span class="badge b-daily">Rules</span>', 'Weekly exchange hours per market, evaluated in New York / Chicago time; holidays not modelled', 'Exchange calendars (CME, ICE, NYSE) including holidays and early closes']
+      ['Trading sessions', '<span class="badge b-daily">Rules</span>', 'Weekly exchange hours per market, evaluated in New York / Chicago time; holidays not modeled', 'Exchange calendars (CME, ICE, NYSE) including holidays and early closes']
     ];
     modal('<div class="pt"><div class="pt-q" id="modalTitle">Data sources</div><p class="fine">What drives each asset class in this demo right now, and what the full build would connect. Badges update live; if a source fails, its assets switch to sample data automatically.</p>' +
       '<div class="table-scroll"><table class="tbl ds"><thead><tr><th>Asset class</th><th>Status</th><th>In this demo</th><th>Full build options</th></tr></thead><tbody>' +
@@ -1159,7 +1202,7 @@
     };
     $('watchList').onclick = function (e) {
       var st = e.target.closest('[data-star]'); if (st) { toggleFav(st.dataset.star); return; }
-      var r = e.target.closest('.wrow'); if (r) { selectAsset(r.dataset.id); if (window.innerWidth < 900) $('chartwrap').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      var r = e.target.closest('.wrow'); if (r) { selectAsset(r.dataset.id); if (window.innerWidth <= 900) scrollUnderBar($('chartwrap')); }
     };
     $('symStar').onclick = function () { toggleFav(S.ui.asset); };
     $('btnAlert').onclick = alertModal;
@@ -1218,7 +1261,7 @@
         var r = closePosition(b.dataset.close, 'manual');
         if (r) { var a = D.BY_ID[r.pos.asset]; toast('Position closed · ' + a.sym, 'Exit ' + px(a, r.exit) + ' · realized ' + signed(r.st.realized), r.st.realized >= 0 ? 'ok' : 'bad'); }
         save(true); drawPriceLines(); renderActivity(); renderAccount(); updTicket();
-      } else if (b.dataset.cancel) { cancelOrder(b.dataset.cancel); toast('Limit order cancelled', 'Reserved margin returned', 'ok'); save(true); drawPriceLines(); renderActivity(); updTicket(); }
+      } else if (b.dataset.cancel) { cancelOrder(b.dataset.cancel); toast('Limit order canceled', 'Reserved margin returned', 'ok'); save(true); drawPriceLines(); renderActivity(); updTicket(); }
       else if (b.dataset.tpsl) editTpSl(b.dataset.tpsl);
       else if (b.dataset.addm) addMarginModal(b.dataset.addm);
       else if (b.dataset.delalert) { S.alerts = S.alerts.filter(function (x) { return x.id !== b.dataset.delalert; }); save(true); drawPriceLines(); renderActivity(); }
@@ -1238,6 +1281,12 @@
     $('btnBell').onclick = bellPop;
     $('btnSettings').onclick = settingsPop;
     $('acctSel').onclick = acctPop;
+    (function () {   // fade the right edge of the asset-class tabs only while more tabs are hidden
+      var ct = $('catTabs'); function upd() { ct.classList.toggle('at-end', ct.scrollLeft + ct.clientWidth >= ct.scrollWidth - 2); }
+      ct.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); setTimeout(upd, 50);
+    })();
+    $('btnMkts').onclick = function () { scrollUnderBar(document.querySelector('.watch')); };
+    $('sessBanner').onclick = function (e) { var b = e.target.closest('[data-sb]'); if (b) setHoursMode(b.dataset.sb === 'practice' ? 'always' : 'exchange'); };
     $('riskBanner').onclick = function (e) { var b = e.target.closest('[data-goview]'); if (b) setView(b.dataset.goview); };
     $('modeSwitch').onclick = function (e) { var b = e.target.closest('[data-mode]'); if (!b) return; if (b.dataset.mode === 'live') { setMode('live'); liveFlow(0); } else setMode('demo'); };
     $('modalX').onclick = function () { closeModal(); setMode('demo'); };
@@ -1271,7 +1320,7 @@
     if (a.state === 'fallback' && !srcWarned[a.feed]) {
       srcWarned[a.feed] = true;
       toast({ binance: 'Binance is unreachable', goldapi: 'Metals price source is unreachable', fx: 'FX rate source is unreachable' }[a.feed] || 'Data source unreachable',
-        'Affected markets now show sample data and are labelled "Sample · offline". Trading keeps working.', 'warn');
+        'Affected markets now show sample data and are labeled "Sample · offline". Trading keeps working.', 'warn');
     }
   });
   var srcWarned = {};

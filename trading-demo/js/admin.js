@@ -23,7 +23,7 @@
       var kyc = k < 5 ? 'pending' : r() < 0.82 ? 'verified' : r() < 0.5 ? 'rejected' : 'not_started';
       out.push({ id: id, handle: 'user_' + id.slice(2), country: COUNTRIES[k], tier: r() < 0.18 ? 'Professional' : 'Retail', kyc: kyc,
         equity: kyc === 'verified' ? Math.round(800 + Math.pow(r(), 2) * 64000) : Math.round(r() * 300), vol30: Math.round(Math.pow(r(), 1.6) * 1.8e6),
-        joined: Date.now() - Math.floor(4 + r() * 280) * DAY, doc: ['Passport', 'ID card', 'Driving licence'][Math.floor(r() * 3)],
+        joined: Date.now() - Math.floor(4 + r() * 280) * DAY, doc: ['Passport', 'ID card', "Driver's license"][Math.floor(r() * 3)],
         live: r() < 0.6 ? 'ok' : r() < 0.6 ? 'review' : 'ok', poa: r() < 0.7, sanc: r() < 0.92 ? 'clear' : 'possible match', score: Math.round(8 + r() * 70),
         submitted: Date.now() - Math.floor(10 + r() * 2600) * 60000 });
     }
@@ -33,7 +33,7 @@
   function kycLabel(st) { return { pending: ['wait', 'Pending review'], verified: ['ok', 'Verified'], rejected: ['bad', 'Rejected'], not_started: ['', 'Not started'] }[st] || ['', st]; }
 
   function usersHtml() {
-    var a = ad(), pend = USERS.filter(function (u) { return kycOf(u) === 'pending'; });
+    var a = ad(), pend = USERS.filter(function (u) { return kycOf(u) === 'pending'; }).sort(function (x, y) { return x.submitted - y.submitted; });
     var counts = { verified: 0, pending: 0, rejected: 0 }; USERS.forEach(function (u) { var k = kycOf(u); if (counts[k] != null) counts[k]++; });
     var h = '<div class="kpis">' +
       kpi('Accounts', String(USERS.length + 1), 'sample + this browser') + kpi('Verified', String(counts.verified), 'KYC passed') +
@@ -48,7 +48,7 @@
           '<td><div class="act"><select class="select" data-rsn="' + u.id + '" aria-label="Reject reason" style="height:24px;width:150px;font-size:11px"><option value="">Reject reason…</option><option>Document unreadable</option><option>Proof of address missing</option><option>Sanctions screening match</option><option>Unsupported country</option></select>' +
           '<button class="btn-ghost sm btn-danger" data-kyc="reject" data-u="' + u.id + '">Reject</button><button class="btn-primary sm" data-kyc="approve" data-u="' + u.id + '">Approve</button></div><div class="f-err" id="kerr-' + u.id + '"></div></td></tr>';
       }).join('') + '</tbody></table></div>' : A.emptySt('check-circle', 'Queue is empty', 'Every sample applicant has been reviewed. Reset demo to refill the queue.')) +
-      '<div class="sec-note">In the full build the KYC provider runs the document, liveness and sanctions checks; operators only decide flagged cases. Applicants here are sample records with made-up IDs.</div></section></div>';
+      '<div class="sec-note">Document, liveness and sanctions checks come from the KYC provider; operators decide flagged cases only.</div></section></div>';
     h += '<div class="pg-grid" style="margin-top:16px;grid-template-columns:minmax(0,2fr) minmax(0,1fr)"><section class="sec"><div class="sec-h"><h2>Users</h2><span class="tag">sample</span></div><div class="table-scroll"><table class="tbl"><thead><tr><th>User</th><th>Country</th><th>Tier</th><th>KYC</th><th class="r">Equity</th><th class="r">30d volume</th><th>Joined</th></tr></thead><tbody>' +
       '<tr><td><b>D-100248</b><div class="sub">this browser (paper)</div></td><td>—</td><td>Demo</td><td><span class="st">Demo only</span></td><td class="mono r">' + usd(A.equity()) + '</td><td class="mono r">' + usd(volume30()) + '</td><td class="mono">today</td></tr>' +
       USERS.map(function (u) { var k = kycLabel(kycOf(u)); return '<tr><td><b>' + u.handle + '</b><div class="sub">' + u.id + '</div></td><td>' + u.country + '</td><td>' + u.tier + '</td><td><span class="st ' + k[0] + '">' + k[1] + '</span></td><td class="mono r">' + usd(u.equity) + '</td><td class="mono r">' + usd(u.vol30) + '</td><td class="mono">' + new Date(u.joined).toISOString().slice(0, 10) + '</td></tr>'; }).join('') +
@@ -172,7 +172,7 @@
       '<div class="full"><label class="lbl" for="mkRule">Resolution rules</label><textarea class="area-in" id="mkRule" rows="3" placeholder="Resolves YES if ... according to ...">' + esc(d.rule) + '</textarea></div>' +
       '<div class="full"><label class="lbl" for="mkSrc">Resolution source</label><input class="text-in" id="mkSrc" value="' + esc(d.source) + '" placeholder="e.g. CME Group NYMEX settlement prices"></div>' +
       '<div class="full"><div class="f-err" id="mkErr"></div><button class="btn-primary" id="mkGo">Create market</button></div>' +
-      '</div></div><div class="sec-note">New markets open with equal odds and are priced by the LMSR market maker. They appear on the Predict page under their category and are labelled as operator markets.</div></section>';
+      '</div></div><div class="sec-note">New markets open with equal odds and are priced by the LMSR market maker. They appear on the Predict page under their category and are labeled as operator markets.</div></section>';
     var list = P.markets().filter(function (m) { return !m.auto; }).slice().sort(function (a, b) { return (b.custom ? 1 : 0) - (a.custom ? 1 : 0) || (a.status === 'open' ? 0 : 1) - (b.status === 'open' ? 0 : 1); });
     h += '<section class="sec"><div class="sec-h"><h2>Markets</h2><span class="sec-r muted">' + list.filter(function (m) { return m.status === 'open'; }).length + ' open</span></div><div class="table-scroll"><table class="tbl"><thead><tr><th>Market</th><th>Type</th><th class="r">Volume</th><th>Closes</th><th>Status</th><th>Settle</th></tr></thead><tbody>' +
       list.map(function (m) {
@@ -207,6 +207,7 @@
       var amt = c[0] === 'BTC' ? usdAmt / 81500 : c[0] === 'ETH' ? usdAmt / 2420 : usdAmt;
       var st = dep ? (r() < 0.75 ? 'completed' : 'confirming') : (k < 6 ? 'pending' : r() < 0.7 ? 'completed' : 'rejected');
       var flags = []; if (!dep && usdAmt > 10000) flags.push('large amount'); if (!dep && r() < 0.3) flags.push('new destination'); if (u.kyc !== 'verified') flags.push('KYC not complete');
+      if (!dep && st === 'completed' && u.kyc !== 'verified') st = 'rejected';   // no payout without completed KYC
       out.push({ id: (dep ? 'DEP-' : 'WDR-') + (30120 + k * 7 + Math.floor(r() * 5)), user: u.handle, dir: dep ? 'Deposit' : 'Withdrawal', coin: c[0], net: c[1], amt: amt, usd: usdAmt, status: st, conf: Math.floor(2 + r() * 9), need: c[0] === 'BTC' ? 3 : 12, flags: flags, t: Date.now() - Math.floor(r() * 3 * DAY) });
     }
     out.sort(function (a, b) { return b.t - a.t; });
@@ -238,7 +239,7 @@
   function render() {
     var body = $('admBody'); if (!body) return;
     var inner = tab === 'risk' ? riskHtml() : tab === 'inst' ? instHtml() : tab === 'markets' ? marketsHtml() : tab === 'funding' ? fundHtml() : usersHtml();
-    body.innerHTML = '<div class="adm-banner"><i class="ph ph-info" aria-hidden="true"></i>Demo admin console. Users, applicants, other accounts and funding requests are sample records. Instrument settings and market operations act on this browser’s demo.</div>' + inner;
+    body.innerHTML = inner;
     document.querySelectorAll('#admTabs .seg-btn').forEach(function (b) { b.classList.toggle('is-active', b.dataset.ad === tab); });
   }
   var last = 0;

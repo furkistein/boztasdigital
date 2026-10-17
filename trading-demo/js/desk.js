@@ -17,9 +17,9 @@
     XPDUSD: { code: 'PA', exch: 'NYMEX (CME Group)', size: '100 troy oz', tick: '0.50 USD/oz = 50.00 USD', months: [3, 6, 9, 12], settle: 'Physical delivery' },
     COPPER: { code: 'HG', exch: 'COMEX (CME Group)', size: '25,000 lb', tick: '0.0005 USD/lb = 12.50 USD', months: [3, 5, 7, 9, 12], settle: 'Physical delivery' },
     PAXG:   { code: '—', exch: 'Paxos token (Ethereum)', size: '1 token = 1 fine troy oz', tick: 'n/a', months: null, settle: 'Redeemable with the issuer' },
-    BRENT:  { code: 'B', exch: 'ICE Futures Europe', size: '1,000 barrels', tick: '0.01 USD/bbl = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Cash-settled (ICE Brent Index)' },
-    WTI:    { code: 'CL', exch: 'NYMEX (CME Group)', size: '1,000 barrels', tick: '0.01 USD/bbl = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Physical delivery (Cushing, OK)' },
-    NATGAS: { code: 'NG', exch: 'NYMEX (CME Group)', size: '10,000 MMBtu', tick: '0.001 USD/MMBtu = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Physical delivery (Henry Hub)' },
+    BRENT:  { code: 'B', exch: 'ICE Futures Europe', size: '1,000 barrels', tick: '0.01 USD/bbl = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Cash-settled (ICE Brent Index)', exp: 'brent' },
+    WTI:    { code: 'CL', exch: 'NYMEX (CME Group)', size: '1,000 barrels', tick: '0.01 USD/bbl = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Physical delivery (Cushing, OK)', exp: 'cl' },
+    NATGAS: { code: 'NG', exch: 'NYMEX (CME Group)', size: '10,000 MMBtu', tick: '0.001 USD/MMBtu = 10.00 USD', months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], settle: 'Physical delivery (Henry Hub)', exp: 'ng' },
     WHEAT:  { code: 'ZW', exch: 'CBOT (CME Group)', size: '5,000 bushels', tick: '0.25 ¢/bu = 12.50 USD', months: [3, 5, 7, 9, 12], settle: 'Physical delivery' },
     CORN:   { code: 'ZC', exch: 'CBOT (CME Group)', size: '5,000 bushels', tick: '0.25 ¢/bu = 12.50 USD', months: [3, 5, 7, 9, 12], settle: 'Physical delivery' },
     SOYBEAN:{ code: 'ZS', exch: 'CBOT (CME Group)', size: '5,000 bushels', tick: '0.25 ¢/bu = 12.50 USD', months: [1, 3, 5, 7, 8, 9, 11], settle: 'Physical delivery' },
@@ -48,13 +48,22 @@
   /* ---------- roll calendar (sample rule) ---------- */
   function bizBack(d, n) { var x = new Date(d); while (n > 0) { x.setUTCDate(x.getUTCDate() - 1); var w = x.getUTCDay(); if (w !== 0 && w !== 6) n--; } return x; }
   function firstBiz(y, m) { var x = new Date(Date.UTC(y, m - 1, 1)); while (x.getUTCDay() === 0 || x.getUTCDay() === 6) x.setUTCDate(x.getUTCDate() + 1); return x; }
+  function isBiz(d) { var w = d.getUTCDay(); return w !== 0 && w !== 6; }
+  /* approximate last trading day of energy futures (holidays ignored):
+     Brent: last business day of the second month before delivery; WTI: 3 business days before the 25th
+     of the month before delivery (25th moved back to a business day); Henry Hub: 3 business days before the 1st */
+  function energyExpiry(kind, y, m) {
+    if (kind === 'brent') { var x = new Date(Date.UTC(y, m - 2, 0)); while (!isBiz(x)) x.setUTCDate(x.getUTCDate() - 1); return x; }
+    if (kind === 'cl') { var d = new Date(Date.UTC(y, m - 2, 25)); while (!isBiz(d)) d.setUTCDate(d.getUTCDate() - 1); return bizBack(d, 3); }
+    return bizBack(new Date(Date.UTC(y, m - 1, 1)), 3);
+  }
   function contracts(s, from) {
     var out = [], y = from.getUTCFullYear(), guard = 0;
     for (var yy = y; yy <= y + 2 && out.length < 3 && guard < 40; yy++) {
       s.months.forEach(function (m) {
         guard++;
         if (out.length >= 3) return;
-        var roll = bizBack(firstBiz(yy, m), 5);
+        var roll = s.exp ? bizBack(energyExpiry(s.exp, yy, m), 5) : bizBack(firstBiz(yy, m), 5);
         if (roll.getTime() > from.getTime()) out.push({ y: yy, m: m, roll: roll });
       });
     }
@@ -76,7 +85,7 @@
     }).join('');
     return '<div class="pg"><section class="sec pg-grid"><div class="sec"><div class="sec-h"><h2>Roll calendar</h2><span class="tag">sample dates</span></div>' +
       '<div class="table-scroll"><table class="tbl"><thead><tr><th>Market</th><th>Front contract</th><th>Next contract</th><th>Roll date</th><th class="r">Days to roll</th><th>Month codes</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-      '<div class="sec-note">Sample schedule. Contract cycles and month codes are the exchange’s; roll dates come from one simple rule (5 business days before the first business day of the contract month) and are not the official last-trade or first-notice dates. Demo CFDs track the price directly, so no roll adjustment is applied to open positions.</div></div></section></div>';
+      '<div class="sec-note">Sample schedule. Contract cycles and month codes are the exchange’s; roll dates are 5 business days before an approximate last trading day (Brent, WTI, natural gas) or before the first business day of the delivery month (metals and softs/grains). Exchange holidays are ignored, so these are not the official last-trade or first-notice dates. Demo CFDs track the price directly, so no roll adjustment is applied to open positions.</div></div></section></div>';
   }
 
   /* ---------- economic calendar (sample dates) ---------- */

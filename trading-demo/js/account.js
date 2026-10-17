@@ -54,7 +54,7 @@
     // margin level & rules
     h += '<section class="sec"><div class="sec-h"><h2>Margin level</h2><span class="sec-r mono ' + mlCls + '">' + mlTxt + '</span></div><div class="sec-b">' +
       '<div class="meter ' + (ml == null ? '' : ml < MC ? 'bad' : ml < 1.5 ? 'warn' : 'ok') + '"><i style="width:' + meterPct.toFixed(1) + '%"></i><span class="mk" style="left:20%" title="Margin call 100%"></span></div>' +
-      '<div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-3);margin-top:4px" class="mono"><span>0%</span><span style="margin-left:14%">100% margin call</span><span>500%+</span></div>' +
+      '<div style="position:relative;height:14px;font-size:10.5px;color:var(--text-3);margin-top:4px" class="mono"><span style="position:absolute;left:0">0%</span><span style="position:absolute;left:20%;transform:translateX(-50%);white-space:nowrap">100% call</span><span style="position:absolute;right:0">500%+</span></div>' +
       '<dl class="summary" style="margin-top:12px"><div><dt>Margin call</dt><dd>Below 100%: a warning shows in the top bar and new positions are blocked</dd></div>' +
       '<div><dt>Stop-out</dt><dd>Isolated margin: each position is closed when its margin ratio reaches 100%</dd></div>' +
       '<div><dt>Margin ratio</dt><dd>maintenance margin (0.5% of position value) / (margin + PnL)</dd></div>' +

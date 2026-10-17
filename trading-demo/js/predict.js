@@ -124,7 +124,7 @@
         source: 'LMArena public leaderboard.' },
       { id: 'aapl-top', cat: 'Tech', type: 'binary', b: 5000, close: 'Dec 31, 2026', p0: [0.30],
         q: 'Will Apple be the world’s most valuable listed company on Dec 31, 2026?',
-        rule: 'Resolves YES if Apple has the largest market capitalisation of any listed company at the Dec 31, 2026 close.',
+        rule: 'Resolves YES if Apple has the largest market capitalization of any listed company at the Dec 31, 2026 close.',
         source: 'Exchange closing prices × shares outstanding.' }
     ].map(function (d) {
       if (d.type === 'binary') { d.outcomes = ['Yes', 'No']; d.p0 = [d.p0[0], 1 - d.p0[0]]; }
@@ -384,7 +384,7 @@
     'Filled 300 shares with very little slippage, the book is deeper than it looks.', 'Selling half of my position here and letting the rest ride.', 'Resting a limit at {lo} and walking away for the day.',
     'The price moved {mv} points in the last hour without any news. Probably one large order.', 'Fair value for me is close to the current price. Not trading this one.'];
   var CM_MULTI = ['{o} at {p} is the cheapest outcome that still looks plausible to me.', 'Splitting my stake across the two middle outcomes.', 'Buying NO on {o}. The crowd seems too confident.',
-    'Edges belong to the higher bucket, worth checking before you size up.', 'I hold YES on {o} and NO on the favourite. Small positions on both.', 'Volume picked up on {o} today, watching the book.'];
+    'Edges belong to the higher bucket, worth checking before you size up.', 'I hold YES on {o} and NO on the favorite. Small positions on both.', 'Volume picked up on {o} today, watching the book.'];
   function sampleComments(m) {
     var r = rng(m.id), n = 4 + Math.floor(r() * 3), out = [], lst = m.type === 'binary' ? CM_BIN : CM_MULTI, pool = lst.slice();
     for (var k = 0; k < n; k++) {
@@ -629,7 +629,7 @@
     var list = BOARD.map(function (x) { return { who: x.who, pnl: x.pnl, me: false }; }).concat([{ who: 'You (D-100248)', pnl: you, me: true }]);
     list.sort(function (a, b) { return b.pnl - a.pnl; });
     var rows = list.map(function (x, i) { return '<tr' + (x.me ? ' class="me"' : '') + '><td class="mono">' + (i + 1) + '</td><td>' + esc(x.who) + '</td><td class="mono r ' + (x.pnl >= 0 ? 'up' : 'down') + '">' + H.signed(x.pnl) + '</td></tr>'; });
-    var html = '<table class="lb"><tbody>' + rows.join('') + '</tbody></table><p class="fine">Sample traders with made-up handles. Your row uses your real paper PnL in prediction markets.</p>';
+    var html = '<table class="lb"><tbody>' + rows.join('') + '</tbody></table><p class="fine">Other rows are sample traders. Your row is your paper PnL.</p>';
     if (el.board.innerHTML !== html) el.board.innerHTML = html;
   }
 
@@ -943,7 +943,7 @@
   /* ---- resolve modal ---- */
   function openResolve(m) {
     H.modal('<div class="pt"><div class="pt-q" id="modalTitle">Resolve (demo)</div><p class="muted">' + esc(m.q) + '</p>' +
-      '<p class="fine">Sample market: you choose the outcome. Winning shares pay $1.00 each, losing shares expire at $0, and open limit orders on this market are cancelled and refunded.</p>' +
+      '<p class="fine">Sample market: you choose the outcome. Winning shares pay $1.00 each, losing shares expire at $0, and open limit orders on this market are canceled and refunded.</p>' +
       '<div class="rs-list">' + m.outcomes.map(function (o, j) { return '<button class="pm-btn ' + (m.type === 'binary' ? (j === 0 ? 'yes' : 'no') : 'yes') + '" data-w="' + j + '">' + (m.type === 'binary' ? 'Resolve ' + o.toUpperCase() : esc(o)) + '</button>'; }).join('') + '</div></div>');
     document.querySelectorAll('#modalBody [data-w]').forEach(function (b) {
       b.onclick = function () {
@@ -1150,7 +1150,7 @@
       var b = e.target.closest('[data-pm]'); if (!b) return;
       var a = b.dataset.pm;
       if (a === 'back') { closeDetail(); return; }
-      if (a === 'cancel') { cancelOrder(b.dataset.o); H.toast('Limit order cancelled', 'Reserved funds/shares returned', 'ok'); H.changed(true); if (detail) renderDetail(false); else renderSide(); return; }
+      if (a === 'cancel') { cancelOrder(b.dataset.o); H.toast('Limit order canceled', 'Reserved funds/shares returned', 'ok'); H.changed(true); if (detail) renderDetail(false); else renderSide(); return; }
       if (a === 'current') { var cr = currentRound(); if (cr) openDetail(cr); return; }
       if (a === 'pick') { detail.i = +b.dataset.i; detail.s = b.dataset.s; detail.dir = 'buy'; detail.amt = detail.amt || '100'; renderDetail(false); return; }
       if (a === 'combo-rm') { removeLeg(b.dataset.m); H.changed(true); return; }

@@ -57,9 +57,7 @@
 
   <div class="disclaimer" role="note">
     <span class="tag-demo">Demo</span>
-    <strong>Demo · paper trading · no real money.</strong>
     <span class="net-notice" id="netNotice" role="status" hidden></span>
-    <span class="hide-xs legend">Data source per market: <b class="src-live">Live</b> Binance, gold-api · <b class="src-daily">Daily</b> FX reference rates · <b class="src-sim">Sample</b> simulated. Not investment advice.</span>
     <span class="disc-r">
       <span class="clock mono hide-xs" id="clock" aria-label="Exchange clock"></span>
       <button class="btn-text" id="btnSources" title="Where each price comes from">Data sources</button>
@@ -72,6 +70,7 @@
   <!-- ===================== TRADE ===================== -->
   <main class="view view-trade is-active" id="viewTrade">
     <span id="main" tabindex="-1"></span>
+    <div class="sess-banner" id="sessBanner" role="status" hidden></div>
 
     <section class="movers" id="movers" aria-label="Commodities today">
       <div class="mv-title"><b>Commodities</b><span class="mv-groups" id="moversGroups"></span></div>
@@ -123,7 +122,8 @@
             <div><dt id="symLowK">Low</dt><dd class="mono" id="symLow">—</dd></div>
             <div class="hide-sm"><dt id="symVolK">Volume</dt><dd class="mono" id="symVol">—</dd></div>
           </dl>
-          <button class="btn-ghost sm sym-alert" id="btnAlert" data-tip="Notify me when the price crosses a level"><i class="ph ph-bell-simple-ringing" aria-hidden="true"></i>Alert</button>
+          <button class="btn-ghost sm sym-mkts" id="btnMkts" aria-label="All markets"><i class="ph ph-list-magnifying-glass" aria-hidden="true"></i>Markets</button>
+          <button class="btn-ghost sm sym-alert" id="btnAlert" aria-label="Price alert" data-tip="Price alert: notify me when the price crosses a level (A)"><i class="ph ph-bell-simple-ringing" aria-hidden="true"></i><span class="sa-l">Alert</span></button>
         </div>
         <dl class="specs" id="specs" aria-label="Contract specifications"></dl>
         <div class="chart-bar" role="toolbar" aria-label="Chart tools">
@@ -141,7 +141,7 @@
             <button class="seg-btn" data-ct="line" aria-label="Line" data-tip="Line"><i class="ph ph-chart-line" aria-hidden="true"></i></button>
           </div>
           <button class="tool-btn is-on" id="btnVol" aria-pressed="true" data-tip="Show volume">Vol</button>
-          <button class="tool-btn" id="btnFit" data-tip="Reset zoom"><i class="ph ph-arrows-in-line-horizontal" aria-hidden="true"></i></button>
+          <button class="tool-btn hide-xs" id="btnFit" data-tip="Reset zoom" aria-label="Reset zoom"><i class="ph ph-arrows-in-line-horizontal" aria-hidden="true"></i></button>
           <div class="chart-legend mono" id="chartLegend"></div>
           <div class="chart-note" id="chartNote"></div>
         </div>
@@ -210,7 +210,7 @@
         </dl>
         <div class="ticket-err" id="ticketErr" role="alert"></div>
         <button class="btn-submit long" id="btnSubmit">Open long</button>
-        <p class="fine">Isolated margin · maintenance margin 0.5% · market orders fill at bid/ask · paper trades only. <kbd>B</kbd> buy · <kbd>S</kbd> sell · <kbd>?</kbd> shortcuts</p>
+        <p class="fine">Isolated margin · maintenance margin 0.5% · market orders fill at bid/ask. <kbd>B</kbd> buy · <kbd>S</kbd> sell · <kbd>?</kbd> shortcuts</p>
       </aside>
 
       <section class="panel activity" aria-label="Positions and orders">
@@ -222,7 +222,7 @@
             <button class="seg-btn" data-act="hist">History</button>
           </div>
           <div class="act-tools">
-            <button class="btn-ghost sm" id="btnCsv" data-tip="Download this table as CSV"><i class="ph ph-download-simple" aria-hidden="true"></i>CSV</button>
+            <button class="btn-ghost sm" id="btnCsv" data-tip="Download this table as CSV" aria-label="Download CSV"><i class="ph ph-download-simple" aria-hidden="true"></i><span class="hide-xs">CSV</span></button>
             <button class="btn-ghost sm" id="btnCloseAll" hidden>Close all</button>
           </div>
         </div>
@@ -238,7 +238,7 @@
         <h1>Prediction markets</h1>
         <p>Trade YES and NO shares on sample events. A share pays <b>$1.00</b> if its outcome happens and <b>$0</b> if not, so the price reads as the market-implied probability. Prices come from an automated market maker (LMSR).</p>
       </div>
-      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Questions and odds are illustrative, not forecasts, and are not linked to real exchanges or results. Other traders’ flow is simulated. You settle a sample market yourself with “Resolve (demo)”. BTC Up/Down rounds settle automatically from the Binance BTC/USDT price.</div>
+      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Illustrative questions and odds, not linked to Polymarket, Kalshi or real results. Settle one yourself with “Resolve (demo)”. BTC Up/Down rounds settle from the Binance BTC/USDT price.</div>
     </div>
     <div class="pm-layout">
       <div class="pm-main">
@@ -274,7 +274,7 @@
   <!-- ===================== COMMODITIES DESK ===================== -->
   <main class="view view-cmd" id="viewCmd">
     <div class="page-head">
-      <div><h1>Commodities desk</h1><p>Contract details, roll calendar, economic events and seasonality for the commodity markets in this demo.</p></div>
+      <div><h1>Commodities desk</h1><p>Contract details, roll calendar, economic events and seasonality for metals, energy and agriculture.</p></div>
       <div class="tabs tabs-under" id="cmdTabs">
         <button class="seg-btn is-active" data-ct="specs">Contracts</button>
         <button class="seg-btn" data-ct="roll">Roll calendar</button>
@@ -288,7 +288,7 @@
   <!-- ===================== ACCOUNT ===================== -->
   <main class="view view-account" id="viewAccount">
     <div class="page-head">
-      <div><h1>Account and risk</h1><p>Paper account D-100248. Margin, exposure and performance are computed live from your demo positions.</p></div>
+      <div><h1>Account and risk</h1><p>Margin, exposure and performance of paper account D-100248, updated with every tick.</p></div>
       <div class="tabs tabs-under" id="accTabs">
         <button class="seg-btn is-active" data-at="risk">Margin and risk</button>
         <button class="seg-btn" data-at="perf">Performance</button>
@@ -301,7 +301,7 @@
   <!-- ===================== ADMIN ===================== -->
   <main class="view view-admin" id="viewAdmin">
     <div class="page-head">
-      <div><h1>Admin console <span class="tag-demo">Demo</span></h1><p>Operator view with sample users and sample funding requests. Instrument settings you change here apply to trading in this browser.</p></div>
+      <div><h1>Admin console <span class="tag-demo">Demo</span></h1><p>Users, KYC, platform risk, instruments, prediction markets and funding. Instrument changes apply to the trading screen immediately.</p></div>
       <div class="tabs tabs-under" id="admTabs">
         <button class="seg-btn is-active" data-ad="users">Users and KYC</button>
         <button class="seg-btn" data-ad="risk">Platform risk</button>
@@ -318,7 +318,7 @@
     <article class="doc">
       <header class="doc-head">
         <h1>What the full build includes</h1>
-        <p>This demo runs entirely in the browser on paper money. The production version keeps the same screens and adds the server side, real accounts and regulated partners. Scope below is a plan, not a commitment to dates or licences.</p>
+        <p>This demo runs entirely in the browser on paper money. The production version keeps the same screens and adds the server side, real accounts and regulated partners. Scope below is a plan, not a commitment to dates or licenses.</p>
       </header>
 
       <section class="doc-sec">
@@ -331,7 +331,7 @@
           <div class="arch-arrow" aria-hidden="true">HTTPS / WebSocket</div>
           <div class="arch-row">
             <div class="arch-box"><b>API service</b><span>Node.js: accounts, orders, positions, margin checks, prediction markets</span></div>
-            <div class="arch-box"><b>Price service</b><span>Node.js: connects to data providers, normalises quotes, fans out over WebSocket</span></div>
+            <div class="arch-box"><b>Price service</b><span>Node.js: connects to data providers, normalizes quotes, fans out over WebSocket</span></div>
             <div class="arch-box"><b>Risk worker</b><span>Mark-to-market, margin calls, stop-out, settlement jobs</span></div>
           </div>
           <div class="arch-arrow" aria-hidden="true">SQL / pub-sub</div>
@@ -355,11 +355,11 @@
           <thead><tr><th>Asset class</th><th>Free (good for demo and paper)</th><th>Paid (needed for live)</th></tr></thead>
           <tbody>
             <tr><td>Crypto</td><td>Binance, Coinbase and Kraken public WebSocket feeds</td><td>Kaiko, CoinAPI or the liquidity provider’s feed</td></tr>
-            <tr><td>Metals</td><td>gold-api.com spot (used in this demo)</td><td>Metals-API, Twelve Data, CME DataMine licence</td></tr>
+            <tr><td>Metals</td><td>gold-api.com spot (used in this demo)</td><td>Metals-API, Twelve Data, CME DataMine license</td></tr>
             <tr><td>Energy and agriculture</td><td>Delayed end-of-day quotes only</td><td>CME Group / ICE real-time data via Barchart, Twelve Data or the LP</td></tr>
             <tr><td>Forex</td><td>Frankfurter / ECB daily reference rates (used in this demo)</td><td>OANDA, Twelve Data, Polygon.io, LP streaming quotes</td></tr>
-            <tr><td>Indices and stocks</td><td>Alpaca IEX feed, Finnhub free tier</td><td>Polygon.io (full SIP), exchange licences, LP prices for CFDs</td></tr>
-            <tr><td>Prediction markets</td><td>Polymarket and Kalshi public read-only APIs for reference data</td><td>Own matching engine and resolution process; data licence if odds are redistributed</td></tr>
+            <tr><td>Indices and stocks</td><td>Alpaca IEX feed, Finnhub free tier</td><td>Polygon.io (full SIP), exchange licenses, LP prices for CFDs</td></tr>
+            <tr><td>Prediction markets</td><td>Polymarket and Kalshi public read-only APIs for reference data</td><td>Own matching engine and resolution process; data license if odds are redistributed</td></tr>
             <tr><td>Economic calendar</td><td>EIA, USDA, BLS and Federal Reserve official release schedules</td><td>Trading Economics or similar calendar API</td></tr>
           </tbody>
         </table></div>
@@ -384,7 +384,7 @@
   </main>
 
   <footer class="foot">
-    <span>Demo Exchange is a product demo. Paper balance only. No deposits, withdrawals, wallets or real orders.</span>
+    <span>Leveraged products carry a high risk of loss. Not investment advice.</span>
     <span class="foot-r"><a href="#" id="lnkSources">Data sources</a> · <button class="btn-text" id="lnkKeys">Keyboard shortcuts</button> · Charts by <a href="https://www.tradingview.com/lightweight-charts/" target="_blank" rel="noopener">TradingView Lightweight Charts™</a></span>
   </footer>
 </div>
