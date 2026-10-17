@@ -24,10 +24,10 @@
   };
   var SUB = { metals: 'Metals', energy: 'Energy', ag: 'Agriculture' };
 
-  var H_CME = 'Sun–Fri 18:00–17:00 ET (60-min daily break)';
-  var H_FX = '24/5 · Sun 17:00 – Fri 17:00 ET';
-  var H_US_IDX = 'Sun–Fri 18:00–17:00 ET (index CFD)';
-  var H_STK = 'Mon–Fri 09:30–16:00 ET (regular session)';
+  var H_CME = 'Sun-Fri 18:00-17:00 ET (60-min daily break)';
+  var H_FX = '24/5 · Sun 17:00 - Fri 17:00 ET';
+  var H_US_IDX = 'Sun-Fri 18:00-17:00 ET (index CFD)';
+  var H_STK = 'Mon-Fri 09:30-16:00 ET (regular session)';
 
   // [id, symbol, name, cat, sub, feed, feedKey, decimals, refClose, prevClose, annualVol, spread, unit, hours, kind]
   var RAW = [
@@ -39,17 +39,17 @@
     ['COPPER', 'COPPER',  'Copper',    'cmd', 'metals', 'goldapi', 'HG',  4, 6.5735, 6.6985, 0.25, 0.003, 'USD per lb', H_CME],
     ['PAXG',   'PAXG/USDT', 'PAX Gold (tokenized gold)', 'cmd', 'metals', 'binance', 'PAXGUSDT', 2, 4164.08, 4164.08, 0.18, 0, '1 token = 1 troy oz', '24/7'],
     // ---- commodities: energy
-    ['BRENT',  'BRENT',   'Brent crude oil', 'cmd', 'energy', 'sample', null, 2, 109.86, 106.65, 0.38, 0.04, 'USD per barrel', 'Sun–Fri 20:00–18:00 ET (ICE)'],
+    ['BRENT',  'BRENT',   'Brent crude oil', 'cmd', 'energy', 'sample', null, 2, 109.86, 106.65, 0.38, 0.04, 'USD per barrel', 'Sun-Fri 20:00-18:00 ET (ICE)'],
     ['WTI',    'WTI',     'WTI crude oil',   'cmd', 'energy', 'sample', null, 2, 99.02, 93.74, 0.40, 0.04, 'USD per barrel', H_CME],
     ['NATGAS', 'NATGAS',  'Natural gas (Henry Hub)', 'cmd', 'energy', 'sample', null, 3, 3.116, 3.167, 0.60, 0.004, 'USD per MMBtu', H_CME],
     // ---- commodities: agriculture
-    ['WHEAT',  'WHEAT',   'Wheat (CBOT)',    'cmd', 'ag', 'sample', null, 4, 6.6050, 6.7225, 0.30, 0.005, 'USD per bushel', 'Sun–Fri 20:00–08:45 & 09:30–14:20 CT'],
-    ['CORN',   'CORN',    'Corn (CBOT)',     'cmd', 'ag', 'sample', null, 4, 4.7425, 4.8300, 0.26, 0.0025, 'USD per bushel', 'Sun–Fri 20:00–08:45 & 09:30–14:20 CT'],
-    ['SOYBEAN','SOYBEAN', 'Soybeans (CBOT)', 'cmd', 'ag', 'sample', null, 4, 12.6125, 12.8775, 0.22, 0.005, 'USD per bushel', 'Sun–Fri 20:00–08:45 & 09:30–14:20 CT'],
-    ['COFFEE', 'COFFEE',  'Coffee (Arabica)', 'cmd', 'ag', 'sample', null, 4, 3.0555, 2.9060, 0.38, 0.0015, 'USD per lb', 'Mon–Fri 04:15–13:30 ET (ICE)'],
-    ['SUGAR',  'SUGAR',   'Sugar No. 11',    'cmd', 'ag', 'sample', null, 4, 0.2085, 0.2085, 0.30, 0.0002, 'USD per lb', 'Mon–Fri 03:30–13:00 ET (ICE)'],
-    ['COCOA',  'COCOA',   'Cocoa',           'cmd', 'ag', 'sample', null, 0, 5686, 5676, 0.50, 6, 'USD per metric ton', 'Mon–Fri 04:45–13:30 ET (ICE)'],
-    ['COTTON', 'COTTON',  'Cotton No. 2',    'cmd', 'ag', 'sample', null, 4, 0.8019, 0.8060, 0.24, 0.0008, 'USD per lb', 'Sun–Fri 21:00–14:20 ET (ICE)'],
+    ['WHEAT',  'WHEAT',   'Wheat (CBOT)',    'cmd', 'ag', 'sample', null, 4, 6.6050, 6.7225, 0.30, 0.005, 'USD per bushel', 'Sun-Fri 20:00-08:45 & 09:30-14:20 CT'],
+    ['CORN',   'CORN',    'Corn (CBOT)',     'cmd', 'ag', 'sample', null, 4, 4.7425, 4.8300, 0.26, 0.0025, 'USD per bushel', 'Sun-Fri 20:00-08:45 & 09:30-14:20 CT'],
+    ['SOYBEAN','SOYBEAN', 'Soybeans (CBOT)', 'cmd', 'ag', 'sample', null, 4, 12.6125, 12.8775, 0.22, 0.005, 'USD per bushel', 'Sun-Fri 20:00-08:45 & 09:30-14:20 CT'],
+    ['COFFEE', 'COFFEE',  'Coffee (Arabica)', 'cmd', 'ag', 'sample', null, 4, 3.0555, 2.9060, 0.38, 0.0015, 'USD per lb', 'Mon-Fri 04:15-13:30 ET (ICE)'],
+    ['SUGAR',  'SUGAR',   'Sugar No. 11',    'cmd', 'ag', 'sample', null, 4, 0.2085, 0.2085, 0.30, 0.0002, 'USD per lb', 'Mon-Fri 03:30-13:00 ET (ICE)'],
+    ['COCOA',  'COCOA',   'Cocoa',           'cmd', 'ag', 'sample', null, 0, 5686, 5676, 0.50, 6, 'USD per metric ton', 'Mon-Fri 04:45-13:30 ET (ICE)'],
+    ['COTTON', 'COTTON',  'Cotton No. 2',    'cmd', 'ag', 'sample', null, 4, 0.8019, 0.8060, 0.24, 0.0008, 'USD per lb', 'Sun-Fri 21:00-14:20 ET (ICE)'],
     // ---- crypto (live Binance; ref values = Binance price at build time, used only if Binance is offline)
     ['BTC',  'BTC/USDT',  'Bitcoin',   'crypto', null, 'binance', 'BTCUSDT',  2, 81578.66, 81578.66, 0.55, 0, 'per BTC', '24/7'],
     ['ETH',  'ETH/USDT',  'Ethereum',  'crypto', null, 'binance', 'ETHUSDT',  2, 2427.99, 2427.99, 0.70, 0, 'per ETH', '24/7'],
@@ -72,8 +72,8 @@
     ['US500',  'US500',  'S&P 500',       'idx', null, 'sample', null, 2, 7659.44, 7811.54, 0.18, 0.5, 'USD 1 per point', H_US_IDX],
     ['NAS100', 'NAS100', 'Nasdaq 100',    'idx', null, 'sample', null, 2, 29187.55, 30883.15, 0.24, 1.5, 'USD 1 per point', H_US_IDX],
     ['US30',   'US30',   'Dow Jones 30',  'idx', null, 'sample', null, 2, 52002.41, 51654.95, 0.16, 3.0, 'USD 1 per point', H_US_IDX],
-    ['GER40',  'GER40',  'DAX 40',        'idx', null, 'sample', null, 2, 25622.61, 25087.27, 0.18, 1.5, 'USD 1 per point', 'Mon–Fri 02:00–16:00 ET (index CFD)'],
-    ['UK100',  'UK100',  'FTSE 100',      'idx', null, 'sample', null, 2, 10881.90, 10552.10, 0.15, 1.2, 'USD 1 per point', 'Mon–Fri 03:00–16:00 ET (index CFD)'],
+    ['GER40',  'GER40',  'DAX 40',        'idx', null, 'sample', null, 2, 25622.61, 25087.27, 0.18, 1.5, 'USD 1 per point', 'Mon-Fri 02:00-16:00 ET (index CFD)'],
+    ['UK100',  'UK100',  'FTSE 100',      'idx', null, 'sample', null, 2, 10881.90, 10552.10, 0.15, 1.2, 'USD 1 per point', 'Mon-Fri 03:00-16:00 ET (index CFD)'],
     // ---- stocks (sample)
     ['AAPL',  'AAPL',  'Apple Inc.',        'stk', null, 'sample', null, 2, 343.46, 336.64, 0.28, 0.04, 'per share', H_STK],
     ['NVDA',  'NVDA',  'NVIDIA Corp.',      'stk', null, 'sample', null, 2, 214.13, 229.28, 0.48, 0.04, 'per share', H_STK],
@@ -89,15 +89,18 @@
              ref: r[8], prev: r[9], vol: r[10], spread: r[11], unit: r[12], hours: r[13], kind: r[14] || 'linear',
              anchor: r[8], state: r[5] === 'sample' ? 'sample' : 'pending', srcName: '' };
   });
+  // session text comes from the trading-hours module (single source of truth for the "Market closed" logic)
+  ASSETS.forEach(function (a) { if (root.VXHours) a.hours = root.VXHours.schedFor(a.id, a.cat).label; a.spread0 = a.spread; });
+  function isOpen(a) { return !root.VXHours || root.VXHours.status(a.id, a.cat).open; }
   var BY_ID = {}; ASSETS.forEach(function (a) { BY_ID[a.id] = a; });
   var BY_BIN = {}; ASSETS.forEach(function (a) { if (a.feed === 'binance') BY_BIN[a.key] = a; });
 
-  var TF_SEC = { '1m': 60, '5m': 300, '1h': 3600, '1d': 86400 };
+  var TF_SEC = { '1m': 60, '5m': 300, '15m': 900, '1h': 3600, '4h': 14400, '1d': 86400 };
   var YEAR = 365 * 86400;
   var SIM_BOOST = 1.6;
 
   var tick = {};   // id -> { price, open24, high, low, vol, qvol, ts }
-  var listeners = { tick: [], status: [], candle: [], book: [], source: [], reload: [] };
+  var listeners = { tick: [], status: [], candle: [], book: [], source: [], reload: [], trade: [] };
   function emit(ev, a, b) { listeners[ev].forEach(function (f) { try { f(a, b); } catch (e) { if (root.console) console.error(e); } }); }
   function on(ev, f) { listeners[ev].push(f); }
 
@@ -182,9 +185,17 @@
     if (!t) t = tick[a.id] = { price: p, open24: a.ref, high: p, low: p, vol: 0, qvol: 0, ts: 0 };
     t.price = p; t.high = Math.max(t.high, p); t.low = Math.min(t.low, p);
     t.vol += dv || 0; t.qvol += (dv || 0) * p; t.ts = Date.now();
+    var prevP = t.lastP; t.lastP = p;
     emit('tick', a.id, t);
     feedCandle(a, p, dv);
-    if (sel.id === a.id && (a.feed !== 'binance' || a.state === 'fallback')) emit('book', a.id, synthBook(a, p));
+    if (sel.id === a.id && (a.feed !== 'binance' || a.state === 'fallback')) {
+      emit('book', a.id, synthBook(a, p));
+      if (a.state === 'live') emit('trade', a.id, { p: p, q: null, side: prevP == null || p >= prevP ? 'buy' : 'sell', t: Date.now(), kind: 'spot' });
+      else {
+        var n = 1 + Math.floor(liveRnd() * 3);
+        for (var k = 0; k < n; k++) emit('trade', a.id, { p: p + (liveRnd() - 0.5) * (a.spread || p * 0.0001), q: (0.2 + Math.pow(liveRnd(), 2) * 6) * (12000 / p), side: prevP == null || p >= prevP ? (liveRnd() < 0.7 ? 'buy' : 'sell') : (liveRnd() < 0.7 ? 'sell' : 'buy'), t: Date.now(), kind: 'sim' });
+      }
+    }
   }
 
   function seedTicker(a, price, prev) {
@@ -200,6 +211,7 @@
     if (sa && sa.feed === 'goldapi' && sa.state === 'live' && tick[sa.id]) emit('book', sa.id, synthBook(sa, tick[sa.id].price));
     ASSETS.forEach(function (a) {
       if (!simulated(a) || !tick[a.id]) return;
+      if (!isOpen(a)) return;   // closed session: the price stands still until the market reopens
       var t = tick[a.id];
       var sig = a.vol * Math.sqrt(1 / YEAR) * SIM_BOOST * 6;
       var rev = -0.002 * Math.log(t.price / a.anchor);
@@ -269,12 +281,13 @@
     });
   }
 
+  var lastRestTrade = 0;
   var ws = null, wsFails = 0, lastMsg = 0, reqId = 1, wsSubs = [], pollTimer = null;
   function selStreams() {
     var a = BY_ID[sel.id];
     if (!a || a.feed !== 'binance') return [];
     var s = a.key.toLowerCase();
-    return [s + '@kline_' + sel.tf, s + '@depth10@100ms'];
+    return [s + '@kline_' + sel.tf, s + '@depth10@100ms', s + '@aggTrade'];
   }
   function connectWs() {
     if (typeof WebSocket === 'undefined') { startPolling(); return; }
@@ -299,6 +312,9 @@
         var k = d.k;
         emit('candle', a.id, { time: Math.floor(k.t / 1000), open: +k.o, high: +k.h, low: +k.l, close: +k.c, volume: +k.v });
         if (tick[a.id]) { tick[a.id].price = +k.c; tick[a.id].ts = Date.now(); emit('tick', a.id, tick[a.id]); }
+      } else if (st.indexOf('@aggTrade') > 0) {
+        var a3 = BY_BIN[d.s]; if (!a3 || a3.id !== sel.id) return;
+        emit('trade', a3.id, { p: +d.p, q: +d.q, side: d.m ? 'sell' : 'buy', t: d.T, kind: 'live' });
       } else if (st.indexOf('@depth') > 0) {
         var a2 = BY_BIN[st.split('@')[0].toUpperCase()];
         if (!a2 || a2.id !== sel.id || !d.bids) return;
@@ -334,6 +350,10 @@
         bnFetch('/api/v3/klines?symbol=' + a.key + '&interval=' + sel.tf + '&limit=2').then(function (rows) {
           var r = rows[rows.length - 1];
           if (a.id === sel.id && r) emit('candle', a.id, { time: Math.floor(r[0] / 1000), open: +r[1], high: +r[2], low: +r[3], close: +r[4], volume: +r[5] });
+        }, function () {});
+        bnFetch('/api/v3/trades?symbol=' + a.key + '&limit=12').then(function (rows) {
+          if (a.id !== sel.id || !Array.isArray(rows)) return;
+          rows.forEach(function (r) { if (r.time > lastRestTrade) { lastRestTrade = r.time; emit('trade', a.id, { p: +r.price, q: +r.qty, side: r.isBuyerMaker ? 'sell' : 'buy', t: r.time, kind: 'live' }); } });
         }, function () {});
         bnFetch('/api/v3/depth?symbol=' + a.key + '&limit=10').then(function (d) {
           if (a.id === sel.id) emit('book', a.id, { bids: d.bids.map(function (x) { return [+x[0], +x[1]]; }), asks: d.asks.map(function (x) { return [+x[0], +x[1]]; }), synthetic: false });
@@ -461,7 +481,7 @@
   var started = false;
   function start() {
     if (started) return; started = true;
-    ASSETS.forEach(function (a) { if (a.feed === 'sample') seedTicker(a, a.ref, a.ref); });
+    ASSETS.forEach(function (a) { if (a.feed === 'sample') seedTicker(a, a.ref, a.prev); });
     setInterval(stepSim, 1000);
     bnTickersRest().catch(function () {});
     connectWs();
@@ -483,6 +503,6 @@
     ASSETS: ASSETS, BY_ID: BY_ID, CLASS: CLASS, SUB: SUB, TF_SEC: TF_SEC, REF_DATE: REF_DATE,
     tick: tick, binance: bnStatus, on: on, start: start, select: select, getCandles: getCandles,
     badge: badge, bidAsk: bidAsk, historyNote: historyNote, simulated: simulated, priceAt: priceAt,
-    restHost: function () { return REST[restIdx]; }
+    restHost: function () { return REST[restIdx]; }, isOpen: isOpen
   };
 })(window);

@@ -6,64 +6,85 @@
 <title>Demo Exchange</title>
 <meta name="description" content="Demo Exchange: paper trading for commodities, crypto, forex, indices and stocks with leverage, plus prediction markets. No real money.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#0a0c10">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0c10'/%3E%3Cpath d='M9 7v18M16 5v22M23 9v14' stroke='%23d4ff4f' stroke-width='2' stroke-linecap='round'/%3E%3Crect x='6.5' y='11' width='5' height='9' rx='1.2' fill='%23d4ff4f'/%3E%3Crect x='13.5' y='8' width='5' height='11' rx='1.2' fill='%23d4ff4f'/%3E%3Crect x='20.5' y='13' width='5' height='7' rx='1.2' fill='%23d4ff4f'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0c0e10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0e10'/%3E%3Cpath d='M8 23V9h7.5a7 7 0 0 1 0 14H8z' fill='none' stroke='%23e6e8eb' stroke-width='2.4'/%3E%3Cpath d='M13 18l3-3 2.5 2.5L23 13' fill='none' stroke='%2326b37a' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="app" id="app">
 
   <header class="topbar">
-    <div class="brand">
-      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 7v18M16 5v22M23 9v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="6.5" y="11" width="5" height="9" rx="1.2" fill="currentColor"/><rect x="13.5" y="8" width="5" height="11" rx="1.2" fill="currentColor"/><rect x="20.5" y="13" width="5" height="7" rx="1.2" fill="currentColor"/></svg>
+    <div class="brand" aria-label="Demo Exchange">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
       <span class="brand-name">Demo<span class="brand-sub">Exchange</span></span>
     </div>
 
     <nav class="mainnav" role="tablist" aria-label="Product">
       <button class="nav-btn is-active" role="tab" aria-selected="true" data-view="trade">Trade</button>
       <button class="nav-btn" role="tab" aria-selected="false" data-view="predict">Predict</button>
+      <button class="nav-btn" role="tab" aria-selected="false" data-view="cmd">Commodities</button>
+      <button class="nav-btn" role="tab" aria-selected="false" data-view="account">Account</button>
+      <button class="nav-btn" role="tab" aria-selected="false" data-view="admin">Admin</button>
+      <button class="nav-btn" role="tab" aria-selected="false" data-view="build">Full build</button>
     </nav>
-
-    <div class="mode" id="modeSwitch" role="group" aria-label="Account mode">
-      <button class="is-active" data-mode="demo" aria-pressed="true">Demo</button>
-      <button data-mode="live" aria-pressed="false">Live</button>
-    </div>
 
     <div class="acct" aria-label="Paper account">
       <div class="acct-item"><span class="acct-k">Equity</span><span class="acct-v mono" id="acEquity">—</span></div>
       <div class="acct-item"><span class="acct-k">Available</span><span class="acct-v mono" id="acFree">—</span></div>
       <div class="acct-item hide-sm"><span class="acct-k">Unrealized</span><span class="acct-v mono" id="acUpnl">—</span></div>
       <div class="acct-item hide-md"><span class="acct-k">Realized</span><span class="acct-v mono" id="acReal">—</span></div>
+      <div class="acct-item hide-md" id="acLevelBox" data-tip="Equity / used margin. Margin call below 100%"><span class="acct-k">Margin level</span><span class="acct-v mono" id="acLevel">—</span></div>
     </div>
-    <div class="top-actions">
-      <button class="btn-ghost sm" id="btnSources" title="Where each price comes from">Data sources</button>
-      <button class="btn-ghost sm" id="btnReset" title="Restore the 100,000 USD paper balance and clear everything">Reset demo</button>
+
+    <div class="top-r">
+      <button class="acct-sel" id="acctSel" aria-haspopup="true" aria-expanded="false">
+        <span class="acct-sel-k">Paper account</span><span class="acct-sel-v mono">D-100248 · USD</span><i class="ph ph-caret-down" aria-hidden="true"></i>
+      </button>
+      <div class="mode" id="modeSwitch" role="group" aria-label="Account mode">
+        <button class="is-active" data-mode="demo" aria-pressed="true">Demo</button>
+        <button data-mode="live" aria-pressed="false">Live</button>
+      </div>
+      <button class="icon-btn" id="btnBell" aria-label="Notifications" aria-haspopup="true" aria-expanded="false" data-tip="Notifications"><i class="ph ph-bell" aria-hidden="true"></i><span class="bell-n mono" id="bellN" hidden>0</span></button>
+      <button class="icon-btn" id="btnSettings" aria-label="Settings" aria-haspopup="true" aria-expanded="false" data-tip="Settings"><i class="ph ph-gear-six" aria-hidden="true"></i></button>
     </div>
   </header>
 
   <div class="disclaimer" role="note">
-    <span class="pill pill-demo">Demo</span>
+    <span class="tag-demo">Demo</span>
     <strong>Demo · paper trading · no real money.</strong>
     <span class="net-notice" id="netNotice" role="status" hidden></span>
-    <span class="hide-xs">Each market shows its data source: <b class="src-live">Live</b> (Binance, gold-api), <b class="src-daily">Daily</b> (FX reference rates with simulated intraday ticks) or <b class="src-sim">Sample</b> (simulated). Not investment advice.</span>
+    <span class="hide-xs legend">Data source per market: <b class="src-live">Live</b> Binance, gold-api · <b class="src-daily">Daily</b> FX reference rates · <b class="src-sim">Sample</b> simulated. Not investment advice.</span>
+    <span class="disc-r">
+      <span class="clock mono hide-xs" id="clock" aria-label="Exchange clock"></span>
+      <button class="btn-text" id="btnSources" title="Where each price comes from">Data sources</button>
+      <button class="btn-text" id="btnReset" title="Restore the 100,000 USD paper balance and clear everything">Reset demo</button>
+    </span>
   </div>
+
+  <div class="risk-banner" id="riskBanner" role="alert" hidden></div>
 
   <!-- ===================== TRADE ===================== -->
   <main class="view view-trade is-active" id="viewTrade">
+    <span id="main" tabindex="-1"></span>
 
     <section class="movers" id="movers" aria-label="Commodities today">
-      <div class="mv-title"><b>Commodities today</b><span class="mv-groups" id="moversGroups"></span><span class="mv-note">Change vs reference close · metals live, energy &amp; agriculture sample</span></div>
-      <div class="mv-col"><span class="mv-k up">Top gainers</span><div class="mv-list" id="moversUp"></div></div>
-      <div class="mv-col"><span class="mv-k down">Top losers</span><div class="mv-list" id="moversDn"></div></div>
+      <div class="mv-title"><b>Commodities</b><span class="mv-groups" id="moversGroups"></span></div>
+      <div class="mv-col"><span class="mv-k up">Gainers</span><div class="mv-list" id="moversUp"></div></div>
+      <div class="mv-col"><span class="mv-k down">Losers</span><div class="mv-list" id="moversDn"></div></div>
+      <span class="mv-note">vs prev. close</span>
     </section>
 
     <div class="trade-grid">
       <aside class="panel watch" aria-label="Markets">
         <div class="watch-head">
-          <div class="seg seg-scroll" id="catTabs" role="tablist" aria-label="Asset class">
+          <div class="tabs tabs-scroll" id="catTabs" role="tablist" aria-label="Asset class">
+            <button class="seg-btn" data-cat="fav" aria-label="Starred markets" data-tip="Starred"><i class="ph-fill ph-star" aria-hidden="true"></i></button>
             <button class="seg-btn is-active" data-cat="cmd">Commodities</button>
             <button class="seg-btn" data-cat="crypto">Crypto</button>
             <button class="seg-btn" data-cat="fx">Forex</button>
@@ -71,13 +92,13 @@
             <button class="seg-btn" data-cat="stk">Stocks</button>
             <button class="seg-btn" data-cat="all">All</button>
           </div>
-          <div class="seg seg-sm seg-scroll" id="subTabs" aria-label="Commodity group">
+          <div class="chips-row" id="subTabs" aria-label="Commodity group">
             <button class="seg-btn is-active" data-sub="all">All</button>
             <button class="seg-btn" data-sub="metals">Metals</button>
             <button class="seg-btn" data-sub="energy">Energy</button>
             <button class="seg-btn" data-sub="ag">Agriculture</button>
           </div>
-          <label class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input id="watchSearch" type="search" placeholder="Search all markets" autocomplete="off" aria-label="Search markets"></label>
+          <label class="search"><i class="ph ph-magnifying-glass" aria-hidden="true"></i><input id="watchSearch" type="search" placeholder="Search markets" autocomplete="off" aria-label="Search markets"><kbd>/</kbd></label>
         </div>
         <div class="watch-cols"><span>Market</span><span>Last</span><span>Chg</span></div>
         <div class="watch-list" id="watchList"></div>
@@ -86,52 +107,69 @@
 
       <section class="panel chartwrap" id="chartwrap" aria-label="Chart">
         <div class="sym-head">
+          <button class="star-btn" id="symStar" aria-label="Star this market" aria-pressed="false" data-tip="Add to starred"><i class="ph ph-star" aria-hidden="true"></i></button>
           <div class="sym-id">
             <div class="sym-name" id="symName">—</div>
             <div class="sym-desc" id="symDesc">—</div>
           </div>
           <div class="sym-price">
             <div class="mono big" id="symPrice">—</div>
-            <div><span class="mono" id="symChg">—</span> <span class="chg-k" id="symChgK"></span></div>
+            <div class="sym-chg"><span class="mono" id="symChg">—</span> <span class="chg-k" id="symChgK"></span></div>
           </div>
           <dl class="sym-stats">
-            <div><dt>Data source</dt><dd id="symSrc">—</dd></div>
+            <div><dt>Session</dt><dd id="symSess">—</dd></div>
+            <div><dt>Source</dt><dd id="symSrc">—</dd></div>
             <div><dt id="symHighK">High</dt><dd class="mono" id="symHigh">—</dd></div>
             <div><dt id="symLowK">Low</dt><dd class="mono" id="symLow">—</dd></div>
             <div class="hide-sm"><dt id="symVolK">Volume</dt><dd class="mono" id="symVol">—</dd></div>
           </dl>
+          <button class="btn-ghost sm sym-alert" id="btnAlert" data-tip="Notify me when the price crosses a level"><i class="ph ph-bell-simple-ringing" aria-hidden="true"></i>Alert</button>
         </div>
         <dl class="specs" id="specs" aria-label="Contract specifications"></dl>
-        <div class="chart-bar">
-          <div class="seg" id="tfTabs" role="tablist" aria-label="Interval">
+        <div class="chart-bar" role="toolbar" aria-label="Chart tools">
+          <div class="tabs tabs-tight" id="tfTabs" role="tablist" aria-label="Interval">
             <button class="seg-btn is-active" data-tf="1m">1m</button>
             <button class="seg-btn" data-tf="5m">5m</button>
+            <button class="seg-btn" data-tf="15m">15m</button>
             <button class="seg-btn" data-tf="1h">1h</button>
+            <button class="seg-btn" data-tf="4h">4h</button>
             <button class="seg-btn" data-tf="1d">1d</button>
           </div>
+          <span class="vsep" aria-hidden="true"></span>
+          <div class="tabs tabs-tight" id="ctTabs" aria-label="Chart type">
+            <button class="seg-btn is-active" data-ct="candle" aria-label="Candles" data-tip="Candles"><i class="ph ph-chart-bar" aria-hidden="true"></i></button>
+            <button class="seg-btn" data-ct="line" aria-label="Line" data-tip="Line"><i class="ph ph-chart-line" aria-hidden="true"></i></button>
+          </div>
+          <button class="tool-btn is-on" id="btnVol" aria-pressed="true" data-tip="Show volume">Vol</button>
+          <button class="tool-btn" id="btnFit" data-tip="Reset zoom"><i class="ph ph-arrows-in-line-horizontal" aria-hidden="true"></i></button>
           <div class="chart-legend mono" id="chartLegend"></div>
           <div class="chart-note" id="chartNote"></div>
         </div>
-        <div class="chart" id="chart"><div class="chart-msg" id="chartMsg">Loading chart…</div></div>
+        <div class="chart" id="chart"><div class="chart-msg" id="chartMsg"><span class="sk-chart" aria-hidden="true"></span><span id="chartMsgT">Loading chart…</span></div></div>
       </section>
 
-      <aside class="panel book" aria-label="Order book">
+      <aside class="panel book" aria-label="Order book and trades">
         <div class="panel-title">Order book <span class="tag" id="bookTag">—</span></div>
         <div class="book-cols"><span>Price</span><span>Size</span><span>Total</span></div>
         <div class="book-side asks" id="bookAsks"></div>
         <div class="book-mid"><span class="mono" id="bookMid">—</span><span class="book-spread mono" id="bookSpread"></span></div>
         <div class="book-side bids" id="bookBids"></div>
+        <div class="book-ratio" id="bookRatio" aria-hidden="true"><i class="br-b"></i><i class="br-a"></i></div>
+        <div class="panel-title tape-title">Trades <span class="tag" id="tapeTag">—</span></div>
+        <div class="tape-cols"><span>Price</span><span>Size</span><span>Time</span></div>
+        <div class="tape" id="tape"></div>
       </aside>
 
       <aside class="panel ticket" aria-label="Order ticket">
         <div class="seg seg-side" id="sideTabs">
-          <button class="seg-btn is-active long" data-side="long">Long</button>
-          <button class="seg-btn short" data-side="short">Short</button>
+          <button class="seg-btn is-active long" data-side="long">Buy / Long</button>
+          <button class="seg-btn short" data-side="short">Sell / Short</button>
         </div>
-        <div class="seg seg-sm" id="typeTabs">
+        <div class="tabs tabs-under" id="typeTabs">
           <button class="seg-btn is-active" data-type="market">Market</button>
           <button class="seg-btn" data-type="limit">Limit</button>
         </div>
+        <div class="sess-note" id="sessNote" hidden></div>
 
         <div class="field" id="limitField" hidden>
           <label for="inLimit">Limit price</label>
@@ -172,17 +210,21 @@
         </dl>
         <div class="ticket-err" id="ticketErr" role="alert"></div>
         <button class="btn-submit long" id="btnSubmit">Open long</button>
-        <p class="fine">Isolated margin · maintenance margin 0.5% · market orders fill at bid/ask · paper trades only.</p>
+        <p class="fine">Isolated margin · maintenance margin 0.5% · market orders fill at bid/ask · paper trades only. <kbd>B</kbd> buy · <kbd>S</kbd> sell · <kbd>?</kbd> shortcuts</p>
       </aside>
 
       <section class="panel activity" aria-label="Positions and orders">
         <div class="act-head">
-          <div class="seg seg-flat" id="actTabs">
+          <div class="tabs tabs-under" id="actTabs">
             <button class="seg-btn is-active" data-act="pos">Positions <span class="count" id="cntPos">0</span></button>
             <button class="seg-btn" data-act="ord">Open orders <span class="count" id="cntOrd">0</span></button>
+            <button class="seg-btn" data-act="alerts">Alerts <span class="count" id="cntAlert">0</span></button>
             <button class="seg-btn" data-act="hist">History</button>
           </div>
-          <button class="btn-ghost sm" id="btnCloseAll" hidden>Close all</button>
+          <div class="act-tools">
+            <button class="btn-ghost sm" id="btnCsv" data-tip="Download this table as CSV"><i class="ph ph-download-simple" aria-hidden="true"></i>CSV</button>
+            <button class="btn-ghost sm" id="btnCloseAll" hidden>Close all</button>
+          </div>
         </div>
         <div class="table-scroll" id="actBody"></div>
       </section>
@@ -194,14 +236,20 @@
     <div class="pm-intro">
       <div>
         <h1>Prediction markets</h1>
-        <p>Trade YES / NO shares on sample events. A share pays <b>$1.00</b> if its outcome happens and <b>$0</b> if not, so the price reads as the market-implied probability. Yes/No, multi-outcome, range and 15-minute BTC Up/Down markets; market and limit orders; prices from an automated market maker (LMSR).</p>
+        <p>Trade YES and NO shares on sample events. A share pays <b>$1.00</b> if its outcome happens and <b>$0</b> if not, so the price reads as the market-implied probability. Prices come from an automated market maker (LMSR).</p>
       </div>
-      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Questions and odds are illustrative only, not forecasts, and are not linked to real exchanges or real results. Other traders’ flow is simulated. Use “Resolve (demo)” to settle a market yourself. BTC Up/Down rounds settle automatically from the Binance BTC/USDT price.</div>
+      <div class="pm-note"><span class="pill pill-sim">Sample markets</span> Questions and odds are illustrative, not forecasts, and are not linked to real exchanges or results. Other traders’ flow is simulated. You settle a sample market yourself with “Resolve (demo)”. BTC Up/Down rounds settle automatically from the Binance BTC/USDT price.</div>
     </div>
     <div class="pm-layout">
       <div class="pm-main">
         <div id="pmList">
-          <div class="seg seg-scroll pm-cats" id="pmCats" aria-label="Category"></div>
+          <div class="pm-bar">
+            <div class="tabs tabs-scroll pm-cats" id="pmCats" aria-label="Category"></div>
+            <div class="tabs tabs-tight" id="pmSort" aria-label="Sort">
+              <button class="seg-btn is-active" data-sort="vol">Volume</button>
+              <button class="seg-btn" data-sort="new">Closing soon</button>
+            </div>
+          </div>
           <div class="pm-grid" id="pmGrid"></div>
         </div>
         <div id="pmDetail" hidden></div>
@@ -209,25 +257,142 @@
       <aside class="panel pm-side">
         <div class="panel-title">Portfolio</div>
         <dl class="summary pm-sum" id="pmSummary"></dl>
+        <div class="panel-title mt">Combo slip <span class="tag">beta · sample</span></div>
+        <div id="pmCombo"></div>
         <div class="panel-title mt">Your shares</div>
         <div id="pmPositions"></div>
         <div class="panel-title mt">Open limit orders</div>
         <div id="pmOrders"></div>
+        <div class="panel-title mt">Leaderboard <span class="tag">sample</span></div>
+        <div id="pmBoard"></div>
         <div class="panel-title mt">Activity</div>
         <div id="pmHistory" class="pm-hist"></div>
       </aside>
     </div>
   </main>
 
+  <!-- ===================== COMMODITIES DESK ===================== -->
+  <main class="view view-cmd" id="viewCmd">
+    <div class="page-head">
+      <div><h1>Commodities desk</h1><p>Contract details, roll calendar, economic events and seasonality for the commodity markets in this demo.</p></div>
+      <div class="tabs tabs-under" id="cmdTabs">
+        <button class="seg-btn is-active" data-ct="specs">Contracts</button>
+        <button class="seg-btn" data-ct="roll">Roll calendar</button>
+        <button class="seg-btn" data-ct="eco">Economic calendar</button>
+        <button class="seg-btn" data-ct="season">Seasonality</button>
+      </div>
+    </div>
+    <div id="cmdBody"></div>
+  </main>
+
+  <!-- ===================== ACCOUNT ===================== -->
+  <main class="view view-account" id="viewAccount">
+    <div class="page-head">
+      <div><h1>Account and risk</h1><p>Paper account D-100248. Margin, exposure and performance are computed live from your demo positions.</p></div>
+      <div class="tabs tabs-under" id="accTabs">
+        <button class="seg-btn is-active" data-at="risk">Margin and risk</button>
+        <button class="seg-btn" data-at="perf">Performance</button>
+        <button class="seg-btn" data-at="journal">Trade journal</button>
+      </div>
+    </div>
+    <div id="accBody"></div>
+  </main>
+
+  <!-- ===================== ADMIN ===================== -->
+  <main class="view view-admin" id="viewAdmin">
+    <div class="page-head">
+      <div><h1>Admin console <span class="tag-demo">Demo</span></h1><p>Operator view with sample users and sample funding requests. Instrument settings you change here apply to trading in this browser.</p></div>
+      <div class="tabs tabs-under" id="admTabs">
+        <button class="seg-btn is-active" data-ad="users">Users and KYC</button>
+        <button class="seg-btn" data-ad="risk">Platform risk</button>
+        <button class="seg-btn" data-ad="inst">Instruments</button>
+        <button class="seg-btn" data-ad="markets">Prediction markets</button>
+        <button class="seg-btn" data-ad="funding">Deposits and withdrawals</button>
+      </div>
+    </div>
+    <div id="admBody"></div>
+  </main>
+
+  <!-- ===================== FULL BUILD ===================== -->
+  <main class="view view-build" id="viewBuild">
+    <article class="doc">
+      <header class="doc-head">
+        <h1>What the full build includes</h1>
+        <p>This demo runs entirely in the browser on paper money. The production version keeps the same screens and adds the server side, real accounts and regulated partners. Scope below is a plan, not a commitment to dates or licences.</p>
+      </header>
+
+      <section class="doc-sec">
+        <h2>Architecture</h2>
+        <div class="arch">
+          <div class="arch-row">
+            <div class="arch-box"><b>Web app</b><span>Next.js (React, TypeScript), server-rendered pages, the trading screens from this demo</span></div>
+            <div class="arch-box"><b>Admin console</b><span>Same codebase, role-based access, audit log of every operator action</span></div>
+          </div>
+          <div class="arch-arrow" aria-hidden="true">HTTPS / WebSocket</div>
+          <div class="arch-row">
+            <div class="arch-box"><b>API service</b><span>Node.js: accounts, orders, positions, margin checks, prediction markets</span></div>
+            <div class="arch-box"><b>Price service</b><span>Node.js: connects to data providers, normalises quotes, fans out over WebSocket</span></div>
+            <div class="arch-box"><b>Risk worker</b><span>Mark-to-market, margin calls, stop-out, settlement jobs</span></div>
+          </div>
+          <div class="arch-arrow" aria-hidden="true">SQL / pub-sub</div>
+          <div class="arch-row">
+            <div class="arch-box"><b>PostgreSQL</b><span>Users, ledger (double-entry), orders, markets, audit trail</span></div>
+            <div class="arch-box"><b>Redis</b><span>Live quotes cache, sessions, rate limits, job queue</span></div>
+          </div>
+          <div class="arch-arrow" aria-hidden="true">Provider APIs</div>
+          <div class="arch-row">
+            <div class="arch-box ext"><b>KYC provider</b><span>Identity documents, liveness, sanctions screening (e.g. Sumsub, Onfido, Persona)</span></div>
+            <div class="arch-box ext"><b>Crypto payments</b><span>Deposit addresses and payouts by a licensed processor (e.g. Fireblocks, BitGo, Coinbase Prime)</span></div>
+            <div class="arch-box ext"><b>Liquidity / broker</b><span>Real execution for live accounts through a regulated counterparty</span></div>
+          </div>
+        </div>
+        <p class="doc-note">Demo and live accounts use separate ledgers. Live trading is switched on per region only after the legal review for that region.</p>
+      </section>
+
+      <section class="doc-sec">
+        <h2>Data sources</h2>
+        <div class="table-scroll"><table class="tbl doc-tbl">
+          <thead><tr><th>Asset class</th><th>Free (good for demo and paper)</th><th>Paid (needed for live)</th></tr></thead>
+          <tbody>
+            <tr><td>Crypto</td><td>Binance, Coinbase and Kraken public WebSocket feeds</td><td>Kaiko, CoinAPI or the liquidity provider’s feed</td></tr>
+            <tr><td>Metals</td><td>gold-api.com spot (used in this demo)</td><td>Metals-API, Twelve Data, CME DataMine licence</td></tr>
+            <tr><td>Energy and agriculture</td><td>Delayed end-of-day quotes only</td><td>CME Group / ICE real-time data via Barchart, Twelve Data or the LP</td></tr>
+            <tr><td>Forex</td><td>Frankfurter / ECB daily reference rates (used in this demo)</td><td>OANDA, Twelve Data, Polygon.io, LP streaming quotes</td></tr>
+            <tr><td>Indices and stocks</td><td>Alpaca IEX feed, Finnhub free tier</td><td>Polygon.io (full SIP), exchange licences, LP prices for CFDs</td></tr>
+            <tr><td>Prediction markets</td><td>Polymarket and Kalshi public read-only APIs for reference data</td><td>Own matching engine and resolution process; data licence if odds are redistributed</td></tr>
+            <tr><td>Economic calendar</td><td>EIA, USDA, BLS and Federal Reserve official release schedules</td><td>Trading Economics or similar calendar API</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section class="doc-sec">
+        <h2>Four-week plan</h2>
+        <ol class="phases">
+          <li><b>Week 1</b><span>Project setup, database schema and ledger, authentication, price service with free feeds, trading screens connected to the API in paper mode.</span></li>
+          <li><b>Week 2</b><span>Order engine (market, limit, TP/SL), margin and liquidation worker, account and risk pages, admin console with roles and audit log.</span></li>
+          <li><b>Week 3</b><span>Prediction markets on the server (LMSR market maker, limit orders, combos, resolution workflow), commodity tools, notifications.</span></li>
+          <li><b>Week 4</b><span>KYC and crypto payment provider integration in sandbox mode, region rules (US and EU leverage caps and disclosures), load and security testing, deployment.</span></li>
+        </ol>
+        <p class="doc-note">Going live with real money depends on provider contracts and legal approval in each target region. That work runs alongside the build and is outside the four weeks.</p>
+      </section>
+
+      <section class="doc-sec">
+        <h2>What stays the same</h2>
+        <p>Every calculation shown in this demo (leverage, liquidation price, fees, LMSR pricing, margin level) is written as a separate engine with its own tests. The full build reuses that engine on the server, so the formulas behind the numbers in this demo are the ones the server runs.</p>
+      </section>
+    </article>
+  </main>
+
   <footer class="foot">
-    <span>Demo Exchange is a product demo. Paper balance only — no deposits, withdrawals, wallets or real orders.</span>
-    <span class="foot-r"><a href="#" id="lnkSources">Data sources</a> · Charts by <a href="https://www.tradingview.com/lightweight-charts/" target="_blank" rel="noopener">TradingView Lightweight Charts™</a></span>
+    <span>Demo Exchange is a product demo. Paper balance only. No deposits, withdrawals, wallets or real orders.</span>
+    <span class="foot-r"><a href="#" id="lnkSources">Data sources</a> · <button class="btn-text" id="lnkKeys">Keyboard shortcuts</button> · Charts by <a href="https://www.tradingview.com/lightweight-charts/" target="_blank" rel="noopener">TradingView Lightweight Charts™</a></span>
   </footer>
 </div>
 
+<div class="pop" id="pop" hidden></div>
 <div class="modal" id="modal" hidden>
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-x" id="modalX" aria-label="Close">×</button>
+    <button class="modal-x" id="modalX" aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button>
     <div id="modalBody"></div>
   </div>
 </div>
@@ -236,8 +401,12 @@
 <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="js/engine.js"></script>
 <script src="js/tests.js"></script>
+<script src="js/hours.js"></script>
 <script src="js/data.js"></script>
 <script src="js/predict.js"></script>
 <script src="js/app.js"></script>
+<script src="js/desk.js"></script>
+<script src="js/account.js"></script>
+<script src="js/admin.js"></script>
 </body>
 </html>

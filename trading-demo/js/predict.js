@@ -10,7 +10,7 @@
   var H = null, S = null;
 
   var CATS = ['Politics', 'Economics', 'Financials', 'Crypto', 'Commodities', 'Sports', 'Culture', 'Mentions', 'Climate & Weather', 'Tech'];
-  var COLORS = ['#d4ff4f', '#5ea8ff', '#ff8a4c', '#c38bff', '#3fd0a8', '#ff5f8f'];
+  var COLORS = ['#d7dadd', '#8ea4c8', '#c9a46a', '#93b592', '#b58fa8', '#7fb0b5'];   // categorical, muted
   var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   function ceilTo(x, step) { return Math.ceil(x / step) * step; }
@@ -50,7 +50,7 @@
         source: 'Federal Reserve FOMC statement.' },
       { id: 'cpi-dec', cat: 'Economics', type: 'range', b: 4000, close: 'Jan 2027 (BLS release)',
         q: 'US CPI inflation (YoY, NSA) for December 2026',
-        outcomes: ['Below 2.5%', '2.5% – 3.0%', '3.0% – 3.5%', 'Above 3.5%'], p0: [0.15, 0.35, 0.32, 0.18],
+        outcomes: ['Below 2.5%', '2.5% - 3.0%', '3.0% - 3.5%', 'Above 3.5%'], p0: [0.15, 0.35, 0.32, 0.18],
         rule: 'Resolves to the bucket containing the 12-month change of CPI-U for December 2026, as first published. Bucket edges belong to the higher bucket.',
         source: 'U.S. Bureau of Labor Statistics, CPI news release.' },
       { id: 'rec-27', cat: 'Economics', type: 'binary', b: 5000, close: 'Dec 31, 2027', p0: [0.28],
@@ -59,7 +59,7 @@
         source: 'NBER Business Cycle Dating Committee announcements.' },
       { id: 'spx-range', cat: 'Financials', type: 'range', b: 4000, close: 'Dec 31, 2026',
         q: 'S&P 500 closing level on Dec 31, 2026',
-        outcomes: ['Below ' + (sc - 500).toLocaleString('en-US'), (sc - 500).toLocaleString('en-US') + ' – ' + (sc - 250).toLocaleString('en-US'), (sc - 250).toLocaleString('en-US') + ' – ' + sc.toLocaleString('en-US'), sc.toLocaleString('en-US') + ' – ' + (sc + 250).toLocaleString('en-US'), (sc + 250).toLocaleString('en-US') + ' – ' + (sc + 500).toLocaleString('en-US'), 'Above ' + (sc + 500).toLocaleString('en-US')],
+        outcomes: ['Below ' + (sc - 500).toLocaleString('en-US'), (sc - 500).toLocaleString('en-US') + ' - ' + (sc - 250).toLocaleString('en-US'), (sc - 250).toLocaleString('en-US') + ' - ' + sc.toLocaleString('en-US'), sc.toLocaleString('en-US') + ' - ' + (sc + 250).toLocaleString('en-US'), (sc + 250).toLocaleString('en-US') + ' - ' + (sc + 500).toLocaleString('en-US'), 'Above ' + (sc + 500).toLocaleString('en-US')],
         p0: [0.12, 0.14, 0.2, 0.22, 0.17, 0.15],
         rule: 'Resolves to the bucket containing the official S&P 500 index close on the last trading day of 2026. Edges belong to the higher bucket.',
         source: 'S&P Dow Jones Indices official close.' },
@@ -69,7 +69,7 @@
         source: 'Binance BTC/USDT spot market.' },
       { id: 'btc-range', cat: 'Crypto', type: 'range', b: 5000, close: 'Dec 31, 2026',
         q: 'BTC price on Dec 31, 2026 (23:59 UTC)',
-        outcomes: ['Below ' + k(c - step), k(c - step) + ' – ' + k(c), k(c) + ' – ' + k(c + step), k(c + step) + ' – ' + k(c + 2 * step), 'Above ' + k(c + 2 * step)],
+        outcomes: ['Below ' + k(c - step), k(c - step) + ' - ' + k(c), k(c) + ' - ' + k(c + step), k(c + step) + ' - ' + k(c + 2 * step), 'Above ' + k(c + 2 * step)],
         p0: [0.18, 0.27, 0.27, 0.17, 0.11],
         rule: 'Resolves to the bucket containing the BTC/USDT last price at 23:59 UTC on Dec 31, 2026. Edges belong to the higher bucket.',
         source: 'Binance BTC/USDT spot market.' },
@@ -83,7 +83,7 @@
         source: 'LBMA Gold Price PM (reference), spot XAU/USD.' },
       { id: 'brent-range', cat: 'Commodities', type: 'range', b: 4000, close: 'Dec 31, 2026',
         q: 'Brent crude front-month settlement on Dec 31, 2026',
-        outcomes: ['Below $95', '$95 – $105', '$105 – $115', '$115 – $125', 'Above $125'], p0: [0.14, 0.24, 0.30, 0.20, 0.12],
+        outcomes: ['Below $95', '$95 - $105', '$105 - $115', '$115 - $125', 'Above $125'], p0: [0.14, 0.24, 0.30, 0.20, 0.12],
         rule: 'Resolves to the bucket containing the ICE Brent front-month settlement price on the last trading day of 2026.',
         source: 'ICE Futures Europe settlement prices.' },
       { id: 'wti-100', cat: 'Commodities', type: 'binary', b: 5000, close: 'Nov 30, 2026', p0: [0.47],
@@ -91,7 +91,7 @@
         rule: 'Resolves YES if the NYMEX WTI front-month settlement on Nov 30, 2026 is above $100.00.',
         source: 'CME Group NYMEX settlements.' },
       { id: 'nba-27', cat: 'Sports', type: 'multi', b: 4000, close: 'Jun 2027',
-        q: '2026–27 NBA Champion',
+        q: '2026-27 NBA Champion',
         outcomes: ['Oklahoma City Thunder', 'Boston Celtics', 'Denver Nuggets', 'New York Knicks', 'Cleveland Cavaliers', 'Any other team'],
         p0: [0.22, 0.14, 0.10, 0.10, 0.10, 0.34],
         rule: 'Resolves to the team that wins the 2027 NBA Finals.',
@@ -110,7 +110,7 @@
         source: 'Federal Reserve press conference transcript / video.' },
       { id: 'nyc-snow', cat: 'Climate & Weather', type: 'range', b: 3000, close: 'Jan 1, 2027',
         q: 'Total December 2026 snowfall in Central Park, NYC',
-        outcomes: ['Under 1 in', '1 – 4 in', '4 – 8 in', '8 – 12 in', 'Over 12 in'], p0: [0.30, 0.32, 0.20, 0.10, 0.08],
+        outcomes: ['Under 1 in', '1 - 4 in', '4 - 8 in', '8 - 12 in', 'Over 12 in'], p0: [0.30, 0.32, 0.20, 0.10, 0.08],
         rule: 'Resolves to the bucket containing the monthly snowfall total for Central Park in December 2026.',
         source: 'NOAA / National Weather Service monthly climate report (CLM).' },
       { id: 'warm-26', cat: 'Climate & Weather', type: 'binary', b: 4000, close: 'Jan 2027 (NASA release)', p0: [0.35],
@@ -293,6 +293,116 @@
   }
   function removeOrder(id) { S.pm.orders = S.pm.orders.filter(function (o) { return o.id !== id; }); }
 
+  /* ---- combos (parlays): 2-3 legs from different markets, priced as independent events ---- */
+  var COMBO_MIN = 2, COMBO_MAX = 3;
+  function legPrice(l) { var m = mk(l.mid); return m ? side(m, l.i, l.s) : 0; }
+  function legLabel(l) { var m = mk(l.mid); return m ? label(m, l.i, l.s) : ''; }
+  function slipPrice() { return S.pm.slip.reduce(function (a, l) { return a * legPrice(l); }, 1); }
+  function addLeg(m, i, s) {
+    if (!m || m.status !== 'open') return 'Only open markets can go into a combo.';
+    if (m.auto) return '15-minute rounds cannot be combined.';
+    var have = S.pm.slip.filter(function (l) { return l.mid === m.id; })[0];
+    if (have) { have.i = i; have.s = s; return { replaced: true }; }
+    if (S.pm.slip.length >= COMBO_MAX) return 'A combo has at most ' + COMBO_MAX + ' legs.';
+    S.pm.slip.push({ mid: m.id, i: i, s: s });
+    return { added: true };
+  }
+  function removeLeg(mid) { S.pm.slip = S.pm.slip.filter(function (l) { return l.mid !== mid; }); }
+  function placeCombo(stake) {
+    var legs = S.pm.slip;
+    if (legs.length < COMBO_MIN) return 'Add at least ' + COMBO_MIN + ' legs from different markets.';
+    if (!legs.every(function (l) { var m = mk(l.mid); return m && m.status === 'open'; })) return 'One of the legs is no longer open.';
+    if (!validNum(stake)) return 'Enter a stake greater than 0.';
+    if (stake < 1) return 'Minimum stake is $1.';
+    if (stake > S.balance + 1e-9) return 'Insufficient paper balance (' + H.usd(S.balance) + ' available).';
+    var price = slipPrice();
+    if (!(price >= 0.001)) return 'Combined probability is below 0.1%: pick other legs.';
+    var c = { id: 'cb' + Date.now().toString(36) + Math.floor(Math.random() * 1e4), legs: legs.map(function (l) { return { mid: l.mid, i: l.i, s: l.s, p0: legPrice(l), q: mk(l.mid).q, what: legLabel(l), res: null }; }),
+              stake: stake, price: price, payout: stake / price, status: 'open', created: Date.now() };
+    S.balance -= stake;
+    S.pm.combos.unshift(c);
+    S.pm.slip = [];
+    S.pm.hist.unshift({ t: Date.now(), kind: 'Combo', mid: c.legs[0].mid, q: c.legs.length + '-leg combo', what: c.legs.map(function (l) { return l.what; }).join(' + '), sh: null, usd: stake, pnl: null });
+    return c;
+  }
+  function comboValue(c) { return c.status !== 'open' ? 0 : c.payout * c.legs.reduce(function (a, l) { return a * (l.res === 'won' ? 1 : legPrice(l)); }, 1); }
+  function settleCombos(m, w) {
+    (S.pm.combos || []).forEach(function (c) {
+      if (c.status !== 'open') return;
+      var touched = false;
+      c.legs.forEach(function (l) { if (l.mid === m.id && l.res == null) { l.res = E.payout(l.i, l.s, 1, w) > 0 ? 'won' : 'lost'; touched = true; } });
+      if (!touched) return;
+      if (c.legs.some(function (l) { return l.res === 'lost'; })) {
+        c.status = 'lost'; c.settledAt = Date.now();
+        S.pmRealized = (S.pmRealized || 0) - c.stake;
+        S.pm.hist.unshift({ t: Date.now(), kind: 'Combo lost', mid: m.id, q: c.legs.length + '-leg combo', what: c.legs.map(function (l) { return l.what; }).join(' + '), sh: null, usd: 0, pnl: -c.stake });
+        H.toast('Combo lost', 'A leg settled against it: ' + m.q + ' · ' + H.signed(-c.stake), 'bad');
+      } else if (c.legs.every(function (l) { return l.res === 'won'; })) {
+        c.status = 'won'; c.settledAt = Date.now();
+        S.balance += c.payout;
+        S.pmRealized = (S.pmRealized || 0) + (c.payout - c.stake);
+        S.pm.hist.unshift({ t: Date.now(), kind: 'Combo won', mid: m.id, q: c.legs.length + '-leg combo', what: c.legs.map(function (l) { return l.what; }).join(' + '), sh: null, usd: c.payout, pnl: c.payout - c.stake });
+        H.toast('Combo won', 'All ' + c.legs.length + ' legs settled in your favour · paid ' + H.usd(c.payout), 'ok');
+      }
+    });
+    S.pm.slip = S.pm.slip.filter(function (l) { return l.mid !== m.id; });
+  }
+
+  /* ---- operator-created markets (admin console) ---- */
+  function createMarket(d) {
+    var title = String(d.q || '').trim(), type = d.type, outs;
+    if (title.length < 10) return 'Title needs at least 10 characters.';
+    if (title.length > 160) return 'Title is limited to 160 characters.';
+    if (CATS.indexOf(d.cat) < 0) return 'Choose a category.';
+    if (type === 'binary') outs = ['Yes', 'No'];
+    else if (type === 'multi' || type === 'range') {
+      outs = String(d.outcomes || '').split(/\n|,/).map(function (x) { return x.trim(); }).filter(Boolean);
+      if (outs.length < 2) return 'Enter at least 2 outcomes (one per line).';
+      if (outs.length > 8) return 'At most 8 outcomes.';
+      var seen = {}; for (var i = 0; i < outs.length; i++) { var kk = outs[i].toLowerCase(); if (seen[kk]) return 'Outcome "' + outs[i] + '" is listed twice.'; seen[kk] = 1; }
+    } else return 'Choose a market type.';
+    var ends = Date.parse(d.closeDate + 'T23:59:00Z');
+    if (!isFinite(ends)) return 'Pick a closing date.';
+    if (ends < Date.now() + 3600000) return 'The closing date must be in the future.';
+    var rule = String(d.rule || '').trim();
+    if (rule.length < 20) return 'Resolution rules need at least 20 characters.';
+    var b = +d.b || 3000;
+    if (!(b >= 500 && b <= 20000)) return 'Liquidity (b) must be between 500 and 20,000.';
+    var p0 = outs.map(function () { return 1 / outs.length; });
+    var dt = new Date(ends);
+    var m = { id: 'cm-' + Date.now().toString(36), cat: d.cat, type: type, q: title, outcomes: outs, p0: p0, b: b,
+              close: MONTHS[dt.getUTCMonth()].slice(0, 3) + ' ' + dt.getUTCDate() + ', ' + dt.getUTCFullYear(), ends: ends,
+              rule: 'Operator market (demo). ' + rule, source: String(d.source || '').trim() || 'Set by the operator.', qv: E.lmsrInit(p0, b),
+              status: 'open', winner: null, vol: 0, trades: 0, hist: [[Math.floor(Date.now() / 1000), p0.slice()]], custom: true, createdAt: Date.now() };
+    S.pm.markets.push(m);
+    return m;
+  }
+
+  /* ---- sample discussion and leaderboard (clearly labelled sample; no real people) ---- */
+  function rng(seedStr) { var h = 2166136261; for (var i = 0; i < seedStr.length; i++) { h ^= seedStr.charCodeAt(i); h = Math.imul(h, 16777619); } return function () { h = Math.imul(h ^ (h >>> 15), 2246822507) ^ Math.imul(h ^ (h >>> 13), 3266489909); h ^= h >>> 16; return (h >>> 0) / 4294967296; }; }
+  var CM_BIN = ['Took a small YES position at {p}. I will add if it dips below {lo}.', 'NO looks cheap to me at {q}. Keeping it small.', 'Read the resolution rules twice. The source matters more than the headline here.',
+    'Filled 300 shares with very little slippage, the book is deeper than it looks.', 'Selling half of my position here and letting the rest ride.', 'Resting a limit at {lo} and walking away for the day.',
+    'The price moved {mv} points in the last hour without any news. Probably one large order.', 'Fair value for me is close to the current price. Not trading this one.'];
+  var CM_MULTI = ['{o} at {p} is the cheapest outcome that still looks plausible to me.', 'Splitting my stake across the two middle outcomes.', 'Buying NO on {o}. The crowd seems too confident.',
+    'Edges belong to the higher bucket, worth checking before you size up.', 'I hold YES on {o} and NO on the favourite. Small positions on both.', 'Volume picked up on {o} today, watching the book.'];
+  function sampleComments(m) {
+    var r = rng(m.id), n = 4 + Math.floor(r() * 3), out = [], lst = m.type === 'binary' ? CM_BIN : CM_MULTI, pool = lst.slice();
+    for (var k = 0; k < n; k++) {
+      var j = m.type === 'binary' ? 0 : Math.floor(r() * m.outcomes.length);
+      if (!pool.length) pool = lst.slice();
+      var t = pool.splice(Math.floor(r() * pool.length), 1)[0];
+      var pp = m.type === 'binary' ? m.p0[0] : m.p0[j];
+      var txt = t.replace('{p}', Math.round(pp * 100) + '¢').replace('{q}', Math.round((1 - pp) * 100) + '¢').replace('{lo}', Math.max(1, Math.round(pp * 100) - 4) + '¢')
+        .replace('{mv}', (1 + Math.floor(r() * 4))).replace(/\{o\}/g, m.outcomes[j]);
+      var sd = r() < 0.6 ? 'yes' : 'no';
+      out.push({ who: 'trader_' + (11 + Math.floor(r() * 880)), text: txt, ago: Math.floor(8 + Math.pow(r(), 2) * 2800), pos: (sd === 'yes' ? 'YES ' : 'NO ') + (m.type === 'binary' ? '' : m.outcomes[j] + ' ') + (20 + Math.floor(r() * 900)) });
+    }
+    out.sort(function (a, b) { return a.ago - b.ago; });
+    return out;
+  }
+  function ago(min) { return min < 60 ? min + 'm' : min < 1440 ? Math.floor(min / 60) + 'h' : Math.floor(min / 1440) + 'd'; }
+  var BOARD = (function () { var r = rng('leaderboard'), list = []; for (var k = 0; k < 9; k++) list.push({ who: 'trader_' + (100 + Math.floor(r() * 899)), pnl: Math.round((4200 - k * 430) * (0.7 + r() * 0.5) * 100) / 100, vol: Math.round(20000 + r() * 160000), win: 0.45 + r() * 0.25 }); return list; })();
+
   function resolve(m, w) {
     if (m.status !== 'open' && m.status !== 'closing') return null;
     S.pm.orders.filter(function (o) { return o.mid === m.id; }).forEach(function (o) { cancelOrder(o.id, true); });
@@ -310,6 +420,7 @@
     var fin = m.outcomes.map(function (_, j) { return j === w ? 1 : 0; });
     if (last && last[0] >= t) last[1] = fin; else m.hist.push([t, fin]);
     log('Resolved', m, w, 'yes', null, payout, payout - basis);
+    settleCombos(m, w);
     return m.settled;
   }
 
@@ -343,6 +454,7 @@
       Object.keys(h).forEach(function (key) { var p = key.split(':'); v += h[key].sh * side(m, +p[0], p[1]); });
     });
     S.pm.orders.forEach(function (o) { var m = mk(o.mid); if (!m) return; v += o.dir === 'buy' ? o.rem : o.rem * side(m, o.i, o.s); });
+    (S.pm.combos || []).forEach(function (c) { v += comboValue(c); });
     return v;
   }
   function unrealized() {
@@ -353,11 +465,22 @@
       Object.keys(h).forEach(function (key) { var p = key.split(':'); u += h[key].sh * side(m, +p[0], p[1]) - h[key].cost; });
     });
     S.pm.orders.forEach(function (o) { var m = mk(o.mid); if (m && o.dir === 'sell') u += o.rem * side(m, o.i, o.s) - o.basis; });
+    (S.pm.combos || []).forEach(function (c) { if (c.status === 'open') u += comboValue(c) - c.stake; });
     return u;
   }
 
   /* ---------------- rendering: grid ---------------- */
-  var el = {}, filter = 'All', detail = null, dchart = null, dseries = [];
+  var el = {}, filter = 'All', detail = null, dchart = null, dseries = [], sortBy = 'vol';
+  var ENDS = { 'house-26': '2026-11-03', 'pres-28': '2028-11-07', 'fed-dec': '2026-12-09', 'cpi-dec': '2027-01-13', 'rec-27': '2027-12-31', 'spx-range': '2026-12-31',
+    'btc-above': '2026-12-31', 'btc-range': '2026-12-31', 'eth-above': '2026-12-31', 'brent-range': '2026-12-31', 'wti-100': '2026-11-30', 'nba-27': '2027-06-20',
+    'sb-afc': '2027-02-14', 'xmas-no1': '2026-12-22', 'fed-mention': '2026-12-09', 'nyc-snow': '2027-01-01', 'warm-26': '2027-01-15', 'ai-top': '2026-12-31', 'aapl-top': '2026-12-31' };
+  function endsOf(m) {
+    if (m.auto) return m.round.end;
+    if (m.ends) return m.ends;
+    if (ENDS[m.id]) return Date.parse(ENDS[m.id] + 'T23:59:00Z');
+    if (m.id === 'gold-month') { var n = new Date(); return Date.UTC(n.getUTCFullYear(), n.getUTCMonth() + 1, 0, 21); }
+    return 9e15;
+  }
 
   function typeTag(m) { if (m.auto) return '15 min'; return { binary: 'Yes / No', multi: 'Multi-outcome', range: 'Range' }[m.type]; }
 
@@ -410,6 +533,8 @@
   function renderGrid() {
     if (!S.pm) { el.grid.innerHTML = '<div class="empty">Loading sample markets…</div>'; return; }
     var list = S.pm.markets.filter(function (m) { return filter === 'All' || m.cat === filter; });
+    if (sortBy === 'new') list = list.slice().sort(function (a, b) { return endsOf(a) - endsOf(b); });
+    else list = list.slice().sort(function (a, b) { return (b.auto ? 1e12 : b.vol) - (a.auto ? 1e12 : a.vol); });
     el.grid.innerHTML = list.map(function (m) { return '<article class="panel pm-card' + (m.status !== 'open' ? ' is-resolved' : '') + '" data-card="' + m.id + '">' + cardHtml(m) + '</article>'; }).join('') ||
       '<div class="empty">No markets in this category.</div>';
     el.cats.querySelectorAll('.seg-btn').forEach(function (b) { b.classList.toggle('is-active', b.dataset.cat === filter); });
@@ -445,14 +570,88 @@
         '<button class="linkbtn" data-pm="cancel" data-o="' + o.id + '">Cancel</button></div>';
     }).join('') || '<div class="empty">No open limit orders.</div>';
     el.hist.innerHTML = S.pm.hist.slice(0, 40).map(function (h) {
-      return '<div class="pmh"><span class="pmh-k">' + esc(h.kind) + '</span><span class="pmh-q">' + esc(h.what) + ' — ' + esc(h.q) + '</span>' +
+      return '<div class="pmh"><span class="pmh-k">' + esc(h.kind) + '</span><span class="pmh-q">' + esc(h.what) + ' · ' + esc(h.q) + '</span>' +
         '<span class="mono">' + (h.sh != null ? h.sh.toFixed(2) + ' sh' : '') + (h.sh != null && h.usd != null ? ' · ' : '') + (h.usd != null ? H.usd(h.usd) : '') + (h.limit ? ' @' + cents(h.limit) : '') +
         (h.pnl != null ? ' · <span class="' + (h.pnl >= 0 ? 'up' : 'down') + '">' + H.signed(h.pnl) + '</span>' : '') + '</span>' +
         '<span class="pmh-t">' + new Date(h.t).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) + '</span></div>';
     }).join('') || '<div class="empty">Your prediction trades will appear here.</div>';
+    renderCombo(); renderBoard();
     el.sum.innerHTML = '<div><dt>Shares value</dt><dd class="mono">' + H.usd(holdingsValue()) + '</dd></div>' +
       '<div><dt>Unrealized</dt><dd class="mono ' + (unrealized() >= 0 ? 'up' : 'down') + '">' + H.signed(unrealized()) + '</dd></div>' +
       '<div><dt>Realized</dt><dd class="mono ' + ((S.pmRealized || 0) >= 0 ? 'up' : 'down') + '">' + H.signed(S.pmRealized || 0) + '</dd></div>';
+  }
+
+  /* combo slip: structure is rebuilt only when legs change, numbers update in place (keeps the stake input focused) */
+  var comboKey = '', comboStake = '25';
+  function renderCombo() {
+    if (!el.combo) return;
+    var slip = S.pm.slip, open = S.pm.combos.filter(function (c) { return c.status === 'open'; }), done = S.pm.combos.filter(function (c) { return c.status !== 'open'; }).slice(0, 4);
+    var key = JSON.stringify(slip) + '|' + S.pm.combos.map(function (c) { return c.id + c.status + c.legs.map(function (l) { return l.res || ''; }).join(''); }).join(',');
+    if (key !== comboKey) {
+      comboKey = key;
+      var h = '';
+      if (!slip.length) h += '<p class="fine" style="margin:6px 0 4px">Combine 2 or 3 outcomes from different markets into one ticket. It pays only if every leg is right. Use <b>Add to combo</b> on a market page.</p>';
+      else {
+        h += slip.map(function (l) { var m = mk(l.mid); return '<div class="combo-leg"><span class="q" title="' + esc(m.q) + '"><b class="' + l.s + '">' + esc(legLabel(l)) + '</b> · ' + esc(m.q) + '</span><span class="mono" data-cl="' + l.mid + '"></span><button class="combo-x" data-pm="combo-rm" data-m="' + l.mid + '" aria-label="Remove leg"><i class="ph ph-x" aria-hidden="true"></i></button></div>'; }).join('');
+        h += '<dl class="summary combo-sum"><div><dt>Combined price</dt><dd class="mono" id="cbPrice"></dd></div><div><dt>Pays if all legs win</dt><dd class="mono up" id="cbPay"></dd></div></dl>' +
+          '<div class="field" style="margin:8px 0"><div class="input"><input id="cbStake" class="mono" inputmode="decimal" autocomplete="off" aria-label="Combo stake" value="' + esc(comboStake) + '"><span class="unit">USD</span></div></div>' +
+          '<div class="ticket-err" id="cbErr"></div><div style="display:flex;gap:6px"><button class="btn-ghost sm" data-pm="combo-clear">Clear</button><button class="btn-primary sm" style="flex:1" data-pm="combo-place" id="cbGo">Place combo</button></div>' +
+          '<p class="fine">Priced as independent events (product of leg prices), no fee. Correlated legs are not adjusted in this demo.</p>';
+      }
+      if (open.length || done.length) h += '<div class="lbl" style="margin:10px 0 0">Your combos</div>' + open.concat(done).map(function (c) {
+        return '<div class="combo-bet"><span><b>' + c.legs.length + '-leg · ' + H.usd(c.stake) + '</b><span class="legs"><br>' + c.legs.map(function (l) { return esc(l.what) + (l.res ? ' (' + l.res + ')' : ''); }).join(' + ') + '</span></span>' +
+          '<span class="mono r">' + (c.status === 'open' ? '<span data-cv="' + c.id + '"></span><br><span class="muted">pays ' + H.usd(c.payout) + '</span>' : '<span class="' + (c.status === 'won' ? 'up' : 'down') + '">' + (c.status === 'won' ? 'Won ' + H.usd(c.payout) : 'Lost') + '</span>') + '</span></div>';
+      }).join('');
+      el.combo.innerHTML = h;
+      var inp = el.combo.querySelector('#cbStake');
+      if (inp) inp.addEventListener('input', function () { comboStake = inp.value.trim(); updCombo(); });
+    }
+    updCombo();
+  }
+  function updCombo() {
+    if (!el.combo) return;
+    S.pm.slip.forEach(function (l) { var x = el.combo.querySelector('[data-cl="' + l.mid + '"]'); if (x) x.textContent = cents(legPrice(l)); });
+    S.pm.combos.forEach(function (c) { var x = el.combo.querySelector('[data-cv="' + c.id + '"]'); if (x) x.textContent = 'value ' + H.usd(comboValue(c)); });
+    var pe = el.combo.querySelector('#cbPrice'); if (!pe) return;
+    var p = slipPrice(), v = pnum(comboStake), err = '';
+    pe.textContent = (p * 100).toFixed(2) + '% · ' + cents(p);
+    el.combo.querySelector('#cbPay').textContent = v > 0 && p > 0 ? H.usd(v / p) + ' (' + H.signed(v / p - v) + ')' : '—';
+    if (S.pm.slip.length < COMBO_MIN) err = 'Add at least one more leg from another market.';
+    else if (!(v > 0)) err = comboStake === '' ? '' : 'Enter a stake greater than 0.';
+    else if (v < 1) err = 'Minimum stake is $1.';
+    else if (v > S.balance + 1e-9) err = 'Insufficient paper balance.';
+    el.combo.querySelector('#cbErr').textContent = err;
+    el.combo.querySelector('#cbGo').disabled = !!err || !(v > 0);
+  }
+  function renderBoard() {
+    if (!el.board) return;
+    var you = (S.pmRealized || 0) + unrealized();
+    var list = BOARD.map(function (x) { return { who: x.who, pnl: x.pnl, me: false }; }).concat([{ who: 'You (D-100248)', pnl: you, me: true }]);
+    list.sort(function (a, b) { return b.pnl - a.pnl; });
+    var rows = list.map(function (x, i) { return '<tr' + (x.me ? ' class="me"' : '') + '><td class="mono">' + (i + 1) + '</td><td>' + esc(x.who) + '</td><td class="mono r ' + (x.pnl >= 0 ? 'up' : 'down') + '">' + H.signed(x.pnl) + '</td></tr>'; });
+    var html = '<table class="lb"><tbody>' + rows.join('') + '</tbody></table><p class="fine">Sample traders with made-up handles. Your row uses your real paper PnL in prediction markets.</p>';
+    if (el.board.innerHTML !== html) el.board.innerHTML = html;
+  }
+
+  function relatedHtml(m) {
+    var words = m.q.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 3; });
+    var scored = S.pm.markets.filter(function (x) { return x.id !== m.id && x.status === 'open' && !x.auto; }).map(function (x) {
+      var q = x.q.toLowerCase(), sc = (x.cat === m.cat ? 3 : 0);
+      words.forEach(function (w) { if (q.indexOf(w) >= 0) sc += 1; });
+      return { x: x, sc: sc };
+    }).filter(function (o) { return o.sc > 0; }).sort(function (a, b) { return b.sc - a.sc || b.x.vol - a.x.vol; }).slice(0, 4);
+    if (!scored.length) return '<div class="empty-st sm"><b>No related markets</b><span>Nothing else open in this category.</span></div>';
+    return scored.map(function (o) {
+      var x = o.x, pr = prices(x), top = 0; pr.forEach(function (p, j) { if (p > pr[top]) top = j; });
+      var lead = x.type === 'binary' ? 'Yes ' + Math.round(pr[0] * 100) + '%' : x.outcomes[top] + ' ' + Math.round(pr[top] * 100) + '%';
+      return '<button class="rel" data-pm="open" data-m="' + x.id + '"><span>' + esc(x.q) + '<small>' + esc(x.cat) + ' · closes ' + esc(x.close) + '</small></span><span class="mono">' + esc(lead) + '</span></button>';
+    }).join('');
+  }
+  function commentsHtml(m) {
+    var mine = (S.pm.comments && S.pm.comments[m.id]) || [];
+    var list = mine.map(function (c) { return '<div class="cm me"><div class="cm-h"><b>You (D-100248)</b><span>' + ago(Math.max(0, Math.round((Date.now() - c.t) / 60000))) + ' ago</span></div><p>' + esc(c.text) + '</p></div>'; }).join('');
+    list += sampleComments(m).map(function (c) { return '<div class="cm"><div class="cm-h"><b>' + c.who + '</b><span class="pos">' + esc(c.pos) + '</span><span>' + ago(c.ago) + ' ago</span></div><p>' + esc(c.text) + '</p></div>'; }).join('');
+    return '<div class="cm-form"><input class="text-in" id="cmIn" maxlength="280" placeholder="Share your view (stored in this browser only)" aria-label="Comment"><button class="btn-ghost" data-pm="comment" id="cmGo">Post</button></div>' + list;
   }
 
   /* ---------------- rendering: market detail ---------------- */
@@ -559,7 +758,7 @@
           '<div class="pd-chart" id="pdChart"></div>' +
           '<div class="pd-legend" id="pdLegend"></div>' +
           '<div class="table-scroll"><table class="tbl pd-out"><thead><tr><th>Outcome</th><th>Chance</th><th>Buy ' + (m.auto ? 'Up' : 'YES') + '</th><th>Buy ' + (m.auto ? 'Down' : 'NO') + '</th></tr></thead><tbody id="pdOutcomes">' + outcomesHtml(m) + '</tbody></table></div>' +
-          '<div class="pd-rules"><h4>Resolution rules</h4><p>' + esc(m.rule) + '</p><h4>Resolution source</h4><p>' + esc(m.source) + ' <span class="muted">' + (m.auto ? '(read automatically at the round start and end)' : '(reference only — this sample market is not connected to it)') + '</span></p>' +
+          '<div class="pd-rules"><h4>Resolution rules</h4><p>' + esc(m.rule) + '</p><h4>Resolution source</h4><p>' + esc(m.source) + ' <span class="muted">' + (m.auto ? '(read automatically at the round start and end)' : '(reference only: this sample market is not connected to it)') + '</span></p>' +
           (res || m.auto ? '' : '<button class="btn-ghost sm" data-pm="resolve" data-m="' + m.id + '">Resolve (demo)…</button>') +
           (res && m.auto ? '<button class="btn-ghost sm" data-pm="current">Open the current round →</button>' : '') + '</div>' +
         '</section>' +
@@ -568,8 +767,14 @@
           '<section class="panel" id="pdYou">' + youHtml(m) + '</section>' +
           '<section class="panel book pd-book" id="pdBook">' + renderBook(m) + '</section>' +
         '</aside>' +
+      '</div>' +
+      '<div class="pd-extra">' +
+        '<section class="sec"><div class="sec-h"><h2>Related markets</h2></div><div id="pdRel">' + relatedHtml(m) + '</div></section>' +
+        '<section class="sec"><div class="sec-h"><h2>Discussion</h2><span class="tag">sample comments</span></div><div id="pdCm">' + commentsHtml(m) + '</div></section>' +
       '</div>';
     bindTicket(m);
+    var cmIn = document.getElementById('cmIn');
+    if (cmIn) cmIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') postComment(m); });
     buildChart(m);
     updQuote();
   }
@@ -618,11 +823,12 @@
       '<div class="seg seg-side" id="ptSide"><button class="seg-btn long' + (d.s === 'yes' ? ' is-active' : '') + '" data-s="yes">' + sideName(m, 'yes') + ' <span class="mono" id="ptPy"></span></button><button class="seg-btn short' + (d.s === 'no' ? ' is-active' : '') + '" data-s="no">' + sideName(m, 'no') + ' <span class="mono" id="ptPn"></span></button></div>' +
       '<div class="pt-row"><div class="seg seg-sm" id="ptDir"><button class="seg-btn' + (d.dir === 'buy' ? ' is-active' : '') + '" data-dir="buy">Buy</button><button class="seg-btn' + (d.dir === 'sell' ? ' is-active' : '') + '" data-dir="sell">Sell</button></div>' +
       '<div class="seg seg-sm" id="ptType"><button class="seg-btn' + (d.type === 'market' ? ' is-active' : '') + '" data-type="market">Market</button><button class="seg-btn' + (d.type === 'limit' ? ' is-active' : '') + '" data-type="limit">Limit</button></div></div>' +
-      '<div class="field"' + (d.type === 'limit' ? '' : ' hidden') + ' id="ptLimF"><label for="ptLim">Limit price</label><div class="input"><input id="ptLim" class="mono" inputmode="decimal" autocomplete="off" value="' + esc(d.lim) + '" placeholder="1 – 99"><span class="unit">¢</span></div></div>' +
+      '<div class="field"' + (d.type === 'limit' ? '' : ' hidden') + ' id="ptLimF"><label for="ptLim">Limit price</label><div class="input"><input id="ptLim" class="mono" inputmode="decimal" autocomplete="off" value="' + esc(d.lim) + '" placeholder="1 - 99"><span class="unit">¢</span></div></div>' +
       '<div class="field"><label for="ptAmt" id="ptAmtL">' + (d.dir === 'buy' ? 'Amount' : 'Shares') + '</label><div class="input"><input id="ptAmt" class="mono" inputmode="decimal" autocomplete="off" value="' + esc(d.amt) + '"><span class="unit" id="ptUnit">' + (d.dir === 'buy' ? 'USD' : 'shares') + '</span></div>' +
       '<div class="chips" id="ptChips"></div></div>' +
       '<dl class="summary" id="ptSum"></dl><div class="ticket-err" id="ptErr" role="alert"></div>' +
       '<button class="btn-submit ' + (d.s === 'yes' ? 'long' : 'short') + '" id="ptGo"></button>' +
+      (m.auto ? '' : '<button class="btn-ghost sm" id="ptCombo" style="width:100%;margin-top:6px"><i class="ph ph-plus" aria-hidden="true"></i>Add to combo</button>') +
       '<p class="fine">No fees. Shares pay $1.00 if right, $0 if wrong. Paper balance ' + '<span class="mono" id="ptBal"></span>.</p>';
   }
 
@@ -665,8 +871,26 @@
       if (b.dataset.q) { amt.value = b.dataset.q === 'max' ? String(Math.floor(S.balance * 100) / 100) : b.dataset.q; detail.amt = amt.value; updQuote(); return; }
       if (b.dataset.f) { var h = hold(m)[hk(detail.i, detail.s)]; var hv2 = h ? h.sh : 0; amt.value = b.dataset.f === '1' ? String(hv2) : (Math.floor(hv2 * +b.dataset.f * 100) / 100).toFixed(2); detail.amt = amt.value; updQuote(); return; }
       if (b.id === 'ptGo') submit(m);
+      if (b.id === 'ptCombo') {
+        var r = addLeg(m, detail.i, detail.s);
+        if (typeof r === 'string') { document.getElementById('ptErr').textContent = r; return; }
+        H.toast(r.replaced ? 'Combo leg updated' : 'Added to combo', label(m, detail.i, detail.s) + ' · ' + m.q + ' (' + S.pm.slip.length + ' of ' + COMBO_MAX + ' legs)', 'ok');
+        H.changed(true);
+      }
     });
     amt.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(m); });
+  }
+
+  function postComment(m) {
+    var inp = document.getElementById('cmIn'); if (!inp) return;
+    var t = inp.value.trim();
+    if (t.length < 2) { inp.classList.add('bad'); return; }
+    inp.classList.remove('bad');
+    if (!S.pm.comments) S.pm.comments = {};
+    (S.pm.comments[m.id] = S.pm.comments[m.id] || []).unshift({ t: Date.now(), text: t.slice(0, 280) });
+    document.getElementById('pdCm').innerHTML = commentsHtml(m);
+    var n = document.getElementById('cmIn'); if (n) { n.addEventListener('keydown', function (e) { if (e.key === 'Enter') postComment(m); }); }
+    H.changed(true);
   }
 
   function submit(m) {
@@ -763,7 +987,7 @@
   function newRound(start) {
     var end = start + ROUND_MS;
     return { id: 'btc15-' + start, auto: 'btc15', cat: 'Crypto', type: 'binary', b: AUTO_B, outcomes: ['Up', 'Down'], p0: [0.5, 0.5],
-      q: 'Bitcoin Up or Down · ' + utc(start) + '–' + utc(end) + ' UTC', close: utc(end) + ' UTC',
+      q: 'Bitcoin Up or Down · ' + utc(start) + '-' + utc(end) + ' UTC', close: utc(end) + ' UTC',
       rule: 'Resolves UP if the BTC/USDT price at the end of the round (' + utc(end) + ' UTC) is greater than or equal to the price at the start (' + utc(start) + ' UTC, the “price to beat”); otherwise DOWN. Settles automatically from the price feed, no manual resolution. If the end price cannot be read, the round is voided and stakes are refunded.',
       source: 'Binance BTC/USDT public market data: open of the 1-minute candle at the round start and at the round end.',
       qv: E.lmsrInit([0.5, 0.5], AUTO_B), status: 'open', winner: null, vol: 0, trades: 0, hist: [[Math.floor(Date.now() / 1000), [0.5, 0.5]]],
@@ -881,7 +1105,7 @@
     var a = '<div><dt>Price to beat</dt><dd class="mono">' + (r.strike > 0 ? money(r.strike) : 'loading…') + '</dd></div>';
     var b = res ? '<div><dt>End price</dt><dd class="mono">' + (r.close ? money(r.close) : '—') + '</dd></div>'
                 : '<div><dt>BTC now</dt><dd class="mono" data-btcnow="' + m.id + '">' + money(btcNow()) + '</dd></div>';
-    var c = res ? '<div><dt>Round</dt><dd class="mono">' + utc(r.start) + '–' + utc(r.end) + '</dd></div>'
+    var c = res ? '<div><dt>Round</dt><dd class="mono">' + utc(r.start) + '-' + utc(r.end) + '</dd></div>'
                 : '<div><dt>Ends in</dt><dd class="mono" data-cd="' + r.end + '">' + mmss(r.end - Date.now()) + '</dd></div>';
     var src = wide ? '<p class="fine">Start price: ' + esc(r.strikeSrc || 'loading…') + (r.closeSrc ? ' · end price: ' + esc(r.closeSrc) : '') + '. Odds come from the demo market maker with simulated flow.</p>' : '';
     return '<dl class="pd-stats pm-auto">' + a + b + c + '</dl>' + src;
@@ -903,6 +1127,9 @@
   function ensure(px) {
     if (!S.pm || !S.pm.markets || !S.pm.markets.length || S.pm.v !== 2) S.pm = { v: 2, markets: build(px), pos: {}, orders: [], hist: [] };
     if (!S.pm.orders) S.pm.orders = [];
+    if (!S.pm.combos) S.pm.combos = [];
+    if (!S.pm.slip) S.pm.slip = [];
+    if (!S.pm.comments) S.pm.comments = {};
     // markets added to the catalogue after this browser saved its state
     var have = {}; S.pm.markets.forEach(function (m) { have[m.id] = true; });
     var missing = catalogue(px).filter(function (d) { return !have[d.id]; });
@@ -914,7 +1141,9 @@
     S = state; H = hooks;
     el = { grid: document.getElementById('pmGrid'), list: document.getElementById('pmList'), detail: document.getElementById('pmDetail'),
            cats: document.getElementById('pmCats'), pos: document.getElementById('pmPositions'), ord: document.getElementById('pmOrders'),
-           hist: document.getElementById('pmHistory'), sum: document.getElementById('pmSummary') };
+           hist: document.getElementById('pmHistory'), sum: document.getElementById('pmSummary'), combo: document.getElementById('pmCombo'), board: document.getElementById('pmBoard') };
+    var so = document.getElementById('pmSort');
+    if (so) so.addEventListener('click', function (e) { var b = e.target.closest('[data-sort]'); if (!b) return; sortBy = b.dataset.sort; so.querySelectorAll('.seg-btn').forEach(function (x) { x.classList.toggle('is-active', x === b); }); renderGrid(); });
     el.cats.innerHTML = ['All'].concat(CATS).map(function (c) { return '<button class="seg-btn" data-cat="' + c + '">' + c + '</button>'; }).join('');
     el.cats.addEventListener('click', function (e) { var b = e.target.closest('[data-cat]'); if (!b) return; filter = b.dataset.cat; renderGrid(); });
     document.getElementById('viewPredict').addEventListener('click', function (e) {
@@ -924,6 +1153,15 @@
       if (a === 'cancel') { cancelOrder(b.dataset.o); H.toast('Limit order cancelled', 'Reserved funds/shares returned', 'ok'); H.changed(true); if (detail) renderDetail(false); else renderSide(); return; }
       if (a === 'current') { var cr = currentRound(); if (cr) openDetail(cr); return; }
       if (a === 'pick') { detail.i = +b.dataset.i; detail.s = b.dataset.s; detail.dir = 'buy'; detail.amt = detail.amt || '100'; renderDetail(false); return; }
+      if (a === 'combo-rm') { removeLeg(b.dataset.m); H.changed(true); return; }
+      if (a === 'combo-clear') { S.pm.slip = []; H.changed(true); return; }
+      if (a === 'combo-place') {
+        var cr = placeCombo(pnum(comboStake));
+        if (typeof cr === 'string') { var ce = document.getElementById('cbErr'); if (ce) ce.textContent = cr; return; }
+        H.toast('Combo placed · ' + cr.legs.length + ' legs', 'Stake ' + H.usd(cr.stake) + ' · pays ' + H.usd(cr.payout) + ' if every leg wins', 'ok');
+        H.changed(true); return;
+      }
+      if (a === 'comment') { if (detail) postComment(detail.m); return; }
       var m = mk(b.dataset.m); if (!m) return;
       if (a === 'open') openDetail(m);
       else if (a === 'trade') openDetail(m, +b.dataset.i, b.dataset.s, b.dataset.dir);
@@ -938,5 +1176,7 @@
 
   root.VXPredict = { init: init, ensure: ensure, render: render, renderAll: renderAll, renderSide: renderSide, setState: setState,
                      value: holdingsValue, unrealized: unrealized, prices: prices, buy: buy, sell: sell, placeLimit: placeLimit,
-                     cancelOrder: cancelOrder, resolve: resolve, flow: flow, market: mk, openDetail: openDetail, closeDetail: closeDetail };
+                     cancelOrder: cancelOrder, resolve: resolve, flow: flow, market: mk, openDetail: openDetail, closeDetail: closeDetail,
+                     createMarket: createMarket, addLeg: addLeg, removeLeg: removeLeg, placeCombo: placeCombo, comboValue: comboValue, slipPrice: slipPrice,
+                     markets: function () { return S && S.pm ? S.pm.markets : []; }, CATS: CATS, label: label, endsOf: endsOf };
 })(window);
