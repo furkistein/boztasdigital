@@ -441,7 +441,10 @@ footer { margin-top: 112px; border-top: 1px solid var(--line); padding: 56px 0 3
   var subs = [], queued = false, status = { bin: 'pending', gold: 'pending', binMs: null, goldMs: null };
   function emit() {
     if (queued) return; queued = true;
-    (root.requestAnimationFrame || setTimeout)(function () { queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); });
+    // rAF pauses in background tabs; the timeout makes sure prices still repaint
+    var done = false;
+    function run() { if (done) return; done = true; queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); }
+    (root.requestAnimationFrame || setTimeout)(run); setTimeout(run, 500);
   }
   function getJson(url, ms) {
     var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
@@ -588,7 +591,7 @@ footer { margin-top: 112px; border-top: 1px solid var(--line); padding: 56px 0 3
     $('ccSrc').textContent = s.src;
     $('ccName').textContent = m.name + ' · ' + m.sym + ' · ' + m.unit.replace(' / ', ' per ');
     $('ccPx').textContent = DX.fmt(m);
-    var c = $('ccChg'); c.textContent = DX.pct(m) + ' today'; c.className = 'c ' + DX.dir(m);
+    var c = $('ccChg'); c.textContent = DX.pct(m) + (m.src === 'bin' ? ' 24h' : ' vs. last close'); c.className = 'c ' + DX.dir(m);
   }
   var plot = $('ccPlot'), tip = $('ccTip');
   plot.addEventListener('pointermove', function (e) {

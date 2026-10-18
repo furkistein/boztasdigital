@@ -536,7 +536,10 @@ footer { border-top: 1px solid var(--line); margin-top: 104px; padding: 64px 0 4
   var subs = [], queued = false, status = { bin: 'pending', gold: 'pending', binMs: null, goldMs: null };
   function emit() {
     if (queued) return; queued = true;
-    (root.requestAnimationFrame || setTimeout)(function () { queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); });
+    // rAF pauses in background tabs; the timeout makes sure prices still repaint
+    var done = false;
+    function run() { if (done) return; done = true; queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); }
+    (root.requestAnimationFrame || setTimeout)(run); setTimeout(run, 500);
   }
   function getJson(url, ms) {
     var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
