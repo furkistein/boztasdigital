@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo Exchange · Gold, oil and wheat, long or short</title>
+<meta name="description" content="Trade gold, Brent crude, wheat and the rest of the commodity complex with leverage, and take a position on outcomes in prediction markets.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5efe4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0e10'/%3E%3Cpath d='M8 23V9h7.5a7 7 0 0 1 0 14H8z' fill='none' stroke='%23e6e8eb' stroke-width='2.4'/%3E%3Cpath d='M13 18l3-3 2.5 2.5L23 13' fill='none' stroke='%2326b37a' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/ibm-plex/ibm-plex.css">
+<link rel="stylesheet" href="vendor/phosphor/regular/style.css">
+<style>
+:root {
+  --bg: #f5efe4; --paper: #fbf8f2; --sand: #ece3d3; --sand-2: #e2d6c1;
+  --ink: #221d16; --ink-2: #4f473b; --ink-3: #6b6252;
+  --line: #e0d5c2; --line-2: #cfc1a9;
+  --gold: #8a5c0e; --gold-2: #b07a1c; --gold-bg: #f1e4c8;
+  --up: #2e6f45; --down: #ac3b28; --up-bg: #e3ecdc; --down-bg: #f4e0d9; --tick: #26b37a;
+  --font: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --wrap: 1200px; --r: 999px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { margin: 0; font-weight: 400; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums slashed-zero; letter-spacing: -0.02em; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--ink-3); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+.skip { position: absolute; left: 12px; top: -60px; background: var(--ink); color: #fff; padding: 10px 14px; z-index: 99; }
+.skip:focus { top: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: var(--r); font: 500 15px/1 var(--font); border: 1px solid transparent; white-space: nowrap; transition: background .15s, border-color .15s; }
+.btn-ink { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { background: #3a3227; }
+.btn-line { border-color: var(--line-2); }
+.btn-line:hover { border-color: var(--ink); }
+.btn-sm { height: 38px; padding: 0 18px; font-size: 14px; }
+.over { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 20; background: rgba(245, 239, 228, .92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; height: 68px; gap: 36px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; }
+.brand svg { width: 26px; height: 26px; }
+.brand .bm-tick { stroke: var(--tick); }
+.brand span span { color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+.nav { display: flex; gap: 28px; font-size: 14.5px; color: var(--ink-2); }
+.nav a:hover { color: var(--ink); }
+.top-r { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.top-r .login { font-size: 14.5px; padding: 0 10px; color: var(--ink-2); }
+
+/* hero */
+.hero { padding: 72px 0 40px; }
+.hero-t { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 56px; align-items: end; }
+.hero h1 { font-family: var(--serif); font-size: clamp(42px, 6vw, 80px); line-height: 1.0; letter-spacing: -0.02em; margin-top: 20px; }
+.hero h1 em { color: var(--gold); }
+.hero-side p { color: var(--ink-2); font-size: 18px; }
+.hero-side .cta { display: flex; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+
+.chart-card { margin-top: 56px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.cc-h { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; padding: 26px 30px 0; flex-wrap: wrap; }
+.cc-name { display: grid; gap: 4px; }
+.cc-name span { font-size: 13.5px; color: var(--ink-3); }
+.cc-px { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.cc-px b { font: 500 clamp(32px, 4vw, 48px)/1 var(--mono); letter-spacing: -0.04em; }
+.cc-px .c { font: 500 16px var(--mono); }
+.pills { display: flex; gap: 6px; background: var(--sand); padding: 4px; border-radius: var(--r); }
+.pills button { border: 0; background: none; height: 36px; padding: 0 18px; border-radius: var(--r); font-size: 14px; font-weight: 500; color: var(--ink-2); cursor: pointer; }
+.pills button[aria-selected="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 2px rgba(34, 29, 22, .12); }
+.cc-plot { position: relative; height: 360px; margin: 18px 0 0; }
+.cc-plot svg { display: block; width: 100%; height: 100%; }
+.cc-tip { position: absolute; top: 10px; pointer-events: none; background: var(--ink); color: var(--paper); font: 500 12.5px/1.3 var(--mono); padding: 6px 9px; border-radius: 6px; transform: translateX(-50%); white-space: nowrap; opacity: 0; transition: opacity .1s; }
+.cc-f { display: flex; justify-content: space-between; gap: 16px; padding: 14px 30px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-3); flex-wrap: wrap; }
+.cc-f a { color: var(--ink); font-weight: 500; }
+
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-top: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.strip a { padding: 18px 20px; border-right: 1px solid var(--line); display: grid; gap: 4px; }
+.strip a:last-child { border-right: 0; }
+.strip a:hover { background: #fffdf8; }
+.strip .k { font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 6px; }
+.strip .v { font: 500 17px var(--mono); letter-spacing: -0.03em; }
+.strip .c { font: 500 12.5px var(--mono); }
+
+/* sections */
+.sec { padding: 112px 0 0; }
+.sec-h { max-width: 720px; }
+.sec-h h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); line-height: 1.06; letter-spacing: -0.015em; margin-top: 16px; }
+.sec-h p { color: var(--ink-2); font-size: 18px; margin-top: 18px; max-width: 36em; }
+
+.cmd-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.cmd { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: grid; gap: 14px; align-content: start; }
+.cmd .ic { width: 44px; height: 44px; border-radius: 50%; background: var(--gold-bg); color: var(--gold); display: grid; place-items: center; }
+.cmd .ic .ph { font-size: 22px; }
+.cmd h3 { font-family: var(--serif); font-size: 26px; margin-top: 4px; }
+.cmd p { color: var(--ink-2); font-size: 15px; }
+.cmd ul { list-style: none; padding: 0; margin: 6px 0 0; border-top: 1px solid var(--line); }
+.cmd li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.cmd li span:last-child { font-family: var(--mono); letter-spacing: -0.02em; }
+
+/* predict */
+.pred { margin-top: 112px; background: var(--ink); color: #efe7d8; padding: 104px 0; }
+.pred .over { color: #d9b46a; }
+.pred .sec-h p { color: #c3b9a6; }
+.pred-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.pc { background: #2c261d; border: 1px solid #3d3529; border-radius: 16px; padding: 24px; display: grid; gap: 18px; align-content: start; }
+.pc-top { display: flex; justify-content: space-between; font-size: 12.5px; color: #a89d89; gap: 10px; }
+.pc-top .tag { color: #d9b46a; font-family: var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+.pc h3 { font-family: var(--serif); font-size: 22px; line-height: 1.25; color: #fbf6ec; min-height: 3.75em; }
+.prob { display: grid; gap: 8px; }
+.prob-k { display: flex; justify-content: space-between; font-size: 13px; color: #c3b9a6; }
+.prob-k b { font: 500 20px var(--mono); color: #fbf6ec; letter-spacing: -0.03em; }
+.bar { height: 6px; border-radius: 3px; background: #4a4134; overflow: hidden; }
+.bar i { display: block; height: 100%; background: #d9b46a; border-radius: 3px; }
+.yn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.yn a { height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-weight: 500; font-size: 15px; }
+.yn .y { background: #2f4a33; color: #bfe3c4; }
+.yn .n { background: #57302a; color: #f2c2b6; }
+.yn a:hover { filter: brightness(1.12); }
+.pc-f { font-size: 12.5px; color: #a89d89; border-top: 1px solid #3d3529; padding-top: 14px; }
+.pred-note { margin-top: 28px; font-size: 13px; color: #a89d89; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.pred-note a { color: #fbf6ec; font-weight: 500; }
+
+/* app */
+.app-g { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; margin-top: 8px; }
+.feat-l { list-style: none; padding: 0; margin: 36px 0 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.feat-l li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.feat-l .ic { width: 44px; height: 44px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); display: grid; place-items: center; }
+.feat-l .ic .ph { font-size: 20px; color: var(--gold); }
+.feat-l b { font-weight: 600; display: block; }
+.feat-l span { color: var(--ink-2); font-size: 15px; }
+.stage { background: var(--sand); border-radius: 24px; padding: 56px 24px; display: grid; place-items: center; position: relative; overflow: hidden; }
+.stage::before { content: ''; position: absolute; width: 440px; height: 440px; border-radius: 50%; border: 1px solid var(--sand-2); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.stage::after { content: ''; position: absolute; width: 640px; height: 640px; border-radius: 50%; border: 1px solid var(--sand-2); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.phone { position: relative; z-index: 1; width: 300px; max-width: 100%; border-radius: 44px; background: #1b1712; padding: 10px; box-shadow: 0 40px 80px -30px rgba(34, 29, 22, .45); }
+.scr { background: var(--paper); border-radius: 35px; overflow: hidden; padding: 14px 18px 0; display: grid; gap: 14px; }
+.sb { display: flex; justify-content: space-between; font: 600 12px var(--font); padding: 4px 6px 0; }
+.sb i { width: 84px; height: 22px; background: #1b1712; border-radius: 12px; margin-top: -4px; }
+.ap-h { display: flex; justify-content: space-between; align-items: center; }
+.ap-h b { font-size: 17px; }
+.ap-h .ph { font-size: 18px; color: var(--ink-3); }
+.eq { display: grid; gap: 2px; }
+.eq span { font-size: 12px; color: var(--ink-3); }
+.eq b { font: 500 26px var(--mono); letter-spacing: -0.04em; }
+.eq small { font: 500 12.5px var(--mono); }
+.ap-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px; display: grid; gap: 10px; }
+.ap-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; }
+.ap-row .nm { display: grid; }
+.ap-row .nm b { font-size: 14px; }
+.ap-row .nm span { font-size: 11.5px; color: var(--ink-3); }
+.ap-spk { height: 44px; color: var(--gold-2); }
+.ap-spk svg { width: 100%; height: 100%; display: block; }
+.ap-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ap-btns span { height: 36px; border-radius: 10px; display: grid; place-items: center; font-size: 13px; font-weight: 600; }
+.ap-btns .a { background: var(--ink); color: var(--paper); }
+.ap-btns .b { background: var(--sand); }
+.ap-list { display: grid; gap: 0; }
+.ap-list div { display: flex; justify-content: space-between; padding: 10px 2px; border-top: 1px solid var(--line); font-size: 13px; }
+.ap-list div span:last-child { font-family: var(--mono); }
+.ap-tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); margin: 0 -18px; padding: 10px 6px 16px; text-align: center; font-size: 10.5px; color: var(--ink-3); }
+.ap-tabs span { display: grid; gap: 2px; justify-items: center; }
+.ap-tabs .ph { font-size: 19px; }
+.ap-tabs .on { color: var(--ink); font-weight: 600; }
+
+/* closing */
+.close-c { margin-top: 112px; text-align: center; padding: 0 0 8px; }
+.close-c h2 { font-family: var(--serif); font-size: clamp(34px, 4.6vw, 60px); line-height: 1.04; letter-spacing: -0.02em; max-width: 14em; margin: 18px auto 0; }
+.close-c .cta { display: flex; gap: 10px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+
+footer { margin-top: 112px; border-top: 1px solid var(--line); padding: 56px 0 36px; font-size: 14px; color: var(--ink-2); }
+.f-g { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 32px; }
+.f-g h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
+.f-g ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.f-g a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.f-g p { margin-top: 14px; max-width: 28em; }
+.legal { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.65; }
+.legal .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 1080px) {
+  .strip { grid-template-columns: repeat(3, 1fr); }
+  .strip a:nth-child(3n) { border-right: 0; }
+  .strip a:nth-child(-n+3) { border-bottom: 1px solid var(--line); }
+  .cmd-g, .pred-g { grid-template-columns: 1fr; }
+  .pc h3 { min-height: 0; }
+  .app-g { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 860px) {
+  .nav, .top-r .login { display: none; }
+  .hero-t { grid-template-columns: 1fr; gap: 24px; }
+  .f-g { grid-template-columns: 1fr 1fr; }
+  .f-g > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 44px 0 24px; }
+  .hero h1 { font-size: 44px; }
+  .hero-side p { font-size: 16.5px; }
+  .hero-side .cta .btn { flex: 1 1 auto; }
+  .chart-card { margin-top: 36px; border-radius: 12px; }
+  .cc-h { padding: 18px 16px 0; gap: 14px; }
+  .pills { width: 100%; }
+  .pills button { flex: 1; padding: 0 8px; }
+  .cc-plot { height: 240px; }
+  .cc-f { padding: 12px 16px; }
+  .strip { grid-template-columns: 1fr 1fr; border-radius: 12px; }
+  .strip a { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .strip a:nth-child(3n) { border-right: 1px solid var(--line); }
+  .strip a:nth-child(2n) { border-right: 0; }
+  .strip a:nth-last-child(-n+2) { border-bottom: 0; }
+  .sec { padding-top: 80px; }
+  .sec-h p { font-size: 16.5px; }
+  .cmd { padding: 22px; }
+  .pred { margin-top: 80px; padding: 72px 0; }
+  .pc { padding: 20px; }
+  .stage { padding: 36px 12px; border-radius: 18px; }
+  .phone { width: 272px; }
+  .close-c, footer { margin-top: 80px; }
+  .close-c .cta .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="home-c.html" aria-label="Demo Exchange home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+      <span>Demo<span>Exchange</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#commodities">Commodities</a>
+      <a href="#predict">Prediction markets</a>
+      <a href="#app">On your phone</a>
+      <a href="index.html">Trading screen</a>
+    </nav>
+    <div class="top-r">
+      <a class="login" href="index.html#account">Log in</a>
+      <a class="btn btn-ink btn-sm" href="index.html#account">Open account</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-t">
+        <div>
+          <div class="over">Commodities first</div>
+          <h1>Gold, oil and wheat. <em>Long or short.</em></h1>
+        </div>
+        <div class="hero-side">
+          <p>Trade the raw materials behind every market with up to 20x leverage, alongside crypto, currencies and indices, from a single account.</p>
+          <div class="cta">
+            <a class="btn btn-ink" href="index.html#account">Open account</a>
+            <a class="btn btn-line" href="index.html#cmd">Start trading</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="cc-h">
+          <div class="cc-name">
+            <span id="ccName">Gold · XAU/USD · USD per troy oz</span>
+            <div class="cc-px"><b id="ccPx">4,181.10</b><span class="c" id="ccChg"></span></div>
+          </div>
+          <div class="pills" role="tablist" aria-label="Commodity">
+            <button role="tab" aria-selected="true" data-id="XAU">Gold</button>
+            <button role="tab" aria-selected="false" data-id="BRENT">Brent</button>
+            <button role="tab" aria-selected="false" data-id="WHEAT">Wheat</button>
+          </div>
+        </div>
+        <div class="cc-plot" id="ccPlot"><div class="cc-tip" id="ccTip"></div></div>
+        <div class="cc-f"><span id="ccSrc">Loading chart</span><a href="index.html#cmd">Open the full chart <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+      </div>
+
+      <div class="strip" id="strip" aria-label="Commodity prices"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="commodities">
+    <div class="wrap">
+      <div class="sec-h">
+        <div class="over">The commodity complex</div>
+        <h2>Sixteen commodities, each on its own exchange hours.</h2>
+        <p>Spot metals stream live. Energy and grains follow their venue sessions, and the platform marks a market closed before you send an order into a gap.</p>
+      </div>
+      <div class="cmd-g">
+        <div class="cmd">
+          <div class="ic"><i class="ph ph-coin" aria-hidden="true"></i></div>
+          <h3>Metals</h3>
+          <p>Gold leads the board, priced per troy ounce, with silver, platinum, palladium and copper beside it.</p>
+          <ul id="lMetals"></ul>
+        </div>
+        <div class="cmd">
+          <div class="ic"><i class="ph ph-drop-half" aria-hidden="true"></i></div>
+          <h3>Energy</h3>
+          <p>Brent and WTI crude per barrel and Henry Hub natural gas, for views on supply, demand and the season.</p>
+          <ul id="lEnergy"></ul>
+        </div>
+        <div class="cmd">
+          <div class="ic"><i class="ph ph-grains" aria-hidden="true"></i></div>
+          <h3>Agriculture</h3>
+          <p>Wheat, corn and soybeans from Chicago, plus the softs: coffee, sugar, cocoa and cotton.</p>
+          <ul id="lAg"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pred" id="predict">
+    <div class="wrap">
+      <div class="sec-h">
+        <div class="over">Prediction markets</div>
+        <h2>Have a view on what happens next? Trade it.</h2>
+        <p>Every question has two sides. Buy Yes or No; a correct share pays 1 USD, so the price is the crowd's probability.</p>
+      </div>
+      <div class="pred-g" id="predG"></div>
+      <div class="pred-note"><span>Example markets. Odds are illustrative.</span><a href="index.html#predict">See all prediction markets <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="app">
+    <div class="wrap app-g">
+      <div>
+        <div class="sec-h">
+          <div class="over">On your phone</div>
+          <h2>Your positions, wherever the market moves.</h2>
+          <p>The full platform is built for a phone screen first. Open it in your mobile browser and add it to your home screen.</p>
+        </div>
+        <ul class="feat-l">
+          <li><span class="ic"><i class="ph ph-bell-simple" aria-hidden="true"></i></span><div><b>Price alerts</b><span>Set a level on gold or Brent and hear about it the moment it trades.</span></div></li>
+          <li><span class="ic"><i class="ph ph-lightning" aria-hidden="true"></i></span><div><b>Close in two taps</b><span>Every open position, its P&amp;L and its liquidation price on one screen.</span></div></li>
+          <li><span class="ic"><i class="ph ph-arrows-left-right" aria-hidden="true"></i></span><div><b>One balance everywhere</b><span>Desktop, tablet and phone share the same account and positions.</span></div></li>
+        </ul>
+        <div style="margin-top:32px"><a class="btn btn-ink" href="index.html">Open the platform</a></div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="phone">
+          <div class="scr">
+            <div class="sb"><span>9:41</span><i></i><span>5G</span></div>
+            <div class="ap-h"><b>Portfolio</b><i class="ph ph-bell"></i></div>
+            <div class="eq"><span>Equity</span><b id="apEq">12,480.00</b><small id="apPnl" class="up">+0.00 today</small></div>
+            <div class="ap-card">
+              <div class="ap-row"><div class="nm"><b>Gold · Long 10x</b><span>Entry 4,152.40 · 2.41 oz</span></div><b class="mono" id="apPos">—</b></div>
+              <div class="ap-spk" id="apSpk"></div>
+              <div class="ap-btns"><span class="a">Add</span><span class="b">Close</span></div>
+            </div>
+            <div class="ap-list" id="apList"></div>
+            <div class="ap-tabs"><span class="on"><i class="ph ph-house"></i>Home</span><span><i class="ph ph-chart-line-up"></i>Markets</span><span><i class="ph ph-target"></i>Predict</span><span><i class="ph ph-wallet"></i>Wallet</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close-c wrap">
+    <div class="over">Get started</div>
+    <h2>Take a position on the things the world runs on.</h2>
+    <div class="cta">
+      <a class="btn btn-ink" href="index.html#account">Open account</a>
+      <a class="btn btn-line" href="index.html">Start trading</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-g">
+      <div>
+        <a class="brand" href="home-c.html" aria-label="Demo Exchange home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+          <span>Demo<span>Exchange</span></span>
+        </a>
+        <p>Commodities, crypto, forex, indices and stocks with leverage, and prediction markets.</p>
+      </div>
+      <div><h4>Commodities</h4><ul><li><a href="index.html#cmd">Metals</a></li><li><a href="index.html#cmd">Energy</a></li><li><a href="index.html#cmd">Agriculture</a></li></ul></div>
+      <div><h4>Products</h4><ul><li><a href="index.html">Trade</a></li><li><a href="index.html#predict">Predict</a></li><li><a href="index.html#account">Account</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="index.html#build">Full build</a></li><li><a href="home.html">Home page variants</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <p>Trading on margin carries a high level of risk and may not be suitable for everyone. You can lose all of the money you deposit. Prediction market shares can expire worthless.</p>
+      <p>Spot metals from gold-api.com and crypto from Binance public market data when reachable; energy and agriculture are sample data around the reference close of 16 Oct 2026.</p>
+      <div class="row"><span>&copy; 2026 Demo Exchange</span><span>Regulated entity name · Registered address</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Demo Exchange home page price layer (same keyless sources as the trading app, js/data.js):
+   Binance public REST for crypto, gold-api.com for spot metals. Every other market, and any source
+   that cannot be reached, shows the static reference close of 16 Oct 2026 and is marked "Sample". */
+(function (root) {
+  'use strict';
+  var REF = '16 Oct 2026';
+  // id: [symbol, name, cat, group, decimals, refClose, prevClose, source, key, unit, maxLev]
+  var RAW = {
+    XAU:    ['XAU/USD', 'Gold', 'cmd', 'Metals', 2, 4181.10, 4190.60, 'gold', 'XAU', 'USD / troy oz', 20],
+    XAG:    ['XAG/USD', 'Silver', 'cmd', 'Metals', 3, 57.305, 60.141, 'gold', 'XAG', 'USD / troy oz', 20],
+    XPT:    ['XPT/USD', 'Platinum', 'cmd', 'Metals', 2, 1633.10, 1679.40, 'gold', 'XPT', 'USD / troy oz', 20],
+    COPPER: ['COPPER', 'Copper', 'cmd', 'Metals', 4, 6.5735, 6.6985, 'gold', 'HG', 'USD / lb', 20],
+    BRENT:  ['BRENT', 'Brent crude oil', 'cmd', 'Energy', 2, 109.86, 106.65, 'sample', null, 'USD / barrel', 20],
+    WTI:    ['WTI', 'WTI crude oil', 'cmd', 'Energy', 2, 99.02, 93.74, 'sample', null, 'USD / barrel', 20],
+    NATGAS: ['NATGAS', 'Natural gas', 'cmd', 'Energy', 3, 3.116, 3.167, 'sample', null, 'USD / MMBtu', 20],
+    WHEAT:  ['WHEAT', 'Wheat', 'cmd', 'Agriculture', 4, 6.6050, 6.7225, 'sample', null, 'USD / bushel', 20],
+    CORN:   ['CORN', 'Corn', 'cmd', 'Agriculture', 4, 4.7425, 4.8300, 'sample', null, 'USD / bushel', 20],
+    COFFEE: ['COFFEE', 'Coffee', 'cmd', 'Agriculture', 4, 3.0555, 2.9060, 'sample', null, 'USD / lb', 20],
+    COCOA:  ['COCOA', 'Cocoa', 'cmd', 'Agriculture', 0, 5686, 5676, 'sample', null, 'USD / t', 20],
+    BTC:    ['BTC/USDT', 'Bitcoin', 'crypto', 'Crypto', 2, 81578.66, 80410.00, 'bin', 'BTCUSDT', 'per BTC', 50],
+    ETH:    ['ETH/USDT', 'Ethereum', 'crypto', 'Crypto', 2, 2427.99, 2462.50, 'bin', 'ETHUSDT', 'per ETH', 50],
+    SOL:    ['SOL/USDT', 'Solana', 'crypto', 'Crypto', 2, 104.37, 101.90, 'bin', 'SOLUSDT', 'per SOL', 50],
+    XRP:    ['XRP/USDT', 'XRP', 'crypto', 'Crypto', 4, 1.3028, 1.3180, 'bin', 'XRPUSDT', 'per XRP', 50],
+    EURUSD: ['EUR/USD', 'Euro / US Dollar', 'fx', 'Forex', 5, 1.1242, 1.1205, 'sample', null, 'per 1 EUR', 100],
+    GBPUSD: ['GBP/USD', 'Pound / US Dollar', 'fx', 'Forex', 5, 1.3330, 1.3242, 'sample', null, 'per 1 GBP', 100],
+    USDJPY: ['USD/JPY', 'US Dollar / Yen', 'fx', 'Forex', 3, 157.987, 158.203, 'sample', null, 'JPY per 1 USD', 100],
+    USDTRY: ['USD/TRY', 'US Dollar / Lira', 'fx', 'Forex', 4, 49.5091, 49.3353, 'sample', null, 'TRY per 1 USD', 100],
+    US500:  ['US500', 'S&P 500', 'idx', 'Indices', 2, 7659.44, 7811.54, 'sample', null, 'index points', 20],
+    NAS100: ['NAS100', 'Nasdaq 100', 'idx', 'Indices', 2, 29187.55, 30883.15, 'sample', null, 'index points', 20],
+    GER40:  ['GER40', 'DAX 40', 'idx', 'Indices', 2, 25622.61, 25087.27, 'sample', null, 'index points', 20],
+    UK100:  ['UK100', 'FTSE 100', 'idx', 'Indices', 2, 10881.90, 10552.10, 'sample', null, 'index points', 20],
+    AAPL:   ['AAPL', 'Apple', 'stk', 'Stocks', 2, 343.46, 336.64, 'sample', null, 'per share', 5],
+    NVDA:   ['NVDA', 'NVIDIA', 'stk', 'Stocks', 2, 214.13, 229.28, 'sample', null, 'per share', 5],
+    MSFT:   ['MSFT', 'Microsoft', 'stk', 'Stocks', 2, 529.05, 535.07, 'sample', null, 'per share', 5],
+    TSLA:   ['TSLA', 'Tesla', 'stk', 'Stocks', 2, 354.72, 382.70, 'sample', null, 'per share', 5]
+  };
+  var M = {}, BY_KEY = {};
+  Object.keys(RAW).forEach(function (id) {
+    var r = RAW[id];
+    M[id] = { id: id, sym: r[0], name: r[1], cat: r[2], group: r[3], dp: r[4], ref: r[5], prev: r[6], src: r[7], key: r[8],
+              unit: r[9], lev: r[10], price: r[5], live: false, spark: null };
+    if (r[8]) BY_KEY[r[8]] = M[id];
+  });
+  var subs = [], queued = false, status = { bin: 'pending', gold: 'pending', binMs: null, goldMs: null };
+  function emit() {
+    if (queued) return; queued = true;
+    (root.requestAnimationFrame || setTimeout)(function () { queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); });
+  }
+  function getJson(url, ms) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctl) ctl.abort(); }, ms || 7000);
+    return fetch(url, ctl ? { signal: ctl.signal, cache: 'no-store' } : {}).then(function (r) {
+      clearTimeout(t); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+    }, function (e) { clearTimeout(t); throw e; });
+  }
+  var BIN = ['https://api.binance.com', 'https://data-api.binance.vision'], binIdx = 0;
+  function bin(path) {
+    var i = binIdx;
+    return getJson(BIN[i] + path, 6000).catch(function () {
+      var j = (i + 1) % BIN.length;
+      return getJson(BIN[j] + path, 6000).then(function (x) { binIdx = j; return x; });
+    });
+  }
+  function ids(src) { return Object.keys(M).filter(function (k) { return M[k].src === src; }); }
+  function pollBin() {
+    var keys = ids('bin').map(function (k) { return M[k].key; }), t0 = Date.now();
+    return bin('/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(keys))).then(function (arr) {
+      if (!Array.isArray(arr) || !arr.length) throw new Error('bad response');
+      arr.forEach(function (t) {
+        var m = t && BY_KEY[t.symbol], p = t && +t.lastPrice, o = t && +t.openPrice;
+        if (!m || !(p > 0) || !isFinite(p)) return;
+        m.price = p; if (o > 0) m.prev = o; m.live = true;
+      });
+      status.bin = 'live'; status.binMs = Date.now() - t0; emit();
+    }).catch(function () { if (status.bin !== 'live') status.bin = 'offline'; emit(); });
+  }
+  function pollGold() {
+    var t0 = Date.now();
+    return Promise.all(ids('gold').map(function (id) {
+      var m = M[id];
+      return getJson('https://api.gold-api.com/price/' + m.key, 7000).then(function (j) {
+        var p = +(j && j.price); if (!(p > 0) || !isFinite(p)) throw new Error('bad price');
+        if (!m.live) m.prev = m.ref;     // live spot is compared with the last reference close
+        m.price = p; m.live = true; return true;
+      }, function () { return false; });
+    })).then(function (r) {
+      if (r.indexOf(true) >= 0) { status.gold = 'live'; status.goldMs = Date.now() - t0; } else if (status.gold !== 'live') status.gold = 'offline';
+      emit();
+    });
+  }
+  /* sparkline: Binance hourly closes for crypto, otherwise a seeded path from the previous close to the price */
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function path(id, n, from, to, vol) {
+    var r = rng(hash(id + n)), out = [], w = 0, ws = [0];
+    for (var i = 1; i < n; i++) { w += (r() - 0.5) * 2; ws.push(w); }
+    var last = ws[n - 1], amp = Math.abs(to - from) * 0.9 + to * (vol || 0.2) * 0.012;
+    for (var j = 0; j < n; j++) { var f = j / (n - 1); out.push(from + (to - from) * f + (ws[j] - last * f) / Math.sqrt(n) * amp); }
+    out[n - 1] = to; return out;
+  }
+  function sampleSpark(m, n) { return path(m.id, n || 24, m.prev, m.price, 0.25); }
+  function loadSparks(list, interval, n) {
+    list.filter(function (id) { return M[id] && M[id].src === 'bin'; }).forEach(function (id) {
+      var m = M[id];
+      bin('/api/v3/klines?symbol=' + m.key + '&interval=' + (interval || '1h') + '&limit=' + (n || 24)).then(function (rows) {
+        if (!Array.isArray(rows) || rows.length < 4) return;
+        m.spark = rows.map(function (k) { return +k[4]; }); emit();
+      }).catch(function () {});
+    });
+  }
+  function klines(sym, interval, n) {
+    return bin('/api/v3/klines?symbol=' + sym + '&interval=' + interval + '&limit=' + n).then(function (rows) {
+      if (!Array.isArray(rows) || rows.length < 10) throw new Error('short');
+      return rows.map(function (k) { return { t: +k[0], c: +k[4] }; });
+    });
+  }
+  function fmt(m, p) {
+    var v = p == null ? m.price : p;
+    return v.toLocaleString('en-US', { minimumFractionDigits: m.dp, maximumFractionDigits: m.dp });
+  }
+  function chg(m) { return m.prev > 0 ? (m.price - m.prev) / m.prev * 100 : 0; }
+  function pct(m) { var c = chg(m); return (c > 0 ? '+' : c < 0 ? '−' : '') + Math.abs(c).toFixed(2) + '%'; }
+  function dir(m) { var c = chg(m); return c > 0.0005 ? 'up' : c < -0.0005 ? 'down' : 'flat'; }
+  function sparkSvg(vals, w, h, cls) {
+    if (!vals || vals.length < 2) return '';
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), rg = hi - lo || 1, pad = 2;
+    var pts = vals.map(function (v, i) { return (i / (vals.length - 1) * w).toFixed(1) + ',' + (pad + (1 - (v - lo) / rg) * (h - pad * 2)).toFixed(1); });
+    return '<svg class="spark ' + (cls || '') + '" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" preserveAspectRatio="none" aria-hidden="true">' +
+      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  }
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    emit(); pollBin(); pollGold();
+    setInterval(function () { if (!document.hidden) pollBin(); }, 15000);
+    setInterval(function () { if (!document.hidden) pollGold(); }, 30000);
+  }
+  root.DX = { M: M, REF: REF, status: status, on: function (f) { subs.push(f); }, start: start, fmt: fmt, pct: pct, chg: chg, dir: dir,
+              spark: function (m, n) { return m.spark || sampleSpark(m, n); }, sparkSvg: sparkSvg, loadSparks: loadSparks, klines: klines, path: path };
+})(window);
+</script>
+<script>
+(function () {
+  'use strict';
+  var M = DX.M;
+  function $(id) { return document.getElementById(id); }
+  function money(v, dp) { return v.toLocaleString('en-US', { minimumFractionDigits: dp == null ? 2 : dp, maximumFractionDigits: dp == null ? 2 : dp }); }
+
+  /* ---------- hero chart ---------- */
+  var cur = 'XAU', paxg = null, N = 90, STEP = 4 * 3600 * 1000;
+  var START = { XAU: 0.962, BRENT: 0.905, WHEAT: 1.052 };   // sample path: 15 days ago as a share of today's price
+  function series(id) {
+    var m = M[id], now = Date.now(), end = Math.floor(now / STEP) * STEP;
+    if (id === 'XAU' && paxg) {
+      var last = paxg[paxg.length - 1].c, k = m.price / last;  // shape from PAXG, ending at the gold price shown above
+      return { pts: paxg.map(function (r) { return { t: r.t, v: r.c * k }; }), src: 'Shape: PAXG/USDT 4-hour closes (1 token = 1 troy oz), Binance, scaled to spot gold' + (m.live ? ' from gold-api.com.' : '.') };
+    }
+    var vals = DX.path(id + 'hero', N, m.price * START[id], m.price, 0.6);
+    return { pts: vals.map(function (v, i) { return { t: end - (N - 1 - i) * STEP, v: v }; }), src: 'Sample data: illustrative 15-day path ending at the ' + (m.live ? 'live price.' : DX.REF + ' reference close.') };
+  }
+  var plotData = null;
+  function drawChart() {
+    var m = M[cur], s = series(cur), box = $('ccPlot'), W = box.clientWidth || 800, H = box.clientHeight || 360;
+    var padL = 16, padR = W < 500 ? 56 : 72, padT = 16, padB = 30;
+    var vs = s.pts.map(function (p) { return p.v; }), lo = Math.min.apply(null, vs), hi = Math.max.apply(null, vs), rg = hi - lo || 1;
+    lo -= rg * 0.08; hi += rg * 0.08; rg = hi - lo;
+    function x(i) { return padL + i / (s.pts.length - 1) * (W - padL - padR); }
+    function y(v) { return padT + (1 - (v - lo) / rg) * (H - padT - padB); }
+    var line = s.pts.map(function (p, i) { return x(i).toFixed(1) + ',' + y(p.v).toFixed(1); }).join(' ');
+    var g = '', ticks = 4;
+    for (var j = 0; j <= ticks; j++) {
+      var v = lo + rg * j / ticks, yy = y(v).toFixed(1);
+      g += '<line x1="' + padL + '" x2="' + (W - padR) + '" y1="' + yy + '" y2="' + yy + '" stroke="#e7ddcb" stroke-width="1"/>' +
+        '<text x="' + (W - padR + 10) + '" y="' + (+yy + 4) + '" font-family="IBM Plex Mono, monospace" font-size="11" fill="#6b6252">' + money(v, Math.abs(v) >= 1000 ? 0 : (m.dp > 2 ? 2 : m.dp)) + '</text>';
+    }
+    var days = W < 500 ? 3 : 5, xl = '';
+    for (var d = 0; d <= days; d++) {
+      var i = Math.round(d / days * (s.pts.length - 1)), dt = new Date(s.pts[i].t);
+      var lab = dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      xl += '<text x="' + x(i).toFixed(1) + '" y="' + (H - 8) + '" font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#6b6252" text-anchor="' + (d === 0 ? 'start' : d === days ? 'end' : 'middle') + '">' + lab + '</text>';
+    }
+    var lx = x(s.pts.length - 1), ly = y(vs[vs.length - 1]);
+    box.querySelector('svg') && box.removeChild(box.querySelector('svg'));
+    box.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + m.name + ' price over 15 days">' +
+      '<defs><linearGradient id="gc" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b07a1c" stop-opacity=".22"/><stop offset="1" stop-color="#b07a1c" stop-opacity="0"/></linearGradient></defs>' + g + xl +
+      '<polygon points="' + padL + ',' + (H - padB) + ' ' + line + ' ' + lx.toFixed(1) + ',' + (H - padB) + '" fill="url(#gc)"/>' +
+      '<polyline points="' + line + '" fill="none" stroke="#8a5c0e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
+      '<line id="ccX" x1="0" x2="0" y1="' + padT + '" y2="' + (H - padB) + '" stroke="#221d16" stroke-opacity=".35" stroke-dasharray="3 3" visibility="hidden"/>' +
+      '<circle id="ccDot" r="4.5" cx="' + lx.toFixed(1) + '" cy="' + ly.toFixed(1) + '" fill="#8a5c0e" stroke="#fbf8f2" stroke-width="2"/></svg>');
+    plotData = { s: s, x: x, y: y, W: W, padL: padL, padR: padR, m: m, lx: lx, ly: ly };
+    $('ccSrc').textContent = s.src;
+    $('ccName').textContent = m.name + ' · ' + m.sym + ' · ' + m.unit.replace(' / ', ' per ');
+    $('ccPx').textContent = DX.fmt(m);
+    var c = $('ccChg'); c.textContent = DX.pct(m) + ' today'; c.className = 'c ' + DX.dir(m);
+  }
+  var plot = $('ccPlot'), tip = $('ccTip');
+  plot.addEventListener('pointermove', function (e) {
+    if (!plotData) return;
+    var r = plot.getBoundingClientRect(), px = e.clientX - r.left, P = plotData, n = P.s.pts.length;
+    var i = Math.round((px - P.padL) / (P.W - P.padL - P.padR) * (n - 1)); i = Math.max(0, Math.min(n - 1, i));
+    var p = P.s.pts[i], X = P.x(i), Y = P.y(p.v);
+    var ln = plot.querySelector('#ccX'), dot = plot.querySelector('#ccDot');
+    ln.setAttribute('x1', X); ln.setAttribute('x2', X); ln.setAttribute('visibility', 'visible');
+    dot.setAttribute('cx', X); dot.setAttribute('cy', Y);
+    tip.textContent = DX.fmt(P.m, p.v) + ' · ' + new Date(p.t).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    tip.style.left = Math.max(70, Math.min(r.width - 90, X)) + 'px'; tip.style.opacity = 1;
+  });
+  plot.addEventListener('pointerleave', function () {
+    if (!plotData) return;
+    var ln = plot.querySelector('#ccX'), dot = plot.querySelector('#ccDot');
+    ln.setAttribute('visibility', 'hidden'); dot.setAttribute('cx', plotData.lx); dot.setAttribute('cy', plotData.ly); tip.style.opacity = 0;
+  });
+  document.querySelectorAll('.pills button').forEach(function (b) {
+    b.onclick = function () {
+      cur = b.dataset.id;
+      document.querySelectorAll('.pills button').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      drawChart();
+    };
+  });
+  var rz; window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(drawChart, 120); });
+
+  /* ---------- strip and lists ---------- */
+  var STRIP = ['XAU', 'XAG', 'BRENT', 'WTI', 'WHEAT', 'COFFEE'];
+  function renderStrip() {
+    $('strip').innerHTML = STRIP.map(function (id) {
+      var m = M[id], d = DX.dir(m);
+      return '<a href="index.html#cmd"><span class="k"><span>' + m.name.replace(' crude oil', '') + '</span><span>' + (m.live ? 'Live' : 'Sample') + '</span></span><span class="v">' + DX.fmt(m) + '</span><span class="c ' + d + '">' + DX.pct(m) + '</span></a>';
+    }).join('');
+  }
+  function li(ids) {
+    return ids.map(function (id) { var m = M[id]; return '<li><span>' + m.name + '</span><span class="' + DX.dir(m) + '">' + DX.fmt(m) + '</span></li>'; }).join('');
+  }
+  function renderLists() {
+    $('lMetals').innerHTML = li(['XAU', 'XAG', 'XPT', 'COPPER']);
+    $('lEnergy').innerHTML = li(['BRENT', 'WTI', 'NATGAS']);
+    $('lAg').innerHTML = li(['WHEAT', 'CORN', 'COFFEE', 'COCOA']);
+  }
+
+  /* ---------- prediction cards (examples) ---------- */
+  function renderPred() {
+    var gs = Math.ceil(M.XAU.price / 100) * 100;
+    var C = [
+      { tag: 'Gold', close: 'Closes Oct 30', q: 'Will gold settle above ' + money(gs, 0) + ' USD at the end of October?', p: 0.33, rule: 'Resolves on the last LBMA PM fixing of October.' },
+      { tag: 'Oil', close: 'Closes Nov 30', q: 'Will WTI crude settle above 100 USD on Nov 30, 2026?', p: 0.46, rule: 'Resolves on the NYMEX front-month settlement price.' },
+      { tag: 'Rates', close: 'Closes Dec 9', q: 'Will the Fed cut rates at the December 2026 meeting?', p: 0.58, rule: 'Resolves on the FOMC statement target range.' }
+    ];
+    $('predG').innerHTML = C.map(function (c) {
+      var y = Math.round(c.p * 100);
+      return '<article class="pc"><div class="pc-top"><span class="tag">' + c.tag + '</span><span>' + c.close + '</span></div><h3>' + c.q + '</h3>' +
+        '<div class="prob"><div class="prob-k"><span>Chance of Yes</span><b>' + y + '%</b></div><div class="bar"><i style="width:' + y + '%"></i></div></div>' +
+        '<div class="yn"><a class="y" href="index.html#predict"><span>Yes</span><span class="mono">' + y + '¢</span></a><a class="n" href="index.html#predict"><span>No</span><span class="mono">' + (100 - y) + '¢</span></a></div>' +
+        '<div class="pc-f">' + c.rule + '</div></article>';
+    }).join('');
+  }
+
+  /* ---------- phone ---------- */
+  function renderPhone() {
+    var g = M.XAU, size = 10000, entry = 4152.40, pnl = size * (g.price - entry) / entry, base = 11000;
+    $('apEq').textContent = money(base + pnl);
+    $('apPos').textContent = (pnl >= 0 ? '+' : '−') + money(Math.abs(pnl));
+    $('apPos').className = 'mono ' + (pnl >= 0 ? 'up' : 'down');
+    var dd = size * (g.price - g.prev) / entry;
+    $('apPnl').textContent = (dd >= 0 ? '+' : '−') + money(Math.abs(dd)) + ' today';
+    $('apPnl').className = dd >= 0 ? 'up' : 'down';
+    $('apSpk').innerHTML = DX.sparkSvg(paxg ? paxg.slice(-36).map(function (r) { return r.c; }) : DX.spark(g, 36), 260, 44);
+    $('apList').innerHTML = ['BRENT', 'WHEAT', 'BTC'].map(function (id) { var m = M[id]; return '<div><span>' + m.name.replace(' crude oil', '') + '</span><span class="' + DX.dir(m) + '">' + DX.pct(m) + '</span></div>'; }).join('');
+  }
+
+  function renderAll() { drawChart(); renderStrip(); renderLists(); renderPred(); renderPhone(); }
+  DX.on(renderAll);
+  renderAll();
+  DX.klines('PAXGUSDT', '4h', N).then(function (rows) { paxg = rows; renderAll(); }).catch(function () {});
+  DX.start();
+})();
+</script>
+</body>
+</html>

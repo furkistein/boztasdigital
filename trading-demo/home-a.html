@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo Exchange · Trade every market from one account</title>
+<meta name="description" content="Go long or short on gold, oil, wheat, Bitcoin, forex, indices and stocks with leverage, and trade yes/no prediction markets from the same balance.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0e10'/%3E%3Cpath d='M8 23V9h7.5a7 7 0 0 1 0 14H8z' fill='none' stroke='%23e6e8eb' stroke-width='2.4'/%3E%3Cpath d='M13 18l3-3 2.5 2.5L23 13' fill='none' stroke='%2326b37a' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/ibm-plex/ibm-plex.css">
+<link rel="stylesheet" href="vendor/phosphor/regular/style.css">
+<style>
+:root {
+  --bg: #ffffff; --soft: #f6f7f8; --soft-2: #eef0f2;
+  --ink: #0b0d0f; --ink-2: #3f464e; --ink-3: #636a72;
+  --line: #e4e7ea; --line-2: #d2d6db;
+  --up: #0b7a50; --down: #c62f2c; --up-bg: #e7f5ee; --down-bg: #fcebea; --tick: #26b37a;
+  --font: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --wrap: 1200px; --r: 6px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 var(--font); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 2px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums slashed-zero; letter-spacing: -0.02em; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--ink-3); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+.skip { position: absolute; left: 12px; top: -60px; background: var(--ink); color: #fff; padding: 10px 14px; border-radius: var(--r); z-index: 99; }
+.skip:focus { top: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: var(--r);
+  font: 500 15px/1 var(--font); border: 1px solid transparent; transition: background .15s, border-color .15s, color .15s; white-space: nowrap; }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #262a2f; }
+.btn-line { border-color: var(--line-2); color: var(--ink); background: #fff; }
+.btn-line:hover { border-color: var(--ink); }
+.btn-sm { height: 36px; padding: 0 14px; font-size: 14px; }
+.btn .ph { font-size: 16px; }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 20; background: rgba(255, 255, 255, .92); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; height: 64px; gap: 32px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+.brand svg { width: 26px; height: 26px; color: var(--ink); }
+.brand .bm-tick { stroke: var(--tick); }
+.brand span span { color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+.nav { display: flex; gap: 26px; font-size: 14.5px; color: var(--ink-2); }
+.nav a:hover { color: var(--ink); }
+.top-r { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.top-r .login { font-size: 14.5px; color: var(--ink-2); padding: 0 8px; }
+.top-r .login:hover { color: var(--ink); }
+.menu { display: none; position: relative; }
+.menu summary { list-style: none; cursor: pointer; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line-2); border-radius: var(--r); }
+.menu summary::-webkit-details-marker { display: none; }
+.menu summary .ph { font-size: 20px; }
+.menu-p { position: absolute; right: 0; top: 48px; width: 220px; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 12px 32px rgba(11, 13, 15, .1); padding: 8px; display: grid; }
+.menu-p a { padding: 10px 12px; border-radius: 4px; font-size: 15px; }
+.menu-p a:hover { background: var(--soft); }
+
+/* ticker */
+.ticker { border-bottom: 1px solid var(--line); background: #fff; overflow: hidden; position: relative; }
+.ticker::before, .ticker::after { content: ''; position: absolute; top: 0; bottom: 0; width: 48px; z-index: 1; pointer-events: none; }
+.ticker::before { left: 0; background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0)); }
+.ticker::after { right: 0; background: linear-gradient(-90deg, #fff, rgba(255, 255, 255, 0)); }
+.tk-track { display: flex; width: max-content; animation: tk 70s linear infinite; }
+.ticker:hover .tk-track { animation-play-state: paused; }
+.tk-set { display: flex; }
+.tk { display: inline-flex; align-items: baseline; gap: 10px; padding: 12px 22px; border-right: 1px solid var(--line); font-size: 13px; white-space: nowrap; }
+.tk:hover { background: var(--soft); }
+.tk b { font-weight: 600; letter-spacing: 0; }
+.tk .px { color: var(--ink); }
+.tk .lv { width: 6px; height: 6px; border-radius: 50%; background: var(--tick); align-self: center; }
+.tk .sm { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--line-2); align-self: center; }
+@keyframes tk { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tk-track { animation: none; } .ticker { overflow-x: auto; } html { scroll-behavior: auto; } }
+
+/* hero */
+.hero { padding: 88px 0 96px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 72px; align-items: center; }
+.eyebrow { font: 500 12.5px/1 var(--mono); letter-spacing: .02em; color: var(--ink-3); text-transform: uppercase; display: flex; gap: 10px; flex-wrap: wrap; }
+.eyebrow i { font-style: normal; color: var(--line-2); }
+.hero h1 { font-size: clamp(40px, 5.6vw, 72px); line-height: 1.02; letter-spacing: -0.035em; margin: 22px 0 24px; }
+.hero h1 em { font-style: normal; color: var(--ink-3); }
+.lede { font-size: 19px; line-height: 1.55; color: var(--ink-2); max-width: 34em; }
+.cta { display: flex; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+.hero-facts { display: flex; gap: 36px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.hero-facts div { display: grid; gap: 4px; }
+.hero-facts b { font: 500 22px/1 var(--mono); letter-spacing: -0.03em; }
+.hero-facts span { font-size: 13px; color: var(--ink-3); }
+
+/* ticket card */
+.ticket { border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: 0 1px 0 rgba(11, 13, 15, .02), 0 24px 60px -24px rgba(11, 13, 15, .18); overflow: hidden; }
+.tc-head { display: flex; align-items: flex-start; justify-content: space-between; padding: 20px 22px 0; gap: 12px; }
+.tc-sym { display: grid; gap: 2px; }
+.tc-sym b { font-size: 15px; }
+.tc-sym span { font-size: 12.5px; color: var(--ink-3); }
+.tc-px { text-align: right; }
+.tc-px .big { font: 500 26px/1.1 var(--mono); letter-spacing: -0.03em; }
+.tc-px .c { font: 500 13px/1.4 var(--mono); }
+.tc-chart { height: 92px; margin: 14px 0 0; color: var(--ink); padding: 0 22px; }
+.tc-chart svg { width: 100%; height: 100%; display: block; }
+.tc-body { padding: 18px 22px 22px; border-top: 1px solid var(--line); margin-top: 14px; display: grid; gap: 16px; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; background: var(--soft); border-radius: var(--r); padding: 3px; }
+.seg button { height: 36px; border: 0; background: none; border-radius: 4px; font: 500 14px var(--font); color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(11, 13, 15, .12); }
+.seg button[aria-pressed="true"].l { color: var(--up); } .seg button[aria-pressed="true"].s { color: var(--down); }
+.fld { display: grid; gap: 8px; }
+.fld-k { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--ink-3); }
+.levs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.levs button { height: 34px; border: 1px solid var(--line); background: #fff; border-radius: 4px; font: 500 13px var(--mono); color: var(--ink-2); cursor: pointer; }
+.levs button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: var(--soft); }
+.tc-rows { display: grid; gap: 8px; font-size: 13.5px; }
+.tc-rows div { display: flex; justify-content: space-between; gap: 12px; }
+.tc-rows span { color: var(--ink-3); }
+.tc-go { height: 46px; width: 100%; border-radius: var(--r); font: 600 15px var(--font); display: flex; align-items: center; justify-content: center; color: #fff; background: var(--up); }
+.tc-go.s { background: var(--down); }
+.tc-go:hover { filter: brightness(1.08); }
+.tc-note { font-size: 12px; color: var(--ink-3); text-align: center; }
+
+/* sections */
+.sec { padding: 104px 0; border-top: 1px solid var(--line); }
+.sec-head { max-width: 640px; margin-bottom: 56px; }
+.kicker { font: 500 12.5px/1 var(--mono); text-transform: uppercase; letter-spacing: .02em; color: var(--ink-3); }
+.sec-head h2 { font-size: clamp(30px, 3.6vw, 44px); line-height: 1.1; margin-top: 16px; }
+.sec-head p { color: var(--ink-2); font-size: 17.5px; margin-top: 16px; }
+.prod { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 72px; align-items: center; padding: 56px 0; border-top: 1px solid var(--line); }
+.prod:first-of-type { border-top: 0; padding-top: 0; }
+.prod.flip .prod-t { order: 2; }
+.prod-t h3 { font-size: 30px; line-height: 1.15; margin: 14px 0 14px; }
+.prod-t p { color: var(--ink-2); font-size: 17px; }
+.ticks { list-style: none; padding: 0; margin: 24px 0 28px; display: grid; gap: 12px; }
+.ticks li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 15.5px; color: var(--ink-2); }
+.ticks .ph { font-size: 17px; color: var(--ink); margin-top: 3px; }
+.link { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: 15px; border-bottom: 1px solid var(--line-2); padding-bottom: 3px; }
+.link:hover { border-color: var(--ink); }
+.panel { border: 1px solid var(--line); border-radius: 10px; background: var(--soft); padding: 24px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 8px; }
+
+/* positions mock */
+.pos { overflow: hidden; }
+.pos-h { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.pos-h b { font-weight: 600; }
+.pos-h span { color: var(--ink-3); }
+.pos table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pos th { text-align: right; font-weight: 500; color: var(--ink-3); padding: 10px 16px; font-size: 12px; border-bottom: 1px solid var(--line); }
+.pos td { text-align: right; padding: 13px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.pos th:first-child, .pos td:first-child { text-align: left; }
+.pos tr:last-child td { border-bottom: 0; }
+.side { display: inline-block; font: 600 11px/1 var(--font); padding: 4px 6px; border-radius: 3px; margin-right: 8px; letter-spacing: .02em; }
+.side.l { color: var(--up); background: var(--up-bg); } .side.s { color: var(--down); background: var(--down-bg); }
+.margin-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.margin-bar .card { padding: 14px 16px; display: grid; gap: 6px; }
+.margin-bar span { font-size: 12px; color: var(--ink-3); }
+.margin-bar b { font: 500 17px var(--mono); letter-spacing: -0.03em; }
+
+/* predict mock */
+.pm { display: grid; gap: 12px; }
+.pm .card { padding: 18px 18px 16px; display: grid; gap: 14px; }
+.pm-q { display: flex; gap: 14px; justify-content: space-between; align-items: flex-start; }
+.pm-q b { font-size: 15.5px; font-weight: 500; line-height: 1.4; }
+.pm-pct { font: 500 22px/1 var(--mono); letter-spacing: -0.03em; text-align: right; }
+.pm-pct span { display: block; font: 400 11.5px var(--font); color: var(--ink-3); margin-top: 4px; letter-spacing: 0; }
+.pm-meta { display: flex; gap: 14px; font-size: 12.5px; color: var(--ink-3); }
+.pm-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pm-btns a { height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; font-size: 14px; font-weight: 500; }
+.pm-btns .y { background: var(--up-bg); color: var(--up); } .pm-btns .n { background: var(--down-bg); color: var(--down); }
+.pm-btns a:hover { filter: brightness(.97); }
+
+/* commodity list */
+.cl { overflow: hidden; }
+.cl-g { padding: 10px 16px; font: 500 11.5px/1 var(--mono); text-transform: uppercase; letter-spacing: .03em; color: var(--ink-3); background: var(--soft); border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); }
+.cl-g:first-child { border-top: 0; }
+.cl-r { display: grid; grid-template-columns: minmax(0, 1fr) 72px 104px 76px; align-items: center; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--line); font-size: 14px; }
+.cl-r:hover { background: #fbfbfc; }
+.cl-r:last-child { border-bottom: 0; }
+.cl-r .nm { display: grid; min-width: 0; }
+.cl-r .nm b { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cl-r .nm span { font-size: 12px; color: var(--ink-3); }
+.cl-r .px, .cl-r .ch { text-align: right; }
+.cl-r .sp { height: 26px; }
+.cl-r .sp svg { width: 100%; height: 100%; display: block; }
+
+/* steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.step { padding: 32px 30px 36px; border-right: 1px solid var(--line); display: grid; gap: 14px; align-content: start; }
+.step:last-child { border-right: 0; }
+.step .n { font: 500 13px/1 var(--mono); color: var(--ink-3); }
+.step h3 { font-size: 21px; }
+.step p { color: var(--ink-2); font-size: 15.5px; }
+.step .ic { width: 40px; height: 40px; border-radius: 8px; background: var(--soft); display: grid; place-items: center; margin-bottom: 8px; }
+.step .ic .ph { font-size: 20px; }
+
+/* closing band */
+.band { background: var(--ink); color: #fff; border-radius: 12px; padding: 64px; display: flex; justify-content: space-between; align-items: center; gap: 40px; flex-wrap: wrap; }
+.band h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; max-width: 18em; }
+.band p { color: #aab1b9; margin-top: 12px; font-size: 16.5px; }
+.band .btn-dark { background: #fff; color: var(--ink); }
+.band .btn-dark:hover { background: #e9ecef; }
+.band .btn-line { background: transparent; color: #fff; border-color: #3a3f45; }
+.band .btn-line:hover { border-color: #fff; }
+
+/* footer */
+footer { border-top: 1px solid var(--line); margin-top: 104px; padding: 64px 0 40px; font-size: 14px; color: var(--ink-2); }
+.f-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
+.f-grid h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
+.f-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.f-grid a:hover { color: var(--ink); }
+.f-grid p { margin-top: 14px; max-width: 30em; }
+.f-legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 12.5px; color: var(--ink-3); line-height: 1.6; }
+.f-legal .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 1080px) {
+  .hero .wrap, .prod { grid-template-columns: 1fr; gap: 48px; }
+  .prod.flip .prod-t { order: 0; }
+  .hero { padding: 64px 0 72px; }
+}
+@media (max-width: 860px) {
+  .nav, .top-r .login { display: none; }
+  .menu { display: block; }
+  .steps { grid-template-columns: 1fr; }
+  .step { border-right: 0; border-bottom: 1px solid var(--line); }
+  .step:last-child { border-bottom: 0; }
+  .f-grid { grid-template-columns: 1fr 1fr; }
+  .f-grid > div:first-child { grid-column: 1 / -1; }
+  .band { padding: 40px 28px; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .top .wrap { gap: 12px; }
+  .top-r .btn-dark { padding: 0 12px; }
+  .hero { padding: 44px 0 56px; }
+  .hero h1 { font-size: 40px; }
+  .lede { font-size: 17px; }
+  .cta .btn { flex: 1 1 auto; }
+  .hero-facts { gap: 24px; }
+  .sec { padding: 72px 0; }
+  .sec-head { margin-bottom: 36px; }
+  .prod { padding: 40px 0; }
+  .prod-t h3 { font-size: 25px; }
+  .panel { padding: 12px; }
+  .pos th:nth-child(3), .pos td:nth-child(3) { display: none; }
+  .pos th, .pos td { padding-left: 10px; padding-right: 10px; }
+  .margin-bar { grid-template-columns: 1fr 1fr; }
+  .margin-bar .card:last-child { grid-column: 1 / -1; }
+  .cl-r { grid-template-columns: minmax(0, 1fr) 84px 64px; }
+  .cl-r .sp { display: none; }
+  .tc-head, .tc-body { padding-left: 16px; padding-right: 16px; }
+  .tc-chart { padding: 0 16px; }
+  footer { margin-top: 72px; }
+  .f-grid { gap: 32px 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="home-a.html" aria-label="Demo Exchange home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+      <span>Demo<span>Exchange</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#markets">Markets</a>
+      <a href="#predict">Predict</a>
+      <a href="#how">How it works</a>
+    </nav>
+    <div class="top-r">
+      <a class="login" href="index.html#account">Log in</a>
+      <a class="btn btn-dark btn-sm" href="index.html#account">Open account</a>
+      <details class="menu">
+        <summary aria-label="Menu"><i class="ph ph-list" aria-hidden="true"></i></summary>
+        <div class="menu-p">
+          <a href="#products">Products</a>
+          <a href="#markets">Markets</a>
+          <a href="#predict">Predict</a>
+          <a href="#how">How it works</a>
+          <a href="index.html#account">Log in</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-label="Market prices">
+  <div class="tk-track" id="tkTrack"></div>
+</div>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span>Commodities</span><i>/</i><span>Crypto</span><i>/</i><span>Forex</span><i>/</i><span>Indices</span><i>/</i><span>Stocks</span></div>
+        <h1>Every market. <em>One margin account.</em></h1>
+        <p class="lede">Go long or short on gold, Brent, wheat, Bitcoin, EUR/USD and the S&amp;P&nbsp;500 with leverage, then trade yes/no outcomes on prediction markets from the same balance.</p>
+        <div class="cta">
+          <a class="btn btn-dark" href="index.html#account">Open account <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-line" href="index.html">Start trading</a>
+        </div>
+        <div class="hero-facts">
+          <div><b>44</b><span>markets in 5 asset classes</span></div>
+          <div><b>100x</b><span>max leverage on forex</span></div>
+          <div><b>24/7</b><span>crypto trading</span></div>
+        </div>
+      </div>
+
+      <div class="ticket" aria-label="Order ticket preview">
+        <div class="tc-head">
+          <div class="tc-sym"><b>Gold</b><span>XAU/USD · per troy oz</span></div>
+          <div class="tc-px"><div class="big mono" id="tcPx">4,181.10</div><div class="c" id="tcChg">&nbsp;</div></div>
+        </div>
+        <div class="tc-chart" id="tcChart"></div>
+        <div class="tc-body">
+          <div class="seg" role="group" aria-label="Direction">
+            <button class="l" aria-pressed="true" data-side="l">Long</button>
+            <button class="s" aria-pressed="false" data-side="s">Short</button>
+          </div>
+          <div class="fld">
+            <div class="fld-k"><span>Leverage</span><span>Margin 1,000 USD</span></div>
+            <div class="levs" role="group" aria-label="Leverage">
+              <button aria-pressed="false" data-lev="1">1x</button>
+              <button aria-pressed="false" data-lev="2">2x</button>
+              <button aria-pressed="false" data-lev="5">5x</button>
+              <button aria-pressed="true" data-lev="10">10x</button>
+              <button aria-pressed="false" data-lev="20">20x</button>
+            </div>
+          </div>
+          <div class="tc-rows">
+            <div><span>Position size</span><b class="mono" id="tcSize">10,000.00 USD</b></div>
+            <div><span>Quantity</span><b class="mono" id="tcQty">2.39 oz</b></div>
+            <div><span>Est. liquidation price</span><b class="mono" id="tcLiq">—</b></div>
+          </div>
+          <a class="tc-go" id="tcGo" href="index.html">Long Gold at 10x</a>
+          <div class="tc-note">Liquidation estimate uses a 0.5% maintenance margin.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Products</div>
+        <h2>Three ways to act on a view, one balance behind all of them.</h2>
+      </div>
+
+      <div class="prod">
+        <div class="prod-t">
+          <div class="kicker">01 · Trade with leverage</div>
+          <h3>Long or short, sized to your risk.</h3>
+          <p>Open a position in seconds and see the margin it uses, the price it is liquidated at and the fee, before you confirm.</p>
+          <ul class="ticks">
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Up to 20x on commodities and indices, 50x on crypto, 100x on forex, 5x on stocks</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Market, limit and stop orders with stop loss and take profit</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Live margin level with a warning before a margin call</span></li>
+          </ul>
+          <a class="link" href="index.html">Open the trading screen <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="panel">
+          <div class="card pos">
+            <div class="pos-h"><b>Open positions</b><span>3 positions</span></div>
+            <table>
+              <thead><tr><th scope="col">Market</th><th scope="col">Entry</th><th scope="col">Lev.</th><th scope="col">P&amp;L</th></tr></thead>
+              <tbody id="posBody"></tbody>
+            </table>
+          </div>
+          <div class="margin-bar">
+            <div class="card"><span>Equity</span><b id="pmEq">—</b></div>
+            <div class="card"><span>Used margin</span><b>3,000.00</b></div>
+            <div class="card"><span>Margin level</span><b id="pmLvl">—</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod flip" id="predict">
+        <div class="prod-t">
+          <div class="kicker">02 · Predict</div>
+          <h3>Trade the outcome, not just the price.</h3>
+          <p>Buy Yes or No on questions about rates, inflation, commodities and crypto. A share pays 1 USD if you are right, so the price is the market's probability.</p>
+          <ul class="ticks">
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Binary, multi-outcome and price-range markets</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Clear resolution rule and source on every market</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Sell any time before resolution at the current price</span></li>
+          </ul>
+          <a class="link" href="index.html#predict">Browse prediction markets <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="panel pm" id="pmCards"></div>
+      </div>
+
+      <div class="prod" id="markets">
+        <div class="prod-t">
+          <div class="kicker">03 · Commodities</div>
+          <h3>Metals, energy and agriculture on one screen.</h3>
+          <p>Gold leads the board. Spot metals stream from a live feed; oil, gas and grains trade on their exchange hours, and the platform tells you when a market is closed.</p>
+          <ul class="ticks">
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Gold, silver, platinum, palladium and copper</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Brent, WTI and natural gas</span></li>
+            <li><i class="ph ph-check" aria-hidden="true"></i><span>Wheat, corn, soybeans, coffee, sugar, cocoa and cotton</span></li>
+          </ul>
+          <a class="link" href="index.html#cmd">See the commodities desk <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="panel">
+          <div class="card cl" id="cmdList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">How it works</div>
+        <h2>From sign-up to first trade in three steps.</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="ic"><i class="ph ph-user-plus" aria-hidden="true"></i></div>
+          <div class="n">01</div>
+          <h3>Open an account</h3>
+          <p>Register with your email and verify your identity. It takes a few minutes.</p>
+        </div>
+        <div class="step">
+          <div class="ic"><i class="ph ph-wallet" aria-hidden="true"></i></div>
+          <div class="n">02</div>
+          <h3>Fund it</h3>
+          <p>Deposit in USD. The same balance covers margin trading and prediction markets.</p>
+        </div>
+        <div class="step">
+          <div class="ic"><i class="ph ph-chart-line-up" aria-hidden="true"></i></div>
+          <div class="n">03</div>
+          <h3>Place your first trade</h3>
+          <p>Pick a market, choose long or short and your leverage, set a stop loss, confirm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Get started">
+    <div class="band">
+      <div>
+        <h2>Start with the markets you already follow.</h2>
+        <p>Gold, oil, Bitcoin, the dollar. All in one place.</p>
+      </div>
+      <div class="cta" style="margin-top:0">
+        <a class="btn btn-dark" href="index.html#account">Open account</a>
+        <a class="btn btn-line" href="index.html">Start trading</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="brand" href="home-a.html" aria-label="Demo Exchange home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+          <span>Demo<span>Exchange</span></span>
+        </a>
+        <p>Margin trading on commodities, crypto, forex, indices and stocks, plus prediction markets.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul><li><a href="index.html">Trade</a></li><li><a href="index.html#predict">Predict</a></li><li><a href="index.html#cmd">Commodities</a></li><li><a href="index.html#account">Account</a></li></ul>
+      </div>
+      <div>
+        <h4>Markets</h4>
+        <ul><li><a href="#markets">Metals</a></li><li><a href="#markets">Energy</a></li><li><a href="#markets">Agriculture</a></li><li><a href="index.html">Crypto and forex</a></li></ul>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul><li><a href="#how">How it works</a></li><li><a href="index.html#build">Full build</a></li><li><a href="home.html">Home page variants</a></li></ul>
+      </div>
+    </div>
+    <div class="f-legal">
+      <p>Trading on margin carries a high level of risk and may not be suitable for everyone. You can lose all of the money you deposit. Prediction market shares can expire worthless. Consider your objectives and experience before trading.</p>
+      <p id="srcNote">Prices: crypto from Binance public market data and spot metals from gold-api.com when reachable. Markets marked as sample show the reference close of 16 Oct 2026.</p>
+      <div class="row"><span>&copy; 2026 Demo Exchange</span><span>Regulated entity name · Registered address</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Demo Exchange home page price layer (same keyless sources as the trading app, js/data.js):
+   Binance public REST for crypto, gold-api.com for spot metals. Every other market, and any source
+   that cannot be reached, shows the static reference close of 16 Oct 2026 and is marked "Sample". */
+(function (root) {
+  'use strict';
+  var REF = '16 Oct 2026';
+  // id: [symbol, name, cat, group, decimals, refClose, prevClose, source, key, unit, maxLev]
+  var RAW = {
+    XAU:    ['XAU/USD', 'Gold', 'cmd', 'Metals', 2, 4181.10, 4190.60, 'gold', 'XAU', 'USD / troy oz', 20],
+    XAG:    ['XAG/USD', 'Silver', 'cmd', 'Metals', 3, 57.305, 60.141, 'gold', 'XAG', 'USD / troy oz', 20],
+    XPT:    ['XPT/USD', 'Platinum', 'cmd', 'Metals', 2, 1633.10, 1679.40, 'gold', 'XPT', 'USD / troy oz', 20],
+    COPPER: ['COPPER', 'Copper', 'cmd', 'Metals', 4, 6.5735, 6.6985, 'gold', 'HG', 'USD / lb', 20],
+    BRENT:  ['BRENT', 'Brent crude oil', 'cmd', 'Energy', 2, 109.86, 106.65, 'sample', null, 'USD / barrel', 20],
+    WTI:    ['WTI', 'WTI crude oil', 'cmd', 'Energy', 2, 99.02, 93.74, 'sample', null, 'USD / barrel', 20],
+    NATGAS: ['NATGAS', 'Natural gas', 'cmd', 'Energy', 3, 3.116, 3.167, 'sample', null, 'USD / MMBtu', 20],
+    WHEAT:  ['WHEAT', 'Wheat', 'cmd', 'Agriculture', 4, 6.6050, 6.7225, 'sample', null, 'USD / bushel', 20],
+    CORN:   ['CORN', 'Corn', 'cmd', 'Agriculture', 4, 4.7425, 4.8300, 'sample', null, 'USD / bushel', 20],
+    COFFEE: ['COFFEE', 'Coffee', 'cmd', 'Agriculture', 4, 3.0555, 2.9060, 'sample', null, 'USD / lb', 20],
+    COCOA:  ['COCOA', 'Cocoa', 'cmd', 'Agriculture', 0, 5686, 5676, 'sample', null, 'USD / t', 20],
+    BTC:    ['BTC/USDT', 'Bitcoin', 'crypto', 'Crypto', 2, 81578.66, 80410.00, 'bin', 'BTCUSDT', 'per BTC', 50],
+    ETH:    ['ETH/USDT', 'Ethereum', 'crypto', 'Crypto', 2, 2427.99, 2462.50, 'bin', 'ETHUSDT', 'per ETH', 50],
+    SOL:    ['SOL/USDT', 'Solana', 'crypto', 'Crypto', 2, 104.37, 101.90, 'bin', 'SOLUSDT', 'per SOL', 50],
+    XRP:    ['XRP/USDT', 'XRP', 'crypto', 'Crypto', 4, 1.3028, 1.3180, 'bin', 'XRPUSDT', 'per XRP', 50],
+    EURUSD: ['EUR/USD', 'Euro / US Dollar', 'fx', 'Forex', 5, 1.1242, 1.1205, 'sample', null, 'per 1 EUR', 100],
+    GBPUSD: ['GBP/USD', 'Pound / US Dollar', 'fx', 'Forex', 5, 1.3330, 1.3242, 'sample', null, 'per 1 GBP', 100],
+    USDJPY: ['USD/JPY', 'US Dollar / Yen', 'fx', 'Forex', 3, 157.987, 158.203, 'sample', null, 'JPY per 1 USD', 100],
+    USDTRY: ['USD/TRY', 'US Dollar / Lira', 'fx', 'Forex', 4, 49.5091, 49.3353, 'sample', null, 'TRY per 1 USD', 100],
+    US500:  ['US500', 'S&P 500', 'idx', 'Indices', 2, 7659.44, 7811.54, 'sample', null, 'index points', 20],
+    NAS100: ['NAS100', 'Nasdaq 100', 'idx', 'Indices', 2, 29187.55, 30883.15, 'sample', null, 'index points', 20],
+    GER40:  ['GER40', 'DAX 40', 'idx', 'Indices', 2, 25622.61, 25087.27, 'sample', null, 'index points', 20],
+    UK100:  ['UK100', 'FTSE 100', 'idx', 'Indices', 2, 10881.90, 10552.10, 'sample', null, 'index points', 20],
+    AAPL:   ['AAPL', 'Apple', 'stk', 'Stocks', 2, 343.46, 336.64, 'sample', null, 'per share', 5],
+    NVDA:   ['NVDA', 'NVIDIA', 'stk', 'Stocks', 2, 214.13, 229.28, 'sample', null, 'per share', 5],
+    MSFT:   ['MSFT', 'Microsoft', 'stk', 'Stocks', 2, 529.05, 535.07, 'sample', null, 'per share', 5],
+    TSLA:   ['TSLA', 'Tesla', 'stk', 'Stocks', 2, 354.72, 382.70, 'sample', null, 'per share', 5]
+  };
+  var M = {}, BY_KEY = {};
+  Object.keys(RAW).forEach(function (id) {
+    var r = RAW[id];
+    M[id] = { id: id, sym: r[0], name: r[1], cat: r[2], group: r[3], dp: r[4], ref: r[5], prev: r[6], src: r[7], key: r[8],
+              unit: r[9], lev: r[10], price: r[5], live: false, spark: null };
+    if (r[8]) BY_KEY[r[8]] = M[id];
+  });
+  var subs = [], queued = false, status = { bin: 'pending', gold: 'pending', binMs: null, goldMs: null };
+  function emit() {
+    if (queued) return; queued = true;
+    (root.requestAnimationFrame || setTimeout)(function () { queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); });
+  }
+  function getJson(url, ms) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctl) ctl.abort(); }, ms || 7000);
+    return fetch(url, ctl ? { signal: ctl.signal, cache: 'no-store' } : {}).then(function (r) {
+      clearTimeout(t); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+    }, function (e) { clearTimeout(t); throw e; });
+  }
+  var BIN = ['https://api.binance.com', 'https://data-api.binance.vision'], binIdx = 0;
+  function bin(path) {
+    var i = binIdx;
+    return getJson(BIN[i] + path, 6000).catch(function () {
+      var j = (i + 1) % BIN.length;
+      return getJson(BIN[j] + path, 6000).then(function (x) { binIdx = j; return x; });
+    });
+  }
+  function ids(src) { return Object.keys(M).filter(function (k) { return M[k].src === src; }); }
+  function pollBin() {
+    var keys = ids('bin').map(function (k) { return M[k].key; }), t0 = Date.now();
+    return bin('/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(keys))).then(function (arr) {
+      if (!Array.isArray(arr) || !arr.length) throw new Error('bad response');
+      arr.forEach(function (t) {
+        var m = t && BY_KEY[t.symbol], p = t && +t.lastPrice, o = t && +t.openPrice;
+        if (!m || !(p > 0) || !isFinite(p)) return;
+        m.price = p; if (o > 0) m.prev = o; m.live = true;
+      });
+      status.bin = 'live'; status.binMs = Date.now() - t0; emit();
+    }).catch(function () { if (status.bin !== 'live') status.bin = 'offline'; emit(); });
+  }
+  function pollGold() {
+    var t0 = Date.now();
+    return Promise.all(ids('gold').map(function (id) {
+      var m = M[id];
+      return getJson('https://api.gold-api.com/price/' + m.key, 7000).then(function (j) {
+        var p = +(j && j.price); if (!(p > 0) || !isFinite(p)) throw new Error('bad price');
+        if (!m.live) m.prev = m.ref;     // live spot is compared with the last reference close
+        m.price = p; m.live = true; return true;
+      }, function () { return false; });
+    })).then(function (r) {
+      if (r.indexOf(true) >= 0) { status.gold = 'live'; status.goldMs = Date.now() - t0; } else if (status.gold !== 'live') status.gold = 'offline';
+      emit();
+    });
+  }
+  /* sparkline: Binance hourly closes for crypto, otherwise a seeded path from the previous close to the price */
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function path(id, n, from, to, vol) {
+    var r = rng(hash(id + n)), out = [], w = 0, ws = [0];
+    for (var i = 1; i < n; i++) { w += (r() - 0.5) * 2; ws.push(w); }
+    var last = ws[n - 1], amp = Math.abs(to - from) * 0.9 + to * (vol || 0.2) * 0.012;
+    for (var j = 0; j < n; j++) { var f = j / (n - 1); out.push(from + (to - from) * f + (ws[j] - last * f) / Math.sqrt(n) * amp); }
+    out[n - 1] = to; return out;
+  }
+  function sampleSpark(m, n) { return path(m.id, n || 24, m.prev, m.price, 0.25); }
+  function loadSparks(list, interval, n) {
+    list.filter(function (id) { return M[id] && M[id].src === 'bin'; }).forEach(function (id) {
+      var m = M[id];
+      bin('/api/v3/klines?symbol=' + m.key + '&interval=' + (interval || '1h') + '&limit=' + (n || 24)).then(function (rows) {
+        if (!Array.isArray(rows) || rows.length < 4) return;
+        m.spark = rows.map(function (k) { return +k[4]; }); emit();
+      }).catch(function () {});
+    });
+  }
+  function klines(sym, interval, n) {
+    return bin('/api/v3/klines?symbol=' + sym + '&interval=' + interval + '&limit=' + n).then(function (rows) {
+      if (!Array.isArray(rows) || rows.length < 10) throw new Error('short');
+      return rows.map(function (k) { return { t: +k[0], c: +k[4] }; });
+    });
+  }
+  function fmt(m, p) {
+    var v = p == null ? m.price : p;
+    return v.toLocaleString('en-US', { minimumFractionDigits: m.dp, maximumFractionDigits: m.dp });
+  }
+  function chg(m) { return m.prev > 0 ? (m.price - m.prev) / m.prev * 100 : 0; }
+  function pct(m) { var c = chg(m); return (c > 0 ? '+' : c < 0 ? '−' : '') + Math.abs(c).toFixed(2) + '%'; }
+  function dir(m) { var c = chg(m); return c > 0.0005 ? 'up' : c < -0.0005 ? 'down' : 'flat'; }
+  function sparkSvg(vals, w, h, cls) {
+    if (!vals || vals.length < 2) return '';
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), rg = hi - lo || 1, pad = 2;
+    var pts = vals.map(function (v, i) { return (i / (vals.length - 1) * w).toFixed(1) + ',' + (pad + (1 - (v - lo) / rg) * (h - pad * 2)).toFixed(1); });
+    return '<svg class="spark ' + (cls || '') + '" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" preserveAspectRatio="none" aria-hidden="true">' +
+      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  }
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    emit(); pollBin(); pollGold();
+    setInterval(function () { if (!document.hidden) pollBin(); }, 15000);
+    setInterval(function () { if (!document.hidden) pollGold(); }, 30000);
+  }
+  root.DX = { M: M, REF: REF, status: status, on: function (f) { subs.push(f); }, start: start, fmt: fmt, pct: pct, chg: chg, dir: dir,
+              spark: function (m, n) { return m.spark || sampleSpark(m, n); }, sparkSvg: sparkSvg, loadSparks: loadSparks, klines: klines, path: path };
+})(window);
+</script>
+<script>
+(function () {
+  'use strict';
+  var M = DX.M;
+  function $(id) { return document.getElementById(id); }
+  var TK = ['XAU', 'BTC', 'BRENT', 'EURUSD', 'XAG', 'ETH', 'WHEAT', 'US500', 'SOL', 'WTI', 'USDJPY', 'COPPER', 'NAS100', 'XPT', 'NVDA', 'NATGAS', 'GER40', 'COFFEE', 'XRP', 'AAPL'];
+
+  function tkHtml() {
+    return TK.map(function (id) {
+      var m = M[id], d = DX.dir(m);
+      return '<a class="tk" href="index.html" data-id="' + id + '"><span class="' + (m.live ? 'lv' : 'sm') + '" title="' + (m.live ? 'Live price' : 'Sample price, ' + DX.REF + ' close') + '"></span><b>' + m.sym + '</b>' +
+        '<span class="px mono" data-px>' + DX.fmt(m) + '</span><span class="mono ' + d + '" data-ch>' + DX.pct(m) + '</span></a>';
+    }).join('');
+  }
+  var track = $('tkTrack');
+  track.innerHTML = '<div class="tk-set">' + tkHtml() + '</div><div class="tk-set" aria-hidden="true">' + tkHtml() + '</div>';
+  track.querySelectorAll('.tk-set[aria-hidden] a').forEach(function (a) { a.tabIndex = -1; });
+  function renderTicker() {
+    track.querySelectorAll('.tk').forEach(function (el) {
+      var m = M[el.dataset.id], d = DX.dir(m);
+      el.querySelector('[data-px]').textContent = DX.fmt(m);
+      var c = el.querySelector('[data-ch]'); c.textContent = DX.pct(m); c.className = 'mono ' + d;
+      var dot = el.firstChild; dot.className = m.live ? 'lv' : 'sm'; dot.title = m.live ? 'Live price' : 'Sample price, ' + DX.REF + ' close';
+    });
+  }
+
+  /* ticket */
+  var paxg = null, side = 'l', lev = 10, MARGIN = 1000, MM = 0.005;
+  function money(v, dp) { return v.toLocaleString('en-US', { minimumFractionDigits: dp == null ? 2 : dp, maximumFractionDigits: dp == null ? 2 : dp }); }
+  function renderTicket() {
+    var g = M.XAU, p = g.price, d = DX.dir(g);
+    $('tcPx').textContent = DX.fmt(g);
+    $('tcChg').innerHTML = '<span class="' + d + '">' + DX.pct(g) + '</span> <span class="flat">' + (g.live ? 'live' : 'sample') + '</span>';
+    var size = MARGIN * lev, qty = size / p;
+    var liq = side === 'l' ? p * (1 - 1 / lev + MM) : p * (1 + 1 / lev - MM);
+    $('tcSize').textContent = money(size) + ' USD';
+    $('tcQty').textContent = money(qty, 3) + ' oz';
+    $('tcLiq').textContent = lev === 1 && side === 'l' ? 'None at 1x' : money(liq) + ' USD';
+    var go = $('tcGo'); go.className = 'tc-go' + (side === 's' ? ' s' : ''); go.textContent = (side === 'l' ? 'Long' : 'Short') + ' Gold at ' + lev + 'x';
+    var vals = paxg || DX.spark(g, 48);
+    $('tcChart').innerHTML = areaSvg(vals);
+  }
+  function areaSvg(v) {
+    var w = 400, h = 92, lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), rg = hi - lo || 1;
+    var pts = v.map(function (x, i) { return [i / (v.length - 1) * w, 4 + (1 - (x - lo) / rg) * (h - 8)]; });
+    var line = pts.map(function (q) { return q[0].toFixed(1) + ',' + q[1].toFixed(1); }).join(' ');
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0b0d0f" stop-opacity=".08"/><stop offset="1" stop-color="#0b0d0f" stop-opacity="0"/></linearGradient></defs>' +
+      '<polygon points="0,' + h + ' ' + line + ' ' + w + ',' + h + '" fill="url(#ga)"/><polyline points="' + line + '" fill="none" stroke="#0b0d0f" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>';
+  }
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.onclick = function () { side = b.dataset.side; document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); renderTicket(); };
+  });
+  document.querySelectorAll('.levs button').forEach(function (b) {
+    b.onclick = function () { lev = +b.dataset.lev; document.querySelectorAll('.levs button').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); renderTicket(); };
+  });
+
+  /* positions mock: entries fixed relative to the reference close, P&L follows the current price */
+  var POS = [
+    { id: 'XAU', s: 'l', lev: 10, entry: 4152.40, margin: 1000 },
+    { id: 'BRENT', s: 's', lev: 5, entry: 111.20, margin: 1000 },
+    { id: 'BTC', s: 'l', lev: 3, entry: 79850.00, margin: 1000 }
+  ];
+  function renderPos() {
+    var total = 0;
+    $('posBody').innerHTML = POS.map(function (p) {
+      var m = M[p.id], size = p.margin * p.lev, r = (m.price - p.entry) / p.entry * (p.s === 'l' ? 1 : -1), pnl = size * r;
+      total += pnl;
+      return '<tr><td><span class="side ' + p.s + '">' + (p.s === 'l' ? 'LONG' : 'SHORT') + '</span>' + m.name.replace(' crude oil', '') + '</td><td class="mono">' + DX.fmt(m, p.entry) + '</td><td class="mono">' + p.lev + 'x</td>' +
+        '<td class="mono ' + (pnl >= 0 ? 'up' : 'down') + '">' + (pnl >= 0 ? '+' : '−') + money(Math.abs(pnl)) + '</td></tr>';
+    }).join('');
+    var eq = 10000 + total;
+    $('pmEq').textContent = money(eq);
+    $('pmLvl').textContent = Math.round(eq / 3000 * 100) + '%';
+  }
+
+  /* prediction cards (example markets, odds illustrative) */
+  function renderPm() {
+    var g = M.XAU.price, strike = Math.ceil(g / 100) * 100, b = M.BTC.price, bs = Math.ceil(b / 10000) * 10000;
+    var cards = [
+      { q: 'Will gold settle above ' + money(strike, 0) + ' USD at the end of October?', p: 0.33, vol: 'Commodities', close: 'Closes Oct 30' },
+      { q: 'Will the Fed cut rates at the December 2026 FOMC meeting?', p: 0.58, vol: 'Economy', close: 'Closes Dec 9' },
+      { q: 'Will BTC trade above ' + money(bs, 0) + ' USD on Dec 31, 2026?', p: 0.41, vol: 'Crypto', close: 'Closes Dec 31' }
+    ];
+    $('pmCards').innerHTML = cards.map(function (c) {
+      var y = Math.round(c.p * 100), n = 100 - y;
+      return '<div class="card"><div class="pm-q"><b>' + c.q + '</b><div class="pm-pct">' + y + '%<span>chance</span></div></div>' +
+        '<div class="pm-btns"><a class="y" href="index.html#predict"><span>Yes</span><span class="mono">' + y + '¢</span></a><a class="n" href="index.html#predict"><span>No</span><span class="mono">' + n + '¢</span></a></div>' +
+        '<div class="pm-meta"><span>' + c.vol + '</span><span>' + c.close + '</span><span>Example market</span></div></div>';
+    }).join('');
+  }
+
+  /* commodities list */
+  var GROUPS = [['Metals', ['XAU', 'XAG', 'XPT', 'COPPER']], ['Energy', ['BRENT', 'WTI', 'NATGAS']], ['Agriculture', ['WHEAT', 'CORN', 'COFFEE']]];
+  function renderCmd() {
+    $('cmdList').innerHTML = GROUPS.map(function (g) {
+      return '<div class="cl-g">' + g[0] + '</div>' + g[1].map(function (id) {
+        var m = M[id], d = DX.dir(m);
+        return '<a class="cl-r" href="index.html#cmd"><span class="nm"><b>' + m.name + '</b><span>' + m.sym + (m.live ? ' · live' : ' · sample') + '</span></span>' +
+          '<span class="sp ' + d + '">' + DX.sparkSvg(DX.spark(m, 24), 72, 26) + '</span>' +
+          '<span class="px mono">' + DX.fmt(m) + '</span><span class="ch mono ' + d + '">' + DX.pct(m) + '</span></a>';
+      }).join('');
+    }).join('');
+  }
+
+  function renderAll() { renderTicker(); renderTicket(); renderPos(); renderPm(); renderCmd(); }
+  DX.on(renderAll);
+  renderAll();
+  DX.klines('PAXGUSDT', '1h', 48).then(function (rows) { paxg = rows.map(function (r) { return r.c; }); renderTicket(); }).catch(function () {});
+  DX.start();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo Exchange · Home page variants</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f7f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0e10'/%3E%3Cpath d='M8 23V9h7.5a7 7 0 0 1 0 14H8z' fill='none' stroke='%23e6e8eb' stroke-width='2.4'/%3E%3Cpath d='M13 18l3-3 2.5 2.5L23 13' fill='none' stroke='%2326b37a' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/ibm-plex/ibm-plex.css">
+<link rel="stylesheet" href="vendor/phosphor/regular/style.css">
+<style>
+:root { --bg: #f6f7f8; --card: #fff; --ink: #0b0d0f; --ink-2: #3f464e; --ink-3: #636a72; --line: #e2e5e9; --tick: #26b37a;
+  --font: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; --mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace; color-scheme: light; }
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--font); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; border-bottom: 1px solid var(--line); gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.brand svg { width: 26px; height: 26px; }
+.brand .bm-tick { stroke: var(--tick); }
+.brand span span { color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+header a.app { font-size: 14px; color: var(--ink-2); display: inline-flex; gap: 6px; align-items: center; }
+header a.app:hover { color: var(--ink); }
+.intro { padding: 56px 0 36px; max-width: 720px; }
+.intro .k { font: 500 12.5px/1 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); }
+.intro h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.03em; margin: 14px 0 12px; font-weight: 600; }
+.intro p { color: var(--ink-2); font-size: 17px; margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-bottom: 72px; }
+.v { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .15s, box-shadow .15s; }
+.v:hover { border-color: #c5cbd2; box-shadow: 0 18px 40px -24px rgba(11, 13, 15, .25); }
+.thumb { position: relative; aspect-ratio: 1440 / 1000; overflow: hidden; border-bottom: 1px solid var(--line); background: #eef0f2; }
+.thumb iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 1000px; border: 0; transform-origin: 0 0; pointer-events: none; }
+.body { padding: 20px 22px 22px; display: grid; gap: 8px; flex: 1; align-content: start; }
+.tag { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); display: flex; align-items: center; gap: 8px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(11, 13, 15, .15); }
+.body h2 { margin: 4px 0 0; font-size: 20px; letter-spacing: -0.015em; font-weight: 600; }
+.body p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+.open { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: 14.5px; }
+.v:hover .open { text-decoration: underline; text-underline-offset: 3px; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 36px; font-size: 13px; color: var(--ink-3); }
+@media (max-width: 1000px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .wrap { padding: 0 16px; } .grid { grid-template-columns: 1fr; } .intro { padding: 36px 0 24px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="home.html" aria-label="Demo Exchange">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+      <span>Demo<span>Exchange</span></span>
+    </a>
+    <a class="app" href="index.html">Trading screen <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+  </div>
+</header>
+<main class="wrap">
+  <div class="intro">
+    <div class="k">Home page</div>
+    <h1>Three light home page directions</h1>
+    <p>Each variant is a complete, responsive page with live crypto and metal prices. Every trade button opens the trading screen.</p>
+  </div>
+  <div class="grid">
+    <a class="v" href="home-a.html">
+      <div class="thumb"><iframe src="home-a.html" title="Variant A preview" tabindex="-1" aria-hidden="true" loading="lazy" scrolling="no"></iframe></div>
+      <div class="body">
+        <span class="tag"><span class="sw" style="background:#ffffff"></span>Variant A</span>
+        <h2>Clean white</h2>
+        <p>Large headline, live price ticker and an interactive order ticket. Product sections for leverage, prediction markets and commodities, then three steps to start.</p>
+        <span class="open">Open variant A <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="v" href="home-b.html">
+      <div class="thumb"><iframe src="home-b.html" title="Variant B preview" tabindex="-1" aria-hidden="true" loading="lazy" scrolling="no"></iframe></div>
+      <div class="body">
+        <span class="tag"><span class="sw" style="background:#f1f3f5"></span>Variant B</span>
+        <h2>Institutional grey</h2>
+        <p>Markets table up front with price, 24h change and sparkline per asset class, a live price pipeline status, security controls and a platform feature grid.</p>
+        <span class="open">Open variant B <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+    <a class="v" href="home-c.html">
+      <div class="thumb"><iframe src="home-c.html" title="Variant C preview" tabindex="-1" aria-hidden="true" loading="lazy" scrolling="no"></iframe></div>
+      <div class="body">
+        <span class="tag"><span class="sw" style="background:#f5efe4"></span>Variant C</span>
+        <h2>Warm commodities</h2>
+        <p>Cream background led by gold, oil and wheat with a large interactive chart, prediction market cards with Yes and No prices, and a phone app section.</p>
+        <span class="open">Open variant C <i class="ph ph-arrow-right" aria-hidden="true"></i></span>
+      </div>
+    </a>
+  </div>
+</main>
+<footer><div class="wrap">Demo Exchange · home page concepts</div></footer>
+<script>
+(function () {
+  function fit() { document.querySelectorAll('.thumb').forEach(function (t) { var f = t.querySelector('iframe'); f.style.transform = 'scale(' + (t.clientWidth / 1440) + ')'; }); }
+  fit(); window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>

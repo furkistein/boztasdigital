@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo Exchange · Markets, infrastructure and risk controls</title>
+<meta name="description" content="Live markets across commodities, crypto, forex, indices and stocks, with pre-trade risk checks, transparent price sources and an operator back office.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f1f3f5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230c0e10'/%3E%3Cpath d='M8 23V9h7.5a7 7 0 0 1 0 14H8z' fill='none' stroke='%23e6e8eb' stroke-width='2.4'/%3E%3Cpath d='M13 18l3-3 2.5 2.5L23 13' fill='none' stroke='%2326b37a' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vendor/ibm-plex/ibm-plex.css">
+<link rel="stylesheet" href="vendor/phosphor/regular/style.css">
+<style>
+:root {
+  --bg: #f1f3f5; --card: #ffffff; --sunk: #e8ebee; --row: #f7f8f9;
+  --ink: #0e1621; --ink-2: #3c4653; --ink-3: #5d6773;
+  --line: #dde1e6; --line-2: #c9cfd6;
+  --blue: #1b4fd6; --blue-2: #153fae; --blue-bg: #e9effd;
+  --up: #0a7a4e; --down: #c4302b; --up-bg: #e6f4ed; --down-bg: #fbeaea; --tick: #26b37a;
+  --font: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --wrap: 1240px; --r: 4px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--font); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.015em; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums slashed-zero; letter-spacing: -0.02em; }
+.up { color: var(--up); } .down { color: var(--down); } .flat { color: var(--ink-3); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+.skip { position: absolute; left: 12px; top: -60px; background: var(--ink); color: #fff; padding: 10px 14px; z-index: 99; }
+.skip:focus { top: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: var(--r); font: 500 14.5px/1 var(--font); border: 1px solid transparent; white-space: nowrap; transition: background .15s, border-color .15s; }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: var(--blue-2); }
+.btn-line { background: var(--card); border-color: var(--line-2); }
+.btn-line:hover { border-color: var(--ink-3); }
+.btn-sm { height: 34px; padding: 0 14px; font-size: 13.5px; }
+.label { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); }
+
+/* utility bar + header */
+.util { background: var(--ink); color: #b7c0cb; font-size: 12.5px; }
+.util .wrap { display: flex; justify-content: space-between; height: 34px; align-items: center; gap: 16px; }
+.util .mono { color: #fff; }
+.util a:hover { color: #fff; }
+.util-l { display: flex; gap: 22px; overflow: hidden; white-space: nowrap; min-width: 0; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+.util-l > span { flex: none; }
+.util-l span { display: inline-flex; gap: 8px; }
+.util-r { display: flex; gap: 18px; white-space: nowrap; }
+.top { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 20; }
+.top .wrap { display: flex; align-items: center; height: 64px; gap: 36px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; }
+.brand svg { width: 26px; height: 26px; }
+.brand .bm-tick { stroke: var(--tick); }
+.brand span span { color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+.nav { display: flex; gap: 4px; font-size: 14px; color: var(--ink-2); }
+.nav a { padding: 8px 12px; border-radius: var(--r); }
+.nav a:hover { background: var(--row); color: var(--ink); }
+.top-r { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+/* hero */
+.hero { padding: 64px 0 40px; }
+.hero-g { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; }
+.hero h1 { font-size: clamp(34px, 4.4vw, 54px); line-height: 1.06; letter-spacing: -0.03em; margin-top: 18px; max-width: 15em; }
+.hero p { color: var(--ink-2); font-size: 17.5px; margin-top: 18px; max-width: 40em; }
+.hero .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 40px; border: 1px solid var(--line); background: var(--card); border-radius: 6px; }
+.facts div { padding: 18px 22px; border-right: 1px solid var(--line); display: grid; gap: 6px; }
+.facts div:last-child { border-right: 0; }
+.facts b { font: 500 24px/1 var(--mono); letter-spacing: -0.03em; }
+.facts span { font-size: 13px; color: var(--ink-3); }
+
+/* markets table */
+.mk { background: var(--card); border: 1px solid var(--line); border-radius: 6px; margin-top: 16px; overflow: hidden; }
+.mk-h { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.tabs { display: flex; gap: 2px; background: var(--sunk); padding: 3px; border-radius: 5px; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs button { border: 0; background: none; height: 32px; padding: 0 14px; border-radius: 3px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); cursor: pointer; white-space: nowrap; }
+.tabs button[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(14, 22, 33, .1); }
+.feeds { display: flex; gap: 16px; font-size: 12.5px; color: var(--ink-3); flex-wrap: wrap; }
+.feeds span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--line-2); }
+.dot.live { background: var(--tick); } .dot.off { background: #d29b2b; }
+table { width: 100%; border-collapse: collapse; }
+.mk th { font: 500 12px/1 var(--font); color: var(--ink-3); text-align: right; padding: 12px 18px; background: var(--row); border-bottom: 1px solid var(--line); white-space: nowrap; }
+.mk th:first-child, .mk td:first-child { text-align: left; }
+.mk td { padding: 0 18px; height: 60px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; font-size: 14.5px; }
+.mk tbody tr:last-child td { border-bottom: 0; }
+.mk tbody tr:hover td { background: #fafbfc; }
+.asset { display: flex; align-items: center; gap: 12px; }
+.av { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 600 11px/1 var(--mono); background: var(--sunk); color: var(--ink-2); flex: none; letter-spacing: 0; }
+.asset b { display: block; font-weight: 500; }
+.asset small { display: block; font-size: 12.5px; color: var(--ink-3); }
+.chg { display: inline-block; min-width: 76px; padding: 5px 8px; border-radius: 3px; font: 500 13px/1 var(--mono); text-align: right; }
+.chg.up { background: var(--up-bg); } .chg.down { background: var(--down-bg); } .chg.flat { background: var(--row); }
+.spk { display: inline-block; width: 120px; height: 32px; vertical-align: middle; }
+.spk svg { width: 100%; height: 100%; display: block; }
+.src { font-size: 11.5px; color: var(--ink-3); }
+.src.live { color: var(--up); }
+.trade-a { display: inline-flex; height: 32px; align-items: center; padding: 0 14px; border: 1px solid var(--line-2); border-radius: var(--r); font-size: 13.5px; font-weight: 500; }
+.trade-a:hover { border-color: var(--blue); color: var(--blue); }
+.mk-f { display: flex; justify-content: space-between; gap: 16px; padding: 12px 18px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-3); background: var(--row); flex-wrap: wrap; }
+.mk-f a { color: var(--blue); font-weight: 500; }
+
+/* sections */
+.sec { padding: 96px 0 0; }
+.sec-h { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: end; margin-bottom: 40px; }
+.sec-h h2 { font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; margin-top: 14px; }
+.sec-h p { color: var(--ink-2); font-size: 16.5px; }
+.sec-dark { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 96px 0; margin-top: 56px; }
+.sec-dark .sec-h { margin-bottom: 48px; }
+
+.sec-g { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 24px; }
+.ctrl { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.ctrl div { padding: 26px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 8px; align-content: start; }
+.ctrl div:nth-child(2n) { border-right: 0; }
+.ctrl div:nth-last-child(-n+2) { border-bottom: 0; }
+.ctrl .ph { font-size: 22px; color: var(--blue); }
+.ctrl h3 { font-size: 16px; margin-top: 6px; }
+.ctrl p { font-size: 14px; color: var(--ink-2); }
+
+.infra { border: 1px solid var(--line); border-radius: 6px; background: var(--bg); display: flex; flex-direction: column; }
+.infra-h { padding: 16px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+.infra-h b { font-size: 14px; }
+.flow { padding: 22px 20px; display: grid; gap: 10px; flex: 1; }
+.node { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px; display: flex; justify-content: space-between; gap: 12px; align-items: center; font-size: 13.5px; }
+.node span { color: var(--ink-3); font-size: 12.5px; text-align: right; }
+.node .mono { color: var(--ink); }
+.arrow { text-align: center; color: var(--line-2); font-size: 16px; line-height: 1; }
+.infra-f { padding: 14px 20px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-3); }
+
+/* features */
+.feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.feat div { background: var(--card); padding: 28px 24px 30px; display: grid; gap: 10px; align-content: start; }
+.feat .ph { font-size: 22px; color: var(--ink); }
+.feat h3 { font-size: 16px; margin-top: 8px; }
+.feat p { font-size: 14px; color: var(--ink-2); }
+
+.cta-band { margin-top: 96px; background: var(--ink); color: #fff; }
+.cta-band .wrap { display: flex; justify-content: space-between; align-items: center; gap: 32px; padding-top: 56px; padding-bottom: 56px; flex-wrap: wrap; }
+.cta-band h2 { font-size: clamp(26px, 3vw, 36px); line-height: 1.15; }
+.cta-band p { color: #aab4c0; margin-top: 10px; }
+.cta-band .btn-line { background: transparent; color: #fff; border-color: #3b4654; }
+.cta-band .btn-line:hover { border-color: #fff; }
+.cta-band .cta { display: flex; gap: 10px; flex-wrap: wrap; }
+
+footer { background: var(--card); padding: 56px 0 36px; font-size: 13.5px; color: var(--ink-2); }
+.f-g { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 32px; }
+.f-g h4 { font-size: 12.5px; color: var(--ink); margin-bottom: 14px; }
+.f-g ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.f-g a:hover { color: var(--blue); }
+.f-g p { margin-top: 14px; max-width: 28em; }
+.legal { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 12px; color: var(--ink-3); line-height: 1.65; }
+.legal .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+@media (max-width: 1100px) {
+  .nav { display: none; }
+  .sec-g { grid-template-columns: 1fr; }
+  .feat { grid-template-columns: repeat(2, 1fr); }
+  .f-g { grid-template-columns: repeat(3, 1fr); }
+  .f-g > div:first-child { grid-column: 1 / -1; }
+  .col-lev { display: none; }
+}
+@media (max-width: 820px) {
+  .hero-g, .sec-h { grid-template-columns: 1fr; gap: 24px; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts div:nth-child(2) { border-right: 0; }
+  .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .col-spk, .col-src { display: none; }
+  .util-r { display: none; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 16px; }
+  .top .wrap { gap: 12px; }
+  .top-r .btn-line { display: none; }
+  .hero { padding: 40px 0 28px; }
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 16px; }
+  .hero .cta .btn { flex: 1 1 auto; }
+  .facts div { padding: 14px 16px; }
+  .facts b { font-size: 20px; }
+  .mk-h { padding: 12px; }
+  .mk th, .mk td { padding: 0 10px; }
+  .mk th { padding-top: 10px; padding-bottom: 10px; }
+  .mk td { height: 58px; font-size: 13.5px; }
+  .av { display: none; }
+  .asset .unit { display: none; }
+  .chg { min-width: 0; padding: 4px 6px; font-size: 12.5px; }
+  .col-act { display: none; }
+  .ctrl { grid-template-columns: 1fr; }
+  .ctrl div { border-right: 0; }
+  .ctrl div:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+  .feat { grid-template-columns: 1fr; }
+  .sec { padding-top: 72px; }
+  .sec-dark { padding: 72px 0; margin-top: 72px; }
+  .cta-band { margin-top: 72px; }
+  .f-g { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="util">
+  <div class="wrap">
+    <div class="util-l" id="util"></div>
+    <div class="util-r"><a href="#infrastructure">Price sources</a><a href="index.html#account">Log in</a></div>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="home-b.html" aria-label="Demo Exchange home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+      <span>Demo<span>Exchange</span></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#markets">Markets</a>
+      <a href="index.html">Trade</a>
+      <a href="index.html#predict">Predict</a>
+      <a href="#security">Security</a>
+      <a href="#features">Platform</a>
+    </nav>
+    <div class="top-r">
+      <a class="btn btn-line btn-sm" href="index.html">Start trading</a>
+      <a class="btn btn-blue btn-sm" href="index.html#account">Open account</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-g">
+        <div>
+          <div class="label">Multi-asset margin trading</div>
+          <h1>Price, leverage and risk across five asset classes.</h1>
+          <p>Commodities, crypto, forex, indices and stocks from one margin account, with the source of every price shown and every order checked against your margin before it reaches the book.</p>
+        </div>
+        <div class="cta">
+          <a class="btn btn-blue" href="index.html#account">Open account</a>
+          <a class="btn btn-line" href="index.html">Start trading</a>
+        </div>
+      </div>
+      <div class="facts">
+        <div><b>44</b><span>Markets listed</span></div>
+        <div><b>5</b><span>Asset classes</span></div>
+        <div><b>100x</b><span>Max leverage, forex</span></div>
+        <div><b>1m–1d</b><span>Chart intervals</span></div>
+      </div>
+
+      <div class="mk" id="markets">
+        <div class="mk-h">
+          <div class="tabs" role="tablist" aria-label="Asset class">
+            <button role="tab" aria-selected="true" data-cat="cmd">Commodities</button>
+            <button role="tab" aria-selected="false" data-cat="crypto">Crypto</button>
+            <button role="tab" aria-selected="false" data-cat="fx">Forex</button>
+            <button role="tab" aria-selected="false" data-cat="idx">Indices</button>
+            <button role="tab" aria-selected="false" data-cat="stk">Stocks</button>
+          </div>
+          <div class="feeds" id="feeds"></div>
+        </div>
+        <div role="tabpanel" aria-live="off">
+          <table>
+            <thead><tr>
+              <th scope="col">Market</th><th scope="col">Price</th><th scope="col">24h change</th>
+              <th scope="col" class="col-spk">24h chart</th><th scope="col" class="col-lev">Max leverage</th><th scope="col" class="col-src">Source</th><th scope="col" class="col-act"><span class="sr-only">Action</span></th>
+            </tr></thead>
+            <tbody id="mkBody"></tbody>
+          </table>
+        </div>
+        <div class="mk-f"><span id="mkNote">Change is against the previous close (crypto: rolling 24 hours).</span><a href="index.html">View all 44 markets <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-dark" id="security">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <div class="label">Security &amp; infrastructure</div>
+          <h2>Controls that run before, during and after every trade.</h2>
+        </div>
+        <p>Accounts, orders and prices pass through the same checks whether you trade one contract or run the desk from the back office.</p>
+      </div>
+      <div class="sec-g" id="infrastructure">
+        <div class="ctrl">
+          <div><i class="ph ph-shield-check" aria-hidden="true"></i><h3>Two-step sign-in</h3><p>Authenticator codes on login and on every withdrawal request.</p></div>
+          <div><i class="ph ph-lock-key" aria-hidden="true"></i><h3>Withdrawal allow-list</h3><p>Funds leave only to addresses and bank accounts you approved in advance.</p></div>
+          <div><i class="ph ph-gauge" aria-hidden="true"></i><h3>Pre-trade risk checks</h3><p>Margin, leverage limits and position size are checked before an order is accepted.</p></div>
+          <div><i class="ph ph-warning-octagon" aria-hidden="true"></i><h3>Margin call and stop-out</h3><p>Warning at 100% margin level, positions closed in order at the stop-out level.</p></div>
+          <div><i class="ph ph-broadcast" aria-hidden="true"></i><h3>Source on every price</h3><p>Each market shows where its price comes from and whether it is live, delayed or closed.</p></div>
+          <div><i class="ph ph-list-checks" aria-hidden="true"></i><h3>Full audit trail</h3><p>Orders, fills, deposits and admin changes are logged with time and operator.</p></div>
+        </div>
+        <div class="infra" aria-label="Price feed status">
+          <div class="infra-h"><b>Price pipeline</b><span class="label">Status now</span></div>
+          <div class="flow" id="flow"></div>
+          <div class="infra-f">Measured from this browser on page load and refreshed every 15 seconds.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="features">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <div class="label">Platform</div>
+          <h2>Everything a trading desk needs, in the browser.</h2>
+        </div>
+        <p>One interface for trading, prediction markets, account management and operations. No download.</p>
+      </div>
+      <div class="feat">
+        <div><i class="ph ph-chart-line-up" aria-hidden="true"></i><h3>Candlestick charts</h3><p>Six intervals from one minute to one day, with volume, updating on the live price.</p></div>
+        <div><i class="ph ph-sliders-horizontal" aria-hidden="true"></i><h3>Order types</h3><p>Market, limit and stop orders with stop loss and take profit attached at entry.</p></div>
+        <div><i class="ph ph-stack" aria-hidden="true"></i><h3>Cross-asset margin</h3><p>One USD balance backs positions in metals, energy, crypto, currencies and equities.</p></div>
+        <div><i class="ph ph-target" aria-hidden="true"></i><h3>Prediction markets</h3><p>Binary, multi-outcome and range markets priced from 1 to 99 cents per share.</p></div>
+        <div><i class="ph ph-bell" aria-hidden="true"></i><h3>Price alerts</h3><p>Alerts on any market, delivered in the platform when the level is crossed.</p></div>
+        <div><i class="ph ph-clock" aria-hidden="true"></i><h3>Trading hours aware</h3><p>Each market follows its exchange session; closed markets are flagged before you order.</p></div>
+        <div><i class="ph ph-cube" aria-hidden="true"></i><h3>Operator back office</h3><p>Spreads, leverage caps, users and prediction market resolution from the admin console.</p></div>
+        <div><i class="ph ph-export" aria-hidden="true"></i><h3>Statements and export</h3><p>Trade history, funding and realised P&amp;L exported to CSV at any time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-label="Get started">
+    <div class="wrap">
+      <div>
+        <h2>Open an account and trade the full market list.</h2>
+        <p>Registration and identity verification take a few minutes.</p>
+      </div>
+      <div class="cta">
+        <a class="btn btn-blue" href="index.html#account">Open account</a>
+        <a class="btn btn-line" href="index.html">Start trading</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-g">
+      <div>
+        <a class="brand" href="home-b.html" aria-label="Demo Exchange home">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 23V9h7.5a7 7 0 0 1 0 14H8z" fill="none" stroke="currentColor" stroke-width="2.4"/><path class="bm-tick" d="M13 18l3-3 2.5 2.5L23 13" fill="none" stroke-width="2.4" stroke-linecap="square"/></svg>
+          <span>Demo<span>Exchange</span></span>
+        </a>
+        <p>Multi-asset margin trading and prediction markets.</p>
+      </div>
+      <div><h4>Markets</h4><ul><li><a href="index.html#cmd">Commodities</a></li><li><a href="index.html">Crypto</a></li><li><a href="index.html">Forex</a></li><li><a href="index.html">Indices and stocks</a></li></ul></div>
+      <div><h4>Products</h4><ul><li><a href="index.html">Trade</a></li><li><a href="index.html#predict">Predict</a></li><li><a href="index.html#account">Account</a></li></ul></div>
+      <div><h4>Platform</h4><ul><li><a href="#security">Security</a></li><li><a href="#infrastructure">Price sources</a></li><li><a href="index.html#admin">Back office</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="index.html#build">Full build</a></li><li><a href="home.html">Home page variants</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <p>Trading leveraged products carries a high level of risk and may not be suitable for all investors. You may lose all of your deposited funds. Prediction market shares can expire worthless. Past price movements are not a guide to future performance.</p>
+      <p>Crypto prices: Binance public market data. Spot metals: gold-api.com. Energy, agriculture, forex, indices and stocks are shown as sample data around the reference close of 16 Oct 2026.</p>
+      <div class="row"><span>&copy; 2026 Demo Exchange</span><span>Regulated entity name · Registered address</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Demo Exchange home page price layer (same keyless sources as the trading app, js/data.js):
+   Binance public REST for crypto, gold-api.com for spot metals. Every other market, and any source
+   that cannot be reached, shows the static reference close of 16 Oct 2026 and is marked "Sample". */
+(function (root) {
+  'use strict';
+  var REF = '16 Oct 2026';
+  // id: [symbol, name, cat, group, decimals, refClose, prevClose, source, key, unit, maxLev]
+  var RAW = {
+    XAU:    ['XAU/USD', 'Gold', 'cmd', 'Metals', 2, 4181.10, 4190.60, 'gold', 'XAU', 'USD / troy oz', 20],
+    XAG:    ['XAG/USD', 'Silver', 'cmd', 'Metals', 3, 57.305, 60.141, 'gold', 'XAG', 'USD / troy oz', 20],
+    XPT:    ['XPT/USD', 'Platinum', 'cmd', 'Metals', 2, 1633.10, 1679.40, 'gold', 'XPT', 'USD / troy oz', 20],
+    COPPER: ['COPPER', 'Copper', 'cmd', 'Metals', 4, 6.5735, 6.6985, 'gold', 'HG', 'USD / lb', 20],
+    BRENT:  ['BRENT', 'Brent crude oil', 'cmd', 'Energy', 2, 109.86, 106.65, 'sample', null, 'USD / barrel', 20],
+    WTI:    ['WTI', 'WTI crude oil', 'cmd', 'Energy', 2, 99.02, 93.74, 'sample', null, 'USD / barrel', 20],
+    NATGAS: ['NATGAS', 'Natural gas', 'cmd', 'Energy', 3, 3.116, 3.167, 'sample', null, 'USD / MMBtu', 20],
+    WHEAT:  ['WHEAT', 'Wheat', 'cmd', 'Agriculture', 4, 6.6050, 6.7225, 'sample', null, 'USD / bushel', 20],
+    CORN:   ['CORN', 'Corn', 'cmd', 'Agriculture', 4, 4.7425, 4.8300, 'sample', null, 'USD / bushel', 20],
+    COFFEE: ['COFFEE', 'Coffee', 'cmd', 'Agriculture', 4, 3.0555, 2.9060, 'sample', null, 'USD / lb', 20],
+    COCOA:  ['COCOA', 'Cocoa', 'cmd', 'Agriculture', 0, 5686, 5676, 'sample', null, 'USD / t', 20],
+    BTC:    ['BTC/USDT', 'Bitcoin', 'crypto', 'Crypto', 2, 81578.66, 80410.00, 'bin', 'BTCUSDT', 'per BTC', 50],
+    ETH:    ['ETH/USDT', 'Ethereum', 'crypto', 'Crypto', 2, 2427.99, 2462.50, 'bin', 'ETHUSDT', 'per ETH', 50],
+    SOL:    ['SOL/USDT', 'Solana', 'crypto', 'Crypto', 2, 104.37, 101.90, 'bin', 'SOLUSDT', 'per SOL', 50],
+    XRP:    ['XRP/USDT', 'XRP', 'crypto', 'Crypto', 4, 1.3028, 1.3180, 'bin', 'XRPUSDT', 'per XRP', 50],
+    EURUSD: ['EUR/USD', 'Euro / US Dollar', 'fx', 'Forex', 5, 1.1242, 1.1205, 'sample', null, 'per 1 EUR', 100],
+    GBPUSD: ['GBP/USD', 'Pound / US Dollar', 'fx', 'Forex', 5, 1.3330, 1.3242, 'sample', null, 'per 1 GBP', 100],
+    USDJPY: ['USD/JPY', 'US Dollar / Yen', 'fx', 'Forex', 3, 157.987, 158.203, 'sample', null, 'JPY per 1 USD', 100],
+    USDTRY: ['USD/TRY', 'US Dollar / Lira', 'fx', 'Forex', 4, 49.5091, 49.3353, 'sample', null, 'TRY per 1 USD', 100],
+    US500:  ['US500', 'S&P 500', 'idx', 'Indices', 2, 7659.44, 7811.54, 'sample', null, 'index points', 20],
+    NAS100: ['NAS100', 'Nasdaq 100', 'idx', 'Indices', 2, 29187.55, 30883.15, 'sample', null, 'index points', 20],
+    GER40:  ['GER40', 'DAX 40', 'idx', 'Indices', 2, 25622.61, 25087.27, 'sample', null, 'index points', 20],
+    UK100:  ['UK100', 'FTSE 100', 'idx', 'Indices', 2, 10881.90, 10552.10, 'sample', null, 'index points', 20],
+    AAPL:   ['AAPL', 'Apple', 'stk', 'Stocks', 2, 343.46, 336.64, 'sample', null, 'per share', 5],
+    NVDA:   ['NVDA', 'NVIDIA', 'stk', 'Stocks', 2, 214.13, 229.28, 'sample', null, 'per share', 5],
+    MSFT:   ['MSFT', 'Microsoft', 'stk', 'Stocks', 2, 529.05, 535.07, 'sample', null, 'per share', 5],
+    TSLA:   ['TSLA', 'Tesla', 'stk', 'Stocks', 2, 354.72, 382.70, 'sample', null, 'per share', 5]
+  };
+  var M = {}, BY_KEY = {};
+  Object.keys(RAW).forEach(function (id) {
+    var r = RAW[id];
+    M[id] = { id: id, sym: r[0], name: r[1], cat: r[2], group: r[3], dp: r[4], ref: r[5], prev: r[6], src: r[7], key: r[8],
+              unit: r[9], lev: r[10], price: r[5], live: false, spark: null };
+    if (r[8]) BY_KEY[r[8]] = M[id];
+  });
+  var subs = [], queued = false, status = { bin: 'pending', gold: 'pending', binMs: null, goldMs: null };
+  function emit() {
+    if (queued) return; queued = true;
+    (root.requestAnimationFrame || setTimeout)(function () { queued = false; subs.forEach(function (f) { try { f(M, status); } catch (e) { if (root.console) console.error(e); } }); });
+  }
+  function getJson(url, ms) {
+    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var t = setTimeout(function () { if (ctl) ctl.abort(); }, ms || 7000);
+    return fetch(url, ctl ? { signal: ctl.signal, cache: 'no-store' } : {}).then(function (r) {
+      clearTimeout(t); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json();
+    }, function (e) { clearTimeout(t); throw e; });
+  }
+  var BIN = ['https://api.binance.com', 'https://data-api.binance.vision'], binIdx = 0;
+  function bin(path) {
+    var i = binIdx;
+    return getJson(BIN[i] + path, 6000).catch(function () {
+      var j = (i + 1) % BIN.length;
+      return getJson(BIN[j] + path, 6000).then(function (x) { binIdx = j; return x; });
+    });
+  }
+  function ids(src) { return Object.keys(M).filter(function (k) { return M[k].src === src; }); }
+  function pollBin() {
+    var keys = ids('bin').map(function (k) { return M[k].key; }), t0 = Date.now();
+    return bin('/api/v3/ticker/24hr?symbols=' + encodeURIComponent(JSON.stringify(keys))).then(function (arr) {
+      if (!Array.isArray(arr) || !arr.length) throw new Error('bad response');
+      arr.forEach(function (t) {
+        var m = t && BY_KEY[t.symbol], p = t && +t.lastPrice, o = t && +t.openPrice;
+        if (!m || !(p > 0) || !isFinite(p)) return;
+        m.price = p; if (o > 0) m.prev = o; m.live = true;
+      });
+      status.bin = 'live'; status.binMs = Date.now() - t0; emit();
+    }).catch(function () { if (status.bin !== 'live') status.bin = 'offline'; emit(); });
+  }
+  function pollGold() {
+    var t0 = Date.now();
+    return Promise.all(ids('gold').map(function (id) {
+      var m = M[id];
+      return getJson('https://api.gold-api.com/price/' + m.key, 7000).then(function (j) {
+        var p = +(j && j.price); if (!(p > 0) || !isFinite(p)) throw new Error('bad price');
+        if (!m.live) m.prev = m.ref;     // live spot is compared with the last reference close
+        m.price = p; m.live = true; return true;
+      }, function () { return false; });
+    })).then(function (r) {
+      if (r.indexOf(true) >= 0) { status.gold = 'live'; status.goldMs = Date.now() - t0; } else if (status.gold !== 'live') status.gold = 'offline';
+      emit();
+    });
+  }
+  /* sparkline: Binance hourly closes for crypto, otherwise a seeded path from the previous close to the price */
+  function hash(s) { var h = 2166136261; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function path(id, n, from, to, vol) {
+    var r = rng(hash(id + n)), out = [], w = 0, ws = [0];
+    for (var i = 1; i < n; i++) { w += (r() - 0.5) * 2; ws.push(w); }
+    var last = ws[n - 1], amp = Math.abs(to - from) * 0.9 + to * (vol || 0.2) * 0.012;
+    for (var j = 0; j < n; j++) { var f = j / (n - 1); out.push(from + (to - from) * f + (ws[j] - last * f) / Math.sqrt(n) * amp); }
+    out[n - 1] = to; return out;
+  }
+  function sampleSpark(m, n) { return path(m.id, n || 24, m.prev, m.price, 0.25); }
+  function loadSparks(list, interval, n) {
+    list.filter(function (id) { return M[id] && M[id].src === 'bin'; }).forEach(function (id) {
+      var m = M[id];
+      bin('/api/v3/klines?symbol=' + m.key + '&interval=' + (interval || '1h') + '&limit=' + (n || 24)).then(function (rows) {
+        if (!Array.isArray(rows) || rows.length < 4) return;
+        m.spark = rows.map(function (k) { return +k[4]; }); emit();
+      }).catch(function () {});
+    });
+  }
+  function klines(sym, interval, n) {
+    return bin('/api/v3/klines?symbol=' + sym + '&interval=' + interval + '&limit=' + n).then(function (rows) {
+      if (!Array.isArray(rows) || rows.length < 10) throw new Error('short');
+      return rows.map(function (k) { return { t: +k[0], c: +k[4] }; });
+    });
+  }
+  function fmt(m, p) {
+    var v = p == null ? m.price : p;
+    return v.toLocaleString('en-US', { minimumFractionDigits: m.dp, maximumFractionDigits: m.dp });
+  }
+  function chg(m) { return m.prev > 0 ? (m.price - m.prev) / m.prev * 100 : 0; }
+  function pct(m) { var c = chg(m); return (c > 0 ? '+' : c < 0 ? '−' : '') + Math.abs(c).toFixed(2) + '%'; }
+  function dir(m) { var c = chg(m); return c > 0.0005 ? 'up' : c < -0.0005 ? 'down' : 'flat'; }
+  function sparkSvg(vals, w, h, cls) {
+    if (!vals || vals.length < 2) return '';
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), rg = hi - lo || 1, pad = 2;
+    var pts = vals.map(function (v, i) { return (i / (vals.length - 1) * w).toFixed(1) + ',' + (pad + (1 - (v - lo) / rg) * (h - pad * 2)).toFixed(1); });
+    return '<svg class="spark ' + (cls || '') + '" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" preserveAspectRatio="none" aria-hidden="true">' +
+      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  }
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    emit(); pollBin(); pollGold();
+    setInterval(function () { if (!document.hidden) pollBin(); }, 15000);
+    setInterval(function () { if (!document.hidden) pollGold(); }, 30000);
+  }
+  root.DX = { M: M, REF: REF, status: status, on: function (f) { subs.push(f); }, start: start, fmt: fmt, pct: pct, chg: chg, dir: dir,
+              spark: function (m, n) { return m.spark || sampleSpark(m, n); }, sparkSvg: sparkSvg, loadSparks: loadSparks, klines: klines, path: path };
+})(window);
+</script>
+<script>
+(function () {
+  'use strict';
+  var M = DX.M;
+  function $(id) { return document.getElementById(id); }
+  var CATS = {
+    cmd: ['XAU', 'XAG', 'XPT', 'COPPER', 'BRENT', 'WTI', 'NATGAS', 'WHEAT', 'CORN', 'COFFEE'],
+    crypto: ['BTC', 'ETH', 'SOL', 'XRP'],
+    fx: ['EURUSD', 'GBPUSD', 'USDJPY', 'USDTRY'],
+    idx: ['US500', 'NAS100', 'GER40', 'UK100'],
+    stk: ['AAPL', 'NVDA', 'MSFT', 'TSLA']
+  };
+  var cat = 'cmd';
+  var AV = { XAU: 'Au', XAG: 'Ag', XPT: 'Pt', COPPER: 'Cu', BRENT: 'BR', WTI: 'WT', NATGAS: 'NG', WHEAT: 'W', CORN: 'C', COFFEE: 'KC',
+             BTC: 'BTC', ETH: 'ETH', SOL: 'SOL', XRP: 'XRP', EURUSD: 'EUR', GBPUSD: 'GBP', USDJPY: 'JPY', USDTRY: 'TRY', US500: 'SPX', NAS100: 'NDX', GER40: 'DAX', UK100: 'UKX',
+             AAPL: 'A', NVDA: 'N', MSFT: 'M', TSLA: 'T' };
+  DX.loadSparks(CATS.crypto, '1h', 24);
+
+  function srcText(m) {
+    if (m.live) return m.src === 'bin' ? 'Live · Binance' : 'Live · gold-api';
+    if (m.src === 'sample') return 'Sample';
+    return 'Sample · offline';
+  }
+  function renderTable() {
+    $('mkBody').innerHTML = CATS[cat].map(function (id) {
+      var m = M[id], d = DX.dir(m);
+      return '<tr><td><div class="asset"><span class="av" aria-hidden="true">' + AV[id] + '</span><div><b>' + m.name + '</b><small>' + m.sym + '<span class="unit"> · ' + m.unit + '</span></small></div></div></td>' +
+        '<td class="mono">' + DX.fmt(m) + '</td><td><span class="chg ' + d + '">' + DX.pct(m) + '</span></td>' +
+        '<td class="col-spk"><span class="spk ' + d + '">' + DX.sparkSvg(DX.spark(m, 24), 120, 32) + '</span></td>' +
+        '<td class="col-lev mono">' + m.lev + 'x</td><td class="col-src"><span class="src' + (m.live ? ' live' : '') + '">' + srcText(m) + '</span></td>' +
+        '<td class="col-act"><a class="trade-a" href="index.html">Trade<span class="sr-only"> ' + m.name + '</span></a></td></tr>';
+    }).join('');
+  }
+  document.querySelectorAll('.tabs button').forEach(function (b) {
+    b.onclick = function () {
+      cat = b.dataset.cat;
+      document.querySelectorAll('.tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      renderTable();
+    };
+  });
+
+  function st(s) { return s === 'live' ? 'live' : s === 'offline' ? 'off' : ''; }
+  function stText(s) { return s === 'live' ? 'Connected' : s === 'offline' ? 'Unreachable, sample prices' : 'Connecting'; }
+  function renderFeeds(S) {
+    $('feeds').innerHTML = '<span><i class="dot ' + st(S.bin) + '"></i>Crypto: Binance</span><span><i class="dot ' + st(S.gold) + '"></i>Metals: gold-api</span><span><i class="dot"></i>Other: sample</span>';
+    var live = Object.keys(M).filter(function (k) { return M[k].live; }).length;
+    $('flow').innerHTML =
+      '<div class="node"><b>Binance public API</b><span><span class="mono">' + (S.binMs != null ? S.binMs + ' ms' : '—') + '</span> · ' + stText(S.bin) + '</span></div>' +
+      '<div class="node"><b>gold-api.com spot metals</b><span><span class="mono">' + (S.goldMs != null ? S.goldMs + ' ms' : '—') + '</span> · ' + stText(S.gold) + '</span></div>' +
+      '<div class="arrow" aria-hidden="true"><i class="ph ph-arrow-down"></i></div>' +
+      '<div class="node"><b>Price engine</b><span>source check, staleness, session hours</span></div>' +
+      '<div class="arrow" aria-hidden="true"><i class="ph ph-arrow-down"></i></div>' +
+      '<div class="node"><b>Risk engine</b><span>margin, leverage caps, stop-out</span></div>' +
+      '<div class="arrow" aria-hidden="true"><i class="ph ph-arrow-down"></i></div>' +
+      '<div class="node"><b>Your screen</b><span><span class="mono">' + live + '</span> of 26 markets on this page live</span></div>';
+    $('util').innerHTML = ['XAU', 'BTC', 'EURUSD', 'BRENT', 'US500', 'ETH'].map(function (id) {
+      var m = M[id];
+      return '<span>' + m.sym + ' <span class="mono">' + DX.fmt(m) + '</span> <span class="mono" style="color:' + (DX.dir(m) === 'up' ? '#5fd3a0' : DX.dir(m) === 'down' ? '#f08a86' : '#b7c0cb') + '">' + DX.pct(m) + '</span></span>';
+    }).join('');
+  }
+  function renderAll(_, S) { renderTable(); renderFeeds(S || DX.status); }
+  DX.on(renderAll);
+  renderAll();
+  DX.start();
+})();
+</script>
+</body>
+</html>

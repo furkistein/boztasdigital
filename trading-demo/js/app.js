@@ -1641,7 +1641,10 @@
     selectAsset(S.ui.asset);
     setAct(S.ui.act || 'pos');
     Object.keys(views).forEach(function (k) { if (views[k].init) views[k].init(); });
-    setView(VIEW_EL[S.ui.view] ? S.ui.view : 'trade');
+    // a link such as index.html#predict (from the home pages) opens that view
+    var hashView = (window.location.hash || '').slice(1);
+    setView(VIEW_EL[hashView] ? hashView : (VIEW_EL[S.ui.view] ? S.ui.view : 'trade'));
+    window.addEventListener('hashchange', function () { var h = (window.location.hash || '').slice(1); if (VIEW_EL[h]) setView(h); });
     // prediction markets need live BTC/ETH/gold prices for their strikes: build them once prices arrive
     var pmTimer = setInterval(function () {
       if (pmReady() || S.pm) {
