@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boztaş Digital | Web sitesi, mobil uygulama ve otomasyon</title>
-<meta name="description" content="Denizli'den işletmelere özel tasarlanmış web siteleri, mobil uygulama ve otomasyon. Restoran, kafe, diş kliniği, güzellik, berber, pilates ve emlak için 36 örnek çalışmayı inceleyin.">
+<meta name="description" content="Denizli'den işletmelere özel tasarlanmış web siteleri, mobil uygulama ve otomasyon. Restoran, kafe, diş kliniği, güzellik, berber, pilates ve emlak siteleri, paneller, otomasyon, video ve içerik işleri için 46 örnek çalışmayı inceleyin.">
 <meta name="theme-color" content="#080F28">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -63,6 +63,11 @@ h2{font-size:clamp(34px,5vw,58px);line-height:1.02;margin-top:8px}
 .kart .git{margin-top:8px;font-weight:600;color:#B8860B;font-size:14.5px}
 .kart[hidden]{display:none}
 .not{color:var(--gri);font-size:14px;margin-top:22px}
+.satir{margin-top:54px}
+.satir:first-of-type{margin-top:0}
+.satirbas{margin-bottom:18px}
+.satirbas h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(28px,3.4vw,38px);line-height:1.1}
+.satirbas p{color:var(--gri);margin-top:4px;max-width:62ch}
 .hizmetler{display:grid;gap:16px;grid-template-columns:1fr}
 .hizmet{background:var(--beyaz);border:1px solid var(--cizgi);border-radius:var(--r);padding:28px}
 .hizmet .ik{width:44px;height:44px;border-radius:12px;background:#FDF3D6;display:grid;place-items:center;margin-bottom:14px}
@@ -84,6 +89,7 @@ footer{padding:28px 0 40px;color:var(--gri);font-size:14px;text-align:center}
 }
 @media (min-width:1020px){
   .izgara{grid-template-columns:repeat(3,1fr)}
+  .izgara.dort{grid-template-columns:repeat(4,1fr)}
   .hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:80px 0 110px}
 }
 @media (max-width:1019px){.kolaj{display:none}}
@@ -100,9 +106,9 @@ footer{padding:28px 0 40px;color:var(--gri);font-size:14px;text-align:center}
     <div class="hero">
       <div>
         <h1 class="serif">Hazır şablon değil, <i>işletmenize</i> özel site.</h1>
-        <p>Denizli'den çalışıyorum. Her siteyi işletmenin kendi hikâyesine göre tasarlıyorum: kaydırdıkça canlanan sahneler, çalışan randevu ve sipariş araçları, telefonda hızlı açılan sayfalar.</p>
-        <div class="butonlar"><a class="btn" href="#ornekler">36 örneği inceleyin</a><a class="btn cizgili" href="mailto:boztasdigital@gmail.com">E-posta gönderin</a></div>
-        <div class="sayilar"><div><b>35</b>örnek çalışma</div><div><b>7</b>sektör</div><div><b>0</b>hazır şablon</div></div>
+        <p>Denizli'den çalışıyorum. Her siteyi işletmenin kendi hikâyesine göre tasarlıyorum: kaydırdıkça canlanan sahneler, çalışan randevu ve sipariş araçları, telefonda hızlı açılan sayfalar. Sitenin yanında panel, otomasyon, video ve içerik işleri de yapıyorum.</p>
+        <div class="butonlar"><a class="btn" href="#isler">46 örneği inceleyin</a><a class="btn cizgili" href="mailto:boztasdigital@gmail.com">E-posta gönderin</a></div>
+        <div class="sayilar"><div><b>46</b>örnek çalışma</div><div><b>7</b>sektör</div><div><b>0</b>hazır şablon</div></div>
       </div>
       <div class="kolaj" aria-hidden="true"><img src="_kapak/katman.jpg" alt=""><img src="_kapak/aura.jpg" alt=""><img src="_kapak/kumru.jpg" alt=""></div>
     </div>
@@ -110,9 +116,17 @@ footer{padding:28px 0 40px;color:var(--gri);font-size:14px;text-align:center}
 </header>
 
 <main>
+<section id="isler" style="padding-bottom:20px">
+  <div class="sarmal">
+    <div class="bas"><div><span class="etiket">Seçilmiş işler</span><h2 class="serif">Sadece site değil</h2></div><p>Web sitesinin yanında paneller, otomasyon, video ve içerik işleri de yapıyorum. Hepsi açılıp gezilebilen örnek çalışmalar.</p></div>
+    <div id="satirlar"></div>
+    <p class="not">Bunlar örnek çalışmalardır; işletme adları, kişiler, fiyatlar ve veriler temsilidir. Borsa demosunda sanal para kullanılır, gerçek işlem yoktur ve yatırım tavsiyesi değildir.</p>
+  </div>
+</section>
+
 <section id="ornekler">
   <div class="sarmal">
-    <div class="bas"><div><span class="etiket">Örnek çalışmalar</span><h2 class="serif">Her sektörden beş farklı yaklaşım</h2></div><p>Siteleri telefonunuzdan açıp kaydırarak gezin. Her biri kendi yazı tipi, renkleri ve kurgusuyla sıfırdan tasarlandı.</p></div>
+    <div class="bas"><div><span class="etiket">Web sitesi örnekleri</span><h2 class="serif">Her sektörden beş farklı yaklaşım</h2></div><p>Siteleri telefonunuzdan açıp kaydırarak gezin. Her biri kendi yazı tipi, renkleri ve kurgusuyla sıfırdan tasarlandı.</p></div>
     <div class="sekmeler" id="sekmeler" role="tablist"></div>
     <div class="izgara" id="izgara"></div>
     <p class="not">Bunlar örnek çalışmalardır; işletme adları, fiyatlar ve içerikler temsilidir. Görseller yapay zekâ ile üretilmiştir. Sağlık sitelerindeki içerikler sağlık reklamı mevzuatına uygun şekilde bilgilendirme amaçlıdır.</p>
@@ -165,6 +179,19 @@ var S=[
  ["pilates","Pilates & yoga",[["denge-pilates","Denge Pilates","Reformer ve kemer pencere sahnesi"],["akis","Akış Yoga & Pilates","Nefes dairesiyle 4-4-6 nefes"],["form","Form Studio","Nabız çizgisi, kalori hesaplayıcı"],["havada","Havada Aerial","Dalgalanan ipek, \"hangi ders\" testi"],["cekirdek","Çekirdek Mat Pilates","Mat açılır, altı ilke"]]],
  ["emlak","Emlak",[["kuzey-emlak","Kuzey Gayrimenkul","Bina kat kat yükselir, ilan filtresi"],["villa","Pamukkale Villa","Lüks portföy, yatay galeri"],["anahtar","Anahtar Emlak","Aile ev bulucu, kredi hesaplayıcı"],["ogrenci","Kınıklı Öğrenci Evleri","Kampüse yürüyüş, masraf bölüşme"],["arsa","Toprak Arsa & Yatırım","Parsel çizimi, tapu masrafı hesaplayıcı"]]]
 ];
+var R=[
+ ["Web","En iyi web sitelerimiz","Sahne sahne kurgulanmış, telefonda akıcı çalışan üç site.","",[["premium-kafe","Travertina · Premium kafe sitesi","3B fincan, shader geçişleri, kaydırdıkça anlatılan hikâye"],["villa","Pamukkale Villa","Lüks portföy, yatay galeri, özel gösterim talebi"],["mobilya-katalog","Mira Mobilya · Dijital katalog","Aranabilir ürünler, sepet, PDF katalog ve WhatsApp sipariş"]]],
+ ["Panel","Paneller ve otomasyon","Veriyi toplayan, hesaplayan ve işletmenin yerine tekrar eden işi yapan araçlar.","dort",[["eticaret-panel","Tekpanel · E-ticaret paneli","Kanal bazında net kâr, stok ve sipariş görünümü"],["randevu","Sade Kuaför · Online randevu","Hizmet, uzman, gün ve saat seçimi; dolu saatler kapanır"],["fiyat-takip","Tedarikçi fiyat ve stok senkronu","Tedarikçilerden fiyat ve stok çeker, büyük değişimleri onaya sunar"],["trading-demo","Demo Exchange · Borsa platformu","Sanal parayla alım-satım terminali: grafik, emir, hesap ve yönetici paneli"]]],
+ ["Video","Video, sosyal medya ve görsel","Reels, aylık içerik paketi ve eski fotoğraf onarımı.","",[["tur-reels-ornek","Dubai turu · Reels örnekleri","Efektli ve sade iki sürüm, dikey formatta hazır"],["sosyal-paket","Aylık Instagram paketi","8 gönderi, hazır metin ve zamanlama takvimi"],["hatira-onarim","Hatıra Onarım","Eski fotoğrafları onarma ve renklendirme, önce ve sonra"]]],
+ ["İçerik","E-ticaret, içerik ve analiz","Mağaza düzeni, yeniden yazılmış içerik ve veriden çıkan aksiyon planı.","",[["magaza-kurulum","Giyim markası mağaza kurulumu","Banner, kategori ve SEO düzeni ile mağaza taslağı"],["buyume-analizi","Büyüme ve veri analizi raporu","Reklam ve satış verisinden adım adım aksiyon planı"],["saglik-blog","Blog revizesi · önce ve sonra","Arama niyetine ve doğruluğa göre yeniden yazım"]]]
+];
+(function(){var sat=document.getElementById("satirlar");
+  R.forEach(function(r){var d=document.createElement("div");d.className="satir";
+    d.innerHTML='<div class="satirbas"><h3>'+r[1]+'</h3><p>'+r[2]+'</p></div>';
+    var g=document.createElement("div");g.className="izgara "+r[3];
+    r[4].forEach(function(x){var a=document.createElement("a");a.className="kart";a.href=x[0]+"/";
+      a.innerHTML='<figure><img src="_kapak/'+x[0]+'.jpg" alt="'+x[1]+' örnek çalışmasının ekran görüntüsü" loading="lazy"><span class="rozet">'+r[0]+'</span></figure><div class="ic"><b>'+x[1]+'</b><small>'+x[2]+'</small><span class="git">Örneği aç →</span></div>';g.appendChild(a)});
+    d.appendChild(g);sat.appendChild(d)})})();
 (function(){var sek=document.getElementById("sekmeler"),iz=document.getElementById("izgara"),hepsi=document.createElement("button");
   hepsi.type="button";hepsi.innerHTML="Tümü<span>"+S.reduce(function(t,s){return t+s[2].length},0)+"</span>";hepsi.dataset.s="*";hepsi.setAttribute("aria-pressed","true");sek.appendChild(hepsi);
   S.forEach(function(s){var b=document.createElement("button");b.type="button";b.dataset.s=s[0];b.innerHTML=s[1]+"<span>"+s[2].length+"</span>";b.setAttribute("aria-pressed","false");sek.appendChild(b);
