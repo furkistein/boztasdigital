@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridyen Hukuk Bürosu</title>
+<meta name="description" content="Aile, iş, ceza, gayrimenkul ve ticaret hukukunda ilk görüşmeden sonuca kadar yazılı ve düzenli bilgilendirme.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16231f; --ink-2:#22332e; --paper:#f5f6f3; --paper-2:#eceee9; --stone:#5b6762; --line:#d5dbd6;
+  --seal:#a8322a; --white:#fff;
+  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,sans-serif;
+  --pad:clamp(20px,5vw,72px); --max:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.serif{font-family:var(--serif)}
+
+/* ---------- header ---------- */
+header.top{position:sticky;top:0;z-index:50;background:rgba(245,246,243,.86);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.top.scrolled{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:28px;height:28px}
+.brand b{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:.01em;line-height:1}
+.brand small{display:block;font-size:12px;color:var(--stone);letter-spacing:.02em;margin-top:3px}
+nav.main{display:flex;gap:30px;font-size:15px}
+nav.main a{text-decoration:none;color:var(--stone);transition:color .2s}
+nav.main a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px/1 var(--sans);padding:15px 22px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--seal);border-color:var(--seal)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);padding:10px 14px;font:500 14px var(--sans);border-radius:2px;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(48px,9vh,110px) 0 clamp(64px,10vh,120px)}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(32px,6vw,96px);align-items:center}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,7.4vw,108px);line-height:.98;letter-spacing:-.025em}
+h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+h1 .ln span{display:block;transform:translateY(105%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .ln:nth-child(2) span{animation-delay:.12s}
+h1 .ln:nth-child(3) span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.lead{max-width:520px;margin-top:32px;font-family:var(--serif);font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:var(--stone);opacity:0;animation:fade .8s .6s forwards}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;opacity:0;animation:fade .8s .75s forwards}
+@keyframes fade{to{opacity:1}}
+
+/* dosya kartı */
+.file{position:relative;background:var(--white);border:1px solid var(--line);border-radius:3px;padding:34px 30px 30px;box-shadow:0 1px 0 var(--line),0 30px 60px -40px rgba(22,35,31,.35);opacity:0;animation:fade .9s .5s forwards}
+.file::before{content:"";position:absolute;left:28px;top:-15px;width:122px;height:16px;background:var(--white);border:1px solid var(--line);border-bottom:none;border-radius:3px 3px 0 0}
+.file-tab{position:absolute;left:40px;top:-12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.file h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15;letter-spacing:-.01em}
+.file p.s{font-size:15px;color:var(--stone);margin:8px 0 20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;border:0}
+.chips legend{font-size:13px;color:var(--stone);margin-bottom:8px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:8px 14px;font-size:14px;border:1px solid var(--line);border-radius:100px;transition:all .2s}
+.chips input:checked + span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chips input:focus-visible + span{outline:2px solid var(--seal);outline-offset:2px}
+.field{display:block;margin-bottom:12px}
+.field span{display:block;font-size:13px;color:var(--stone);margin-bottom:5px}
+.field input,.field textarea{width:100%;font:400 16px var(--sans);padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:var(--paper);color:var(--ink);transition:border-color .2s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field textarea{min-height:84px;resize:vertical}
+.file .btn{width:100%;justify-content:center;margin-top:6px}
+.file .fine{font-size:12px;color:var(--stone);margin-top:12px;line-height:1.5}
+.file .stamp-layer .btn{width:auto;padding:13px 30px}
+.stamp-layer{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;opacity:0;pointer-events:none;transition:opacity .3s;border-radius:3px;overflow:hidden}
+.stamp-layer.on{opacity:1;pointer-events:auto}
+.stamp{border:3px solid var(--seal);color:var(--seal);font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:.14em;padding:10px 26px 6px;border-radius:4px;transform:rotate(-8deg) scale(2.2);opacity:0}
+.stamp-layer.on .stamp{animation:stamp .5s .2s cubic-bezier(.3,1.4,.5,1) forwards}
+@keyframes stamp{to{transform:rotate(-8deg) scale(1);opacity:1}}
+.stamp-layer h3{font-family:var(--serif);font-weight:400;font-size:24px;margin-top:28px}
+.stamp-layer p{font-size:15px;color:var(--stone);margin:6px 0 18px;max-width:300px}
+
+/* ---------- sections ---------- */
+section{padding:clamp(64px,10vw,128px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(24px,5vw,80px);margin-bottom:clamp(40px,6vw,72px);align-items:end}
+h2.t{font-family:var(--serif);font-weight:300;font-size:clamp(36px,4.6vw,64px);line-height:1.02;letter-spacing:-.02em}
+.sec-head p{font-family:var(--serif);font-size:20px;color:var(--stone);max-width:560px}
+
+/* içindekiler */
+.index{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,80px);align-items:start}
+.toc{list-style:none;border-top:1px solid var(--line)}
+.toc li{border-bottom:1px solid var(--line)}
+.toc button{width:100%;display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:8px;padding:20px 4px;background:none;border:0;text-align:left;font:inherit;color:var(--stone);cursor:pointer;transition:color .2s,padding .25s}
+.toc .no{font-size:13px;font-variant-numeric:tabular-nums}
+.toc .nm{font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);line-height:1.1;letter-spacing:-.01em}
+.toc .ar{opacity:0;transform:translateX(-6px);transition:all .25s;color:var(--seal)}
+.toc button:hover,.toc button[aria-selected="true"]{color:var(--ink);padding-left:14px}
+.toc button[aria-selected="true"] .ar,.toc button:hover .ar{opacity:1;transform:none}
+.panel{position:sticky;top:104px;background:var(--ink);color:var(--paper);padding:clamp(28px,3.4vw,44px);border-radius:3px;min-height:380px}
+.panel h3{font-family:var(--serif);font-weight:300;font-size:32px;line-height:1.1;margin-bottom:12px}
+.panel p{color:#c9d2cd;font-family:var(--serif);font-size:18px;line-height:1.55}
+.panel ul{list-style:none;margin-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+.panel li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:15px;color:#e5eae7}
+.panel .swap{animation:swap .45s ease}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ilkeler (koyu) */
+.dark{background:var(--ink);color:var(--paper)}
+.dark .sec-head p{color:#b9c4be}
+.rules{border-top:1px solid rgba(255,255,255,.16)}
+.rule{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,5vw,80px);padding:clamp(28px,4vw,44px) 0;border-bottom:1px solid rgba(255,255,255,.16);align-items:baseline}
+.rule h3{font-family:var(--serif);font-weight:300;font-size:clamp(30px,3.8vw,52px);line-height:1.04;letter-spacing:-.02em}
+.rule p{color:#b9c4be;font-size:17px;max-width:460px}
+
+/* süreç */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding-top:34px}
+.steps::before{content:"";position:absolute;left:0;top:7px;height:1px;width:100%;background:var(--line)}
+.steps::after{content:"";position:absolute;left:0;top:7px;height:1px;width:0;background:var(--ink);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+.steps.in::after{width:100%}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:0;top:-34px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:1px solid var(--ink)}
+.step small{font-size:13px;color:var(--stone)}
+.step h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin:6px 0 8px}
+.step p{font-size:15px;color:var(--stone)}
+
+/* ekip */
+.alt{background:var(--paper-2)}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,36px)}
+.person .ph{aspect-ratio:4/5;background:var(--ink-2);display:flex;align-items:flex-end;padding:22px;position:relative;overflow:hidden;border-radius:2px}
+.person .ph span{font-family:var(--serif);font-weight:300;font-size:clamp(72px,9vw,128px);line-height:.8;color:rgba(245,246,243,.92);letter-spacing:-.04em}
+.person .ph::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
+.person h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-top:16px;line-height:1.15}
+.person p{font-size:15px;color:var(--stone)}
+.person .bio{margin-top:8px;font-size:15px}
+
+/* makaleler */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.post{padding:30px 28px 30px 0;border-bottom:1px solid var(--line);text-decoration:none;display:block;transition:background .25s}
+.post + .post{padding-left:28px;border-left:1px solid var(--line)}
+.post small{font-size:13px;color:var(--stone)}
+.post h3{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.15;margin:10px 0 12px;letter-spacing:-.01em}
+.post p{font-size:15px;color:var(--stone)}
+.post:hover h3{color:var(--seal)}
+
+/* sss */
+.faq{max-width:860px;margin-left:auto}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:24px 0;font-family:var(--serif);font-size:clamp(21px,2.2vw,26px);line-height:1.2}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:12px;height:12px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
+details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+details p{padding:0 40px 26px 0;color:var(--stone);font-family:var(--serif);font-size:19px;max-width:680px}
+
+/* iletişim */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:stretch}
+.contact h2.t{margin-bottom:28px}
+.rows{border-top:1px solid rgba(255,255,255,.16)}
+.rows div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.16);font-size:16px}
+.rows dt{color:#9fb0a8;font-size:14px}
+.rows a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.map{min-height:360px;border-radius:3px;overflow:hidden;background:var(--ink-2);position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.05) brightness(.9)}
+.dark .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.dark .btn:hover{background:var(--seal);color:var(--paper);border-color:var(--seal)}
+.dark .btn.ghost{background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)}
+.dark .btn.ghost:hover{background:var(--paper);color:var(--ink)}
+.cta-line{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+footer{background:var(--ink);color:#9fb0a8;font-size:14px;padding:0 0 100px;border-top:1px solid rgba(255,255,255,.12)}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px}
+footer p{max-width:620px}
+.demo{color:#e0b2ad}
+
+/* mobil eylem çubuğu */
+.dock{display:none}
+
+@media (max-width:980px){
+  nav.main{display:none}
+  nav.main.open{display:flex;position:absolute;left:0;right:0;top:72px;flex-direction:column;background:var(--paper);padding:12px var(--pad) 24px;border-bottom:1px solid var(--line);gap:0}
+  nav.main.open a{padding:14px 0;border-bottom:1px solid var(--line);font-size:17px}
+  .menu-btn{display:block}
+  .bar .btn.cta{display:none}
+  .hero .grid,.sec-head,.index,.rule,.contact{grid-template-columns:1fr}
+  .panel{position:relative;top:0;min-height:0}
+  .steps{grid-template-columns:1fr 1fr;row-gap:44px}
+  .steps::before,.steps::after{display:none}
+  .step::before{display:none}
+  .team,.posts{grid-template-columns:1fr}
+  .post + .post{padding-left:0;border-left:0}
+  .post{padding-right:0}
+  .faq{margin-left:0}
+  .dock{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);border-top:1px solid rgba(255,255,255,.14)}
+  .dock a{color:var(--paper);text-align:center;padding:14px 4px;font-size:14px;text-decoration:none;border-right:1px solid rgba(255,255,255,.12)}
+  .dock a:last-child{border-right:0;background:var(--seal)}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .steps{grid-template-columns:1fr}
+  .rows div{grid-template-columns:1fr;gap:2px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  h1 .ln span{transform:none}.lead,.cta-row,.file{opacity:1}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap bar">
+    <a href="#top" class="brand" aria-label="Meridyen Hukuk Bürosu, ana sayfa">
+      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><circle cx="14" cy="14" r="12.5" stroke="#16231f"/><path d="M14 1.5v25" stroke="#16231f"/><circle cx="14" cy="9" r="2.4" fill="#a8322a"/></svg>
+      <span><b>Meridyen</b><small>Hukuk Bürosu</small></span>
+    </a>
+    <nav class="main" id="nav" aria-label="Ana menü">
+      <a href="#alanlar">Çalışma alanları</a>
+      <a href="#ilkeler">İlkelerimiz</a>
+      <a href="#surec">Süreç</a>
+      <a href="#ekip">Ekip</a>
+      <a href="#yazilar">Yazılar</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <a class="btn cta" href="#dosya">Ön görüşme iste</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menü</button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="padding-top:clamp(40px,8vh,96px)">
+  <div class="wrap grid">
+    <div>
+      <h1 aria-label="Hukuk, anlayacağınız dilde.">
+        <span class="ln"><span>Hukuk,</span></span>
+        <span class="ln"><span>anlayacağınız</span></span>
+        <span class="ln"><span>dilde.</span></span>
+      </h1>
+      <p class="lead">Aile, iş, ceza, gayrimenkul ve ticaret hukukunda ilk görüşmeden karara kadar süreci yazılı olarak anlatır, her aşamada sizi bilgilendiririz.</p>
+      <div class="cta-row">
+        <a class="btn" href="#dosya">Ön görüşme iste</a>
+        <a class="btn ghost" href="#alanlar">Çalışma alanlarımız</a>
+      </div>
+    </div>
+
+    <form class="file" id="dosya" novalidate>
+      <span class="file-tab">Yeni dosya</span>
+      <h2>Dosyanızı açalım</h2>
+      <p class="s">Konuyu kısaca yazın, size dönüş yapalım. Bilgileriniz yalnızca görüşme için kullanılır.</p>
+      <fieldset class="chips">
+        <legend>Konu</legend>
+        <label><input type="radio" name="konu" value="Aile" checked><span>Aile</span></label>
+        <label><input type="radio" name="konu" value="İş"><span>İş</span></label>
+        <label><input type="radio" name="konu" value="Ceza"><span>Ceza</span></label>
+        <label><input type="radio" name="konu" value="Gayrimenkul"><span>Gayrimenkul</span></label>
+        <label><input type="radio" name="konu" value="Ticaret"><span>Ticaret</span></label>
+        <label><input type="radio" name="konu" value="Diğer"><span>Diğer</span></label>
+      </fieldset>
+      <label class="field"><span>Ad soyad</span><input name="ad" autocomplete="name" required></label>
+      <label class="field"><span>Telefon</span><input name="tel" type="tel" autocomplete="tel" required></label>
+      <label class="field"><span>Kısaca anlatın</span><textarea name="not"></textarea></label>
+      <button class="btn" type="submit">Ön görüşme iste</button>
+      <p class="fine">Bu form tasarım örneğidir, gönderilen bilgiler kaydedilmez.</p>
+      <div class="stamp-layer" id="stampLayer" role="status" aria-live="polite">
+        <div class="stamp">ALINDI</div>
+        <h3>Talebiniz alındı</h3>
+        <p>Canlı sitede bu aşamada talebiniz büroya iletilir ve size telefonla dönüş yapılır.</p>
+        <button class="btn ghost" type="button" id="stampClose">Kapat</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ÇALIŞMA ALANLARI -->
+<section id="alanlar" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">Çalışma alanları</h2>
+      <p>Konuya göre ayrılmış beş ana başlık. Bir başlığın üzerine gelerek hangi işlerde destek verdiğimizi görebilirsiniz.</p>
+    </div>
+    <div class="index">
+      <ul class="toc" role="tablist" aria-label="Çalışma alanları" id="toc"></ul>
+      <aside class="panel" id="panel" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- İLKELER -->
+<section class="dark" id="ilkeler">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">Nasıl çalışırız</h2>
+      <p>Hukuki süreç çoğu zaman belirsizlik demektir. Biz belirsizliği azaltmak için üç şeyi baştan taahhüt ederiz.</p>
+    </div>
+    <div class="rules">
+      <div class="rule"><h3>Her aşamada yazılı bilgi.</h3><p>Dilekçe, duruşma ve karar sonrası yapılacaklar size açık bir dille yazılı olarak iletilir. Sormadan öğrenirsiniz.</p></div>
+      <div class="rule"><h3>Ücret baştan, sözleşmeyle.</h3><p>Kapsam ve ücret, avukatlık ücret sözleşmesinde yazılı olarak belirlenir. Süreç içinde sürpriz kalem çıkmaz.</p></div>
+      <div class="rule"><h3>Gizlilik, her koşulda.</h3><p>Görüşmeleriniz ve dosyanız avukat–müvekkil gizliliği kapsamında korunur, üçüncü kişilerle paylaşılmaz.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SÜREÇ -->
+<section id="surec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">İlk görüşmeden<br>sonuca</h2>
+      <p>Başvurunuzdan sonra süreç dört adımda ilerler. Her adımda ne yapıldığını ve sıradaki adımı bilirsiniz.</p>
+    </div>
+    <ol class="steps" id="steps" style="list-style:none">
+      <li class="step"><small>1. adım</small><h3>İlk görüşme</h3><p>Durumunuzu dinler, hukuki çerçeveyi ve olası yolları açıklarız.</p></li>
+      <li class="step"><small>2. adım</small><h3>Dosya incelemesi</h3><p>Belgelerinizi inceler, süreleri ve riskleri çıkarırız.</p></li>
+      <li class="step"><small>3. adım</small><h3>Strateji ve sözleşme</h3><p>Yol haritasını yazılı sunar, ücreti sözleşmeyle netleştiririz.</p></li>
+      <li class="step"><small>4. adım</small><h3>Takip ve bilgilendirme</h3><p>Dava ve işlemleri yürütür, gelişmeleri düzenli olarak bildiririz.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- EKİP -->
+<section class="alt" id="ekip">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">Ekip</h2>
+      <p>Her dosyaya bir sorumlu avukat atanır. Size ulaşılabilecek tek bir muhatap olur.</p>
+    </div>
+    <div class="team">
+      <article class="person"><div class="ph"><span>E</span></div><h3>Av. Elif Karaca</h3><p>Kurucu ortak, aile ve miras hukuku</p><p class="bio">Boşanma, velayet ve miras uyuşmazlıklarında müzakere ve dava süreçlerini yürütür.</p></article>
+      <article class="person"><div class="ph"><span>M</span></div><h3>Av. Murat Yıldırım</h3><p>Ortak, ceza ve iş hukuku</p><p class="bio">Soruşturma ve kovuşturma aşamalarında savunma; işçi ve işveren uyuşmazlıklarında danışmanlık.</p></article>
+      <article class="person"><div class="ph"><span>Z</span></div><h3>Av. Zeynep Aksoy</h3><p>Ortak, gayrimenkul ve ticaret hukuku</p><p class="bio">Kira, tapu ve şirket sözleşmeleri ile ticari alacak ve icra takiplerinde çalışır.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- YAZILAR -->
+<section id="yazilar">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">Yazılar</h2>
+      <p>Sık sorulan hukuki soruları sade bir dille yanıtlıyoruz. Yazılar genel bilgi niteliğindedir.</p>
+    </div>
+    <div class="posts">
+      <a class="post" href="#yazilar"><small>Gayrimenkul · 4 dk okuma</small><h3>Kira artış oranı nasıl hesaplanır?</h3><p>Yenileme dönemlerinde uygulanabilecek üst sınırı ve itiraz yollarını anlatıyoruz.</p></a>
+      <a class="post" href="#yazilar"><small>Ticaret · 3 dk okuma</small><h3>İhtarname nedir, ne zaman çekilir?</h3><p>Alacak, kira ve sözleşme uyuşmazlıklarında ihtarın sonuçlarını açıklıyoruz.</p></a>
+      <a class="post" href="#yazilar"><small>Aile · 5 dk okuma</small><h3>Boşanma davası hangi aşamalardan geçer?</h3><p>Anlaşmalı ve çekişmeli boşanma arasındaki farkı ve süreci özetliyoruz.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- SSS -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="t">Sık sorulanlar</h2>
+      <p></p>
+    </div>
+    <div class="faq">
+      <details open><summary>İlk görüşmeye neler getirmeliyim?</summary><p>Kimlik bilgileriniz, konuyla ilgili sözleşme, yazışma, tebligat veya dilekçe gibi elinizdeki tüm belgeler yeterlidir. Eksik belge görüşmeyi engellemez.</p></details>
+      <details><summary>Ücret nasıl belirlenir?</summary><p>Ücret, işin kapsamına göre ilk görüşmenin ardından yazılı olarak bildirilir ve avukatlık ücret sözleşmesiyle kayıt altına alınır.</p></details>
+      <details><summary>Görüşmeler gizli kalır mı?</summary><p>Evet. Müvekkille yapılan tüm görüşmeler ve paylaşılan belgeler avukatlık meslek kuralları gereği gizlidir.</p></details>
+      <details><summary>Başka şehirdeysem dosyamı takip edebilir misiniz?</summary><p>Görüşmeleri telefon ve görüntülü arama ile yürütebiliriz. Duruşma ve işlemler için gerekli yerlerde meslektaşlarımızla birlikte çalışırız.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- İLETİŞİM -->
+<section class="dark" id="iletisim">
+  <div class="wrap contact">
+    <div>
+      <h2 class="t">İletişim</h2>
+      <dl class="rows">
+        <div><dt>Adres</dt><dd>Şişli, İstanbul</dd></div>
+        <div><dt>Telefon</dt><dd><a href="tel:+902120000000">+90 212 000 00 00</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/905000000000">+90 500 000 00 00</a></dd></div>
+        <div><dt>E-posta</dt><dd><a href="mailto:info@ornek-hukuk.com">info@ornek-hukuk.com</a></dd></div>
+        <div><dt>Çalışma saatleri</dt><dd>Hafta içi 09.00–18.00</dd></div>
+      </dl>
+      <div class="cta-line">
+        <a class="btn" href="tel:+902120000000">Hemen ara</a>
+        <a class="btn ghost" href="https://wa.me/905000000000">WhatsApp'tan yaz</a>
+      </div>
+    </div>
+    <div class="map"><iframe title="Şişli, İstanbul harita" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=28.97%2C41.04%2C29.02%2C41.075&layer=mapnik"></iframe></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Bu sitedeki bilgiler genel bilgilendirme amaçlıdır; hukuki danışmanlık veya avukat–müvekkil ilişkisi kurmaz. Her olay kendi koşulları içinde değerlendirilmelidir.</p>
+    <p class="demo">Tasarım örneği. Büro adı, ekip ve iletişim bilgileri temsilidir.</p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Hızlı iletişim">
+  <a href="tel:+902120000000">Ara</a>
+  <a href="https://wa.me/905000000000">WhatsApp</a>
+  <a href="#dosya">Ön görüşme</a>
+</nav>
+
+<script>
+const AREAS=[
+ {n:"Aile hukuku",d:"Evlilik, boşanma ve çocukla ilgili kararlarda hakları ve süreci açık biçimde anlatır, uzlaşma yollarını öncelikle değerlendiririz.",l:["Anlaşmalı ve çekişmeli boşanma","Velayet ve kişisel ilişki","Nafaka ve mal rejimi"]},
+ {n:"İş hukuku",d:"İşçi ve işveren tarafında sözleşme, fesih ve alacak uyuşmazlıklarında hem danışmanlık hem de dava desteği veririz.",l:["İşe iade ve tazminat","Fazla mesai ve ücret alacakları","İş sözleşmeleri ve yönetmelikler"]},
+ {n:"Ceza hukuku",d:"Soruşturma aşamasından kovuşturmaya kadar savunma hakkınızın eksiksiz kullanılması için yanınızda oluruz.",l:["İfade ve sorgu süreçleri","Savunma ve dava takibi","Tutuklama ve itiraz işlemleri"]},
+ {n:"Gayrimenkul ve kira",d:"Satış, kira ve tapu işlemlerinde belgeleri inceler, riskleri baştan çıkarır ve uyuşmazlıkları çözeriz.",l:["Kira tespit ve tahliye","Tapu iptal ve tescil","Satış ve devir sözleşmeleri"]},
+ {n:"Ticaret ve şirketler",d:"Şirket kuruluşundan sözleşmelere ve alacak takibine kadar ticari süreçlerde düzenli hukuki destek sağlarız.",l:["Şirket kuruluşu ve ortaklık","Ticari sözleşmeler","Alacak ve icra takibi"]}
+];
+const toc=document.getElementById('toc'),panel=document.getElementById('panel');
+AREAS.forEach((a,i)=>{
+  const li=document.createElement('li');
+  li.innerHTML='<button role="tab" aria-selected="'+(i==0)+'"><span class="no">'+String(i+1).padStart(2,'0')+'</span><span class="nm">'+a.n+'</span><span class="ar" aria-hidden="true">→</span></button>';
+  const b=li.firstChild;
+  const show=()=>{[...toc.querySelectorAll('button')].forEach(x=>x.setAttribute('aria-selected',x===b));
+    panel.innerHTML='<div class="swap"><h3>'+a.n+'</h3><p>'+a.d+'</p><ul>'+a.l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'};
+  b.addEventListener('mouseenter',show);b.addEventListener('focus',show);b.addEventListener('click',show);
+  toc.appendChild(li);
+});
+panel.innerHTML='<div class="swap"><h3>'+AREAS[0].n+'</h3><p>'+AREAS[0].d+'</p><ul>'+AREAS[0].l.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>';
+
+const hd=document.getElementById('top');
+addEventListener('scroll',()=>hd.classList.toggle('scrolled',scrollY>8),{passive:true});
+const mb=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+mb.addEventListener('click',()=>{const o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded',false)}});
+
+const steps=document.getElementById('steps');
+new IntersectionObserver((es,ob)=>es.forEach(e=>{if(e.isIntersecting){steps.classList.add('in');ob.disconnect()}}),{threshold:.4}).observe(steps);
+
+const form=document.getElementById('dosya'),layer=document.getElementById('stampLayer');
+form.addEventListener('submit',e=>{e.preventDefault();layer.classList.remove('on');void layer.offsetWidth;layer.classList.add('on')});
+document.getElementById('stampClose').addEventListener('click',()=>{layer.classList.remove('on');form.reset()});
+</script>
+</body>
+</html>
